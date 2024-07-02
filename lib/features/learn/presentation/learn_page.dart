@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
@@ -37,8 +36,7 @@ class _LearnPageState extends State<LearnPage> {
             child: Column(
               children: [
                 Expanded(
-                  child: Observer(
-                    builder: (BuildContext context) => ListView.separated(
+                  child: ListView.separated(
                       separatorBuilder: (context, _) =>
                           const SizedBox(height: 4),
                       itemCount: state.words.length, //exampleData.length,
@@ -51,7 +49,6 @@ class _LearnPageState extends State<LearnPage> {
                         ),
                       ),
                     ),
-                  ),
                 ),
                 Container(
                   alignment: Alignment.center,
