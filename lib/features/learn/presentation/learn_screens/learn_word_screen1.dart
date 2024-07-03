@@ -9,7 +9,6 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 
-
 class LearnWordPage1 extends StatefulWidget {
   const LearnWordPage1({super.key, required this.word});
 
@@ -20,7 +19,6 @@ class LearnWordPage1 extends StatefulWidget {
 }
 
 class LearnWordPage1State extends State<LearnWordPage1> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +55,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
                       child: Image.network(
+                        fit: BoxFit.contain,
                         widget.word.pictureLink,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) {
@@ -74,6 +73,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                           }
                         },
                         width: 350,
+                        height: 360,
                       ),
                     ),
                   ],
