@@ -8,6 +8,6 @@ part 'learn_client.g.dart';
 abstract class LearnClient {
   factory LearnClient(Dio dio, {String baseUrl}) = _LearnClient;
 
-  @GET("user/words/study")
+  @GET("user/words/get_words")
   Future<List<WordInfoDto>> getWords(@Query("user_id") String userId);
 }

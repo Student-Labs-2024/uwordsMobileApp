@@ -34,7 +34,7 @@ class _LearnClient implements LearnClient {
     )
             .compose(
               _dio.options,
-              'user/words/study',
+              'user/words/get_words',
               queryParameters: queryParameters,
               data: _data,
             )
