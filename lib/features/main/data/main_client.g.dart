@@ -36,7 +36,7 @@ class _MainClient implements MainClient {
     )
         .compose(
           _dio.options,
-          'words/user/${user_id}/audio',
+          'user/${user_id}/audio',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -63,7 +63,7 @@ class _MainClient implements MainClient {
     )
         .compose(
           _dio.options,
-          'words/user/${user_id}/youtube',
+          'user/${user_id}/youtube',
           queryParameters: queryParameters,
           data: _data,
         )

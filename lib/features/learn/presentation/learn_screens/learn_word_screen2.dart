@@ -17,7 +17,6 @@ class LearnWordPage2 extends StatefulWidget {
 }
 
 class LearnWordPage2State extends State<LearnWordPage2> {
-
   String answer = '';
   bool answerCorrect = false;
 
@@ -87,6 +86,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                   borderRadius: BorderRadius.circular(25),
                   child: Image.network(
                     widget.word.pictureLink,
+                    fit: BoxFit.contain,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {
                         return child;
@@ -103,6 +103,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                       }
                     },
                     width: 350,
+                    height: 360,
                   ),
                 ),
               ],
@@ -123,9 +124,10 @@ class LearnWordPage2State extends State<LearnWordPage2> {
               padding: const EdgeInsets.only(bottom: 32),
               child: BigButton(
                 text: 'Далее',
-                onPressed: (){
-                  if(answerCorrect){
-                    context.go("/learn/screen1/screen2/screen3",extra: widget.word);
+                onPressed: () {
+                  if (answerCorrect) {
+                    context.go("/learn/screen1/screen2/screen3",
+                        extra: widget.word);
                   }
                 },
               ),

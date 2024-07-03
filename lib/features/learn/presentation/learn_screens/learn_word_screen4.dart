@@ -16,6 +16,7 @@ class LearnWordPage4 extends StatefulWidget {
 }
 
 class LearnWordPage4State extends State<LearnWordPage4> {
+  bool chosenImage = false;
   //!!!!!!
   //Предпологается, что на этом экране будут получены еще 3 случайных слова!!!!
   //в инит стейте типа.

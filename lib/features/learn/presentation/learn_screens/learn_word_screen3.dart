@@ -53,6 +53,7 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
                       child: Image.network(
+                        fit: BoxFit.contain,
                         widget.word.pictureLink,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) {
@@ -70,6 +71,7 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                           }
                         },
                         width: 350,
+                        height: 360,
                       ),
                     ),
                   ],

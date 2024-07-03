@@ -15,7 +15,6 @@ class SuccessfulWordPage extends StatefulWidget {
 }
 
 class SuccessfulWordPageState extends State<SuccessfulWordPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +34,7 @@ class SuccessfulWordPageState extends State<SuccessfulWordPage> {
                   width: 40,
                   decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
                   child: ElevatedButton(
-                    onPressed: () => context.go("/learm"),
+                    onPressed: () => context.go("/learn"),
                     style: LearnDecorButtStyle.wordScreenPopBackBS,
                     child: const Icon(
                       Icons.arrow_back,
