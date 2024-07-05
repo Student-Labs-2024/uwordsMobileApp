@@ -45,6 +45,10 @@ final GoRouter _goRouter = GoRouter(
       routes: [
         GoRoute(
           path: '/',
+          builder: (context, state) => const AuthPage(),
+        ),
+        GoRoute(
+          path: '/home',
           builder: (context, state) => HomePage(),
         ),
         GoRoute(
@@ -90,7 +94,7 @@ final GoRouter _goRouter = GoRouter(
           ],
         ),
         GoRoute(
-          path: '/auth',
+          path: '/profile',
           builder: (context, state) => const AuthPage(),
         ),
       ],
