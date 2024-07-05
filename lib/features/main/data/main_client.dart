@@ -7,15 +7,15 @@ part 'main_client.g.dart';
 abstract class MainClient {
   factory MainClient(Dio dio, {String baseUrl}) = _MainClient;
 
-  @POST("user/{user_id}/audio")
+  @POST("user/audio")
   Future<void> sendAudio(
-    @Path("user_id") String user_id,
+    @Query('user_id') String user_id,
     @Body() FormData file,
   );
 
-  @POST("user/{user_id}/youtube")
+  @POST("user/youtube")
   Future<void> sendLink(
-    @Path("user_id") String user_id,
+    @Query("user_id") String user_id,
     @Body() String link,
   );
 }
