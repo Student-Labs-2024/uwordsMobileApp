@@ -342,6 +342,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_login_vk:
+    dependency: "direct main"
+    description:
+      name: flutter_login_vk
+      sha256: "03c1e05d8b80d0892f5aeb1c74157c3c4051e198bbf33a6e4a84e544b32b8c0b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2+1"
   flutter_sound:
     dependency: "direct main"
     description:
