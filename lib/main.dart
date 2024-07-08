@@ -27,10 +27,11 @@ import 'features/learn/presentation/learn_screens/learn_word_screen4.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  runApp(MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  runApp(MainApp());
 }
 
 final _shellNavKey = GlobalKey<NavigatorState>();
