@@ -14,6 +14,7 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final authClient = AuthClient();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+              children: [
                 Text(
                   'Don\'t have an account?',
                   style: TextStyle(color: Colors.brown, fontSize: 20),
@@ -67,7 +68,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                await AuthClient().signInWithMailPassword(
+                await authClient.signInWithMailPassword(
                     emailAddress: usernameController.text,
                     password: passwordController.text);
               },
@@ -75,7 +76,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                await AuthClient().registerUser(
+                await authClient.registerUser(
                     emailAddress: usernameController.text,
                     password: passwordController.text);
               },
@@ -83,7 +84,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                await AuthClient().signInWithGoogle();
+                await authClient.signInWithGoogle();
               },
               child: Text("ВойтиГугл"),
             ),
@@ -96,10 +97,16 @@ class _AuthPageState extends State<AuthPage> {
             ElevatedButton(
               onPressed: () async {
                 print(' ---------->>> ВЫВОД ЮЗЕРА');
-                AuthClient().getUser();
+                authClient.getUser();
                 print(' <<<---------- ВЫВОД ЮЗЕРА');
               },
               child: Text("getUser"),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                authClient.auth.signOut();
+              },
+              child: Text("outUser"),
             ),
           ],
         ),
