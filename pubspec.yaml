@@ -29,6 +29,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   just_audio: ^0.9.38
   freezed_annotation: ^2.4.1
+  flutter_login_vk: ^2.2.2+1
 
 dev_dependencies:
   flutter_test:
