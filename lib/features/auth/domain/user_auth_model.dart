@@ -1,10 +1,10 @@
-class UserModel {
+class UserAuthModel {
   final String email;
   final String accessToken;
   final String refreshToken;
   final bool isEducationCompleted;
 
-  UserModel(
+  UserAuthModel(
       {required this.email,
       required this.accessToken,
       required this.refreshToken,

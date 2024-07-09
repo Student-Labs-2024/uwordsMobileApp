@@ -1,11 +1,19 @@
+import 'package:drift/drift.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/domain/user_auth_model.dart';
+import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
-extension ProductMapper on UserAuthDto {
-  UserModel toModel() => UserModel(
+extension UserAuthMapper on UserAuthDto {
+  UserAuthModel toModel() => UserAuthModel(
         email: email,
         accessToken: accessToken,
         refreshToken: refreshToken,
         isEducationCompleted: isEducationCompleted,
+      );
+  UserAuthCompanion toDB() => UserAuthCompanion(
+        email: Value(email),
+        accessToken: Value(accessToken),
+        refreshToken: Value(refreshToken),
+        isEducationCompleted: Value(isEducationCompleted),
       );
 }
