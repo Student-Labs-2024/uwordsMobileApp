@@ -15,6 +15,7 @@ class AudioDataSource implements IAudioDataSource {
     });
     final user = await AuthClient().getUser();
     if (user != null) {
+      print('ЮЗЕР ЮИД АУДИО ДАТАС ${user.uid}');
       await client
           .sendAudio(user.uid, audioData)
           .then((value) => log("Файл отправлен"));
@@ -26,7 +27,7 @@ class AudioDataSource implements IAudioDataSource {
     final user = await AuthClient().getUser();
     if (user != null) {
       await client
-          .sendLink(user.uid, link)
+          .sendLink(user.uid.toString(), link)
           .then((value) => log("$link отправлен"));
     }
   }

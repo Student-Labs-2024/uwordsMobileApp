@@ -26,7 +26,7 @@ class _MainClient implements MainClient {
     FormData file,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'user_id': user_id};
     final _headers = <String, dynamic>{};
     final _data = file;
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -36,7 +36,7 @@ class _MainClient implements MainClient {
     )
         .compose(
           _dio.options,
-          'user/${user_id}/audio',
+          'user/audio',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -53,7 +53,7 @@ class _MainClient implements MainClient {
     String link,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'user_id': user_id};
     final _headers = <String, dynamic>{};
     final _data = link;
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -63,7 +63,7 @@ class _MainClient implements MainClient {
     )
         .compose(
           _dio.options,
-          'user/${user_id}/youtube',
+          'user/youtube',
           queryParameters: queryParameters,
           data: _data,
         )

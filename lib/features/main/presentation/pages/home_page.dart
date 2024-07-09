@@ -17,28 +17,24 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: BlocConsumer<AudioBloc, AudioState>(
         listener: (context, state) {
-          state.whenOrNull(
-              initial: () {debugPrint("Initial");},
-              started: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Запись начата")));
-              },
-              stopped: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Запись закончена")));
-              },
-              failed: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("Произошла некоторая ошибка")));
-              },
-              sended: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Медиа отправлено")));
-              },
-              notValidLink: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Не валидная ссылка")));
-              });
+          state.whenOrNull(initial: () {
+            debugPrint("Initial");
+          }, started: () {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text("Запись начата")));
+          }, stopped: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Запись закончена")));
+          }, failed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Произошла некоторая ошибка")));
+          }, sended: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Медиа отправлено")));
+          }, notValidLink: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Не валидная ссылка")));
+          });
         },
         builder: (BuildContext context, AudioState state) {
           return SafeArea(
@@ -90,10 +86,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                           iconSize: 24,
                           style: ButtonStyle(
-                            fixedSize: WidgetStateProperty.all(Size(32, 32)),
+                            fixedSize: MaterialStateProperty.all(Size(32, 32)),
                             backgroundColor:
-                                WidgetStateProperty.all(AppColors.mainColor),
-                            shape: WidgetStateProperty.all(
+                                MaterialStateProperty.all(AppColors.mainColor),
+                            shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -115,8 +111,8 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          WidgetStateProperty.all(Color(0xFF466DF2)),
-                      fixedSize: WidgetStateProperty.all(
+                          MaterialStateProperty.all(Color(0xFF466DF2)),
+                      fixedSize: MaterialStateProperty.all(
                         Size(MediaQuery.of(context).size.width * 200 / 375,
                             MediaQuery.of(context).size.height * 200 / 812),
                       ),

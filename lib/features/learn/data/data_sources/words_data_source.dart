@@ -8,12 +8,12 @@ class WordsDataSource implements IWordsDataSource {
   static Dio dio = Dio();
   final client = LearnClient(dio);
   @override
-  Future<List<WordInfoDto>> getWordsForStudy() async{
+  Future<List<WordInfoDto>> getWordsForStudy() async {
     final user = await AuthClient().getUser();
     List<WordInfoDto> words = [];
     if (user != null) {
-      words = await client.getWords(user.uid);//user.uid
-    } else{
+      words = await client.getWords(user.uid); //user.uid
+    } else {
       words = await client.getWords("test");
     }
     return words;
