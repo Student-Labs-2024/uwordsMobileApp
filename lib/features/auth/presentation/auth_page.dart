@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
-import 'package:uwords/features/auth/presentation/widgets/signin_button.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -16,6 +15,8 @@ class _AuthPageState extends State<AuthPage> {
   final passwordController = TextEditingController();
   final authClient = AuthClient();
 
+  String regUser = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,18 +24,18 @@ class _AuthPageState extends State<AuthPage> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            Icon(
+            const Icon(
               Icons.lock_outlined,
               size: 150,
               color: Colors.black,
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
@@ -50,7 +51,7 @@ class _AuthPageState extends State<AuthPage> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             CustomTextField(
@@ -58,7 +59,7 @@ class _AuthPageState extends State<AuthPage> {
               hintText: 'Почта',
               obscoreText: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             CustomTextField(
@@ -76,9 +77,11 @@ class _AuthPageState extends State<AuthPage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                await authClient.registerUser(
+                regUser = await authClient.registerUser(
                     emailAddress: usernameController.text,
                     password: passwordController.text);
+                // if(regUser == 'ok') тотото
+                //не окей, то соответствующие снекбары
               },
               child: Text("Зарегать"),
             ),
@@ -90,6 +93,12 @@ class _AuthPageState extends State<AuthPage> {
             ),
             ElevatedButton(
               onPressed: () async {
+                authClient.signInWithVK();
+              },
+              child: Text("ВойтиВК"),
+            ),
+            ElevatedButton(
+              onPressed: () async {
                 context.go("/home");
               },
               child: Text("goHome"),
@@ -97,7 +106,7 @@ class _AuthPageState extends State<AuthPage> {
             ElevatedButton(
               onPressed: () async {
                 print(' ---------->>> ВЫВОД ЮЗЕРА');
-                authClient.getUser();
+                authClient.printUser();
                 print(' <<<---------- ВЫВОД ЮЗЕРА');
               },
               child: Text("getUser"),
