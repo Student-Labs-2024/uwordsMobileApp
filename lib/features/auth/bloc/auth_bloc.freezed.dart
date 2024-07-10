@@ -24,6 +24,7 @@ mixin _$AuthEvent {
         registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
+    required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +34,7 @@ mixin _$AuthEvent {
     TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult? Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,7 @@ mixin _$AuthEvent {
     TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +55,7 @@ mixin _$AuthEvent {
     required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$AuthEvent {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +73,7 @@ mixin _$AuthEvent {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
         registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
+    required TResult Function() logOut,
   }) {
     return signInWithVK();
   }
@@ -152,6 +159,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult? Function()? logOut,
   }) {
     return signInWithVK?.call();
   }
@@ -164,6 +172,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (signInWithVK != null) {
@@ -180,6 +189,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
   }) {
     return signInWithVK(this);
   }
@@ -191,6 +201,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
   }) {
     return signInWithVK?.call(this);
   }
@@ -202,6 +213,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (signInWithVK != null) {
@@ -267,6 +279,7 @@ class _$SignInWithGoogleImpl
         registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
+    required TResult Function() logOut,
   }) {
     return signInWithGoogle();
   }
@@ -279,6 +292,7 @@ class _$SignInWithGoogleImpl
     TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult? Function()? logOut,
   }) {
     return signInWithGoogle?.call();
   }
@@ -291,6 +305,7 @@ class _$SignInWithGoogleImpl
     TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -307,6 +322,7 @@ class _$SignInWithGoogleImpl
     required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
   }) {
     return signInWithGoogle(this);
   }
@@ -318,6 +334,7 @@ class _$SignInWithGoogleImpl
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
   }) {
     return signInWithGoogle?.call(this);
   }
@@ -329,6 +346,7 @@ class _$SignInWithGoogleImpl
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -432,6 +450,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
         registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
+    required TResult Function() logOut,
   }) {
     return registerUser(emailAddress, password);
   }
@@ -444,6 +463,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult? Function()? logOut,
   }) {
     return registerUser?.call(emailAddress, password);
   }
@@ -456,6 +476,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -472,6 +493,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
   }) {
     return registerUser(this);
   }
@@ -483,6 +505,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
   }) {
     return registerUser?.call(this);
   }
@@ -494,6 +517,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -610,6 +634,7 @@ class _$SignInWithMailPasswordImpl
         registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
+    required TResult Function() logOut,
   }) {
     return signInWithMailPassword(emailAddress, password);
   }
@@ -622,6 +647,7 @@ class _$SignInWithMailPasswordImpl
     TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult? Function()? logOut,
   }) {
     return signInWithMailPassword?.call(emailAddress, password);
   }
@@ -634,6 +660,7 @@ class _$SignInWithMailPasswordImpl
     TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
+    TResult Function()? logOut,
     required TResult orElse(),
   }) {
     if (signInWithMailPassword != null) {
@@ -650,6 +677,7 @@ class _$SignInWithMailPasswordImpl
     required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
   }) {
     return signInWithMailPassword(this);
   }
@@ -661,6 +689,7 @@ class _$SignInWithMailPasswordImpl
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
   }) {
     return signInWithMailPassword?.call(this);
   }
@@ -672,6 +701,7 @@ class _$SignInWithMailPasswordImpl
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
     if (signInWithMailPassword != null) {
@@ -691,6 +721,137 @@ abstract class _SignInWithMailPassword implements AuthEvent {
   @JsonKey(ignore: true)
   _$$SignInWithMailPasswordImplCopyWith<_$SignInWithMailPasswordImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LogOutImplCopyWith<$Res> {
+  factory _$$LogOutImplCopyWith(
+          _$LogOutImpl value, $Res Function(_$LogOutImpl) then) =
+      __$$LogOutImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogOutImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LogOutImpl>
+    implements _$$LogOutImplCopyWith<$Res> {
+  __$$LogOutImplCopyWithImpl(
+      _$LogOutImpl _value, $Res Function(_$LogOutImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
+  const _$LogOutImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.logOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthEvent.logOut'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogOutImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signInWithVK,
+    required TResult Function() signInWithGoogle,
+    required TResult Function(String emailAddress, String password)
+        registerUser,
+    required TResult Function(String emailAddress, String password)
+        signInWithMailPassword,
+    required TResult Function() logOut,
+  }) {
+    return logOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signInWithVK,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function(String emailAddress, String password)? registerUser,
+    TResult? Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult? Function()? logOut,
+  }) {
+    return logOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signInWithVK,
+    TResult Function()? signInWithGoogle,
+    TResult Function(String emailAddress, String password)? registerUser,
+    TResult Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (logOut != null) {
+      return logOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignInWithVK value) signInWithVK,
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_RegisterUser value) registerUser,
+    required TResult Function(_SignInWithMailPassword value)
+        signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
+  }) {
+    return logOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignInWithVK value)? signInWithVK,
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_RegisterUser value)? registerUser,
+    TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
+  }) {
+    return logOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignInWithVK value)? signInWithVK,
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_RegisterUser value)? registerUser,
+    TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (logOut != null) {
+      return logOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogOut implements AuthEvent {
+  const factory _LogOut() = _$LogOutImpl;
 }
 
 /// @nodoc

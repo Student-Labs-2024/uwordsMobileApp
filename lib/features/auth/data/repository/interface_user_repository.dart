@@ -1,7 +1,7 @@
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 
 abstract interface class IUserRepository {
-  void saveUser({required UserAuthDto userDto});
+  void localLogOut();
   Future<bool> registerUser(
       {required String emailAddress, required String password});
   Future<void> refreshAccessToken();

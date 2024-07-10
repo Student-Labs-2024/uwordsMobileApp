@@ -24,7 +24,7 @@ class UserRepository implements IUserRepository {
       UserAuthDto user = await networkUserDataSource.authorizate(
           userEmail: emailAddress, password: password, provider: provider);
       savableUserDataSource.noneIsCurrent();
-      savableUserDataSource.saveUser(userDto: user);
+      _saveUser(userDto: user);
       return true;
     } on NotRegisteredException catch (e) {
       log(e.toString());
@@ -36,7 +36,7 @@ class UserRepository implements IUserRepository {
   Future<void> refreshAccessToken() async {
     User user = await savableUserDataSource.getCurrent();
     UserAuthDto userDto = UserAuthDto.fromDB(user);
-    saveUser(
+    _saveUser(
         userDto:
             await networkUserDataSource.refreshAccessToken(userDto: userDto));
   }
@@ -81,8 +81,7 @@ class UserRepository implements IUserRepository {
     }
   }
 
-  @override
-  void saveUser({required UserAuthDto userDto}) {
+  void _saveUser({required UserAuthDto userDto}) {
     savableUserDataSource.saveUser(userDto: userDto);
   }
 
@@ -90,5 +89,10 @@ class UserRepository implements IUserRepository {
       {required String userEmail, required String provider}) async {
     User currentUser = await savableUserDataSource.getCurrent();
     return currentUser.accessToken;
+  }
+
+  @override
+  void localLogOut() async{
+    await savableUserDataSource.noneIsCurrent();
   }
 }

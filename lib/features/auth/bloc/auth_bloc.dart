@@ -28,6 +28,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_SignInWithVK>(_handleSignInWithVK);
     on<_SignInWithGoogle>(_handleSignInWithGoogle);
+    on<_LogOut>(_handleLogOut);
   }
 
   Future<void> _handleRegisterUser(
@@ -44,6 +45,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithMailPassword(
       _SignInWithMailPassword event, Emitter<AuthState> emit) async {
+    auth.signOut();
+    vk.logOut();
     emit(const AuthState.waitingAnswer());
     uEmail = event.password;
     providerUid = event.password;
@@ -54,6 +57,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _SignInWithVK event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
     auth.signOut();
+    userRepository.localLogOut();
     await _signInWithVk();
     try {
       _authorization(emit: emit, provider: "vk");
@@ -66,12 +70,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _SignInWithGoogle event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
     vk.logOut();
+    userRepository.localLogOut();
     await _signInWithGoogle();
     try {
       _authorization(emit: emit, provider: "google");
     } on NotRegisteredException {
       await _registerAndAuth(emit: emit, provider: "google");
     }
+  }
+
+  Future<void> _handleLogOut(_LogOut event, Emitter<AuthState> emit) async{
+    userRepository.localLogOut();
+    emit(const AuthState.initial());
   }
 
   Future<void> _signInWithVk() async {

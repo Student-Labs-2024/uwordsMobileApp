@@ -9,4 +9,5 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.signInWithMailPassword(
       {required String emailAddress,
       required String password}) = _SignInWithMailPassword;
+  const factory AuthEvent.logOut() = _LogOut;
 }
