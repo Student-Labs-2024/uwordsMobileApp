@@ -1,31 +1,44 @@
+import 'package:dio/dio.dart';
+import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
+  static Dio dio = Dio();
+  final client = AuthClient(dio);
+
   @override
-  Future<bool> authorizate(
+  Future<UserAuthDto> authorizate(
       {required String userEmail,
       required String password,
-      required String provider}) {
-    // TODO: implement authorizate
-    throw UnimplementedError();
+      required String provider}) async {
+    Map<String, String> response =
+        await client.login(provider, userEmail, password);
+    return UserAuthDto.fromJsonAndOtherFields(
+      userEmail: userEmail,
+      password: password,
+      provider: provider,
+      map: response,
+    );
   }
 
   @override
-  Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) {
-    // TODO: implement refreshAccessToken
-    throw UnimplementedError();
+  Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
+    Map<String, String> newAccessToken =
+        await client.refresh(userDto.refreshToken);
+    userDto.changeAccessToken(
+        newAccessToken: newAccessToken['access_token'] ?? '');
+    return userDto;
   }
 
   @override
-  Future<UserAuthDto> registerUser(
-      {required String userEmail, required String password}) {
-    // TODO: implement registerUser
-    throw UnimplementedError();
+  Future<void> registerUser(
+      {required String userEmail, required String password}) async {
+    await client.register("self", userEmail, password);
   }
 
   @override
-  Future<UserAuthDto> registerUserFromThirdPartyService(
+  Future<void> registerUserFromThirdPartyService(
       {required String userEmail,
       required String password,
       required String username,
@@ -33,8 +46,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String surname,
       required String avatarUrl,
       required String phoneNumber,
-      required String provider}) {
-    // TODO: implement registerUserFromThirdPartyService
-    throw UnimplementedError();
+      required String provider}) async {
+    await client.registerUserFromThirdPartyService(provider, userEmail,
+        password, username, name, surname, avatarUrl, phoneNumber);
   }
 }

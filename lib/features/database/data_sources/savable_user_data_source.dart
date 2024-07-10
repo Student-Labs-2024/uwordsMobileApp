@@ -6,6 +6,10 @@ import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 abstract interface class ISavableUserDataSource {
   void saveUser({required UserAuthDto userDto});
   Future<User> fetchUser({required String uEmail, required String provider});
+  Future<void> changeCurrent(
+      {required String uEmail, required String provider});
+  Future<User> getCurrent();
+  Future<void> noneIsCurrent();
 }
 
 class SavableUserDataSource implements ISavableUserDataSource {
@@ -31,6 +35,29 @@ class SavableUserDataSource implements ISavableUserDataSource {
   Future<User> fetchUser({required String uEmail, required String provider}) {
     return (database.select(database.userAuth)
           ..where((u) => u.email.equals(uEmail) & u.provider.equals(provider)))
+        .getSingle();
+  }
+
+  @override
+  Future<void> changeCurrent(
+      {required String uEmail, required String provider}) async {
+    noneIsCurrent();
+    (database.update(database.userAuth)
+      ..where((u) => u.email.equals(uEmail) & u.provider.equals(provider))
+      ..write(const UserAuthCompanion(isCurrent: Value(true))));
+  }
+
+  @override
+  Future<void> noneIsCurrent() async {
+    (database.update(database.userAuth)
+      ..where((u) => u.isCurrent.equals(true))
+      ..write(const UserAuthCompanion(isCurrent: Value(false))));
+  }
+
+  @override
+  Future<User> getCurrent() async {
+    return (database.select(database.userAuth)
+          ..where((u) => u.isCurrent.equals(true)))
         .getSingle();
   }
 }

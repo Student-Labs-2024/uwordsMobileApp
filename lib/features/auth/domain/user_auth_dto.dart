@@ -1,8 +1,9 @@
+import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 class UserAuthDto {
   final String email;
-  final String accessToken;
+  String accessToken;
   final String refreshToken;
   final bool isEducationCompleted;
   final String provider;
@@ -22,5 +23,22 @@ class UserAuthDto {
         refreshToken: user.refreshToken,
         isEducationCompleted: user.isEducationCompleted,
         provider: user.provider);
+  }
+
+  factory UserAuthDto.fromJsonAndOtherFields(
+      {required String userEmail,
+      required String password,
+      required String provider,
+      required Map<String, String> map}) {
+    return UserAuthDto(
+        email: userEmail,
+        accessToken: map['access_token'] ?? '',
+        refreshToken: map['refresh_token'] ?? '',
+        isEducationCompleted: false,
+        provider: provider);
+  }
+
+  void changeAccessToken({required String newAccessToken}) {
+    accessToken = newAccessToken;
   }
 }

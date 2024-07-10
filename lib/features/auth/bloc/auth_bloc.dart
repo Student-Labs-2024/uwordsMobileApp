@@ -45,6 +45,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _handleSignInWithMailPassword(
       _SignInWithMailPassword event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
+    uEmail = event.password;
+    providerUid = event.password;
     await _authorization(emit: emit, provider: "self");
   }
 
@@ -144,7 +146,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _authorization(
       {required Emitter<AuthState> emit, required String provider}) async {
     bool isSuccessAuthorization = await userRepository.authorizate(
-        emailAddress: uEmail, provider: provider);
+        emailAddress: uEmail, password: providerUid, provider: provider);
     if (isSuccessAuthorization) {
       emit(const AuthState.authorized());
     } else {

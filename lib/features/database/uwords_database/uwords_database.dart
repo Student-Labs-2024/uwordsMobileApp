@@ -16,6 +16,7 @@ class UserAuth extends Table {
   TextColumn get refreshToken => text()();
   BoolColumn get isEducationCompleted => boolean()();
   TextColumn get provider => text()();
+  BoolColumn get isCurrent => boolean()();
   @override
   Set<Column> get primaryKey => {id};
 }

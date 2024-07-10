@@ -45,9 +45,25 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
   late final GeneratedColumn<String> provider = GeneratedColumn<String>(
       'provider', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _isCurrentMeta =
+      const VerificationMeta('isCurrent');
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, email, accessToken, refreshToken, isEducationCompleted, provider];
+  late final GeneratedColumn<bool> isCurrent = GeneratedColumn<bool>(
+      'is_current', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_current" IN (0, 1))'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        email,
+        accessToken,
+        refreshToken,
+        isEducationCompleted,
+        provider,
+        isCurrent
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -97,6 +113,12 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
     } else if (isInserting) {
       context.missing(_providerMeta);
     }
+    if (data.containsKey('is_current')) {
+      context.handle(_isCurrentMeta,
+          isCurrent.isAcceptableOrUnknown(data['is_current']!, _isCurrentMeta));
+    } else if (isInserting) {
+      context.missing(_isCurrentMeta);
+    }
     return context;
   }
 
@@ -118,6 +140,8 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           DriftSqlType.bool, data['${effectivePrefix}is_education_completed'])!,
       provider: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}provider'])!,
+      isCurrent: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}is_current'])!,
     );
   }
 
@@ -134,13 +158,15 @@ class User extends DataClass implements Insertable<User> {
   final String refreshToken;
   final bool isEducationCompleted;
   final String provider;
+  final bool isCurrent;
   const User(
       {required this.id,
       required this.email,
       required this.accessToken,
       required this.refreshToken,
       required this.isEducationCompleted,
-      required this.provider});
+      required this.provider,
+      required this.isCurrent});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -150,6 +176,7 @@ class User extends DataClass implements Insertable<User> {
     map['refresh_token'] = Variable<String>(refreshToken);
     map['is_education_completed'] = Variable<bool>(isEducationCompleted);
     map['provider'] = Variable<String>(provider);
+    map['is_current'] = Variable<bool>(isCurrent);
     return map;
   }
 
@@ -161,6 +188,7 @@ class User extends DataClass implements Insertable<User> {
       refreshToken: Value(refreshToken),
       isEducationCompleted: Value(isEducationCompleted),
       provider: Value(provider),
+      isCurrent: Value(isCurrent),
     );
   }
 
@@ -175,6 +203,7 @@ class User extends DataClass implements Insertable<User> {
       isEducationCompleted:
           serializer.fromJson<bool>(json['isEducationCompleted']),
       provider: serializer.fromJson<String>(json['provider']),
+      isCurrent: serializer.fromJson<bool>(json['isCurrent']),
     );
   }
   @override
@@ -187,6 +216,7 @@ class User extends DataClass implements Insertable<User> {
       'refreshToken': serializer.toJson<String>(refreshToken),
       'isEducationCompleted': serializer.toJson<bool>(isEducationCompleted),
       'provider': serializer.toJson<String>(provider),
+      'isCurrent': serializer.toJson<bool>(isCurrent),
     };
   }
 
@@ -196,7 +226,8 @@ class User extends DataClass implements Insertable<User> {
           String? accessToken,
           String? refreshToken,
           bool? isEducationCompleted,
-          String? provider}) =>
+          String? provider,
+          bool? isCurrent}) =>
       User(
         id: id ?? this.id,
         email: email ?? this.email,
@@ -204,6 +235,7 @@ class User extends DataClass implements Insertable<User> {
         refreshToken: refreshToken ?? this.refreshToken,
         isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
         provider: provider ?? this.provider,
+        isCurrent: isCurrent ?? this.isCurrent,
       );
   @override
   String toString() {
@@ -213,14 +245,15 @@ class User extends DataClass implements Insertable<User> {
           ..write('accessToken: $accessToken, ')
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
-          ..write('provider: $provider')
+          ..write('provider: $provider, ')
+          ..write('isCurrent: $isCurrent')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(
-      id, email, accessToken, refreshToken, isEducationCompleted, provider);
+  int get hashCode => Object.hash(id, email, accessToken, refreshToken,
+      isEducationCompleted, provider, isCurrent);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -230,7 +263,8 @@ class User extends DataClass implements Insertable<User> {
           other.accessToken == this.accessToken &&
           other.refreshToken == this.refreshToken &&
           other.isEducationCompleted == this.isEducationCompleted &&
-          other.provider == this.provider);
+          other.provider == this.provider &&
+          other.isCurrent == this.isCurrent);
 }
 
 class UserAuthCompanion extends UpdateCompanion<User> {
@@ -240,6 +274,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   final Value<String> refreshToken;
   final Value<bool> isEducationCompleted;
   final Value<String> provider;
+  final Value<bool> isCurrent;
   const UserAuthCompanion({
     this.id = const Value.absent(),
     this.email = const Value.absent(),
@@ -247,6 +282,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     this.refreshToken = const Value.absent(),
     this.isEducationCompleted = const Value.absent(),
     this.provider = const Value.absent(),
+    this.isCurrent = const Value.absent(),
   });
   UserAuthCompanion.insert({
     this.id = const Value.absent(),
@@ -255,11 +291,13 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     required String refreshToken,
     required bool isEducationCompleted,
     required String provider,
+    required bool isCurrent,
   })  : email = Value(email),
         accessToken = Value(accessToken),
         refreshToken = Value(refreshToken),
         isEducationCompleted = Value(isEducationCompleted),
-        provider = Value(provider);
+        provider = Value(provider),
+        isCurrent = Value(isCurrent);
   static Insertable<User> custom({
     Expression<int>? id,
     Expression<String>? email,
@@ -267,6 +305,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     Expression<String>? refreshToken,
     Expression<bool>? isEducationCompleted,
     Expression<String>? provider,
+    Expression<bool>? isCurrent,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -276,6 +315,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       if (isEducationCompleted != null)
         'is_education_completed': isEducationCompleted,
       if (provider != null) 'provider': provider,
+      if (isCurrent != null) 'is_current': isCurrent,
     });
   }
 
@@ -285,7 +325,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       Value<String>? accessToken,
       Value<String>? refreshToken,
       Value<bool>? isEducationCompleted,
-      Value<String>? provider}) {
+      Value<String>? provider,
+      Value<bool>? isCurrent}) {
     return UserAuthCompanion(
       id: id ?? this.id,
       email: email ?? this.email,
@@ -293,6 +334,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       refreshToken: refreshToken ?? this.refreshToken,
       isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
       provider: provider ?? this.provider,
+      isCurrent: isCurrent ?? this.isCurrent,
     );
   }
 
@@ -318,6 +360,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     if (provider.present) {
       map['provider'] = Variable<String>(provider.value);
     }
+    if (isCurrent.present) {
+      map['is_current'] = Variable<bool>(isCurrent.value);
+    }
     return map;
   }
 
@@ -329,7 +374,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
           ..write('accessToken: $accessToken, ')
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
-          ..write('provider: $provider')
+          ..write('provider: $provider, ')
+          ..write('isCurrent: $isCurrent')
           ..write(')'))
         .toString();
   }
@@ -353,6 +399,7 @@ typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
   required String refreshToken,
   required bool isEducationCompleted,
   required String provider,
+  required bool isCurrent,
 });
 typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<int> id,
@@ -361,6 +408,7 @@ typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<String> refreshToken,
   Value<bool> isEducationCompleted,
   Value<String> provider,
+  Value<bool> isCurrent,
 });
 
 class $$UserAuthTableTableManager extends RootTableManager<
@@ -389,6 +437,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             Value<String> refreshToken = const Value.absent(),
             Value<bool> isEducationCompleted = const Value.absent(),
             Value<String> provider = const Value.absent(),
+            Value<bool> isCurrent = const Value.absent(),
           }) =>
               UserAuthCompanion(
             id: id,
@@ -397,6 +446,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             refreshToken: refreshToken,
             isEducationCompleted: isEducationCompleted,
             provider: provider,
+            isCurrent: isCurrent,
           ),
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
@@ -405,6 +455,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             required String refreshToken,
             required bool isEducationCompleted,
             required String provider,
+            required bool isCurrent,
           }) =>
               UserAuthCompanion.insert(
             id: id,
@@ -413,6 +464,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             refreshToken: refreshToken,
             isEducationCompleted: isEducationCompleted,
             provider: provider,
+            isCurrent: isCurrent,
           ),
         ));
 }
@@ -461,6 +513,11 @@ class $$UserAuthTableFilterComposer
       column: $state.table.provider,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isCurrent => $state.composableBuilder(
+      column: $state.table.isCurrent,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
 }
 
 class $$UserAuthTableOrderingComposer
@@ -493,6 +550,11 @@ class $$UserAuthTableOrderingComposer
 
   ColumnOrderings<String> get provider => $state.composableBuilder(
       column: $state.table.provider,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isCurrent => $state.composableBuilder(
+      column: $state.table.isCurrent,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }

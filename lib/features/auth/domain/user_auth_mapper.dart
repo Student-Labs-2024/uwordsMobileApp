@@ -16,5 +16,6 @@ extension UserAuthMapper on UserAuthDto {
         refreshToken: Value(refreshToken),
         isEducationCompleted: Value(isEducationCompleted),
         provider: Value(provider),
+        isCurrent: const Value(true),
       );
 }

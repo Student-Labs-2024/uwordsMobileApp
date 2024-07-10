@@ -1,102 +1,58 @@
-import 'package:flutter_login_vk/flutter_login_vk.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
-class AuthClient {
-  final FirebaseAuth auth = FirebaseAuth.instance;
+part 'auth_client.g.dart';
 
-  final vk = VKLogin();
+@RestApi(baseUrl: "https://big-nose.ru/api/")
+abstract class AuthClient {
+  factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
-  String uEmail = '';
-  String uName = '';
-  String uSurName = '';
-  String uPhotoURL = '';
-  String uPassword = '';
-  String providerUid = '';
+  @POST("users/register")
+  Future<void> register(
+    @Body() String provider,
+    @Body() String email,
+    @Body() String password,
+  );
 
-  Future<void> signInWithVK() async {
-    auth.signOut(); // что бы не юыть одновременно в двух логинах
-    await vk.initSdk();
-    final res = await vk.logIn(scope: [
-      VKScope.email,
-    ]);
-    if (res.isValue) {
-      final VKLoginResult result = res.asValue!.value;
+  @POST("users/register")
+  Future<void> registerUserFromThirdPartyService(
+    @Body() String provider,
+    @Body() String email,
+    @Body() String password,
+    @Body() String username,
+    @Body() String firstname,
+    @Body() String lastname,
+    @Body() String avatar_url,
+    @Body() String phone_number,
+  );
 
-      if (result.isCanceled) {
-      } else {
-        final VKAccessToken? accessToken = result.accessToken;
-        if (accessToken != null) {
-          final profileRes = await vk.getUserProfile();
-          final profile = profileRes.asValue?.value;
-          if (profile != null) {
-            uName = profile.firstName;
-            uSurName = profile.lastName;
-            uPhotoURL = profile.photo200 ?? '';
-          }
-          final uEmail = await vk.getUserEmail();
-        } else {}
-      }
-    } else {
-      final errorRes = res.asError!;
-      print('Error while log in: ${errorRes.error}');
-    }
-    // функцияДляОтправкиДанныхДляВКЛог()
-  }
+  @POST("users/login")
+  Future<Map<String, String>> login(
+    @Body() String provider,
+    @Body() String email,
+    @Body() String password,
+  );
 
-  Future<void> printUser() async {
-    print(' CURRENT USER: ');
-    print(' NAME: $uName ');
-    print(' SNAME: $uSurName ');
-    print(' EMAIL: $uEmail ');
-    print(' PHOTO_URL: $uPhotoURL ');
-    print(' PASSWORD: $uPassword ');
-    print(' PROVIDER_UID: $providerUid ');
-  }
+  @GET("user/token/refresh")
+  Future<Map<String, String>> refresh(
+    @Header("Authorization") String refreshToken,
+  );
 
-  Future<void> signInWithGoogle() async {
-    vk.logOut(); // что бы не юыть одновременно в двух логинах
+  //TODO add profile_model/user_model before adding it
 
-    final GoogleSignInAccount? user = await GoogleSignIn().signIn();
+  // @GET("user/me")
+  // Future<Response> aboutMe(
+  //   @Header("Authorization") String accessToken,
+  // );
 
-    final GoogleSignInAuthentication gAuth = await user!.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-        accessToken: gAuth.accessToken, idToken: gAuth.idToken);
-
-    final creds = await auth.signInWithCredential(credential);
-
-    providerUid = creds.user?.uid ?? '';
-    uEmail = creds.user?.email ?? '';
-    // функцияДляОтправкиДанныхДляГуглЛог()
-  }
-
-  Future<String> registerUser(
-      {required String emailAddress, required String password}) async {
-    try {
-      final credential = await auth.createUserWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        return 'weak-password';
-      } else if (e.code == 'email-already-in-use') {
-        return 'email-already-in-use';
-      }
-    } catch (e) {
-      print(e);
-    }
-    return 'ok';
-  }
-
-  Future<void> signInWithMailPassword(
-      {required String emailAddress, required String password}) async {
-    vk.logOut();
-    auth.signOut();
-
-    uPassword = password;
-    uEmail = emailAddress;
-    // функцияДляОтправкиДанныхДляМейлПас()
-  }
+  // @POST("user/me/update")
+  // Future<Response> updateAboutMe(
+  //   @Header("Authorization") String accessToken,
+  //   @Body() String username,
+  //   @Body() String name,
+  //   @Body() String surname,
+  //   @Body() String avatar_url,
+  //   @Body() String phone_number,
+  //   @Body() String birth_date,
+  // );
 }
