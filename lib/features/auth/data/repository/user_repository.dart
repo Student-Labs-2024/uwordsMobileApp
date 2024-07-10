@@ -8,7 +8,7 @@ class UserRepository implements IUserRepository {
   UserRepository({required this.savableUserDataSource});
 
   @override
-  Future<bool> authentication({required UserAuthDto userDto}) {
+  Future<bool> authentication() {
     // TODO: implement authentication
     throw UnimplementedError();
   }
@@ -20,14 +20,21 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<bool> registerUser({required String emailAddress, required String password}) {
+  Future<bool> registerUser(
+      {required String emailAddress, required String password}) {
     // TODO: implement registerUser
     throw UnimplementedError();
   }
 
   @override
   Future<bool> registerUserFromThirdPartyService(
-      {required UserAuthDto userDto}) {
+      {required String email,
+      required String password,
+      required String username,
+      required String name,
+      required String surname,
+      required String avatarUrl,
+      required String phoneNumber}) {
     // TODO: implement registerUserFromThirdPartyService
     throw UnimplementedError();
   }

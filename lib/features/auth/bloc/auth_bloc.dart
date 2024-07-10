@@ -3,51 +3,130 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uwords/features/auth/data/auth_client.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/features/auth/data/repository/user_repository.dart';
-import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 
 part 'auth_bloc_event.dart';
 part 'auth_bloc_state.dart';
 part 'auth_bloc.freezed.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState>{
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserRepository userRepository;
   final FirebaseAuth auth = FirebaseAuth.instance;
   final vk = VKLogin();
+  String uEmail = '';
+  String uName = '';
+  String uSurName = '';
+  String uPhotoURL = '';
+  String providerUid = '';
+  String uPhoneNumber = '';
+  String username = '';
 
-  AuthBloc(this.userRepository) : super(const AuthState.initial()){
+  AuthBloc(this.userRepository) : super(const AuthState.initial()) {
     on<_RegisterUser>(_handleRegisterUser);
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_SignInWithVK>(_handleSignInWithVK);
     on<_SignInWithGoogle>(_handleSignInWithGoogle);
   }
 
-  Future<void> _handleRegisterUser(_RegisterUser event, Emitter<AuthState> emit) async{
+  Future<void> _handleRegisterUser(
+      _RegisterUser event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
-    bool isSuccessRegister = await userRepository.registerUser(emailAddress: event.emailAddress, password: event.password);
-    if (isSuccessRegister){
+    bool isSuccessRegister = await userRepository.registerUser(
+        emailAddress: event.emailAddress, password: event.password);
+    if (isSuccessRegister) {
       emit(const AuthState.registred());
-    }
-    else{
+    } else {
       emit(const AuthState.failedRegisteration());
     }
   }
 
-  Future<void> _handleSignInWithMailPassword(_SignInWithMailPassword event, Emitter<AuthState> emit) async{
+  Future<void> _handleSignInWithMailPassword(
+      _SignInWithMailPassword event, Emitter<AuthState> emit) async {}
+
+  Future<void> _handleSignInWithVK(
+      _SignInWithVK event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
-    
+    auth.signOut();
+    await _signInWithVk();
+    await _registerAndAuth(emit);
   }
 
-  Future<void> _handleSignInWithVK(_SignInWithVK event, Emitter<AuthState> emit) async{
-    
+  Future<void> _handleSignInWithGoogle(
+      _SignInWithGoogle event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
+    vk.logOut();
+    await _signInWithGoogle();
+    await _registerAndAuth(emit);
   }
 
-  Future<void> _handleSignInWithGoogle(_SignInWithGoogle event, Emitter<AuthState> emit) async{
-    
+  Future<void> _signInWithVk() async {
+    //TODO check initSDK true false
+    await vk.initSdk();
+    final res = await vk.logIn(scope: [
+      VKScope.email,
+    ]);
+    if (res.isValue) {
+      final VKLoginResult result = res.asValue!.value;
+
+      if (result.isCanceled) {
+      } else {
+        final VKAccessToken? accessToken = result.accessToken;
+        if (accessToken != null) {
+          final profileRes = await vk.getUserProfile();
+          final profile = profileRes.asValue?.value;
+          if (profile != null) {
+            uName = profile.firstName;
+            uSurName = profile.lastName;
+            uPhotoURL = profile.photo200 ?? '';
+            providerUid = profile.userId.toString();
+          }
+          //TODO check auth true/false for
+          uEmail = await vk.getUserEmail() ?? '';
+        } else {}
+      }
+    } else {
+      final errorRes = res.asError!;
+      print('Error while log in: ${errorRes.error}');
+    }
   }
 
-  Future<UserAuthDto> signInWithVk() async{
+  Future<void> _signInWithGoogle() async {
+    //TODO check null!
+    final GoogleSignInAccount? user = await GoogleSignIn().signIn();
 
+    final GoogleSignInAuthentication gAuth = await user!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+
+    final creds = await auth.signInWithCredential(credential);
+
+    providerUid = creds.user?.uid ?? '';
+    uEmail = creds.user?.email ?? '';
+    uPhotoURL = creds.user?.photoURL ?? '';
+    username = creds.user?.displayName ?? '';
+    uPhoneNumber = creds.user?.phoneNumber ?? '';
+  }
+
+  Future<void> _registerAndAuth(Emitter<AuthState> emit) async {
+    bool isSuccessRegister =
+        await userRepository.registerUserFromThirdPartyService(
+            email: uEmail,
+            password: providerUid,
+            username: username,
+            name: uName,
+            surname: uSurName,
+            avatarUrl: uPhotoURL,
+            phoneNumber: uPhoneNumber);
+    if (isSuccessRegister) {
+      if (await userRepository.authentication()) {
+        emit(const AuthState.authorized());
+      } else {
+        emit(const AuthState.failedSignIn());
+      }
+    } else {
+      emit(const AuthState.failedRegisteration());
+    }
   }
 }

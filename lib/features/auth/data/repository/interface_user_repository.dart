@@ -5,7 +5,13 @@ abstract interface class IUserRepository {
   Future<bool> registerUser(
       {required String emailAddress, required String password});
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto});
-  Future<bool> authentication({required UserAuthDto userDto});
+  Future<bool> authentication();
   Future<bool> registerUserFromThirdPartyService(
-      {required UserAuthDto userDto});
+      {required String email,
+      required String password,
+      required String username,
+      required String name,
+      required String surname,
+      required String avatarUrl,
+      required String phoneNumber});
 }
