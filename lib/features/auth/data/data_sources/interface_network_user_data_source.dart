@@ -1,0 +1,20 @@
+import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+
+abstract interface class INetworkUserDataSource {
+  Future<bool> authorizate(
+      {required String userEmail,
+      required String password,
+      required String provider});
+  Future<UserAuthDto> registerUser(
+      {required String userEmail, required String password});
+  Future<UserAuthDto> registerUserFromThirdPartyService(
+      {required String userEmail,
+      required String password,
+      required String username,
+      required String name,
+      required String surname,
+      required String avatarUrl,
+      required String phoneNumber,
+      required String provider});
+  Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto});
+}

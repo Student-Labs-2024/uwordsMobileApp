@@ -8,6 +8,11 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $UserAuthTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _emailMeta = const VerificationMeta('email');
   @override
   late final GeneratedColumn<String> email = GeneratedColumn<String>(
@@ -34,9 +39,15 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
       requiredDuringInsert: true,
       defaultConstraints: GeneratedColumn.constraintIsAlways(
           'CHECK ("is_education_completed" IN (0, 1))'));
+  static const VerificationMeta _providerMeta =
+      const VerificationMeta('provider');
+  @override
+  late final GeneratedColumn<String> provider = GeneratedColumn<String>(
+      'provider', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [email, accessToken, refreshToken, isEducationCompleted];
+      [id, email, accessToken, refreshToken, isEducationCompleted, provider];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -47,6 +58,9 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
     if (data.containsKey('email')) {
       context.handle(
           _emailMeta, email.isAcceptableOrUnknown(data['email']!, _emailMeta));
@@ -77,15 +91,23 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
     } else if (isInserting) {
       context.missing(_isEducationCompletedMeta);
     }
+    if (data.containsKey('provider')) {
+      context.handle(_providerMeta,
+          provider.isAcceptableOrUnknown(data['provider']!, _providerMeta));
+    } else if (isInserting) {
+      context.missing(_providerMeta);
+    }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {email};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
   User map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return User(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       email: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}email'])!,
       accessToken: attachedDatabase.typeMapping
@@ -94,6 +116,8 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           .read(DriftSqlType.string, data['${effectivePrefix}refresh_token'])!,
       isEducationCompleted: attachedDatabase.typeMapping.read(
           DriftSqlType.bool, data['${effectivePrefix}is_education_completed'])!,
+      provider: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}provider'])!,
     );
   }
 
@@ -104,31 +128,39 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
 }
 
 class User extends DataClass implements Insertable<User> {
+  final int id;
   final String email;
   final String accessToken;
   final String refreshToken;
   final bool isEducationCompleted;
+  final String provider;
   const User(
-      {required this.email,
+      {required this.id,
+      required this.email,
       required this.accessToken,
       required this.refreshToken,
-      required this.isEducationCompleted});
+      required this.isEducationCompleted,
+      required this.provider});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
     map['email'] = Variable<String>(email);
     map['access_token'] = Variable<String>(accessToken);
     map['refresh_token'] = Variable<String>(refreshToken);
     map['is_education_completed'] = Variable<bool>(isEducationCompleted);
+    map['provider'] = Variable<String>(provider);
     return map;
   }
 
   UserAuthCompanion toCompanion(bool nullToAbsent) {
     return UserAuthCompanion(
+      id: Value(id),
       email: Value(email),
       accessToken: Value(accessToken),
       refreshToken: Value(refreshToken),
       isEducationCompleted: Value(isEducationCompleted),
+      provider: Value(provider),
     );
   }
 
@@ -136,117 +168,140 @@ class User extends DataClass implements Insertable<User> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return User(
+      id: serializer.fromJson<int>(json['id']),
       email: serializer.fromJson<String>(json['email']),
       accessToken: serializer.fromJson<String>(json['accessToken']),
       refreshToken: serializer.fromJson<String>(json['refreshToken']),
       isEducationCompleted:
           serializer.fromJson<bool>(json['isEducationCompleted']),
+      provider: serializer.fromJson<String>(json['provider']),
     );
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
       'email': serializer.toJson<String>(email),
       'accessToken': serializer.toJson<String>(accessToken),
       'refreshToken': serializer.toJson<String>(refreshToken),
       'isEducationCompleted': serializer.toJson<bool>(isEducationCompleted),
+      'provider': serializer.toJson<String>(provider),
     };
   }
 
   User copyWith(
-          {String? email,
+          {int? id,
+          String? email,
           String? accessToken,
           String? refreshToken,
-          bool? isEducationCompleted}) =>
+          bool? isEducationCompleted,
+          String? provider}) =>
       User(
+        id: id ?? this.id,
         email: email ?? this.email,
         accessToken: accessToken ?? this.accessToken,
         refreshToken: refreshToken ?? this.refreshToken,
         isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
+        provider: provider ?? this.provider,
       );
   @override
   String toString() {
     return (StringBuffer('User(')
+          ..write('id: $id, ')
           ..write('email: $email, ')
           ..write('accessToken: $accessToken, ')
           ..write('refreshToken: $refreshToken, ')
-          ..write('isEducationCompleted: $isEducationCompleted')
+          ..write('isEducationCompleted: $isEducationCompleted, ')
+          ..write('provider: $provider')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode =>
-      Object.hash(email, accessToken, refreshToken, isEducationCompleted);
+  int get hashCode => Object.hash(
+      id, email, accessToken, refreshToken, isEducationCompleted, provider);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is User &&
+          other.id == this.id &&
           other.email == this.email &&
           other.accessToken == this.accessToken &&
           other.refreshToken == this.refreshToken &&
-          other.isEducationCompleted == this.isEducationCompleted);
+          other.isEducationCompleted == this.isEducationCompleted &&
+          other.provider == this.provider);
 }
 
 class UserAuthCompanion extends UpdateCompanion<User> {
+  final Value<int> id;
   final Value<String> email;
   final Value<String> accessToken;
   final Value<String> refreshToken;
   final Value<bool> isEducationCompleted;
-  final Value<int> rowid;
+  final Value<String> provider;
   const UserAuthCompanion({
+    this.id = const Value.absent(),
     this.email = const Value.absent(),
     this.accessToken = const Value.absent(),
     this.refreshToken = const Value.absent(),
     this.isEducationCompleted = const Value.absent(),
-    this.rowid = const Value.absent(),
+    this.provider = const Value.absent(),
   });
   UserAuthCompanion.insert({
+    this.id = const Value.absent(),
     required String email,
     required String accessToken,
     required String refreshToken,
     required bool isEducationCompleted,
-    this.rowid = const Value.absent(),
+    required String provider,
   })  : email = Value(email),
         accessToken = Value(accessToken),
         refreshToken = Value(refreshToken),
-        isEducationCompleted = Value(isEducationCompleted);
+        isEducationCompleted = Value(isEducationCompleted),
+        provider = Value(provider);
   static Insertable<User> custom({
+    Expression<int>? id,
     Expression<String>? email,
     Expression<String>? accessToken,
     Expression<String>? refreshToken,
     Expression<bool>? isEducationCompleted,
-    Expression<int>? rowid,
+    Expression<String>? provider,
   }) {
     return RawValuesInsertable({
+      if (id != null) 'id': id,
       if (email != null) 'email': email,
       if (accessToken != null) 'access_token': accessToken,
       if (refreshToken != null) 'refresh_token': refreshToken,
       if (isEducationCompleted != null)
         'is_education_completed': isEducationCompleted,
-      if (rowid != null) 'rowid': rowid,
+      if (provider != null) 'provider': provider,
     });
   }
 
   UserAuthCompanion copyWith(
-      {Value<String>? email,
+      {Value<int>? id,
+      Value<String>? email,
       Value<String>? accessToken,
       Value<String>? refreshToken,
       Value<bool>? isEducationCompleted,
-      Value<int>? rowid}) {
+      Value<String>? provider}) {
     return UserAuthCompanion(
+      id: id ?? this.id,
       email: email ?? this.email,
       accessToken: accessToken ?? this.accessToken,
       refreshToken: refreshToken ?? this.refreshToken,
       isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
-      rowid: rowid ?? this.rowid,
+      provider: provider ?? this.provider,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
     if (email.present) {
       map['email'] = Variable<String>(email.value);
     }
@@ -260,8 +315,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       map['is_education_completed'] =
           Variable<bool>(isEducationCompleted.value);
     }
-    if (rowid.present) {
-      map['rowid'] = Variable<int>(rowid.value);
+    if (provider.present) {
+      map['provider'] = Variable<String>(provider.value);
     }
     return map;
   }
@@ -269,11 +324,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   @override
   String toString() {
     return (StringBuffer('UserAuthCompanion(')
+          ..write('id: $id, ')
           ..write('email: $email, ')
           ..write('accessToken: $accessToken, ')
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
-          ..write('rowid: $rowid')
+          ..write('provider: $provider')
           ..write(')'))
         .toString();
   }
@@ -291,18 +347,20 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 }
 
 typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
+  Value<int> id,
   required String email,
   required String accessToken,
   required String refreshToken,
   required bool isEducationCompleted,
-  Value<int> rowid,
+  required String provider,
 });
 typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
+  Value<int> id,
   Value<String> email,
   Value<String> accessToken,
   Value<String> refreshToken,
   Value<bool> isEducationCompleted,
-  Value<int> rowid,
+  Value<String> provider,
 });
 
 class $$UserAuthTableTableManager extends RootTableManager<
@@ -325,32 +383,36 @@ class $$UserAuthTableTableManager extends RootTableManager<
           getChildManagerBuilder: (p) =>
               $$UserAuthTableProcessedTableManager(p),
           getUpdateCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
             Value<String> email = const Value.absent(),
             Value<String> accessToken = const Value.absent(),
             Value<String> refreshToken = const Value.absent(),
             Value<bool> isEducationCompleted = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
+            Value<String> provider = const Value.absent(),
           }) =>
               UserAuthCompanion(
+            id: id,
             email: email,
             accessToken: accessToken,
             refreshToken: refreshToken,
             isEducationCompleted: isEducationCompleted,
-            rowid: rowid,
+            provider: provider,
           ),
           getInsertCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
             required String email,
             required String accessToken,
             required String refreshToken,
             required bool isEducationCompleted,
-            Value<int> rowid = const Value.absent(),
+            required String provider,
           }) =>
               UserAuthCompanion.insert(
+            id: id,
             email: email,
             accessToken: accessToken,
             refreshToken: refreshToken,
             isEducationCompleted: isEducationCompleted,
-            rowid: rowid,
+            provider: provider,
           ),
         ));
 }
@@ -370,6 +432,11 @@ class $$UserAuthTableProcessedTableManager extends ProcessedTableManager<
 class $$UserAuthTableFilterComposer
     extends FilterComposer<_$AppDatabase, $UserAuthTable> {
   $$UserAuthTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
   ColumnFilters<String> get email => $state.composableBuilder(
       column: $state.table.email,
       builder: (column, joinBuilders) =>
@@ -389,11 +456,21 @@ class $$UserAuthTableFilterComposer
       column: $state.table.isEducationCompleted,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get provider => $state.composableBuilder(
+      column: $state.table.provider,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
 }
 
 class $$UserAuthTableOrderingComposer
     extends OrderingComposer<_$AppDatabase, $UserAuthTable> {
   $$UserAuthTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<String> get email => $state.composableBuilder(
       column: $state.table.email,
       builder: (column, joinBuilders) =>
@@ -411,6 +488,11 @@ class $$UserAuthTableOrderingComposer
 
   ColumnOrderings<bool> get isEducationCompleted => $state.composableBuilder(
       column: $state.table.isEducationCompleted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get provider => $state.composableBuilder(
+      column: $state.table.provider,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }

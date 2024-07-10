@@ -10,12 +10,14 @@ part 'uwords_database.g.dart';
 
 @DataClassName('User')
 class UserAuth extends Table {
+  IntColumn get id => integer()();
   TextColumn get email => text()();
   TextColumn get accessToken => text()();
   TextColumn get refreshToken => text()();
   BoolColumn get isEducationCompleted => boolean()();
+  TextColumn get provider => text()();
   @override
-  Set<Column> get primaryKey => {email};
+  Set<Column> get primaryKey => {id};
 }
 
 @DriftDatabase(tables: [UserAuth])

@@ -5,6 +5,7 @@ import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/features/auth/data/repository/user_repository.dart';
+import 'package:uwords/features/auth/not_registred_exception.dart';
 
 part 'auth_bloc_event.dart';
 part 'auth_bloc_state.dart';
@@ -42,14 +43,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _handleSignInWithMailPassword(
-      _SignInWithMailPassword event, Emitter<AuthState> emit) async {}
+      _SignInWithMailPassword event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
+    await _authorization(emit: emit, provider: "self");
+  }
 
   Future<void> _handleSignInWithVK(
       _SignInWithVK event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
     auth.signOut();
     await _signInWithVk();
-    await _registerAndAuth(emit);
+    try {
+      _authorization(emit: emit, provider: "vk");
+    } on NotRegisteredException {
+      await _registerAndAuth(emit: emit, provider: "vk");
+    }
   }
 
   Future<void> _handleSignInWithGoogle(
@@ -57,7 +65,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.waitingAnswer());
     vk.logOut();
     await _signInWithGoogle();
-    await _registerAndAuth(emit);
+    try {
+      _authorization(emit: emit, provider: "google");
+    } on NotRegisteredException {
+      await _registerAndAuth(emit: emit, provider: "google");
+    }
   }
 
   Future<void> _signInWithVk() async {
@@ -109,7 +121,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     uPhoneNumber = creds.user?.phoneNumber ?? '';
   }
 
-  Future<void> _registerAndAuth(Emitter<AuthState> emit) async {
+  Future<void> _registerAndAuth(
+      {required Emitter<AuthState> emit, required String provider}) async {
     bool isSuccessRegister =
         await userRepository.registerUserFromThirdPartyService(
             email: uEmail,
@@ -118,15 +131,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             name: uName,
             surname: uSurName,
             avatarUrl: uPhotoURL,
-            phoneNumber: uPhoneNumber);
+            phoneNumber: uPhoneNumber,
+            provider: provider);
     if (isSuccessRegister) {
-      if (await userRepository.authentication()) {
-        emit(const AuthState.authorized());
-      } else {
-        emit(const AuthState.failedSignIn());
-      }
+      await _authorization(emit: emit, provider: provider);
+      emit(const AuthState.authorized());
     } else {
       emit(const AuthState.failedRegisteration());
+    }
+  }
+
+  Future<void> _authorization(
+      {required Emitter<AuthState> emit, required String provider}) async {
+    bool isSuccessAuthorization = await userRepository.authorizate(
+        emailAddress: uEmail, provider: provider);
+    if (isSuccessAuthorization) {
+      emit(const AuthState.authorized());
+    } else {
+      emit(const AuthState.failedSignIn());
     }
   }
 }
