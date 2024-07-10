@@ -15,7 +15,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String provider}) async {
     Map<String, String> response =
         await client.login(provider, userEmail, password);
-        debugPrint(response.toString());
+    debugPrint(response.toString());
     return UserAuthDto.fromJsonAndOtherFields(
       userEmail: userEmail,
       password: password,
@@ -28,7 +28,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
     debugPrint(userDto.accessToken);
     Map<String, String> newAccessToken =
-        await client.refresh(userDto.refreshToken);
+        await client.refresh("Bearer ${userDto.refreshToken}");
     userDto.changeAccessToken(
         newAccessToken: newAccessToken['access_token'] ?? '');
     debugPrint(newAccessToken.toString());
@@ -38,7 +38,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<void> registerUser(
       {required String userEmail, required String password}) async {
-    await client.register("self", userEmail, password);
+    await client.registerUser(
+        "self", userEmail, password, '', '', '', '', '', '');
   }
 
   @override
@@ -51,7 +52,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String avatarUrl,
       required String phoneNumber,
       required String provider}) async {
-    await client.registerUserFromThirdPartyService(provider, userEmail,
-        password, username, name, surname, avatarUrl, phoneNumber);
+    await client.registerUser(provider, userEmail, password, username, name,
+        surname, avatarUrl, phoneNumber, '');
   }
 }

@@ -85,14 +85,14 @@ class UserRepository implements IUserRepository {
     savableUserDataSource.saveUser(userDto: userDto);
   }
 
-  Future<String> getCurrentUserAccessToken(
-      {required String userEmail, required String provider}) async {
+  @override
+  Future<String> getCurrentUserAccessToken() async {
     User currentUser = await savableUserDataSource.getCurrent();
     return currentUser.accessToken;
   }
 
   @override
-  void localLogOut() async{
+  void localLogOut() async {
     await savableUserDataSource.noneIsCurrent();
   }
 }

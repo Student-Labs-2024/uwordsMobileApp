@@ -114,7 +114,7 @@ final GoRouter _goRouter = GoRouter(
 
 class MainApp extends StatelessWidget {
   MainApp({super.key});
-  //final IAudioDataSource audioDataSource = AudioDataSource();
+  final IAudioDataSource audioDataSource = AudioDataSource();
   final IWordsDataSource wordsDataSource = WordsDataSource();
   final INetworkUserDataSource networkUserDataSource = NetworkUserDataSource();
   final ISavableUserDataSource savableUserDataSource =
@@ -123,13 +123,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(
+        RepositoryProvider<IUserRepository>(
             create: (context) => UserRepository(
                 networkUserDataSource: networkUserDataSource,
                 savableUserDataSource: savableUserDataSource)),
-        // RepositoryProvider<IAudioRepository>(
-        //     create: (context) =>
-        //         AudioRepository(audioDataSource: audioDataSource)),
+        RepositoryProvider<IAudioRepository>(
+            create: (context) =>
+                AudioRepository(audioDataSource: audioDataSource)),
         RepositoryProvider<IWordsRepository>(
             create: (context) =>
                 WordsRepository(wordsDataSource: wordsDataSource))
@@ -140,12 +140,14 @@ class MainApp extends StatelessWidget {
               create: (context) =>
                   AuthBloc(userRepository: context.read<IUserRepository>())),
           BlocProvider(
-              create: (context) =>
-                  AudioBloc(audioRepository: context.read<IAudioRepository>())),
+              create: (context) => AudioBloc(
+                  audioRepository: context.read<IAudioRepository>(),
+                  userRepository: context.read<IUserRepository>())),
           BlocProvider(create: (context) => PlayerBloc()),
           BlocProvider(
-              create: (context) =>
-                  LearningBloc(context.read<IWordsRepository>()))
+              create: (context) => LearningBloc(
+                  wordsRepository: context.read<IWordsRepository>(),
+                  userRepository: context.read<IUserRepository>()))
         ],
         child: MaterialApp.router(
           routerConfig: _goRouter,

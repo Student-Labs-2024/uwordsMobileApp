@@ -9,8 +9,10 @@ class WordsRepository implements IWordsRepository {
 
   WordsRepository({required this.wordsDataSource});
   @override
-  Future<List<WordModel>> getWordsForStudy() async {
-    List<WordInfoDto> newWords = await wordsDataSource.getWordsForStudy();
+  Future<List<WordModel>> getWordsForStudy(
+      {required String accessToken}) async {
+    List<WordInfoDto> newWords =
+        await wordsDataSource.getWordsForStudy(accessToken: accessToken);
     List<WordModel> result = [];
     for (var element in newWords) {
       result.add(element.toModel().word);
@@ -19,7 +21,9 @@ class WordsRepository implements IWordsRepository {
   }
 
   @override
-  Future<void> sendLearnedWords({required List<int> wordsId}) async {
-    await wordsDataSource.sendLearnedWords(wordsIds: wordsId);
+  Future<void> sendLearnedWords(
+      {required String accessToken, required List<int> wordsId}) async {
+    await wordsDataSource.sendLearnedWords(
+        wordsIds: wordsId, accessToken: accessToken);
   }
 }

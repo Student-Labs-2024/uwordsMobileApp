@@ -8,14 +8,7 @@ abstract class AuthClient {
   factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
   @POST("users/register")
-  Future<void> register(
-    @Body() String provider,
-    @Body() String email,
-    @Body() String password,
-  );
-
-  @POST("users/register")
-  Future<void> registerUserFromThirdPartyService(
+  Future<void> registerUser(
     @Body() String provider,
     @Body() String email,
     @Body() String password,
@@ -24,6 +17,7 @@ abstract class AuthClient {
     @Body() String lastname,
     @Body() String avatar_url,
     @Body() String phone_number,
+    @Body() String birth_date,
   );
 
   @POST("users/login")
@@ -33,7 +27,7 @@ abstract class AuthClient {
     @Body() String password,
   );
 
-  @GET("user/token/refresh")
+  @GET("users/token/refresh")
   Future<Map<String, String>> refresh(
     @Header("Authorization") String refreshToken,
   );

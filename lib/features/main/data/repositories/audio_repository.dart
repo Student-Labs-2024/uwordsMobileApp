@@ -7,12 +7,15 @@ class AudioRepository implements IAudioRepository {
   AudioRepository({required this.audioDataSource});
 
   @override
-  Future<void> sendFile({required String audioPath}) async {
-    await audioDataSource.sendFile(audioPath: audioPath);
+  Future<void> sendFile(
+      {required String audioPath, required String accessToken}) async {
+    await audioDataSource.sendFile(
+        audioPath: audioPath, accessToken: accessToken);
   }
 
   @override
-  Future<void> sendLink({required String link}) async {
-    await audioDataSource.sendLink(link: link);
+  Future<void> sendLink(
+      {required String link, required String accessToken}) async {
+    await audioDataSource.sendLink(link: link, accessToken: accessToken);
   }
 }

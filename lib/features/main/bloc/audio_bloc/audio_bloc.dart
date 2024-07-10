@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -19,8 +20,9 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
   int _time = 0;
   String _audioPath = "";
   final IAudioRepository audioRepository;
+  final IUserRepository userRepository;
 
-  AudioBloc({required this.audioRepository})
+  AudioBloc({required this.audioRepository, required this.userRepository})
       : super(const AudioState.initial()) {
     on<_StartRecord>(_handleStartRecord);
     on<_StopRecord>(_handleStopRecord);
@@ -71,7 +73,9 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
       _SendLink event, Emitter<AudioState> emit) async {
     try {
       if (_isValidYoutubeUrl(event.link)) {
-        await audioRepository.sendLink(link: event.link);
+        await audioRepository.sendLink(
+            link: event.link,
+            accessToken: await userRepository.getCurrentUserAccessToken());
         emit(const AudioState.sended());
         emit(const AudioState.initial());
       } else {
@@ -95,7 +99,7 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
   }
 
   Future<void> _sendFile(String audioPath) async {
-    await audioRepository.sendFile(audioPath: audioPath);
+    await audioRepository.sendFile(audioPath: audioPath, accessToken: await userRepository.getCurrentUserAccessToken());
   }
 
   bool _isValidYoutubeUrl(String url) {

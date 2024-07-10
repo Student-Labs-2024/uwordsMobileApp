@@ -21,35 +21,7 @@ class _AuthClient implements AuthClient {
   String? baseUrl;
 
   @override
-  Future<void> register(
-    String provider,
-    String email,
-    String password,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = provider;
-    await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'users/register',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-  }
-
-  @override
-  Future<void> registerUserFromThirdPartyService(
+  Future<void> registerUser(
     String provider,
     String email,
     String password,
@@ -58,6 +30,7 @@ class _AuthClient implements AuthClient {
     String lastname,
     String avatar_url,
     String phone_number,
+    String birth_date,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -127,7 +100,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              'user/token/refresh',
+              'users/token/refresh',
               queryParameters: queryParameters,
               data: _data,
             )
