@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
@@ -14,6 +15,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String provider}) async {
     Map<String, String> response =
         await client.login(provider, userEmail, password);
+        debugPrint(response.toString());
     return UserAuthDto.fromJsonAndOtherFields(
       userEmail: userEmail,
       password: password,
@@ -24,10 +26,12 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
+    debugPrint(userDto.accessToken);
     Map<String, String> newAccessToken =
         await client.refresh(userDto.refreshToken);
     userDto.changeAccessToken(
         newAccessToken: newAccessToken['access_token'] ?? '');
+    debugPrint(newAccessToken.toString());
     return userDto;
   }
 

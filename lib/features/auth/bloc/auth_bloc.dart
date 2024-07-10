@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:uwords/features/auth/data/repository/user_repository.dart';
+import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/not_registred_exception.dart';
 
 part 'auth_bloc_event.dart';
@@ -12,9 +12,9 @@ part 'auth_bloc_state.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final UserRepository userRepository;
+  final IUserRepository userRepository;
+  final VKLogin vk = VKLogin();
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final vk = VKLogin();
   String uEmail = '';
   String uName = '';
   String uSurName = '';
@@ -23,7 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   String uPhoneNumber = '';
   String username = '';
 
-  AuthBloc(this.userRepository) : super(const AuthState.initial()) {
+  AuthBloc({required this.userRepository}) : super(const AuthState.initial()) {
     on<_RegisterUser>(_handleRegisterUser);
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_SignInWithVK>(_handleSignInWithVK);
