@@ -62,17 +62,18 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 32, left: 16, right: 16),
+                        padding:
+                            const EdgeInsets.only(top: 32, left: 16, right: 16),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
                                 child: SizedBox(
                                     width: MediaQuery.of(context).size.width *
                                         80 /
                                         100,
-                                    height: 45,
                                     child: CustomTextField(
                                       controller: textEditingController,
                                       hintText: "Ссылка на видео",
@@ -82,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               const SizedBox(width: 8),
                               Container(
+                                height: 44,
                                 decoration: fis.BoxDecoration(
                                     color: AppColors.whiteBackgroundColor,
                                     borderRadius: BorderRadius.circular(10),
@@ -112,10 +114,13 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ]),
                                 child: IconButton(
+                                  constraints:
+                                      const BoxConstraints(maxHeight: 44),
                                   onPressed: () {
-                                    /*context.read<AudioBloc>().add(AudioEvent.sendLink(
-                                      textEditingController.text));
-                                  textEditingController.clear();*/
+                                    context.read<AudioBloc>().add(
+                                        AudioEvent.sendLink(
+                                            textEditingController.text));
+                                    textEditingController.clear();
                                   },
                                   icon: SvgPicture.asset(
                                     state.maybeWhen(
@@ -124,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     color: AppColors.darkMainColor,
                                   ),
-                                  iconSize: 24,
+                                  iconSize: 14,
                                   style: ButtonStyle(
                                     fixedSize: WidgetStateProperty.all(Size(
                                         (MediaQuery.of(context).size.width -
@@ -134,8 +139,6 @@ class _HomePageState extends State<HomePage> {
                                             48 /
                                             318,
                                         44)),
-                                    /*backgroundColor: WidgetStateProperty.all(
-                                        AppColors.whiteBackgroundColor),*/
                                     shape: WidgetStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -149,25 +152,19 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       RecordButton(
-                          isPressed:
-                              testPressed /*state.maybeWhen(
+                          isPressed: state.maybeWhen(
                             started: () => true,
                             orElse: () => false,
-                          )*/
-                          ,
+                          ),
                           onPressed: () {
-                            setState(() {
-                              testPressed = !testPressed;
-                            });
-                            print("TESTTTTTTT $testPressed");
-                            /*context.read<AudioBloc>().add(state.maybeWhen(
+                            context.read<AudioBloc>().add(state.maybeWhen(
                                   initial: () => const AudioEvent.startRecord(),
                                   started: () => const AudioEvent.stopRecord(),
                                   orElse: () => const AudioEvent.startRecord(),
-                                ));*/
+                                ));
                           }),
                       const SizedBox(
-                        height: 80,
+                        height: 95.5,
                       ),
                     ],
                   )

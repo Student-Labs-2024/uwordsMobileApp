@@ -33,9 +33,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
               ? SizedBox()
               : Container(
                   width: MediaQuery.of(context).size.width * 0.86,
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: const fis.BoxDecoration(
-                    //color: AppColors.whiteBackgroundColor,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: AppColors.whiteBackgroundColor,
                     boxShadow: [
@@ -115,69 +114,6 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                   )),
         ),
       ]),
-      //bottomNavigationBar:
-
-      /*Container(
-                  height: 67,
-                  margin: EdgeInsets.all(16.0), // Отступы от краев экрана
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    child: BottomNavigationBar(
-                      backgroundColor: Colors.red,
-                      type: BottomNavigationBarType.fixed,
-                      onTap: (value) {
-                        pushAtIndex(value, context);
-                      },
-                      currentIndex: _selectedIndex,
-                      selectedItemColor: Color(0xFF466DF2),
-                      unselectedItemColor: Colors.black,
-                      showSelectedLabels: false,
-                      showUnselectedLabels: false,
-                      items: const [
-                        BottomNavigationBarItem(
-                            icon: Icon(
-                              Icons.keyboard_voice,
-                              size: 32,
-                            ),
-                            label: ''),
-                        BottomNavigationBarItem(
-                            icon: Icon(
-                              Icons.book_outlined,
-                              size: 32,
-                            ),
-                            label: ''),
-                        BottomNavigationBarItem(
-                            icon: Icon(
-                              Icons.arrow_drop_down_circle,
-                              size: 45,
-                            ),
-                            label: ''),
-                        BottomNavigationBarItem(
-                            icon: Icon(
-                              Icons.notifications,
-                              size: 32,
-                            ),
-                            label: ''),
-                        BottomNavigationBarItem(
-                            icon: Icon(
-                              Icons.person,
-                              size: 32,
-                            ),
-                            label: ''),
-                      ],
-                    ),
-                  ),
-                ),*/
     );
   }
 

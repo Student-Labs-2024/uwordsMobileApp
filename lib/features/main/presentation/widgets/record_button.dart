@@ -32,20 +32,20 @@ class RecordButton extends StatelessWidget {
                   fis.BoxShadow(
                       color: Color.fromRGBO(255, 255, 255, 0.5),
                       spreadRadius: 0,
-                      blurRadius: 10, //sigmaToR(7),//76
-                      offset: Offset(-5, 5), // changes position of shadow
+                      blurRadius: 10,
+                      offset: Offset(-5, 5),
                       blurStyle: BlurStyle.normal),
                   fis.BoxShadow(
                       color: Color.fromRGBO(201, 217, 232, 0.5),
                       spreadRadius: 0,
-                      blurRadius: 10, //sigmaToR(7),//76
-                      offset: Offset(-5, 5), // changes position of shadow
+                      blurRadius: 10,
+                      offset: Offset(-5, 5),
                       blurStyle: BlurStyle.normal),
                   fis.BoxShadow(
                       color: Color.fromRGBO(144, 148, 151, 0.25),
                       spreadRadius: 0,
-                      blurRadius: 4, //sigmaToR(7),//76
-                      offset: Offset(0, 4), // changes position of shadow
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
                       blurStyle: BlurStyle.normal),
                 ],
           borderRadius: BorderRadius.circular(55),
