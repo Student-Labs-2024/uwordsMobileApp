@@ -78,10 +78,11 @@ class UserRepository implements IUserRepository {
     }
   }
 
-  void _saveUser({required UserAuthDto userDto}) {
+  void _saveUser({required UserAuthDto userDto}) async{
     savableUserDataSource.saveUser(userDto: userDto);
-    debugPrint([userDto.email, userDto.provider,].toString());
-    savableUserDataSource.changeCurrent(uEmail: userDto.email, provider: userDto.provider);
+    debugPrint([userDto.email, userDto.provider, userDto].toString());
+    await savableUserDataSource.changeCurrent(uEmail: userDto.email, provider: userDto.provider);
+    savableUserDataSource.printAllDatabase();
   }
 
   @override

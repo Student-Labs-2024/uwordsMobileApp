@@ -12,6 +12,7 @@ abstract interface class ISavableUserDataSource {
       {required String uEmail, required String provider});
   Future<UserAuthDto> getCurrent();
   Future<void> noneIsCurrent();
+  void printAllDatabase();
 }
 
 class SavableUserDataSource implements ISavableUserDataSource {
@@ -24,10 +25,10 @@ class SavableUserDataSource implements ISavableUserDataSource {
           ..where((u) =>
               u.email.equals(userDto.email) &
               u.provider.equals(userDto.provider)))
-        .getSingle();
+        .getSingleOrNull();
     if (user.runtimeType == Future<User>) {
       debugPrint(user.toString());
-      (database.update(database.userAuth)..where((u) => u.id.equals(user.id)))
+      (database.update(database.userAuth)..where((u) => u.accessToken.equals(userDto.accessToken) & u.provider.equals(userDto.provider)))
           .replace(userDto.toDB());
     } else {
       database.into(database.userAuth).insert(userDto.toDB());
@@ -63,5 +64,13 @@ class SavableUserDataSource implements ISavableUserDataSource {
     return UserAuthDto.fromDB(await (database.select(database.userAuth)
           ..where((u) => u.isCurrent.equals(true)))
         .getSingle());
+  }
+
+  @override
+  void printAllDatabase() async {
+    List<User> users = await database.select(database.userAuth).get();
+    users.forEach((u) {
+      print([u.email, u.accessToken, u.provider, u.isCurrent.toString()]);
+    });
   }
 }
