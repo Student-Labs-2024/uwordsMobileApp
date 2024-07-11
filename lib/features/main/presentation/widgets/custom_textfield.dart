@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -19,32 +20,25 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 44,
+      width: (MediaQuery.of(context).size.width - 24 - 24 - 9) * 48 / 318,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            AppColors.gradientSearchColor1,
-            AppColors.gradientSearchColor2,
-            AppColors.gradientSearchColor3
-          ],
-        ),
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(97, 120, 201, 0.26),
-            blurRadius: 16.0,
-            spreadRadius: 0,
-            offset: Offset(4, 4),
-          ),
-          BoxShadow(
-            color: Color.fromRGBO(255, 255, 255, 0.08),
-            blurRadius: 16.0,
-            spreadRadius: 0,
-            offset: Offset(2, 2),
-          ),
-        ],
-        //border: Border.
-      ),
+      decoration: fis.BoxDecoration(
+          color: AppColors.whiteBackgroundColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            fis.BoxShadow(
+                color: Color.fromRGBO(97, 120, 201, 0.26),
+                spreadRadius: 0,
+                blurRadius: 76,
+                offset: Offset(4, 4),
+                inset: false),
+            fis.BoxShadow(
+                color: Color.fromRGBO(255, 255, 255, 0.08),
+                spreadRadius: 0,
+                blurRadius: 16,
+                offset: Offset(2, 2),
+                inset: true),
+          ]),
       child: TextField(
         controller: controller,
         cursorColor: Colors.purple,

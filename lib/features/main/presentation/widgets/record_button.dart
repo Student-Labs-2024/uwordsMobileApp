@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 
 class RecordButton extends StatelessWidget {
   const RecordButton(
@@ -10,75 +11,52 @@ class RecordButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: MediaQuery.of(context).size.width * 0.384,
-        width: MediaQuery.of(context).size.width * 0.384,
-        decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: (MediaQuery.of(context).size.width) * 146 / 375,
+        width: (MediaQuery.of(context).size.width) * 146 / 375,
+        decoration: fis.BoxDecoration(
+          color: AppColors.homePageStartRecord,
           boxShadow: isPressed
-              ? []
-              : [
-                  const BoxShadow(
-                    color: Color.fromRGBO(255, 255, 255, 0.5),
-                    blurRadius: 10.0,
+              ? const [
+                  fis.BoxShadow(
+                    offset: Offset(-4, 4),
+                    blurRadius: 1,
                     spreadRadius: 0,
-                    offset: Offset(-5, -5),
+                    color: Color.fromRGBO(201, 217, 232, 0.8),
+                    inset: true,
                   ),
-                  const BoxShadow(
-                    color: Color.fromRGBO(201, 217, 232, 0.5),
-                    blurRadius: 10.0,
-                    spreadRadius: 0,
-                    offset: Offset(5, 5),
-                  ),
+                ]
+              : const [
+                  fis.BoxShadow(
+                      color: Color.fromRGBO(255, 255, 255, 0.5),
+                      spreadRadius: 0,
+                      blurRadius: 10, //sigmaToR(7),//76
+                      offset: Offset(-5, 5), // changes position of shadow
+                      blurStyle: BlurStyle.normal),
+                  fis.BoxShadow(
+                      color: Color.fromRGBO(201, 217, 232, 0.5),
+                      spreadRadius: 0,
+                      blurRadius: 10, //sigmaToR(7),//76
+                      offset: Offset(-5, 5), // changes position of shadow
+                      blurStyle: BlurStyle.normal),
+                  fis.BoxShadow(
+                      color: Color.fromRGBO(144, 148, 151, 0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4, //sigmaToR(7),//76
+                      offset: Offset(0, 4), // changes position of shadow
+                      blurStyle: BlurStyle.normal),
                 ],
           borderRadius: BorderRadius.circular(55),
-          color: AppColors.homePageStartRecord,
-          gradient: LinearGradient(
-              colors: isPressed
-                  ? [
-                      Color.fromRGBO(201, 217, 232, 0.8),
-                      AppColors.homePageStartRecord,
-                    ]
-                  : [
-                      AppColors.homePageStartRecord,
-                      AppColors.homePageStartRecord
-                    ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              stops: [0.1, 0.7]),
         ),
-        child: Stack(
-          alignment: AlignmentDirectional.bottomStart,
-          children: [
-            isPressed
-                ? Container(
-                    height: MediaQuery.of(context).size.width * 0.374,
-                    width: MediaQuery.of(context).size.width * 0.374,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(55),
-                      color: AppColors.homePageStartRecord,
-                    ),
-                  )
-                : SizedBox(),
-            Center(
-                child: SvgPicture.asset(
-              isPressed
-                  ? 'assets/svg/voice_ico.svg'
-                  : 'assets/svg/play_ico.svg',
-              color: AppColors.darkMainColor,
-              height: MediaQuery.of(context).size.height * 0.05,
-            )),
-            GestureDetector(
-              onTap: onPressed,
-              child: Container(
-                height: MediaQuery.of(context).size.width * 0.384,
-                width: MediaQuery.of(context).size.width * 0.384,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(55.0),
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ],
-        ));
+        child: Center(
+            child: SvgPicture.asset(
+          isPressed ? 'assets/svg/voice_ico.svg' : 'assets/svg/play_ico.svg',
+          color: AppColors.darkMainColor,
+          height: MediaQuery.of(context).size.height * 0.05,
+        )),
+      ),
+    );
   }
 }

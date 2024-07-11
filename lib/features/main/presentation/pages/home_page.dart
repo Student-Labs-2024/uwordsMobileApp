@@ -5,6 +5,7 @@ import 'package:uwords/features/main/bloc/audio_bloc/audio_bloc.dart';
 import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
 import 'package:uwords/features/main/presentation/widgets/record_button.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -81,30 +82,25 @@ class _HomePageState extends State<HomePage> {
                               ),
                               const SizedBox(width: 8),
                               Container(
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      AppColors.gradientSendButtonColor1,
-                                      AppColors.gradientSendButtonColor2
-                                    ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Color.fromRGBO(97, 120, 201, 0.26),
-                                      blurRadius: 16.0,
-                                      spreadRadius: 0,
-                                      offset: Offset(4, 4),
-                                    ),
-                                    BoxShadow(
-                                      color:
-                                          Color.fromRGBO(255, 255, 255, 0.08),
-                                      blurRadius: 16.0,
-                                      spreadRadius: 0,
-                                      offset: Offset(2, 2),
-                                    ),
-                                  ],
-                                ),
+                                decoration: fis.BoxDecoration(
+                                    color: AppColors.whiteBackgroundColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: const [
+                                      fis.BoxShadow(
+                                          color: Color.fromRGBO(
+                                              97, 120, 201, 0.26),
+                                          spreadRadius: 0,
+                                          blurRadius: 76,
+                                          offset: Offset(4, 4),
+                                          inset: false),
+                                      fis.BoxShadow(
+                                          color: Color.fromRGBO(
+                                              255, 255, 255, 0.08),
+                                          spreadRadius: 0,
+                                          blurRadius: 16,
+                                          offset: Offset(2, 2),
+                                          inset: true),
+                                    ]),
                                 child: IconButton(
                                   onPressed: () {
                                     /*context.read<AudioBloc>().add(AudioEvent.sendLink(
@@ -121,8 +117,14 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   iconSize: 24,
                                   style: ButtonStyle(
-                                    fixedSize:
-                                        WidgetStateProperty.all(Size(48, 44)),
+                                    fixedSize: WidgetStateProperty.all(Size(
+                                        (MediaQuery.of(context).size.width -
+                                                24 -
+                                                24 -
+                                                9) *
+                                            48 /
+                                            318,
+                                        44)),
                                     /*backgroundColor: WidgetStateProperty.all(
                                         AppColors.whiteBackgroundColor),*/
                                     shape: WidgetStateProperty.all(
@@ -148,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                             setState(() {
                               testPressed = !testPressed;
                             });
-                            print("TESTTTTTTT");
+                            print("TESTTTTTTT $testPressed");
                             /*context.read<AudioBloc>().add(state.maybeWhen(
                                   initial: () => const AudioEvent.startRecord(),
                                   started: () => const AudioEvent.stopRecord(),
