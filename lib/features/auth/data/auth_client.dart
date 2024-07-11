@@ -14,6 +14,11 @@ class AuthClient {
   String uPassword = '';
   String providerUid = '';
 
+  //временно что бы не взрывалось ничего
+  Future<User?> getUser() async {
+    return auth.currentUser;
+  }
+
   Future<void> signInWithVK() async {
     auth.signOut(); // что бы не юыть одновременно в двух логинах
     await vk.initSdk();

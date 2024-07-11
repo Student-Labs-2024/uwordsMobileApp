@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/main/bloc/audio_bloc/audio_bloc.dart';
+import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
+import 'package:uwords/features/main/presentation/widgets/record_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,128 +14,157 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool testPressed = false;
   TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<AudioBloc, AudioState>(
-        listener: (context, state) {
-          state.whenOrNull(initial: () {
-            debugPrint("Initial");
-          }, started: () {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text("Запись начата")));
-          }, stopped: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Запись закончена")));
-          }, failed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Произошла некоторая ошибка")));
-          }, sended: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Медиа отправлено")));
-          }, notValidLink: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Не валидная ссылка")));
-          });
-        },
-        builder: (BuildContext context, AudioState state) {
-          return SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 18, left: 16, right: 16),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            width:
-                                MediaQuery.of(context).size.width * 280 / 375,
-                            height: 45,
-                            child: TextField(
-                              controller: textEditingController,
-                              decoration: const InputDecoration(
-                                  border: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFE6E6E6)),
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFE6E6E6)),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFE6E6E6)),
-                                  ),
-                                  hintText: "https://yourvideo.com",
-                                  hintStyle: TextStyle(
-                                      color: Color(0xFFE6E6E6), fontSize: 16)),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        IconButton(
-                          onPressed: () {
-                            context.read<AudioBloc>().add(AudioEvent.sendLink(
-                                textEditingController.text));
-                            textEditingController.clear();
-                          },
-                          icon: const Icon(
-                            Icons.arrow_upward,
-                            color: AppColors.whiteColor,
-                          ),
-                          iconSize: 24,
-                          style: ButtonStyle(
-                            fixedSize: MaterialStateProperty.all(Size(32, 32)),
-                            backgroundColor:
-                                MaterialStateProperty.all(AppColors.mainColor),
-                            shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            AppColors.gradientBackgroundColor1,
+            AppColors.gradientBackgroundColor2
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        ),
+        child: BlocConsumer<AudioBloc, AudioState>(
+          listener: (context, state) {
+            state.whenOrNull(initial: () {
+              debugPrint("Initial");
+            }, started: () {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(const SnackBar(content: Text("Запись начата")));
+            }, stopped: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Запись закончена")));
+            }, failed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Произошла некоторая ошибка")));
+            }, sended: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Медиа отправлено")));
+            }, notValidLink: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Не валидная ссылка")));
+            });
+          },
+          builder: (BuildContext context, AudioState state) {
+            return SafeArea(
+              child: Stack(
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/png/bubbles.png',
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 32, left: 16, right: 16),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        80 /
+                                        100,
+                                    height: 45,
+                                    child: CustomTextField(
+                                      controller: textEditingController,
+                                      hintText: "Ссылка на видео",
+                                      isError: false,
+                                      errorMessage: 'Неверный формат',
+                                    )),
                               ),
-                            ),
+                              const SizedBox(width: 8),
+                              Container(
+                                decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      AppColors.gradientSendButtonColor1,
+                                      AppColors.gradientSendButtonColor2
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color.fromRGBO(97, 120, 201, 0.26),
+                                      blurRadius: 16.0,
+                                      spreadRadius: 0,
+                                      offset: Offset(4, 4),
+                                    ),
+                                    BoxShadow(
+                                      color:
+                                          Color.fromRGBO(255, 255, 255, 0.08),
+                                      blurRadius: 16.0,
+                                      spreadRadius: 0,
+                                      offset: Offset(2, 2),
+                                    ),
+                                  ],
+                                ),
+                                child: IconButton(
+                                  onPressed: () {
+                                    /*context.read<AudioBloc>().add(AudioEvent.sendLink(
+                                      textEditingController.text));
+                                  textEditingController.clear();*/
+                                  },
+                                  icon: SvgPicture.asset(
+                                    state.maybeWhen(
+                                      sended: () => 'assets/svg/sended_ico.svg',
+                                      orElse: () => 'assets/svg/send_ico.svg',
+                                    ),
+                                    color: AppColors.darkMainColor,
+                                    height: 24,
+                                  ),
+                                  iconSize: 24,
+                                  style: ButtonStyle(
+                                    fixedSize:
+                                        WidgetStateProperty.all(Size(48, 44)),
+                                    /*backgroundColor: WidgetStateProperty.all(
+                                        AppColors.whiteBackgroundColor),*/
+                                    shape: WidgetStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      context.read<AudioBloc>().add(state.maybeWhen(
-                            initial: () => const AudioEvent.startRecord(),
-                            started: () => const AudioEvent.stopRecord(),
-                            orElse: () => const AudioEvent.startRecord(),
-                          ));
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFF466DF2)),
-                      fixedSize: MaterialStateProperty.all(
-                        Size(MediaQuery.of(context).size.width * 200 / 375,
-                            MediaQuery.of(context).size.height * 200 / 812),
                       ),
-                    ),
-                    child: Center(
-                        child: Icon(
-                      state.maybeWhen(
-                        started: () => Icons.pause_rounded,
-                        orElse: () => Icons.play_arrow_rounded,
+                      RecordButton(
+                          isPressed:
+                              testPressed /*state.maybeWhen(
+                            started: () => true,
+                            orElse: () => false,
+                          )*/
+                          ,
+                          onPressed: () {
+                            setState(() {
+                              testPressed = !testPressed;
+                            });
+                            print("TESTTTTTTT");
+                            /*context.read<AudioBloc>().add(state.maybeWhen(
+                                  initial: () => const AudioEvent.startRecord(),
+                                  started: () => const AudioEvent.stopRecord(),
+                                  orElse: () => const AudioEvent.startRecord(),
+                                ));*/
+                          }),
+                      const SizedBox(
+                        height: 80,
                       ),
-                      color: Colors.white,
-                      size: 150,
-                    )),
-                  ),
-                ),
-                const SizedBox(),
-              ],
-            ),
-          );
-        },
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
