@@ -22,24 +22,19 @@ class _AuthClient implements AuthClient {
 
   @override
   Future<void> registerUser(
-    String provider,
-    String email,
-    String password,
-    String username,
-    String firstname,
-    String lastname,
-    String avatar_url,
-    String phone_number,
-    String birth_date,
-  ) async {
+    dynamic body, {
+    String contentType = 'application/json',
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = provider;
+    final _headers = <String, dynamic>{r'Content-Type': contentType};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = body;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: contentType,
     )
         .compose(
           _dio.options,
@@ -56,19 +51,20 @@ class _AuthClient implements AuthClient {
 
   @override
   Future<Map<String, String>> login(
-    String provider,
-    String email,
-    String password,
-  ) async {
+    dynamic body, {
+    String contentType = 'application/json',
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = provider;
+    final _headers = <String, dynamic>{r'Content-Type': contentType};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = body;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, String>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: contentType,
     )
             .compose(
               _dio.options,

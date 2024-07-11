@@ -8,24 +8,12 @@ abstract class AuthClient {
   factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
   @POST("users/register")
-  Future<void> registerUser(
-    @Body() String provider,
-    @Body() String email,
-    @Body() String password,
-    @Body() String username,
-    @Body() String firstname,
-    @Body() String lastname,
-    @Body() String avatar_url,
-    @Body() String phone_number,
-    @Body() String birth_date,
-  );
+  Future<void> registerUser(@Body() body,
+      {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/login")
-  Future<Map<String, String>> login(
-    @Body() String provider,
-    @Body() String email,
-    @Body() String password,
-  );
+  Future<Map<String, String>> login(@Body() body,
+      {@Header('Content-Type') String contentType = 'application/json'});
 
   @GET("users/token/refresh")
   Future<Map<String, String>> refresh(
@@ -33,7 +21,6 @@ abstract class AuthClient {
   );
 
   //TODO add profile_model/user_model before adding it
-
   // @GET("user/me")
   // Future<Response> aboutMe(
   //   @Header("Authorization") String accessToken,
@@ -42,11 +29,11 @@ abstract class AuthClient {
   // @POST("user/me/update")
   // Future<Response> updateAboutMe(
   //   @Header("Authorization") String accessToken,
-  //   @Body() String username,
-  //   @Body() String name,
-  //   @Body() String surname,
-  //   @Body() String avatar_url,
-  //   @Body() String phone_number,
-  //   @Body() String birth_date,
+  //   @Field() String username,
+  //   @Field() String name,
+  //   @Field() String surname,
+  //   @Field() String avatar_url,
+  //   @Field() String phone_number,
+  //   @Field() String birth_date,
   // );
 }

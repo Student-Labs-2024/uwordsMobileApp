@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
+import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
+import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
@@ -13,8 +17,9 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       {required String userEmail,
       required String password,
       required String provider}) async {
-    Map<String, String> response =
-        await client.login(provider, userEmail, password);
+    final LoginRequestBody loginRequestBody = LoginRequestBody(
+        provider: provider, email: userEmail, password: password);
+    Map<String, String> response = await client.login(loginRequestBody);
     debugPrint(response.toString());
     return UserAuthDto.fromJsonAndOtherFields(
       userEmail: userEmail,
@@ -38,8 +43,19 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<void> registerUser(
       {required String userEmail, required String password}) async {
-    await client.registerUser(
-        "self", userEmail, password, '', '', '', '', '', '');
+    final registerRequestBody = RegisterRequestBody(
+      provider: 'self',
+      email: userEmail,
+      password: password,
+      username: '',
+      firstname: '',
+      lastname: '',
+      avatarUrl: '',
+      phoneNumber: '',
+      birthDate: '',
+    );
+    print(jsonEncode(registerRequestBody).toString());
+    await client.registerUser(jsonEncode(registerRequestBody));
   }
 
   @override
@@ -52,7 +68,18 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String avatarUrl,
       required String phoneNumber,
       required String provider}) async {
-    await client.registerUser(provider, userEmail, password, username, name,
-        surname, avatarUrl, phoneNumber, '');
+    final registerRequestBody = RegisterRequestBody(
+      provider: provider,
+      email: userEmail,
+      password: password,
+      username: username,
+      firstname: name,
+      lastname: surname,
+      avatarUrl: avatarUrl,
+      phoneNumber: phoneNumber,
+      birthDate: DateTime.now().toString(),
+    );
+    print(jsonEncode(registerRequestBody.toString()));
+    await client.registerUser(jsonEncode(registerRequestBody));
   }
 }

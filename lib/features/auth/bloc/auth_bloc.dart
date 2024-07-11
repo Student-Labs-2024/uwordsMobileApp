@@ -63,6 +63,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _authorization(emit: emit, provider: "vk");
     } on NotRegisteredException {
       await _registerAndAuth(emit: emit, provider: "vk");
+      await _authorization(emit: emit, provider: "vk");
     }
   }
 
@@ -79,7 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _handleLogOut(_LogOut event, Emitter<AuthState> emit) async{
+  Future<void> _handleLogOut(_LogOut event, Emitter<AuthState> emit) async {
     userRepository.localLogOut();
     emit(const AuthState.initial());
   }
@@ -155,12 +156,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _authorization(
       {required Emitter<AuthState> emit, required String provider}) async {
-    bool isSuccessAuthorization = await userRepository.authorizate(
-        emailAddress: uEmail, password: providerUid, provider: provider);
-    if (isSuccessAuthorization) {
-      emit(const AuthState.authorized());
-    } else {
-      emit(const AuthState.failedSignIn());
+    try {
+      bool isSuccessAuthorization = await userRepository.authorizate(
+          emailAddress: uEmail, password: providerUid, provider: provider);
+      if (isSuccessAuthorization) {
+        emit(const AuthState.authorized());
+      } else {
+        (const AuthState.failedSignIn());
+        throw NotRegisteredException();
+      }
+    } on NotRegisteredException catch (e) {
+      rethrow;
     }
   }
 }
