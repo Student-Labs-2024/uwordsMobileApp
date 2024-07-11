@@ -6,7 +6,6 @@ import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/not_registred_exception.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 class UserRepository implements IUserRepository {
   final ISavableUserDataSource savableUserDataSource;
@@ -33,8 +32,7 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<void> refreshAccessToken() async {
-    User user = await savableUserDataSource.getCurrent();
-    UserAuthDto userDto = UserAuthDto.fromDB(user);
+    UserAuthDto userDto = await savableUserDataSource.getCurrent();
     _saveUser(
         userDto:
             await networkUserDataSource.refreshAccessToken(userDto: userDto));
@@ -82,17 +80,20 @@ class UserRepository implements IUserRepository {
 
   void _saveUser({required UserAuthDto userDto}) {
     savableUserDataSource.saveUser(userDto: userDto);
+    debugPrint([userDto.email, userDto.provider,].toString());
+    savableUserDataSource.changeCurrent(uEmail: userDto.email, provider: userDto.provider);
   }
 
   @override
   Future<String> getCurrentUserAccessToken() async {
-    User currentUser = await savableUserDataSource.getCurrent();
+    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
+    debugPrint(currentUser.accessToken);
     return currentUser.accessToken;
   }
 
   @override
   void localLogOut() async {
-    debugPrint(await savableUserDataSource.getCurrent().toString());
+    debugPrint(savableUserDataSource.getCurrent().toString());
     await savableUserDataSource.noneIsCurrent();
   }
 }

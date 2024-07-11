@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -61,7 +62,7 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
         await _sendFile(audioPath);
         emit(const AudioState.sended());
         emit(const AudioState.initial());
-      } catch (e) {
+      } on DioException catch (e) {
         log(e.toString());
         emit(const AudioState.failed());
       }
@@ -99,7 +100,10 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
   }
 
   Future<void> _sendFile(String audioPath) async {
-    await audioRepository.sendFile(audioPath: audioPath, accessToken: await userRepository.getCurrentUserAccessToken());
+    String accessToken = await userRepository.getCurrentUserAccessToken();
+    debugPrint(accessToken);
+    await audioRepository.sendFile(
+        audioPath: audioPath, accessToken: accessToken);
   }
 
   bool _isValidYoutubeUrl(String url) {

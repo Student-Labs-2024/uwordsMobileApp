@@ -9,13 +9,13 @@ abstract class MainClient {
 
   @POST("user/audio")
   Future<void> sendAudio(
-    @Query('user_id') String user_id,
+    @Header("Authorization") String accessToken,
     @Body() FormData file,
   );
 
   @POST("user/youtube")
   Future<void> sendLink(
-    @Query("user_id") String user_id,
+    @Header("Authorization") String accessToken,
     @Body() String link,
   );
 }

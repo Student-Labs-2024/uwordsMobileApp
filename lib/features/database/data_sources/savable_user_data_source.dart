@@ -1,14 +1,16 @@
 import 'package:drift/drift.dart';
+import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/domain/user_auth_mapper.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 abstract interface class ISavableUserDataSource {
   void saveUser({required UserAuthDto userDto});
-  Future<User> fetchUser({required String uEmail, required String provider});
+  Future<UserAuthDto> fetchUser(
+      {required String uEmail, required String provider});
   Future<void> changeCurrent(
       {required String uEmail, required String provider});
-  Future<User> getCurrent();
+  Future<UserAuthDto> getCurrent();
   Future<void> noneIsCurrent();
 }
 
@@ -24,6 +26,7 @@ class SavableUserDataSource implements ISavableUserDataSource {
               u.provider.equals(userDto.provider)))
         .getSingle();
     if (user.runtimeType == Future<User>) {
+      debugPrint(user.toString());
       (database.update(database.userAuth)..where((u) => u.id.equals(user.id)))
           .replace(userDto.toDB());
     } else {
@@ -32,10 +35,11 @@ class SavableUserDataSource implements ISavableUserDataSource {
   }
 
   @override
-  Future<User> fetchUser({required String uEmail, required String provider}) {
-    return (database.select(database.userAuth)
+  Future<UserAuthDto> fetchUser(
+      {required String uEmail, required String provider}) async {
+    return UserAuthDto.fromDB(await (database.select(database.userAuth)
           ..where((u) => u.email.equals(uEmail) & u.provider.equals(provider)))
-        .getSingle();
+        .getSingle());
   }
 
   @override
@@ -55,9 +59,9 @@ class SavableUserDataSource implements ISavableUserDataSource {
   }
 
   @override
-  Future<User> getCurrent() async {
-    return (database.select(database.userAuth)
+  Future<UserAuthDto> getCurrent() async {
+    return UserAuthDto.fromDB(await (database.select(database.userAuth)
           ..where((u) => u.isCurrent.equals(true)))
-        .getSingle();
+        .getSingle());
   }
 }

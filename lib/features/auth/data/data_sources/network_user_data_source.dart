@@ -21,7 +21,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String provider}) async {
     final LoginRequestBody loginRequestBody = LoginRequestBody(
         provider: provider, email: userEmail, password: password);
-    print(jsonEncode(loginRequestBody).toString());
     try {
       final response = await client.login(jsonEncode(loginRequestBody));
       debugPrint(response.toString());
@@ -67,7 +66,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       avatarUrl: '',
       phoneNumber: '',
     );
-    print(jsonEncode(registerRequestBody).toString());
     await client.registerUser(jsonEncode(registerRequestBody));
   }
 
@@ -91,7 +89,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       avatarUrl: avatarUrl,
       phoneNumber: phoneNumber,
     );
-    print(jsonEncode(registerRequestBody.toString()));
     await client.registerUser(jsonEncode(registerRequestBody));
   }
 }
