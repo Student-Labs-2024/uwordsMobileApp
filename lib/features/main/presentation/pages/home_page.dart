@@ -87,19 +87,29 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: const [
                                       fis.BoxShadow(
-                                          color: Color.fromRGBO(
-                                              97, 120, 201, 0.26),
-                                          spreadRadius: 0,
-                                          blurRadius: 76,
-                                          offset: Offset(4, 4),
-                                          inset: false),
+                                        color:
+                                            Color.fromRGBO(97, 120, 201, 0.26),
+                                        blurRadius: 16.0,
+                                        spreadRadius: 0,
+                                        offset: Offset(4, 4),
+                                        inset: false,
+                                      ),
                                       fis.BoxShadow(
-                                          color: Color.fromRGBO(
-                                              255, 255, 255, 0.08),
-                                          spreadRadius: 0,
-                                          blurRadius: 16,
-                                          offset: Offset(2, 2),
-                                          inset: true),
+                                        color:
+                                            Color.fromRGBO(255, 255, 255, 0.08),
+                                        blurRadius: 16.0,
+                                        spreadRadius: 0,
+                                        offset: Offset(2, 2),
+                                        inset: false,
+                                      ),
+                                      fis.BoxShadow(
+                                        color:
+                                            Color.fromRGBO(255, 255, 255, 0.1),
+                                        blurRadius: 80.0,
+                                        spreadRadius: 1,
+                                        offset: Offset(2, 2),
+                                        inset: true,
+                                      ),
                                     ]),
                                 child: IconButton(
                                   onPressed: () {
@@ -113,7 +123,6 @@ class _HomePageState extends State<HomePage> {
                                       orElse: () => 'assets/svg/send_ico.svg',
                                     ),
                                     color: AppColors.darkMainColor,
-                                    height: 24,
                                   ),
                                   iconSize: 24,
                                   style: ButtonStyle(

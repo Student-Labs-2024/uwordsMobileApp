@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import '../../../../theme/app_colors.dart';
 
 class ScaffoldWithNavBar extends StatefulWidget {
@@ -34,28 +34,31 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
               : Container(
                   width: MediaQuery.of(context).size.width * 0.86,
                   padding: EdgeInsets.symmetric(horizontal: 8),
-                  decoration: const BoxDecoration(
+                  decoration: const fis.BoxDecoration(
                     //color: AppColors.whiteBackgroundColor,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
-                    gradient: LinearGradient(
-                      colors: [
-                        AppColors.gradientNavBarColor1,
-                        AppColors.gradientNavBarColor2,
-                        AppColors.gradientNavBarColor3
-                      ],
-                    ),
+                    color: AppColors.whiteBackgroundColor,
                     boxShadow: [
-                      BoxShadow(
+                      fis.BoxShadow(
                         color: Color.fromRGBO(97, 120, 201, 0.26),
                         blurRadius: 16.0,
                         spreadRadius: 0,
                         offset: Offset(4, 4),
+                        inset: false,
                       ),
-                      BoxShadow(
+                      fis.BoxShadow(
                         color: Color.fromRGBO(255, 255, 255, 0.08),
                         blurRadius: 16.0,
                         spreadRadius: 0,
                         offset: Offset(2, 2),
+                        inset: false,
+                      ),
+                      fis.BoxShadow(
+                        color: Color.fromRGBO(255, 255, 255, 0.1),
+                        blurRadius: 80.0,
+                        spreadRadius: 1,
+                        offset: Offset(2, 2),
+                        inset: true,
                       ),
                     ],
                   ),

@@ -37,6 +37,12 @@ class CustomTextField extends StatelessWidget {
                 spreadRadius: 0,
                 blurRadius: 16,
                 offset: Offset(2, 2),
+                inset: false),
+            fis.BoxShadow(
+                color: Color.fromRGBO(255, 255, 255, 0.1),
+                spreadRadius: 0,
+                blurRadius: 80,
+                offset: Offset(2, 2),
                 inset: true),
           ]),
       child: TextField(
