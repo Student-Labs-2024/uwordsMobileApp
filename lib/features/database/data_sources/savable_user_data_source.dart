@@ -5,11 +5,10 @@ import 'package:uwords/features/auth/domain/user_auth_mapper.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 abstract interface class ISavableUserDataSource {
-  void saveUser({required UserAuthDto userDto});
+  Future<void> saveUser({required UserAuthDto userDto});
   Future<UserAuthDto> fetchUser(
       {required String uEmail, required String provider});
-  Future<void> changeCurrent(
-      {required String uEmail, required String provider});
+  Future<void> changeCurrent({required int id});
   Future<UserAuthDto> getCurrent();
   Future<void> noneIsCurrent();
   void printAllDatabase();
@@ -20,19 +19,22 @@ class SavableUserDataSource implements ISavableUserDataSource {
   const SavableUserDataSource(this.database);
 
   @override
-  void saveUser({required UserAuthDto userDto}) async {
+  Future<void> saveUser({required UserAuthDto userDto}) async {
     var user = await (database.select(database.userAuth)
           ..where((u) =>
               u.email.equals(userDto.email) &
               u.provider.equals(userDto.provider)))
-        .getSingleOrNull();
-    if (user.runtimeType == Future<User>) {
-      debugPrint(user.toString());
-      (database.update(database.userAuth)..where((u) => u.accessToken.equals(userDto.accessToken) & u.provider.equals(userDto.provider)))
-          .replace(userDto.toDB());
-    } else {
-      database.into(database.userAuth).insert(userDto.toDB());
+        .get();
+    if (user.runtimeType == List<User>) {
+      await (database.delete(database.userAuth)
+            ..where((u) =>
+                u.email.equals(userDto.email) &
+                u.provider.equals(userDto.provider)))
+          .go();
     }
+    final current =
+        await database.into(database.userAuth).insertReturning(userDto.toDB());
+    await changeCurrent(id: current.id);
   }
 
   @override
@@ -44,11 +46,10 @@ class SavableUserDataSource implements ISavableUserDataSource {
   }
 
   @override
-  Future<void> changeCurrent(
-      {required String uEmail, required String provider}) async {
+  Future<void> changeCurrent({required int id}) async {
     noneIsCurrent();
     (database.update(database.userAuth)
-      ..where((u) => u.email.equals(uEmail) & u.provider.equals(provider))
+      ..where((u) => u.id.equals(id))
       ..write(const UserAuthCompanion(isCurrent: Value(true))));
   }
 

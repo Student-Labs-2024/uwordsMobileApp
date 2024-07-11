@@ -25,7 +25,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       _getWordsFromServer(emit);
     } on OldAccessException catch (e) {
       userRepository.refreshAccessToken();
-      _getWordsFromServer(emit);
+      await _getWordsFromServer(emit);
     }
   }
 

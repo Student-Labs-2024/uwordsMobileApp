@@ -9,5 +9,6 @@ abstract class LearnClient {
   factory LearnClient(Dio dio, {String baseUrl}) = _LearnClient;
 
   @GET("user/words/get_words")
-  Future<List<WordInfoDto>> getWords(@Query("user_id") String userId);
+  Future<List<WordInfoDto>> getWords(
+      @Header("Authorization") String accessToken);
 }
