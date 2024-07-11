@@ -31,11 +31,12 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<void> refreshAccessToken() async {
+  Future<String> refreshAccessToken() async {
     UserAuthDto userDto = await savableUserDataSource.getCurrent();
     _saveUser(
         userDto:
             await networkUserDataSource.refreshAccessToken(userDto: userDto));
+    return userDto.accessToken;
   }
 
   @override
@@ -78,7 +79,7 @@ class UserRepository implements IUserRepository {
     }
   }
 
-  void _saveUser({required UserAuthDto userDto}) async{
+  void _saveUser({required UserAuthDto userDto}) async {
     await savableUserDataSource.saveUser(userDto: userDto);
     debugPrint("------------------------");
     savableUserDataSource.printAllDatabase();

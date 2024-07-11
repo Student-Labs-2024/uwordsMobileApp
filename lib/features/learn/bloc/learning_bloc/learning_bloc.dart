@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/old_access_token_exception.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
@@ -22,7 +23,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   Future<void> _handleGetWordsForStudy(
       _GetWordsForStudy event, Emitter<LearningState> emit) async {
     try {
-      _getWordsFromServer(emit);
+      await _getWordsFromServer(emit);
     } on OldAccessException catch (e) {
       userRepository.refreshAccessToken();
       await _getWordsFromServer(emit);
@@ -31,15 +32,20 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   Future<void> _handleSendLearnedWords(
       _SendLearnedWords event, Emitter<LearningState> emit) async {
+    String accessToken = await userRepository.getCurrentUserAccessToken();
+    await checkTokenExpirationAndUpdateIfNeed(
+        accessToken: accessToken, userRepository: userRepository);
     await wordsRepository.sendLearnedWords(
-        wordsId: event.wordsId,
-        accessToken: await userRepository.getCurrentUserAccessToken());
+        wordsId: event.wordsId, accessToken: accessToken);
     emit(LearningState.sendedLearnedWords(words: words));
   }
 
   Future<void> _getWordsFromServer(Emitter<LearningState> emit) async {
+    String accessToken = await userRepository.getCurrentUserAccessToken();
+    await checkTokenExpirationAndUpdateIfNeed(
+        accessToken: accessToken, userRepository: userRepository);
     List<WordModel> newWords = await wordsRepository.getWordsForStudy(
-        accessToken: await userRepository.getCurrentUserAccessToken());
+        accessToken: accessToken);
     words = newWords;
     emit(LearningState.gotWordsForStudy(words: words));
     emit(LearningState.initial(words: words));
