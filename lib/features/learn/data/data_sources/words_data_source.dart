@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/learn/data/data_sources/interface_words_data_source.dart';
 import 'package:uwords/features/learn/data/learn_client.dart';
 import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
