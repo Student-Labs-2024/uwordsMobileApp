@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/not_registred_exception.dart';
@@ -23,7 +24,6 @@ class UserRepository implements IUserRepository {
     try {
       UserAuthDto user = await networkUserDataSource.authorizate(
           userEmail: emailAddress, password: password, provider: provider);
-      savableUserDataSource.noneIsCurrent();
       _saveUser(userDto: user);
       return true;
     } on NotRegisteredException catch (e) {
@@ -92,6 +92,7 @@ class UserRepository implements IUserRepository {
 
   @override
   void localLogOut() async {
+    debugPrint(await savableUserDataSource.getCurrent().toString());
     await savableUserDataSource.noneIsCurrent();
   }
 }

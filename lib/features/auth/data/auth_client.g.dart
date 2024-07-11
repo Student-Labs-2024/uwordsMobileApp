@@ -50,7 +50,7 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<dynamic>> login(
+  Future<HttpResponse<Map<String, String>>> login(
     dynamic body, {
     String contentType = 'application/json',
   }) async {
@@ -59,8 +59,8 @@ class _AuthClient implements AuthClient {
     final _headers = <String, dynamic>{r'Content-Type': contentType};
     _headers.removeWhere((k, v) => v == null);
     final _data = body;
-    final _result =
-        await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<Map<String, String>>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -77,7 +77,7 @@ class _AuthClient implements AuthClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data;
+    final value = _result.data!.cast<String, String>();
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

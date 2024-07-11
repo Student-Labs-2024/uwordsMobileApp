@@ -60,10 +60,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     userRepository.localLogOut();
     await _signInWithVk();
     try {
-      _authorization(emit: emit, provider: "vk");
+      await _authorization(emit: emit, provider: "vk");
     } on NotRegisteredException {
       await _registerAndAuth(emit: emit, provider: "vk");
-      await _authorization(emit: emit, provider: "vk");
     }
   }
 
@@ -74,7 +73,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     userRepository.localLogOut();
     await _signInWithGoogle();
     try {
-      _authorization(emit: emit, provider: "google");
+      await _authorization(emit: emit, provider: "google");
     } on NotRegisteredException {
       await _registerAndAuth(emit: emit, provider: "google");
     }
@@ -117,7 +116,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _signInWithGoogle() async {
-    //TODO check null!
     final GoogleSignInAccount? user = await GoogleSignIn().signIn();
 
     final GoogleSignInAuthentication gAuth = await user!.authentication;

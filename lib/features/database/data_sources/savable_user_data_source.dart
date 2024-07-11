@@ -23,7 +23,7 @@ class SavableUserDataSource implements ISavableUserDataSource {
               u.email.equals(userDto.email) &
               u.provider.equals(userDto.provider)))
         .getSingle();
-    if (user.runtimeType == User) {
+    if (user.runtimeType == Future<User>) {
       (database.update(database.userAuth)..where((u) => u.id.equals(user.id)))
           .replace(userDto.toDB());
     } else {
