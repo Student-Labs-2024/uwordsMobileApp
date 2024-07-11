@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'main_client.g.dart';
 
-@RestApi(baseUrl: "https://big-nose.ru/api/v1/")
+@RestApi(baseUrl: "https://app.big-nose.ru/api/v1/")
 abstract class MainClient {
   factory MainClient(Dio dio, {String baseUrl}) = _MainClient;
 

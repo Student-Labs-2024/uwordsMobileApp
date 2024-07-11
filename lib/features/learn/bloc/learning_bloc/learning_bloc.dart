@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/auth/old_access_token_exception.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 
@@ -20,11 +21,12 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   Future<void> _handleGetWordsForStudy(
       _GetWordsForStudy event, Emitter<LearningState> emit) async {
-    List<WordModel> newWords = await wordsRepository.getWordsForStudy(
-        accessToken: await userRepository.getCurrentUserAccessToken());
-    words = newWords;
-    emit(LearningState.gotWordsForStudy(words: words));
-    emit(LearningState.initial(words: words));
+    try {
+      _getWordsFromServer(emit);
+    } on OldAccessException catch (e) {
+      userRepository.refreshAccessToken();
+      _getWordsFromServer(emit);
+    }
   }
 
   Future<void> _handleSendLearnedWords(
@@ -33,5 +35,13 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
         wordsId: event.wordsId,
         accessToken: await userRepository.getCurrentUserAccessToken());
     emit(LearningState.sendedLearnedWords(words: words));
+  }
+
+  Future<void> _getWordsFromServer(Emitter<LearningState> emit) async {
+    List<WordModel> newWords = await wordsRepository.getWordsForStudy(
+        accessToken: await userRepository.getCurrentUserAccessToken());
+    words = newWords;
+    emit(LearningState.gotWordsForStudy(words: words));
+    emit(LearningState.initial(words: words));
   }
 }

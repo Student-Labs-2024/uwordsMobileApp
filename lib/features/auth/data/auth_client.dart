@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'auth_client.g.dart';
 
-@RestApi(baseUrl: "https://big-nose.ru/api/")
+@RestApi(baseUrl: "https://app.big-nose.ru/api/")
 abstract class AuthClient {
   factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 

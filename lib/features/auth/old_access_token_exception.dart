@@ -1,3 +1,3 @@
-class NotRegisteredException implements Exception {
-  NotRegisteredException();
+class OldAccessException implements Exception {
+  OldAccessException();
 }
