@@ -13,7 +13,7 @@ class _AuthClient implements AuthClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://big-nose.ru/api/';
+    baseUrl ??= 'https://app.big-nose.ru/api/';
   }
 
   final Dio _dio;
@@ -50,7 +50,7 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<Map<String, String>> login(
+  Future<HttpResponse<dynamic>> login(
     dynamic body, {
     String contentType = 'application/json',
   }) async {
@@ -59,8 +59,8 @@ class _AuthClient implements AuthClient {
     final _headers = <String, dynamic>{r'Content-Type': contentType};
     _headers.removeWhere((k, v) => v == null);
     final _data = body;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Map<String, String>>(Options(
+    final _result =
+        await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -77,8 +77,9 @@ class _AuthClient implements AuthClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data!.cast<String, String>();
-    return value;
+    final value = _result.data;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   @override

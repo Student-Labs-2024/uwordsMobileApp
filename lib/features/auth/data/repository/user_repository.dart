@@ -27,7 +27,6 @@ class UserRepository implements IUserRepository {
       _saveUser(userDto: user);
       return true;
     } on NotRegisteredException catch (e) {
-      log(e.toString());
       return false;
     }
   }

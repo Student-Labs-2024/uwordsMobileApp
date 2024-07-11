@@ -7,7 +7,6 @@ class RegisterRequestBody {
   final String lastname;
   final String avatarUrl;
   final String phoneNumber;
-  final String birthDate;
 
   RegisterRequestBody({
     required this.provider,
@@ -18,6 +17,18 @@ class RegisterRequestBody {
     required this.lastname,
     required this.avatarUrl,
     required this.phoneNumber,
-    required this.birthDate,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "provider": provider,
+      "email": email,
+      "password": password,
+      "username": username,
+      "firstname": firstname,
+      "lastname": lastname,
+      "avatar_url": avatarUrl,
+      "phone_number": phoneNumber,
+    };
+  }
 }

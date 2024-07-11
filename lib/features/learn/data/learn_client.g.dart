@@ -13,7 +13,7 @@ class _LearnClient implements LearnClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://big-nose.ru/api/v1/';
+    baseUrl ??= 'https://app.big-nose.ru/api/v1/';
   }
 
   final Dio _dio;

@@ -12,7 +12,7 @@ abstract class AuthClient {
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/login")
-  Future<Map<String, String>> login(@Body() body,
+  Future<HttpResponse> login(@Body() body,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @GET("users/token/refresh")

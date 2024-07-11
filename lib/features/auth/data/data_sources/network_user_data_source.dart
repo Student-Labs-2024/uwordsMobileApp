@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -7,6 +8,7 @@ import 'package:uwords/features/auth/data/data_sources/interface_network_user_da
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
 import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/features/auth/not_registred_exception.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
   static Dio dio = Dio();
@@ -19,14 +21,26 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       required String provider}) async {
     final LoginRequestBody loginRequestBody = LoginRequestBody(
         provider: provider, email: userEmail, password: password);
-    Map<String, String> response = await client.login(loginRequestBody);
-    debugPrint(response.toString());
-    return UserAuthDto.fromJsonAndOtherFields(
-      userEmail: userEmail,
-      password: password,
-      provider: provider,
-      map: response,
-    );
+    print(jsonEncode(loginRequestBody).toString());
+    try {
+      final response = await client.login(jsonEncode(loginRequestBody));
+      debugPrint(response.toString());
+      return UserAuthDto.fromJsonAndOtherFields(
+        userEmail: userEmail,
+        password: password,
+        provider: provider,
+        map: response.data,
+      );
+    } on DioException catch (e) {
+      if (e.response != null) {
+        if (e.response!.statusCode == 404) {
+          throw NotRegisteredException();
+        }
+        else{rethrow;}
+      } else {
+        rethrow;
+      }
+    }
   }
 
   @override
@@ -52,7 +66,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       lastname: '',
       avatarUrl: '',
       phoneNumber: '',
-      birthDate: '',
     );
     print(jsonEncode(registerRequestBody).toString());
     await client.registerUser(jsonEncode(registerRequestBody));
@@ -77,7 +90,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       lastname: surname,
       avatarUrl: avatarUrl,
       phoneNumber: phoneNumber,
-      birthDate: DateTime.now().toString(),
     );
     print(jsonEncode(registerRequestBody.toString()));
     await client.registerUser(jsonEncode(registerRequestBody));
