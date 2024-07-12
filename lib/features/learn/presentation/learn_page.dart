@@ -51,7 +51,7 @@ class _LearnPageState extends State<LearnPage> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.only(top: 16, bottom: 96),
                   child: BigButton(
                     text: 'Тренировать',
                     onPressed: startTraining,
