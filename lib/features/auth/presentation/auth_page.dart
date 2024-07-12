@@ -15,6 +15,9 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final authClient = AuthClient();
+
+  String regUser = '';
 
   @override
   Widget build(BuildContext context) {

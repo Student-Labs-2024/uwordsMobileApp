@@ -81,9 +81,12 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
         await audioRepository.sendLink(
             link: event.link, accessToken: accessToken);
         emit(const AudioState.sended());
+        await Future.delayed(const Duration(milliseconds: 1500));
         emit(const AudioState.initial());
       } else {
         emit(const AudioState.notValidLink());
+        await Future.delayed(const Duration(seconds: 5));
+        emit(const AudioState.initial());
       }
     } catch (e) {
       log(e.toString());
