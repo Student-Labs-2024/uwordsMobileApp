@@ -21,7 +21,7 @@ class _LearnPageState extends State<LearnPage> {
   @override
   void initState() {
     super.initState();
-    context.read<LearningBloc>().add(const LearningEvent.getWordsForStudy());
+    //context.read<LearningBloc>().add(const LearningEvent.getWordsForStudy());
   }
 
   @override
@@ -37,22 +37,21 @@ class _LearnPageState extends State<LearnPage> {
               children: [
                 Expanded(
                   child: ListView.separated(
-                      separatorBuilder: (context, _) =>
-                          const SizedBox(height: 4),
-                      itemCount: state.words.length, //exampleData.length,
-                      itemBuilder: (context, index) => WordTile(
-                        data: state.words[index], //exampleData[index],
-                        checked: false,
-                        onPressed: () => GoRouter.of(context).go(
-                          "/learn/screen1",
-                          extra: state.words[index],
-                        ),
+                    separatorBuilder: (context, _) => const SizedBox(height: 4),
+                    itemCount: state.words.length, //exampleData.length,
+                    itemBuilder: (context, index) => WordTile(
+                      data: state.words[index], //exampleData[index],
+                      checked: false,
+                      onPressed: () => GoRouter.of(context).go(
+                        "/learn/screen1",
+                        extra: state.words[index],
                       ),
                     ),
+                  ),
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.only(top: 16, bottom: 96),
                   child: BigButton(
                     text: 'Тренировать',
                     onPressed: startTraining,
