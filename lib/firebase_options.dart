@@ -74,4 +74,5 @@ class DefaultFirebaseOptions {
     iosClientId: '836951260412-35v72ncp1q4ejile0s4brlu4cq3lunsa.apps.googleusercontent.com',
     iosBundleId: 'com.example.uwords',
   );
+
 }

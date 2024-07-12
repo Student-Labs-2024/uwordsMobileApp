@@ -16,6 +16,6 @@ abstract class MainClient {
   @POST("user/youtube")
   Future<void> sendLink(
     @Header("Authorization") String accessToken,
-    @Body() String link,
+    @Field("link") String link,
   );
 }

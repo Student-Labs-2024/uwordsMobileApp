@@ -57,7 +57,7 @@ class _MainClient implements MainClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': accessToken};
     _headers.removeWhere((k, v) => v == null);
-    final _data = link;
+    final _data = {'link': link};
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,

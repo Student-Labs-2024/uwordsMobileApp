@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> {
             }, notValidLink: () {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Не валидная ссылка")));
-            });
+            },
+            );
           },
           builder: (BuildContext context, AudioState state) {
             return SafeArea(
