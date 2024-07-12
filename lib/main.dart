@@ -1,8 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/auth/bloc/auth_bloc.dart';
+import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
+import 'package:uwords/features/auth/data/data_sources/network_user_data_source.dart';
+import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/auth/data/repository/user_repository.dart';
 import 'package:uwords/features/auth/presentation/auth_page.dart';
+import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
+import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/data/data_sources/interface_words_data_source.dart';
@@ -107,10 +116,17 @@ class MainApp extends StatelessWidget {
   MainApp({super.key});
   final IAudioDataSource audioDataSource = AudioDataSource();
   final IWordsDataSource wordsDataSource = WordsDataSource();
+  final INetworkUserDataSource networkUserDataSource = NetworkUserDataSource();
+  final ISavableUserDataSource savableUserDataSource =
+      SavableUserDataSource(AppDatabase());
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider<IUserRepository>(
+            create: (context) => UserRepository(
+                networkUserDataSource: networkUserDataSource,
+                savableUserDataSource: savableUserDataSource)),
         RepositoryProvider<IAudioRepository>(
             create: (context) =>
                 AudioRepository(audioDataSource: audioDataSource)),
@@ -122,11 +138,16 @@ class MainApp extends StatelessWidget {
         providers: [
           BlocProvider(
               create: (context) =>
-                  AudioBloc(audioRepository: context.read<IAudioRepository>())),
+                  AuthBloc(userRepository: context.read<IUserRepository>())),
+          BlocProvider(
+              create: (context) => AudioBloc(
+                  audioRepository: context.read<IAudioRepository>(),
+                  userRepository: context.read<IUserRepository>())),
           BlocProvider(create: (context) => PlayerBloc()),
           BlocProvider(
-              create: (context) =>
-                  LearningBloc(context.read<IWordsRepository>()))
+              create: (context) => LearningBloc(
+                  wordsRepository: context.read<IWordsRepository>(),
+                  userRepository: context.read<IUserRepository>()))
         ],
         child: MaterialApp.router(
           routerConfig: _goRouter,

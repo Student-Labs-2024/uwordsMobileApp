@@ -13,7 +13,7 @@ class _LearnClient implements LearnClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://big-nose.ru/api/v1/';
+    baseUrl ??= 'https://app.big-nose.ru/api/v1/';
   }
 
   final Dio _dio;
@@ -21,10 +21,11 @@ class _LearnClient implements LearnClient {
   String? baseUrl;
 
   @override
-  Future<List<WordInfoDto>> getWords(String userId) async {
+  Future<List<WordInfoDto>> getWords(String accessToken) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'user_id': userId};
-    final _headers = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': accessToken};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<WordInfoDto>>(Options(
