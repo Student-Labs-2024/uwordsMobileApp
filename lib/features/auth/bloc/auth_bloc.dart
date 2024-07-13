@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/auth/not_registred_exception.dart';
 
 part 'auth_bloc_event.dart';
 part 'auth_bloc_state.dart';
