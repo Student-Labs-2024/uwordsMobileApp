@@ -35,6 +35,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleRegisterUser(
       _RegisterUser event, Emitter<AuthState> emit) async {
+    _checkEmailAndPassword(
+        emit: emit, email: event.emailAddress, password: event.password);
     emit(const AuthState.waitingAnswer());
     bool isSuccessRegister = await userRepository.registerUser(
         emailAddress: event.emailAddress, password: event.password);
@@ -47,6 +49,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithMailPassword(
       _SignInWithMailPassword event, Emitter<AuthState> emit) async {
+    _checkEmailAndPassword(
+        emit: emit, email: event.emailAddress, password: event.password);
     auth.signOut();
     vk.logOut();
     emit(const AuthState.waitingAnswer());
@@ -171,6 +175,41 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         case UnknownApiException():
           emit(const AuthState.unknownError());
       }
+    }
+  }
+
+  bool _isCorrectPassword({required String password}) {
+    bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
+    bool hasLowercase = password.contains(RegExp(r'[a-z]'));
+    bool hasDigits = password.contains(RegExp(r'[0-9]'));
+    bool hasSpecialCharacters =
+        password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+    bool hasMinLength = password.length > 8;
+    bool hasNotcyrillicCharacters = !password.contains(RegExp(r'[а-яА-Я]'));
+
+    return hasLowercase &&
+        hasUppercase &&
+        hasDigits &&
+        hasSpecialCharacters &&
+        hasMinLength &&
+        hasNotcyrillicCharacters;
+  }
+
+  bool _isCorrectEmail({required String email}) {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(email);
+  }
+
+  void _checkEmailAndPassword(
+      {required Emitter<AuthState> emit,
+      required String email,
+      required String password}) {
+    if (_isCorrectEmail(email: email) == false) {
+      emit(const AuthState.notValidMail());
+    }
+    if (_isCorrectPassword(password: password) == false) {
+      emit(const AuthState.badPassword());
     }
   }
 }
