@@ -33,7 +33,7 @@ class _AuthPageState extends State<AuthPage> {
             }, registred: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Вы были успешно зарегестрированы")));
-            }, failedRegisteration: () {
+            }, failedRegistration: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Регистрация завершена с ошибкой")));
             }, failedSignIn: () {
