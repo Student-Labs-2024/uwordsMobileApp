@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
 import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
-import 'package:uwords/features/auth/not_registred_exception.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
   static Dio dio = Dio();
