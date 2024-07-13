@@ -17,3 +17,13 @@ class OldAccessException implements Exception {
   String message;
   OldAccessException({this.message = ""});
 }
+
+class AccessIsBannedException implements Exception {
+  String message;
+  AccessIsBannedException({this.message = ""});
+}
+
+class UnknownApiException implements Exception{
+  String message;
+  UnknownApiException({this.message = ""});
+}

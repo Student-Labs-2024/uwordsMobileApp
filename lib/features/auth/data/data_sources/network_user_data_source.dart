@@ -31,13 +31,20 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       );
     } on DioException catch (e) {
       if (e.response != null) {
-        if (e.response!.statusCode == 404) {
-          throw NotRegisteredException();
+        switch (e.response!.statusCode) {
+          case 400:
+            throw NotValidDataForLoginException();
+          case 401:
+            throw NotAuthorizedException();
+          case 403:
+            throw AccessIsBannedException();
+          case 404:
+            throw NotRegisteredException();
+          default:
+            break;
         }
-        else{rethrow;}
-      } else {
-        rethrow;
       }
+      rethrow;
     }
   }
 
