@@ -16,7 +16,7 @@ class UserRepository implements IUserRepository {
       required this.savableUserDataSource});
 
   @override
-  Future<bool> authorizate(
+  Future<void> authorizate(
       {required String emailAddress,
       required password,
       required String provider}) async {
@@ -24,9 +24,8 @@ class UserRepository implements IUserRepository {
       UserAuthDto user = await networkUserDataSource.authorizate(
           userEmail: emailAddress, password: password, provider: provider);
       _saveUser(userDto: user);
-      return true;
-    } on NotRegisteredException catch (e) {
-      return false;
+    } on Exception {
+      rethrow;
     }
   }
 

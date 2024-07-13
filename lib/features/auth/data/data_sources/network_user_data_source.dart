@@ -34,8 +34,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         switch (e.response!.statusCode) {
           case 400:
             throw NotValidDataForLoginException();
-          case 401:
-            throw NotAuthorizedException();
           case 403:
             throw AccessIsBannedException();
           case 404:

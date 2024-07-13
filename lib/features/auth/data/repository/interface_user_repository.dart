@@ -3,7 +3,7 @@ abstract interface class IUserRepository {
   Future<bool> registerUser(
       {required String emailAddress, required String password});
   Future<String> refreshAccessToken();
-  Future<bool> authorizate(
+  Future<void> authorizate(
       {required String emailAddress,
       required String password,
       required String provider});

@@ -863,7 +863,11 @@ mixin _$AuthState {
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -873,7 +877,11 @@ mixin _$AuthState {
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -883,7 +891,11 @@ mixin _$AuthState {
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -894,8 +906,12 @@ mixin _$AuthState {
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -905,7 +921,11 @@ mixin _$AuthState {
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -915,7 +935,11 @@ mixin _$AuthState {
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -987,7 +1011,11 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) {
     return initial();
   }
@@ -1000,7 +1028,11 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) {
     return initial?.call();
   }
@@ -1013,7 +1045,11 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1030,8 +1066,12 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) {
     return initial(this);
   }
@@ -1044,7 +1084,11 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) {
     return initial?.call(this);
   }
@@ -1057,7 +1101,11 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1122,7 +1170,11 @@ class _$AuthWaitingAnswerImpl
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) {
     return waitingAnswer();
   }
@@ -1135,7 +1187,11 @@ class _$AuthWaitingAnswerImpl
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) {
     return waitingAnswer?.call();
   }
@@ -1148,7 +1204,11 @@ class _$AuthWaitingAnswerImpl
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) {
     if (waitingAnswer != null) {
@@ -1165,8 +1225,12 @@ class _$AuthWaitingAnswerImpl
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) {
     return waitingAnswer(this);
   }
@@ -1179,7 +1243,11 @@ class _$AuthWaitingAnswerImpl
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) {
     return waitingAnswer?.call(this);
   }
@@ -1192,7 +1260,11 @@ class _$AuthWaitingAnswerImpl
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (waitingAnswer != null) {
@@ -1257,7 +1329,11 @@ class _$AuthRegisteredImpl
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) {
     return registred();
   }
@@ -1270,7 +1346,11 @@ class _$AuthRegisteredImpl
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) {
     return registred?.call();
   }
@@ -1283,7 +1363,11 @@ class _$AuthRegisteredImpl
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) {
     if (registred != null) {
@@ -1300,8 +1384,12 @@ class _$AuthRegisteredImpl
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) {
     return registred(this);
   }
@@ -1314,7 +1402,11 @@ class _$AuthRegisteredImpl
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) {
     return registred?.call(this);
   }
@@ -1327,7 +1419,11 @@ class _$AuthRegisteredImpl
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (registred != null) {
@@ -1392,7 +1488,11 @@ class _$AuthAuthorisedImpl
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) {
     return authorized();
   }
@@ -1405,7 +1505,11 @@ class _$AuthAuthorisedImpl
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) {
     return authorized?.call();
   }
@@ -1418,7 +1522,11 @@ class _$AuthAuthorisedImpl
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -1435,8 +1543,12 @@ class _$AuthAuthorisedImpl
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) {
     return authorized(this);
   }
@@ -1449,7 +1561,11 @@ class _$AuthAuthorisedImpl
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) {
     return authorized?.call(this);
   }
@@ -1462,7 +1578,11 @@ class _$AuthAuthorisedImpl
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (authorized != null) {
@@ -1527,7 +1647,11 @@ class _$AuthFailedSignInImpl
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) {
     return failedSignIn();
   }
@@ -1540,7 +1664,11 @@ class _$AuthFailedSignInImpl
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) {
     return failedSignIn?.call();
   }
@@ -1553,7 +1681,11 @@ class _$AuthFailedSignInImpl
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) {
     if (failedSignIn != null) {
@@ -1570,8 +1702,12 @@ class _$AuthFailedSignInImpl
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) {
     return failedSignIn(this);
   }
@@ -1584,7 +1720,11 @@ class _$AuthFailedSignInImpl
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) {
     return failedSignIn?.call(this);
   }
@@ -1597,7 +1737,11 @@ class _$AuthFailedSignInImpl
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
     if (failedSignIn != null) {
@@ -1638,14 +1782,13 @@ class _$AuthFailedRegistrationImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.failedRegisteration()';
+    return 'AuthState.failedRegistration()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'AuthState.failedRegisteration'));
+    properties.add(DiagnosticsProperty('type', 'AuthState.failedRegistration'));
   }
 
   @override
@@ -1666,9 +1809,13 @@ class _$AuthFailedRegistrationImpl
     required TResult Function() registred,
     required TResult Function() authorized,
     required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
   }) {
-    return failedRegisteration();
+    return failedRegistration();
   }
 
   @override
@@ -1679,9 +1826,13 @@ class _$AuthFailedRegistrationImpl
     TResult? Function()? registred,
     TResult? Function()? authorized,
     TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
   }) {
-    return failedRegisteration?.call();
+    return failedRegistration?.call();
   }
 
   @override
@@ -1692,11 +1843,15 @@ class _$AuthFailedRegistrationImpl
     TResult Function()? registred,
     TResult Function()? authorized,
     TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
     required TResult orElse(),
   }) {
-    if (failedRegisteration != null) {
-      return failedRegisteration();
+    if (failedRegistration != null) {
+      return failedRegistration();
     }
     return orElse();
   }
@@ -1709,10 +1864,14 @@ class _$AuthFailedRegistrationImpl
     required TResult Function(_AuthRegistered value) registred,
     required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
   }) {
-    return failedRegisteration(this);
+    return failedRegistration(this);
   }
 
   @override
@@ -1723,9 +1882,13 @@ class _$AuthFailedRegistrationImpl
     TResult? Function(_AuthRegistered value)? registred,
     TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
   }) {
-    return failedRegisteration?.call(this);
+    return failedRegistration?.call(this);
   }
 
   @override
@@ -1736,11 +1899,15 @@ class _$AuthFailedRegistrationImpl
     TResult Function(_AuthRegistered value)? registred,
     TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
     required TResult orElse(),
   }) {
-    if (failedRegisteration != null) {
-      return failedRegisteration(this);
+    if (failedRegistration != null) {
+      return failedRegistration(this);
     }
     return orElse();
   }
@@ -1748,4 +1915,643 @@ class _$AuthFailedRegistrationImpl
 
 abstract class _AuthFailedRegistration implements AuthState {
   const factory _AuthFailedRegistration() = _$AuthFailedRegistrationImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthNotValidMailImplCopyWith<$Res> {
+  factory _$$AuthNotValidMailImplCopyWith(_$AuthNotValidMailImpl value,
+          $Res Function(_$AuthNotValidMailImpl) then) =
+      __$$AuthNotValidMailImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthNotValidMailImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthNotValidMailImpl>
+    implements _$$AuthNotValidMailImplCopyWith<$Res> {
+  __$$AuthNotValidMailImplCopyWithImpl(_$AuthNotValidMailImpl _value,
+      $Res Function(_$AuthNotValidMailImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthNotValidMailImpl
+    with DiagnosticableTreeMixin
+    implements _AuthNotValidMail {
+  const _$AuthNotValidMailImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.notValidMail()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.notValidMail'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AuthNotValidMailImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() waitingAnswer,
+    required TResult Function() registred,
+    required TResult Function() authorized,
+    required TResult Function() failedSignIn,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
+  }) {
+    return notValidMail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? waitingAnswer,
+    TResult? Function()? registred,
+    TResult? Function()? authorized,
+    TResult? Function()? failedSignIn,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
+  }) {
+    return notValidMail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? waitingAnswer,
+    TResult Function()? registred,
+    TResult Function()? authorized,
+    TResult Function()? failedSignIn,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
+    required TResult orElse(),
+  }) {
+    if (notValidMail != null) {
+      return notValidMail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthRegistered value) registred,
+    required TResult Function(_AuthAuthorised value) authorized,
+    required TResult Function(_AuthFailedSignIn value) failedSignIn,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
+  }) {
+    return notValidMail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthRegistered value)? registred,
+    TResult? Function(_AuthAuthorised value)? authorized,
+    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
+  }) {
+    return notValidMail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthRegistered value)? registred,
+    TResult Function(_AuthAuthorised value)? authorized,
+    TResult Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (notValidMail != null) {
+      return notValidMail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthNotValidMail implements AuthState {
+  const factory _AuthNotValidMail() = _$AuthNotValidMailImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthFailedAuthorizationImplCopyWith<$Res> {
+  factory _$$AuthFailedAuthorizationImplCopyWith(
+          _$AuthFailedAuthorizationImpl value,
+          $Res Function(_$AuthFailedAuthorizationImpl) then) =
+      __$$AuthFailedAuthorizationImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthFailedAuthorizationImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthFailedAuthorizationImpl>
+    implements _$$AuthFailedAuthorizationImplCopyWith<$Res> {
+  __$$AuthFailedAuthorizationImplCopyWithImpl(
+      _$AuthFailedAuthorizationImpl _value,
+      $Res Function(_$AuthFailedAuthorizationImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthFailedAuthorizationImpl
+    with DiagnosticableTreeMixin
+    implements _AuthFailedAuthorization {
+  const _$AuthFailedAuthorizationImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.failedAutorization()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.failedAutorization'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthFailedAuthorizationImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() waitingAnswer,
+    required TResult Function() registred,
+    required TResult Function() authorized,
+    required TResult Function() failedSignIn,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
+  }) {
+    return failedAutorization();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? waitingAnswer,
+    TResult? Function()? registred,
+    TResult? Function()? authorized,
+    TResult? Function()? failedSignIn,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
+  }) {
+    return failedAutorization?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? waitingAnswer,
+    TResult Function()? registred,
+    TResult Function()? authorized,
+    TResult Function()? failedSignIn,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
+    required TResult orElse(),
+  }) {
+    if (failedAutorization != null) {
+      return failedAutorization();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthRegistered value) registred,
+    required TResult Function(_AuthAuthorised value) authorized,
+    required TResult Function(_AuthFailedSignIn value) failedSignIn,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
+  }) {
+    return failedAutorization(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthRegistered value)? registred,
+    TResult? Function(_AuthAuthorised value)? authorized,
+    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
+  }) {
+    return failedAutorization?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthRegistered value)? registred,
+    TResult Function(_AuthAuthorised value)? authorized,
+    TResult Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (failedAutorization != null) {
+      return failedAutorization(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthFailedAuthorization implements AuthState {
+  const factory _AuthFailedAuthorization() = _$AuthFailedAuthorizationImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthBadPasswordImplCopyWith<$Res> {
+  factory _$$AuthBadPasswordImplCopyWith(_$AuthBadPasswordImpl value,
+          $Res Function(_$AuthBadPasswordImpl) then) =
+      __$$AuthBadPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthBadPasswordImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthBadPasswordImpl>
+    implements _$$AuthBadPasswordImplCopyWith<$Res> {
+  __$$AuthBadPasswordImplCopyWithImpl(
+      _$AuthBadPasswordImpl _value, $Res Function(_$AuthBadPasswordImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthBadPasswordImpl
+    with DiagnosticableTreeMixin
+    implements _AuthBadPassword {
+  const _$AuthBadPasswordImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.badPassword()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.badPassword'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AuthBadPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() waitingAnswer,
+    required TResult Function() registred,
+    required TResult Function() authorized,
+    required TResult Function() failedSignIn,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
+  }) {
+    return badPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? waitingAnswer,
+    TResult? Function()? registred,
+    TResult? Function()? authorized,
+    TResult? Function()? failedSignIn,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
+  }) {
+    return badPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? waitingAnswer,
+    TResult Function()? registred,
+    TResult Function()? authorized,
+    TResult Function()? failedSignIn,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
+    required TResult orElse(),
+  }) {
+    if (badPassword != null) {
+      return badPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthRegistered value) registred,
+    required TResult Function(_AuthAuthorised value) authorized,
+    required TResult Function(_AuthFailedSignIn value) failedSignIn,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
+  }) {
+    return badPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthRegistered value)? registred,
+    TResult? Function(_AuthAuthorised value)? authorized,
+    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
+  }) {
+    return badPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthRegistered value)? registred,
+    TResult Function(_AuthAuthorised value)? authorized,
+    TResult Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (badPassword != null) {
+      return badPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthBadPassword implements AuthState {
+  const factory _AuthBadPassword() = _$AuthBadPasswordImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthUnknownErrorImplCopyWith<$Res> {
+  factory _$$AuthUnknownErrorImplCopyWith(_$AuthUnknownErrorImpl value,
+          $Res Function(_$AuthUnknownErrorImpl) then) =
+      __$$AuthUnknownErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthUnknownErrorImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthUnknownErrorImpl>
+    implements _$$AuthUnknownErrorImplCopyWith<$Res> {
+  __$$AuthUnknownErrorImplCopyWithImpl(_$AuthUnknownErrorImpl _value,
+      $Res Function(_$AuthUnknownErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthUnknownErrorImpl
+    with DiagnosticableTreeMixin
+    implements _AuthUnknownError {
+  const _$AuthUnknownErrorImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.unknownError()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.unknownError'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AuthUnknownErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() waitingAnswer,
+    required TResult Function() registred,
+    required TResult Function() authorized,
+    required TResult Function() failedSignIn,
+    required TResult Function() failedRegistration,
+    required TResult Function() notValidMail,
+    required TResult Function() failedAutorization,
+    required TResult Function() badPassword,
+    required TResult Function() unknownError,
+  }) {
+    return unknownError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? waitingAnswer,
+    TResult? Function()? registred,
+    TResult? Function()? authorized,
+    TResult? Function()? failedSignIn,
+    TResult? Function()? failedRegistration,
+    TResult? Function()? notValidMail,
+    TResult? Function()? failedAutorization,
+    TResult? Function()? badPassword,
+    TResult? Function()? unknownError,
+  }) {
+    return unknownError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? waitingAnswer,
+    TResult Function()? registred,
+    TResult Function()? authorized,
+    TResult Function()? failedSignIn,
+    TResult Function()? failedRegistration,
+    TResult Function()? notValidMail,
+    TResult Function()? failedAutorization,
+    TResult Function()? badPassword,
+    TResult Function()? unknownError,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthRegistered value) registred,
+    required TResult Function(_AuthAuthorised value) authorized,
+    required TResult Function(_AuthFailedSignIn value) failedSignIn,
+    required TResult Function(_AuthFailedRegistration value) failedRegistration,
+    required TResult Function(_AuthNotValidMail value) notValidMail,
+    required TResult Function(_AuthFailedAuthorization value)
+        failedAutorization,
+    required TResult Function(_AuthBadPassword value) badPassword,
+    required TResult Function(_AuthUnknownError value) unknownError,
+  }) {
+    return unknownError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthRegistered value)? registred,
+    TResult? Function(_AuthAuthorised value)? authorized,
+    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult? Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult? Function(_AuthNotValidMail value)? notValidMail,
+    TResult? Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult? Function(_AuthBadPassword value)? badPassword,
+    TResult? Function(_AuthUnknownError value)? unknownError,
+  }) {
+    return unknownError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthRegistered value)? registred,
+    TResult Function(_AuthAuthorised value)? authorized,
+    TResult Function(_AuthFailedSignIn value)? failedSignIn,
+    TResult Function(_AuthFailedRegistration value)? failedRegistration,
+    TResult Function(_AuthNotValidMail value)? notValidMail,
+    TResult Function(_AuthFailedAuthorization value)? failedAutorization,
+    TResult Function(_AuthBadPassword value)? badPassword,
+    TResult Function(_AuthUnknownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (unknownError != null) {
+      return unknownError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthUnknownError implements AuthState {
+  const factory _AuthUnknownError() = _$AuthUnknownErrorImpl;
 }
