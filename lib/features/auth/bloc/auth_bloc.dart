@@ -41,7 +41,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (isSuccessRegister) {
       emit(const AuthState.registred());
     } else {
-      emit(const AuthState.failedRegisteration());
+      emit(const AuthState.failedRegistration());
     }
   }
 
@@ -150,18 +150,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await _authorization(emit: emit, provider: provider);
       emit(const AuthState.authorized());
     } else {
-      emit(const AuthState.failedRegisteration());
+      emit(const AuthState.failedRegistration());
     }
   }
 
   Future<void> _authorization(
       {required Emitter<AuthState> emit, required String provider}) async {
-    bool isSuccessAuthorization = await userRepository.authorizate(
-        emailAddress: uEmail, password: providerUid, provider: provider);
-    if (isSuccessAuthorization) {
+    try {
+      await userRepository.authorizate(
+          emailAddress: uEmail, password: providerUid, provider: provider);
       emit(const AuthState.authorized());
-    } else {
-      await _registerAndAuth(emit: emit, provider: provider);
+    } on Exception catch (e) {
+      switch (e.runtimeType) {
+        case NotRegisteredException():
+          await _registerAndAuth(emit: emit, provider: provider);
+        case NotValidDataForLoginException():
+          emit(const AuthState.notValidMail());
+        case AccessIsBannedException():
+          emit(const AuthState.failedAutorization());
+        case UnknownApiException():
+          emit(const AuthState.unknownError());
+      }
     }
   }
 }
