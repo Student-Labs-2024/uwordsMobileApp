@@ -59,6 +59,10 @@ permission_handler
 ### UI
 flutter_inset_shadow
 
+### Локализация
+flutter_localizations
+intl
+
 ### Другое
 build_runner
 build_runner_core
@@ -95,13 +99,4 @@ flutter pub run build_runner build
 4. Для запуска приложения использовать эмулятор или устройства iOS/Android с включенным режимом разработчика и разрешенной откладкой.Чтобы запустить на устройстве стоит воспользоваться командой, выбрав устройство.
 ```
 flutter run
-```
-
-5.1. Для сборки приложения под Android использовать команду:
-```
-flutter build apk --release
-```
-5.2. Для сборки приложения под iOS использовать команду:
-```
-flutter build ipa
 ```
