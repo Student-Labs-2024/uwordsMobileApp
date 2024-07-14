@@ -27,6 +27,7 @@ abstract class AuthClient {
   //   @Header("Authorization") String accessToken,
   // );
 
+  //TODO add update profile request
   // @POST("user/me/update")
   // Future<Response> updateAboutMe(
   //   @Header("Authorization") String accessToken,

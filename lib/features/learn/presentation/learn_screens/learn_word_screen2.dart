@@ -113,8 +113,8 @@ class LearnWordPage2State extends State<LearnWordPage2> {
               child: WordInput(text: answer),
             ),
             Wrap(
-              spacing: 8.0, // Горизонтальный отступ между элементами
-              runSpacing: 8.0, // Вертикальный отступ между строками
+              spacing: 8.0,
+              runSpacing: 8.0,
               children: letters
                   .map((l) =>
                       LetterButton(text: l, onPressed: pressLetterButton))

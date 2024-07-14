@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'word_model_dto.freezed.dart';
 part 'word_model_dto.g.dart';
 
-// DTO (Data Transfer Object)
 @freezed
 class WordModelDto with _$WordModelDto {
   const factory WordModelDto({

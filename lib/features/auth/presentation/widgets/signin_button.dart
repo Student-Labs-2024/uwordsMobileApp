@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/theme/app_colors.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({super.key, required this.img, required this.onPressed});

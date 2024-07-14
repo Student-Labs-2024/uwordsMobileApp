@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
@@ -22,7 +21,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         provider: provider, email: userEmail, password: password);
     try {
       final response = await client.login(jsonEncode(loginRequestBody));
-      debugPrint(response.toString());
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: userEmail,
         password: password,
@@ -33,8 +31,9 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       if (e.response != null) {
         if (e.response!.statusCode == 404) {
           throw NotRegisteredException();
+        } else {
+          rethrow;
         }
-        else{rethrow;}
       } else {
         rethrow;
       }
@@ -43,12 +42,10 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
-    debugPrint(userDto.accessToken);
     Map<String, String> newAccessToken =
         await client.refresh("Bearer ${userDto.refreshToken}");
     userDto.changeAccessToken(
         newAccessToken: newAccessToken['access_token'] ?? '');
-    debugPrint(newAccessToken.toString());
     return userDto;
   }
 

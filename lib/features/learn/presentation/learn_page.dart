@@ -14,14 +14,11 @@ class LearnPage extends StatefulWidget {
 
 class _LearnPageState extends State<LearnPage> {
   startTraining() {
-    //что-то делает
-    debugPrint('Нажал большую кнопку!!!');
   }
 
   @override
   void initState() {
     super.initState();
-    //context.read<LearningBloc>().add(const LearningEvent.getWordsForStudy());
   }
 
   @override
@@ -38,9 +35,9 @@ class _LearnPageState extends State<LearnPage> {
                 Expanded(
                   child: ListView.separated(
                     separatorBuilder: (context, _) => const SizedBox(height: 4),
-                    itemCount: state.words.length, //exampleData.length,
+                    itemCount: state.words.length,
                     itemBuilder: (context, index) => WordTile(
-                      data: state.words[index], //exampleData[index],
+                      data: state.words[index],
                       checked: false,
                       onPressed: () => GoRouter.of(context).go(
                         "/learn/screen1",

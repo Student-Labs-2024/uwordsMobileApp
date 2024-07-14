@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/not_registred_exception.dart';
@@ -81,20 +80,16 @@ class UserRepository implements IUserRepository {
 
   void _saveUser({required UserAuthDto userDto}) async {
     await savableUserDataSource.saveUser(userDto: userDto);
-    debugPrint("------------------------");
-    savableUserDataSource.printAllDatabase();
   }
 
   @override
   Future<String> getCurrentUserAccessToken() async {
     UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    debugPrint(currentUser.accessToken);
     return currentUser.accessToken;
   }
 
   @override
   void localLogOut() async {
-    debugPrint(savableUserDataSource.getCurrent().toString());
     await savableUserDataSource.noneIsCurrent();
   }
 }
