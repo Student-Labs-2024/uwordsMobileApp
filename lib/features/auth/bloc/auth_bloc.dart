@@ -33,28 +33,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleRegisterUser(
       _RegisterUser event, Emitter<AuthState> emit) async {
-    _checkEmailAndPassword(
-        emit: emit, email: event.emailAddress, password: event.password);
-    emit(const AuthState.waitingAnswer());
-    bool isSuccessRegister = await userRepository.registerUser(
-        emailAddress: event.emailAddress, password: event.password);
-    if (isSuccessRegister) {
-      emit(const AuthState.registred());
+    if (_checkEmailAndPassword(
+        emit: emit, email: event.emailAddress, password: event.password)) {
+      emit(const AuthState.waitingAnswer());
+      bool isSuccessRegister = await userRepository.registerUser(
+          emailAddress: event.emailAddress, password: event.password);
+      if (isSuccessRegister) {
+        emit(const AuthState.registred());
+      } else {
+        emit(const AuthState.failedRegistration());
+      }
     } else {
-      emit(const AuthState.failedRegistration());
+      emit(const AuthState.initial());
     }
   }
 
   Future<void> _handleSignInWithMailPassword(
       _SignInWithMailPassword event, Emitter<AuthState> emit) async {
-    _checkEmailAndPassword(
-        emit: emit, email: event.emailAddress, password: event.password);
-    auth.signOut();
-    vk.logOut();
-    emit(const AuthState.waitingAnswer());
-    uEmail = event.emailAddress;
-    providerUid = event.password;
-    await _authorization(emit: emit, provider: "self");
+    if (_checkEmailAndPassword(
+        emit: emit, email: event.emailAddress, password: event.password)) {
+      auth.signOut();
+      vk.logOut();
+      emit(const AuthState.waitingAnswer());
+      uEmail = event.emailAddress;
+      providerUid = event.password;
+      await _authorization(emit: emit, provider: "self");
+    } else {
+      emit(const AuthState.initial());
+    }
   }
 
   Future<void> _handleSignInWithVK(
@@ -153,6 +159,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(const AuthState.authorized());
     } else {
       emit(const AuthState.failedRegistration());
+      await Future.delayed(const Duration(milliseconds: 1500));
+      emit(const AuthState.initial());
     }
   }
 
@@ -170,6 +178,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(const AuthState.notValidMail());
         case AccessIsBannedException():
           emit(const AuthState.failedAutorization());
+          await Future.delayed(const Duration(milliseconds: 1500));
+          emit(const AuthState.initial());
         case UnknownApiException():
           emit(const AuthState.unknownError());
       }
@@ -199,15 +209,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         .hasMatch(email);
   }
 
-  void _checkEmailAndPassword(
+  bool _checkEmailAndPassword(
       {required Emitter<AuthState> emit,
       required String email,
       required String password}) {
     if (_isCorrectEmail(email: email) == false) {
       emit(const AuthState.notValidMail());
+      return false;
     }
     if (_isCorrectPassword(password: password) == false) {
       emit(const AuthState.badPassword());
+      return false;
     }
+    return true;
   }
 }
