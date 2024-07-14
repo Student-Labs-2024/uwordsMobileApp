@@ -31,13 +31,22 @@ class _AuthPageState extends State<AuthPage> {
               context.go("/home");
             }, registred: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Вы были успешно зарегестрированы")));
+                  content: Text("Вы были успешно зарегистрированы")));
             }, failedRegistration: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Регистрация завершена с ошибкой")));
             }, failedSignIn: () {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Не удалось выполнить вход")));
+            }, badPassword: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Пароль некорректный")));
+            }, failedAutorization: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Ошибка авторизации")));
+            }, notValidMail: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Почта некорректна")));
             });
           },
           builder: (context, state) {
