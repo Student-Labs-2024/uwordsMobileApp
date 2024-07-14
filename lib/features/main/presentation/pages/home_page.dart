@@ -29,24 +29,30 @@ class _HomePageState extends State<HomePage> {
         ),
         child: BlocConsumer<AudioBloc, AudioState>(
           listener: (context, state) {
-            state.whenOrNull(initial: () {
-              debugPrint("Initial");
-            }, started: () {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text("Запись начата")));
-            }, stopped: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Запись закончена")));
-            }, failed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Произошла некоторая ошибка")));
-            }, sended: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Медиа отправлено")));
-            }, notValidLink: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Не валидная ссылка")));
-            },
+            state.whenOrNull(
+              initial: () {
+                debugPrint("Initial");
+              },
+              started: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Запись начата")));
+              },
+              stopped: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Запись закончена")));
+              },
+              failed: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Произошла некоторая ошибка")));
+              },
+              sended: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Медиа отправлено")));
+              },
+              notValidLink: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Не валидная ссылка")));
+              },
             );
           },
           builder: (BuildContext context, AudioState state) {
@@ -78,7 +84,10 @@ class _HomePageState extends State<HomePage> {
                                     child: CustomTextField(
                                       controller: textEditingController,
                                       hintText: "Ссылка на видео",
-                                      isError: false,
+                                      isError: state.maybeWhen(
+                                        notValidLink: () => true,
+                                        orElse: () => false,
+                                      ),
                                       errorMessage: 'Неверный формат',
                                     )),
                               ),
@@ -165,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                                 ));
                           }),
                       const SizedBox(
-                        height: 95.5,
+                        height: 32 + 44 + 6 + 9.75,
                       ),
                     ],
                   )

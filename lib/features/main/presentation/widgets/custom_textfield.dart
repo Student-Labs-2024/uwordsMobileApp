@@ -61,10 +61,10 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 6,
+          height: 2,
         ),
         isError
-            ? Row(children: [
+            ? Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                 SvgPicture.asset(
                   'assets/svg/error_ico.svg',
                   color: AppColors.errorColor,
@@ -73,17 +73,20 @@ class CustomTextField extends StatelessWidget {
                 SizedBox(
                   width: 2,
                 ),
-                Text(
-                  errorMessage,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.errorColor,
+                SizedBox(
+                  height: 14,
+                  child: Text(
+                    errorMessage,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.errorColor,
+                    ),
                   ),
                 )
               ])
             : SizedBox(
-                height: 9.75,
+                height: 14,
               )
       ],
     );

@@ -18,6 +18,7 @@ part 'audio_event.dart';
 
 class AudioBloc extends Bloc<AudioEvent, AudioState> {
   late FlutterSoundRecorder recorder;
+  //final FlutterSoundRecorder _recorder = FlutterSoundRecorder();
   Timer? _timer;
   int _time = 0;
   String _audioPath = "";
@@ -34,7 +35,7 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
   Future<void> _handleStartRecord(
       _StartRecord event, Emitter<AudioState> emit) async {
     try {
-      _requestPermission();
+      await _requestPermission();
       await _initRecorder();
       Directory appDocDirectory;
       if (Platform.isIOS) {
@@ -45,6 +46,7 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
       _audioPath =
           "${appDocDirectory.path}/audio_records${DateTime.now().millisecondsSinceEpoch}";
       await recorder.startRecorder(toFile: _audioPath);
+      //await _recorder.startRecorder(toFile: _audioPath);
       emit(const AudioState.started());
     } catch (e) {
       log(e.toString());
@@ -54,8 +56,9 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
 
   Future<void> _handleStopRecord(
       _StopRecord event, Emitter<AudioState> emit) async {
-    var path = await recorder.stopRecorder();
-    String? audioPath = path.toString();
+    String? path = await recorder.stopRecorder();
+    //String? path = await _recorder.stopRecorder();
+    String audioPath = path.toString();
     if (audioPath.isNotEmpty) {
       _timer?.cancel();
       emit(const AudioState.stopped());
@@ -66,9 +69,15 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
       } on DioException catch (e) {
         log(e.toString());
         emit(const AudioState.failed());
+        emit(const AudioState.initial());
       }
     }
-    _closeRecorder();
+    try {
+      await recorder.closeRecorder();
+      //await _recorder.closeRecorder();
+    } catch (e) {
+      log(e.toString());
+    }
   }
 
   Future<void> _handleSendLink(
@@ -98,11 +107,8 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
     debugPrint("Timer");
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) => _time++);
     recorder = (await FlutterSoundRecorder().openRecorder())!;
+    //_recorder.openRecorder();
     debugPrint("Started");
-  }
-
-  void _closeRecorder() {
-    recorder.closeRecorder();
   }
 
   Future<void> _sendFile(String audioPath) async {

@@ -23,7 +23,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
         widget.child,
         Positioned(
           bottom: 16,
-          left: MediaQuery.of(context).size.width * 0.07,
+          left: (MediaQuery.of(context).size.width) * 24 / 375,
           child: GoRouter.of(context)
                       .routeInformationProvider
                       .value
@@ -32,7 +32,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                   "/"
               ? SizedBox()
               : Container(
-                  width: MediaQuery.of(context).size.width * 0.86,
+                  width: (MediaQuery.of(context).size.width) * 327 / 375,
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: const fis.BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -87,7 +87,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       IconButton(
                           onPressed: () => pushAtIndex(2, context),
                           icon: Image.asset(
-                            'assets/png/bub_but2x.png',
+                            'assets/png/nav_bubble_ico.png',
                             height: 54,
                           )),
                       IconButton(
