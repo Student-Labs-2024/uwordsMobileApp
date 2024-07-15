@@ -105,3 +105,7 @@ flutter run
 Android >= 5.0, iOS >= 12.0.
 Поддержка планшетов и горизонтального положения не предусмотрена. 
 Поскольку мы пользуемся адаптивной вёрсткой, вне зависимости от того, какое разрешение на телефоне, оно будет открываться и просматриваться корректно. В нашем случае, отображение будет проверяться на таких устройствах, как iPhone моделей XR и 11, Realme Narzo 30, Honor 20 Pro, POCO M6 Pro, Realme c31, а также F+ R5070E с ОС Аврора
+
+## Артефакты
+[ADR](https://docs.google.com/document/d/1oXmRUf9dTUVvZbqXc11qJrXbJp27Sv582Gu1IRCFW0g/edit?usp=sharing)
+[C4](https://drive.google.com/file/d/1zznv_2it8DJi6eyWcoXtJz3KLtCwG-dH/view?usp=sharing)
