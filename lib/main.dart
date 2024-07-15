@@ -155,9 +155,7 @@ class MainApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: const [
-            Locale('ru'),
-          ],
+          supportedLocales: AppLocalizations.supportedLocales,
           routerConfig: _goRouter,
         ),
       ),
