@@ -1,20 +1,20 @@
 # uwords
-Кросплатформенное приложение для изучения языков
+Cross-platform language learning application
 
-## Особенности
-- Онбординг: Введение в приложение для новых пользователей
+## Features
+- Onboarding: An introduction to the app for new users
 
-- Система обучения: Различные упраженения для изучения слов.
+- Learning system: Various exercises for learning words.
 
-- Анализ аудио: Возможность составить список слов для изучения на основе любой записи, предоставленной пользователем.
+- Audio analysis: The ability to make a list of words to study based on any recording provided by the user.
 
-- Авторизация: Авторизация через Google и vk/почту
+- Authorization: Authorization via Google and vk/mail
 
-- Личный кабинет: Удобный интерфейс для получения статистики по изученным словам.
+- Personal account: A user-friendly interface for obtaining statistics on the studied words.
 
-- Геймификация: Разнообразные достижения за прогресс пользователя.
+- Gamification: A variety of achievements for the user's progress.
 
-- Система подписки: Безопасная оплата заказов через встроенные платежные системы.
+- Subscription system: Secure payment for orders via built-in payment systems.
 
 ## Stack
 Flutter
@@ -25,87 +25,88 @@ Firebase
 ### State-management
 Bloc
 
-### Работа с сетью
+### Network
 Dio
 
-### Кодогенерация
+### Code generation
 Retrofit
 Freezed
 
-### Навигация
+### Navigation
 go_router
 
-### Авторизация
+### Authorization
 firebase_core
 firebase_auth
 flutter_login_vk
 
-### Файлы
+### Files
 path_provider
-shared_preferences
+shared_preferences 
 path
 
-### База данных
+
+### Database
 drift
 sqlite3
-sqlite3_flutter_libs
+sqlite3_flutter_libs database
 
-### Аудио
+### Audio
 flutter_sound
 
-### Разрешения
+### Permissions
 permission_handler
 
 ### UI
 flutter_inset_shadow
 
-### Локализация
+### Localization
 flutter_localizations
 intl
 
-### Другое
+### Other
 build_runner
 build_runner_core
 json_annotation
 json_serializable
 jwt_decoder
 
-## Инструкция по запуску
-1. Получить у авторов проекта следующие файлы:
+## Launch Instructions
+1. Get the following files from the authors of the project:
 - google-services.json
 - GoogleService-Info.plist
 - env.dart
 - strings.xml
 
-И расположить по следующим директориям:
-env.dart в lib/
+And place it in the following directories:
+env.dart in lib/
 
-google-services.json в android/app/
-strings.xml в android/app/src/main/res/values/
+google-services.json in android/app/
+strings.xml in android/app/src/main/res/values/
 
-GoogleService-Info.plist в ios/Runner/
+GoogleService-Info.plist in ios/Runner/
 
-2. В исходной папке проекта ввести команду
+2. In the source folder of the project, enter the command
 
 ```
 flutter pub get
 ```
 
-3. Перегенирировать файлы, связанные с кодогенерацией
+3. Regenerate files related to code generation
 ```
 flutter pub run build_runner build
 ```
 
-4. Для запуска приложения использовать эмулятор или устройства iOS/Android с включенным режимом разработчика и разрешенной откладкой.Чтобы запустить на устройстве стоит воспользоваться командой, выбрав устройство.
+4. To launch the application, use an emulator or an iOS/Android device with developer mode enabled and allowed postponement.To run on the device, you should use the command by selecting the device.
 ```
 flutter run
 ```
 
 ## Suppported platforms
 Android >= 5.0, iOS >= 12.0.
-Поддержка планшетов и горизонтального положения не предусмотрена. 
-Поскольку мы пользуемся адаптивной вёрсткой, вне зависимости от того, какое разрешение на телефоне, оно будет открываться и просматриваться корректно. В нашем случае, отображение будет проверяться на таких устройствах, как iPhone моделей XR и 11, Realme Narzo 30, Honor 20 Pro, POCO M6 Pro, Realme c31, а также F+ R5070E с ОС Аврора
+Support for tablets and horizontal position is not provided. 
+Since we use adaptive layout, regardless of what resolution is on the phone, it will open and view correctly. In our case, the display will be checked on devices such as iPhone models XR and 11, Realme Narzo 30, Honor 20 Pro, POCO M6 Pro, Realme c31, as well as F+ R5070E with Aurora OS
 
-## Артефакты
+## Artifacts
 [ADR](https://docs.google.com/document/d/1oXmRUf9dTUVvZbqXc11qJrXbJp27Sv582Gu1IRCFW0g/edit?usp=sharing)
 [C4](https://drive.google.com/file/d/1zznv_2it8DJi6eyWcoXtJz3KLtCwG-dH/view?usp=sharing)
