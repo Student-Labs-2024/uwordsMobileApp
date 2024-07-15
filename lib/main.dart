@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
@@ -31,9 +29,10 @@ import 'package:uwords/features/main/data/data_sources/iterface_audio_datasource
 import 'package:uwords/features/main/presentation/pages/home_page.dart';
 import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
-
 import 'features/learn/presentation/learn_screens/learn_word_screen4.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -150,6 +149,13 @@ class MainApp extends StatelessWidget {
                   userRepository: context.read<IUserRepository>()))
         ],
         child: MaterialApp.router(
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
           routerConfig: _goRouter,
         ),
       ),

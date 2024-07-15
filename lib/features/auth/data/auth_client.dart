@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:uwords/env.dart';
 
 part 'auth_client.g.dart';
 
-@RestApi(baseUrl: "https://app.big-nose.ru/api/")
+@RestApi(baseUrl: anotherBaseUrl)
 abstract class AuthClient {
   factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
@@ -26,6 +27,7 @@ abstract class AuthClient {
   //   @Header("Authorization") String accessToken,
   // );
 
+  //TODO add update profile request
   // @POST("user/me/update")
   // Future<Response> updateAboutMe(
   //   @Header("Authorization") String accessToken,

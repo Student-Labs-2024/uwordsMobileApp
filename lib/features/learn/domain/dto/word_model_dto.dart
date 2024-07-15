@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uwords/env.dart';
 
 part 'word_model_dto.freezed.dart';
 part 'word_model_dto.g.dart';
 
-// DTO (Data Transfer Object)
 @freezed
 class WordModelDto with _$WordModelDto {
   const factory WordModelDto({
@@ -11,14 +11,9 @@ class WordModelDto with _$WordModelDto {
     @JsonKey(name: "category", defaultValue: null) required dynamic category,
     @JsonKey(name: "enValue", defaultValue: "Error") required String enValue,
     @JsonKey(name: "ruValue", defaultValue: "Ошибка") required String ruValue,
-    @JsonKey(
-        name: "audioLink",
-        defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
+    @JsonKey(name: "audioLink", defaultValue: voiceOverLink)
     required String audioLink,
-    @JsonKey(
-        name: "pictureLink",
-        defaultValue:
-            "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+    @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
     required String pictureLink,
   }) = _WordModelDto;
 

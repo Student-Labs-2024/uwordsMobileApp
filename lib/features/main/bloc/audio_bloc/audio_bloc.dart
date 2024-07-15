@@ -95,10 +95,8 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
   }
 
   Future<void> _initRecorder() async {
-    debugPrint("Timer");
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) => _time++);
     recorder = (await FlutterSoundRecorder().openRecorder())!;
-    debugPrint("Started");
   }
 
   void _closeRecorder() {
@@ -107,7 +105,6 @@ class AudioBloc extends Bloc<AudioEvent, AudioState> {
 
   Future<void> _sendFile(String audioPath) async {
     String accessToken = await userRepository.getCurrentUserAccessToken();
-    debugPrint(accessToken);
     await checkTokenExpirationAndUpdateIfNeed(
         accessToken: accessToken, userRepository: userRepository);
     await audioRepository.sendFile(

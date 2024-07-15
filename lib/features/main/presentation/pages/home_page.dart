@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
         child: BlocConsumer<AudioBloc, AudioState>(
           listener: (context, state) {
             state.whenOrNull(initial: () {
-              debugPrint("Initial");
             }, started: () {
               ScaffoldMessenger.of(context)
                   .showSnackBar(const SnackBar(content: Text("Запись начата")));
