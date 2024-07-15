@@ -1,0 +1,14 @@
+{
+  "@@locale": "ru",
+  "appTitle": "uwords",
+  "videoLink": "Ссылка на видео",
+  "unknowError": "Неизвестная ошибка",
+  "allowUseMicrophone": "Разрешите использование микрофона",
+  "mediaSent": "Медиа отправлено",
+  "press": "Нажмите",
+  "toStopRecording": "чтобы остановить запись",
+  "toStartRecording": "чтобы начать запись",
+  "unknownDioError": "Ошибка соединения с сервером",
+  "lostFilePath": "Путь к файлу утерян",
+  "invalidLink": "Невалидная ссылка"
+}

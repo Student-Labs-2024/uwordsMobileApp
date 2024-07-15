@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
+import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
@@ -36,12 +36,19 @@ import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'features/learn/presentation/learn_screens/learn_word_screen4.dart';
 import 'firebase_options.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(MainApp());
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    runApp(MainApp());
+  }, (error, stack) async {
+    log(error.toString(), name: 'App Error', stackTrace: stack);
+  });
 }
 
 final _shellNavKey = GlobalKey<NavigatorState>();
@@ -155,6 +162,13 @@ class MainApp extends StatelessWidget {
                   userRepository: context.read<IUserRepository>()))
         ],
         child: MaterialApp.router(
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
           routerConfig: _goRouter,
         ),
       ),

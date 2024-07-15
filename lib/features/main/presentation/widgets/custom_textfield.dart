@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uwords/features/main/data/constants/box_shadows.dart';
+import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
+import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 
@@ -22,31 +25,13 @@ class CustomTextField extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 44,
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          height: HomePageComponentSizes.linkTextFieldHeight,
+          padding: const EdgeInsets.symmetric(
+              horizontal: HomePagePaddings.baseHorizontal),
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                fis.BoxShadow(
-                    color: Color.fromRGBO(97, 120, 201, 0.26),
-                    spreadRadius: 0,
-                    blurRadius: 76,
-                    offset: Offset(4, 4),
-                    inset: false),
-                fis.BoxShadow(
-                    color: Color.fromRGBO(255, 255, 255, 0.08),
-                    spreadRadius: 0,
-                    blurRadius: 16,
-                    offset: Offset(2, 2),
-                    inset: false),
-                fis.BoxShadow(
-                    color: Color.fromRGBO(255, 255, 255, 0.1),
-                    spreadRadius: 0,
-                    blurRadius: 80,
-                    offset: Offset(2, 2),
-                    inset: true),
-              ]),
+              boxShadow: MainBoxShadows.sendLink),
           child: TextField(
             controller: controller,
             cursorColor: Colors.purple,
@@ -60,24 +45,24 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-          height: 2,
+        const SizedBox(
+          height: HomePageComponentSizes.linkTextFieldSpacing,
         ),
         isError
             ? Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                 SvgPicture.asset(
                   'assets/svg/error_ico.svg',
                   color: AppColors.errorColor,
-                  height: 9.75,
+                  height: HomePageComponentSizes.linkTextFieldSpacing,
+                ),
+                const SizedBox(
+                  width: HomePageComponentSizes.linkTextFieldIconSize,
                 ),
                 SizedBox(
-                  width: 2,
-                ),
-                SizedBox(
-                  height: 14,
+                  height: HomePageComponentSizes.linkTextFieldErrorHeight,
                   child: Text(
                     errorMessage,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: AppColors.errorColor,
@@ -85,8 +70,8 @@ class CustomTextField extends StatelessWidget {
                   ),
                 )
               ])
-            : SizedBox(
-                height: 14,
+            : const SizedBox(
+                height: HomePageComponentSizes.linkTextFieldErrorHeight,
               )
       ],
     );

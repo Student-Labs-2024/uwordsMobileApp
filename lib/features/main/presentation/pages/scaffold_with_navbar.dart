@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
+import 'package:uwords/features/main/data/constants/box_shadows.dart';
+import 'package:uwords/features/main/data/constants/scaffold_with_navbar_paddings.dart';
+import 'package:uwords/features/main/data/constants/scaffold_with_navbar_sizes.dart';
 import '../../../../theme/app_colors.dart';
 
 class ScaffoldWithNavBar extends StatefulWidget {
@@ -22,44 +25,25 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
       body: Stack(children: [
         widget.child,
         Positioned(
-          bottom: 16,
-          left: (MediaQuery.of(context).size.width) * 24 / 375,
+          bottom: ScaffoldWithNavbarPaddings.navBarBottom,
+          left: (MediaQuery.of(context).size.width) *
+              ScaffoldWithNavbarPaddings.navBarLeft,
           child: GoRouter.of(context)
                       .routeInformationProvider
                       .value
                       .uri
                       .toString() ==
                   "/"
-              ? SizedBox()
+              ? const SizedBox()
               : Container(
-                  width: (MediaQuery.of(context).size.width) * 327 / 375,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: const fis.BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  width: (MediaQuery.of(context).size.width) *
+                      ScaffoldWithNavbarSizes.navBarWidth,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: ScaffoldWithNavbarPaddings.navBarHorizontal),
+                  decoration: fis.BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: AppColors.whiteBackgroundColor,
-                    boxShadow: [
-                      fis.BoxShadow(
-                        color: Color.fromRGBO(97, 120, 201, 0.26),
-                        blurRadius: 16.0,
-                        spreadRadius: 0,
-                        offset: Offset(4, 4),
-                        inset: false,
-                      ),
-                      fis.BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.08),
-                        blurRadius: 16.0,
-                        spreadRadius: 0,
-                        offset: Offset(2, 2),
-                        inset: false,
-                      ),
-                      fis.BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.1),
-                        blurRadius: 80.0,
-                        spreadRadius: 1,
-                        offset: Offset(2, 2),
-                        inset: true,
-                      ),
-                    ],
+                    boxShadow: MainBoxShadows.navBar,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +55,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                           color: _selectedIndex == 0
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                       IconButton(
@@ -81,14 +65,15 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                           color: _selectedIndex == 1
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                       IconButton(
                           onPressed: () => pushAtIndex(2, context),
                           icon: Image.asset(
                             'assets/png/nav_bubble_ico.png',
-                            height: 54,
+                            height:
+                                ScaffoldWithNavbarSizes.navBarCentralIconHeight,
                           )),
                       IconButton(
                         onPressed: () => pushAtIndex(3, context),
@@ -97,7 +82,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                           color: _selectedIndex == 3
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                       IconButton(
@@ -107,7 +92,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                           color: _selectedIndex == 4
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                     ],

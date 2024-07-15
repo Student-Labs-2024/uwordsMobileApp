@@ -8,8 +8,8 @@ class AudioDataSource implements IAudioDataSource {
   static Dio dio = Dio();
   final client = MainClient(dio);
   @override
-  Future<void> sendFile(
-      {required String audioPath, required String accessToken}) async {
+  Stream<Future<void>> sendFile(
+      {required String audioPath, required String accessToken}) async* {
     final audioData = FormData.fromMap({
       'file': await MultipartFile.fromFile(audioPath),
     });
