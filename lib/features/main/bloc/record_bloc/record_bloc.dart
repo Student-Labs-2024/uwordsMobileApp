@@ -36,7 +36,6 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     if (audioPath.isNotEmpty) {
       try {
         await _sendFile(audioPath);
-        emit(const RecordState.stopped());
         emit(const RecordState.sended());
         emit(const RecordState.initial());
       } on DioException catch (e) {
@@ -52,7 +51,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
 
   Future<void> _sendFile(String audioPath) async {
     String accessToken = await userRepository.getCurrentUserAccessToken();
-    debugPrint(accessToken);
+    log(accessToken);
     await checkTokenExpirationAndUpdateIfNeed(
         accessToken: accessToken, userRepository: userRepository);
     await audioRepository.sendFile(

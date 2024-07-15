@@ -5,6 +5,8 @@ import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
+import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -31,16 +33,16 @@ class CustomTextField extends StatelessWidget {
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: MainBoxShadows.sendLink),
+              boxShadow: MainBoxShadows.main),
           child: TextField(
             controller: controller,
-            cursorColor: Colors.purple,
+            cursorColor: AppColors.darkMainColor,
             style: const TextStyle(
-              color: Colors.purple,
+              color: AppColors.darkMainColor,
             ),
             decoration: InputDecoration(
               hintText: hintText,
-              hintStyle: const TextStyle(color: Colors.grey),
+              hintStyle: AppTextStyles.customTextfieldInput,
               border: InputBorder.none,
             ),
           ),
@@ -51,7 +53,7 @@ class CustomTextField extends StatelessWidget {
         isError
             ? Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                 SvgPicture.asset(
-                  'assets/svg/error_ico.svg',
+                  AppImageSource.errorIco,
                   color: AppColors.errorColor,
                   height: HomePageComponentSizes.linkTextFieldSpacing,
                 ),
@@ -62,11 +64,7 @@ class CustomTextField extends StatelessWidget {
                   height: HomePageComponentSizes.linkTextFieldErrorHeight,
                   child: Text(
                     errorMessage,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.errorColor,
-                    ),
+                    style: AppTextStyles.customTextfieldExeption,
                   ),
                 )
               ])

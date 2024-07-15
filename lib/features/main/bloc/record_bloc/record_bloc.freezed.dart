@@ -19,8 +19,6 @@ mixin _$RecordState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() started,
-    required TResult Function() stopped,
     required TResult Function(String message) failed,
     required TResult Function() sended,
   }) =>
@@ -28,8 +26,6 @@ mixin _$RecordState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? started,
-    TResult? Function()? stopped,
     TResult? Function(String message)? failed,
     TResult? Function()? sended,
   }) =>
@@ -37,8 +33,6 @@ mixin _$RecordState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? started,
-    TResult Function()? stopped,
     TResult Function(String message)? failed,
     TResult Function()? sended,
     required TResult orElse(),
@@ -47,8 +41,6 @@ mixin _$RecordState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordStarted value) started,
-    required TResult Function(_RecordStopped value) stopped,
     required TResult Function(_RecordFailed value) failed,
     required TResult Function(_RecordSended value) sended,
   }) =>
@@ -56,8 +48,6 @@ mixin _$RecordState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordStarted value)? started,
-    TResult? Function(_RecordStopped value)? stopped,
     TResult? Function(_RecordFailed value)? failed,
     TResult? Function(_RecordSended value)? sended,
   }) =>
@@ -65,8 +55,6 @@ mixin _$RecordState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordStarted value)? started,
-    TResult Function(_RecordStopped value)? stopped,
     TResult Function(_RecordFailed value)? failed,
     TResult Function(_RecordSended value)? sended,
     required TResult orElse(),
@@ -139,8 +127,6 @@ class _$RecordInitialImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() started,
-    required TResult Function() stopped,
     required TResult Function(String message) failed,
     required TResult Function() sended,
   }) {
@@ -151,8 +137,6 @@ class _$RecordInitialImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? started,
-    TResult? Function()? stopped,
     TResult? Function(String message)? failed,
     TResult? Function()? sended,
   }) {
@@ -163,8 +147,6 @@ class _$RecordInitialImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? started,
-    TResult Function()? stopped,
     TResult Function(String message)? failed,
     TResult Function()? sended,
     required TResult orElse(),
@@ -179,8 +161,6 @@ class _$RecordInitialImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordStarted value) started,
-    required TResult Function(_RecordStopped value) stopped,
     required TResult Function(_RecordFailed value) failed,
     required TResult Function(_RecordSended value) sended,
   }) {
@@ -191,8 +171,6 @@ class _$RecordInitialImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordStarted value)? started,
-    TResult? Function(_RecordStopped value)? stopped,
     TResult? Function(_RecordFailed value)? failed,
     TResult? Function(_RecordSended value)? sended,
   }) {
@@ -203,8 +181,6 @@ class _$RecordInitialImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordStarted value)? started,
-    TResult Function(_RecordStopped value)? stopped,
     TResult Function(_RecordFailed value)? failed,
     TResult Function(_RecordSended value)? sended,
     required TResult orElse(),
@@ -218,262 +194,6 @@ class _$RecordInitialImpl
 
 abstract class _RecordInitial implements RecordState {
   const factory _RecordInitial() = _$RecordInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$RecordStartedImplCopyWith<$Res> {
-  factory _$$RecordStartedImplCopyWith(
-          _$RecordStartedImpl value, $Res Function(_$RecordStartedImpl) then) =
-      __$$RecordStartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$RecordStartedImplCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$RecordStartedImpl>
-    implements _$$RecordStartedImplCopyWith<$Res> {
-  __$$RecordStartedImplCopyWithImpl(
-      _$RecordStartedImpl _value, $Res Function(_$RecordStartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$RecordStartedImpl
-    with DiagnosticableTreeMixin
-    implements _RecordStarted {
-  const _$RecordStartedImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordState.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'RecordState.started'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RecordStartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() started,
-    required TResult Function() stopped,
-    required TResult Function(String message) failed,
-    required TResult Function() sended,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? started,
-    TResult? Function()? stopped,
-    TResult? Function(String message)? failed,
-    TResult? Function()? sended,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? started,
-    TResult Function()? stopped,
-    TResult Function(String message)? failed,
-    TResult Function()? sended,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordStarted value) started,
-    required TResult Function(_RecordStopped value) stopped,
-    required TResult Function(_RecordFailed value) failed,
-    required TResult Function(_RecordSended value) sended,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordStarted value)? started,
-    TResult? Function(_RecordStopped value)? stopped,
-    TResult? Function(_RecordFailed value)? failed,
-    TResult? Function(_RecordSended value)? sended,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordStarted value)? started,
-    TResult Function(_RecordStopped value)? stopped,
-    TResult Function(_RecordFailed value)? failed,
-    TResult Function(_RecordSended value)? sended,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RecordStarted implements RecordState {
-  const factory _RecordStarted() = _$RecordStartedImpl;
-}
-
-/// @nodoc
-abstract class _$$RecordStoppedImplCopyWith<$Res> {
-  factory _$$RecordStoppedImplCopyWith(
-          _$RecordStoppedImpl value, $Res Function(_$RecordStoppedImpl) then) =
-      __$$RecordStoppedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$RecordStoppedImplCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$RecordStoppedImpl>
-    implements _$$RecordStoppedImplCopyWith<$Res> {
-  __$$RecordStoppedImplCopyWithImpl(
-      _$RecordStoppedImpl _value, $Res Function(_$RecordStoppedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$RecordStoppedImpl
-    with DiagnosticableTreeMixin
-    implements _RecordStopped {
-  const _$RecordStoppedImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordState.stopped()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'RecordState.stopped'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RecordStoppedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() started,
-    required TResult Function() stopped,
-    required TResult Function(String message) failed,
-    required TResult Function() sended,
-  }) {
-    return stopped();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? started,
-    TResult? Function()? stopped,
-    TResult? Function(String message)? failed,
-    TResult? Function()? sended,
-  }) {
-    return stopped?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? started,
-    TResult Function()? stopped,
-    TResult Function(String message)? failed,
-    TResult Function()? sended,
-    required TResult orElse(),
-  }) {
-    if (stopped != null) {
-      return stopped();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordStarted value) started,
-    required TResult Function(_RecordStopped value) stopped,
-    required TResult Function(_RecordFailed value) failed,
-    required TResult Function(_RecordSended value) sended,
-  }) {
-    return stopped(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordStarted value)? started,
-    TResult? Function(_RecordStopped value)? stopped,
-    TResult? Function(_RecordFailed value)? failed,
-    TResult? Function(_RecordSended value)? sended,
-  }) {
-    return stopped?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordStarted value)? started,
-    TResult Function(_RecordStopped value)? stopped,
-    TResult Function(_RecordFailed value)? failed,
-    TResult Function(_RecordSended value)? sended,
-    required TResult orElse(),
-  }) {
-    if (stopped != null) {
-      return stopped(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RecordStopped implements RecordState {
-  const factory _RecordStopped() = _$RecordStoppedImpl;
 }
 
 /// @nodoc
@@ -549,8 +269,6 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() started,
-    required TResult Function() stopped,
     required TResult Function(String message) failed,
     required TResult Function() sended,
   }) {
@@ -561,8 +279,6 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? started,
-    TResult? Function()? stopped,
     TResult? Function(String message)? failed,
     TResult? Function()? sended,
   }) {
@@ -573,8 +289,6 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? started,
-    TResult Function()? stopped,
     TResult Function(String message)? failed,
     TResult Function()? sended,
     required TResult orElse(),
@@ -589,8 +303,6 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordStarted value) started,
-    required TResult Function(_RecordStopped value) stopped,
     required TResult Function(_RecordFailed value) failed,
     required TResult Function(_RecordSended value) sended,
   }) {
@@ -601,8 +313,6 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordStarted value)? started,
-    TResult? Function(_RecordStopped value)? stopped,
     TResult? Function(_RecordFailed value)? failed,
     TResult? Function(_RecordSended value)? sended,
   }) {
@@ -613,8 +323,6 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordStarted value)? started,
-    TResult Function(_RecordStopped value)? stopped,
     TResult Function(_RecordFailed value)? failed,
     TResult Function(_RecordSended value)? sended,
     required TResult orElse(),
@@ -680,8 +388,6 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() started,
-    required TResult Function() stopped,
     required TResult Function(String message) failed,
     required TResult Function() sended,
   }) {
@@ -692,8 +398,6 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? started,
-    TResult? Function()? stopped,
     TResult? Function(String message)? failed,
     TResult? Function()? sended,
   }) {
@@ -704,8 +408,6 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? started,
-    TResult Function()? stopped,
     TResult Function(String message)? failed,
     TResult Function()? sended,
     required TResult orElse(),
@@ -720,8 +422,6 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordStarted value) started,
-    required TResult Function(_RecordStopped value) stopped,
     required TResult Function(_RecordFailed value) failed,
     required TResult Function(_RecordSended value) sended,
   }) {
@@ -732,8 +432,6 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordStarted value)? started,
-    TResult? Function(_RecordStopped value)? stopped,
     TResult? Function(_RecordFailed value)? failed,
     TResult? Function(_RecordSended value)? sended,
   }) {
@@ -744,8 +442,6 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordStarted value)? started,
-    TResult Function(_RecordStopped value)? stopped,
     TResult Function(_RecordFailed value)? failed,
     TResult Function(_RecordSended value)? sended,
     required TResult orElse(),

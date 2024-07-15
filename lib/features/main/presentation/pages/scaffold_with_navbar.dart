@@ -5,6 +5,7 @@ import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/scaffold_with_navbar_paddings.dart';
 import 'package:uwords/features/main/data/constants/scaffold_with_navbar_sizes.dart';
+import 'package:uwords/theme/image_source.dart';
 import '../../../../theme/app_colors.dart';
 
 class ScaffoldWithNavBar extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                   decoration: fis.BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: AppColors.whiteBackgroundColor,
-                    boxShadow: MainBoxShadows.navBar,
+                    boxShadow: MainBoxShadows.main,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +52,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       IconButton(
                         onPressed: () => pushAtIndex(0, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/voice_ico.svg',
+                          AppImageSource.voiceIco,
                           color: _selectedIndex == 0
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
@@ -61,7 +62,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       IconButton(
                         onPressed: () => pushAtIndex(1, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/learn_ico.svg',
+                          AppImageSource.learnIco,
                           color: _selectedIndex == 1
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
@@ -71,14 +72,14 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       IconButton(
                           onPressed: () => pushAtIndex(2, context),
                           icon: Image.asset(
-                            'assets/png/nav_bubble_ico.png',
+                            AppImageSource.navBubbleIco,
                             height:
                                 ScaffoldWithNavbarSizes.navBarCentralIconHeight,
                           )),
                       IconButton(
                         onPressed: () => pushAtIndex(3, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/notification_ico.svg',
+                          AppImageSource.notificationIco,
                           color: _selectedIndex == 3
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
@@ -88,7 +89,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       IconButton(
                         onPressed: () => pushAtIndex(4, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/profile_ico.svg',
+                          AppImageSource.profileIco,
                           color: _selectedIndex == 4
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,

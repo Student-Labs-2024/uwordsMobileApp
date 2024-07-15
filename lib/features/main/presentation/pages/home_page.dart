@@ -18,6 +18,7 @@ import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
       appDocDirectory = (await getExternalStorageDirectory())!;
     }
     final audioPath =
-        "${appDocDirectory.path}/audio_records${DateTime.now().millisecondsSinceEpoch}.mp4";
+        "${appDocDirectory.path}/audio_records${DateTime.now().millisecondsSinceEpoch}";
     _mRecorder!
         .startRecorder(
       toFile: audioPath,
@@ -121,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Center(
                       child: Image.asset(
-                        'assets/png/opacityBubbles.png',
+                        AppImageSource.homeScreenBackground,
                         width: MediaQuery.of(context).size.width,
                       ),
                     ),
@@ -186,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                                           color: AppColors.whiteBackgroundColor,
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          boxShadow: MainBoxShadows.sendLink),
+                                          boxShadow: MainBoxShadows.main),
                                       child: IconButton(
                                         constraints: const BoxConstraints(
                                             maxHeight: HomePageComponentSizes
@@ -200,9 +201,9 @@ class _HomePageState extends State<HomePage> {
                                         icon: SvgPicture.asset(
                                           state.maybeWhen(
                                             sended: () =>
-                                                'assets/svg/sended_ico.svg',
+                                                AppImageSource.sendedIco,
                                             orElse: () =>
-                                                'assets/svg/send_ico.svg',
+                                                AppImageSource.sendIco,
                                           ),
                                           color: AppColors.darkMainColor,
                                         ),
