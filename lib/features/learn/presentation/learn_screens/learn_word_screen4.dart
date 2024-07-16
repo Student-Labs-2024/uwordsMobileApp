@@ -17,10 +17,6 @@ class LearnWordPage4 extends StatefulWidget {
 
 class LearnWordPage4State extends State<LearnWordPage4> {
   bool chosenImage = false;
-  //!!!!!!
-  //Предпологается, что на этом экране будут получены еще 3 случайных слова!!!!
-  //в инит стейте типа.
-  //затем их все например положить в лист, его перемешать, и из этого листа уже по [0],[1].. и т.д. брать!!!
 
   final WordModel anotherWord = WordModel(
     id: 0,
@@ -64,8 +60,6 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                   height: 26,
                 ),
                 SizedBox(
-                  //width: MediaQuery.of(context).size.width * 343/375,
-                  //height: MediaQuery.of(context).size.height* 322/812,
                   child: GridView(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,

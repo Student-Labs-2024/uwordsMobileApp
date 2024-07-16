@@ -4,7 +4,6 @@ import 'package:uwords/features/learn/domain/dto/word_model_dto.dart';
 part 'word_info_dto.freezed.dart';
 part 'word_info_dto.g.dart';
 
-// DTO (Data Transfer Object)
 @freezed
 class WordInfoDto with _$WordInfoDto {
   const factory WordInfoDto({

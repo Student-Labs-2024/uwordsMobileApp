@@ -27,7 +27,6 @@ class _AuthPageState extends State<AuthPage> {
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             state.whenOrNull(initial: () {
-              debugPrint("Initial");
             }, authorized: () {
               context.go("/home");
             }, registred: () {
@@ -104,8 +103,6 @@ class _AuthPageState extends State<AuthPage> {
                           context.read<AuthBloc>().add(AuthEvent.registerUser(
                               emailAddress: usernameController.text,
                               password: passwordController.text));
-                          // if(regUser == 'ok') тотото
-                          //не окей, то соответствующие снекбары
                         },
                         child:
                             Text("Зарегать пользователя через почту и пароль"),

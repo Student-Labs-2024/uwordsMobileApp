@@ -31,7 +31,6 @@ class LearnDecorButtStyle {
     alignment: Alignment.center,
     backgroundColor: Colors.white,
     foregroundColor: const Color.fromARGB(255, 69, 69, 69),
-    //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
     padding: EdgeInsets.zero,
   );
 
@@ -43,7 +42,6 @@ class LearnDecorButtStyle {
     alignment: Alignment.center,
     backgroundColor: const Color.fromARGB(255, 213, 213, 213),
     foregroundColor: const Color.fromARGB(255, 69, 69, 69),
-    //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
     padding: EdgeInsets.zero,
   );
 }

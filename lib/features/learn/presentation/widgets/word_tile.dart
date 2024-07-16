@@ -15,7 +15,7 @@ class WordTile extends StatelessWidget {
   final VoidCallback onPressed;
 
   void playSound() {
-    // *консервная банка издает звуки правильного произношения*
+    // TODO Add sound
   }
 
   @override

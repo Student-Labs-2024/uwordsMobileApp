@@ -1,5 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:flutter/foundation.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/domain/user_auth_mapper.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
@@ -11,7 +10,6 @@ abstract interface class ISavableUserDataSource {
   Future<void> changeCurrent({required int id});
   Future<UserAuthDto> getCurrent();
   Future<void> noneIsCurrent();
-  void printAllDatabase();
 }
 
 class SavableUserDataSource implements ISavableUserDataSource {
@@ -65,13 +63,5 @@ class SavableUserDataSource implements ISavableUserDataSource {
     return UserAuthDto.fromDB(await (database.select(database.userAuth)
           ..where((u) => u.isCurrent.equals(true)))
         .getSingle());
-  }
-
-  @override
-  void printAllDatabase() async {
-    List<User> users = await database.select(database.userAuth).get();
-    users.forEach((u) {
-      print([u.email, u.accessToken, u.provider, u.isCurrent.toString()]);
-    });
   }
 }
