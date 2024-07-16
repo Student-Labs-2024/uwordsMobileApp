@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +23,6 @@ import 'package:uwords/features/learn/presentation/learn_screens/learn_word_scre
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen2.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen3.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/successful_word_screen.dart';
-import 'package:uwords/features/main/bloc/audio_bloc/audio_bloc.dart';
 import 'package:uwords/features/main/data/data_sources/audio_datasource.dart';
 import 'package:uwords/features/main/data/repositories/audio_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
@@ -29,17 +30,25 @@ import 'package:uwords/features/main/data/data_sources/iterface_audio_datasource
 import 'package:uwords/features/main/presentation/pages/home_page.dart';
 import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
+import 'package:uwords/features/main/bloc/audioLink_bloc/audioLink_bloc.dart';
+import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
+
 import 'features/learn/presentation/learn_screens/learn_word_screen4.dart';
 import 'firebase_options.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(MainApp());
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    runApp(MainApp());
+  }, (error, stack) async {
+    log(error.toString(), name: 'App Error', stackTrace: stack);
+  });
 }
 
 final _shellNavKey = GlobalKey<NavigatorState>();
@@ -139,7 +148,11 @@ class MainApp extends StatelessWidget {
               create: (context) =>
                   AuthBloc(userRepository: context.read<IUserRepository>())),
           BlocProvider(
-              create: (context) => AudioBloc(
+              create: (context) => AudioLinkBloc(
+                  audioRepository: context.read<IAudioRepository>(),
+                  userRepository: context.read<IUserRepository>())),
+          BlocProvider(
+              create: (context) => RecordBloc(
                   audioRepository: context.read<IAudioRepository>(),
                   userRepository: context.read<IUserRepository>())),
           BlocProvider(create: (context) => PlayerBloc()),

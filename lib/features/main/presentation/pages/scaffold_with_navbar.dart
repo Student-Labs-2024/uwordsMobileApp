@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
+import 'package:uwords/features/main/data/constants/box_shadows.dart';
+import 'package:uwords/features/main/data/constants/scaffold_with_navbar_paddings.dart';
+import 'package:uwords/features/main/data/constants/scaffold_with_navbar_sizes.dart';
+import 'package:uwords/theme/image_source.dart';
 import '../../../../theme/app_colors.dart';
 
 class ScaffoldWithNavBar extends StatefulWidget {
@@ -22,44 +26,25 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
       body: Stack(children: [
         widget.child,
         Positioned(
-          bottom: 16,
-          left: MediaQuery.of(context).size.width * 0.07,
+          bottom: ScaffoldWithNavbarPaddings.navBarBottom,
+          left: (MediaQuery.of(context).size.width) *
+              ScaffoldWithNavbarPaddings.navBarLeft,
           child: GoRouter.of(context)
                       .routeInformationProvider
                       .value
                       .uri
                       .toString() ==
                   "/"
-              ? SizedBox()
+              ? const SizedBox()
               : Container(
-                  width: MediaQuery.of(context).size.width * 0.86,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: const fis.BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  width: (MediaQuery.of(context).size.width) *
+                      ScaffoldWithNavbarSizes.navBarWidth,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: ScaffoldWithNavbarPaddings.navBarHorizontal),
+                  decoration: fis.BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: AppColors.whiteBackgroundColor,
-                    boxShadow: [
-                      fis.BoxShadow(
-                        color: Color.fromRGBO(97, 120, 201, 0.26),
-                        blurRadius: 16.0,
-                        spreadRadius: 0,
-                        offset: Offset(4, 4),
-                        inset: false,
-                      ),
-                      fis.BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.08),
-                        blurRadius: 16.0,
-                        spreadRadius: 0,
-                        offset: Offset(2, 2),
-                        inset: false,
-                      ),
-                      fis.BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.1),
-                        blurRadius: 80.0,
-                        spreadRadius: 1,
-                        offset: Offset(2, 2),
-                        inset: true,
-                      ),
-                    ],
+                    boxShadow: MainBoxShadows.main,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,47 +52,48 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       IconButton(
                         onPressed: () => pushAtIndex(0, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/voice_ico.svg',
+                          AppImageSource.voiceIco,
                           color: _selectedIndex == 0
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                       IconButton(
                         onPressed: () => pushAtIndex(1, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/learn_ico.svg',
+                          AppImageSource.learnIco,
                           color: _selectedIndex == 1
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                       IconButton(
                           onPressed: () => pushAtIndex(2, context),
                           icon: Image.asset(
-                            'assets/png/bub_but2x.png',
-                            height: 54,
+                            AppImageSource.navBubbleIco,
+                            height:
+                                ScaffoldWithNavbarSizes.navBarCentralIconHeight,
                           )),
                       IconButton(
                         onPressed: () => pushAtIndex(3, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/notification_ico.svg',
+                          AppImageSource.notificationIco,
                           color: _selectedIndex == 3
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                       IconButton(
                         onPressed: () => pushAtIndex(4, context),
                         icon: SvgPicture.asset(
-                          'assets/svg/profile_ico.svg',
+                          AppImageSource.profileIco,
                           color: _selectedIndex == 4
                               ? AppColors.darkMainColor
                               : AppColors.mainColor,
-                          height: 24,
+                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
                     ],

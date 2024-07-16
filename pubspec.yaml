@@ -54,3 +54,7 @@ flutter:
   assets:
     - assets/svg/
     - assets/png/
+  fonts:
+    - family: SNFBSTRD_handwrite
+      fonts:
+        - asset: fonts/SNFBSTRD_handwrite.ttf
