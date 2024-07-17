@@ -18,14 +18,12 @@ class LearnWordPage4 extends StatefulWidget {
 class LearnWordPage4State extends State<LearnWordPage4> {
   bool chosenImage = false;
 
-  final WordModel anotherWord = WordModel(
+  final WordModel anotherWord = const WordModel(
     id: 0,
-    category: "",
     enValue: "stock",
     ruValue: "стоковое",
     audioLink: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3",
-    pictureLink:
-        "https://big-nose.ru:9100/uwords-picture/element.jpg",
+    pictureLink: "https://big-nose.ru:9100/uwords-picture/element.jpg",
   );
 
   @override
@@ -61,7 +59,8 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                 ),
                 SizedBox(
                   child: GridView(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                     ),
                     shrinkWrap: true,
@@ -94,7 +93,7 @@ class LearnWordPage4State extends State<LearnWordPage4> {
               child: BigButton(
                 text: 'Далее',
                 onPressed: () {
-                    context.go("/learn/success", extra: widget.word);
+                  context.go("/learn/success", extra: widget.word);
                 },
               ),
             )
