@@ -45,12 +45,13 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
 
   bool _isValidYoutubeUrl(String url) {
     final RegExp youtubeRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9_-]{11})');
-    final RegExp youtubeShortRegex =
-        RegExp(r'^(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]{11})$');
+        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
+    final RegExp youtubeShortRegex = RegExp(
+        r'^(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
     final RegExp youtubeShortsRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})$');
-    return (youtubeRegex.hasMatch(url) || youtubeShortRegex.hasMatch(url)) ||
+        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
+    return youtubeRegex.hasMatch(url) ||
+        youtubeShortRegex.hasMatch(url) ||
         youtubeShortsRegex.hasMatch(url);
   }
 }

@@ -63,6 +63,7 @@ class _HomePageState extends State<HomePage> {
         context.read<RecordBloc>().add(RecordEvent.sendError(
             AppLocalizations.of(context).allowUseMicrophone));
       }
+      return;
     }
     Directory appDocDirectory;
     if (Platform.isIOS) {
@@ -97,7 +98,9 @@ class _HomePageState extends State<HomePage> {
   Future<bool> _requestPermission() async {
     if (!kIsWeb) {
       bool granted = await Permission.microphone.isGranted;
-      if (!granted) {
+      bool denied = await Permission.microphone.isDenied;
+      bool deniedPerm = await Permission.microphone.isPermanentlyDenied;
+      if (!granted || denied || deniedPerm) {
         await Permission.microphone.request();
       }
       granted = await Permission.microphone.isGranted;
@@ -238,15 +241,22 @@ class _HomePageState extends State<HomePage> {
                           listener: (context, state) {
                             state.whenOrNull(
                               failed: (message) {
+                                String errorMessage =
+                                    AppLocalizations.of(context).unknowError;
                                 if (message == 'unknownDioError') {
-                                  return AppLocalizations.of(context)
+                                  errorMessage = AppLocalizations.of(context)
                                       .unknownDioError;
                                 } else if (message == 'lostFilePath') {
-                                  return RecordState.failed(
-                                      AppLocalizations.of(context)
-                                          .lostFilePath);
+                                  errorMessage =
+                                      AppLocalizations.of(context).lostFilePath;
+                                } else if (message ==
+                                    AppLocalizations.of(context)
+                                        .allowUseMicrophone) {
+                                  errorMessage = AppLocalizations.of(context)
+                                      .allowUseMicrophone;
                                 }
-                                return AppLocalizations.of(context).unknowError;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(errorMessage)));
                               },
                               sended: () {
                                 ScaffoldMessenger.of(context).showSnackBar(
