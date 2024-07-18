@@ -1,4 +1,4 @@
-part of 'audioLink_bloc.dart';
+part of 'audio_link_bloc.dart';
 
 @freezed
 class AudioLinkState with _$AudioLinkState {

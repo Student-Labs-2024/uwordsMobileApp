@@ -6,9 +6,9 @@ import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
 
-part 'audioLink_bloc.freezed.dart';
-part 'audioLink_state.dart';
-part 'audioLink_event.dart';
+part 'audio_link_bloc.freezed.dart';
+part 'audio_link_state.dart';
+part 'audio_link_event.dart';
 
 class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
   final IAudioRepository audioRepository;
