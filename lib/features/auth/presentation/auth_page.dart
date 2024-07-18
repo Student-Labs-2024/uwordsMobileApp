@@ -37,7 +37,7 @@ class _AuthPageState extends State<AuthPage> {
                       content: Text(
                           AppLocalizations.of(context).successRegistration)));
                 },
-                failedRegisteration: () {
+                failedRegistration: () {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text(
                           AppLocalizations.of(context).failedRegistration)));
