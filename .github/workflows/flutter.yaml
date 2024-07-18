@@ -20,13 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          flutter pub add --dev firebase_tools
           flutter pub get
 
       - name: Generate Firebase options
-        run: |
-          flutter pub global activate firebase_tools 
-          firebase tools:flutter-config --project-id=uwords-2929 --platform=android --force
+        run: firebase serve --only hosting
 
       - name: Fix formatting
         run: dart fix --apply --code=require_trailing_commas
