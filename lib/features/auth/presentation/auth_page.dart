@@ -27,19 +27,26 @@ class _AuthPageState extends State<AuthPage> {
         create: (context) => context.read<IUserRepository>(),
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
-            state.whenOrNull(initial: () {
-            }, authorized: () {
-              context.go("/home");
-            }, registred: () {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(AppLocalizations.of(context).successRegistration)));
-            }, failedRegisteration: () {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(AppLocalizations.of(context).failedRegistration)));
-            }, failedSignIn: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(AppLocalizations.of(context).canNotAuthorizate)));
-            });
+            state.whenOrNull(
+                initial: () {},
+                authorized: () {
+                  context.go("/home");
+                },
+                registred: () {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          AppLocalizations.of(context).successRegistration)));
+                },
+                failedRegisteration: () {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          AppLocalizations.of(context).failedRegistration)));
+                },
+                failedSignIn: () {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          AppLocalizations.of(context).canNotAuthorizate)));
+                });
           },
           builder: (context, state) {
             return state.maybeWhen(
@@ -63,7 +70,8 @@ class _AuthPageState extends State<AuthPage> {
                         children: [
                           Text(
                             AppLocalizations.of(context).dontHaveAnAccount,
-                            style: const TextStyle(color: Colors.brown, fontSize: 20),
+                            style: const TextStyle(
+                                color: Colors.brown, fontSize: 20),
                           ),
                           Text(
                             AppLocalizations.of(context).signUp,
@@ -97,7 +105,8 @@ class _AuthPageState extends State<AuthPage> {
                                   emailAddress: usernameController.text,
                                   password: passwordController.text));
                         },
-                        child: Text(AppLocalizations.of(context).signInWithMailPassword),
+                        child: Text(AppLocalizations.of(context)
+                            .signInWithMailPassword),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -105,8 +114,8 @@ class _AuthPageState extends State<AuthPage> {
                               emailAddress: usernameController.text,
                               password: passwordController.text));
                         },
-                        child:
-                            Text(AppLocalizations.of(context).registerUserWithMailAndPassword),
+                        child: Text(AppLocalizations.of(context)
+                            .registerUserWithMailAndPassword),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -114,7 +123,8 @@ class _AuthPageState extends State<AuthPage> {
                               .read<AuthBloc>()
                               .add(const AuthEvent.signInWithGoogle());
                         },
-                        child: Text(AppLocalizations.of(context).signInWithGoogle),
+                        child:
+                            Text(AppLocalizations.of(context).signInWithGoogle),
                       ),
                       ElevatedButton(
                         onPressed: () async {

@@ -24,8 +24,7 @@ class LearnWordPage4State extends State<LearnWordPage4> {
     enValue: "stock",
     ruValue: "стоковое",
     audioLink: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3",
-    pictureLink:
-        "https://big-nose.ru:9100/uwords-picture/element.jpg",
+    pictureLink: "https://big-nose.ru:9100/uwords-picture/element.jpg",
   );
 
   @override
@@ -61,7 +60,8 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                 ),
                 SizedBox(
                   child: GridView(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                     ),
                     shrinkWrap: true,
@@ -94,7 +94,7 @@ class LearnWordPage4State extends State<LearnWordPage4> {
               child: BigButton(
                 text: 'Далее',
                 onPressed: () {
-                    context.go("/learn/success", extra: widget.word);
+                  context.go("/learn/success", extra: widget.word);
                 },
               ),
             )
