@@ -24,11 +24,11 @@ jobs:
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
-      - name: Run linter checking
-        run: dart analyze --no-fatal-warnings
-
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run linter checking
+        run: dart analyze --no-fatal-warnings
 
       - name: Generate files
         run: flutter pub run build_runner build
