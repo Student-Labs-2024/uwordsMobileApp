@@ -26,7 +26,7 @@ jobs:
         run: dart fix --apply --code=require_trailing_commas
 
       - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed
+        run: dart format --output=none --set-exit-if-changed .
 
       - name: Run linter checking
         run: dart analyze --no-fatal-warnings
