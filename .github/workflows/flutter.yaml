@@ -18,14 +18,21 @@ jobs:
           channel: 'stable'
       - run: flutter doctor -v
 
+      - name: Install dependencies
+        run: |
+          flutter pub add --dev firebase_tools
+          flutter pub get
+
+      - name: Generate Firebase options
+        run: |
+          flutter pub global activate firebase_tools 
+          firebase tools:flutter-config --project-id=uwords-2929 --platform=android --force
+
       - name: Fix formatting
         run: dart fix --apply --code=require_trailing_commas
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
-
-      - name: Install dependencies
-        run: flutter pub get
 
       - name: Run linter checking
         run: dart analyze --no-fatal-warnings
