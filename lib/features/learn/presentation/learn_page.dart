@@ -13,8 +13,7 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  startTraining() {
-  }
+  startTraining() {}
 
   @override
   void initState() {

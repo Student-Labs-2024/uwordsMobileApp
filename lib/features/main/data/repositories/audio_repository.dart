@@ -9,8 +9,7 @@ class AudioRepository implements IAudioRepository {
   @override
   Future<void> sendFile(
       {required String audioPath, required String accessToken}) async {
-    await audioDataSource.sendFile(
-        audioPath: audioPath, accessToken: accessToken);
+    audioDataSource.sendFile(audioPath: audioPath, accessToken: accessToken);
   }
 
   @override

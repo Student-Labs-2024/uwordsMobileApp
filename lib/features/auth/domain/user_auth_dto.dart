@@ -28,7 +28,7 @@ class UserAuthDto {
       {required String userEmail,
       required String password,
       required String provider,
-      required Map<String, String> map}) {
+      required Map<String, dynamic> map}) {
     return UserAuthDto(
         email: userEmail,
         accessToken: map['access_token'] ?? '',

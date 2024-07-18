@@ -40,11 +40,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  mockito: ^5.4.4
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
   drift_dev: ^2.9.0
   test: ^1.25.2
 
@@ -54,3 +57,7 @@ flutter:
   assets:
     - assets/svg/
     - assets/png/
+  fonts:
+    - family: SNFBSTRD_handwrite
+      fonts:
+        - asset: fonts/SNFBSTRD_handwrite.ttf
