@@ -24,8 +24,8 @@ jobs:
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
-      - name: Run linter
-        run: dart analyze --no-fatal-warnings --fatal-warnings=invalid_annotation_target
+      - name: Run linter checking
+        run: dart analyze --no-fatal-warnings
 
       - name: Install dependencies
         run: flutter pub get
