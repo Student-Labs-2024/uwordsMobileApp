@@ -22,8 +22,14 @@ jobs:
         run: |
           flutter pub get
 
-      - name: Generate Firebase options
-        run: firebase serve --only hosting
+      - name: Decode google-services.json
+        env: 
+            GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: echo "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
+      - name: Decode firebase_option
+        env:
+          firebase_options_dart: ${{secrets.FIREBASE_OPTIONS}}
+        run : echo "$firebase_options_dart" > lib/firebase_options.dart
 
       - name: Fix formatting
         run: dart fix --apply --code=require_trailing_commas
