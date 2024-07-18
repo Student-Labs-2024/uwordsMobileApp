@@ -24,7 +24,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       _GetWordsForStudy event, Emitter<LearningState> emit) async {
     try {
       await _getWordsFromServer(emit);
-    } on OldAccessException catch (e) {
+    } on OldAccessException {
       userRepository.refreshAccessToken();
       await _getWordsFromServer(emit);
     }
@@ -44,8 +44,8 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     String accessToken = await userRepository.getCurrentUserAccessToken();
     await checkTokenExpirationAndUpdateIfNeed(
         accessToken: accessToken, userRepository: userRepository);
-    List<WordModel> newWords = await wordsRepository.getWordsForStudy(
-        accessToken: accessToken);
+    List<WordModel> newWords =
+        await wordsRepository.getWordsForStudy(accessToken: accessToken);
     words = newWords;
     emit(LearningState.gotWordsForStudy(words: words));
     emit(LearningState.initial(words: words));

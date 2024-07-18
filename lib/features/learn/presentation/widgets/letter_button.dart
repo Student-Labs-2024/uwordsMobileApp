@@ -26,7 +26,7 @@ class LetterButtonState extends State<LetterButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(44, 48),
+        minimumSize: const Size(44, 48),
         padding: EdgeInsets.zero,
       ),
       onPressed: pressLetterButton,

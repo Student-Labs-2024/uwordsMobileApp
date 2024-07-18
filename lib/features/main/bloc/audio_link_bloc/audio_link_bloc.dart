@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
 
-part 'audioLink_bloc.freezed.dart';
-part 'audioLink_state.dart';
-part 'audioLink_event.dart';
+part 'audio_link_bloc.freezed.dart';
+part 'audio_link_state.dart';
+part 'audio_link_event.dart';
 
 class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
   final IAudioRepository audioRepository;
@@ -39,7 +38,7 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
       }
     } catch (e) {
       log(e.toString());
-      emit(const AudioLinkState.failed('unknowError'));
+      emit(const AudioLinkState.failed('unknownError'));
     }
   }
 

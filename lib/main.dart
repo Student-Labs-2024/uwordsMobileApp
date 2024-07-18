@@ -30,7 +30,7 @@ import 'package:uwords/features/main/data/data_sources/iterface_audio_datasource
 import 'package:uwords/features/main/presentation/pages/home_page.dart';
 import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
-import 'package:uwords/features/main/bloc/audioLink_bloc/audioLink_bloc.dart';
+import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 
 import 'features/learn/presentation/learn_screens/learn_word_screen4.dart';
@@ -67,11 +67,11 @@ final GoRouter _goRouter = GoRouter(
         ),
         GoRoute(
           path: '/home',
-          builder: (context, state) => HomePage(),
+          builder: (context, state) => const HomePage(),
         ),
         GoRoute(
           path: '/learn',
-          builder: (context, state) => LearnPage(),
+          builder: (context, state) => const LearnPage(),
           routes: [
             GoRoute(
               path: "screen1",
