@@ -38,7 +38,7 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
       }
     } catch (e) {
       log(e.toString());
-      emit(const AudioLinkState.failed('unknowError'));
+      emit(const AudioLinkState.failed('unknownError'));
     }
   }
 
