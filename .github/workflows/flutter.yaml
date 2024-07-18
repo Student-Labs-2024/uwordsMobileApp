@@ -16,13 +16,7 @@ jobs:
         with:
           flutter-version: '3.22.2'
           channel: 'stable'
-      - run: flutter --version
-
-      - name: Check flutter doctor
-        run: flutter doctor -v
-
-      - name: Install dependencies
-        run: flutter pub get
+      - run: flutter doctor -v
 
       - name: Fix formatting
         run: dart fix --apply --code=require_trailing_commas
@@ -31,7 +25,10 @@ jobs:
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Run linter
-        run: dart analyze --no-pub --no-fatal-warnings --fatal-warnings=invalid_annotation_target
+        run: dart analyze --no-fatal-warnings --fatal-warnings=invalid_annotation_target
+
+      - name: Install dependencies
+        run: flutter pub get
 
       - name: Generate files
         run: flutter pub run build_runner build
