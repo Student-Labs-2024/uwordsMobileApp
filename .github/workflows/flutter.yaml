@@ -19,7 +19,7 @@ jobs:
       - run: flutter --version
 
       - name: Check flutter doctor
-      - run: flutter doctor -v
+        run: flutter doctor -v
 
       - name: Install dependencies
         run: flutter pub get
