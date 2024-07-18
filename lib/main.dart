@@ -67,11 +67,11 @@ final GoRouter _goRouter = GoRouter(
         ),
         GoRoute(
           path: '/home',
-          builder: (context, state) => HomePage(),
+          builder: (context, state) => const HomePage(),
         ),
         GoRoute(
           path: '/learn',
-          builder: (context, state) => LearnPage(),
+          builder: (context, state) => const LearnPage(),
           routes: [
             GoRoute(
               path: "screen1",

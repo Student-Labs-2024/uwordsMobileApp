@@ -18,7 +18,7 @@ class LearnWordPage4 extends StatefulWidget {
 class LearnWordPage4State extends State<LearnWordPage4> {
   bool chosenImage = false;
 
-  final WordModel anotherWord = WordModel(
+  final WordModel anotherWord = const WordModel(
     id: 0,
     category: "",
     enValue: "stock",

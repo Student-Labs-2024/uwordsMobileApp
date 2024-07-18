@@ -24,7 +24,7 @@ class UserRepository implements IUserRepository {
           userEmail: emailAddress, password: password, provider: provider);
       _saveUser(userDto: user);
       return true;
-    } on NotRegisteredException catch (e) {
+    } on NotRegisteredException {
       return false;
     }
   }
