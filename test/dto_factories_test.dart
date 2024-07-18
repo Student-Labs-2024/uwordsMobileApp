@@ -46,10 +46,10 @@ void main() {
         map: jsonData);
 
     expect(userAuthDtoTest, isA<UserAuthDto>());
-    expect(userAuthDtoTest.email, equals("example@email.com"));
+    expect(userAuthDtoTest.email, equals(email));
     expect(userAuthDtoTest.accessToken, equals("accessToken"));
     expect(userAuthDtoTest.refreshToken, equals("refreshToken"));
     expect(userAuthDtoTest.isEducationCompleted, isFalse);
-    expect(userAuthDtoTest.provider, equals("self"));
+    expect(userAuthDtoTest.provider, equals(provider));
   });
 }
