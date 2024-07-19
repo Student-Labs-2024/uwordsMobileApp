@@ -20,4 +20,6 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.errorColor,
   );
+  static const customTextFieldForAuth =
+      TextStyle(color: Colors.brown, fontSize: 20, fontWeight: FontWeight.bold);
 }

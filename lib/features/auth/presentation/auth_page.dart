@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/app_colors.dart';
+import 'package:uwords/theme/app_text_styles.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -22,7 +25,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[100],
+      backgroundColor: AppColors.brownColor,
       body: RepositoryProvider(
         create: (context) => context.read<IUserRepository>(),
         child: BlocConsumer<AuthBloc, AuthState>(
@@ -55,35 +58,31 @@ class _AuthPageState extends State<AuthPage> {
                   child: Column(
                     children: [
                       const SizedBox(
-                        height: 40,
+                        height: AuthUndesignedConstants.mediumContainer,
                       ),
                       const Icon(
                         Icons.lock_outlined,
-                        size: 150,
-                        color: Colors.black,
+                        size: AuthUndesignedConstants.hugeIcon,
+                        color: AppColors.blackColor,
                       ),
                       const SizedBox(
-                        height: 40,
+                        height: AuthUndesignedConstants.mediumContainer,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             AppLocalizations.of(context).dontHaveAnAccount,
-                            style: const TextStyle(
-                                color: Colors.brown, fontSize: 20),
+                            style: AppTextStyles.customTextFieldForAuth,
                           ),
                           Text(
                             AppLocalizations.of(context).signUp,
-                            style: const TextStyle(
-                                color: Colors.brown,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                            style: AppTextStyles.customTextFieldForAuth,
                           )
                         ],
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: AuthUndesignedConstants.smallContainer,
                       ),
                       CustomTextField(
                         controller: usernameController,
@@ -91,7 +90,7 @@ class _AuthPageState extends State<AuthPage> {
                         obscoreText: false,
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: AuthUndesignedConstants.smallestContainer,
                       ),
                       CustomTextField(
                         controller: passwordController,
