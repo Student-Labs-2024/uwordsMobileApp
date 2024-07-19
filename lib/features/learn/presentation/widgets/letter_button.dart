@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 
@@ -26,19 +27,20 @@ class LetterButtonState extends State<LetterButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(44, 48),
+        minimumSize: const Size(
+            UnDesignedConstants.buttonHeight, UnDesignedConstants.buttonWidth),
         padding: EdgeInsets.zero,
       ),
       onPressed: pressLetterButton,
       child: Container(
-        width: 40,
-        height: 44,
+        width: UnDesignedConstants.smallContainer,
+        height: UnDesignedConstants.buttonHeight,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: selected ? AppColors.mainColor : AppColors.lightgrayColor,
-            width: 3,
+            width: UnDesignedConstants.thinBorder,
           ),
         ),
         child: Text(

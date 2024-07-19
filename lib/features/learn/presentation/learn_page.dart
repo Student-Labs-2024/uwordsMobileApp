@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_tile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnPage extends StatefulWidget {
   const LearnPage({super.key});
@@ -33,7 +35,8 @@ class _LearnPageState extends State<LearnPage> {
               children: [
                 Expanded(
                   child: ListView.separated(
-                    separatorBuilder: (context, _) => const SizedBox(height: 4),
+                    separatorBuilder: (context, _) =>
+                        const SizedBox(height: UnDesignedConstants.separator),
                     itemCount: state.words.length,
                     itemBuilder: (context, index) => WordTile(
                       data: state.words[index],
@@ -47,9 +50,11 @@ class _LearnPageState extends State<LearnPage> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(top: 16, bottom: 96),
+                  padding: const EdgeInsets.only(
+                      top: UnDesignedConstants.smallEmptySpace,
+                      bottom: UnDesignedConstants.hugeBottomPadding),
                   child: BigButton(
-                    text: 'Тренировать',
+                    text: AppLocalizations.of(context).train,
                     onPressed: startTraining,
                   ),
                 )
