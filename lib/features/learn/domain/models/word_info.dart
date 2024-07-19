@@ -3,10 +3,10 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 class WordInfo {
   final int id;
   final WordModel word;
-  final String userId;
+  final int userId;
   final int frequency;
   final double progress;
-  final String? latestStudy;
+  final DateTime? latestStudy;
 
   WordInfo({
     required this.id,

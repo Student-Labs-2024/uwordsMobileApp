@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/learn/domain/models/words_pair_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
@@ -7,9 +8,9 @@ import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class LearnWordPage4 extends StatefulWidget {
-  const LearnWordPage4({super.key, required this.word});
+  const LearnWordPage4({super.key, required this.wordsPair});
 
-  final WordModel word;
+  final WordsPairModel wordsPair;
 
   @override
   State<LearnWordPage4> createState() => LearnWordPage4State();
@@ -65,7 +66,7 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                     ),
                     shrinkWrap: true,
                     children: [
-                      ImageCard(word: widget.word),
+                      ImageCard(word: widget.wordsPair.selectedWord),
                       ImageCard(word: anotherWord),
                       ImageCard(word: anotherWord),
                       ImageCard(word: anotherWord),
@@ -93,7 +94,8 @@ class LearnWordPage4State extends State<LearnWordPage4> {
               child: BigButton(
                 text: 'Далее',
                 onPressed: () {
-                  context.go("/learn/success", extra: widget.word);
+                  context.go("/learn/success",
+                      extra: widget.wordsPair.selectedWord);
                 },
               ),
             )

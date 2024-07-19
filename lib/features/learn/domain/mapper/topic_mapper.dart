@@ -8,3 +8,9 @@ extension TopicMapper on TopicDto {
         subtopics: subtopics.toModel(),
       );
 }
+
+extension TopicListMapper on List<TopicDto> {
+  List<Topic> toModel() {
+    return map((topicDto) => topicDto.toModel()).toList();
+  }
+}

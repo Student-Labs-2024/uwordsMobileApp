@@ -14,15 +14,12 @@ import 'package:uwords/features/database/data_sources/savable_user_data_source.d
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
+import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/data_sources/interface_words_data_source.dart';
 import 'package:uwords/features/learn/data/data_sources/words_data_source.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/data/repositores/words_repository.dart';
-import 'package:uwords/features/learn/domain/models/word_model.dart';
-import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen1.dart';
-import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen2.dart';
-import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen3.dart';
-import 'package:uwords/features/learn/presentation/learn_screens/successful_word_screen.dart';
+import 'package:uwords/features/learn/presentation/learn_screens/core_learn_screen.dart';
 import 'package:uwords/features/main/data/data_sources/audio_datasource.dart';
 import 'package:uwords/features/main/data/repositories/audio_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
@@ -32,8 +29,6 @@ import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
 import 'package:uwords/features/main/bloc/audioLink_bloc/audioLink_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
-
-import 'features/learn/presentation/learn_screens/learn_word_screen4.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -72,44 +67,10 @@ final GoRouter _goRouter = GoRouter(
         GoRoute(
           path: '/learn',
           builder: (context, state) => LearnPage(),
-          routes: [
-            GoRoute(
-              path: "screen1",
-              builder: (context, state) => LearnWordPage1(
-                word: state.extra as WordModel,
-              ),
-              routes: [
-                GoRoute(
-                  path: "screen2",
-                  builder: (context, state) => LearnWordPage2(
-                    word: state.extra as WordModel,
-                  ),
-                  routes: [
-                    GoRoute(
-                      path: "screen3",
-                      builder: (context, state) => LearnWordPage3(
-                        word: state.extra as WordModel,
-                      ),
-                      routes: [
-                        GoRoute(
-                          path: "screen4",
-                          builder: (context, state) => LearnWordPage4(
-                            word: state.extra as WordModel,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            GoRoute(
-              path: "success",
-              builder: (context, state) => SuccessfulWordPage(
-                word: state.extra as WordModel,
-              ),
-            ),
-          ],
+        ),
+        GoRoute(
+          path: '/learnCore',
+          builder: (context, state) => LearnCoreScreen(),
         ),
         GoRoute(
           path: '/profile',
@@ -158,6 +119,10 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => PlayerBloc()),
           BlocProvider(
               create: (context) => LearningBloc(
+                  wordsRepository: context.read<IWordsRepository>(),
+                  userRepository: context.read<IUserRepository>())),
+          BlocProvider(
+              create: (context) => TrainingBloc(
                   wordsRepository: context.read<IWordsRepository>(),
                   userRepository: context.read<IUserRepository>()))
         ],
