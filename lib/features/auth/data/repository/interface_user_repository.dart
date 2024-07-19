@@ -1,7 +1,9 @@
 abstract interface class IUserRepository {
   void localLogOut();
   Future<bool> registerUser(
-      {required String emailAddress, required String password});
+      {required String emailAddress,
+      required String password,
+      required DateTime birthDate});
   Future<String> refreshAccessToken();
   Future<void> authorizate(
       {required String emailAddress,
@@ -16,6 +18,9 @@ abstract interface class IUserRepository {
     required String avatarUrl,
     required String phoneNumber,
     required String provider,
+    required DateTime birthDate,
   });
   Future<String> getCurrentUserAccessToken();
+  Future<void> requestCode({required String email});
+  Future<bool> checkCode({required String email, required String code});
 }

@@ -31,6 +31,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignInWithVK>(_handleSignInWithVK);
     on<_SignInWithGoogle>(_handleSignInWithGoogle);
     on<_LogOut>(_handleLogOut);
+    on<_RequestCode>(_handleRequestCode);
+    on<_CheckCode>(_handleCheckingCode);
   }
 
   Future<void> _handleRegisterUser(
@@ -155,7 +157,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             surname: uSurName,
             avatarUrl: uPhotoURL,
             phoneNumber: uPhoneNumber,
-            provider: provider);
+            provider: provider,
+            birthDate: birthDate);
     if (isSuccessRegister) {
       await _authorization(emit: emit, provider: provider);
       emit(const AuthState.authorized());
@@ -186,6 +189,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(const AuthState.unknownError());
       }
     }
+  }
+
+  Future<void> _handleCheckingCode(
+      {required _CheckCode event, required Emitter<AuthState> emit}) async {
+    try {
+      if (await userRepository.checkCode(
+          email: event.email, code: event.code)) {
+      } else {}
+    } on Exception catch (e) {}
+  }
+
+  Future<void> _handleRequestCode(
+      {required _RequestCode event, required Emitter<AuthState> emit}) async {
+    //TODO implement functional
+    emit(AuthState.initial());
   }
 
   bool _isCorrectPassword({required String password}) {

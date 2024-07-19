@@ -6,7 +6,9 @@ abstract interface class INetworkUserDataSource {
       required String password,
       required String provider});
   Future<void> registerUser(
-      {required String userEmail, required String password});
+      {required String userEmail,
+      required String password,
+      required DateTime birthDate});
   Future<void> registerUserFromThirdPartyService(
       {required String userEmail,
       required String password,
@@ -15,6 +17,7 @@ abstract interface class INetworkUserDataSource {
       required String surname,
       required String avatarUrl,
       required String phoneNumber,
-      required String provider});
+      required String provider,
+      required DateTime birthDate});
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto});
 }

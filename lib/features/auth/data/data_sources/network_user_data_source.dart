@@ -55,7 +55,9 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<void> registerUser(
-      {required String userEmail, required String password}) async {
+      {required String userEmail,
+      required String password,
+      required DateTime birthDate}) async {
     final registerRequestBody = RegisterRequestBody(
       provider: 'self',
       email: userEmail,
@@ -65,20 +67,23 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       lastname: '',
       avatarUrl: '',
       phoneNumber: '',
+      birthDate: birthDate,
     );
     await client.registerUser(jsonEncode(registerRequestBody));
   }
 
   @override
-  Future<void> registerUserFromThirdPartyService(
-      {required String userEmail,
-      required String password,
-      required String username,
-      required String name,
-      required String surname,
-      required String avatarUrl,
-      required String phoneNumber,
-      required String provider}) async {
+  Future<void> registerUserFromThirdPartyService({
+    required String userEmail,
+    required String password,
+    required String username,
+    required String name,
+    required String surname,
+    required String avatarUrl,
+    required String phoneNumber,
+    required String provider,
+    required DateTime birthDate,
+  }) async {
     final registerRequestBody = RegisterRequestBody(
       provider: provider,
       email: userEmail,
@@ -88,6 +93,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       lastname: surname,
       avatarUrl: avatarUrl,
       phoneNumber: phoneNumber,
+      birthDate: birthDate,
     );
     await client.registerUser(jsonEncode(registerRequestBody));
   }

@@ -12,4 +12,7 @@ abstract class AuthState with _$AuthState {
   const factory AuthState.failedAutorization() = _AuthFailedAuthorization;
   const factory AuthState.badPassword() = _AuthBadPassword;
   const factory AuthState.unknownError() = _AuthUnknownError;
+  const factory AuthState.sendedCode() = _AuthSendedCode;
+  const factory AuthState.registerCheckingEmail() = _AuthRegiserCheckingEmail;
+  const factory AuthState.verifiedEmail() = _AuthVerifiedEmail;
 }

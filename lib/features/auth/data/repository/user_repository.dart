@@ -38,10 +38,12 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<bool> registerUser(
-      {required String emailAddress, required String password}) async {
+      {required String emailAddress,
+      required String password,
+      required DateTime birthDate}) async {
     try {
       await networkUserDataSource.registerUser(
-          userEmail: emailAddress, password: password);
+          userEmail: emailAddress, password: password, birthDate: birthDate);
       return true;
     } on Exception catch (e) {
       log(e.toString());
@@ -58,7 +60,8 @@ class UserRepository implements IUserRepository {
       required String surname,
       required String avatarUrl,
       required String phoneNumber,
-      required String provider}) async {
+      required String provider,
+      required DateTime birthDate}) async {
     try {
       await networkUserDataSource.registerUserFromThirdPartyService(
           userEmail: email,
@@ -68,7 +71,8 @@ class UserRepository implements IUserRepository {
           surname: surname,
           avatarUrl: avatarUrl,
           phoneNumber: phoneNumber,
-          provider: provider);
+          provider: provider,
+          birthDate: birthDate);
       return true;
     } on Exception catch (e) {
       log(e.toString());
@@ -89,5 +93,17 @@ class UserRepository implements IUserRepository {
   @override
   void localLogOut() async {
     await savableUserDataSource.noneIsCurrent();
+  }
+
+  @override
+  Future<bool> checkCode({required String email, required String code}) {
+    // TODO: implement checkCode
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> requestCode({required String email}) {
+    // TODO: implement requestCode
+    throw UnimplementedError();
   }
 }

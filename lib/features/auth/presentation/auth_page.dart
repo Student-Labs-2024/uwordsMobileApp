@@ -112,7 +112,7 @@ class _AuthPageState extends State<AuthPage> {
                         onPressed: () async {
                           context.read<AuthBloc>().add(AuthEvent.registerUser(
                               emailAddress: usernameController.text,
-                              password: passwordController.text));
+                              password: passwordController.text, birthDate: null));
                         },
                         child: Text(AppLocalizations.of(context)
                             .registerUserWithMailAndPassword),
