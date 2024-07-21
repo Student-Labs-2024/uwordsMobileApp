@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/data/undesign_constants.dart';
+import 'package:uwords/features/learn/presentation/mock_data.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
@@ -19,15 +20,6 @@ class LearnWordPage4 extends StatefulWidget {
 
 class LearnWordPage4State extends State<LearnWordPage4> {
   bool chosenImage = false;
-
-  final WordModel anotherWord = const WordModel(
-    id: 0,
-    category: "",
-    enValue: "stock",
-    ruValue: "стоковое",
-    audioLink: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3",
-    pictureLink: "https://big-nose.ru:9100/uwords-picture/element.jpg",
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +61,9 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                     shrinkWrap: true,
                     children: [
                       ImageCard(word: widget.word),
-                      ImageCard(word: anotherWord),
-                      ImageCard(word: anotherWord),
-                      ImageCard(word: anotherWord),
+                      const ImageCard(word: MockData.mockWordModel),
+                      const ImageCard(word: MockData.mockWordModel),
+                      const ImageCard(word: MockData.mockWordModel),
                     ],
                   ),
                 )
