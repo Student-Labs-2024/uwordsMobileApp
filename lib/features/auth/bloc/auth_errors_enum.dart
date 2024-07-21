@@ -5,4 +5,6 @@ enum AuthError {
   failedSignIn,
   notValidMail,
   badPassword,
+  failedSendCode,
+  codeIsNotRight
 }

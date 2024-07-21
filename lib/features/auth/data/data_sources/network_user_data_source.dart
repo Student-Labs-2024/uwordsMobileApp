@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/features/auth/bloc/auth_providers.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
+import 'package:uwords/features/auth/data/request_bodies/code_request.dart';
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
 import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
@@ -14,17 +16,42 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<UserAuthDto> authorizate(
-      {required String userEmail,
-      required String password,
-      required String provider}) async {
-    final LoginRequestBody loginRequestBody = LoginRequestBody(
-        provider: provider, email: userEmail, password: password);
+      {required String userEmail, required String password}) async {
+    final LoginRequestBody loginRequestBody =
+        LoginRequestBody(email: userEmail, password: password);
     try {
       final response = await client.login(jsonEncode(loginRequestBody));
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: userEmail,
         password: password,
-        provider: provider,
+        provider: AuthorizationProvider.self,
+        map: response.data,
+      );
+    } on DioException catch (e) {
+      if (e.response != null) {
+        switch (e.response!.statusCode) {
+          case 400:
+            throw NotValidDataForLoginException();
+          case 403:
+            throw AccessIsBannedException();
+          case 404:
+            throw NotRegisteredException();
+          default:
+            break;
+        }
+      }
+      rethrow;
+    }
+  }
+
+  @override
+  Future<UserAuthDto> authorizateVk({required String accessToken}) async {
+    try {
+      final response = await client.loginVK(accessToken);
+      return UserAuthDto.fromJsonAndOtherFields(
+        userEmail: '',
+        password: '',
+        provider: AuthorizationProvider.vk,
         map: response.data,
       );
     } on DioException catch (e) {
@@ -57,44 +84,49 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   Future<void> registerUser(
       {required String userEmail,
       required String password,
-      required DateTime birthDate}) async {
+      required String username,
+      required DateTime birthDate,
+      required String code}) async {
     final registerRequestBody = RegisterRequestBody(
-      provider: 'self',
       email: userEmail,
       password: password,
-      username: '',
-      firstname: '',
-      lastname: '',
-      avatarUrl: '',
-      phoneNumber: '',
+      username: username,
+      code: code,
       birthDate: birthDate,
     );
     await client.registerUser(jsonEncode(registerRequestBody));
   }
 
   @override
-  Future<void> registerUserFromThirdPartyService({
-    required String userEmail,
-    required String password,
-    required String username,
+  Future<void> registerUserFromVK({
+    required String accessToken,
     required String name,
     required String surname,
-    required String avatarUrl,
-    required String phoneNumber,
-    required String provider,
-    required DateTime birthDate,
   }) async {
-    final registerRequestBody = RegisterRequestBody(
-      provider: provider,
-      email: userEmail,
-      password: password,
-      username: username,
+    final registerRequestBody = RegisterVKRequestBody(
       firstname: name,
       lastname: surname,
-      avatarUrl: avatarUrl,
-      phoneNumber: phoneNumber,
-      birthDate: birthDate,
     );
     await client.registerUser(jsonEncode(registerRequestBody));
+  }
+
+  @override
+  Future<bool> checkCode(
+      {required String userEmail, required String code}) async {
+    var response =
+        await client.checkCode(CheckCodeRequest(code: code, email: userEmail));
+    if (response.response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @override
+  Future<void> sendCode({required String userEmail}) async {
+    Map<String, dynamic> body = {
+      "email": userEmail,
+    };
+    await client.sendCode(body);
   }
 }

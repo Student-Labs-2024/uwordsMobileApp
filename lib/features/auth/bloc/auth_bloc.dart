@@ -8,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/features/auth/bloc/auth_errors_enum.dart';
+import 'package:uwords/features/auth/bloc/auth_providers.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 
 part 'auth_bloc_event.dart';
@@ -21,51 +22,67 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   String uEmail = '';
   String uName = '';
   String uSurName = '';
-  String uPhotoURL = '';
-  String providerUid = '';
-  String uPhoneNumber = '';
   String username = '';
+  String uPassword = '';
+  String uCode = '';
+  DateTime birthDate = DateTime.now();
 
   AuthBloc({required this.userRepository}) : super(const AuthState.initial()) {
-    on<_RegisterUser>(_handleRegisterUser);
     on<_RequestCode>(_handleRequestCode);
-    on<_CheckCode>(_handleCheckingCode);
+    on<_RegisterUser>(_handleRegisterUser);
     on<_SignInWithVK>(_handleSignInWithVK);
     on<_SignInWithGoogle>(_handleSignInWithGoogle);
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_LogOut>(_handleLogOut);
   }
 
-  Future<void> _handleRegisterUser(
-      _RegisterUser event, Emitter<AuthState> emit) async {
+  Future<void> _handleRequestCode(
+      _RequestCode event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
-      emit(const AuthState.waitingAnswer());
-      bool isSuccessRegister = await userRepository.registerUser(
-          emailAddress: event.emailAddress, password: event.password);
-      if (isSuccessRegister) {
+      uEmail = event.emailAddress;
+      username = event.nickname ?? '';
+      birthDate = event.birthDate;
+      try {
+        await userRepository.requestCode(email: uEmail);
         emit(const AuthState.sendedCode());
-      } else {
-        emit(const AuthState.failed(AuthError.failedRegistration));
+      } on Exception {
+        emit(const AuthState.failed(AuthError.failedSendCode));
       }
     } else {
       emit(const AuthState.initial());
     }
   }
 
-  Future<void> _handleRequestCode(
-      {required _RequestCode event, required Emitter<AuthState> emit}) async {
-    //TODO implement functional
-    emit(AuthState.initial());
-  }
-
-  Future<void> _handleCheckingCode(
-      {required _CheckCode event, required Emitter<AuthState> emit}) async {
+  Future<void> _handleRegisterUser(
+      _RegisterUser event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
+    uCode = event.code;
     try {
-      if (await userRepository.checkCode(
-          email: event.email, code: event.code)) {
-      } else {}
-    } on Exception catch (e) {}
+      bool isRightCode =
+          await userRepository.checkCode(email: uEmail, code: uCode);
+      if (isRightCode) {
+        bool isSuccessRegister = await userRepository.registerUser(
+            username: username,
+            emailAddress: uEmail,
+            password: uPassword,
+            birthDate: birthDate,
+            code: uCode);
+        if (isSuccessRegister) {
+          await _authorization(
+              emit: emit, provider: AuthorizationProvider.self);
+          emit(const AuthState.authorized());
+        } else {
+          emit(const AuthState.failed(AuthError.failedRegistration));
+        }
+      } else {
+        emit(const AuthState.failed(AuthError.codeIsNotRight));
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      emit(const AuthState.failed(AuthError.unknownError));
+    }
   }
 
   Future<void> _handleSignInWithVK(
@@ -75,9 +92,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     userRepository.localLogOut();
     await _signInWithVk();
     try {
-      await _authorization(emit: emit, provider: "vk");
+      await _authorization(emit: emit, provider: AuthorizationProvider.vk);
     } on NotRegisteredException {
-      await _registerAndAuth(emit: emit, provider: "vk");
+      await _registerAndAuth(emit: emit, provider: AuthorizationProvider.vk);
     }
   }
 
@@ -88,9 +105,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     userRepository.localLogOut();
     await _signInWithGoogle();
     try {
-      await _authorization(emit: emit, provider: "google");
+      await _authorization(emit: emit, provider: AuthorizationProvider.google);
     } on NotRegisteredException {
-      await _registerAndAuth(emit: emit, provider: "google");
+      await _registerAndAuth(
+          emit: emit, provider: AuthorizationProvider.google);
     }
   }
 
@@ -102,8 +120,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       vk.logOut();
       emit(const AuthState.waitingAnswer());
       uEmail = event.emailAddress;
-      providerUid = event.password;
-      await _authorization(emit: emit, provider: "self");
+      uPassword = event.password;
+      await _authorization(emit: emit, provider: AuthorizationProvider.self);
     } else {
       emit(const AuthState.initial());
     }
@@ -115,7 +133,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _signInWithVk() async {
-    //TODO check initSDK true false
     await vk.initSdk();
     final res = await vk.logIn(scope: [
       VKScope.email,
@@ -132,8 +149,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           if (profile != null) {
             uName = profile.firstName;
             uSurName = profile.lastName;
-            uPhotoURL = profile.photo200 ?? '';
-            providerUid = profile.userId.toString();
+            uPassword = accessToken.token;
           }
           //TODO check auth true/false for
           uEmail = await vk.getUserEmail() ?? '';
@@ -155,26 +171,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final creds = await auth.signInWithCredential(credential);
 
-    providerUid = creds.user?.uid ?? '';
+    uPassword = creds.user?.uid ?? '';
     uEmail = creds.user?.email ?? '';
-    uPhotoURL = creds.user?.photoURL ?? '';
     username = creds.user?.displayName ?? '';
-    uPhoneNumber = creds.user?.phoneNumber ?? '';
   }
 
   Future<void> _registerAndAuth(
-      {required Emitter<AuthState> emit, required String provider}) async {
-    bool isSuccessRegister =
-        await userRepository.registerUserFromThirdPartyService(
-            email: uEmail,
-            password: providerUid,
+      {required Emitter<AuthState> emit,
+      required AuthorizationProvider provider}) async {
+    bool isSuccessRegister = false;
+    switch (provider) {
+      case AuthorizationProvider.vk:
+        isSuccessRegister = await userRepository.registerUserFromVK(
+            accessToken: uPassword, name: uName, surname: uSurName);
+      case AuthorizationProvider.self:
+        await userRepository.registerUser(
             username: username,
-            name: uName,
-            surname: uSurName,
-            avatarUrl: uPhotoURL,
-            phoneNumber: uPhoneNumber,
-            provider: provider,
-            birthDate: birthDate);
+            emailAddress: uEmail,
+            password: uPassword,
+            birthDate: birthDate,
+            code: uCode);
+      case AuthorizationProvider.google:
+      // TODO: Handle case with Google provider
+    }
+
     if (isSuccessRegister) {
       await _authorization(emit: emit, provider: provider);
       emit(const AuthState.authorized());
@@ -186,10 +206,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _authorization(
-      {required Emitter<AuthState> emit, required String provider}) async {
+      {required Emitter<AuthState> emit,
+      required AuthorizationProvider provider}) async {
     try {
-      await userRepository.authorizate(
-          emailAddress: uEmail, password: providerUid, provider: provider);
+      switch (provider) {
+        case AuthorizationProvider.vk:
+          await userRepository.authorizateVk(accessToken: uPassword,);
+        case AuthorizationProvider.self:
+          await userRepository.authorizate(
+              emailAddress: uEmail, password: uPassword, provider: provider);
+        case AuthorizationProvider.google:
+        // TODO: Handle case with Google provider
+      }
       emit(const AuthState.authorized());
     } on Exception catch (e) {
       switch (e.runtimeType) {

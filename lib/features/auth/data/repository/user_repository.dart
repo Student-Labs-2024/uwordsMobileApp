@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:uwords/features/auth/bloc/auth_providers.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
@@ -14,13 +15,14 @@ class UserRepository implements IUserRepository {
       required this.savableUserDataSource});
 
   @override
-  Future<void> authorizate(
-      {required String emailAddress,
-      required password,
-      required String provider}) async {
+  Future<void> authorizate({
+    required String emailAddress,
+    required String password,
+    required AuthorizationProvider provider,
+  }) async {
     try {
       UserAuthDto user = await networkUserDataSource.authorizate(
-          userEmail: emailAddress, password: password, provider: provider);
+          userEmail: emailAddress, password: password);
       _saveUser(userDto: user);
     } on Exception {
       rethrow;
@@ -37,13 +39,20 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<bool> registerUser(
-      {required String emailAddress,
-      required String password,
-      required DateTime birthDate}) async {
+  Future<bool> registerUser({
+    required String emailAddress,
+    required String password,
+    required String username,
+    required DateTime birthDate,
+    required String code,
+  }) async {
     try {
       await networkUserDataSource.registerUser(
-          userEmail: emailAddress, password: password, birthDate: birthDate);
+          userEmail: emailAddress,
+          password: password,
+          username: username,
+          code: code,
+          birthDate: birthDate);
       return true;
     } on Exception catch (e) {
       log(e.toString());
@@ -52,27 +61,17 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<bool> registerUserFromThirdPartyService(
-      {required String email,
-      required String password,
-      required String username,
-      required String name,
-      required String surname,
-      required String avatarUrl,
-      required String phoneNumber,
-      required String provider,
-      required DateTime birthDate}) async {
+  Future<bool> registerUserFromVK({
+    required String accessToken,
+    required String name,
+    required String surname,
+  }) async {
     try {
-      await networkUserDataSource.registerUserFromThirdPartyService(
-          userEmail: email,
-          password: password,
-          username: username,
-          name: name,
-          surname: surname,
-          avatarUrl: avatarUrl,
-          phoneNumber: phoneNumber,
-          provider: provider,
-          birthDate: birthDate);
+      await networkUserDataSource.registerUserFromVK(
+        accessToken: accessToken,
+        name: name,
+        surname: surname,
+      );
       return true;
     } on Exception catch (e) {
       log(e.toString());
@@ -97,13 +96,23 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<bool> checkCode({required String email, required String code}) {
-    // TODO: implement checkCode
-    throw UnimplementedError();
+    var result = networkUserDataSource.checkCode(userEmail: email, code: code);
+    return result;
   }
 
   @override
-  Future<void> requestCode({required String email}) {
-    // TODO: implement requestCode
-    throw UnimplementedError();
+  Future<void> requestCode({required String email}) async {
+    await networkUserDataSource.sendCode(userEmail: email);
+  }
+
+  @override
+  Future<void> authorizateVk({required String accessToken}) async {
+    try {
+      UserAuthDto user =
+          await networkUserDataSource.authorizateVk(accessToken: accessToken);
+      _saveUser(userDto: user);
+    } on Exception {
+      rethrow;
+    }
   }
 }

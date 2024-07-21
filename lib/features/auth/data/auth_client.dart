@@ -22,8 +22,8 @@ abstract class AuthClient {
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/login")
-  Future<HttpResponse<Map<String, String>>> loginVK(@Body() body,
-      {@Header('Content-Type') String contentType = 'application/json'});
+  Future<HttpResponse<Map<String, String>>> loginVK(
+      @Header("Authorization") String refreshToken);
 
   @GET("users/token/refresh")
   Future<Map<String, String>> refresh(

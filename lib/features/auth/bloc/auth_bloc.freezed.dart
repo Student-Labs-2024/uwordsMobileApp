@@ -20,9 +20,8 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
@@ -34,9 +33,8 @@ mixin _$AuthEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
@@ -48,9 +46,8 @@ mixin _$AuthEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -61,9 +58,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
@@ -73,9 +69,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -84,9 +79,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -114,10 +108,10 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 }
 
 /// @nodoc
-abstract class _$$RegisterUserImplCopyWith<$Res> {
-  factory _$$RegisterUserImplCopyWith(
-          _$RegisterUserImpl value, $Res Function(_$RegisterUserImpl) then) =
-      __$$RegisterUserImplCopyWithImpl<$Res>;
+abstract class _$$RequestCodeImplCopyWith<$Res> {
+  factory _$$RequestCodeImplCopyWith(
+          _$RequestCodeImpl value, $Res Function(_$RequestCodeImpl) then) =
+      __$$RequestCodeImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {DateTime birthDate,
@@ -127,11 +121,11 @@ abstract class _$$RegisterUserImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$RegisterUserImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$RegisterUserImpl>
-    implements _$$RegisterUserImplCopyWith<$Res> {
-  __$$RegisterUserImplCopyWithImpl(
-      _$RegisterUserImpl _value, $Res Function(_$RegisterUserImpl) _then)
+class __$$RequestCodeImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RequestCodeImpl>
+    implements _$$RequestCodeImplCopyWith<$Res> {
+  __$$RequestCodeImplCopyWithImpl(
+      _$RequestCodeImpl _value, $Res Function(_$RequestCodeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -142,7 +136,7 @@ class __$$RegisterUserImplCopyWithImpl<$Res>
     Object? emailAddress = null,
     Object? password = null,
   }) {
-    return _then(_$RegisterUserImpl(
+    return _then(_$RequestCodeImpl(
       birthDate: null == birthDate
           ? _value.birthDate
           : birthDate // ignore: cast_nullable_to_non_nullable
@@ -165,8 +159,8 @@ class __$$RegisterUserImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
-  const _$RegisterUserImpl(
+class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
+  const _$RequestCodeImpl(
       {required this.birthDate,
       this.nickname,
       required this.emailAddress,
@@ -183,14 +177,14 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthEvent.registerUser(birthDate: $birthDate, nickname: $nickname, emailAddress: $emailAddress, password: $password)';
+    return 'AuthEvent.requestCode(birthDate: $birthDate, nickname: $nickname, emailAddress: $emailAddress, password: $password)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthEvent.registerUser'))
+      ..add(DiagnosticsProperty('type', 'AuthEvent.requestCode'))
       ..add(DiagnosticsProperty('birthDate', birthDate))
       ..add(DiagnosticsProperty('nickname', nickname))
       ..add(DiagnosticsProperty('emailAddress', emailAddress))
@@ -201,7 +195,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterUserImpl &&
+            other is _$RequestCodeImpl &&
             (identical(other.birthDate, birthDate) ||
                 other.birthDate == birthDate) &&
             (identical(other.nickname, nickname) ||
@@ -219,194 +213,6 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
-      __$$RegisterUserImplCopyWithImpl<_$RegisterUserImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DateTime birthDate, String? nickname,
-            String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
-    required TResult Function() signInWithVK,
-    required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        signInWithMailPassword,
-    required TResult Function() logOut,
-  }) {
-    return registerUser(birthDate, nickname, emailAddress, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
-            String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
-    TResult? Function()? signInWithVK,
-    TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)?
-        signInWithMailPassword,
-    TResult? Function()? logOut,
-  }) {
-    return registerUser?.call(birthDate, nickname, emailAddress, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
-            String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
-    TResult Function()? signInWithVK,
-    TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)?
-        signInWithMailPassword,
-    TResult Function()? logOut,
-    required TResult orElse(),
-  }) {
-    if (registerUser != null) {
-      return registerUser(birthDate, nickname, emailAddress, password);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
-    required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
-    required TResult Function(_SignInWithVK value) signInWithVK,
-    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_SignInWithMailPassword value)
-        signInWithMailPassword,
-    required TResult Function(_LogOut value) logOut,
-  }) {
-    return registerUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
-    TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
-    TResult? Function(_SignInWithVK value)? signInWithVK,
-    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
-    TResult? Function(_LogOut value)? logOut,
-  }) {
-    return registerUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
-    TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
-    TResult Function(_SignInWithVK value)? signInWithVK,
-    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
-    TResult Function(_LogOut value)? logOut,
-    required TResult orElse(),
-  }) {
-    if (registerUser != null) {
-      return registerUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RegisterUser implements AuthEvent {
-  const factory _RegisterUser(
-      {required final DateTime birthDate,
-      final String? nickname,
-      required final String emailAddress,
-      required final String password}) = _$RegisterUserImpl;
-
-  DateTime get birthDate;
-  String? get nickname;
-  String get emailAddress;
-  String get password;
-  @JsonKey(ignore: true)
-  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$RequestCodeImplCopyWith<$Res> {
-  factory _$$RequestCodeImplCopyWith(
-          _$RequestCodeImpl value, $Res Function(_$RequestCodeImpl) then) =
-      __$$RequestCodeImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String email});
-}
-
-/// @nodoc
-class __$$RequestCodeImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$RequestCodeImpl>
-    implements _$$RequestCodeImplCopyWith<$Res> {
-  __$$RequestCodeImplCopyWithImpl(
-      _$RequestCodeImpl _value, $Res Function(_$RequestCodeImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = null,
-  }) {
-    return _then(_$RequestCodeImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
-  const _$RequestCodeImpl({required this.email});
-
-  @override
-  final String email;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthEvent.requestCode(email: $email)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthEvent.requestCode'))
-      ..add(DiagnosticsProperty('email', email));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RequestCodeImpl &&
-            (identical(other.email, email) || other.email == email));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, email);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
   _$$RequestCodeImplCopyWith<_$RequestCodeImpl> get copyWith =>
       __$$RequestCodeImplCopyWithImpl<_$RequestCodeImpl>(this, _$identity);
 
@@ -415,16 +221,15 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
   }) {
-    return requestCode(email);
+    return requestCode(birthDate, nickname, emailAddress, password);
   }
 
   @override
@@ -432,16 +237,15 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
   }) {
-    return requestCode?.call(email);
+    return requestCode?.call(birthDate, nickname, emailAddress, password);
   }
 
   @override
@@ -449,9 +253,8 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -460,7 +263,7 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     required TResult orElse(),
   }) {
     if (requestCode != null) {
-      return requestCode(email);
+      return requestCode(birthDate, nickname, emailAddress, password);
     }
     return orElse();
   }
@@ -468,9 +271,8 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
@@ -483,9 +285,8 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -497,9 +298,8 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -514,42 +314,44 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
 }
 
 abstract class _RequestCode implements AuthEvent {
-  const factory _RequestCode({required final String email}) = _$RequestCodeImpl;
+  const factory _RequestCode(
+      {required final DateTime birthDate,
+      final String? nickname,
+      required final String emailAddress,
+      required final String password}) = _$RequestCodeImpl;
 
-  String get email;
+  DateTime get birthDate;
+  String? get nickname;
+  String get emailAddress;
+  String get password;
   @JsonKey(ignore: true)
   _$$RequestCodeImplCopyWith<_$RequestCodeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CheckCodeImplCopyWith<$Res> {
-  factory _$$CheckCodeImplCopyWith(
-          _$CheckCodeImpl value, $Res Function(_$CheckCodeImpl) then) =
-      __$$CheckCodeImplCopyWithImpl<$Res>;
+abstract class _$$RegisterUserImplCopyWith<$Res> {
+  factory _$$RegisterUserImplCopyWith(
+          _$RegisterUserImpl value, $Res Function(_$RegisterUserImpl) then) =
+      __$$RegisterUserImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String code});
+  $Res call({String code});
 }
 
 /// @nodoc
-class __$$CheckCodeImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$CheckCodeImpl>
-    implements _$$CheckCodeImplCopyWith<$Res> {
-  __$$CheckCodeImplCopyWithImpl(
-      _$CheckCodeImpl _value, $Res Function(_$CheckCodeImpl) _then)
+class __$$RegisterUserImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RegisterUserImpl>
+    implements _$$RegisterUserImplCopyWith<$Res> {
+  __$$RegisterUserImplCopyWithImpl(
+      _$RegisterUserImpl _value, $Res Function(_$RegisterUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
     Object? code = null,
   }) {
-    return _then(_$CheckCodeImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$RegisterUserImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -560,25 +362,22 @@ class __$$CheckCodeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CheckCodeImpl with DiagnosticableTreeMixin implements _CheckCode {
-  const _$CheckCodeImpl({required this.email, required this.code});
+class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
+  const _$RegisterUserImpl({required this.code});
 
-  @override
-  final String email;
   @override
   final String code;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthEvent.checkCode(email: $email, code: $code)';
+    return 'AuthEvent.registerUser(code: $code)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthEvent.checkCode'))
-      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('type', 'AuthEvent.registerUser'))
       ..add(DiagnosticsProperty('code', code));
   }
 
@@ -586,35 +385,33 @@ class _$CheckCodeImpl with DiagnosticableTreeMixin implements _CheckCode {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CheckCodeImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            other is _$RegisterUserImpl &&
             (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, code);
+  int get hashCode => Object.hash(runtimeType, code);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CheckCodeImplCopyWith<_$CheckCodeImpl> get copyWith =>
-      __$$CheckCodeImplCopyWithImpl<_$CheckCodeImpl>(this, _$identity);
+  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
+      __$$RegisterUserImplCopyWithImpl<_$RegisterUserImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
   }) {
-    return checkCode(email, code);
+    return registerUser(code);
   }
 
   @override
@@ -622,16 +419,15 @@ class _$CheckCodeImpl with DiagnosticableTreeMixin implements _CheckCode {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
   }) {
-    return checkCode?.call(email, code);
+    return registerUser?.call(code);
   }
 
   @override
@@ -639,9 +435,8 @@ class _$CheckCodeImpl with DiagnosticableTreeMixin implements _CheckCode {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -649,8 +444,8 @@ class _$CheckCodeImpl with DiagnosticableTreeMixin implements _CheckCode {
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
-    if (checkCode != null) {
-      return checkCode(email, code);
+    if (registerUser != null) {
+      return registerUser(code);
     }
     return orElse();
   }
@@ -658,60 +453,55 @@ class _$CheckCodeImpl with DiagnosticableTreeMixin implements _CheckCode {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
   }) {
-    return checkCode(this);
+    return registerUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
   }) {
-    return checkCode?.call(this);
+    return registerUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
   }) {
-    if (checkCode != null) {
-      return checkCode(this);
+    if (registerUser != null) {
+      return registerUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _CheckCode implements AuthEvent {
-  const factory _CheckCode(
-      {required final String email,
-      required final String code}) = _$CheckCodeImpl;
+abstract class _RegisterUser implements AuthEvent {
+  const factory _RegisterUser({required final String code}) =
+      _$RegisterUserImpl;
 
-  String get email;
   String get code;
   @JsonKey(ignore: true)
-  _$$CheckCodeImplCopyWith<_$CheckCodeImpl> get copyWith =>
+  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -761,9 +551,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
@@ -778,9 +567,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
@@ -795,9 +583,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -814,9 +601,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
@@ -829,9 +615,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -843,9 +628,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -911,9 +695,8 @@ class _$SignInWithGoogleImpl
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
@@ -928,9 +711,8 @@ class _$SignInWithGoogleImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
@@ -945,9 +727,8 @@ class _$SignInWithGoogleImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -964,9 +745,8 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
@@ -979,9 +759,8 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -993,9 +772,8 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -1104,9 +882,8 @@ class _$SignInWithMailPasswordImpl
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
@@ -1121,9 +898,8 @@ class _$SignInWithMailPasswordImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
@@ -1138,9 +914,8 @@ class _$SignInWithMailPasswordImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -1157,9 +932,8 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
@@ -1172,9 +946,8 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -1186,9 +959,8 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -1260,9 +1032,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   TResult when<TResult extends Object?>({
     required TResult Function(DateTime birthDate, String? nickname,
             String emailAddress, String password)
-        registerUser,
-    required TResult Function(String email) requestCode,
-    required TResult Function(String email, String code) checkCode,
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
     required TResult Function(String emailAddress, String password)
@@ -1277,9 +1048,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult? Function(String email)? requestCode,
-    TResult? Function(String email, String code)? checkCode,
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
     TResult? Function(String emailAddress, String password)?
@@ -1294,9 +1064,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime birthDate, String? nickname, String emailAddress,
             String password)?
-        registerUser,
-    TResult Function(String email)? requestCode,
-    TResult Function(String email, String code)? checkCode,
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
     TResult Function(String emailAddress, String password)?
@@ -1313,9 +1082,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_RequestCode value) requestCode,
-    required TResult Function(_CheckCode value) checkCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
     required TResult Function(_SignInWithMailPassword value)
@@ -1328,9 +1096,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_RequestCode value)? requestCode,
-    TResult? Function(_CheckCode value)? checkCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
@@ -1342,9 +1109,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_RequestCode value)? requestCode,
-    TResult Function(_CheckCode value)? checkCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,

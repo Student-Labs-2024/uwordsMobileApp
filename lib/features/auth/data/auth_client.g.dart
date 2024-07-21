@@ -112,21 +112,17 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<Map<String, String>>> loginVK(
-    dynamic body, {
-    String contentType = 'application/json',
-  }) async {
+  Future<HttpResponse<Map<String, String>>> loginVK(String refreshToken) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Content-Type': contentType};
+    final _headers = <String, dynamic>{r'Authorization': refreshToken};
     _headers.removeWhere((k, v) => v == null);
-    final _data = body;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<Map<String, String>>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
-      contentType: contentType,
     )
             .compose(
               _dio.options,

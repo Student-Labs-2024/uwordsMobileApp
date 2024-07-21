@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:uwords/features/auth/bloc/auth_providers.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
@@ -29,7 +30,7 @@ void main() {
     test("DTO factory from DB method", () {
       const String email = "example@email.com";
       const String password = "a)192929kwAA";
-      const String provider = "self";
+      const AuthorizationProvider provider = AuthorizationProvider.self;
       const String jsonString = '''
   {
     "email": "example@email.com",
@@ -51,7 +52,7 @@ void main() {
       expect(userAuthDtoTest.accessToken, equals("accessToken"));
       expect(userAuthDtoTest.refreshToken, equals("refreshToken"));
       expect(userAuthDtoTest.isEducationCompleted, isFalse);
-      expect(userAuthDtoTest.provider, equals(provider));
+      expect(userAuthDtoTest.provider, equals(provider.name));
     });
   });
 }
