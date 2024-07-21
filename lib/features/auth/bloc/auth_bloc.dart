@@ -7,6 +7,7 @@ import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/features/auth/bloc/auth_errors_enum.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 
 part 'auth_bloc_event.dart';
