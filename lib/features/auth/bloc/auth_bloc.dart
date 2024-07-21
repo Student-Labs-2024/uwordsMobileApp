@@ -28,12 +28,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc({required this.userRepository}) : super(const AuthState.initial()) {
     on<_RegisterUser>(_handleRegisterUser);
-    on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
-    on<_SignInWithVK>(_handleSignInWithVK);
-    on<_SignInWithGoogle>(_handleSignInWithGoogle);
-    on<_LogOut>(_handleLogOut);
     on<_RequestCode>(_handleRequestCode);
     on<_CheckCode>(_handleCheckingCode);
+    on<_SignInWithVK>(_handleSignInWithVK);
+    on<_SignInWithGoogle>(_handleSignInWithGoogle);
+    on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
+    on<_LogOut>(_handleLogOut);
   }
 
   Future<void> _handleRegisterUser(
@@ -44,28 +44,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       bool isSuccessRegister = await userRepository.registerUser(
           emailAddress: event.emailAddress, password: event.password);
       if (isSuccessRegister) {
-        emit(const AuthState.registred());
+        emit(const AuthState.sendedCode());
       } else {
-        emit(const AuthState.failedRegistration());
+        emit(const AuthState.failed(AuthError.failedRegistration));
       }
     } else {
       emit(const AuthState.initial());
     }
   }
 
-  Future<void> _handleSignInWithMailPassword(
-      _SignInWithMailPassword event, Emitter<AuthState> emit) async {
-    if (_checkEmailAndPassword(
-        emit: emit, email: event.emailAddress, password: event.password)) {
-      auth.signOut();
-      vk.logOut();
-      emit(const AuthState.waitingAnswer());
-      uEmail = event.emailAddress;
-      providerUid = event.password;
-      await _authorization(emit: emit, provider: "self");
-    } else {
-      emit(const AuthState.initial());
-    }
+  Future<void> _handleRequestCode(
+      {required _RequestCode event, required Emitter<AuthState> emit}) async {
+    //TODO implement functional
+    emit(AuthState.initial());
+  }
+
+  Future<void> _handleCheckingCode(
+      {required _CheckCode event, required Emitter<AuthState> emit}) async {
+    try {
+      if (await userRepository.checkCode(
+          email: event.email, code: event.code)) {
+      } else {}
+    } on Exception catch (e) {}
   }
 
   Future<void> _handleSignInWithVK(
@@ -91,6 +91,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await _authorization(emit: emit, provider: "google");
     } on NotRegisteredException {
       await _registerAndAuth(emit: emit, provider: "google");
+    }
+  }
+
+  Future<void> _handleSignInWithMailPassword(
+      _SignInWithMailPassword event, Emitter<AuthState> emit) async {
+    if (_checkEmailAndPassword(
+        emit: emit, email: event.emailAddress, password: event.password)) {
+      auth.signOut();
+      vk.logOut();
+      emit(const AuthState.waitingAnswer());
+      uEmail = event.emailAddress;
+      providerUid = event.password;
+      await _authorization(emit: emit, provider: "self");
+    } else {
+      emit(const AuthState.initial());
     }
   }
 
@@ -164,7 +179,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await _authorization(emit: emit, provider: provider);
       emit(const AuthState.authorized());
     } else {
-      emit(const AuthState.failedRegistration());
+      emit(const AuthState.failed(AuthError.failedRegistration));
       await Future.delayed(const Duration(milliseconds: 1500));
       emit(const AuthState.initial());
     }
@@ -181,30 +196,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         case NotRegisteredException():
           await _registerAndAuth(emit: emit, provider: provider);
         case NotValidDataForLoginException():
-          emit(const AuthState.notValidMail());
+          emit(const AuthState.failed(AuthError.notValidMail));
         case AccessIsBannedException():
-          emit(const AuthState.failedAutorization());
+          emit(const AuthState.failed(AuthError.failedAutorization));
           await Future.delayed(const Duration(milliseconds: 1500));
           emit(const AuthState.initial());
         case UnknownApiException():
-          emit(const AuthState.unknownError());
+          emit(const AuthState.failed(AuthError.unknownError));
       }
     }
-  }
-
-  Future<void> _handleCheckingCode(
-      {required _CheckCode event, required Emitter<AuthState> emit}) async {
-    try {
-      if (await userRepository.checkCode(
-          email: event.email, code: event.code)) {
-      } else {}
-    } on Exception catch (e) {}
-  }
-
-  Future<void> _handleRequestCode(
-      {required _RequestCode event, required Emitter<AuthState> emit}) async {
-    //TODO implement functional
-    emit(AuthState.initial());
   }
 
   bool _isCorrectPassword({required String password}) {
@@ -236,11 +236,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       required String email,
       required String password}) {
     if (_isCorrectEmail(email: email) == false) {
-      emit(const AuthState.notValidMail());
+      emit(const AuthState.failed(AuthError.notValidMail));
       return false;
     }
     if (_isCorrectPassword(password: password) == false) {
-      emit(const AuthState.badPassword());
+      emit(const AuthState.failed(AuthError.badPassword));
       return false;
     }
     return true;
