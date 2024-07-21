@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
@@ -10,9 +9,11 @@ import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class LearnWordPage1 extends StatefulWidget {
-  const LearnWordPage1({super.key, required this.word});
+  const LearnWordPage1(
+      {super.key, required this.word, required this.goNextScreen});
 
   final WordModel word;
+  final VoidCallback goNextScreen;
 
   @override
   State<LearnWordPage1> createState() => LearnWordPage1State();
@@ -108,8 +109,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                   padding: const EdgeInsets.only(bottom: 32),
                   child: BigButton(
                     text: 'Далее',
-                    onPressed: () => context.go("/learn/screen1/screen2",
-                        extra: widget.word),
+                    onPressed: widget.goNextScreen,
                   ),
                 )
               ],

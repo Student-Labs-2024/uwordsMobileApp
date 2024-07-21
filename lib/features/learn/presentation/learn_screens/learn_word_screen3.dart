@@ -8,9 +8,11 @@ import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class LearnWordPage3 extends StatefulWidget {
-  const LearnWordPage3({super.key, required this.word});
+  const LearnWordPage3(
+      {super.key, required this.word, required this.goNextScreen});
 
   final WordModel word;
+  final VoidCallback goNextScreen;
 
   @override
   State<LearnWordPage3> createState() => LearnWordPage3State();
@@ -96,9 +98,7 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                   padding: const EdgeInsets.only(bottom: 32),
                   child: BigButton(
                     text: 'Далее',
-                    onPressed: () => context.go(
-                        "/learn/screen1/screen2/screen3/screen4",
-                        extra: widget.word),
+                    onPressed: widget.goNextScreen,
                   ),
                 )
               ],

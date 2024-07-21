@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/main/data/models/pair_model.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
@@ -8,9 +9,15 @@ import 'package:uwords/features/learn/presentation/widgets/word_input.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class LearnWordPage2 extends StatefulWidget {
-  const LearnWordPage2({super.key, required this.word});
+  const LearnWordPage2(
+      {super.key,
+      required this.word,
+      required this.letters,
+      required this.goNextScreen});
 
   final WordModel word;
+  final List<Pair<String, int>> letters;
+  final VoidCallback goNextScreen;
 
   @override
   State<LearnWordPage2> createState() => LearnWordPage2State();
@@ -126,8 +133,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                 text: 'Далее',
                 onPressed: () {
                   if (answerCorrect) {
-                    context.go("/learn/screen1/screen2/screen3",
-                        extra: widget.word);
+                    widget.goNextScreen();
                   }
                 },
               ),
