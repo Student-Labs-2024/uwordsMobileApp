@@ -23,7 +23,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       final response = await client.login(jsonEncode(loginRequestBody));
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: userEmail,
-        password: password,
         provider: AuthorizationProvider.self,
         map: response.data,
       );
@@ -47,10 +46,9 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> authorizateVk({required String accessToken}) async {
     try {
-      final response = await client.loginVK(accessToken);
+      final response = await client.loginVK("Bearer $accessToken");
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: '',
-        password: '',
         provider: AuthorizationProvider.vk,
         map: response.data,
       );
@@ -107,7 +105,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       firstname: name,
       lastname: surname,
     );
-    await client.registerUser(jsonEncode(registerRequestBody));
+    await client.registerUserVk(jsonEncode(registerRequestBody), "Bearer $accessToken");
   }
 
   @override

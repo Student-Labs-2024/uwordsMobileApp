@@ -223,15 +223,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(const AuthState.authorized());
     } on Exception catch (e) {
       switch (e.runtimeType) {
-        case NotRegisteredException():
+        case const (NotRegisteredException):
           await _registerAndAuth(emit: emit, provider: provider);
-        case NotValidDataForLoginException():
+        case const (NotValidDataForLoginException):
           emit(const AuthState.failed(AuthError.notValidMail));
-        case AccessIsBannedException():
+        case const (AccessIsBannedException):
           emit(const AuthState.failed(AuthError.failedAutorization));
           await Future.delayed(const Duration(milliseconds: 1500));
           emit(const AuthState.initial());
-        case UnknownApiException():
+        case const (UnknownApiException):
           emit(const AuthState.failed(AuthError.unknownError));
       }
     }

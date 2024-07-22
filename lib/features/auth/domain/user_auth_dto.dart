@@ -27,7 +27,6 @@ class UserAuthDto {
 
   factory UserAuthDto.fromJsonAndOtherFields(
       {required String userEmail,
-      required String password,
       required AuthorizationProvider provider,
       required Map<String, dynamic> map}) {
     return UserAuthDto(

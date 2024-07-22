@@ -14,16 +14,18 @@ abstract class AuthClient {
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/register/vk")
-  Future<void> registerUserVk(@Body() body,
+  Future<void> registerUserVk(
+      @Body() body, @Header("Authorization") String accessToken,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/login")
   Future<HttpResponse<Map<String, String>>> login(@Body() body,
       {@Header('Content-Type') String contentType = 'application/json'});
 
-  @POST("users/login")
+  @POST("users/login/vk")
   Future<HttpResponse<Map<String, String>>> loginVK(
-      @Header("Authorization") String refreshToken);
+      @Header("Authorization") String accessToken,
+      {@Header('Content-Type') String contentType = 'application/json'});
 
   @GET("users/token/refresh")
   Future<Map<String, String>> refresh(

@@ -51,12 +51,16 @@ class _AuthClient implements AuthClient {
 
   @override
   Future<void> registerUserVk(
-    dynamic body, {
+    dynamic body,
+    String accessToken, {
     String contentType = 'application/json',
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Content-Type': contentType};
+    final _headers = <String, dynamic>{
+      r'Authorization': accessToken,
+      r'Content-Type': contentType,
+    };
     _headers.removeWhere((k, v) => v == null);
     final _data = body;
     await _dio.fetch<void>(_setStreamType<void>(Options(
@@ -112,10 +116,16 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<Map<String, String>>> loginVK(String refreshToken) async {
+  Future<HttpResponse<Map<String, String>>> loginVK(
+    String accessToken, {
+    String contentType = 'application/json',
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': refreshToken};
+    final _headers = <String, dynamic>{
+      r'Authorization': accessToken,
+      r'Content-Type': contentType,
+    };
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -123,10 +133,11 @@ class _AuthClient implements AuthClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: contentType,
     )
             .compose(
               _dio.options,
-              'users/login',
+              'users/login/vk',
               queryParameters: queryParameters,
               data: _data,
             )

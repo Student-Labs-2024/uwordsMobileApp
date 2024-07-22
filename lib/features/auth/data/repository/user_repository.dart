@@ -91,7 +91,7 @@ class UserRepository implements IUserRepository {
 
   @override
   void localLogOut() async {
-    await savableUserDataSource.noneIsCurrent();
+    savableUserDataSource.noneIsCurrent();
   }
 
   @override
@@ -111,7 +111,8 @@ class UserRepository implements IUserRepository {
       UserAuthDto user =
           await networkUserDataSource.authorizateVk(accessToken: accessToken);
       _saveUser(userDto: user);
-    } on Exception {
+    } on Exception catch (e) {
+      log(e.toString());
       rethrow;
     }
   }
