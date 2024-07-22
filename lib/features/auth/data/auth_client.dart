@@ -31,7 +31,7 @@ abstract class AuthClient {
   );
 
   @GET("email/send_code")
-  Future<void> sendCode(@Body() body,
+  Future<void> sendCode(@Query('user_email') String email,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("email/check_code")

@@ -124,9 +124,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<void> sendCode({required String userEmail}) async {
-    Map<String, dynamic> body = {
-      "email": userEmail,
-    };
-    await client.sendCode(body);
+    await client.sendCode(userEmail);
   }
 }

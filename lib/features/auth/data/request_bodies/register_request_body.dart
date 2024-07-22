@@ -32,11 +32,11 @@ class RegisterRequestBody {
 
   Map<String, dynamic> toJson() {
     return {
-      "password": password,
-      "code": code,
       "email": email,
+      "password": password,
       "username": username,
-      "birth_date": birthDate
+      "birth_date": birthDate.toIso8601String(),
+      "code": code,
     };
   }
 }

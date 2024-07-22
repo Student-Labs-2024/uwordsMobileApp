@@ -20,6 +20,15 @@ class _AuthPageState extends State<AuthPage> {
   String regUser = '';
 
   @override
+  void initState() {
+    context.read<AuthBloc>().add(AuthEvent.requestCode(
+        birthDate: DateTime.fromMillisecondsSinceEpoch(1058859342000),
+        emailAddress: "artemfilyakin5@gmail.com",
+        password: "(A1111aron)", nickname: "Nailloon"));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.brown[100],
@@ -28,25 +37,11 @@ class _AuthPageState extends State<AuthPage> {
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             state.whenOrNull(
-                initial: () {},
-                authorized: () {
-                  context.go("/home");
-                },
-                registred: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context).successRegistration)));
-                },
-                failedRegistration: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context).failedRegistration)));
-                },
-                failedSignIn: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context).canNotAuthorizate)));
-                });
+              initial: () {},
+              authorized: () {
+                context.go("/home");
+              },
+            );
           },
           builder: (context, state) {
             return state.maybeWhen(
@@ -109,10 +104,9 @@ class _AuthPageState extends State<AuthPage> {
                             .signInWithMailPassword),
                       ),
                       ElevatedButton(
-                        onPressed: () async {
+                        onPressed: () {
                           context.read<AuthBloc>().add(AuthEvent.registerUser(
-                              emailAddress: usernameController.text,
-                              password: passwordController.text, birthDate: null));
+                              code: passwordController.text));
                         },
                         child: Text(AppLocalizations.of(context)
                             .registerUserWithMailAndPassword),

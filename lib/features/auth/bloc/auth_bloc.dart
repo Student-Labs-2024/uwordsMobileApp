@@ -44,10 +44,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       uEmail = event.emailAddress;
       username = event.nickname ?? '';
       birthDate = event.birthDate;
+      uPassword = event.password;
       try {
         await userRepository.requestCode(email: uEmail);
         emit(const AuthState.sendedCode());
-      } on Exception {
+      } on Exception catch (e){
+        log(e.toString());
         emit(const AuthState.failed(AuthError.failedSendCode));
       }
     } else {

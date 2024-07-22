@@ -170,14 +170,14 @@ class _AuthClient implements AuthClient {
 
   @override
   Future<void> sendCode(
-    dynamic body, {
+    String email, {
     String contentType = 'application/json',
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'user_email': email};
     final _headers = <String, dynamic>{r'Content-Type': contentType};
     _headers.removeWhere((k, v) => v == null);
-    final _data = body;
+    const Map<String, dynamic>? _data = null;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'GET',
       headers: _headers,
