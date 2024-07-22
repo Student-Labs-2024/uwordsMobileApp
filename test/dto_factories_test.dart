@@ -29,7 +29,6 @@ void main() {
 
     test("DTO factory from DB method", () {
       const String email = "example@email.com";
-      const String password = "a)192929kwAA";
       const AuthorizationProvider provider = AuthorizationProvider.self;
       const String jsonString = '''
   {
@@ -43,7 +42,6 @@ void main() {
       final jsonData = jsonDecode(jsonString);
       var userAuthDtoTest = UserAuthDto.fromJsonAndOtherFields(
           userEmail: email,
-          password: password,
           provider: provider,
           map: jsonData);
 
