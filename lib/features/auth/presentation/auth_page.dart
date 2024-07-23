@@ -53,6 +53,9 @@ class _AuthPageState extends State<AuthPage> {
               authorized: () {
                 context.go("/home");
               },
+              failed: (error){
+                showModalBottomSheet(context: context, builder: (context){return Text(error.name);});
+              }
             );
           },
           builder: (context, state) {
@@ -181,6 +184,8 @@ class _AuthPageState extends State<AuthPage> {
             }, sendedCode: () {
               return Center(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomTextField(
                       controller: codeController,
