@@ -27,35 +27,15 @@ class LearnWordPage2State extends State<LearnWordPage2> {
   String answer = '';
   bool answerCorrect = false;
 
-  List<String> letters = [];
-  @override
-  void initState() {
-    super.initState();
-    letters = widget.word.enValue.split('');
-  }
-
-  pressLetterButton(String letter, bool selected) {
-    if (selected) {
+  bool pressLetterButton(String letter, int amount) {
+    if (amount == 0) return false;
+    if (letter == widget.word.enValue[answer.length]) {
       setState(() {
         answer += letter;
       });
-    } else {
-      int lastIndex = answer.lastIndexOf(letter);
-      if (lastIndex != -1) {
-        setState(() {
-          answer =
-              answer.substring(0, lastIndex) + answer.substring(lastIndex + 1);
-        });
-      }
+      return true;
     }
-
-    if (answer.length == widget.word.enValue.length) {
-      if (answer == widget.word.enValue) {
-        answerCorrect = true;
-      }
-    } else {
-      answerCorrect = false;
-    }
+    return false;
   }
 
   @override
@@ -122,9 +102,9 @@ class LearnWordPage2State extends State<LearnWordPage2> {
             Wrap(
               spacing: 8.0,
               runSpacing: 8.0,
-              children: letters
-                  .map((l) =>
-                      LetterButton(text: l, onPressed: pressLetterButton))
+              children: widget.letters
+                  .map((letterInfo) => LetterButton(
+                      letterInfo: letterInfo, onPressed: pressLetterButton))
                   .toList(),
             ),
             Padding(

@@ -1,6 +1,4 @@
-import 'dart:js_interop';
 import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/utils/tokens.dart';
