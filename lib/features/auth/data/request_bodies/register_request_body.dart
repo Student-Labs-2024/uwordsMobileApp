@@ -40,3 +40,13 @@ class RegisterRequestBody {
     };
   }
 }
+
+class RegisterGoogleRequestBody {
+  final String uid;
+  RegisterGoogleRequestBody({required this.uid});
+  Map<String, dynamic> toJson() {
+    return {
+      "google_id": uid,
+    };
+  }
+}

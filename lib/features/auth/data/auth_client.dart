@@ -17,6 +17,10 @@ abstract class AuthClient {
       @Body() body, @Header("Authorization") String accessToken,
       {@Header('Content-Type') String contentType = 'application/json'});
 
+  @POST("users/register/google")
+  Future<void> registerUserGoogle(@Body() body,
+      {@Header('Content-Type') String contentType = 'application/json'});
+
   @POST("users/login")
   Future<HttpResponse<Map<String, String>>> login(@Body() body,
       {@Header('Content-Type') String contentType = 'application/json'});
@@ -24,6 +28,10 @@ abstract class AuthClient {
   @POST("users/login/vk")
   Future<HttpResponse<Map<String, String>>> loginVK(
       @Header("Authorization") String accessToken,
+      {@Header('Content-Type') String contentType = 'application/json'});
+
+  @POST("users/login/google")
+  Future<HttpResponse<Map<String,String>>> loginGoogle(@Body() body,@Header("Authorization") String uid,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @GET("users/token/refresh")
@@ -38,22 +46,4 @@ abstract class AuthClient {
   @POST("email/check_code")
   Future<HttpResponse> checkCode(@Body() body,
       {@Header('Content-Type') String contentType = 'application/json'});
-
-  //TODO add profile_model/user_model before adding it
-  // @GET("user/me")
-  // Future<Response> aboutMe(
-  //   @Header("Authorization") String accessToken,
-  // );
-
-  //TODO add update profile request
-  // @POST("user/me/update")
-  // Future<Response> updateAboutMe(
-  //   @Header("Authorization") String accessToken,
-  //   @Field() String username,
-  //   @Field() String name,
-  //   @Field() String surname,
-  //   @Field() String avatar_url,
-  //   @Field() String phone_number,
-  //   @Field() String birth_date,
-  // );
 }

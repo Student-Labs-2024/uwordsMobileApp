@@ -1,4 +1,4 @@
-import 'package:uwords/features/auth/bloc/auth_providers.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 class UserAuthDto {

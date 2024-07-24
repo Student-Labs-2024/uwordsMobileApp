@@ -1133,30 +1133,27 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() sendedCode,
     required TResult Function() signInScreen,
-    required TResult Function() authorized,
     required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
     required TResult Function(AuthError error) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? sendedCode,
     TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
     TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
     TResult? Function(AuthError error)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? sendedCode,
     TResult Function()? signInScreen,
-    TResult Function()? authorized,
     TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
     TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) =>
@@ -1164,30 +1161,27 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
     required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
     required TResult Function(_AuthFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
     TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
     TResult? Function(_AuthFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
     TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
     TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) =>
@@ -1256,10 +1250,9 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() sendedCode,
     required TResult Function() signInScreen,
-    required TResult Function() authorized,
     required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
     required TResult Function(AuthError error) failed,
   }) {
     return initial();
@@ -1269,10 +1262,9 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? sendedCode,
     TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
     TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
     TResult? Function(AuthError error)? failed,
   }) {
     return initial?.call();
@@ -1282,10 +1274,9 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? sendedCode,
     TResult Function()? signInScreen,
-    TResult Function()? authorized,
     TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
     TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
@@ -1299,10 +1290,9 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
     required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
     required TResult Function(_AuthFailed value) failed,
   }) {
     return initial(this);
@@ -1312,10 +1302,9 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
     TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
     TResult? Function(_AuthFailed value)? failed,
   }) {
     return initial?.call(this);
@@ -1325,10 +1314,9 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
     TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
     TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -1341,140 +1329,6 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
 
 abstract class _AuthInitial implements AuthState {
   const factory _AuthInitial() = _$AuthInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthSendedCodeImplCopyWith<$Res> {
-  factory _$$AuthSendedCodeImplCopyWith(_$AuthSendedCodeImpl value,
-          $Res Function(_$AuthSendedCodeImpl) then) =
-      __$$AuthSendedCodeImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthSendedCodeImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthSendedCodeImpl>
-    implements _$$AuthSendedCodeImplCopyWith<$Res> {
-  __$$AuthSendedCodeImplCopyWithImpl(
-      _$AuthSendedCodeImpl _value, $Res Function(_$AuthSendedCodeImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthSendedCodeImpl
-    with DiagnosticableTreeMixin
-    implements _AuthSendedCode {
-  const _$AuthSendedCodeImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.sendedCode()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.sendedCode'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthSendedCodeImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() sendedCode,
-    required TResult Function() signInScreen,
-    required TResult Function() authorized,
-    required TResult Function() waitingAnswer,
-    required TResult Function(AuthError error) failed,
-  }) {
-    return sendedCode();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? sendedCode,
-    TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
-    TResult? Function()? waitingAnswer,
-    TResult? Function(AuthError error)? failed,
-  }) {
-    return sendedCode?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? sendedCode,
-    TResult Function()? signInScreen,
-    TResult Function()? authorized,
-    TResult Function()? waitingAnswer,
-    TResult Function(AuthError error)? failed,
-    required TResult orElse(),
-  }) {
-    if (sendedCode != null) {
-      return sendedCode();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
-    required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthFailed value) failed,
-  }) {
-    return sendedCode(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
-    TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthFailed value)? failed,
-  }) {
-    return sendedCode?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
-    TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthFailed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (sendedCode != null) {
-      return sendedCode(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthSendedCode implements AuthState {
-  const factory _AuthSendedCode() = _$AuthSendedCodeImpl;
 }
 
 /// @nodoc
@@ -1524,10 +1378,9 @@ class _$AuthSignInScreenImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() sendedCode,
     required TResult Function() signInScreen,
-    required TResult Function() authorized,
     required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
     required TResult Function(AuthError error) failed,
   }) {
     return signInScreen();
@@ -1537,10 +1390,9 @@ class _$AuthSignInScreenImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? sendedCode,
     TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
     TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
     TResult? Function(AuthError error)? failed,
   }) {
     return signInScreen?.call();
@@ -1550,10 +1402,9 @@ class _$AuthSignInScreenImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? sendedCode,
     TResult Function()? signInScreen,
-    TResult Function()? authorized,
     TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
     TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
@@ -1567,10 +1418,9 @@ class _$AuthSignInScreenImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
     required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
     required TResult Function(_AuthFailed value) failed,
   }) {
     return signInScreen(this);
@@ -1580,10 +1430,9 @@ class _$AuthSignInScreenImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
     TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
     TResult? Function(_AuthFailed value)? failed,
   }) {
     return signInScreen?.call(this);
@@ -1593,10 +1442,9 @@ class _$AuthSignInScreenImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
     TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
     TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -1609,140 +1457,6 @@ class _$AuthSignInScreenImpl
 
 abstract class _AuthSignInScreen implements AuthState {
   const factory _AuthSignInScreen() = _$AuthSignInScreenImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthAuthorisedImplCopyWith<$Res> {
-  factory _$$AuthAuthorisedImplCopyWith(_$AuthAuthorisedImpl value,
-          $Res Function(_$AuthAuthorisedImpl) then) =
-      __$$AuthAuthorisedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthAuthorisedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthAuthorisedImpl>
-    implements _$$AuthAuthorisedImplCopyWith<$Res> {
-  __$$AuthAuthorisedImplCopyWithImpl(
-      _$AuthAuthorisedImpl _value, $Res Function(_$AuthAuthorisedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthAuthorisedImpl
-    with DiagnosticableTreeMixin
-    implements _AuthAuthorised {
-  const _$AuthAuthorisedImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.authorized()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.authorized'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthAuthorisedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() sendedCode,
-    required TResult Function() signInScreen,
-    required TResult Function() authorized,
-    required TResult Function() waitingAnswer,
-    required TResult Function(AuthError error) failed,
-  }) {
-    return authorized();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? sendedCode,
-    TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
-    TResult? Function()? waitingAnswer,
-    TResult? Function(AuthError error)? failed,
-  }) {
-    return authorized?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? sendedCode,
-    TResult Function()? signInScreen,
-    TResult Function()? authorized,
-    TResult Function()? waitingAnswer,
-    TResult Function(AuthError error)? failed,
-    required TResult orElse(),
-  }) {
-    if (authorized != null) {
-      return authorized();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
-    required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthFailed value) failed,
-  }) {
-    return authorized(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
-    TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthFailed value)? failed,
-  }) {
-    return authorized?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
-    TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthFailed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (authorized != null) {
-      return authorized(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthAuthorised implements AuthState {
-  const factory _AuthAuthorised() = _$AuthAuthorisedImpl;
 }
 
 /// @nodoc
@@ -1792,10 +1506,9 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() sendedCode,
     required TResult Function() signInScreen,
-    required TResult Function() authorized,
     required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
     required TResult Function(AuthError error) failed,
   }) {
     return waitingAnswer();
@@ -1805,10 +1518,9 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? sendedCode,
     TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
     TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
     TResult? Function(AuthError error)? failed,
   }) {
     return waitingAnswer?.call();
@@ -1818,10 +1530,9 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? sendedCode,
     TResult Function()? signInScreen,
-    TResult Function()? authorized,
     TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
     TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
@@ -1835,10 +1546,9 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
     required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
     required TResult Function(_AuthFailed value) failed,
   }) {
     return waitingAnswer(this);
@@ -1848,10 +1558,9 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
     TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
     TResult? Function(_AuthFailed value)? failed,
   }) {
     return waitingAnswer?.call(this);
@@ -1861,10 +1570,9 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
     TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
     TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -1877,6 +1585,165 @@ class _$AuthWaitingAnswerImpl
 
 abstract class _AuthWaitingAnswer implements AuthState {
   const factory _AuthWaitingAnswer() = _$AuthWaitingAnswerImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthSuccessImplCopyWith<$Res> {
+  factory _$$AuthSuccessImplCopyWith(
+          _$AuthSuccessImpl value, $Res Function(_$AuthSuccessImpl) then) =
+      __$$AuthSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AuthSuccess success});
+}
+
+/// @nodoc
+class __$$AuthSuccessImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthSuccessImpl>
+    implements _$$AuthSuccessImplCopyWith<$Res> {
+  __$$AuthSuccessImplCopyWithImpl(
+      _$AuthSuccessImpl _value, $Res Function(_$AuthSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? success = null,
+  }) {
+    return _then(_$AuthSuccessImpl(
+      null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as AuthSuccess,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AuthSuccessImpl with DiagnosticableTreeMixin implements _AuthSuccess {
+  const _$AuthSuccessImpl(this.success);
+
+  @override
+  final AuthSuccess success;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.success(success: $success)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.success'))
+      ..add(DiagnosticsProperty('success', success));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthSuccessImpl &&
+            (identical(other.success, success) || other.success == success));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, success);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthSuccessImplCopyWith<_$AuthSuccessImpl> get copyWith =>
+      __$$AuthSuccessImplCopyWithImpl<_$AuthSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signInScreen,
+    required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
+  }) {
+    return success(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signInScreen,
+    TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
+  }) {
+    return success?.call(this.success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signInScreen,
+    TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this.success);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthSuccess implements AuthState {
+  const factory _AuthSuccess(final AuthSuccess success) = _$AuthSuccessImpl;
+
+  AuthSuccess get success;
+  @JsonKey(ignore: true)
+  _$$AuthSuccessImplCopyWith<_$AuthSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1952,10 +1819,9 @@ class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() sendedCode,
     required TResult Function() signInScreen,
-    required TResult Function() authorized,
     required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
     required TResult Function(AuthError error) failed,
   }) {
     return failed(error);
@@ -1965,10 +1831,9 @@ class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? sendedCode,
     TResult? Function()? signInScreen,
-    TResult? Function()? authorized,
     TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
     TResult? Function(AuthError error)? failed,
   }) {
     return failed?.call(error);
@@ -1978,10 +1843,9 @@ class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? sendedCode,
     TResult Function()? signInScreen,
-    TResult Function()? authorized,
     TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
     TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
@@ -1995,10 +1859,9 @@ class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthSendedCode value) sendedCode,
     required TResult Function(_AuthSignInScreen value) signInScreen,
-    required TResult Function(_AuthAuthorised value) authorized,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
     required TResult Function(_AuthFailed value) failed,
   }) {
     return failed(this);
@@ -2008,10 +1871,9 @@ class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthSendedCode value)? sendedCode,
     TResult? Function(_AuthSignInScreen value)? signInScreen,
-    TResult? Function(_AuthAuthorised value)? authorized,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
     TResult? Function(_AuthFailed value)? failed,
   }) {
     return failed?.call(this);
@@ -2021,10 +1883,9 @@ class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthSendedCode value)? sendedCode,
     TResult Function(_AuthSignInScreen value)? signInScreen,
-    TResult Function(_AuthAuthorised value)? authorized,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
     TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {

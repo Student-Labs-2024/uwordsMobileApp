@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:uwords/features/auth/bloc/auth_providers.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
@@ -61,6 +61,19 @@ class UserRepository implements IUserRepository {
   }
 
   @override
+  Future<bool> registerUserFromGoogle({
+    required String uid,
+  }) async {
+    try {
+      await networkUserDataSource.registerUserFromGoogle(uid: uid);
+      return true;
+    } on Exception catch (e) {
+      log(e.toString());
+      return false;
+    }
+  }
+
+  @override
   Future<bool> registerUserFromVK({
     required String accessToken,
     required String name,
@@ -110,6 +123,20 @@ class UserRepository implements IUserRepository {
     try {
       UserAuthDto user =
           await networkUserDataSource.authorizateVk(accessToken: accessToken);
+      _saveUser(userDto: user);
+    } on Exception catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> authorizateFromGoogle({
+    required String uid,
+  }) async {
+    try {
+      UserAuthDto user =
+          await networkUserDataSource.authorizateGoogle(uid: uid);
       _saveUser(userDto: user);
     } on Exception catch (e) {
       log(e.toString());

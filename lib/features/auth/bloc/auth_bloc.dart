@@ -8,8 +8,7 @@ import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
-import 'package:uwords/features/auth/bloc/auth_errors_enum.dart';
-import 'package:uwords/features/auth/bloc/auth_providers.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 
 part 'auth_bloc_event.dart';
@@ -27,6 +26,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   String uPassword = '';
   String uCode = '';
   DateTime birthDate = DateTime.now();
+  late Emitter<AuthState> emitter;
+  late AuthorizationProvider provider;
 
   AuthBloc({required this.userRepository}) : super(const AuthState.initial()) {
     on<_RequestCode>(_handleRequestCode);
@@ -46,9 +47,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       username = event.nickname ?? '';
       birthDate = event.birthDate;
       uPassword = event.password;
+      provider = AuthorizationProvider.self;
       try {
         await userRepository.requestCode(email: uEmail);
-        emit(const AuthState.sendedCode());
+        emit(const AuthState.success(AuthSuccess.sendedCode));
       } on Exception catch (e) {
         log(e.toString());
         emit(const AuthState.failed(AuthError.failedSendCode));
@@ -73,9 +75,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             birthDate: birthDate,
             code: uCode);
         if (isSuccessRegister) {
-          await _authorization(
-              emit: emit, provider: AuthorizationProvider.self);
-          emit(const AuthState.authorized());
+          await _authorization(emit: emit);
         } else {
           emit(const AuthState.failed(AuthError.failedRegistration));
         }
@@ -84,7 +84,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     } on Exception catch (e) {
       log(e.toString());
-      emit(const AuthState.failed(AuthError.unknownError));
+      emitter = emit;
+      addError(e);
     }
   }
 
@@ -93,11 +94,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.waitingAnswer());
     auth.signOut();
     userRepository.localLogOut();
+    provider = AuthorizationProvider.vk;
     await _signInWithVk();
     try {
-      await _authorization(emit: emit, provider: AuthorizationProvider.vk);
-    } on NotRegisteredException {
-      await _registerAndAuth(emit: emit, provider: AuthorizationProvider.vk);
+      await _authorization(emit: emit);
+    } on Exception catch (e) {
+      emitter = emit;
+      addError(e);
     }
   }
 
@@ -106,12 +109,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.waitingAnswer());
     vk.logOut();
     userRepository.localLogOut();
+    provider = AuthorizationProvider.google;
     await _signInWithGoogle();
     try {
-      await _authorization(emit: emit, provider: AuthorizationProvider.google);
-    } on NotRegisteredException {
-      await _registerAndAuth(
-          emit: emit, provider: AuthorizationProvider.google);
+      await _authorization(emit: emit);
+    } on Exception catch (e) {
+      emitter = emit;
+      addError(e);
     }
   }
 
@@ -124,7 +128,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(const AuthState.waitingAnswer());
       uEmail = event.emailAddress;
       uPassword = event.password;
-      await _authorization(emit: emit, provider: AuthorizationProvider.self);
+      provider = AuthorizationProvider.self;
+      await _authorization(emit: emit);
     } else {
       emit(const AuthState.initial());
     }
@@ -175,13 +180,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final creds = await auth.signInWithCredential(credential);
 
     uPassword = creds.user?.uid ?? '';
-    uEmail = creds.user?.email ?? '';
-    username = creds.user?.displayName ?? '';
   }
 
-  Future<void> _registerAndAuth(
-      {required Emitter<AuthState> emit,
-      required AuthorizationProvider provider}) async {
+  Future<void> _registerAndAuth({required Emitter<AuthState> emit}) async {
     bool isSuccessRegister = false;
     switch (provider) {
       case AuthorizationProvider.vk:
@@ -195,12 +196,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             birthDate: birthDate,
             code: uCode);
       case AuthorizationProvider.google:
-      // TODO: Handle case with Google provider
+        await userRepository.registerUserFromGoogle(uid: uPassword);
     }
 
     if (isSuccessRegister) {
-      await _authorization(emit: emit, provider: provider);
-      emit(const AuthState.authorized());
+      await _authorization(emit: emitter);
     } else {
       emit(const AuthState.failed(AuthError.failedRegistration));
       await Future.delayed(const Duration(milliseconds: 1500));
@@ -208,9 +208,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _authorization(
-      {required Emitter<AuthState> emit,
-      required AuthorizationProvider provider}) async {
+  Future<void> _authorization({required Emitter<AuthState> emit}) async {
     try {
       switch (provider) {
         case AuthorizationProvider.vk:
@@ -221,24 +219,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           await userRepository.authorizate(
               emailAddress: uEmail, password: uPassword, provider: provider);
         case AuthorizationProvider.google:
-        // TODO: Handle case with Google provider
+          await userRepository.authorizateFromGoogle(uid: uPassword);
       }
-      emit(const AuthState.authorized());
+      emit(const AuthState.success(AuthSuccess.authorized));
     } on Exception catch (e) {
-      switch (e.runtimeType) {
-        case const (SocketException):
-          emit(const AuthState.failed(AuthError.noInternet));
-        case const (NotRegisteredException):
-          await _registerAndAuth(emit: emit, provider: provider);
-        case const (NotValidDataForLoginException):
-          emit(const AuthState.failed(AuthError.notValidMailOrPassword));
-        case const (AccessIsBannedException):
-          emit(const AuthState.failed(AuthError.failedAutorization));
-          await Future.delayed(const Duration(milliseconds: 1500));
-          emit(const AuthState.initial());
-        case const (UnknownApiException):
-          emit(const AuthState.failed(AuthError.unknownError));
-      }
+      emitter = emit;
+      addError(e);
     }
   }
 
@@ -276,5 +262,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       return false;
     }
     return true;
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) async {
+    switch (error.runtimeType) {
+      case const (SocketException):
+        emitter(const AuthState.failed(AuthError.noInternet));
+      case const (NotRegisteredException):
+        await _registerAndAuth(emit: emitter);
+      case const (NotValidDataForLoginException):
+        emitter(const AuthState.failed(AuthError.notValidMailOrPassword));
+        emitter(const AuthState.initial());
+      case const (AccessIsBannedException):
+        emitter(const AuthState.failed(AuthError.failedAutorization));
+        emitter(const AuthState.initial());
+      case const (UnknownApiException):
+        emitter(const AuthState.failed(AuthError.unknownError));
+    }
+    super.onError(error, stackTrace);
   }
 }

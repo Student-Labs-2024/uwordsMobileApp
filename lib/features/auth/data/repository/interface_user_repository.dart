@@ -1,4 +1,4 @@
-import 'package:uwords/features/auth/bloc/auth_providers.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 
 abstract interface class IUserRepository {
   void localLogOut();
@@ -24,4 +24,10 @@ abstract interface class IUserRepository {
   Future<String> getCurrentUserAccessToken();
   Future<void> requestCode({required String email});
   Future<bool> checkCode({required String email, required String code});
+  Future<bool> registerUserFromGoogle({
+    required String uid,
+  });
+  Future<void> authorizateFromGoogle({
+    required String uid,
+  });
 }

@@ -4,6 +4,7 @@ abstract interface class INetworkUserDataSource {
   Future<UserAuthDto> authorizate(
       {required String userEmail, required String password});
   Future<UserAuthDto> authorizateVk({required String accessToken});
+  Future<UserAuthDto> authorizateGoogle({required String uid});
   Future<void> registerUser(
       {required String userEmail,
       required String password,
@@ -14,6 +15,9 @@ abstract interface class INetworkUserDataSource {
     required String accessToken,
     required String name,
     required String surname,
+  });
+  Future<void> registerUserFromGoogle({
+    required String uid,
   });
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto});
   Future<void> sendCode({required String userEmail});

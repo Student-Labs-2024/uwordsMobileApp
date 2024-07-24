@@ -8,3 +8,14 @@ enum AuthError {
   codeIsNotRight,
   noInternet,
 }
+
+enum AuthSuccess {
+  authorized,
+  sendedCode,
+}
+
+enum AuthorizationProvider {
+  vk,
+  self,
+  google,
+}

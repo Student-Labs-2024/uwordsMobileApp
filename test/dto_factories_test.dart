@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:uwords/features/auth/bloc/auth_providers.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 

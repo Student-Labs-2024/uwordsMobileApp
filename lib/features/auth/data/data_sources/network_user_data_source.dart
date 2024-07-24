@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/exception_check.dart';
-import 'package:uwords/features/auth/bloc/auth_providers.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/data/request_bodies/code_request.dart';
@@ -12,7 +13,7 @@ import 'package:uwords/features/auth/data/request_bodies/register_request_body.d
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
-  static Dio dio = Dio();
+  static Dio dio = GetIt.instance.get<Dio>();
   final client = AuthClient(dio);
 
   @override
@@ -29,7 +30,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       );
     } on DioException catch (e) {
       noInternetCheck(e);
-      _checkStatusCode(e: e);
+      _checkStatusCode(e: e, provider: AuthorizationProvider.self);
       rethrow;
     }
   }
@@ -45,7 +46,23 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       );
     } on DioException catch (e) {
       noInternetCheck(e);
-      _checkStatusCode(e: e);
+      _checkStatusCode(e: e, provider: AuthorizationProvider.vk);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<UserAuthDto> authorizateGoogle({required String uid}) async {
+    try {
+      final response = await client.loginGoogle(jsonEncode(RegisterGoogleRequestBody(uid: uid)),"Bearer $uid");
+      return UserAuthDto.fromJsonAndOtherFields(
+        userEmail: '',
+        provider: AuthorizationProvider.google,
+        map: response.data,
+      );
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      _checkStatusCode(e: e, provider: AuthorizationProvider.google);
       rethrow;
     }
   }
@@ -91,6 +108,15 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   }
 
   @override
+  Future<void> registerUserFromGoogle({
+    required String uid,
+  }) async {
+    final RegisterGoogleRequestBody registerGoogleRequestBody =
+        RegisterGoogleRequestBody(uid: uid);
+    await client.registerUserGoogle(jsonEncode(registerGoogleRequestBody));
+  }
+
+  @override
   Future<bool> checkCode(
       {required String userEmail, required String code}) async {
     var response =
@@ -107,7 +133,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
     await client.sendCode(userEmail);
   }
 
-  void _checkStatusCode({required DioException e}) {
+  void _checkStatusCode({required DioException e, required AuthorizationProvider provider}) {
     if (e.response != null) {
       switch (e.response!.statusCode) {
         case 400:
@@ -115,7 +141,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         case 403:
           throw AccessIsBannedException();
         case 404:
-          throw NotRegisteredException();
+          throw NotRegisteredException(provider: provider);
         default:
           break;
       }
