@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -48,7 +49,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         await userRepository.requestCode(email: uEmail);
         emit(const AuthState.sendedCode());
-      } on Exception catch (e){
+      } on Exception catch (e) {
         log(e.toString());
         emit(const AuthState.failed(AuthError.failedSendCode));
       }
@@ -213,7 +214,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       switch (provider) {
         case AuthorizationProvider.vk:
-          await userRepository.authorizateVk(accessToken: uPassword,);
+          await userRepository.authorizateVk(
+            accessToken: uPassword,
+          );
         case AuthorizationProvider.self:
           await userRepository.authorizate(
               emailAddress: uEmail, password: uPassword, provider: provider);
@@ -226,7 +229,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         case const (NotRegisteredException):
           await _registerAndAuth(emit: emit, provider: provider);
         case const (NotValidDataForLoginException):
-          emit(const AuthState.failed(AuthError.notValidMail));
+          emit(const AuthState.failed(AuthError.notValidMailOrPassword));
         case const (AccessIsBannedException):
           emit(const AuthState.failed(AuthError.failedAutorization));
           await Future.delayed(const Duration(milliseconds: 1500));
@@ -265,12 +268,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       {required Emitter<AuthState> emit,
       required String email,
       required String password}) {
-    if (_isCorrectEmail(email: email) == false) {
-      emit(const AuthState.failed(AuthError.notValidMail));
-      return false;
-    }
-    if (_isCorrectPassword(password: password) == false) {
-      emit(const AuthState.failed(AuthError.badPassword));
+    if ((_isCorrectEmail(email: email) == false) ||
+        (_isCorrectPassword(password: password) == false)) {
+      emit(const AuthState.failed(AuthError.notValidMailOrPassword));
       return false;
     }
     return true;

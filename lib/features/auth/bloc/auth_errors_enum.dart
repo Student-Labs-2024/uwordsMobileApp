@@ -3,8 +3,7 @@ enum AuthError {
   failedRegistration,
   failedAutorization,
   failedSignIn,
-  notValidMail,
-  badPassword,
+  notValidMailOrPassword,
   failedSendCode,
   codeIsNotRight
 }
