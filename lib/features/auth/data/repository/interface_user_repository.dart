@@ -1,5 +1,3 @@
-import 'package:uwords/features/auth/bloc/auth_enum.dart';
-
 abstract interface class IUserRepository {
   void localLogOut();
   Future<bool> registerUser({
@@ -13,7 +11,6 @@ abstract interface class IUserRepository {
   Future<void> authorizate({
     required String emailAddress,
     required String password,
-    required AuthorizationProvider provider,
   });
   Future<void> authorizateVk({required String accessToken});
   Future<bool> registerUserFromVK({
