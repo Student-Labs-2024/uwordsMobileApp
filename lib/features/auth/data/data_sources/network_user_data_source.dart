@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/utils/exception_check.dart';
 import 'package:uwords/features/auth/bloc/auth_providers.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
@@ -27,18 +28,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         map: response.data,
       );
     } on DioException catch (e) {
-      if (e.response != null) {
-        switch (e.response!.statusCode) {
-          case 400:
-            throw NotValidDataForLoginException();
-          case 403:
-            throw AccessIsBannedException();
-          case 404:
-            throw NotRegisteredException();
-          default:
-            break;
-        }
-      }
+      noInternetCheck(e);
+      _checkStatusCode(e: e);
       rethrow;
     }
   }
@@ -53,18 +44,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         map: response.data,
       );
     } on DioException catch (e) {
-      if (e.response != null) {
-        switch (e.response!.statusCode) {
-          case 400:
-            throw NotValidDataForLoginException();
-          case 403:
-            throw AccessIsBannedException();
-          case 404:
-            throw NotRegisteredException();
-          default:
-            break;
-        }
-      }
+      noInternetCheck(e);
+      _checkStatusCode(e: e);
       rethrow;
     }
   }
@@ -105,7 +86,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       firstname: name,
       lastname: surname,
     );
-    await client.registerUserVk(jsonEncode(registerRequestBody), "Bearer $accessToken");
+    await client.registerUserVk(
+        jsonEncode(registerRequestBody), "Bearer $accessToken");
   }
 
   @override
@@ -123,5 +105,20 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<void> sendCode({required String userEmail}) async {
     await client.sendCode(userEmail);
+  }
+
+  void _checkStatusCode({required DioException e}) {
+    if (e.response != null) {
+      switch (e.response!.statusCode) {
+        case 400:
+          throw NotValidDataForLoginException();
+        case 403:
+          throw AccessIsBannedException();
+        case 404:
+          throw NotRegisteredException();
+        default:
+          break;
+      }
+    }
   }
 }
