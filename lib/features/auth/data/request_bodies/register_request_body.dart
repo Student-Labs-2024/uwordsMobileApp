@@ -1,34 +1,52 @@
-class RegisterRequestBody {
-  final String provider;
-  final String email;
-  final String password;
-  final String username;
+class RegisterVKRequestBody {
   final String firstname;
   final String lastname;
-  final String avatarUrl;
-  final String phoneNumber;
 
-  RegisterRequestBody({
-    required this.provider,
-    required this.email,
-    required this.password,
-    required this.username,
+  RegisterVKRequestBody({
     required this.firstname,
     required this.lastname,
-    required this.avatarUrl,
-    required this.phoneNumber,
   });
 
   Map<String, dynamic> toJson() {
     return {
-      "provider": provider,
+      "firstname": firstname,
+      "lastname": lastname,
+    };
+  }
+}
+
+class RegisterRequestBody {
+  final String email;
+  final String password;
+  final String username;
+  final DateTime birthDate;
+  final String code;
+
+  RegisterRequestBody({
+    required this.email,
+    required this.password,
+    required this.username,
+    required this.birthDate,
+    required this.code,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
       "email": email,
       "password": password,
       "username": username,
-      "firstname": firstname,
-      "lastname": lastname,
-      "avatar_url": avatarUrl,
-      "phone_number": phoneNumber,
+      "birth_date": birthDate.toIso8601String(),
+      "code": code,
+    };
+  }
+}
+
+class RegisterGoogleRequestBody {
+  final String uid;
+  RegisterGoogleRequestBody({required this.uid});
+  Map<String, dynamic> toJson() {
+    return {
+      "google_id": uid,
     };
   }
 }

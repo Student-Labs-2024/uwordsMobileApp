@@ -62,8 +62,10 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                             return child;
                           } else {
                             return SizedBox(
-                              width: UnDesignedConstants.imageSize * MediaQuery.of(context).size.width,
-                              height: UnDesignedConstants.heightOfCentralElement,
+                              width: UnDesignedConstants.imageSize *
+                                  MediaQuery.of(context).size.width,
+                              height:
+                                  UnDesignedConstants.heightOfCentralElement,
                               child: const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.mainColor,
@@ -72,7 +74,8 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                             );
                           }
                         },
-                        width: UnDesignedConstants.imageSize * MediaQuery.of(context).size.width,
+                        width: UnDesignedConstants.imageSize *
+                            MediaQuery.of(context).size.width,
                         height: UnDesignedConstants.imageSize,
                       ),
                     ),
@@ -105,7 +108,8 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: UnDesignedConstants.bottomPadding),
+                  padding: const EdgeInsets.only(
+                      bottom: UnDesignedConstants.bottomPadding),
                   child: BigButton(
                     text: 'Далее',
                     onPressed: () => context.go("/learn/screen1/screen2",

@@ -18,10 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
@@ -29,9 +31,12 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
@@ -39,9 +44,12 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
@@ -50,9 +58,10 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
@@ -60,18 +69,20 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
@@ -94,6 +105,404 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$RequestCodeImplCopyWith<$Res> {
+  factory _$$RequestCodeImplCopyWith(
+          _$RequestCodeImpl value, $Res Function(_$RequestCodeImpl) then) =
+      __$$RequestCodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {DateTime birthDate,
+      String? nickname,
+      String emailAddress,
+      String password});
+}
+
+/// @nodoc
+class __$$RequestCodeImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RequestCodeImpl>
+    implements _$$RequestCodeImplCopyWith<$Res> {
+  __$$RequestCodeImplCopyWithImpl(
+      _$RequestCodeImpl _value, $Res Function(_$RequestCodeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? birthDate = null,
+    Object? nickname = freezed,
+    Object? emailAddress = null,
+    Object? password = null,
+  }) {
+    return _then(_$RequestCodeImpl(
+      birthDate: null == birthDate
+          ? _value.birthDate
+          : birthDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      nickname: freezed == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailAddress: null == emailAddress
+          ? _value.emailAddress
+          : emailAddress // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
+  const _$RequestCodeImpl(
+      {required this.birthDate,
+      this.nickname,
+      required this.emailAddress,
+      required this.password});
+
+  @override
+  final DateTime birthDate;
+  @override
+  final String? nickname;
+  @override
+  final String emailAddress;
+  @override
+  final String password;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.requestCode(birthDate: $birthDate, nickname: $nickname, emailAddress: $emailAddress, password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.requestCode'))
+      ..add(DiagnosticsProperty('birthDate', birthDate))
+      ..add(DiagnosticsProperty('nickname', nickname))
+      ..add(DiagnosticsProperty('emailAddress', emailAddress))
+      ..add(DiagnosticsProperty('password', password));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequestCodeImpl &&
+            (identical(other.birthDate, birthDate) ||
+                other.birthDate == birthDate) &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname) &&
+            (identical(other.emailAddress, emailAddress) ||
+                other.emailAddress == emailAddress) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, birthDate, nickname, emailAddress, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestCodeImplCopyWith<_$RequestCodeImpl> get copyWith =>
+      __$$RequestCodeImplCopyWithImpl<_$RequestCodeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
+    required TResult Function() signInWithVK,
+    required TResult Function() signInWithGoogle,
+    required TResult Function(String emailAddress, String password)
+        signInWithMailPassword,
+    required TResult Function() logOut,
+  }) {
+    return requestCode(birthDate, nickname, emailAddress, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
+    TResult? Function()? signInWithVK,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult? Function()? logOut,
+  }) {
+    return requestCode?.call(birthDate, nickname, emailAddress, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
+    TResult Function()? signInWithVK,
+    TResult Function()? signInWithGoogle,
+    TResult Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (requestCode != null) {
+      return requestCode(birthDate, nickname, emailAddress, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
+    required TResult Function(_SignInWithVK value) signInWithVK,
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithMailPassword value)
+        signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
+  }) {
+    return requestCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
+    TResult? Function(_SignInWithVK value)? signInWithVK,
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
+  }) {
+    return requestCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
+    TResult Function(_SignInWithVK value)? signInWithVK,
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (requestCode != null) {
+      return requestCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RequestCode implements AuthEvent {
+  const factory _RequestCode(
+      {required final DateTime birthDate,
+      final String? nickname,
+      required final String emailAddress,
+      required final String password}) = _$RequestCodeImpl;
+
+  DateTime get birthDate;
+  String? get nickname;
+  String get emailAddress;
+  String get password;
+  @JsonKey(ignore: true)
+  _$$RequestCodeImplCopyWith<_$RequestCodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegisterUserImplCopyWith<$Res> {
+  factory _$$RegisterUserImplCopyWith(
+          _$RegisterUserImpl value, $Res Function(_$RegisterUserImpl) then) =
+      __$$RegisterUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$RegisterUserImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RegisterUserImpl>
+    implements _$$RegisterUserImplCopyWith<$Res> {
+  __$$RegisterUserImplCopyWithImpl(
+      _$RegisterUserImpl _value, $Res Function(_$RegisterUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$RegisterUserImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
+  const _$RegisterUserImpl({required this.code});
+
+  @override
+  final String code;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.registerUser(code: $code)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthEvent.registerUser'))
+      ..add(DiagnosticsProperty('code', code));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterUserImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
+      __$$RegisterUserImplCopyWithImpl<_$RegisterUserImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
+    required TResult Function() signInWithVK,
+    required TResult Function() signInWithGoogle,
+    required TResult Function(String emailAddress, String password)
+        signInWithMailPassword,
+    required TResult Function() logOut,
+  }) {
+    return registerUser(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
+    TResult? Function()? signInWithVK,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult? Function()? logOut,
+  }) {
+    return registerUser?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
+    TResult Function()? signInWithVK,
+    TResult Function()? signInWithGoogle,
+    TResult Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (registerUser != null) {
+      return registerUser(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
+    required TResult Function(_SignInWithVK value) signInWithVK,
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithMailPassword value)
+        signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
+  }) {
+    return registerUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
+    TResult? Function(_SignInWithVK value)? signInWithVK,
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
+  }) {
+    return registerUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
+    TResult Function(_SignInWithVK value)? signInWithVK,
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (registerUser != null) {
+      return registerUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterUser implements AuthEvent {
+  const factory _RegisterUser({required final String code}) =
+      _$RegisterUserImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -140,10 +549,12 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
@@ -154,9 +565,12 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
@@ -167,9 +581,12 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
@@ -184,9 +601,10 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
@@ -197,9 +615,10 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
   }) {
@@ -209,9 +628,10 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
@@ -273,10 +693,12 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
@@ -287,9 +709,12 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
@@ -300,9 +725,12 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
@@ -317,9 +745,10 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
@@ -330,9 +759,10 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
   }) {
@@ -342,9 +772,10 @@ class _$SignInWithGoogleImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
@@ -358,185 +789,6 @@ class _$SignInWithGoogleImpl
 
 abstract class _SignInWithGoogle implements AuthEvent {
   const factory _SignInWithGoogle() = _$SignInWithGoogleImpl;
-}
-
-/// @nodoc
-abstract class _$$RegisterUserImplCopyWith<$Res> {
-  factory _$$RegisterUserImplCopyWith(
-          _$RegisterUserImpl value, $Res Function(_$RegisterUserImpl) then) =
-      __$$RegisterUserImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String emailAddress, String password});
-}
-
-/// @nodoc
-class __$$RegisterUserImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$RegisterUserImpl>
-    implements _$$RegisterUserImplCopyWith<$Res> {
-  __$$RegisterUserImplCopyWithImpl(
-      _$RegisterUserImpl _value, $Res Function(_$RegisterUserImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? emailAddress = null,
-    Object? password = null,
-  }) {
-    return _then(_$RegisterUserImpl(
-      emailAddress: null == emailAddress
-          ? _value.emailAddress
-          : emailAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
-  const _$RegisterUserImpl(
-      {required this.emailAddress, required this.password});
-
-  @override
-  final String emailAddress;
-  @override
-  final String password;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthEvent.registerUser(emailAddress: $emailAddress, password: $password)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthEvent.registerUser'))
-      ..add(DiagnosticsProperty('emailAddress', emailAddress))
-      ..add(DiagnosticsProperty('password', password));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RegisterUserImpl &&
-            (identical(other.emailAddress, emailAddress) ||
-                other.emailAddress == emailAddress) &&
-            (identical(other.password, password) ||
-                other.password == password));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, emailAddress, password);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
-      __$$RegisterUserImplCopyWithImpl<_$RegisterUserImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signInWithVK,
-    required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        registerUser,
-    required TResult Function(String emailAddress, String password)
-        signInWithMailPassword,
-    required TResult Function() logOut,
-  }) {
-    return registerUser(emailAddress, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signInWithVK,
-    TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)? registerUser,
-    TResult? Function(String emailAddress, String password)?
-        signInWithMailPassword,
-    TResult? Function()? logOut,
-  }) {
-    return registerUser?.call(emailAddress, password);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signInWithVK,
-    TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)? registerUser,
-    TResult Function(String emailAddress, String password)?
-        signInWithMailPassword,
-    TResult Function()? logOut,
-    required TResult orElse(),
-  }) {
-    if (registerUser != null) {
-      return registerUser(emailAddress, password);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SignInWithVK value) signInWithVK,
-    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_RegisterUser value) registerUser,
-    required TResult Function(_SignInWithMailPassword value)
-        signInWithMailPassword,
-    required TResult Function(_LogOut value) logOut,
-  }) {
-    return registerUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SignInWithVK value)? signInWithVK,
-    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_RegisterUser value)? registerUser,
-    TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
-    TResult? Function(_LogOut value)? logOut,
-  }) {
-    return registerUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SignInWithVK value)? signInWithVK,
-    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_RegisterUser value)? registerUser,
-    TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
-    TResult Function(_LogOut value)? logOut,
-    required TResult orElse(),
-  }) {
-    if (registerUser != null) {
-      return registerUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RegisterUser implements AuthEvent {
-  const factory _RegisterUser(
-      {required final String emailAddress,
-      required final String password}) = _$RegisterUserImpl;
-
-  String get emailAddress;
-  String get password;
-  @JsonKey(ignore: true)
-  _$$RegisterUserImplCopyWith<_$RegisterUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -628,10 +880,12 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
@@ -642,9 +896,12 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
@@ -655,9 +912,12 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
@@ -672,9 +932,10 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
@@ -685,9 +946,10 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
   }) {
@@ -697,9 +959,10 @@ class _$SignInWithMailPasswordImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
@@ -767,10 +1030,12 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
     required TResult Function() signInWithVK,
     required TResult Function() signInWithGoogle,
-    required TResult Function(String emailAddress, String password)
-        registerUser,
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
@@ -781,9 +1046,12 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
     TResult? Function()? signInWithVK,
     TResult? Function()? signInWithGoogle,
-    TResult? Function(String emailAddress, String password)? registerUser,
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
@@ -794,9 +1062,12 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
     TResult Function()? signInWithVK,
     TResult Function()? signInWithGoogle,
-    TResult Function(String emailAddress, String password)? registerUser,
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
@@ -811,9 +1082,10 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithVK value) signInWithVK,
     required TResult Function(_SignInWithGoogle value) signInWithGoogle,
-    required TResult Function(_RegisterUser value) registerUser,
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
@@ -824,9 +1096,10 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithVK value)? signInWithVK,
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult? Function(_RegisterUser value)? registerUser,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
   }) {
@@ -836,9 +1109,10 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithVK value)? signInWithVK,
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
-    TResult Function(_RegisterUser value)? registerUser,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
     required TResult orElse(),
@@ -859,63 +1133,56 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() signInScreen,
     required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? signInScreen,
     TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? signInScreen,
     TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -983,11 +1250,10 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() signInScreen,
     required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
   }) {
     return initial();
   }
@@ -996,11 +1262,10 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? signInScreen,
     TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
   }) {
     return initial?.call();
   }
@@ -1009,11 +1274,10 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? signInScreen,
     TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1026,12 +1290,10 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
   }) {
     return initial(this);
   }
@@ -1040,11 +1302,10 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -1053,11 +1314,10 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1069,6 +1329,134 @@ class _$AuthInitialImpl with DiagnosticableTreeMixin implements _AuthInitial {
 
 abstract class _AuthInitial implements AuthState {
   const factory _AuthInitial() = _$AuthInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthSignInScreenImplCopyWith<$Res> {
+  factory _$$AuthSignInScreenImplCopyWith(_$AuthSignInScreenImpl value,
+          $Res Function(_$AuthSignInScreenImpl) then) =
+      __$$AuthSignInScreenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthSignInScreenImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthSignInScreenImpl>
+    implements _$$AuthSignInScreenImplCopyWith<$Res> {
+  __$$AuthSignInScreenImplCopyWithImpl(_$AuthSignInScreenImpl _value,
+      $Res Function(_$AuthSignInScreenImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthSignInScreenImpl
+    with DiagnosticableTreeMixin
+    implements _AuthSignInScreen {
+  const _$AuthSignInScreenImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.signInScreen()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.signInScreen'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AuthSignInScreenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signInScreen,
+    required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
+  }) {
+    return signInScreen();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signInScreen,
+    TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
+  }) {
+    return signInScreen?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signInScreen,
+    TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
+    required TResult orElse(),
+  }) {
+    if (signInScreen != null) {
+      return signInScreen();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
+  }) {
+    return signInScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
+  }) {
+    return signInScreen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (signInScreen != null) {
+      return signInScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthSignInScreen implements AuthState {
+  const factory _AuthSignInScreen() = _$AuthSignInScreenImpl;
 }
 
 /// @nodoc
@@ -1118,11 +1506,10 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() signInScreen,
     required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
   }) {
     return waitingAnswer();
   }
@@ -1131,11 +1518,10 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? signInScreen,
     TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
   }) {
     return waitingAnswer?.call();
   }
@@ -1144,11 +1530,10 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? signInScreen,
     TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
     if (waitingAnswer != null) {
@@ -1161,12 +1546,10 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
   }) {
     return waitingAnswer(this);
   }
@@ -1175,11 +1558,10 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
   }) {
     return waitingAnswer?.call(this);
   }
@@ -1188,11 +1570,10 @@ class _$AuthWaitingAnswerImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {
     if (waitingAnswer != null) {
@@ -1207,496 +1588,110 @@ abstract class _AuthWaitingAnswer implements AuthState {
 }
 
 /// @nodoc
-abstract class _$$AuthRegisteredImplCopyWith<$Res> {
-  factory _$$AuthRegisteredImplCopyWith(_$AuthRegisteredImpl value,
-          $Res Function(_$AuthRegisteredImpl) then) =
-      __$$AuthRegisteredImplCopyWithImpl<$Res>;
+abstract class _$$AuthSuccessImplCopyWith<$Res> {
+  factory _$$AuthSuccessImplCopyWith(
+          _$AuthSuccessImpl value, $Res Function(_$AuthSuccessImpl) then) =
+      __$$AuthSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AuthSuccess success});
 }
 
 /// @nodoc
-class __$$AuthRegisteredImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthRegisteredImpl>
-    implements _$$AuthRegisteredImplCopyWith<$Res> {
-  __$$AuthRegisteredImplCopyWithImpl(
-      _$AuthRegisteredImpl _value, $Res Function(_$AuthRegisteredImpl) _then)
+class __$$AuthSuccessImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthSuccessImpl>
+    implements _$$AuthSuccessImplCopyWith<$Res> {
+  __$$AuthSuccessImplCopyWithImpl(
+      _$AuthSuccessImpl _value, $Res Function(_$AuthSuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? success = null,
+  }) {
+    return _then(_$AuthSuccessImpl(
+      null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as AuthSuccess,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$AuthRegisteredImpl
-    with DiagnosticableTreeMixin
-    implements _AuthRegistered {
-  const _$AuthRegisteredImpl();
+class _$AuthSuccessImpl with DiagnosticableTreeMixin implements _AuthSuccess {
+  const _$AuthSuccessImpl(this.success);
+
+  @override
+  final AuthSuccess success;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.registred()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.registred'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthRegisteredImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
-  }) {
-    return registred();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
-  }) {
-    return registred?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
-    required TResult orElse(),
-  }) {
-    if (registred != null) {
-      return registred();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
-  }) {
-    return registred(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
-  }) {
-    return registred?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
-    required TResult orElse(),
-  }) {
-    if (registred != null) {
-      return registred(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthRegistered implements AuthState {
-  const factory _AuthRegistered() = _$AuthRegisteredImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthAuthorisedImplCopyWith<$Res> {
-  factory _$$AuthAuthorisedImplCopyWith(_$AuthAuthorisedImpl value,
-          $Res Function(_$AuthAuthorisedImpl) then) =
-      __$$AuthAuthorisedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthAuthorisedImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthAuthorisedImpl>
-    implements _$$AuthAuthorisedImplCopyWith<$Res> {
-  __$$AuthAuthorisedImplCopyWithImpl(
-      _$AuthAuthorisedImpl _value, $Res Function(_$AuthAuthorisedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthAuthorisedImpl
-    with DiagnosticableTreeMixin
-    implements _AuthAuthorised {
-  const _$AuthAuthorisedImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.authorized()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.authorized'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthAuthorisedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
-  }) {
-    return authorized();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
-  }) {
-    return authorized?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
-    required TResult orElse(),
-  }) {
-    if (authorized != null) {
-      return authorized();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
-  }) {
-    return authorized(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
-  }) {
-    return authorized?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
-    required TResult orElse(),
-  }) {
-    if (authorized != null) {
-      return authorized(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthAuthorised implements AuthState {
-  const factory _AuthAuthorised() = _$AuthAuthorisedImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthFailedSignInImplCopyWith<$Res> {
-  factory _$$AuthFailedSignInImplCopyWith(_$AuthFailedSignInImpl value,
-          $Res Function(_$AuthFailedSignInImpl) then) =
-      __$$AuthFailedSignInImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthFailedSignInImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthFailedSignInImpl>
-    implements _$$AuthFailedSignInImplCopyWith<$Res> {
-  __$$AuthFailedSignInImplCopyWithImpl(_$AuthFailedSignInImpl _value,
-      $Res Function(_$AuthFailedSignInImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthFailedSignInImpl
-    with DiagnosticableTreeMixin
-    implements _AuthFailedSignIn {
-  const _$AuthFailedSignInImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.failedSignIn()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.failedSignIn'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthFailedSignInImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
-  }) {
-    return failedSignIn();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
-  }) {
-    return failedSignIn?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
-    required TResult orElse(),
-  }) {
-    if (failedSignIn != null) {
-      return failedSignIn();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthInitial value) initial,
-    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
-  }) {
-    return failedSignIn(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthInitial value)? initial,
-    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
-  }) {
-    return failedSignIn?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthInitial value)? initial,
-    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
-    required TResult orElse(),
-  }) {
-    if (failedSignIn != null) {
-      return failedSignIn(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthFailedSignIn implements AuthState {
-  const factory _AuthFailedSignIn() = _$AuthFailedSignInImpl;
-}
-
-/// @nodoc
-abstract class _$$AuthFailedRegistrationImplCopyWith<$Res> {
-  factory _$$AuthFailedRegistrationImplCopyWith(
-          _$AuthFailedRegistrationImpl value,
-          $Res Function(_$AuthFailedRegistrationImpl) then) =
-      __$$AuthFailedRegistrationImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthFailedRegistrationImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthFailedRegistrationImpl>
-    implements _$$AuthFailedRegistrationImplCopyWith<$Res> {
-  __$$AuthFailedRegistrationImplCopyWithImpl(
-      _$AuthFailedRegistrationImpl _value,
-      $Res Function(_$AuthFailedRegistrationImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuthFailedRegistrationImpl
-    with DiagnosticableTreeMixin
-    implements _AuthFailedRegistration {
-  const _$AuthFailedRegistrationImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.failedRegisteration()';
+    return 'AuthState.success(success: $success)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'AuthState.failedRegisteration'));
+      ..add(DiagnosticsProperty('type', 'AuthState.success'))
+      ..add(DiagnosticsProperty('success', success));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthFailedRegistrationImpl);
+            other is _$AuthSuccessImpl &&
+            (identical(other.success, success) || other.success == success));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, success);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthSuccessImplCopyWith<_$AuthSuccessImpl> get copyWith =>
+      __$$AuthSuccessImplCopyWithImpl<_$AuthSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() signInScreen,
     required TResult Function() waitingAnswer,
-    required TResult Function() registred,
-    required TResult Function() authorized,
-    required TResult Function() failedSignIn,
-    required TResult Function() failedRegisteration,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
   }) {
-    return failedRegisteration();
+    return success(this.success);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? signInScreen,
     TResult? Function()? waitingAnswer,
-    TResult? Function()? registred,
-    TResult? Function()? authorized,
-    TResult? Function()? failedSignIn,
-    TResult? Function()? failedRegisteration,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
   }) {
-    return failedRegisteration?.call();
+    return success?.call(this.success);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? signInScreen,
     TResult Function()? waitingAnswer,
-    TResult Function()? registred,
-    TResult Function()? authorized,
-    TResult Function()? failedSignIn,
-    TResult Function()? failedRegisteration,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
     required TResult orElse(),
   }) {
-    if (failedRegisteration != null) {
-      return failedRegisteration();
+    if (success != null) {
+      return success(this.success);
     }
     return orElse();
   }
@@ -1705,47 +1700,207 @@ class _$AuthFailedRegistrationImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
     required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
-    required TResult Function(_AuthRegistered value) registred,
-    required TResult Function(_AuthAuthorised value) authorized,
-    required TResult Function(_AuthFailedSignIn value) failedSignIn,
-    required TResult Function(_AuthFailedRegistration value)
-        failedRegisteration,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
   }) {
-    return failedRegisteration(this);
+    return success(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
     TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult? Function(_AuthRegistered value)? registred,
-    TResult? Function(_AuthAuthorised value)? authorized,
-    TResult? Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult? Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
   }) {
-    return failedRegisteration?.call(this);
+    return success?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
     TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
-    TResult Function(_AuthRegistered value)? registred,
-    TResult Function(_AuthAuthorised value)? authorized,
-    TResult Function(_AuthFailedSignIn value)? failedSignIn,
-    TResult Function(_AuthFailedRegistration value)? failedRegisteration,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
     required TResult orElse(),
   }) {
-    if (failedRegisteration != null) {
-      return failedRegisteration(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class _AuthFailedRegistration implements AuthState {
-  const factory _AuthFailedRegistration() = _$AuthFailedRegistrationImpl;
+abstract class _AuthSuccess implements AuthState {
+  const factory _AuthSuccess(final AuthSuccess success) = _$AuthSuccessImpl;
+
+  AuthSuccess get success;
+  @JsonKey(ignore: true)
+  _$$AuthSuccessImplCopyWith<_$AuthSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AuthFailedImplCopyWith<$Res> {
+  factory _$$AuthFailedImplCopyWith(
+          _$AuthFailedImpl value, $Res Function(_$AuthFailedImpl) then) =
+      __$$AuthFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AuthError error});
+}
+
+/// @nodoc
+class __$$AuthFailedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthFailedImpl>
+    implements _$$AuthFailedImplCopyWith<$Res> {
+  __$$AuthFailedImplCopyWithImpl(
+      _$AuthFailedImpl _value, $Res Function(_$AuthFailedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$AuthFailedImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as AuthError,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AuthFailedImpl with DiagnosticableTreeMixin implements _AuthFailed {
+  const _$AuthFailedImpl(this.error);
+
+  @override
+  final AuthError error;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.failed(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.failed'))
+      ..add(DiagnosticsProperty('error', error));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthFailedImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthFailedImplCopyWith<_$AuthFailedImpl> get copyWith =>
+      __$$AuthFailedImplCopyWithImpl<_$AuthFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signInScreen,
+    required TResult Function() waitingAnswer,
+    required TResult Function(AuthSuccess success) success,
+    required TResult Function(AuthError error) failed,
+  }) {
+    return failed(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signInScreen,
+    TResult? Function()? waitingAnswer,
+    TResult? Function(AuthSuccess success)? success,
+    TResult? Function(AuthError error)? failed,
+  }) {
+    return failed?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signInScreen,
+    TResult Function()? waitingAnswer,
+    TResult Function(AuthSuccess success)? success,
+    TResult Function(AuthError error)? failed,
+    required TResult orElse(),
+  }) {
+    if (failed != null) {
+      return failed(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthInitial value) initial,
+    required TResult Function(_AuthSignInScreen value) signInScreen,
+    required TResult Function(_AuthWaitingAnswer value) waitingAnswer,
+    required TResult Function(_AuthSuccess value) success,
+    required TResult Function(_AuthFailed value) failed,
+  }) {
+    return failed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthInitial value)? initial,
+    TResult? Function(_AuthSignInScreen value)? signInScreen,
+    TResult? Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult? Function(_AuthSuccess value)? success,
+    TResult? Function(_AuthFailed value)? failed,
+  }) {
+    return failed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthInitial value)? initial,
+    TResult Function(_AuthSignInScreen value)? signInScreen,
+    TResult Function(_AuthWaitingAnswer value)? waitingAnswer,
+    TResult Function(_AuthSuccess value)? success,
+    TResult Function(_AuthFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (failed != null) {
+      return failed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthFailed implements AuthState {
+  const factory _AuthFailed(final AuthError error) = _$AuthFailedImpl;
+
+  AuthError get error;
+  @JsonKey(ignore: true)
+  _$$AuthFailedImplCopyWith<_$AuthFailedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

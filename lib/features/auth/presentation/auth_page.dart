@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 
@@ -17,10 +18,16 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController mailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final codeController = TextEditingController();
 
   String regUser = '';
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,25 +38,25 @@ class _AuthPageState extends State<AuthPage> {
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             state.whenOrNull(
-                initial: () {},
-                authorized: () {
-                  context.go("/home");
-                },
-                registred: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context).successRegistration)));
-                },
-                failedRegisteration: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context).failedRegistration)));
-                },
-                failedSignIn: () {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context).canNotAuthorizate)));
-                });
+              initial: () {
+                context.go("/");
+              },
+              success: (success) {
+                switch (success) {
+                  case AuthSuccess.authorized:
+                    context.go("/home");
+                  case AuthSuccess.sendedCode:
+                  // TODO: Handle this case.
+                }
+              },
+              failed: (error) {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Text(error.name);
+                    });
+              },
+            );
           },
           builder: (context, state) {
             return state.maybeWhen(
@@ -81,40 +88,24 @@ class _AuthPageState extends State<AuthPage> {
                           )
                         ],
                       ),
+                      MailAndPasswordFileds(
+                          mailController: mailController,
+                          passwordController: passwordController),
                       const SizedBox(
                         height: AuthUndesignedConstants.smallContainer,
                       ),
-                      CustomTextField(
-                        controller: usernameController,
-                        hintText: AppLocalizations.of(context).mail,
-                        obscoreText: false,
-                      ),
                       const SizedBox(
                         height: AuthUndesignedConstants.smallestContainer,
-                      ),
-                      CustomTextField(
-                        controller: passwordController,
-                        hintText: AppLocalizations.of(context).password,
-                        obscoreText: true,
                       ),
                       ElevatedButton(
                         onPressed: () async {
                           context.read<AuthBloc>().add(
                               AuthEvent.signInWithMailPassword(
-                                  emailAddress: usernameController.text,
+                                  emailAddress: mailController.text,
                                   password: passwordController.text));
                         },
                         child: Text(AppLocalizations.of(context)
                             .signInWithMailPassword),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context.read<AuthBloc>().add(AuthEvent.registerUser(
-                              emailAddress: usernameController.text,
-                              password: passwordController.text));
-                        },
-                        child: Text(AppLocalizations.of(context)
-                            .registerUserWithMailAndPassword),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -138,6 +129,12 @@ class _AuthPageState extends State<AuthPage> {
                           context.go("/home");
                         },
                         child: Text(AppLocalizations.of(context).nextPage),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context.go("/");
+                        },
+                        child: const Text("Экран регистрации"),
                       ),
                       ElevatedButton(
                         onPressed: () async {
