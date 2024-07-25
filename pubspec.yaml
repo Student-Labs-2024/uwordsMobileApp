@@ -41,6 +41,7 @@ dependencies:
     sdk: flutter
   intl: any
   speech_to_text: ^6.6.2
+  get_it: ^7.7.0
 
 dev_dependencies:
   flutter_test:
