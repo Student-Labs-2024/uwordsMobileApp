@@ -107,7 +107,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _handleSignInWithGoogle(
       _SignInWithGoogle event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
-    vk.logOut();
+    if (await vk.isLoggedIn) {
+      vk.logOut();
+    }
     userRepository.localLogOut();
     _provider = AuthorizationProvider.google;
     await _signInWithGoogle();
@@ -124,7 +126,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       auth.signOut();
-      vk.logOut();
+      if (await vk.isLoggedIn) {
+        vk.logOut();
+      }
       emit(const AuthState.waitingAnswer());
       _uEmail = event.emailAddress;
       _uPassword = event.password;
@@ -230,15 +234,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
     bool hasLowercase = password.contains(RegExp(r'[a-z]'));
     bool hasDigits = password.contains(RegExp(r'[0-9]'));
-    bool hasSpecialCharacters =
-        password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
-    bool hasMinLength = password.length > 8;
+    bool hasMinLength = password.length >= 8;
     bool hasNotcyrillicCharacters = !password.contains(RegExp(r'[а-яА-Я]'));
 
     return hasLowercase &&
         hasUppercase &&
         hasDigits &&
-        hasSpecialCharacters &&
         hasMinLength &&
         hasNotcyrillicCharacters;
   }

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/exception_check.dart';
+import 'package:uwords/common/utils/jwt.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
@@ -15,6 +16,7 @@ import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 class NetworkUserDataSource implements INetworkUserDataSource {
   static Dio dio = GetIt.instance.get<Dio>();
   final client = AuthClient(dio);
+  final String tokenType = "Bearer";
 
   @override
   Future<UserAuthDto> authorizate(
@@ -38,7 +40,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> authorizateVk({required String accessToken}) async {
     try {
-      final response = await client.loginVK("Bearer $accessToken");
+      final response = await client.loginVK(joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: '',
         provider: AuthorizationProvider.vk,
@@ -55,7 +57,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   Future<UserAuthDto> authorizateGoogle({required String uid}) async {
     try {
       final response = await client.loginGoogle(
-          jsonEncode(RegisterGoogleRequestBody(uid: uid)), "Bearer $uid");
+          jsonEncode(RegisterGoogleRequestBody(uid: uid)), joinTokenTypeAndToken(tokenType: tokenType, token: uid));
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: '',
         provider: AuthorizationProvider.google,
@@ -71,7 +73,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
     Map<String, String> newAccessToken =
-        await client.refresh("Bearer ${userDto.refreshToken}");
+        await client.refresh(joinTokenTypeAndToken(tokenType: tokenType, token: userDto.refreshToken));
     userDto.changeAccessToken(
         newAccessToken: newAccessToken['access_token'] ?? '');
     return userDto;
@@ -105,7 +107,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       lastname: surname,
     );
     await client.registerUserVk(
-        jsonEncode(registerRequestBody), "Bearer $accessToken");
+        jsonEncode(registerRequestBody), joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
   }
 
   @override
