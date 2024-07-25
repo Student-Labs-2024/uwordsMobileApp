@@ -44,5 +44,6 @@
   "policyOfConfidentiality": "Политика конфиденциальности",
   "conditions": "Условия",
   "name": "Имя (необязательно)",
-  "alreadyHaveAccount": "Уже есть аккаунт?"
+  "alreadyHaveAccount": "Уже есть аккаунт?",
+  "notValidLoginOrPassword": "Неверный логин или пароль"
 }

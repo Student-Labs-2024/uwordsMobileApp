@@ -22,4 +22,26 @@ class AppTextStyles {
   );
   static const customTextFieldForAuth =
       TextStyle(color: Colors.brown, fontSize: 20, fontWeight: FontWeight.bold);
+
+  static const authHeaderText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+      color: AppColors.darkMainColor);
+  static const authButtonText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 16,
+      color: AppColors.darkMainColor);
+  static const authSmallText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      color: AppColors.darkMainColor);
+  static const authLinkText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      color: AppColors.darkMainColor,
+      decoration: TextDecoration.underline);
 }

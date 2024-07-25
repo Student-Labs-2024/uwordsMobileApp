@@ -9,4 +9,9 @@ class AppImageSource {
   static const String navBubbleIco = 'assets/png/nav_bubble_ico.png';
   static const String notificationIco = 'assets/svg/notification_ico.svg';
   static const String profileIco = 'assets/svg/profile_ico.svg';
+  static const String headerRegister = 'assets/png/header_register.png';
+  static const String headerAuth = 'assets/png/header_auth.png';
+  static const String bubbleButton = 'assets/png/bubble_button1.png';
+  static const String googleIcon = 'assets/svg/google.svg';
+  static const String vkIcon = 'assets/svg/vk.svg';
 }

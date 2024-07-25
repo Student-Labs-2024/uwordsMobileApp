@@ -9,9 +9,9 @@ class AppColors {
   static const Color homePageStartRecord = Color.fromRGBO(241, 245, 249, 1);
 
   static const Color gradientBackgroundColor1 =
-      Color.fromRGBO(192, 225, 255, 1);
+      Color.fromRGBO(229, 243, 255, 1);
   static const Color gradientBackgroundColor2 =
-      Color.fromRGBO(168, 166, 255, 1);
+      Color.fromRGBO(216, 227, 255, 1);
 
   static const Color white05Color = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);

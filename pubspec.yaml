@@ -63,3 +63,6 @@ flutter:
     - family: SNFBSTRD_handwrite
       fonts:
         - asset: fonts/SNFBSTRD_handwrite.ttf
+    - family: Inter-V
+      fonts:
+        - asset: fonts/Inter.otf

@@ -179,10 +179,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomTextField(
+                        CustomAuthTextField(
                           controller: codeController,
                           hintText: '',
-                          obscoreText: false,
+                          notHidden: false,
                         ),
                         ElevatedButton(
                             onPressed: () {
