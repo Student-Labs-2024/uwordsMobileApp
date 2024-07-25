@@ -54,7 +54,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> authorizateGoogle({required String uid}) async {
     try {
-      final response = await client.loginGoogle(jsonEncode(RegisterGoogleRequestBody(uid: uid)),"Bearer $uid");
+      final response = await client.loginGoogle(
+          jsonEncode(RegisterGoogleRequestBody(uid: uid)), "Bearer $uid");
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: '',
         provider: AuthorizationProvider.google,
@@ -133,7 +134,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
     await client.sendCode(userEmail);
   }
 
-  void _checkStatusCode({required DioException e, required AuthorizationProvider provider}) {
+  void _checkStatusCode(
+      {required DioException e, required AuthorizationProvider provider}) {
     if (e.response != null) {
       switch (e.response!.statusCode) {
         case 400:

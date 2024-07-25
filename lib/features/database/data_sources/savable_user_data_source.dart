@@ -44,7 +44,7 @@ class SavableUserDataSource implements ISavableUserDataSource {
   }
 
   @override
-  void changeCurrent({required int id}){
+  void changeCurrent({required int id}) {
     noneIsCurrent();
     (database.update(database.userAuth)
       ..where((u) => u.id.equals(id))

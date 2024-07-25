@@ -31,7 +31,8 @@ abstract class AuthClient {
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/login/google")
-  Future<HttpResponse<Map<String,String>>> loginGoogle(@Body() body,@Header("Authorization") String uid,
+  Future<HttpResponse<Map<String, String>>> loginGoogle(
+      @Body() body, @Header("Authorization") String uid,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @GET("users/token/refresh")

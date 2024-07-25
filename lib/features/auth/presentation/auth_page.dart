@@ -56,71 +56,76 @@ class _AuthPageState extends State<AuthPage> {
             );
           },
           builder: (context, state) {
-            return state.maybeWhen(orElse: () {
-              return SafeArea(
-                child: Column(
-                  children: [
-                    MailAndPasswordFileds(
-                        mailController: mailController,
-                        passwordController: passwordController),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.read<AuthBloc>().add(
-                            AuthEvent.signInWithMailPassword(
-                                emailAddress: mailController.text,
-                                password: passwordController.text));
-                      },
-                      child: Text(
-                          AppLocalizations.of(context).signInWithMailPassword),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context
-                            .read<AuthBloc>()
-                            .add(const AuthEvent.signInWithGoogle());
-                      },
-                      child:
-                          Text(AppLocalizations.of(context).signInWithGoogle),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context
-                            .read<AuthBloc>()
-                            .add(const AuthEvent.signInWithVK());
-                      },
-                      child: Text(AppLocalizations.of(context).signInWithVK),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.go("/home");
-                      },
-                      child: Text(AppLocalizations.of(context).nextPage),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.go("/");
-                      },
-                      child: const Text("Экран регистрации"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.read<AuthBloc>().add(const AuthEvent.logOut());
-                      },
-                      child: Text(AppLocalizations.of(context).logOut),
-                    ),
-                  ],
-                ),
-              );
-            }, waitingAnswer: () {
-              return Center(
-                child: Column(
-                  children: [
-                    const CircularProgressIndicator(),
-                    Text(AppLocalizations.of(context).checkingLoginData),
-                  ],
-                ),
-              );
-            },);
+            return state.maybeWhen(
+              orElse: () {
+                return SafeArea(
+                  child: Column(
+                    children: [
+                      MailAndPasswordFileds(
+                          mailController: mailController,
+                          passwordController: passwordController),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context.read<AuthBloc>().add(
+                              AuthEvent.signInWithMailPassword(
+                                  emailAddress: mailController.text,
+                                  password: passwordController.text));
+                        },
+                        child: Text(AppLocalizations.of(context)
+                            .signInWithMailPassword),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context
+                              .read<AuthBloc>()
+                              .add(const AuthEvent.signInWithGoogle());
+                        },
+                        child:
+                            Text(AppLocalizations.of(context).signInWithGoogle),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context
+                              .read<AuthBloc>()
+                              .add(const AuthEvent.signInWithVK());
+                        },
+                        child: Text(AppLocalizations.of(context).signInWithVK),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context.go("/home");
+                        },
+                        child: Text(AppLocalizations.of(context).nextPage),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context.go("/");
+                        },
+                        child: const Text("Экран регистрации"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context
+                              .read<AuthBloc>()
+                              .add(const AuthEvent.logOut());
+                        },
+                        child: Text(AppLocalizations.of(context).logOut),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              waitingAnswer: () {
+                return Center(
+                  child: Column(
+                    children: [
+                      const CircularProgressIndicator(),
+                      Text(AppLocalizations.of(context).checkingLoginData),
+                    ],
+                  ),
+                );
+              },
+            );
           },
         ),
       ),

@@ -14,7 +14,7 @@ class RegistrationFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [     
+      children: [
         CustomTextField(
           controller: usernameController,
           hintText: "username please",
