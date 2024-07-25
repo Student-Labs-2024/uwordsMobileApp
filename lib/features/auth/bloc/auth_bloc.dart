@@ -95,8 +95,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     auth.signOut();
     userRepository.localLogOut();
     _provider = AuthorizationProvider.vk;
-    await _signInWithVk();
     try {
+      await _signInWithVk();
       await _authorization(emit: emit);
     } on Exception catch (e) {
       _emitter = emit;
