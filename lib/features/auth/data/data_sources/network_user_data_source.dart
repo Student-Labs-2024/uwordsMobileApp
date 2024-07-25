@@ -40,7 +40,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> authorizateVk({required String accessToken}) async {
     try {
-      final response = await client.loginVK(joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
+      final response = await client.loginVK(
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: '',
         provider: AuthorizationProvider.vk,
@@ -57,7 +58,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   Future<UserAuthDto> authorizateGoogle({required String uid}) async {
     try {
       final response = await client.loginGoogle(
-          jsonEncode(RegisterGoogleRequestBody(uid: uid)), joinTokenTypeAndToken(tokenType: tokenType, token: uid));
+          jsonEncode(RegisterGoogleRequestBody(uid: uid)),
+          joinTokenTypeAndToken(tokenType: tokenType, token: uid));
       return UserAuthDto.fromJsonAndOtherFields(
         userEmail: '',
         provider: AuthorizationProvider.google,
@@ -72,8 +74,9 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
-    Map<String, String> newAccessToken =
-        await client.refresh(joinTokenTypeAndToken(tokenType: tokenType, token: userDto.refreshToken));
+    Map<String, String> newAccessToken = await client.refresh(
+        joinTokenTypeAndToken(
+            tokenType: tokenType, token: userDto.refreshToken));
     userDto.changeAccessToken(
         newAccessToken: newAccessToken['access_token'] ?? '');
     return userDto;
@@ -106,8 +109,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       firstname: name,
       lastname: surname,
     );
-    await client.registerUserVk(
-        jsonEncode(registerRequestBody), joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
+    await client.registerUserVk(jsonEncode(registerRequestBody),
+        joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
   }
 
   @override
