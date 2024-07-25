@@ -45,6 +45,7 @@ dependencies:
   mocktail: ^1.0.4
   get_it: ^7.7.0
   firebase_core_platform_interface: ^5.1.0
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
