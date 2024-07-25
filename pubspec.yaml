@@ -40,6 +40,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  speech_to_text: ^6.6.2
 
 dev_dependencies:
   flutter_test:
