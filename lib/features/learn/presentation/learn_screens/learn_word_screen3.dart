@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
+import 'package:uwords/features/learn/presentation/widgets/speech_button.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
@@ -19,6 +20,13 @@ class LearnWordPage3 extends StatefulWidget {
 }
 
 class LearnWordPage3State extends State<LearnWordPage3> {
+  bool isSpeechButtonPressed = false;
+  void pressSpeechButton() {
+    setState(() {
+      isSpeechButtonPressed = !isSpeechButtonPressed;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,22 +86,9 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                     ),
                   ],
                 ),
-                Container(
-                  height: 80,
-                  width: 80,
-                  decoration: LearnDecorButtStyle.wordScreenSoundBDS,
-                  child: ElevatedButton(
-                    onPressed: () => context
-                        .read<PlayerBloc>()
-                        .add(PlayerEvent.playAudio(widget.word.audioLink)),
-                    style: LearnDecorButtStyle.wordScreenSoundBS,
-                    child: const Icon(
-                      Icons.volume_up_outlined,
-                      color: AppColors.mainColor,
-                      size: 43,
-                    ),
-                  ),
-                ),
+                SpeechButton(
+                    isPressed: isSpeechButtonPressed,
+                    onPressed: pressSpeechButton),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32),
                   child: BigButton(
