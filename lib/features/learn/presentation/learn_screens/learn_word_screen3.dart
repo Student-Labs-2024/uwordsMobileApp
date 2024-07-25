@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/presentation/widgets/speech_button.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class LearnWordPage3 extends StatefulWidget {
   const LearnWordPage3(
@@ -20,11 +22,35 @@ class LearnWordPage3 extends StatefulWidget {
 }
 
 class LearnWordPage3State extends State<LearnWordPage3> {
-  bool isSpeechButtonPressed = false;
-  void pressSpeechButton() {
+  SpeechToText _speechToText = SpeechToText();
+  bool _speechEnabled = false;
+  String _lastWords = '';
+
+  void pressSpeechButton() async {
+    if (_speechToText.isNotListening) {
+      await _speechToText.listen(onResult: _onSpeechResult);
+      setState(() {});
+    } else {
+      await _speechToText.stop();
+      setState(() {});
+    }
+  }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
-      isSpeechButtonPressed = !isSpeechButtonPressed;
+      _lastWords = result.recognizedWords;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initSpeech();
+  }
+
+  void _initSpeech() async {
+    _speechEnabled = await _speechToText.initialize();
+    setState(() {});
   }
 
   @override
@@ -87,8 +113,12 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                   ],
                 ),
                 SpeechButton(
-                    isPressed: isSpeechButtonPressed,
+                    isPressed: _speechToText.isListening,
                     onPressed: pressSpeechButton),
+                Text(
+                  _lastWords,
+                  style: TextStyle(fontSize: 12),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32),
                   child: BigButton(
