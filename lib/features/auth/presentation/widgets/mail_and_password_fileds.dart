@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
+import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/theme/app_colors.dart';
 
 class MailAndPasswordFileds extends StatefulWidget {
   final TextEditingController mailController;
@@ -31,14 +31,14 @@ class _MailAndPasswordFiledsState extends State<MailAndPasswordFileds> {
             notHidden: false,
           ),
           const SizedBox(
-            height: 5,
+            height: AuthUndesignedConstants.smallestContainer,
           ),
           CustomAuthTextField(
             controller: widget.passwordController,
             hintText: AppLocalizations.of(context).password,
             notHidden: true,
             obscureText: true,
-            )
+          )
         ],
       ),
     );

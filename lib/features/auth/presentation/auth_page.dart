@@ -83,8 +83,8 @@ class _AuthPageState extends State<AuthPage> {
                         padding: const EdgeInsets.only(
                             top: 170,
                             bottom: 32,
-                            left: HomePagePaddings.baseHorizontal * 1.8,
-                            right: HomePagePaddings.baseHorizontal * 1.8),
+                            left: HomePagePaddings.baseHorizontal * 2,
+                            right: HomePagePaddings.baseHorizontal * 2),
                         child: Column(
                           children: [
                             Padding(

@@ -44,4 +44,15 @@ class AppTextStyles {
       fontSize: 14,
       color: AppColors.darkMainColor,
       decoration: TextDecoration.underline);
+  static const authSmallestText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      color: AppColors.darkMainColor);
+  static const authSmallestLinkText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      color: AppColors.darkMainColor,
+      decoration: TextDecoration.underline);
 }
