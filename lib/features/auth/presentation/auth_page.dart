@@ -100,7 +100,7 @@ class _AuthPageState extends State<AuthPage> {
                       onPressed: () async {
                         context.go("/");
                       },
-                      child: Text("Экран регистрации"),
+                      child: const Text("Экран регистрации"),
                     ),
                     ElevatedButton(
                       onPressed: () async {
