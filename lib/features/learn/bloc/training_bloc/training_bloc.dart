@@ -29,6 +29,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     on<_SetTopic>(_getWordsFromTitle);
     on<_SetSubtopic>(_getWordsFromSubtitle);
     on<_NextStep>(_eventNextTrainingStep);
+    on<_GoSuccessfulScreen>(_goSuccessfulScreen);
   }
 
   void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
@@ -153,5 +154,11 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             selectableWords: getSelectableWords()));
         break;
     }
+  }
+
+  void _goSuccessfulScreen(
+      _GoSuccessfulScreen event, Emitter<TrainingState> emit) {
+    emit(TrainingState.success(
+        word: words[wordScreen[currentWordScreenIndex].first]));
   }
 }

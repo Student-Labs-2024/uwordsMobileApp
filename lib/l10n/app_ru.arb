@@ -12,7 +12,9 @@
   "lostFilePath": "Путь к файлу утерян",
   "invalidLink": "Невалидная ссылка",
   "misspelled": "Неправильное произношение слова",
-  "congratulations": "Правильно!",
+  "wrongAnswer": "Неверно!",
+  "congratulations": "Молодец, ты прошел все слова!",
   "next": "Дальше",
-  "check": "Проверить"
+  "check": "Проверить",
+  "startTraining": "Тренировать"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
@@ -16,8 +17,10 @@ class SpeechButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: (MediaQuery.of(context).size.width) * 80 / 375,
-        width: (MediaQuery.of(context).size.width) * 80 / 375,
+        height:
+            (MediaQuery.of(context).size.width) * LearnSizes.speechButtonSize,
+        width:
+            (MediaQuery.of(context).size.width) * LearnSizes.speechButtonSize,
         decoration: fis.BoxDecoration(
           color: AppColors.homePageStartRecord,
           boxShadow: isPressed
@@ -29,7 +32,8 @@ class SpeechButton extends StatelessWidget {
             child: SvgPicture.asset(
           isPressed ? AppImageSource.voiceIco : AppImageSource.microphoneIco,
           color: AppColors.darkMainColor,
-          width: (MediaQuery.of(context).size.width) * 42 / 375,
+          width: (MediaQuery.of(context).size.width) *
+              LearnSizes.speechButtonIconSize,
         )),
       ),
     );

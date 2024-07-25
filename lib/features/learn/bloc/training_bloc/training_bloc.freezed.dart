@@ -1666,6 +1666,7 @@ mixin _$TrainingEvent {
     required TResult Function(Topic topic) setTopic,
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1673,6 +1674,7 @@ mixin _$TrainingEvent {
     TResult? Function(Topic topic)? setTopic,
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1680,6 +1682,7 @@ mixin _$TrainingEvent {
     TResult Function(Topic topic)? setTopic,
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1688,6 +1691,7 @@ mixin _$TrainingEvent {
     required TResult Function(_SetTopic value) setTopic,
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1695,6 +1699,7 @@ mixin _$TrainingEvent {
     TResult? Function(_SetTopic value)? setTopic,
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1702,6 +1707,7 @@ mixin _$TrainingEvent {
     TResult Function(_SetTopic value)? setTopic,
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1792,6 +1798,7 @@ class _$SetTopicImpl implements _SetTopic {
     required TResult Function(Topic topic) setTopic,
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
   }) {
     return setTopic(topic);
   }
@@ -1802,6 +1809,7 @@ class _$SetTopicImpl implements _SetTopic {
     TResult? Function(Topic topic)? setTopic,
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
   }) {
     return setTopic?.call(topic);
   }
@@ -1812,6 +1820,7 @@ class _$SetTopicImpl implements _SetTopic {
     TResult Function(Topic topic)? setTopic,
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
     required TResult orElse(),
   }) {
     if (setTopic != null) {
@@ -1826,6 +1835,7 @@ class _$SetTopicImpl implements _SetTopic {
     required TResult Function(_SetTopic value) setTopic,
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
   }) {
     return setTopic(this);
   }
@@ -1836,6 +1846,7 @@ class _$SetTopicImpl implements _SetTopic {
     TResult? Function(_SetTopic value)? setTopic,
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
   }) {
     return setTopic?.call(this);
   }
@@ -1846,6 +1857,7 @@ class _$SetTopicImpl implements _SetTopic {
     TResult Function(_SetTopic value)? setTopic,
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
     required TResult orElse(),
   }) {
     if (setTopic != null) {
@@ -1932,6 +1944,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     required TResult Function(Topic topic) setTopic,
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
   }) {
     return setSubtopic(subtopic);
   }
@@ -1942,6 +1955,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult? Function(Topic topic)? setTopic,
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
   }) {
     return setSubtopic?.call(subtopic);
   }
@@ -1952,6 +1966,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult Function(Topic topic)? setTopic,
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
     required TResult orElse(),
   }) {
     if (setSubtopic != null) {
@@ -1966,6 +1981,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     required TResult Function(_SetTopic value) setTopic,
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
   }) {
     return setSubtopic(this);
   }
@@ -1976,6 +1992,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult? Function(_SetTopic value)? setTopic,
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
   }) {
     return setSubtopic?.call(this);
   }
@@ -1986,6 +2003,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult Function(_SetTopic value)? setTopic,
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
     required TResult orElse(),
   }) {
     if (setSubtopic != null) {
@@ -2045,6 +2063,7 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(Topic topic) setTopic,
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
   }) {
     return nextStep();
   }
@@ -2055,6 +2074,7 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(Topic topic)? setTopic,
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
   }) {
     return nextStep?.call();
   }
@@ -2065,6 +2085,7 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(Topic topic)? setTopic,
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -2079,6 +2100,7 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(_SetTopic value) setTopic,
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
   }) {
     return nextStep(this);
   }
@@ -2089,6 +2111,7 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(_SetTopic value)? setTopic,
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
   }) {
     return nextStep?.call(this);
   }
@@ -2099,6 +2122,7 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(_SetTopic value)? setTopic,
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -2110,4 +2134,118 @@ class _$NextStepImpl implements _NextStep {
 
 abstract class _NextStep implements TrainingEvent {
   const factory _NextStep() = _$NextStepImpl;
+}
+
+/// @nodoc
+abstract class _$$GoSuccessfulScreenImplCopyWith<$Res> {
+  factory _$$GoSuccessfulScreenImplCopyWith(_$GoSuccessfulScreenImpl value,
+          $Res Function(_$GoSuccessfulScreenImpl) then) =
+      __$$GoSuccessfulScreenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoSuccessfulScreenImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$GoSuccessfulScreenImpl>
+    implements _$$GoSuccessfulScreenImplCopyWith<$Res> {
+  __$$GoSuccessfulScreenImplCopyWithImpl(_$GoSuccessfulScreenImpl _value,
+      $Res Function(_$GoSuccessfulScreenImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
+  const _$GoSuccessfulScreenImpl();
+
+  @override
+  String toString() {
+    return 'TrainingEvent.goSuccessfulScreen()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GoSuccessfulScreenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Topic topic) setTopic,
+    required TResult Function(Subtopic subtopic) setSubtopic,
+    required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
+  }) {
+    return goSuccessfulScreen();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Topic topic)? setTopic,
+    TResult? Function(Subtopic subtopic)? setSubtopic,
+    TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
+  }) {
+    return goSuccessfulScreen?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Topic topic)? setTopic,
+    TResult Function(Subtopic subtopic)? setSubtopic,
+    TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
+    required TResult orElse(),
+  }) {
+    if (goSuccessfulScreen != null) {
+      return goSuccessfulScreen();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetTopic value) setTopic,
+    required TResult Function(_SetSubtopic value) setSubtopic,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+  }) {
+    return goSuccessfulScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetTopic value)? setTopic,
+    TResult? Function(_SetSubtopic value)? setSubtopic,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+  }) {
+    return goSuccessfulScreen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetTopic value)? setTopic,
+    TResult Function(_SetSubtopic value)? setSubtopic,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    required TResult orElse(),
+  }) {
+    if (goSuccessfulScreen != null) {
+      return goSuccessfulScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GoSuccessfulScreen implements TrainingEvent {
+  const factory _GoSuccessfulScreen() = _$GoSuccessfulScreenImpl;
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 import 'package:uwords/theme/app_colors.dart';
 
@@ -10,8 +12,9 @@ class BigButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      height: 64,
+      padding: const EdgeInsets.symmetric(
+          horizontal: LearnPaddings.bigButtonHorizontal),
+      height: LearnSizes.bigButtonHeight,
       width: double.infinity,
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -29,8 +32,8 @@ class BigButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.zero,
-            backgroundColor: AppColors.mainColor,
-            foregroundColor: AppColors.darkMainColor,
+            backgroundColor: AppColors.darkMainColor,
+            foregroundColor: AppColors.mainColor,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           ),

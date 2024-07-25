@@ -1,44 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 import '../../../../theme/app_colors.dart';
 
-class ImageCard extends StatefulWidget {
+class ImageCard extends StatelessWidget {
   const ImageCard({
     super.key,
     required this.word,
+    required this.onPressed,
+    required this.isSelected,
   });
 
   final WordModel word;
+  final Function(WordModel) onPressed;
+  final bool isSelected;
 
-  @override
-  State<ImageCard> createState() => _ImageCardState();
-}
-
-class _ImageCardState extends State<ImageCard> {
-  bool isSelected = false;
+  void onTap() {
+    onPressed(word);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 9, bottom: 9),
+      padding: const EdgeInsets.symmetric(
+          horizontal: LearnPaddings.imageCardHorizontal,
+          vertical: LearnPaddings.imageCardVertical),
       child: GestureDetector(
-        onTap: () => setState(() {
-          isSelected = !isSelected;
-        }),
+        onTap: () => onTap,
         child: Container(
-          width: MediaQuery.of(context).size.width * 146 / 375,
-          height: MediaQuery.of(context).size.height * 146 / 812,
+          width: MediaQuery.of(context).size.width * LearnSizes.imageCardWidth,
+          height:
+              MediaQuery.of(context).size.height * LearnSizes.imageCardHeight,
           decoration: BoxDecoration(
               border: Border.all(
                 color: isSelected ? AppColors.mainColor : Colors.transparent,
-                width: 6,
+                width: LearnSizes.imageCardBorderWidth,
               ),
               borderRadius: BorderRadius.circular(20)),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(13.5),
+            borderRadius: BorderRadius.circular(15),
             child: Image.network(
-              widget.word.pictureLink,
+              word.pictureLink,
               fit: BoxFit.cover,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) {

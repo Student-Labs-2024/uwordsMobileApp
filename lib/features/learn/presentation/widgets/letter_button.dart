@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/main/data/models/pair_model.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
@@ -7,7 +8,6 @@ class LetterButton extends StatefulWidget {
   const LetterButton(
       {super.key, required this.letterInfo, required this.onPressed});
   final Pair<String, int> letterInfo;
-  //final VoidCallback onPressed;
   final bool Function(String, int) onPressed;
 
   @override
@@ -46,22 +46,22 @@ class LetterButtonState extends State<LetterButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 48,
-      height: 50,
+      width: LearnSizes.letterButtonWrapperWidth,
+      height: LearnSizes.letterButtonWrapperHeight,
       child: Stack(
         children: [
           Positioned(
             bottom: 0,
             left: 0,
             child: Container(
-              height: 44,
-              width: 40,
+              height: LearnSizes.letterButtonWrapperWidth,
+              width: LearnSizes.letterButtonHeight,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: currentColor,
-                  width: 3,
+                  width: LearnSizes.letterButtonBorderWidth,
                 ),
               ),
               child: TextButton(
@@ -78,14 +78,14 @@ class LetterButtonState extends State<LetterButton> {
                   right: 0,
                   top: 0,
                   child: Container(
-                    width: 25,
-                    height: 25,
+                    width: LearnSizes.letterButtonAmountWidth,
+                    height: LearnSizes.letterButtonAmountHeight,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
                       border: Border.all(
                         color: AppColors.blackColor,
-                        width: 2,
+                        width: LearnSizes.letterButtonAmountBorderWidth,
                       ),
                       color: AppColors.darkMainColor,
                     ),
@@ -99,29 +99,5 @@ class LetterButtonState extends State<LetterButton> {
         ],
       ),
     );
-
-    /*ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(44, 48),
-        padding: EdgeInsets.zero,
-      ),
-      onPressed: pressLetterButton,
-      child: Container(
-        width: 40,
-        height: 44,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: currentColor,
-            width: 3,
-          ),
-        ),
-        child: Text(
-          widget.letterInfo.first,
-          style: LearnTextStyles.wordScreenTextInput,
-        ),
-      ),
-    );*/
   }
 }

@@ -1,17 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
-import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/successful_word_screen.dart';
-import 'package:uwords/features/main/data/models/pair_model.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen1.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen2.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen3.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen4.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnCoreScreen extends StatefulWidget {
   const LearnCoreScreen({super.key});
@@ -24,6 +20,10 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
   @override
   void initState() {
     super.initState();
+  }
+
+  void goSuccessfulScreen() {
+    context.read<TrainingBloc>().add(const TrainingEvent.goSuccessfulScreen());
   }
 
   void goNextScreen() {
@@ -44,18 +44,26 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
             loading: () => const Center(
               child: CircularProgressIndicator(),
             ),
-            screen1: (word) =>
-                LearnWordPage1(word: word, goNextScreen: goNextScreen),
+            screen1: (word) => LearnWordPage1(
+                word: word, goNextScreen: goNextScreen, quit: quit),
             screen2: (word, letters) => LearnWordPage2(
-                word: word, letters: letters, goNextScreen: goNextScreen),
-            screen3: (word) =>
-                LearnWordPage3(word: word, goNextScreen: goNextScreen),
-            screen4: (word, attendants) => LearnWordPage4(
-                word: word, attendants: attendants, goNextScreen: goNextScreen),
-            finalScreen: () =>
-                const Center(child: Text('Ты прошел все слова! молодец!')),
-            success: (word) => SuccessfulWordPage(word: word),
-            orElse: () => const Center(child: Text('CoreLogicScreen')),
+                word: word,
+                letters: letters,
+                goNextScreen: goSuccessfulScreen,
+                quit: quit),
+            screen3: (word) => LearnWordPage3(
+                word: word, goNextScreen: goSuccessfulScreen, quit: quit),
+            screen4: (word, selectableWords) => LearnWordPage4(
+                word: word,
+                selectableWords: selectableWords,
+                goNextScreen: goSuccessfulScreen,
+                quit: quit),
+            finalScreen: () => Center(
+                child: Text(AppLocalizations.of(context).congratulations)),
+            success: (word) => SuccessfulWordPage(
+                word: word, goNextScreen: goNextScreen, quit: quit),
+            orElse: () =>
+                Center(child: Text(AppLocalizations.of(context).unknowError)),
           );
         },
       ),

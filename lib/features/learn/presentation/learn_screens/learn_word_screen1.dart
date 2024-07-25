@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
-import 'package:uwords/theme/learn_decoration_button_styles.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage1 extends StatefulWidget {
   const LearnWordPage1(
-      {super.key, required this.word, required this.goNextScreen});
+      {super.key,
+      required this.word,
+      required this.goNextScreen,
+      required this.quit});
 
   final WordModel word;
   final VoidCallback goNextScreen;
+  final VoidCallback quit;
 
   @override
   State<LearnWordPage1> createState() => LearnWordPage1State();
@@ -33,39 +39,41 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 16,
-                    ),
                     Container(
-                      height: 40,
-                      width: 40,
-                      decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
+                      height: LearnSizes.arrowBackSize,
+                      width: LearnSizes.arrowBackSize,
+                      margin: const EdgeInsets.only(
+                          left: LearnPaddings.backArrowLeft,
+                          top: LearnPaddings.backArrowTop),
+                      decoration: LearnStyles.wordScreenPopBackBDS,
                       child: ElevatedButton(
-                        onPressed: () => context.pop(),
-                        style: LearnDecorButtStyle.wordScreenPopBackBS,
+                        onPressed: () => widget.quit,
+                        style: LearnStyles.wordScreenPopBackBS,
                         child: const Icon(
                           Icons.arrow_back,
-                          color: Colors.black,
-                          size: 30,
+                          color: AppColors.blackColor,
+                          size: LearnSizes.arrowBackIconSize,
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: 26,
+                      height: LearnSizes.topSpacing,
                     ),
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(20),
                       child: Image.network(
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                         widget.word.pictureLink,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) {
                             return child;
                           } else {
-                            return const SizedBox(
-                              width: 350,
-                              height: 250,
-                              child: Center(
+                            return SizedBox(
+                              width: MediaQuery.of(context).size.width *
+                                  LearnSizes.imageWidth,
+                              height: MediaQuery.of(context).size.height *
+                                  LearnSizes.imageHeight,
+                              child: const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.mainColor,
                                 ),
@@ -73,25 +81,31 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                             );
                           }
                         },
-                        width: 350,
-                        height: 360,
+                        width: MediaQuery.of(context).size.width *
+                            LearnSizes.imageWidth,
+                        height: MediaQuery.of(context).size.height *
+                            LearnSizes.imageHeight,
                       ),
                     ),
                   ],
                 ),
                 Container(
-                  height: 60,
-                  width: 60,
-                  decoration: LearnDecorButtStyle.wordScreenSoundBDS,
-                  child: ElevatedButton(
+                  height: LearnSizes.playButtonSize,
+                  width: LearnSizes.playButtonSize,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: IconButton(
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.darkMainColor,
+                    ),
                     onPressed: () => context
                         .read<PlayerBloc>()
                         .add(PlayerEvent.playAudio(widget.word.audioLink)),
-                    style: LearnDecorButtStyle.wordScreenSoundBS,
-                    child: const Icon(
+                    icon: const Icon(
                       Icons.volume_up_outlined,
-                      color: AppColors.mainColor,
-                      size: 32,
+                      color: AppColors.whiteColor,
+                      size: LearnSizes.playButtonIconSize,
                     ),
                   ),
                 ),
@@ -106,9 +120,9 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
+                  padding: const EdgeInsets.only(bottom: LearnPaddings.bottom),
                   child: BigButton(
-                    text: 'Далее',
+                    text: AppLocalizations.of(context).next,
                     onPressed: widget.goNextScreen,
                   ),
                 )

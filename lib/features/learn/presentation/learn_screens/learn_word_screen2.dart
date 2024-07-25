@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/main/data/models/pair_model.dart';
-import 'package:uwords/theme/learn_decoration_button_styles.dart';
+import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/letter_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_input.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage2 extends StatefulWidget {
   const LearnWordPage2(
       {super.key,
       required this.word,
       required this.letters,
-      required this.goNextScreen});
+      required this.goNextScreen,
+      required this.quit});
 
   final WordModel word;
   final List<Pair<String, int>> letters;
   final VoidCallback goNextScreen;
+  final VoidCallback quit;
 
   @override
   State<LearnWordPage2> createState() => LearnWordPage2State();
@@ -25,7 +29,7 @@ class LearnWordPage2 extends StatefulWidget {
 
 class LearnWordPage2State extends State<LearnWordPage2> {
   String answer = '';
-  bool answerCorrect = false;
+  bool isAnswerCorrect = false;
 
   bool pressLetterButton(String letter, int amount) {
     if (amount == 0) return false;
@@ -36,6 +40,19 @@ class LearnWordPage2State extends State<LearnWordPage2> {
       return true;
     }
     return false;
+  }
+
+  void onPressBottomButton() {
+    if (!isAnswerCorrect) {
+      if (answer == widget.word.enValue) {
+        isAnswerCorrect = true;
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context).wrongAnswer)));
+      }
+    } else {
+      widget.goNextScreen;
+    }
   }
 
   @override
@@ -49,39 +66,41 @@ class LearnWordPage2State extends State<LearnWordPage2> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 16,
-                ),
                 Container(
-                  height: 40,
-                  width: 40,
-                  decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
+                  height: LearnSizes.arrowBackSize,
+                  width: LearnSizes.arrowBackSize,
+                  margin: const EdgeInsets.only(
+                      left: LearnPaddings.backArrowLeft,
+                      top: LearnPaddings.backArrowTop),
+                  decoration: LearnStyles.wordScreenPopBackBDS,
                   child: ElevatedButton(
-                    onPressed: () => context.pop(),
-                    style: LearnDecorButtStyle.wordScreenPopBackBS,
+                    onPressed: () => widget.quit,
+                    style: LearnStyles.wordScreenPopBackBS,
                     child: const Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
-                      size: 30,
+                      color: AppColors.blackColor,
+                      size: LearnSizes.arrowBackIconSize,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 26,
+                  height: LearnSizes.topSpacing,
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(20),
                   child: Image.network(
+                    fit: BoxFit.cover,
                     widget.word.pictureLink,
-                    fit: BoxFit.contain,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {
                         return child;
                       } else {
-                        return const SizedBox(
-                          width: 350,
-                          height: 250,
-                          child: Center(
+                        return SizedBox(
+                          width: MediaQuery.of(context).size.width *
+                              LearnSizes.imageWidth,
+                          height: MediaQuery.of(context).size.height *
+                              LearnSizes.imageHeight,
+                          child: const Center(
                             child: CircularProgressIndicator(
                               color: AppColors.mainColor,
                             ),
@@ -89,33 +108,30 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                         );
                       }
                     },
-                    width: 350,
-                    height: 360,
+                    width: MediaQuery.of(context).size.width *
+                        LearnSizes.imageWidth,
+                    height: MediaQuery.of(context).size.height *
+                        LearnSizes.imageHeight,
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: WordInput(text: answer),
-            ),
+            WordInput(text: answer),
             Wrap(
-              spacing: 8.0,
-              runSpacing: 8.0,
+              spacing: LearnPaddings.wrapSpacing,
+              runSpacing: LearnPaddings.wrapSpacing,
               children: widget.letters
                   .map((letterInfo) => LetterButton(
                       letterInfo: letterInfo, onPressed: pressLetterButton))
                   .toList(),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 32),
+              padding: const EdgeInsets.only(bottom: LearnPaddings.bottom),
               child: BigButton(
-                text: 'Далее',
-                onPressed: () {
-                  if (answerCorrect) {
-                    widget.goNextScreen();
-                  }
-                },
+                text: isAnswerCorrect
+                    ? AppLocalizations.of(context).next
+                    : AppLocalizations.of(context).check,
+                onPressed: onPressBottomButton,
               ),
             )
           ],

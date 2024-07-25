@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
-import 'package:uwords/features/learn/presentation/widgets/word_tile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnPage extends StatefulWidget {
   const LearnPage({super.key});
@@ -17,15 +18,6 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  EdgeInsets basicPadding =
-      const EdgeInsets.only(left: 16.0, top: 8.0, bottom: 8.0);
-  TextStyle basicTitleStyle =
-      const TextStyle(fontSize: 40, fontWeight: FontWeight.w700);
-  TextStyle basicSubtitleStyle =
-      const TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
-  TextStyle basicWordStyle =
-      const TextStyle(fontSize: 18, fontWeight: FontWeight.w400);
-
   startTraining() {}
 
   @override
@@ -69,11 +61,11 @@ class _LearnPageState extends State<LearnPage> {
                               onPressed: () => {},
                               child: Text(
                                 topic.topicTitle,
-                                style: basicTitleStyle,
+                                style: LearnStyles.basicTitleStyle,
                               ),
                             ),
                             ...topic.subtopics.map((subtopic) => Padding(
-                                  padding: basicPadding,
+                                  padding: LearnStyles.basicPadding,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -82,17 +74,17 @@ class _LearnPageState extends State<LearnPage> {
                                         onPressed: () => {},
                                         child: Text(
                                           subtopic.subtopicTitle,
-                                          style: basicSubtitleStyle,
+                                          style: LearnStyles.basicSubtitleStyle,
                                         ),
                                       ),
-                                      ...subtopic.wordInfoList
-                                          .map((wordInfo) => Padding(
-                                                padding: basicPadding,
-                                                child: Text(
-                                                  wordInfo.word.enValue,
-                                                  style: basicWordStyle,
-                                                ),
-                                              )),
+                                      ...subtopic.wordInfoList.map((wordInfo) =>
+                                          Padding(
+                                            padding: LearnStyles.basicPadding,
+                                            child: Text(
+                                              wordInfo.word.enValue,
+                                              style: LearnStyles.basicWordStyle,
+                                            ),
+                                          )),
                                     ],
                                   ),
                                 )),
@@ -104,9 +96,11 @@ class _LearnPageState extends State<LearnPage> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(top: 16, bottom: 96),
+                  padding: const EdgeInsets.only(
+                      top: LearnPaddings.learnPageTop,
+                      bottom: LearnPaddings.learnPageBottom),
                   child: BigButton(
-                    text: 'Тренировать',
+                    text: AppLocalizations.of(context).startTraining,
                     onPressed: startTraining,
                   ),
                 )

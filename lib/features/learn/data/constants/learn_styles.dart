@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/theme/app_colors.dart';
 
-class LearnDecorButtStyle {
+class LearnStyles {
   static BoxDecoration wordScreenPopBackBDS = BoxDecoration(
     borderRadius: BorderRadius.circular(25),
     boxShadow: [
@@ -44,4 +44,13 @@ class LearnDecorButtStyle {
     foregroundColor: const Color.fromARGB(255, 69, 69, 69),
     padding: EdgeInsets.zero,
   );
+
+  static EdgeInsets basicPadding =
+      const EdgeInsets.only(left: 16.0, top: 8.0, bottom: 8.0);
+  static TextStyle basicTitleStyle =
+      const TextStyle(fontSize: 40, fontWeight: FontWeight.w700);
+  static TextStyle basicSubtitleStyle =
+      const TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  static TextStyle basicWordStyle =
+      const TextStyle(fontSize: 18, fontWeight: FontWeight.w400);
 }
