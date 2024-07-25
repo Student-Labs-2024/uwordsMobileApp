@@ -1,12 +1,13 @@
 name: flutter
 
 on:
+  push:
+    branches: [ '**' ]
   pull_request:
     branches: [ 'develop' ]
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     steps:
