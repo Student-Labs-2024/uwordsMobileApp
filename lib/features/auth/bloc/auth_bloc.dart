@@ -147,8 +147,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     ]);
     if (res.isValue) {
       final VKLoginResult result = res.asValue!.value;
-
       if (result.isCanceled) {
+        throw CanceledSignIn();
       } else {
         final VKAccessToken? accessToken = result.accessToken;
         if (accessToken != null) {
@@ -159,8 +159,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             _uSurname = profile.lastName;
             _uPassword = accessToken.token;
           }
-          //TODO check auth true/false for
-          _uEmail = await vk.getUserEmail() ?? '';
         } else {}
       }
     } else {
@@ -279,6 +277,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _emitter(const AuthState.initial());
       case const (UnknownApiException):
         _emitter(const AuthState.failed(AuthError.unknownError));
+      case const (CanceledSignIn):
+        _emitter(const AuthState.failed(AuthError.canceledSignIn));
     }
     super.onError(error, stackTrace);
   }

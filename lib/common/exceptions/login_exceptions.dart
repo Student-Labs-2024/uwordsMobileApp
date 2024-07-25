@@ -26,7 +26,12 @@ class AccessIsBannedException implements Exception {
   AccessIsBannedException({this.message = ""});
 }
 
-class UnknownApiException implements Exception{
+class UnknownApiException implements Exception {
   String message;
   UnknownApiException({this.message = ""});
+}
+
+class CanceledSignIn implements Exception {
+  String message;
+  CanceledSignIn({this.message = ""});
 }

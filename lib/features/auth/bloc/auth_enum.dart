@@ -7,6 +7,7 @@ enum AuthError {
   failedSendCode,
   codeIsNotRight,
   noInternet,
+  canceledSignIn,
 }
 
 enum AuthSuccess {
