@@ -10,5 +10,9 @@
   "toStartRecording": "чтобы начать запись",
   "unknownDioError": "Ошибка соединения с сервером",
   "lostFilePath": "Путь к файлу утерян",
-  "invalidLink": "Невалидная ссылка"
+  "invalidLink": "Невалидная ссылка",
+  "misspelled": "Неправильное произношение слова",
+  "congratulations": "Правильно!",
+  "next": "Дальше",
+  "check": "Проверить"
 }

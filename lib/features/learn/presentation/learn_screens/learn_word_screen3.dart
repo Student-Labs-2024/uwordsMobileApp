@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
@@ -9,6 +12,7 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage3 extends StatefulWidget {
   const LearnWordPage3(
@@ -22,13 +26,15 @@ class LearnWordPage3 extends StatefulWidget {
 }
 
 class LearnWordPage3State extends State<LearnWordPage3> {
-  SpeechToText _speechToText = SpeechToText();
-  bool _speechEnabled = false;
+  final SpeechToText _speechToText = GetIt.instance.get<SpeechToText>();
   String _lastWords = '';
+
+  bool isAnswerCorrect = false;
 
   void pressSpeechButton() async {
     if (_speechToText.isNotListening) {
-      await _speechToText.listen(onResult: _onSpeechResult);
+      await _speechToText.listen(onResult: _onSpeechResult, localeId: 'en_001');
+      _lastWords = '';
       setState(() {});
     } else {
       await _speechToText.stop();
@@ -37,6 +43,8 @@ class LearnWordPage3State extends State<LearnWordPage3> {
   }
 
   void _onSpeechResult(SpeechRecognitionResult result) {
+    log('_speechToText result');
+    log(_lastWords);
     setState(() {
       _lastWords = result.recognizedWords;
     });
@@ -49,8 +57,28 @@ class LearnWordPage3State extends State<LearnWordPage3> {
   }
 
   void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize();
-    setState(() {});
+    if (!_speechToText.isAvailable) {
+      await _speechToText.initialize();
+    }
+  }
+
+  bool compareWords(String userWord, String answer) {
+    String lowerUserWord = userWord.toLowerCase();
+    String lowerAnswer = answer.toLowerCase();
+    return lowerUserWord == lowerAnswer;
+  }
+
+  void onPressBottomButton() {
+    if (!isAnswerCorrect) {
+      if (compareWords(_lastWords, widget.word.enValue)) {
+        isAnswerCorrect = true;
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context).misspelled)));
+      }
+    } else {
+      widget.goNextScreen;
+    }
   }
 
   @override
@@ -115,15 +143,13 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                 SpeechButton(
                     isPressed: _speechToText.isListening,
                     onPressed: pressSpeechButton),
-                Text(
-                  _lastWords,
-                  style: TextStyle(fontSize: 12),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32),
                   child: BigButton(
-                    text: 'Далее',
-                    onPressed: widget.goNextScreen,
+                    text: isAnswerCorrect
+                        ? AppLocalizations.of(context).next
+                        : AppLocalizations.of(context).check,
+                    onPressed: onPressBottomButton,
                   ),
                 )
               ],
