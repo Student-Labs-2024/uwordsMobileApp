@@ -64,9 +64,6 @@ class _AuthPageState extends State<AuthPage> {
                 return SafeArea(
                   child: Column(
                     children: [
-                      MailAndPasswordFileds(
-                          mailController: mailController,
-                          passwordController: passwordController),
                       const SizedBox(
                         height: AuthUndesignedConstants.mediumContainer,
                       ),
@@ -91,21 +88,14 @@ class _AuthPageState extends State<AuthPage> {
                           )
                         ],
                       ),
+                      MailAndPasswordFileds(
+                          mailController: mailController,
+                          passwordController: passwordController),
                       const SizedBox(
                         height: AuthUndesignedConstants.smallContainer,
                       ),
-                      CustomTextField(
-                        controller: usernameController,
-                        hintText: AppLocalizations.of(context).mail,
-                        obscoreText: false,
-                      ),
                       const SizedBox(
                         height: AuthUndesignedConstants.smallestContainer,
-                      ),
-                      CustomTextField(
-                        controller: passwordController,
-                        hintText: AppLocalizations.of(context).password,
-                        obscoreText: true,
                       ),
                       ElevatedButton(
                         onPressed: () async {
