@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
@@ -32,24 +33,24 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
-                      height: 16,
+                      height: UnDesignedConstants.smallEmptySpace,
                     ),
                     Container(
-                      height: 40,
-                      width: 40,
+                      height: UnDesignedConstants.smallContainer,
+                      width: UnDesignedConstants.smallContainer,
                       decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
                       child: ElevatedButton(
                         onPressed: () => context.pop(),
                         style: LearnDecorButtStyle.wordScreenPopBackBS,
                         child: const Icon(
                           Icons.arrow_back,
-                          color: Colors.black,
-                          size: 30,
+                          color: AppColors.blackColor,
+                          size: UnDesignedConstants.smallIcon,
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: 26,
+                      height: UnDesignedConstants.mediumEmptySpace,
                     ),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(25),
@@ -60,10 +61,10 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                           if (loadingProgress == null) {
                             return child;
                           } else {
-                            return const SizedBox(
-                              width: 350,
-                              height: 250,
-                              child: Center(
+                            return SizedBox(
+                              width: UnDesignedConstants.imageSize * MediaQuery.of(context).size.width,
+                              height: UnDesignedConstants.heightOfCentralElement,
+                              child: const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.mainColor,
                                 ),
@@ -71,15 +72,15 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                             );
                           }
                         },
-                        width: 350,
-                        height: 360,
+                        width: UnDesignedConstants.imageSize * MediaQuery.of(context).size.width,
+                        height: UnDesignedConstants.imageSize,
                       ),
                     ),
                   ],
                 ),
                 Container(
-                  height: 60,
-                  width: 60,
+                  height: UnDesignedConstants.mediumContainer,
+                  width: UnDesignedConstants.mediumContainer,
                   decoration: LearnDecorButtStyle.wordScreenSoundBDS,
                   child: ElevatedButton(
                     onPressed: () => context
@@ -89,7 +90,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                     child: const Icon(
                       Icons.volume_up_outlined,
                       color: AppColors.mainColor,
-                      size: 32,
+                      size: UnDesignedConstants.smallIcon,
                     ),
                   ),
                 ),
@@ -104,7 +105,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
+                  padding: const EdgeInsets.only(bottom: UnDesignedConstants.bottomPadding),
                   child: BigButton(
                     text: 'Далее',
                     onPressed: () => context.go("/learn/screen1/screen2",

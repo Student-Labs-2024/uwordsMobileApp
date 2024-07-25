@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
+import 'package:uwords/theme/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -15,18 +17,19 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AuthUndesignedConstants.symmetricHorizontalPadding),
       child: TextField(
         controller: controller,
         obscureText: obscoreText,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+            borderSide: BorderSide(color: AppColors.whiteColor),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: AppColors.lightgrayColor),
           ),
-          fillColor: Colors.grey.shade200,
+          fillColor: AppColors.lightWhite,
           filled: true,
           hintText: hintText,
         ),

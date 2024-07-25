@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
@@ -27,24 +28,24 @@ class SuccessfulWordPageState extends State<SuccessfulWordPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 16,
+                  height: UnDesignedConstants.smallEmptySpace,
                 ),
                 Container(
-                  height: 40,
-                  width: 40,
+                  height: UnDesignedConstants.smallContainer,
+                  width: UnDesignedConstants.smallContainer,
                   decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
                   child: ElevatedButton(
                     onPressed: () => context.go("/learn"),
                     style: LearnDecorButtStyle.wordScreenPopBackBS,
                     child: const Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
-                      size: 30,
+                      color: AppColors.blackColor,
+                      size: UnDesignedConstants.smallIcon,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 26,
+                  height: UnDesignedConstants.mediumEmptySpace,
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(25),
@@ -54,10 +55,11 @@ class SuccessfulWordPageState extends State<SuccessfulWordPage> {
                       if (loadingProgress == null) {
                         return child;
                       } else {
-                        return const SizedBox(
-                          width: 350,
-                          height: 250,
-                          child: Center(
+                        return SizedBox(
+                          width: UnDesignedConstants.imageSize *
+                              MediaQuery.of(context).size.width,
+                          height: UnDesignedConstants.heightOfCentralElement,
+                          child: const Center(
                             child: CircularProgressIndicator(
                               color: AppColors.mainColor,
                             ),
@@ -65,7 +67,8 @@ class SuccessfulWordPageState extends State<SuccessfulWordPage> {
                         );
                       }
                     },
-                    width: 350,
+                    width: UnDesignedConstants.imageSize *
+                        MediaQuery.of(context).size.width,
                   ),
                 ),
               ],
@@ -73,17 +76,17 @@ class SuccessfulWordPageState extends State<SuccessfulWordPage> {
             Column(
               children: [
                 Container(
-                  height: 80,
-                  width: 80,
+                  height: UnDesignedConstants.bigContainer,
+                  width: UnDesignedConstants.bigContainer,
                   decoration: LearnDecorButtStyle.sucssesfulWordScreenCheckBDS,
                   child: const Icon(
                     Icons.check,
                     color: AppColors.greenColor,
-                    size: 44,
+                    size: UnDesignedConstants.mediumIcon,
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: UnDesignedConstants.smallEmptySpace,
                 ),
                 Text(
                   widget.word.enValue,

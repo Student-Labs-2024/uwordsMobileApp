@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
+import 'package:uwords/theme/app_colors.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({super.key, required this.img, required this.onPressed});
@@ -8,16 +10,16 @@ class SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
-      width: 90,
+      height: AuthUndesignedConstants.buttonSize,
+      width: AuthUndesignedConstants.buttonSize,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: AppColors.lightgrayColor,
             spreadRadius: 1,
             blurRadius: 3,
-            offset: const Offset(1, 2),
+            offset: Offset(1, 2),
           ),
         ],
       ),
@@ -33,8 +35,8 @@ class SignInButton extends StatelessWidget {
         ),
         child: const Icon(
           Icons.abc,
-          size: 90,
-          color: Colors.black,
+          size: AuthUndesignedConstants.buttonSize,
+          color: AppColors.blackColor,
         ),
       ),
     );
