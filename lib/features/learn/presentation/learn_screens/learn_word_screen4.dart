@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
+import 'package:uwords/features/learn/presentation/mock_data.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
 import 'package:uwords/theme/learn_decoration_button_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage4 extends StatefulWidget {
   const LearnWordPage4({super.key, required this.word});
@@ -18,15 +21,6 @@ class LearnWordPage4 extends StatefulWidget {
 class LearnWordPage4State extends State<LearnWordPage4> {
   bool chosenImage = false;
 
-  final WordModel anotherWord = const WordModel(
-    id: 0,
-    category: "",
-    enValue: "stock",
-    ruValue: "стоковое",
-    audioLink: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3",
-    pictureLink: "https://big-nose.ru:9100/uwords-picture/element.jpg",
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,24 +33,24 @@ class LearnWordPage4State extends State<LearnWordPage4> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 16,
+                  height: UnDesignedConstants.smallEmptySpace,
                 ),
                 Container(
-                  height: 40,
-                  width: 40,
+                  height: UnDesignedConstants.smallContainer,
+                  width: UnDesignedConstants.smallContainer,
                   decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
                   child: ElevatedButton(
                     onPressed: () => context.pop(),
                     style: LearnDecorButtStyle.wordScreenPopBackBS,
                     child: const Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
-                      size: 30,
+                      color: AppColors.blackColor,
+                      size: UnDesignedConstants.smallIcon,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 26,
+                  height: UnDesignedConstants.mediumEmptySpace,
                 ),
                 SizedBox(
                   child: GridView(
@@ -67,17 +61,17 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                     shrinkWrap: true,
                     children: [
                       ImageCard(word: widget.word),
-                      ImageCard(word: anotherWord),
-                      ImageCard(word: anotherWord),
-                      ImageCard(word: anotherWord),
+                      const ImageCard(word: MockData.mockWordModel),
+                      const ImageCard(word: MockData.mockWordModel),
+                      const ImageCard(word: MockData.mockWordModel),
                     ],
                   ),
                 )
               ],
             ),
             Container(
-              height: 80,
-              width: 80,
+              height: UnDesignedConstants.bigContainer,
+              width: UnDesignedConstants.bigContainer,
               decoration: LearnDecorButtStyle.wordScreenSoundBDS,
               child: ElevatedButton(
                 onPressed: () => {},
@@ -85,14 +79,15 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                 child: const Icon(
                   Icons.volume_up_outlined,
                   color: AppColors.mainColor,
-                  size: 43,
+                  size: UnDesignedConstants.mediumIcon,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 32),
+              padding: const EdgeInsets.only(
+                  bottom: UnDesignedConstants.bottomPadding),
               child: BigButton(
-                text: 'Далее',
+                text: AppLocalizations.of(context).next,
                 onPressed: () {
                   context.go("/learn/success", extra: widget.word);
                 },

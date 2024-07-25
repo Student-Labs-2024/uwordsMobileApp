@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -26,7 +27,9 @@ class WordTile extends StatelessWidget {
         padding: EdgeInsets.zero,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 16),
+        padding: const EdgeInsets.only(
+            left: UnDesignedConstants.smallPadding,
+            right: UnDesignedConstants.smallEmptySpace),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,7 +43,7 @@ class WordTile extends StatelessWidget {
                   icon: const Icon(
                     Icons.volume_up_outlined,
                     color: AppColors.mainColor,
-                    size: 32,
+                    size: UnDesignedConstants.smallIcon,
                   ),
                 ),
                 Column(
@@ -62,7 +65,7 @@ class WordTile extends StatelessWidget {
             Icon(
               checked ? Icons.check_circle_outline : Icons.circle_outlined,
               color: AppColors.lightgrayColor,
-              size: 32,
+              size: UnDesignedConstants.smallIcon,
             ),
           ],
         ),

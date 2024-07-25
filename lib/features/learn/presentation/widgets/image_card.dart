@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/data/undesign_constants.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 import '../../../../theme/app_colors.dart';
@@ -21,7 +22,7 @@ class _ImageCardState extends State<ImageCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 9, bottom: 9),
+      padding: const EdgeInsets.all(UnDesignedConstants.smallSymmetricPadding),
       child: GestureDetector(
         onTap: () => setState(() {
           isSelected = !isSelected;
@@ -31,8 +32,8 @@ class _ImageCardState extends State<ImageCard> {
           height: MediaQuery.of(context).size.height * 146 / 812,
           decoration: BoxDecoration(
               border: Border.all(
-                color: isSelected ? AppColors.mainColor : Colors.transparent,
-                width: 6,
+                color: isSelected ? AppColors.mainColor : AppColors.blackColor,
+                width: UnDesignedConstants.border,
               ),
               borderRadius: BorderRadius.circular(20)),
           child: ClipRRect(
