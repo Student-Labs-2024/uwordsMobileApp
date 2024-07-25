@@ -41,9 +41,7 @@ void main() {
 
       final jsonData = jsonDecode(jsonString);
       var userAuthDtoTest = UserAuthDto.fromJsonAndOtherFields(
-          userEmail: email,
-          provider: provider,
-          map: jsonData);
+          userEmail: email, provider: provider, map: jsonData);
 
       expect(userAuthDtoTest, isA<UserAuthDto>());
       expect(userAuthDtoTest.email, equals(email));
