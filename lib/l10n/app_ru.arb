@@ -45,5 +45,6 @@
   "conditions": "Условия",
   "name": "Имя (необязательно)",
   "alreadyHaveAccount": "Уже есть аккаунт?",
-  "notValidLoginOrPassword": "Неверный логин или пароль"
+  "notValidLoginOrPassword": "Неверный логин или пароль",
+  "done": "Готово"
 }

@@ -10,7 +10,6 @@ import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_pincode.dart';
-import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/registration_fields.dart';
@@ -65,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         }),
                   ),
                   CupertinoButton(
-                    child: Text('Done'),
+                    child: Text(AppLocalizations.of(context).done),
                     onPressed: () {
                       context.pop(choosenDate);
                     },
@@ -303,15 +302,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: maximumWidth,
                       ),
                       Padding(
-                          padding: EdgeInsets.only(top: 15, left: 15),
+                          padding: const EdgeInsets.only(top: 15, left: 15),
                           child: InkWell(
                             child: SvgPicture.asset(
-                                AppImageSource.returnIcon,
-                                width: 40,
-                                height: 40,
+                              AppImageSource.returnIcon,
+                              width: 40,
+                              height: 40,
                             ),
                             onTap: () {
-                              context.read<AuthBloc>().add(AuthEvent.changeDataForRegister());
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.changeDataForRegister());
                             },
                           )),
                       Padding(
@@ -335,7 +336,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
                               style: AppTextStyles.authSendedCodeText,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             CustomPincode(

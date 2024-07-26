@@ -73,7 +73,7 @@ class _CustomAuthTextFieldState extends State<CustomAuthTextField> {
                               });
                             },
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                   ),
                 ),
               ),

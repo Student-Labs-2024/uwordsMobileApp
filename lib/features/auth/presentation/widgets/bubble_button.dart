@@ -23,7 +23,7 @@ class BubbleButton extends StatelessWidget {
       child: Container(
           height: 53,
           width: maximumWidth,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(AppImageSource.bubbleButton),
               fit: BoxFit.cover,
