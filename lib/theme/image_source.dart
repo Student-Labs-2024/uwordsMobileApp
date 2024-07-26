@@ -14,4 +14,6 @@ class AppImageSource {
   static const String bubbleButton = 'assets/png/bubble_button1.png';
   static const String googleIcon = 'assets/svg/google.svg';
   static const String vkIcon = 'assets/svg/vk.svg';
+  static const String codeBackground = 'assets/png/background.png';
+  static const String returnIcon = 'assets/svg/icon_button.svg';
 }

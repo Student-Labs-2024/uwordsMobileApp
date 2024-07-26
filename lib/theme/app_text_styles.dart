@@ -43,7 +43,8 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       fontSize: 14,
       color: AppColors.darkMainColor,
-      decoration: TextDecoration.underline);
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.mainColorOpacity);
   static const authSmallestText = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w400,
@@ -54,5 +55,27 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       fontSize: 12,
       color: AppColors.darkMainColor,
-      decoration: TextDecoration.underline);
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.mainColorOpacity);
+  static const authSmallestLinkTextOpacity = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 12,
+      color: AppColors.mainColorOpacity,
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.mainColorOpacity,
+      letterSpacing: 0.1);
+  static const authSmallestTextOpacity = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w600,
+    fontSize: 12,
+    color: AppColors.mainColorOpacity,
+    letterSpacing: 0.1,
+  );
+  static const authSendedCodeText = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+    color: AppColors.darkMainColor,
+  );
 }

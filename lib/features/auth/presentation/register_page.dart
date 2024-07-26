@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:uwords/common/utils/url_launch.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
@@ -10,7 +11,6 @@ import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
-import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
 import 'package:uwords/features/auth/presentation/widgets/registration_fields.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
@@ -36,7 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
   DateTime choosenDate = DateTime.now();
   TextEditingController datePickerController = TextEditingController();
   void _showDatePicker(BuildContext ctx) {
-    // showCupertinoModalPopup is a built-in function of the cupertino library
     showCupertinoModalPopup(
         context: ctx,
         builder: (_) => Container(
@@ -120,7 +119,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 70,
-                          bottom: 32,
                           left: HomePagePaddings.baseHorizontal * 3,
                           right: HomePagePaddings.baseHorizontal * 3),
                       child: Column(
@@ -220,6 +218,33 @@ class _RegisterPageState extends State<RegisterPage> {
                                 .add(const AuthEvent.signInWithVK());
                           }, text: AppLocalizations.of(context).signInWithVK),
                           Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Spacer(),
+                              TextButton(
+                                onPressed: _launchOurWebsite,
+                                child: Text(
+                                    AppLocalizations.of(context).conditions,
+                                    style: AppTextStyles
+                                        .authSmallestLinkTextOpacity),
+                              ),
+                              Text(
+                                AppLocalizations.of(context).and,
+                                style: AppTextStyles.authSmallestTextOpacity,
+                              ),
+                              TextButton(
+                                onPressed: _launchOurWebsite,
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .policyOfConfidentiality,
+                                  style:
+                                      AppTextStyles.authSmallestLinkTextOpacity,
+                                ),
+                              ),
+                              const Spacer(),
+                            ],
+                          ),
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const Spacer(),
@@ -259,26 +284,59 @@ class _RegisterPageState extends State<RegisterPage> {
                 case AuthSuccess.authorized:
                   return const SizedBox();
                 case AuthSuccess.sendedCode:
-                  return Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomAuthTextField(
-                          controller: codeController,
-                          hintText: '',
-                          notHidden: false,
-                        ),
-                        ElevatedButton(
-                            onPressed: () {
-                              context.read<AuthBloc>().add(
-                                  AuthEvent.registerUser(
-                                      code: codeController.text));
-                            },
-                            child: const Text("Подтвердить код"))
-                      ],
+                  return SafeArea(
+                      child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [
+                            AppColors.gradientBackgroundColor1,
+                            AppColors.gradientBackgroundColor2
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
                     ),
-                  );
+                    child: Stack(children: [
+                      Padding(padding: EdgeInsets.only(top: 15, left: 15), child: Image.asset(AppImageSource.returnIcon, width: 40, height: 40,),),
+                      Image.asset(
+                        AppImageSource.codeBackground,
+                        width: maximumWidth,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: Text(
+                              AppLocalizations.of(context).enterCode,
+                              style: AppTextStyles.authHeaderText,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
+                            style: AppTextStyles.authSendedCodeText,
+                          ),
+                          CustomAuthTextField(
+                            controller: codeController,
+                            hintText: '',
+                            notHidden: false,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: BubbleButton(null,
+                                maximumWidth: maximumWidth -
+                                    (HomePagePaddings.baseHorizontal * 3),
+                                onPressed: () async {
+                              context.read<AuthBloc>().add(
+                                  AuthEvent.registerUser(code: codeController.text));
+                            }, text: AppLocalizations.of(context).sendCode,))
+                        ],
+                      ),
+                    ]),
+                  ));
               }
             });
           },
@@ -286,4 +344,8 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+}
+
+_launchOurWebsite() async {
+  await launchUrlFunction(url: Uri(scheme: 'https', host: "youwords.ru"));
 }
