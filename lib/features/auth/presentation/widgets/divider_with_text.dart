@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 
@@ -14,8 +15,8 @@ class DividerWithText extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: maximumWidth * 0.35,
-          height: 1,
+          width: maximumWidth * AuthDesignedConstants.dividerLengthMultuply,
+          height: AuthDesignedConstants.dividerHeight,
           child: const ColoredBox(
             color: AppColors.darkMainColor,
           ),
@@ -27,8 +28,8 @@ class DividerWithText extends StatelessWidget {
         ),
         const Spacer(),
         SizedBox(
-          width: maximumWidth * 0.35,
-          height: 1,
+          width: maximumWidth * AuthDesignedConstants.dividerLengthMultuply,
+          height: AuthDesignedConstants.dividerHeight,
           child: const ColoredBox(
             color: AppColors.darkMainColor,
           ),

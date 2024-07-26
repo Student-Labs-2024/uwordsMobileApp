@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
@@ -43,7 +44,8 @@ class _CustomAuthTextFieldState extends State<CustomAuthTextField> {
               horizontal: HomePagePaddings.baseHorizontal),
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(
+                  AuthDesignedConstants.customTextFieldBorderRadius),
               boxShadow: MainBoxShadows.main),
           child: Row(
             children: [

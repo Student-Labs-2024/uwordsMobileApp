@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 
@@ -16,25 +17,26 @@ class _CustomPincodeState extends State<CustomPincode> {
   Widget build(BuildContext context) {
     return PinCodeTextField(
       appContext: context,
-      length: 6,
-      cursorHeight: 20,
+      length: AuthDesignedConstants.pincodeLength,
+      cursorHeight: AuthDesignedConstants.cursorHeight,
       enableActiveFill: true,
       textStyle: AppTextStyles.pinCodeText,
       pinTheme: PinTheme(
-          fieldHeight: 50,
-          fieldWidth: 45,
+          fieldHeight: AuthDesignedConstants.pincodeCellHeigth,
+          fieldWidth: AuthDesignedConstants.pincodeCellWidth,
           activeColor: AppColors.darkMainColor,
           selectedColor: AppColors.pushedPincodeColor,
           shape: PinCodeFieldShape.box,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius:
+              BorderRadius.circular(AuthDesignedConstants.pincodeBorderRadius),
           inactiveColor: AppColors.defaultPincodeColor,
           selectedFillColor: AppColors.whiteColor,
           activeFillColor: AppColors.whiteColor,
           inactiveFillColor: AppColors.whiteColor,
           disabledColor: AppColors.defaultPincodeColor,
-          inactiveBorderWidth: 1,
-          activeBorderWidth: 1,
-          disabledBorderWidth: 1),
+          inactiveBorderWidth: AuthDesignedConstants.borderWidth,
+          activeBorderWidth: AuthDesignedConstants.borderWidth,
+          disabledBorderWidth: AuthDesignedConstants.borderWidth),
       onCompleted: (value) => widget.textEditingController.text = value,
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
@@ -29,6 +31,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     try {
       await _getTopicsFromServer(emit);
     } on OldAccessException catch (e) {
+      log(e.toString());
       userRepository.refreshAccessToken();
       await _getTopicsFromServer(emit);
     }

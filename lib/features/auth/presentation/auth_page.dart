@@ -6,10 +6,10 @@ import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/auth/presentation/auth_paddings.dart';
 import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
-import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
@@ -81,15 +81,16 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 170,
-                            bottom: 32,
-                            left: HomePagePaddings.baseHorizontal * 2,
-                            right: HomePagePaddings.baseHorizontal * 2),
+                            top: AuthDesignedPaddings.authHeaderPadding,
+                            bottom: AuthDesignedPaddings.basePagePadding,
+                            left: AuthDesignedPaddings.basePagePadding,
+                            right: AuthDesignedPaddings.basePagePadding),
                         child: Column(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical:
+                                      AuthDesignedPaddings.middleEmptySpace),
                               child: Text(
                                 AppLocalizations.of(context).authIntoAccount,
                                 style: AppTextStyles.authHeaderText,
@@ -99,11 +100,12 @@ class _AuthPageState extends State<AuthPage> {
                                 mailController: mailController,
                                 passwordController: passwordController),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical:
+                                      AuthDesignedPaddings.middleEmptySpace),
                               child: BubbleButton(null,
                                   maximumWidth: maximumWidth -
-                                      (HomePagePaddings.baseHorizontal * 2),
+                                      (AuthDesignedPaddings.basePagePadding),
                                   onPressed: () async {
                                 context.read<AuthBloc>().add(
                                     AuthEvent.signInWithMailPassword(
@@ -117,14 +119,15 @@ class _AuthPageState extends State<AuthPage> {
                             DividerWithText(
                               text: AppLocalizations.of(context).or,
                               maximumWidth: maximumWidth -
-                                  (HomePagePaddings.baseHorizontal * 2),
+                                  (AuthDesignedPaddings.basePagePadding),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical:
+                                      AuthDesignedPaddings.middleEmptySpace),
                               child: BubbleButton(AppImageSource.googleIcon,
                                   maximumWidth: maximumWidth -
-                                      (HomePagePaddings.baseHorizontal * 2),
+                                      (AuthDesignedPaddings.basePagePadding),
                                   onPressed: () async {
                                 context
                                     .read<AuthBloc>()
@@ -135,7 +138,7 @@ class _AuthPageState extends State<AuthPage> {
                             ),
                             BubbleButton(AppImageSource.vkIcon,
                                 maximumWidth: maximumWidth -
-                                    (HomePagePaddings.baseHorizontal * 2),
+                                    (AuthDesignedPaddings.basePagePadding),
                                 onPressed: () async {
                               context
                                   .read<AuthBloc>()

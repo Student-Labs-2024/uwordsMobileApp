@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
+import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
 import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
@@ -29,7 +30,8 @@ class RegistrationFields extends StatelessWidget {
               horizontal: HomePagePaddings.baseHorizontal),
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(
+                  AuthDesignedConstants.customTextFieldBorderRadius),
               boxShadow: MainBoxShadows.main),
           child: TextField(
             controller: usernameController,

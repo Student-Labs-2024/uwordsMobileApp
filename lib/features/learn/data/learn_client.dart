@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:uwords/env.dart';
 import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
-import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
 
 part 'learn_client.g.dart';
 

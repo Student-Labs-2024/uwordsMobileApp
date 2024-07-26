@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
+import 'package:uwords/features/auth/presentation/auth_paddings.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 
@@ -22,20 +24,21 @@ class BubbleButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 53,
+        height: AuthDesignedConstants.bubbleButtonHeight,
         width: maximumWidth,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(AppImageSource.bubbleButton),
             fit: BoxFit.cover,
-            opacity: 0.7,
+            opacity: AuthDesignedConstants.bubbleOpacity,
           ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null) SvgPicture.asset(icon!),
-            if (icon != null) const SizedBox(width: 8),
+            if (icon != null)
+              const SizedBox(width: AuthDesignedPaddings.smallEmptySpace),
             Text(
               text,
               style: AppTextStyles.authButtonText,

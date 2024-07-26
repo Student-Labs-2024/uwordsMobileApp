@@ -8,6 +8,8 @@ import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
+import 'package:uwords/features/auth/presentation/auth_paddings.dart';
 import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_pincode.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -40,16 +42,16 @@ class _RegisterPageState extends State<RegisterPage> {
     showCupertinoModalPopup(
         context: ctx,
         builder: (_) => Container(
-              height: 500,
-              color: const Color.fromARGB(255, 255, 255, 255),
+              height: AuthDesignedConstants.datePickerMaxHeight,
+              color: AppColors.whiteColor,
               child: Column(
                 children: [
                   SizedBox(
-                    height: 400,
+                    height: AuthDesignedConstants.datePickerHeight,
                     child: CupertinoDatePicker(
                         mode: CupertinoDatePickerMode.date,
-                        minimumDate:
-                            DateTime.fromMillisecondsSinceEpoch(-2191196888000),
+                        minimumDate: DateTime.fromMillisecondsSinceEpoch(
+                            AuthDesignedConstants.minimumDate),
                         showDayOfWeek: false,
                         dateOrder: DatePickerDateOrder.dmy,
                         initialDateTime: DateTime.now(),
@@ -119,13 +121,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 70,
-                          left: HomePagePaddings.baseHorizontal * 3,
-                          right: HomePagePaddings.baseHorizontal * 3),
+                          top: AuthDesignedPaddings.registerHeaderPadding,
+                          left: AuthDesignedPaddings.bigBasePagepadding,
+                          right: AuthDesignedPaddings.bigBasePagepadding),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical:
+                                    AuthDesignedPaddings.middleEmptySpace),
                             child: Text(
                               AppLocalizations.of(context).accountCreation,
                               style: AppTextStyles.authHeaderText,
@@ -152,7 +156,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 horizontal: HomePagePaddings.baseHorizontal),
                             decoration: fis.BoxDecoration(
                                 color: AppColors.whiteBackgroundColor,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(
+                                    AuthDesignedConstants
+                                        .customTextFieldBorderRadius),
                                 boxShadow: MainBoxShadows.main),
                             child: TextField(
                               controller: datePickerController,
@@ -178,10 +184,11 @@ class _RegisterPageState extends State<RegisterPage> {
                               mailController: mailController,
                               passwordController: passwordController),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: AuthDesignedPaddings.smallEmptySpace),
                             child: BubbleButton(null,
                                 maximumWidth: maximumWidth -
-                                    (HomePagePaddings.baseHorizontal * 3),
+                                    (AuthDesignedPaddings.bigBasePagepadding),
                                 onPressed: () async {
                               context.read<AuthBloc>().add(
                                   AuthEvent.requestCode(
@@ -195,13 +202,14 @@ class _RegisterPageState extends State<RegisterPage> {
                           DividerWithText(
                             text: AppLocalizations.of(context).or,
                             maximumWidth: maximumWidth -
-                                (HomePagePaddings.baseHorizontal * 3),
+                                (AuthDesignedPaddings.bigBasePagepadding),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: AuthDesignedPaddings.smallEmptySpace),
                             child: BubbleButton(AppImageSource.googleIcon,
                                 maximumWidth: maximumWidth -
-                                    (HomePagePaddings.baseHorizontal * 3),
+                                    (AuthDesignedPaddings.bigBasePagepadding),
                                 onPressed: () async {
                               context
                                   .read<AuthBloc>()
@@ -212,7 +220,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           BubbleButton(AppImageSource.vkIcon,
                               maximumWidth: maximumWidth -
-                                  (HomePagePaddings.baseHorizontal * 3),
+                                  (AuthDesignedPaddings.bigBasePagepadding),
                               onPressed: () async {
                             context
                                 .read<AuthBloc>()
@@ -302,12 +310,14 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: maximumWidth,
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(top: 15, left: 15),
+                          padding: const EdgeInsets.only(
+                              top: AuthDesignedPaddings.returnButtonPlace,
+                              left: AuthDesignedPaddings.returnButtonPlace),
                           child: InkWell(
                             child: SvgPicture.asset(
                               AppImageSource.returnIcon,
-                              width: 40,
-                              height: 40,
+                              width: AuthDesignedConstants.iconReturnSize,
+                              height: AuthDesignedConstants.iconReturnSize,
                             ),
                             onTap: () {
                               context
@@ -317,16 +327,17 @@ class _RegisterPageState extends State<RegisterPage> {
                           )),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 170,
-                            left: HomePagePaddings.baseHorizontal * 1.5,
-                            right: HomePagePaddings.baseHorizontal * 1.5),
+                            top: AuthDesignedPaddings.authHeaderPadding,
+                            left: AuthDesignedPaddings.middlePagePadding,
+                            right: AuthDesignedPaddings.middlePagePadding),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical:
+                                      AuthDesignedPaddings.middleEmptySpace),
                               child: Text(
                                 AppLocalizations.of(context).enterCode,
                                 style: AppTextStyles.authHeaderText,
@@ -337,17 +348,18 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: AppTextStyles.authSendedCodeText,
                             ),
                             const SizedBox(
-                              height: 8,
+                              height: AuthDesignedPaddings.smallEmptySpace,
                             ),
                             CustomPincode(
                                 textEditingController: codeController),
                             Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical:
+                                        AuthDesignedPaddings.smallEmptySpace),
                                 child: BubbleButton(
                                   null,
                                   maximumWidth: maximumWidth -
-                                      (HomePagePaddings.baseHorizontal * 2),
+                                      (AuthDesignedPaddings.basePagePadding),
                                   onPressed: () async {
                                     context.read<AuthBloc>().add(
                                         AuthEvent.registerUser(
@@ -393,5 +405,8 @@ class _RegisterPageState extends State<RegisterPage> {
 }
 
 _launchOurWebsite() async {
-  await launchUrlFunction(url: Uri(scheme: 'https', host: "youwords.ru"));
+  await launchUrlFunction(
+      url: Uri(
+          scheme: AuthUndesignedConstants.scheme,
+          host: AuthUndesignedConstants.baseUrl));
 }
