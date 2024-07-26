@@ -8,7 +8,6 @@ part 'word_model_dto.g.dart';
 class WordModelDto with _$WordModelDto {
   const factory WordModelDto({
     @JsonKey(name: "id", defaultValue: 0) required int id,
-    @JsonKey(name: "category", defaultValue: null) required dynamic category,
     @JsonKey(name: "enValue", defaultValue: "Error") required String enValue,
     @JsonKey(name: "ruValue", defaultValue: "Ошибка") required String ruValue,
     @JsonKey(name: "audioLink", defaultValue: voiceOverLink)

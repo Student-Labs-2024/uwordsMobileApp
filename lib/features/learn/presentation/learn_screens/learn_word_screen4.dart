@@ -1,25 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:uwords/features/learn/data/undesign_constants.dart';
-import 'package:uwords/features/learn/presentation/mock_data.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
-import 'package:uwords/theme/learn_decoration_button_styles.dart';
+import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage4 extends StatefulWidget {
-  const LearnWordPage4({super.key, required this.word});
+  const LearnWordPage4(
+      {super.key,
+      required this.word,
+      required this.selectableWords,
+      required this.goNextScreen,
+      required this.quit});
 
   final WordModel word;
+  final List<WordModel> selectableWords;
+  final VoidCallback goNextScreen;
+  final VoidCallback quit;
 
   @override
   State<LearnWordPage4> createState() => LearnWordPage4State();
 }
 
 class LearnWordPage4State extends State<LearnWordPage4> {
-  bool chosenImage = false;
+  bool isAnswerCorrect = false;
+  String currentChoose = '';
+
+  void onPressBottomButton() {
+    if (!isAnswerCorrect) {
+      if (currentChoose == widget.word.enValue) {
+        setState(() {
+          isAnswerCorrect = true;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context).wrongAnswer)));
+      }
+    } else {
+      widget.goNextScreen();
+    }
+  }
+
+  void makeChoice(WordModel word) {
+    setState(() {
+      currentChoose = word.enValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +63,25 @@ class LearnWordPage4State extends State<LearnWordPage4> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: UnDesignedConstants.smallEmptySpace,
-                ),
                 Container(
-                  height: UnDesignedConstants.smallContainer,
-                  width: UnDesignedConstants.smallContainer,
-                  decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
+                  height: LearnSizes.arrowBackSize,
+                  width: LearnSizes.arrowBackSize,
+                  margin: const EdgeInsets.only(
+                      left: LearnPaddings.backArrowLeft,
+                      top: LearnPaddings.backArrowTop),
+                  decoration: LearnStyles.wordScreenPopBackBDS,
                   child: ElevatedButton(
-                    onPressed: () => context.pop(),
-                    style: LearnDecorButtStyle.wordScreenPopBackBS,
+                    onPressed: () => widget.quit,
+                    style: LearnStyles.wordScreenPopBackBS,
                     child: const Icon(
                       Icons.arrow_back,
                       color: AppColors.blackColor,
-                      size: UnDesignedConstants.smallIcon,
+                      size: LearnSizes.arrowBackIconSize,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: UnDesignedConstants.mediumEmptySpace,
+                  height: LearnSizes.topSpacing,
                 ),
                 SizedBox(
                   child: GridView(
@@ -59,38 +90,50 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                       crossAxisCount: 2,
                     ),
                     shrinkWrap: true,
-                    children: [
-                      ImageCard(word: widget.word),
-                      const ImageCard(word: MockData.mockWordModel),
-                      const ImageCard(word: MockData.mockWordModel),
-                      const ImageCard(word: MockData.mockWordModel),
-                    ],
+                    children: widget.selectableWords
+                        .map((word) => ImageCard(
+                              word: word,
+                              onPressed: makeChoice,
+                              isSelected:
+                                  currentChoose == word.enValue ? true : false,
+                            ))
+                        .toList(),
                   ),
                 )
               ],
             ),
             Container(
-              height: UnDesignedConstants.bigContainer,
-              width: UnDesignedConstants.bigContainer,
-              decoration: LearnDecorButtStyle.wordScreenSoundBDS,
-              child: ElevatedButton(
-                onPressed: () => {},
-                style: LearnDecorButtStyle.wordScreenSoundBS,
-                child: const Icon(
+              height: MediaQuery.of(context).size.width *
+                  LearnSizes.speechButtonSize,
+              width: MediaQuery.of(context).size.width *
+                  LearnSizes.speechButtonSize,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: IconButton(
+                style: IconButton.styleFrom(
+                  backgroundColor: AppColors.darkMainColor,
+                ),
+                onPressed: () => {
+                  context
+                      .read<PlayerBloc>()
+                      .add(PlayerEvent.playAudio(widget.word.audioLink))
+                },
+                icon: Icon(
                   Icons.volume_up_outlined,
-                  color: AppColors.mainColor,
-                  size: UnDesignedConstants.mediumIcon,
+                  color: AppColors.whiteColor,
+                  size: MediaQuery.of(context).size.width *
+                      LearnSizes.speechButtonIconSize,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  bottom: UnDesignedConstants.bottomPadding),
+              padding: const EdgeInsets.only(bottom: LearnPaddings.bottom),
               child: BigButton(
-                text: AppLocalizations.of(context).next,
-                onPressed: () {
-                  context.go("/learn/success", extra: widget.word);
-                },
+                text: isAnswerCorrect
+                    ? AppLocalizations.of(context).next
+                    : AppLocalizations.of(context).check,
+                onPressed: onPressBottomButton,
               ),
             )
           ],

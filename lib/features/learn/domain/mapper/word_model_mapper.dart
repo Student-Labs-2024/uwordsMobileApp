@@ -4,7 +4,6 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 extension WordModelMapper on WordModelDto {
   WordModel toModel() => WordModel(
       id: id,
-      category: category,
       enValue: enValue,
       ruValue: ruValue,
       audioLink: audioLink,

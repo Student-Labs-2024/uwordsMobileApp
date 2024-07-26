@@ -24,10 +24,10 @@ mixin _$WordInfoDto {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "word")
   WordModelDto get word => throw _privateConstructorUsedError;
-  @JsonKey(name: "user_id", defaultValue: "1")
-  String get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: "topic_id", defaultValue: null)
-  String? get topicId => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id", defaultValue: 0)
+  int get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "latest_study", defaultValue: null)
+  DateTime? get latestStudy => throw _privateConstructorUsedError;
   @JsonKey(name: "frequency", defaultValue: 0)
   int get frequency => throw _privateConstructorUsedError;
   @JsonKey(name: "progress", defaultValue: 0.0)
@@ -48,8 +48,8 @@ abstract class $WordInfoDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id", defaultValue: 0) int id,
       @JsonKey(name: "word") WordModelDto word,
-      @JsonKey(name: "user_id", defaultValue: "1") String userId,
-      @JsonKey(name: "topic_id", defaultValue: null) String? topicId,
+      @JsonKey(name: "user_id", defaultValue: 0) int userId,
+      @JsonKey(name: "latest_study", defaultValue: null) DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) int frequency,
       @JsonKey(name: "progress", defaultValue: 0.0) double progress});
 
@@ -72,7 +72,7 @@ class _$WordInfoDtoCopyWithImpl<$Res, $Val extends WordInfoDto>
     Object? id = null,
     Object? word = null,
     Object? userId = null,
-    Object? topicId = freezed,
+    Object? latestStudy = freezed,
     Object? frequency = null,
     Object? progress = null,
   }) {
@@ -88,11 +88,11 @@ class _$WordInfoDtoCopyWithImpl<$Res, $Val extends WordInfoDto>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      topicId: freezed == topicId
-          ? _value.topicId
-          : topicId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
+      latestStudy: freezed == latestStudy
+          ? _value.latestStudy
+          : latestStudy // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       frequency: null == frequency
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ abstract class _$$WordInfoDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "id", defaultValue: 0) int id,
       @JsonKey(name: "word") WordModelDto word,
-      @JsonKey(name: "user_id", defaultValue: "1") String userId,
-      @JsonKey(name: "topic_id", defaultValue: null) String? topicId,
+      @JsonKey(name: "user_id", defaultValue: 0) int userId,
+      @JsonKey(name: "latest_study", defaultValue: null) DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) int frequency,
       @JsonKey(name: "progress", defaultValue: 0.0) double progress});
 
@@ -147,7 +147,7 @@ class __$$WordInfoDtoImplCopyWithImpl<$Res>
     Object? id = null,
     Object? word = null,
     Object? userId = null,
-    Object? topicId = freezed,
+    Object? latestStudy = freezed,
     Object? frequency = null,
     Object? progress = null,
   }) {
@@ -163,11 +163,11 @@ class __$$WordInfoDtoImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      topicId: freezed == topicId
-          ? _value.topicId
-          : topicId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int,
+      latestStudy: freezed == latestStudy
+          ? _value.latestStudy
+          : latestStudy // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       frequency: null == frequency
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
@@ -186,8 +186,9 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
   const _$WordInfoDtoImpl(
       {@JsonKey(name: "id", defaultValue: 0) required this.id,
       @JsonKey(name: "word") required this.word,
-      @JsonKey(name: "user_id", defaultValue: "1") required this.userId,
-      @JsonKey(name: "topic_id", defaultValue: null) required this.topicId,
+      @JsonKey(name: "user_id", defaultValue: 0) required this.userId,
+      @JsonKey(name: "latest_study", defaultValue: null)
+      required this.latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) required this.frequency,
       @JsonKey(name: "progress", defaultValue: 0.0) required this.progress});
 
@@ -201,11 +202,11 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
   @JsonKey(name: "word")
   final WordModelDto word;
   @override
-  @JsonKey(name: "user_id", defaultValue: "1")
-  final String userId;
+  @JsonKey(name: "user_id", defaultValue: 0)
+  final int userId;
   @override
-  @JsonKey(name: "topic_id", defaultValue: null)
-  final String? topicId;
+  @JsonKey(name: "latest_study", defaultValue: null)
+  final DateTime? latestStudy;
   @override
   @JsonKey(name: "frequency", defaultValue: 0)
   final int frequency;
@@ -215,7 +216,7 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
 
   @override
   String toString() {
-    return 'WordInfoDto(id: $id, word: $word, userId: $userId, topicId: $topicId, frequency: $frequency, progress: $progress)';
+    return 'WordInfoDto(id: $id, word: $word, userId: $userId, latestStudy: $latestStudy, frequency: $frequency, progress: $progress)';
   }
 
   @override
@@ -226,7 +227,8 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.word, word) || other.word == word) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.topicId, topicId) || other.topicId == topicId) &&
+            (identical(other.latestStudy, latestStudy) ||
+                other.latestStudy == latestStudy) &&
             (identical(other.frequency, frequency) ||
                 other.frequency == frequency) &&
             (identical(other.progress, progress) ||
@@ -235,8 +237,8 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, word, userId, topicId, frequency, progress);
+  int get hashCode => Object.hash(
+      runtimeType, id, word, userId, latestStudy, frequency, progress);
 
   @JsonKey(ignore: true)
   @override
@@ -256,9 +258,9 @@ abstract class _WordInfoDto implements WordInfoDto {
   const factory _WordInfoDto(
       {@JsonKey(name: "id", defaultValue: 0) required final int id,
       @JsonKey(name: "word") required final WordModelDto word,
-      @JsonKey(name: "user_id", defaultValue: "1") required final String userId,
-      @JsonKey(name: "topic_id", defaultValue: null)
-      required final String? topicId,
+      @JsonKey(name: "user_id", defaultValue: 0) required final int userId,
+      @JsonKey(name: "latest_study", defaultValue: null)
+      required final DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) required final int frequency,
       @JsonKey(name: "progress", defaultValue: 0.0)
       required final double progress}) = _$WordInfoDtoImpl;
@@ -273,11 +275,11 @@ abstract class _WordInfoDto implements WordInfoDto {
   @JsonKey(name: "word")
   WordModelDto get word;
   @override
-  @JsonKey(name: "user_id", defaultValue: "1")
-  String get userId;
+  @JsonKey(name: "user_id", defaultValue: 0)
+  int get userId;
   @override
-  @JsonKey(name: "topic_id", defaultValue: null)
-  String? get topicId;
+  @JsonKey(name: "latest_study", defaultValue: null)
+  DateTime? get latestStudy;
   @override
   @JsonKey(name: "frequency", defaultValue: 0)
   int get frequency;

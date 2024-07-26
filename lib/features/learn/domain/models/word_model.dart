@@ -1,6 +1,5 @@
 class WordModel {
   final int id;
-  final dynamic category;
   final String enValue;
   final String ruValue;
   final String audioLink;
@@ -8,7 +7,6 @@ class WordModel {
 
   const WordModel({
     required this.id,
-    required this.category,
     required this.enValue,
     required this.ruValue,
     required this.audioLink,

@@ -1,7 +1,7 @@
-import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
+import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
 
 abstract class IWordsDataSource {
-  Future<List<WordInfoDto>> getWordsForStudy({required String accessToken});
   Future<void> sendLearnedWords(
       {required String accessToken, required List<int> wordsIds});
+  Future<List<TopicDto>> getTopicsForStudy({required String accessToken});
 }

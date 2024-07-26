@@ -4,6 +4,10 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Some message to describe why you need this permission</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Some message to describe why you need this permission</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

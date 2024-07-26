@@ -47,4 +47,10 @@
   "alreadyHaveAccount": "Уже есть аккаунт?",
   "notValidLoginOrPassword": "Неверный логин или пароль",
   "done": "Готово"
+  "misspelled": "Неправильное произношение слова",
+  "wrongAnswer": "Неверно!",
+  "congratulations": "Молодец, ты прошел все слова!",
+  "next": "Дальше",
+  "check": "Проверить",
+  "startTraining": "Тренировать"
 }
