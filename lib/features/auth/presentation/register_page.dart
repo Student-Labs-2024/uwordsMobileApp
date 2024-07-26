@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:uwords/common/utils/url_launch.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
+import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
+import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
+import 'package:uwords/features/auth/presentation/widgets/custom_pincode.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/registration_fields.dart';
+import 'package:uwords/features/main/data/constants/box_shadows.dart';
+import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
+import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
+import 'package:uwords/theme/app_colors.dart';
+import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/theme/image_source.dart';
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
+import 'package:flutter/cupertino.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -23,16 +36,42 @@ class _RegisterPageState extends State<RegisterPage> {
   final codeController = TextEditingController();
   DateTime choosenDate = DateTime.now();
   TextEditingController datePickerController = TextEditingController();
-  onTapFunction({required BuildContext context}) async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      lastDate: DateTime.now(),
-      firstDate: DateTime(2015),
-      initialDate: DateTime.now(),
-    );
-    if (pickedDate == null) return;
-    choosenDate = pickedDate;
-    datePickerController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+  void _showDatePicker(BuildContext ctx) {
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        minimumDate:
+                            DateTime.fromMillisecondsSinceEpoch(-2191196888000),
+                        showDayOfWeek: false,
+                        dateOrder: DatePickerDateOrder.dmy,
+                        initialDateTime: DateTime.now(),
+                        maximumDate: DateTime.now(),
+                        maximumYear: DateTime.now().year,
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            choosenDate = val;
+                            datePickerController.text =
+                                DateFormat('dd.MM.yyyy').format(choosenDate);
+                          });
+                        }),
+                  ),
+                  CupertinoButton(
+                    child: Text(AppLocalizations.of(context).done),
+                    onPressed: () {
+                      context.pop(choosenDate);
+                    },
+                  ),
+                ],
+              ),
+            ));
   }
 
   @override
@@ -42,8 +81,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    double maximumWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.brown[100],
       body: RepositoryProvider(
         create: (context) => context.read<IUserRepository>(),
         child: BlocConsumer<AuthBloc, AuthState>(
@@ -66,98 +105,170 @@ class _RegisterPageState extends State<RegisterPage> {
           builder: (context, state) {
             return state.maybeWhen(orElse: () {
               return SafeArea(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 40,
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      AppColors.gradientBackgroundColor1,
+                      AppColors.gradientBackgroundColor2
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+                  ),
+                  child: Stack(children: [
+                    Image.asset(
+                      AppImageSource.headerRegister,
+                      width: maximumWidth,
                     ),
-                    const Icon(
-                      Icons.lock_outlined,
-                      size: 150,
-                      color: Colors.black,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 70,
+                          left: HomePagePaddings.baseHorizontal * 3,
+                          right: HomePagePaddings.baseHorizontal * 3),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: Text(
+                              AppLocalizations.of(context).accountCreation,
+                              style: AppTextStyles.authHeaderText,
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context).chooseYourAge,
+                                style: AppTextStyles.authSmallText,
+                                textAlign: TextAlign.left,
+                              ),
+                              Text(
+                                AppLocalizations.of(context).confidentiality,
+                                style: AppTextStyles.authSmallestLinkText,
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                          Container(
+                            height: HomePageComponentSizes.linkTextFieldHeight,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: HomePagePaddings.baseHorizontal),
+                            decoration: fis.BoxDecoration(
+                                color: AppColors.whiteBackgroundColor,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: MainBoxShadows.main),
+                            child: TextField(
+                              controller: datePickerController,
+                              readOnly: true,
+                              onTap: () => _showDatePicker(context),
+                              obscureText: false,
+                              cursorColor: AppColors.darkMainColor,
+                              style: const TextStyle(
+                                color: AppColors.darkMainColor,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: AppLocalizations.of(context).age,
+                                hintStyle: AppTextStyles.customTextfieldInput,
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: AuthUndesignedConstants.smallestContainer,
+                          ),
+                          RegistrationFields(
+                              usernameController: usernameController,
+                              mailController: mailController,
+                              passwordController: passwordController),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: BubbleButton(null,
+                                maximumWidth: maximumWidth -
+                                    (HomePagePaddings.baseHorizontal * 3),
+                                onPressed: () async {
+                              context.read<AuthBloc>().add(
+                                  AuthEvent.requestCode(
+                                      birthDate: choosenDate,
+                                      emailAddress: mailController.text,
+                                      password: passwordController.text));
+                            },
+                                text:
+                                    AppLocalizations.of(context).createAccount),
+                          ),
+                          DividerWithText(
+                            text: AppLocalizations.of(context).or,
+                            maximumWidth: maximumWidth -
+                                (HomePagePaddings.baseHorizontal * 3),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: BubbleButton(AppImageSource.googleIcon,
+                                maximumWidth: maximumWidth -
+                                    (HomePagePaddings.baseHorizontal * 3),
+                                onPressed: () async {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.signInWithGoogle());
+                            },
+                                text: AppLocalizations.of(context)
+                                    .signInWithGoogle),
+                          ),
+                          BubbleButton(AppImageSource.vkIcon,
+                              maximumWidth: maximumWidth -
+                                  (HomePagePaddings.baseHorizontal * 3),
+                              onPressed: () async {
+                            context
+                                .read<AuthBloc>()
+                                .add(const AuthEvent.signInWithVK());
+                          }, text: AppLocalizations.of(context).signInWithVK),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Spacer(),
+                              TextButton(
+                                onPressed: _launchOurWebsite,
+                                child: Text(
+                                    AppLocalizations.of(context).conditions,
+                                    style: AppTextStyles
+                                        .authSmallestLinkTextOpacity),
+                              ),
+                              Text(
+                                AppLocalizations.of(context).and,
+                                style: AppTextStyles.authSmallestTextOpacity,
+                              ),
+                              TextButton(
+                                onPressed: _launchOurWebsite,
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .policyOfConfidentiality,
+                                  style:
+                                      AppTextStyles.authSmallestLinkTextOpacity,
+                                ),
+                              ),
+                              const Spacer(),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Spacer(),
+                              Text(
+                                  AppLocalizations.of(context)
+                                      .alreadyHaveAccount,
+                                  style: AppTextStyles.authSmallText),
+                              TextButton(
+                                onPressed: () {
+                                  context.go("/auth");
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context).signIn,
+                                  style: AppTextStyles.authLinkText,
+                                ),
+                              ),
+                              const Spacer()
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context).dontHaveAnAccount,
-                          style: const TextStyle(
-                              color: Colors.brown, fontSize: 20),
-                        ),
-                        Text(
-                          AppLocalizations.of(context).signUp,
-                          style: const TextStyle(
-                              color: Colors.brown,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    TextField(
-                      controller: datePickerController,
-                      readOnly: true,
-                      decoration: const InputDecoration(
-                          hintText: "Click here to select date"),
-                      onTap: () => onTapFunction(context: context),
-                    ),
-                    RegistrationFields(
-                        usernameController: usernameController,
-                        mailController: mailController,
-                        passwordController: passwordController),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(AuthEvent.requestCode(
-                            nickname: usernameController.text,
-                            birthDate: choosenDate,
-                            emailAddress: mailController.text,
-                            password: passwordController.text));
-                      },
-                      child: Text(AppLocalizations.of(context)
-                          .registerUserWithMailAndPassword),
-                    ),
-                    const Divider(),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context
-                            .read<AuthBloc>()
-                            .add(const AuthEvent.signInWithGoogle());
-                      },
-                      child:
-                          Text(AppLocalizations.of(context).signInWithGoogle),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context
-                            .read<AuthBloc>()
-                            .add(const AuthEvent.signInWithVK());
-                      },
-                      child: Text(AppLocalizations.of(context).signInWithVK),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.go("/home");
-                      },
-                      child: Text(AppLocalizations.of(context).nextPage),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.go("/auth");
-                      },
-                      child: const Text("Экран авторизации"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        context.read<AuthBloc>().add(const AuthEvent.logOut());
-                      },
-                      child: Text(AppLocalizations.of(context).logOut),
-                    ),
-                  ],
+                  ]),
                 ),
               );
             }, waitingAnswer: () {
@@ -174,26 +285,104 @@ class _RegisterPageState extends State<RegisterPage> {
                 case AuthSuccess.authorized:
                   return const SizedBox();
                 case AuthSuccess.sendedCode:
-                  return Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomTextField(
-                          controller: codeController,
-                          hintText: '',
-                          obscoreText: false,
-                        ),
-                        ElevatedButton(
-                            onPressed: () {
-                              context.read<AuthBloc>().add(
-                                  AuthEvent.registerUser(
-                                      code: codeController.text));
-                            },
-                            child: const Text("Подтвердить код"))
-                      ],
+                  return SafeArea(
+                      child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [
+                            AppColors.gradientBackgroundColor1,
+                            AppColors.gradientBackgroundColor2
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
                     ),
-                  );
+                    child: Stack(children: [
+                      Image.asset(
+                        AppImageSource.codeBackground,
+                        width: maximumWidth,
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 15),
+                          child: InkWell(
+                            child: SvgPicture.asset(
+                              AppImageSource.returnIcon,
+                              width: 40,
+                              height: 40,
+                            ),
+                            onTap: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.changeDataForRegister());
+                            },
+                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 170,
+                            left: HomePagePaddings.baseHorizontal * 1.5,
+                            right: HomePagePaddings.baseHorizontal * 1.5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              child: Text(
+                                AppLocalizations.of(context).enterCode,
+                                style: AppTextStyles.authHeaderText,
+                              ),
+                            ),
+                            Text(
+                              "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
+                              style: AppTextStyles.authSendedCodeText,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            CustomPincode(
+                                textEditingController: codeController),
+                            Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: BubbleButton(
+                                  null,
+                                  maximumWidth: maximumWidth -
+                                      (HomePagePaddings.baseHorizontal * 2),
+                                  onPressed: () async {
+                                    context.read<AuthBloc>().add(
+                                        AuthEvent.registerUser(
+                                            code: codeController.text));
+                                  },
+                                  text: AppLocalizations.of(context).sendCode,
+                                )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context).haveNotGotCode,
+                                  style: AppTextStyles.authSendedCodeText,
+                                ),
+                                TextButton(
+                                  onPressed: () async {
+                                    context.read<AuthBloc>().add(
+                                        AuthEvent.requestCode(
+                                            birthDate: choosenDate,
+                                            emailAddress: mailController.text,
+                                            password: passwordController.text,
+                                            nickname: usernameController.text));
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context).sendAgain,
+                                      style: AppTextStyles
+                                          .authSendedCodeUnderlinedText),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ]),
+                  ));
               }
             });
           },
@@ -201,4 +390,8 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+}
+
+_launchOurWebsite() async {
+  await launchUrlFunction(url: Uri(scheme: 'https', host: "youwords.ru"));
 }

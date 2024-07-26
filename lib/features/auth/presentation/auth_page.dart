@@ -6,9 +6,13 @@ import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
+import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
+import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -21,9 +25,7 @@ class _AuthPageState extends State<AuthPage> {
   final TextEditingController mailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final codeController = TextEditingController();
-
   String regUser = '';
-
   @override
   void initState() {
     super.initState();
@@ -31,8 +33,8 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
+    double maximumWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: AppColors.brownColor,
       body: RepositoryProvider(
         create: (context) => context.read<IUserRepository>(),
         child: BlocConsumer<AuthBloc, AuthState>(
@@ -62,89 +64,108 @@ class _AuthPageState extends State<AuthPage> {
             return state.maybeWhen(
               orElse: () {
                 return SafeArea(
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: AuthUndesignedConstants.mediumContainer,
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [
+                            AppColors.gradientBackgroundColor1,
+                            AppColors.gradientBackgroundColor2
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
+                    ),
+                    child: Stack(children: [
+                      Image.asset(
+                        AppImageSource.headerAuth,
+                        width: maximumWidth,
                       ),
-                      const Icon(
-                        Icons.lock_outlined,
-                        size: AuthUndesignedConstants.hugeIcon,
-                        color: AppColors.blackColor,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 170,
+                            bottom: 32,
+                            left: HomePagePaddings.baseHorizontal * 2,
+                            right: HomePagePaddings.baseHorizontal * 2),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              child: Text(
+                                AppLocalizations.of(context).authIntoAccount,
+                                style: AppTextStyles.authHeaderText,
+                              ),
+                            ),
+                            MailAndPasswordFileds(
+                                mailController: mailController,
+                                passwordController: passwordController),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              child: BubbleButton(null,
+                                  maximumWidth: maximumWidth -
+                                      (HomePagePaddings.baseHorizontal * 2),
+                                  onPressed: () async {
+                                context.read<AuthBloc>().add(
+                                    AuthEvent.signInWithMailPassword(
+                                        emailAddress: mailController.text,
+                                        password: passwordController.text));
+                              }, text: AppLocalizations.of(context).signIn),
+                            ),
+                            const SizedBox(
+                              height: AuthUndesignedConstants.smallestContainer,
+                            ),
+                            DividerWithText(
+                              text: AppLocalizations.of(context).or,
+                              maximumWidth: maximumWidth -
+                                  (HomePagePaddings.baseHorizontal * 2),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              child: BubbleButton(AppImageSource.googleIcon,
+                                  maximumWidth: maximumWidth -
+                                      (HomePagePaddings.baseHorizontal * 2),
+                                  onPressed: () async {
+                                context
+                                    .read<AuthBloc>()
+                                    .add(const AuthEvent.signInWithGoogle());
+                              },
+                                  text: AppLocalizations.of(context)
+                                      .signInWithGoogle),
+                            ),
+                            BubbleButton(AppImageSource.vkIcon,
+                                maximumWidth: maximumWidth -
+                                    (HomePagePaddings.baseHorizontal * 2),
+                                onPressed: () async {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.signInWithVK());
+                            }, text: AppLocalizations.of(context).signInWithVK),
+                            const Spacer(),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Spacer(),
+                                Text(
+                                    AppLocalizations.of(context)
+                                        .dontHaveAnAccount,
+                                    style: AppTextStyles.authSmallText),
+                                TextButton(
+                                  onPressed: () {
+                                    context.go("/");
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context).signUp,
+                                    style: AppTextStyles.authLinkText,
+                                  ),
+                                ),
+                                const Spacer()
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: AuthUndesignedConstants.mediumContainer,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context).dontHaveAnAccount,
-                            style: AppTextStyles.customTextFieldForAuth,
-                          ),
-                          Text(
-                            AppLocalizations.of(context).signUp,
-                            style: AppTextStyles.customTextFieldForAuth,
-                          )
-                        ],
-                      ),
-                      MailAndPasswordFileds(
-                          mailController: mailController,
-                          passwordController: passwordController),
-                      const SizedBox(
-                        height: AuthUndesignedConstants.smallContainer,
-                      ),
-                      const SizedBox(
-                        height: AuthUndesignedConstants.smallestContainer,
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context.read<AuthBloc>().add(
-                              AuthEvent.signInWithMailPassword(
-                                  emailAddress: mailController.text,
-                                  password: passwordController.text));
-                        },
-                        child: Text(AppLocalizations.of(context)
-                            .signInWithMailPassword),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context
-                              .read<AuthBloc>()
-                              .add(const AuthEvent.signInWithGoogle());
-                        },
-                        child:
-                            Text(AppLocalizations.of(context).signInWithGoogle),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context
-                              .read<AuthBloc>()
-                              .add(const AuthEvent.signInWithVK());
-                        },
-                        child: Text(AppLocalizations.of(context).signInWithVK),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context.go("/home");
-                        },
-                        child: Text(AppLocalizations.of(context).nextPage),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context.go("/");
-                        },
-                        child: const Text("Экран регистрации"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context
-                              .read<AuthBloc>()
-                              .add(const AuthEvent.logOut());
-                        },
-                        child: Text(AppLocalizations.of(context).logOut),
-                      ),
-                    ],
+                    ]),
                   ),
                 );
               },

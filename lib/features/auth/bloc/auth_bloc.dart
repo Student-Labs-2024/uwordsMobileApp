@@ -36,6 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignInWithGoogle>(_handleSignInWithGoogle);
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_LogOut>(_handleLogOut);
+    on<_ChangeDataForRegister>(_handleChangeDataForRegister);
   }
 
   Future<void> _handleRequestCode(
@@ -107,6 +108,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _handleSignInWithGoogle(
       _SignInWithGoogle event, Emitter<AuthState> emit) async {
     emit(const AuthState.waitingAnswer());
+    await vk.initSdk();
     if (await vk.isLoggedIn) {
       vk.logOut();
     }
@@ -126,6 +128,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       auth.signOut();
+      await vk.initSdk();
       if (await vk.isLoggedIn) {
         vk.logOut();
       }
@@ -135,12 +138,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _provider = AuthorizationProvider.self;
       await _authorization(emit: emit);
     } else {
-      emit(const AuthState.initial());
+      emit(const AuthState.signInScreen());
     }
   }
 
   Future<void> _handleLogOut(_LogOut event, Emitter<AuthState> emit) async {
     userRepository.localLogOut();
+    emit(const AuthState.initial());
+  }
+
+  Future<void> _handleChangeDataForRegister(
+      _ChangeDataForRegister event, Emitter<AuthState> emit) async {
     emit(const AuthState.initial());
   }
 
@@ -275,7 +283,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _emitter(const AuthState.initial());
       case const (AccessIsBannedException):
         _emitter(const AuthState.failed(AuthError.failedAutorization));
-        _emitter(const AuthState.initial());
+        _emitter(const AuthState.signInScreen());
       case const (UnknownApiException):
         _emitter(const AuthState.failed(AuthError.unknownError));
       case const (CanceledSignIn):

@@ -27,6 +27,7 @@ mixin _$AuthEvent {
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$AuthEvent {
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$AuthEvent {
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +68,8 @@ mixin _$AuthEvent {
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$AuthEvent {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +91,7 @@ mixin _$AuthEvent {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -228,6 +235,7 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) {
     return requestCode(birthDate, nickname, emailAddress, password);
   }
@@ -244,6 +252,7 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) {
     return requestCode?.call(birthDate, nickname, emailAddress, password);
   }
@@ -260,6 +269,7 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (requestCode != null) {
@@ -278,6 +288,8 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) {
     return requestCode(this);
   }
@@ -291,6 +303,7 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) {
     return requestCode?.call(this);
   }
@@ -304,6 +317,7 @@ class _$RequestCodeImpl with DiagnosticableTreeMixin implements _RequestCode {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (requestCode != null) {
@@ -410,6 +424,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) {
     return registerUser(code);
   }
@@ -426,6 +441,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) {
     return registerUser?.call(code);
   }
@@ -442,6 +458,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -460,6 +477,8 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) {
     return registerUser(this);
   }
@@ -473,6 +492,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) {
     return registerUser?.call(this);
   }
@@ -486,6 +506,7 @@ class _$RegisterUserImpl with DiagnosticableTreeMixin implements _RegisterUser {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -558,6 +579,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) {
     return signInWithVK();
   }
@@ -574,6 +596,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) {
     return signInWithVK?.call();
   }
@@ -590,6 +613,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (signInWithVK != null) {
@@ -608,6 +632,8 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) {
     return signInWithVK(this);
   }
@@ -621,6 +647,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) {
     return signInWithVK?.call(this);
   }
@@ -634,6 +661,7 @@ class _$SignInWithVKImpl with DiagnosticableTreeMixin implements _SignInWithVK {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (signInWithVK != null) {
@@ -702,6 +730,7 @@ class _$SignInWithGoogleImpl
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) {
     return signInWithGoogle();
   }
@@ -718,6 +747,7 @@ class _$SignInWithGoogleImpl
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) {
     return signInWithGoogle?.call();
   }
@@ -734,6 +764,7 @@ class _$SignInWithGoogleImpl
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -752,6 +783,8 @@ class _$SignInWithGoogleImpl
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) {
     return signInWithGoogle(this);
   }
@@ -765,6 +798,7 @@ class _$SignInWithGoogleImpl
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) {
     return signInWithGoogle?.call(this);
   }
@@ -778,6 +812,7 @@ class _$SignInWithGoogleImpl
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -889,6 +924,7 @@ class _$SignInWithMailPasswordImpl
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) {
     return signInWithMailPassword(emailAddress, password);
   }
@@ -905,6 +941,7 @@ class _$SignInWithMailPasswordImpl
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) {
     return signInWithMailPassword?.call(emailAddress, password);
   }
@@ -921,6 +958,7 @@ class _$SignInWithMailPasswordImpl
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (signInWithMailPassword != null) {
@@ -939,6 +977,8 @@ class _$SignInWithMailPasswordImpl
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) {
     return signInWithMailPassword(this);
   }
@@ -952,6 +992,7 @@ class _$SignInWithMailPasswordImpl
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) {
     return signInWithMailPassword?.call(this);
   }
@@ -965,6 +1006,7 @@ class _$SignInWithMailPasswordImpl
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (signInWithMailPassword != null) {
@@ -1039,6 +1081,7 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
     required TResult Function(String emailAddress, String password)
         signInWithMailPassword,
     required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
   }) {
     return logOut();
   }
@@ -1055,6 +1098,7 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
     TResult? Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
   }) {
     return logOut?.call();
   }
@@ -1071,6 +1115,7 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
     TResult Function(String emailAddress, String password)?
         signInWithMailPassword,
     TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -1089,6 +1134,8 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
     required TResult Function(_SignInWithMailPassword value)
         signInWithMailPassword,
     required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
   }) {
     return logOut(this);
   }
@@ -1102,6 +1149,7 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
     TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
   }) {
     return logOut?.call(this);
   }
@@ -1115,6 +1163,7 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
     TResult Function(_SignInWithGoogle value)? signInWithGoogle,
     TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
     TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -1126,6 +1175,160 @@ class _$LogOutImpl with DiagnosticableTreeMixin implements _LogOut {
 
 abstract class _LogOut implements AuthEvent {
   const factory _LogOut() = _$LogOutImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangeDataForRegisterImplCopyWith<$Res> {
+  factory _$$ChangeDataForRegisterImplCopyWith(
+          _$ChangeDataForRegisterImpl value,
+          $Res Function(_$ChangeDataForRegisterImpl) then) =
+      __$$ChangeDataForRegisterImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChangeDataForRegisterImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$ChangeDataForRegisterImpl>
+    implements _$$ChangeDataForRegisterImplCopyWith<$Res> {
+  __$$ChangeDataForRegisterImplCopyWithImpl(_$ChangeDataForRegisterImpl _value,
+      $Res Function(_$ChangeDataForRegisterImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ChangeDataForRegisterImpl
+    with DiagnosticableTreeMixin
+    implements _ChangeDataForRegister {
+  const _$ChangeDataForRegisterImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.changeDataForRegister()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'AuthEvent.changeDataForRegister'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeDataForRegisterImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime birthDate, String? nickname,
+            String emailAddress, String password)
+        requestCode,
+    required TResult Function(String code) registerUser,
+    required TResult Function() signInWithVK,
+    required TResult Function() signInWithGoogle,
+    required TResult Function(String emailAddress, String password)
+        signInWithMailPassword,
+    required TResult Function() logOut,
+    required TResult Function() changeDataForRegister,
+  }) {
+    return changeDataForRegister();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult? Function(String code)? registerUser,
+    TResult? Function()? signInWithVK,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult? Function()? logOut,
+    TResult? Function()? changeDataForRegister,
+  }) {
+    return changeDataForRegister?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime birthDate, String? nickname, String emailAddress,
+            String password)?
+        requestCode,
+    TResult Function(String code)? registerUser,
+    TResult Function()? signInWithVK,
+    TResult Function()? signInWithGoogle,
+    TResult Function(String emailAddress, String password)?
+        signInWithMailPassword,
+    TResult Function()? logOut,
+    TResult Function()? changeDataForRegister,
+    required TResult orElse(),
+  }) {
+    if (changeDataForRegister != null) {
+      return changeDataForRegister();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RequestCode value) requestCode,
+    required TResult Function(_RegisterUser value) registerUser,
+    required TResult Function(_SignInWithVK value) signInWithVK,
+    required TResult Function(_SignInWithGoogle value) signInWithGoogle,
+    required TResult Function(_SignInWithMailPassword value)
+        signInWithMailPassword,
+    required TResult Function(_LogOut value) logOut,
+    required TResult Function(_ChangeDataForRegister value)
+        changeDataForRegister,
+  }) {
+    return changeDataForRegister(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RequestCode value)? requestCode,
+    TResult? Function(_RegisterUser value)? registerUser,
+    TResult? Function(_SignInWithVK value)? signInWithVK,
+    TResult? Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult? Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult? Function(_LogOut value)? logOut,
+    TResult? Function(_ChangeDataForRegister value)? changeDataForRegister,
+  }) {
+    return changeDataForRegister?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RequestCode value)? requestCode,
+    TResult Function(_RegisterUser value)? registerUser,
+    TResult Function(_SignInWithVK value)? signInWithVK,
+    TResult Function(_SignInWithGoogle value)? signInWithGoogle,
+    TResult Function(_SignInWithMailPassword value)? signInWithMailPassword,
+    TResult Function(_LogOut value)? logOut,
+    TResult Function(_ChangeDataForRegister value)? changeDataForRegister,
+    required TResult orElse(),
+  }) {
+    if (changeDataForRegister != null) {
+      return changeDataForRegister(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeDataForRegister implements AuthEvent {
+  const factory _ChangeDataForRegister() = _$ChangeDataForRegisterImpl;
 }
 
 /// @nodoc
