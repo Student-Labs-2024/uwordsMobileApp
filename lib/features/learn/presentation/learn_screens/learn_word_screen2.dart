@@ -45,13 +45,15 @@ class LearnWordPage2State extends State<LearnWordPage2> {
   void onPressBottomButton() {
     if (!isAnswerCorrect) {
       if (answer == widget.word.enValue) {
-        isAnswerCorrect = true;
+        setState(() {
+          isAnswerCorrect = true;
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(AppLocalizations.of(context).wrongAnswer)));
       }
     } else {
-      widget.goNextScreen;
+      widget.goNextScreen();
     }
   }
 

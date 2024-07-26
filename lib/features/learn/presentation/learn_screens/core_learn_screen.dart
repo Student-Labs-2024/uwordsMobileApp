@@ -17,11 +17,6 @@ class LearnCoreScreen extends StatefulWidget {
 }
 
 class LearnCoreScreenState extends State<LearnCoreScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   void goSuccessfulScreen() {
     context.read<TrainingBloc>().add(const TrainingEvent.goSuccessfulScreen());
   }

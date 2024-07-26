@@ -75,13 +75,15 @@ class LearnWordPage3State extends State<LearnWordPage3> {
   void onPressBottomButton() {
     if (!isAnswerCorrect) {
       if (compareWords(_lastWords, widget.word.enValue)) {
-        isAnswerCorrect = true;
+        setState(() {
+          isAnswerCorrect = true;
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(AppLocalizations.of(context).misspelled)));
       }
     } else {
-      widget.goNextScreen;
+      widget.goNextScreen();
     }
   }
 

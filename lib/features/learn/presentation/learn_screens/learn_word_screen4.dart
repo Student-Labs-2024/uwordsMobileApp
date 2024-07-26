@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
@@ -32,13 +34,15 @@ class LearnWordPage4State extends State<LearnWordPage4> {
   void onPressBottomButton() {
     if (!isAnswerCorrect) {
       if (currentChoose == widget.word.enValue) {
-        isAnswerCorrect = true;
+        setState(() {
+          isAnswerCorrect = true;
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(AppLocalizations.of(context).wrongAnswer)));
       }
     } else {
-      widget.goNextScreen;
+      widget.goNextScreen();
     }
   }
 
@@ -99,16 +103,27 @@ class LearnWordPage4State extends State<LearnWordPage4> {
               ],
             ),
             Container(
-              height: LearnSizes.speechButtonSize,
-              width: LearnSizes.speechButtonSize,
-              decoration: LearnStyles.wordScreenSoundBDS,
-              child: ElevatedButton(
-                onPressed: () => {},
-                style: LearnStyles.wordScreenSoundBS,
-                child: const Icon(
+              height: MediaQuery.of(context).size.width *
+                  LearnSizes.speechButtonSize,
+              width: MediaQuery.of(context).size.width *
+                  LearnSizes.speechButtonSize,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: IconButton(
+                style: IconButton.styleFrom(
+                  backgroundColor: AppColors.darkMainColor,
+                ),
+                onPressed: () => {
+                  context
+                      .read<PlayerBloc>()
+                      .add(PlayerEvent.playAudio(widget.word.audioLink))
+                },
+                icon: Icon(
                   Icons.volume_up_outlined,
-                  color: AppColors.mainColor,
-                  size: LearnSizes.speechButtonIconSize,
+                  color: AppColors.whiteColor,
+                  size: MediaQuery.of(context).size.width *
+                      LearnSizes.speechButtonIconSize,
                 ),
               ),
             ),

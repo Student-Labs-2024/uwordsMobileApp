@@ -1,9 +1,7 @@
 import 'dart:math';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/auth/old_access_token_exception.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/main/data/models/pair_model.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
@@ -87,7 +85,8 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   List<WordModel> getSelectableWords() {
     List<WordModel> selectableWords = [];
-    List<WordModel> tempWords = words;
+    List<WordModel> tempWords = [];
+    tempWords.addAll(words);
     selectableWords.add(tempWords[wordScreen[currentWordScreenIndex].first]);
     tempWords.removeAt(wordScreen[currentWordScreenIndex].first);
     for (int i = 0; i < 3; i++) {

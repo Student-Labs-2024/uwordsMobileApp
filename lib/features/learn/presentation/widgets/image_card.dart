@@ -17,10 +17,6 @@ class ImageCard extends StatelessWidget {
   final Function(WordModel) onPressed;
   final bool isSelected;
 
-  void onTap() {
-    onPressed(word);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +24,7 @@ class ImageCard extends StatelessWidget {
           horizontal: LearnPaddings.imageCardHorizontal,
           vertical: LearnPaddings.imageCardVertical),
       child: GestureDetector(
-        onTap: () => onTap,
+        onTap: () => onPressed(word),
         child: Container(
           width: MediaQuery.of(context).size.width * LearnSizes.imageCardWidth,
           height:
