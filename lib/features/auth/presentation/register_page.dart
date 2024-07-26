@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:uwords/common/utils/url_launch.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
+import 'package:uwords/features/auth/presentation/widgets/custom_pincode.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
@@ -296,44 +298,87 @@ class _RegisterPageState extends State<RegisterPage> {
                           end: Alignment.bottomCenter),
                     ),
                     child: Stack(children: [
-                      Padding(padding: EdgeInsets.only(top: 15, left: 15), child: Image.asset(AppImageSource.returnIcon, width: 40, height: 40,),),
                       Image.asset(
                         AppImageSource.codeBackground,
                         width: maximumWidth,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12.0),
-                            child: Text(
-                              AppLocalizations.of(context).enterCode,
-                              style: AppTextStyles.authHeaderText,
+                      Padding(
+                          padding: EdgeInsets.only(top: 15, left: 15),
+                          child: InkWell(
+                            child: SvgPicture.asset(
+                                AppImageSource.returnIcon,
+                                width: 40,
+                                height: 40,
                             ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
-                            style: AppTextStyles.authSendedCodeText,
-                          ),
-                          CustomAuthTextField(
-                            controller: codeController,
-                            hintText: '',
-                            notHidden: false,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: BubbleButton(null,
-                                maximumWidth: maximumWidth -
-                                    (HomePagePaddings.baseHorizontal * 3),
-                                onPressed: () async {
-                              context.read<AuthBloc>().add(
-                                  AuthEvent.registerUser(code: codeController.text));
-                            }, text: AppLocalizations.of(context).sendCode,))
-                        ],
+                            onTap: () {
+                              context.read<AuthBloc>().add(AuthEvent.changeDataForRegister());
+                            },
+                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 170,
+                            left: HomePagePaddings.baseHorizontal * 1.5,
+                            right: HomePagePaddings.baseHorizontal * 1.5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              child: Text(
+                                AppLocalizations.of(context).enterCode,
+                                style: AppTextStyles.authHeaderText,
+                              ),
+                            ),
+                            Text(
+                              "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
+                              style: AppTextStyles.authSendedCodeText,
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            CustomPincode(
+                                textEditingController: codeController),
+                            Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: BubbleButton(
+                                  null,
+                                  maximumWidth: maximumWidth -
+                                      (HomePagePaddings.baseHorizontal * 2),
+                                  onPressed: () async {
+                                    context.read<AuthBloc>().add(
+                                        AuthEvent.registerUser(
+                                            code: codeController.text));
+                                  },
+                                  text: AppLocalizations.of(context).sendCode,
+                                )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context).haveNotGotCode,
+                                  style: AppTextStyles.authSendedCodeText,
+                                ),
+                                TextButton(
+                                  onPressed: () async {
+                                    context.read<AuthBloc>().add(
+                                        AuthEvent.requestCode(
+                                            birthDate: choosenDate,
+                                            emailAddress: mailController.text,
+                                            password: passwordController.text,
+                                            nickname: usernameController.text));
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context).sendAgain,
+                                      style: AppTextStyles
+                                          .authSendedCodeUnderlinedText),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ]),
                   ));

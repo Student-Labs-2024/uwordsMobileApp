@@ -4,9 +4,12 @@ class AppColors {
   static const Color mainColor = Color.fromRGBO(83, 45, 106, 0.6);
   static const Color darkMainColor = Color.fromRGBO(83, 45, 106, 1);
   static const Color mainColorOpacity = Color.fromRGBO(83, 45, 106, 0.7);
-  static const Color darkMainColorOpacity= Color.fromRGBO(83, 45, 106, 0.9);
+  static const Color darkMainColorOpacity = Color.fromRGBO(83, 45, 106, 0.9);
   static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.2);
   static const Color errorColor = Colors.red;
+
+  static const Color pushedPincodeColor = Color.fromRGBO(170, 117, 202, 1);
+  static const Color defaultPincodeColor = Color.fromRGBO(211, 211, 212, 1);
 
   static const Color homePageStartRecord = Color.fromRGBO(241, 245, 249, 1);
 

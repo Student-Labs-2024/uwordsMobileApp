@@ -36,6 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignInWithGoogle>(_handleSignInWithGoogle);
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_LogOut>(_handleLogOut);
+    on<_ChangeDataForRegister>(_handleChangeDataForRegister);
   }
 
   Future<void> _handleRequestCode(
@@ -143,6 +144,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleLogOut(_LogOut event, Emitter<AuthState> emit) async {
     userRepository.localLogOut();
+    emit(const AuthState.initial());
+  }
+
+  Future<void> _handleChangeDataForRegister(
+      _ChangeDataForRegister event, Emitter<AuthState> emit) async {
     emit(const AuthState.initial());
   }
 

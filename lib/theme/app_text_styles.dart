@@ -78,4 +78,17 @@ class AppTextStyles {
     fontSize: 15,
     color: AppColors.darkMainColor,
   );
+  static const authSendedCodeUnderlinedText = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w400,
+    fontSize: 15,
+    color: AppColors.darkMainColor,
+    decoration: TextDecoration.underline,
+    decorationColor: AppColors.mainColorOpacity,
+  );
+  static const pinCodeText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 20,
+      color: AppColors.darkMainColor);
 }
