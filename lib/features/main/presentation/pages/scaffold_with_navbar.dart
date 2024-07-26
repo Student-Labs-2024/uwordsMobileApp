@@ -22,6 +22,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    var currentRoute =
+        GoRouter.of(context).routeInformationProvider.value.uri.toString();
     return Scaffold(
       body: Stack(children: [
         widget.child,
@@ -29,12 +31,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
           bottom: ScaffoldWithNavbarPaddings.navBarBottom,
           left: (MediaQuery.of(context).size.width) *
               ScaffoldWithNavbarPaddings.navBarLeft,
-          child: GoRouter.of(context)
-                      .routeInformationProvider
-                      .value
-                      .uri
-                      .toString() ==
-                  "/"
+          child: ((currentRoute == "/") || (currentRoute == "/auth"))
               ? const SizedBox()
               : Container(
                   width: (MediaQuery.of(context).size.width) *
@@ -113,7 +110,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
       case 1:
         context.go("/learn");
       case 4:
-        context.go("/auth");
+        context.go("/");
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 class UserAuthDto {
@@ -26,15 +27,14 @@ class UserAuthDto {
 
   factory UserAuthDto.fromJsonAndOtherFields(
       {required String userEmail,
-      required String password,
-      required String provider,
-      required Map<String, String> map}) {
+      required AuthorizationProvider provider,
+      required Map<String, dynamic> map}) {
     return UserAuthDto(
         email: userEmail,
         accessToken: map['access_token'] ?? '',
         refreshToken: map['refresh_token'] ?? '',
         isEducationCompleted: false,
-        provider: provider);
+        provider: provider.name);
   }
 
   void changeAccessToken({required String newAccessToken}) {

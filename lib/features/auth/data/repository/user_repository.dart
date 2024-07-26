@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
-import 'package:uwords/features/auth/not_registred_exception.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 
@@ -15,17 +14,16 @@ class UserRepository implements IUserRepository {
       required this.savableUserDataSource});
 
   @override
-  Future<bool> authorizate(
-      {required String emailAddress,
-      required password,
-      required String provider}) async {
+  Future<void> authorizate({
+    required String emailAddress,
+    required String password,
+  }) async {
     try {
       UserAuthDto user = await networkUserDataSource.authorizate(
-          userEmail: emailAddress, password: password, provider: provider);
+          userEmail: emailAddress, password: password);
       _saveUser(userDto: user);
-      return true;
-    } on NotRegisteredException catch (e) {
-      return false;
+    } on Exception {
+      rethrow;
     }
   }
 
@@ -39,11 +37,20 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<bool> registerUser(
-      {required String emailAddress, required String password}) async {
+  Future<bool> registerUser({
+    required String emailAddress,
+    required String password,
+    required String username,
+    required DateTime birthDate,
+    required String code,
+  }) async {
     try {
       await networkUserDataSource.registerUser(
-          userEmail: emailAddress, password: password);
+          userEmail: emailAddress,
+          password: password,
+          username: username,
+          code: code,
+          birthDate: birthDate);
       return true;
     } on Exception catch (e) {
       log(e.toString());
@@ -52,25 +59,30 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<bool> registerUserFromThirdPartyService(
-      {required String email,
-      required String password,
-      required String username,
-      required String name,
-      required String surname,
-      required String avatarUrl,
-      required String phoneNumber,
-      required String provider}) async {
+  Future<bool> registerUserFromGoogle({
+    required String uid,
+  }) async {
     try {
-      await networkUserDataSource.registerUserFromThirdPartyService(
-          userEmail: email,
-          password: password,
-          username: username,
-          name: name,
-          surname: surname,
-          avatarUrl: avatarUrl,
-          phoneNumber: phoneNumber,
-          provider: provider);
+      await networkUserDataSource.registerUserFromGoogle(uid: uid);
+      return true;
+    } on Exception catch (e) {
+      log(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> registerUserFromVK({
+    required String accessToken,
+    required String name,
+    required String surname,
+  }) async {
+    try {
+      await networkUserDataSource.registerUserFromVK(
+        accessToken: accessToken,
+        name: name,
+        surname: surname,
+      );
       return true;
     } on Exception catch (e) {
       log(e.toString());
@@ -90,6 +102,43 @@ class UserRepository implements IUserRepository {
 
   @override
   void localLogOut() async {
-    await savableUserDataSource.noneIsCurrent();
+    savableUserDataSource.noneIsCurrent();
+  }
+
+  @override
+  Future<bool> checkCode({required String email, required String code}) {
+    var result = networkUserDataSource.checkCode(userEmail: email, code: code);
+    return result;
+  }
+
+  @override
+  Future<void> requestCode({required String email}) async {
+    await networkUserDataSource.sendCode(userEmail: email);
+  }
+
+  @override
+  Future<void> authorizateVk({required String accessToken}) async {
+    try {
+      UserAuthDto user =
+          await networkUserDataSource.authorizateVk(accessToken: accessToken);
+      _saveUser(userDto: user);
+    } on Exception catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> authorizateFromGoogle({
+    required String uid,
+  }) async {
+    try {
+      UserAuthDto user =
+          await networkUserDataSource.authorizateGoogle(uid: uid);
+      _saveUser(userDto: user);
+    } on Exception catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 }

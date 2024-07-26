@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
 
-part 'audioLink_bloc.freezed.dart';
-part 'audioLink_state.dart';
-part 'audioLink_event.dart';
+part 'audio_link_bloc.freezed.dart';
+part 'audio_link_state.dart';
+part 'audio_link_event.dart';
 
 class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
   final IAudioRepository audioRepository;
@@ -39,18 +38,19 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
       }
     } catch (e) {
       log(e.toString());
-      emit(const AudioLinkState.failed('unknowError'));
+      emit(const AudioLinkState.failed('unknownError'));
     }
   }
 
   bool _isValidYoutubeUrl(String url) {
     final RegExp youtubeRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9_-]{11})');
-    final RegExp youtubeShortRegex =
-        RegExp(r'^(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]{11})$');
+        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
+    final RegExp youtubeShortRegex = RegExp(
+        r'^(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
     final RegExp youtubeShortsRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})$');
-    return (youtubeRegex.hasMatch(url) || youtubeShortRegex.hasMatch(url)) ||
+        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
+    return youtubeRegex.hasMatch(url) ||
+        youtubeShortRegex.hasMatch(url) ||
         youtubeShortsRegex.hasMatch(url);
   }
 }

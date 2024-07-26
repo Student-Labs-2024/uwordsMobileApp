@@ -19,7 +19,7 @@ class WordInput extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: AppColors.lightgrayColor,
-          width: 1,
+          width: UnDesignedConstants.lineBorder,
         ),
       ),
       child: Text(

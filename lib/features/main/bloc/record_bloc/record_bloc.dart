@@ -2,13 +2,11 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'record_bloc.freezed.dart';
 part 'record_state.dart';
@@ -26,8 +24,11 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
 
   Future<void> _handleSendError(
       _SendError event, Emitter<RecordState> emit) async {
-    emit(RecordState.failed(event.message));
-    emit(const RecordState.initial());
+    if (state is! _RecordFailed) {
+      emit(RecordState.failed(event.message));
+      await Future.delayed(const Duration(seconds: 4));
+      emit(const RecordState.initial());
+    }
   }
 
   Future<void> _handleSendPath(

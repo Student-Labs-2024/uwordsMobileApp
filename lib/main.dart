@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:uwords/features/auth/data/data_sources/network_user_data_source.
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/data/repository/user_repository.dart';
 import 'package:uwords/features/auth/presentation/auth_page.dart';
+import 'package:uwords/features/auth/presentation/register_page.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
@@ -29,7 +31,7 @@ import 'package:uwords/features/main/data/data_sources/iterface_audio_datasource
 import 'package:uwords/features/main/presentation/pages/home_page.dart';
 import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
-import 'package:uwords/features/main/bloc/audioLink_bloc/audioLink_bloc.dart';
+import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'firebase_options.dart';
 
@@ -38,6 +40,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   final getIt = GetIt.instance;
+  getIt.registerSingleton<Dio>(Dio());
   getIt.registerSingleton<SpeechToText>(SpeechToText());
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -62,19 +65,20 @@ final GoRouter _goRouter = GoRouter(
       routes: [
         GoRoute(
           path: '/',
-          builder: (context, state) => const AuthPage(),
+          builder: (context, state) => const RegisterPage(),
         ),
+        GoRoute(path: '/auth', builder: (context, state) => const AuthPage()),
         GoRoute(
           path: '/home',
-          builder: (context, state) => HomePage(),
+          builder: (context, state) => const HomePage(),
         ),
         GoRoute(
           path: '/learn',
-          builder: (context, state) => LearnPage(),
+          builder: (context, state) => const LearnPage(),
         ),
         GoRoute(
           path: '/learnCore',
-          builder: (context, state) => LearnCoreScreen(),
+          builder: (context, state) => const LearnCoreScreen(),
         ),
         GoRoute(
           path: '/profile',
@@ -92,6 +96,7 @@ class MainApp extends StatelessWidget {
   final INetworkUserDataSource networkUserDataSource = NetworkUserDataSource();
   final ISavableUserDataSource savableUserDataSource =
       SavableUserDataSource(AppDatabase());
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(

@@ -9,6 +9,7 @@ import 'package:uwords/features/learn/presentation/widgets/letter_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_input.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage2 extends StatefulWidget {
   const LearnWordPage2(

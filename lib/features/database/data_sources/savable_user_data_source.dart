@@ -7,9 +7,9 @@ abstract interface class ISavableUserDataSource {
   Future<void> saveUser({required UserAuthDto userDto});
   Future<UserAuthDto> fetchUser(
       {required String uEmail, required String provider});
-  Future<void> changeCurrent({required int id});
+  void changeCurrent({required int id});
   Future<UserAuthDto> getCurrent();
-  Future<void> noneIsCurrent();
+  void noneIsCurrent();
 }
 
 class SavableUserDataSource implements ISavableUserDataSource {
@@ -32,7 +32,7 @@ class SavableUserDataSource implements ISavableUserDataSource {
     }
     final current =
         await database.into(database.userAuth).insertReturning(userDto.toDB());
-    await changeCurrent(id: current.id);
+    changeCurrent(id: current.id);
   }
 
   @override
@@ -44,7 +44,7 @@ class SavableUserDataSource implements ISavableUserDataSource {
   }
 
   @override
-  Future<void> changeCurrent({required int id}) async {
+  void changeCurrent({required int id}) {
     noneIsCurrent();
     (database.update(database.userAuth)
       ..where((u) => u.id.equals(id))
@@ -52,7 +52,7 @@ class SavableUserDataSource implements ISavableUserDataSource {
   }
 
   @override
-  Future<void> noneIsCurrent() async {
+  void noneIsCurrent() {
     (database.update(database.userAuth)
       ..where((u) => u.isCurrent.equals(true))
       ..write(const UserAuthCompanion(isCurrent: Value(false))));

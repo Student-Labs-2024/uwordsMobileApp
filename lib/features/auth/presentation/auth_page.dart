@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/auth/bloc/auth_enum.dart';
+import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/auth/presentation/widgets/custom_textfield.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
+import 'package:uwords/theme/app_colors.dart';
+import 'package:uwords/theme/app_text_styles.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -13,36 +18,45 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController mailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final codeController = TextEditingController();
 
   String regUser = '';
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[100],
+      backgroundColor: AppColors.brownColor,
       body: RepositoryProvider(
         create: (context) => context.read<IUserRepository>(),
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             state.whenOrNull(
-                initial: () {},
-                authorized: () {
-                  context.go("/home");
-                },
-                registred: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Вы были успешно зарегестрированы")));
-                },
-                failedRegisteration: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Регистрация завершена с ошибкой")));
-                },
-                failedSignIn: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Не удалось выполнить вход")));
-                });
+              initial: () {
+                context.go("/");
+              },
+              success: (success) {
+                switch (success) {
+                  case AuthSuccess.authorized:
+                    context.go("/home");
+                  case AuthSuccess.sendedCode:
+                  // TODO: Handle this case.
+                }
+              },
+              failed: (error) {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Text(error.name);
+                    });
+              },
+            );
           },
           builder: (context, state) {
             return state.maybeWhen(
@@ -51,65 +65,47 @@ class _AuthPageState extends State<AuthPage> {
                   child: Column(
                     children: [
                       const SizedBox(
-                        height: 40,
+                        height: AuthUndesignedConstants.mediumContainer,
                       ),
                       const Icon(
                         Icons.lock_outlined,
-                        size: 150,
-                        color: Colors.black,
+                        size: AuthUndesignedConstants.hugeIcon,
+                        color: AppColors.blackColor,
                       ),
                       const SizedBox(
-                        height: 40,
+                        height: AuthUndesignedConstants.mediumContainer,
                       ),
-                      const Row(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Don\'t have an account?',
-                            style: TextStyle(color: Colors.brown, fontSize: 20),
+                            AppLocalizations.of(context).dontHaveAnAccount,
+                            style: AppTextStyles.customTextFieldForAuth,
                           ),
                           Text(
-                            ' SIGN UP',
-                            style: TextStyle(
-                                color: Colors.brown,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                            AppLocalizations.of(context).signUp,
+                            style: AppTextStyles.customTextFieldForAuth,
                           )
                         ],
                       ),
+                      MailAndPasswordFileds(
+                          mailController: mailController,
+                          passwordController: passwordController),
                       const SizedBox(
-                        height: 30,
-                      ),
-                      CustomTextField(
-                        controller: usernameController,
-                        hintText: 'Почта',
-                        obscoreText: false,
+                        height: AuthUndesignedConstants.smallContainer,
                       ),
                       const SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextField(
-                        controller: passwordController,
-                        hintText: 'Пароль',
-                        obscoreText: true,
+                        height: AuthUndesignedConstants.smallestContainer,
                       ),
                       ElevatedButton(
                         onPressed: () async {
                           context.read<AuthBloc>().add(
                               AuthEvent.signInWithMailPassword(
-                                  emailAddress: usernameController.text,
+                                  emailAddress: mailController.text,
                                   password: passwordController.text));
                         },
-                        child: Text("Войти через почту и пароль"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          context.read<AuthBloc>().add(AuthEvent.registerUser(
-                              emailAddress: usernameController.text,
-                              password: passwordController.text));
-                        },
-                        child:
-                            Text("Зарегать пользователя через почту и пароль"),
+                        child: Text(AppLocalizations.of(context)
+                            .signInWithMailPassword),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -117,7 +113,8 @@ class _AuthPageState extends State<AuthPage> {
                               .read<AuthBloc>()
                               .add(const AuthEvent.signInWithGoogle());
                         },
-                        child: Text("Войти через гугл"),
+                        child:
+                            Text(AppLocalizations.of(context).signInWithGoogle),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -125,13 +122,19 @@ class _AuthPageState extends State<AuthPage> {
                               .read<AuthBloc>()
                               .add(const AuthEvent.signInWithVK());
                         },
-                        child: Text("Войти через ВК"),
+                        child: Text(AppLocalizations.of(context).signInWithVK),
                       ),
                       ElevatedButton(
                         onPressed: () async {
                           context.go("/home");
                         },
-                        child: Text("goHome сразу другая страница"),
+                        child: Text(AppLocalizations.of(context).nextPage),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          context.go("/");
+                        },
+                        child: const Text("Экран регистрации"),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -139,18 +142,18 @@ class _AuthPageState extends State<AuthPage> {
                               .read<AuthBloc>()
                               .add(const AuthEvent.logOut());
                         },
-                        child: Text("Выйти из любого пользователя"),
+                        child: Text(AppLocalizations.of(context).logOut),
                       ),
                     ],
                   ),
                 );
               },
               waitingAnswer: () {
-                return const Center(
+                return Center(
                   child: Column(
                     children: [
-                      CircularProgressIndicator(),
-                      Text("Подождите выполняется проверка данных"),
+                      const CircularProgressIndicator(),
+                      Text(AppLocalizations.of(context).checkingLoginData),
                     ],
                   ),
                 );
