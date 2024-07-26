@@ -35,6 +35,7 @@ class _CustomPincodeState extends State<CustomPincode> {
           inactiveBorderWidth: 1,
           activeBorderWidth: 1,
           disabledBorderWidth: 1),
+          onCompleted: (value) => widget.textEditingController.text = value,
     );
   }
 }
