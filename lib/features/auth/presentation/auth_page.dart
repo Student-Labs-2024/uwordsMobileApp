@@ -88,7 +88,8 @@ class _AuthPageState extends State<AuthPage> {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 12.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
                               child: Text(
                                 AppLocalizations.of(context).authIntoAccount,
                                 style: AppTextStyles.authHeaderText,

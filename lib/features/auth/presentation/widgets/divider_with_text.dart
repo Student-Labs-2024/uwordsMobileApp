@@ -6,7 +6,8 @@ import 'package:uwords/theme/app_text_styles.dart';
 class DividerWithText extends StatelessWidget {
   final String text;
   final double maximumWidth;
-  const DividerWithText({super.key, required this.text, required this.maximumWidth});
+  const DividerWithText(
+      {super.key, required this.text, required this.maximumWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,10 @@ class DividerWithText extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Text(text, style: AppTextStyles.authSmallText,),
+        Text(
+          text,
+          style: AppTextStyles.authSmallText,
+        ),
         const Spacer(),
         SizedBox(
           width: maximumWidth * 0.35,
