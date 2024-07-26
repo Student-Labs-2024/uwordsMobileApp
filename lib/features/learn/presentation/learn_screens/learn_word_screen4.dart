@@ -9,7 +9,6 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage4 extends StatefulWidget {
   const LearnWordPage4(
@@ -86,8 +85,6 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                 ),
                 SizedBox(
                   child: GridView(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
