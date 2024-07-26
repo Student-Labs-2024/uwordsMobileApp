@@ -5,6 +5,7 @@ class AppColors {
   static const Color darkMainColor = Color.fromRGBO(83, 45, 106, 1);
   static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.2);
   static const Color errorColor = Colors.red;
+  static const Color incorrectChooseColor = Color.fromRGBO(255, 74, 74, 0.6);
 
   static const Color homePageStartRecord = Color.fromRGBO(241, 245, 249, 1);
 

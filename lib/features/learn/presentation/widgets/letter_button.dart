@@ -1,52 +1,102 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/learn/data/undesign_constants.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/main/data/models/pair_model.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 
 class LetterButton extends StatefulWidget {
-  const LetterButton({super.key, required this.text, required this.onPressed});
-  final String text;
-  final Function(String, bool) onPressed;
+  const LetterButton(
+      {super.key, required this.letterInfo, required this.onPressed});
+  final Pair<String, int> letterInfo;
+  final bool Function(String, int) onPressed;
 
   @override
   State<LetterButton> createState() => LetterButtonState();
 }
 
 class LetterButtonState extends State<LetterButton> {
-  bool selected = false;
+  Color currentColor = AppColors.lightgrayColor;
+  int currentAmount = 0;
 
-  pressLetterButton() {
-    setState(() {
-      selected = !selected;
-    });
+  @override
+  void initState() {
+    currentAmount = widget.letterInfo.second;
+    super.initState();
+  }
 
-    widget.onPressed(widget.text, selected);
+  pressLetterButton() async {
+    if (currentColor == AppColors.incorrectChooseColor) return;
+    if (widget.onPressed(widget.letterInfo.first, currentAmount)) {
+      setState(() {
+        currentAmount--;
+        currentColor = AppColors.mainColor;
+      });
+    } else {
+      Color tempColor = currentColor;
+      setState(() {
+        currentColor = AppColors.incorrectChooseColor;
+      });
+      await Future.delayed(const Duration(milliseconds: 500));
+      setState(() {
+        currentColor = tempColor;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(
-            UnDesignedConstants.buttonHeight, UnDesignedConstants.buttonWidth),
-        padding: EdgeInsets.zero,
-      ),
-      onPressed: pressLetterButton,
-      child: Container(
-        width: UnDesignedConstants.smallContainer,
-        height: UnDesignedConstants.buttonHeight,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: selected ? AppColors.mainColor : AppColors.lightgrayColor,
-            width: UnDesignedConstants.thinBorder,
+    return SizedBox(
+      width: LearnSizes.letterButtonWrapperWidth,
+      height: LearnSizes.letterButtonWrapperHeight,
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: Container(
+              height: LearnSizes.letterButtonWrapperWidth,
+              width: LearnSizes.letterButtonHeight,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: currentColor,
+                  width: LearnSizes.letterButtonBorderWidth,
+                ),
+              ),
+              child: TextButton(
+                onPressed: pressLetterButton,
+                child: Text(
+                  widget.letterInfo.first,
+                  style: LearnTextStyles.wordScreenTextInput,
+                ),
+              ),
+            ),
           ),
-        ),
-        child: Text(
-          widget.text,
-          style: LearnTextStyles.wordScreenTextInput,
-        ),
+          (currentAmount > 0 && widget.letterInfo.second > 1)
+              ? Positioned(
+                  right: 0,
+                  top: 0,
+                  child: Container(
+                    width: LearnSizes.letterButtonAmountWidth,
+                    height: LearnSizes.letterButtonAmountHeight,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      border: Border.all(
+                        color: AppColors.blackColor,
+                        width: LearnSizes.letterButtonAmountBorderWidth,
+                      ),
+                      color: AppColors.darkMainColor,
+                    ),
+                    child: Text(
+                      currentAmount.toString(),
+                      style: const TextStyle(color: AppColors.whiteColor),
+                    ),
+                  ),
+                )
+              : const SizedBox(),
+        ],
       ),
     );
   }

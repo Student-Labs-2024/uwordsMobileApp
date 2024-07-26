@@ -12,8 +12,9 @@ class WordInfoDto with _$WordInfoDto {
       name: "word",
     )
     required WordModelDto word,
-    @JsonKey(name: "user_id", defaultValue: "1") required String userId,
-    @JsonKey(name: "topic_id", defaultValue: null) required String? topicId,
+    @JsonKey(name: "user_id", defaultValue: 0) required int userId,
+    @JsonKey(name: "latest_study", defaultValue: null)
+    required DateTime? latestStudy,
     @JsonKey(name: "frequency", defaultValue: 0) required int frequency,
     @JsonKey(name: "progress", defaultValue: 0.0) required double progress,
   }) = _WordInfoDto;

@@ -1,24 +1,92 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get_it/get_it.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
-import 'package:uwords/features/learn/data/undesign_constants.dart';
-import 'package:uwords/theme/learn_decoration_button_styles.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/presentation/widgets/speech_button.dart';
+import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LearnWordPage3 extends StatefulWidget {
-  const LearnWordPage3({super.key, required this.word});
+  const LearnWordPage3(
+      {super.key,
+      required this.word,
+      required this.goNextScreen,
+      required this.quit});
 
   final WordModel word;
+  final VoidCallback goNextScreen;
+  final VoidCallback quit;
 
   @override
   State<LearnWordPage3> createState() => LearnWordPage3State();
 }
 
 class LearnWordPage3State extends State<LearnWordPage3> {
+  final SpeechToText _speechToText = GetIt.instance.get<SpeechToText>();
+  String _lastWords = '';
+
+  bool isAnswerCorrect = false;
+
+  void pressSpeechButton() async {
+    if (_speechToText.isNotListening) {
+      await _speechToText.listen(onResult: _onSpeechResult, localeId: 'en_001');
+      _lastWords = '';
+      setState(() {});
+    } else {
+      await _speechToText.stop();
+      setState(() {});
+    }
+  }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    log('_speechToText result');
+    log(_lastWords);
+    setState(() {
+      _lastWords = result.recognizedWords;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initSpeech();
+  }
+
+  void _initSpeech() async {
+    if (!_speechToText.isAvailable) {
+      await _speechToText.initialize();
+    }
+  }
+
+  bool compareWords(String userWord, String answer) {
+    String lowerUserWord = userWord.toLowerCase();
+    String lowerAnswer = answer.toLowerCase();
+    return lowerUserWord == lowerAnswer;
+  }
+
+  void onPressBottomButton() {
+    if (!isAnswerCorrect) {
+      if (compareWords(_lastWords, widget.word.enValue)) {
+        setState(() {
+          isAnswerCorrect = true;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context).misspelled)));
+      }
+    } else {
+      widget.goNextScreen();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,40 +100,40 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: UnDesignedConstants.smallEmptySpace,
-                    ),
                     Container(
-                      height: UnDesignedConstants.smallContainer,
-                      width: UnDesignedConstants.smallContainer,
-                      decoration: LearnDecorButtStyle.wordScreenPopBackBDS,
+                      height: LearnSizes.arrowBackSize,
+                      width: LearnSizes.arrowBackSize,
+                      margin: const EdgeInsets.only(
+                          left: LearnPaddings.backArrowLeft,
+                          top: LearnPaddings.backArrowTop),
+                      decoration: LearnStyles.wordScreenPopBackBDS,
                       child: ElevatedButton(
-                        onPressed: () => context.pop(),
-                        style: LearnDecorButtStyle.wordScreenPopBackBS,
+                        onPressed: () => widget.quit,
+                        style: LearnStyles.wordScreenPopBackBS,
                         child: const Icon(
                           Icons.arrow_back,
                           color: AppColors.blackColor,
-                          size: UnDesignedConstants.smallIcon,
+                          size: LearnSizes.arrowBackIconSize,
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: UnDesignedConstants.mediumEmptySpace,
+                      height: LearnSizes.topSpacing,
                     ),
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(20),
                       child: Image.network(
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                         widget.word.pictureLink,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) {
                             return child;
                           } else {
                             return SizedBox(
-                              width: UnDesignedConstants.imageSize *
-                                  MediaQuery.of(context).size.width,
-                              height:
-                                  UnDesignedConstants.heightOfCentralElement,
+                              width: MediaQuery.of(context).size.width *
+                                  LearnSizes.imageWidth,
+                              height: MediaQuery.of(context).size.height *
+                                  LearnSizes.imageHeight,
                               child: const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.mainColor,
@@ -74,37 +142,24 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                             );
                           }
                         },
-                        width: UnDesignedConstants.imageSize *
-                            MediaQuery.of(context).size.width,
-                        height: UnDesignedConstants.imageSize,
+                        width: MediaQuery.of(context).size.width *
+                            LearnSizes.imageWidth,
+                        height: MediaQuery.of(context).size.height *
+                            LearnSizes.imageHeight,
                       ),
                     ),
                   ],
                 ),
-                Container(
-                  height: UnDesignedConstants.bigContainer,
-                  width: UnDesignedConstants.bigContainer,
-                  decoration: LearnDecorButtStyle.wordScreenSoundBDS,
-                  child: ElevatedButton(
-                    onPressed: () => context
-                        .read<PlayerBloc>()
-                        .add(PlayerEvent.playAudio(widget.word.audioLink)),
-                    style: LearnDecorButtStyle.wordScreenSoundBS,
-                    child: const Icon(
-                      Icons.volume_up_outlined,
-                      color: AppColors.mainColor,
-                      size: UnDesignedConstants.mediumIcon,
-                    ),
-                  ),
-                ),
+                SpeechButton(
+                    isPressed: _speechToText.isListening,
+                    onPressed: pressSpeechButton),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      bottom: UnDesignedConstants.bottomPadding),
+                  padding: const EdgeInsets.only(bottom: LearnPaddings.bottom),
                   child: BigButton(
-                    text: AppLocalizations.of(context).next,
-                    onPressed: () => context.go(
-                        "/learn/screen1/screen2/screen3/screen4",
-                        extra: widget.word),
+                    text: isAnswerCorrect
+                        ? AppLocalizations.of(context).next
+                        : AppLocalizations.of(context).check,
+                    onPressed: onPressBottomButton,
                   ),
                 )
               ],

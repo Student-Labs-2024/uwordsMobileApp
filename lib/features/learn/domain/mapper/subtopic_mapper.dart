@@ -1,0 +1,16 @@
+import 'package:uwords/features/learn/domain/dto/subtopic_dto.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
+import 'package:uwords/features/learn/domain/mapper/word_info_mapper.dart';
+
+extension SubtopicMapper on SubtopicDto {
+  Subtopic toModel() => Subtopic(
+        subtopicTitle: subtopicTitle,
+        wordInfoList: words.toModel(),
+      );
+}
+
+extension SubtopicListMapper on List<SubtopicDto> {
+  List<Subtopic> toModel() {
+    return map((subtopicDto) => subtopicDto.toModel()).toList();
+  }
+}
