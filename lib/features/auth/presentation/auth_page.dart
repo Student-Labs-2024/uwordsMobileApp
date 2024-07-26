@@ -26,19 +26,23 @@ class _AuthPageState extends State<AuthPage> {
         create: (context) => context.read<IUserRepository>(),
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
-            state.whenOrNull(initial: () {
-            }, authorized: () {
-              context.go("/home");
-            }, registred: () {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Вы были успешно зарегестрированы")));
-            }, failedRegisteration: () {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text("Регистрация завершена с ошибкой")));
-            }, failedSignIn: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Не удалось выполнить вход")));
-            });
+            state.whenOrNull(
+                initial: () {},
+                authorized: () {
+                  context.go("/home");
+                },
+                registred: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Вы были успешно зарегестрированы")));
+                },
+                failedRegisteration: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Регистрация завершена с ошибкой")));
+                },
+                failedSignIn: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Не удалось выполнить вход")));
+                });
           },
           builder: (context, state) {
             return state.maybeWhen(
