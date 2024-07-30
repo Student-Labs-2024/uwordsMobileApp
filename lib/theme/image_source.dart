@@ -16,4 +16,5 @@ class AppImageSource {
   static const String vkIcon = 'assets/svg/vk.svg';
   static const String codeBackground = 'assets/png/background.png';
   static const String returnIcon = 'assets/svg/return.svg';
+  static const String optionsIco = 'assets/svg/options_ico.svg';
 }
