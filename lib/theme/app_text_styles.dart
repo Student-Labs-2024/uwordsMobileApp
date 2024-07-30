@@ -91,4 +91,10 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       fontSize: 20,
       color: AppColors.darkMainColor);
+
+  static const profileName = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+      color: AppColors.darkMainColor);
 }

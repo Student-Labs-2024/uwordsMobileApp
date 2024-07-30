@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
-import 'package:uwords/features/main/data/models/pair_model.dart';
+import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
