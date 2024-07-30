@@ -41,7 +41,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleRequestCode(
       _RequestCode event, Emitter<AuthState> emit) async {
-    emit(const AuthState.waitingAnswer());
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       _uEmail = event.emailAddress;
@@ -63,7 +62,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleRegisterUser(
       _RegisterUser event, Emitter<AuthState> emit) async {
-    emit(const AuthState.waitingAnswer());
     _uCode = event.code;
     try {
       bool isRightCode =
@@ -82,6 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
       } else {
         emit(const AuthState.failed(AuthError.codeIsNotRight));
+        emit(const AuthState.success(AuthSuccess.sendedCode));
       }
     } on Exception catch (e) {
       log(e.toString());
@@ -92,7 +91,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithVK(
       _SignInWithVK event, Emitter<AuthState> emit) async {
-    emit(const AuthState.waitingAnswer());
     auth.signOut();
     userRepository.localLogOut();
     _provider = AuthorizationProvider.vk;
@@ -107,15 +105,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithGoogle(
       _SignInWithGoogle event, Emitter<AuthState> emit) async {
-    emit(const AuthState.waitingAnswer());
     await vk.initSdk();
     if (await vk.isLoggedIn) {
       vk.logOut();
     }
     userRepository.localLogOut();
     _provider = AuthorizationProvider.google;
-    await _signInWithGoogle();
     try {
+      await _signInWithGoogle();
       await _authorization(emit: emit);
     } on Exception catch (e) {
       _emitter = emit;
@@ -132,7 +129,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (await vk.isLoggedIn) {
         vk.logOut();
       }
-      emit(const AuthState.waitingAnswer());
       _uEmail = event.emailAddress;
       _uPassword = event.password;
       _provider = AuthorizationProvider.self;
@@ -180,16 +176,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _signInWithGoogle() async {
-    final GoogleSignInAccount? user = await GoogleSignIn().signIn();
+    try {
+      final GoogleSignInAccount? user = await GoogleSignIn().signIn();
 
-    final GoogleSignInAuthentication gAuth = await user!.authentication;
+      final GoogleSignInAuthentication gAuth = await user!.authentication;
 
-    final credential = GoogleAuthProvider.credential(
-        accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+      final credential = GoogleAuthProvider.credential(
+          accessToken: gAuth.accessToken, idToken: gAuth.idToken);
 
-    final creds = await auth.signInWithCredential(credential);
+      final creds = await auth.signInWithCredential(credential);
 
-    _uPassword = creds.user?.uid ?? '';
+      _uPassword = creds.user?.uid ?? '';
+    } on Exception {
+      throw CanceledSignIn();
+    }
   }
 
   Future<void> _registerAndAuth({required Emitter<AuthState> emit}) async {

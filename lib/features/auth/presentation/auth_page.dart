@@ -144,17 +144,18 @@ class _AuthPageState extends State<AuthPage> {
                                   .read<AuthBloc>()
                                   .add(const AuthEvent.signInWithVK());
                             }, text: AppLocalizations.of(context).signInWithVK),
-                            const Spacer(),
+                            const SizedBox(
+                              height: AuthDesignedPaddings.smallEmptySpace,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const Spacer(),
                                 Text(
-                                    AppLocalizations.of(context)
-                                        .dontHaveAnAccount,
+                                    '${AppLocalizations.of(context).dontHaveAnAccount} ',
                                     style: AppTextStyles.authSmallText),
-                                TextButton(
-                                  onPressed: () {
+                                InkWell(
+                                  onTap: () {
                                     context.go("/");
                                   },
                                   child: Text(

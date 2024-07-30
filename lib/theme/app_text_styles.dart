@@ -6,15 +6,19 @@ class AppTextStyles {
     fontFamily: 'SNFBSTRD_handwrite',
     fontWeight: FontWeight.w400,
     fontSize: 30,
-    color: AppColors.whiteColor,
+    color: AppColors.darkMainColor,
   );
   static const recordButtonSubTitle = TextStyle(
     fontFamily: 'SNFBSTRD_handwrite',
     fontWeight: FontWeight.w400,
     fontSize: 18,
-    color: AppColors.whiteColor,
+    color: AppColors.darkMainColor,
   );
-  static const customTextfieldInput = TextStyle(color: Colors.grey);
+  static const customTextfieldInput = TextStyle(
+      color: Colors.grey,
+      fontSize: 14,
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400);
   static const customTextfieldExeption = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
@@ -91,4 +95,10 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       fontSize: 20,
       color: AppColors.darkMainColor);
+  static const authSmallestBoldLinkText = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.bold,
+    fontSize: 12,
+    color: AppColors.darkMainColor,
+  );
 }

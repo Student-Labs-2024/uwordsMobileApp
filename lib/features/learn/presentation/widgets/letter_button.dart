@@ -45,59 +45,61 @@ class LetterButtonState extends State<LetterButton> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: LearnSizes.letterButtonWrapperWidth,
-      height: LearnSizes.letterButtonWrapperHeight,
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Container(
-              height: LearnSizes.letterButtonWrapperWidth,
-              width: LearnSizes.letterButtonHeight,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: currentColor,
-                  width: LearnSizes.letterButtonBorderWidth,
-                ),
-              ),
-              child: TextButton(
-                onPressed: pressLetterButton,
-                child: Text(
-                  widget.letterInfo.first,
-                  style: LearnTextStyles.wordScreenTextInput,
-                ),
-              ),
-            ),
-          ),
-          (currentAmount > 0 && widget.letterInfo.second > 1)
-              ? Positioned(
-                  right: 0,
-                  top: 0,
+    return currentAmount > 0
+        ? SizedBox(
+            width: LearnSizes.letterButtonWrapperWidth,
+            height: LearnSizes.letterButtonWrapperHeight,
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 0,
+                  left: 0,
                   child: Container(
-                    width: LearnSizes.letterButtonAmountWidth,
-                    height: LearnSizes.letterButtonAmountHeight,
+                    height: LearnSizes.letterButtonWrapperWidth,
+                    width: LearnSizes.letterButtonHeight,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
+                      borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: AppColors.blackColor,
-                        width: LearnSizes.letterButtonAmountBorderWidth,
+                        color: currentColor,
+                        width: LearnSizes.letterButtonBorderWidth,
                       ),
-                      color: AppColors.darkMainColor,
                     ),
-                    child: Text(
-                      currentAmount.toString(),
-                      style: const TextStyle(color: AppColors.whiteColor),
+                    child: TextButton(
+                      onPressed: pressLetterButton,
+                      child: Text(
+                        widget.letterInfo.first,
+                        style: LearnTextStyles.wordScreenTextInput,
+                      ),
                     ),
                   ),
-                )
-              : const SizedBox(),
-        ],
-      ),
-    );
+                ),
+                (currentAmount > 0 && widget.letterInfo.second > 1)
+                    ? Positioned(
+                        right: 0,
+                        top: 0,
+                        child: Container(
+                          width: LearnSizes.letterButtonAmountWidth,
+                          height: LearnSizes.letterButtonAmountHeight,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            border: Border.all(
+                              color: AppColors.blackColor,
+                              width: LearnSizes.letterButtonAmountBorderWidth,
+                            ),
+                            color: AppColors.darkMainColor,
+                          ),
+                          child: Text(
+                            currentAmount.toString(),
+                            style: const TextStyle(color: AppColors.whiteColor),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
+              ],
+            ),
+          )
+        : const SizedBox();
   }
 }
