@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  void _connect() {
-    errorStreamController = webSocketService.connect(websocketLink);
+  void _connect() async {
+    errorStreamController = await webSocketService.connect(websocketLink);
     webSocketService.listenForErrors();
   }
 

@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:get_it/get_it.dart';
+import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/websoket_exceptions/interface_websocket_service.dart';
 import 'package:web_socket_channel/io.dart';
 
@@ -14,8 +16,9 @@ class ExceptionWebsocketService extends IExceptionWebsocketService {
   late StreamController<String> _errorController;
 
   @override
-  StreamController connect(String url) {
-    channel = IOWebSocketChannel.connect(url);
+  Future<StreamController> connect(String url) async {
+    channel = IOWebSocketChannel.connect(
+        '$url${await GetIt.instance.get<IUserRepository>().getCurrentUserId()}');
     _errorController = StreamController<String>.broadcast();
     return _errorController;
   }

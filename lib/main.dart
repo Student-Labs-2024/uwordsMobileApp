@@ -94,6 +94,7 @@ final GoRouter _goRouter = GoRouter(
 );
 
 class MainApp extends StatelessWidget {
+  final getIt = GetIt.instance;
   MainApp({super.key});
   final IAudioDataSource audioDataSource = AudioDataSource();
   final IWordsDataSource wordsDataSource = WordsDataSource();
@@ -103,12 +104,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getIt.registerSingleton<IUserRepository>(UserRepository(
+        networkUserDataSource: networkUserDataSource,
+        savableUserDataSource: savableUserDataSource));
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<IUserRepository>(
-            create: (context) => UserRepository(
-                networkUserDataSource: networkUserDataSource,
-                savableUserDataSource: savableUserDataSource)),
+            create: (context) => getIt.get<IUserRepository>()),
         RepositoryProvider<IAudioRepository>(
             create: (context) =>
                 AudioRepository(audioDataSource: audioDataSource)),
