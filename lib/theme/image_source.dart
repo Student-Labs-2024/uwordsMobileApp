@@ -20,4 +20,5 @@ class AppImageSource {
   static const String visibilityOutlined = 'assets/svg/visabillity_icon.svg';
   static const String visibilityOutlinedOff =
       'assets/svg/visabillity_off_icon.svg';
+  static const String topicBackground = 'assets/png/topic_background.png';
 }

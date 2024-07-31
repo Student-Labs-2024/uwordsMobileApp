@@ -52,5 +52,7 @@
   "congratulations": "Молодец, ты прошел все слова!",
   "next": "Дальше",
   "check": "Проверить",
-  "startTraining": "Тренировать"
+  "startTraining": "Тренировать",
+  "topics": "Топики",
+  "checkAll": "См. все"
 }
