@@ -55,6 +55,7 @@ class _CustomAuthTextFieldState extends State<CustomAuthTextField> {
                 child: TextField(
                   controller: widget.controller,
                   obscureText: _obscureText,
+                  obscuringCharacter: '*',
                   cursorColor: AppColors.darkMainColor,
                   style: const TextStyle(
                     color: AppColors.darkMainColor,

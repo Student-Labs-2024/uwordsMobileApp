@@ -19,7 +19,7 @@ class WordsDataSource implements IWordsDataSource {
   @override
   Future<List<TopicDto>> fetchTopics({required String accessToken}) async {
     List<TopicDto> topics = [];
-    topics = await client.getTopics(accessToken);
+    topics = await client.getTopics("Bearer $accessToken");
     return topics;
   }
 

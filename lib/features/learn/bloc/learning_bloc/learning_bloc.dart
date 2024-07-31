@@ -42,7 +42,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     await checkTokenExpirationAndUpdateIfNeed(
         accessToken: accessToken, userRepository: userRepository);
     List<Topic> newTopics =
-        await wordsRepository.getTopicsForStudy(accessToken: accessToken);
+        await wordsRepository.getTopics(accessToken: accessToken);
     topics = newTopics;
     emit(LearningState.gotWordsForStudy(topics: topics));
     emit(LearningState.initial(topics: topics));
