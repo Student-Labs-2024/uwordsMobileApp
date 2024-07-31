@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   final IExceptionWebsocketService webSocketService =
       GetIt.instance.get<IExceptionWebsocketService>();
-  String? _errorMessage;
+  late StreamController errorStreamController;
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
@@ -52,13 +53,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  void _connect() async {
-    webSocketService.connect(websocketLink);
-    webSocketService.listenForErrors((message) {
-      setState(() {
-        _errorMessage = message;
-      });
-    });
+  void _connect() {
+    errorStreamController = webSocketService.connect(websocketLink);
+    webSocketService.listenForErrors();
   }
 
   @override
@@ -118,8 +115,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       isRecording = false;
     });
-    int integer = await File(_securedPath).length();
-    print(integer.toString());
     return _securedPath;
   }
 
@@ -311,7 +306,16 @@ class _HomePageState extends State<HomePage> {
                           height: HomePageComponentSizes
                               .customTextFieldSummarizedHeight,
                         ),
-                        if (_errorMessage != null) Text(_errorMessage!),
+                        StreamBuilder(
+                          stream: errorStreamController.stream,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(snapshot.data.toString());
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
+                        ),
                       ],
                     )
                   ],

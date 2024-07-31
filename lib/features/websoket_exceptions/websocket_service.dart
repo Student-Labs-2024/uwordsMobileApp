@@ -1,31 +1,37 @@
+import 'dart:async';
+import 'dart:convert';
 import 'package:uwords/features/websoket_exceptions/interface_websocket_service.dart';
 import 'package:web_socket_channel/io.dart';
 
 abstract interface class IExceptionWebsocketService
     implements IWebsocketService {
-  void listenForErrors(Function(String message) onError);
+  void listenForErrors();
 }
 
 class ExceptionWebsocketService extends IExceptionWebsocketService {
-  IOWebSocketChannel? _channel;
-  Function? _onError;
+  @override
+  IOWebSocketChannel? channel;
+  late StreamController<String> _errorController;
 
   @override
-  void connect(String url) {
-    _channel = IOWebSocketChannel.connect(url);
+  StreamController connect(String url) {
+    channel = IOWebSocketChannel.connect(url);
+    _errorController = StreamController<String>.broadcast();
+    return _errorController;
   }
 
   @override
   void disconnect() {
-    _channel?.sink.close();
+    channel?.sink.close();
+    _errorController.close();
   }
 
   @override
-  void listenForErrors(Function(String message) onError) {
-    _onError = onError;
-    _channel?.stream.listen((message) {
-      if (message is Map && message.containsKey('msg')) {
-        _onError!(message['msg']);
+  void listenForErrors() {
+    channel?.stream.listen((message) {
+      message = jsonDecode(message);
+      if (message is Map && message.containsKey("msg")) {
+        _errorController.sink.add(message["msg"]);
       }
     });
   }
