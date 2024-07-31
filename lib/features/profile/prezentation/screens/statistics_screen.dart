@@ -107,6 +107,20 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         progress: 100),
   ];
 
+  String getPrecisionIcon(int percent) {
+    if (percent == 100) {
+      return AppImageSource.precision100Icon;
+    } else if (percent >= 70) {
+      return AppImageSource.precision70Icon;
+    } else if (percent >= 50) {
+      return AppImageSource.precision50Icon;
+    } else if (percent >= 20) {
+      return AppImageSource.precision20Icon;
+    } else {
+      return AppImageSource.precision0Icon;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -149,7 +163,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 onPressed: () => {},
               ),
               StatisticCard(
-                image: AppImageSource.precisionIcon,
+                image: getPrecisionIcon(83),
                 title: '83%',
                 subtitle: 'Точность',
                 onPressed: () => {},

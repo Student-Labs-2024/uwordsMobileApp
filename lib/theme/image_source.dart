@@ -18,7 +18,11 @@ class AppImageSource {
   static const String returnIcon = 'assets/svg/return.svg';
   static const String optionsIco = 'assets/svg/options_ico.svg';
   static const String onfireIcon = 'assets/png/onfire_icon.png';
-  static const String precisionIcon = 'assets/png/precision_icon.png';
+  static const String precision0Icon = 'assets/png/precision0_icon.png';
+  static const String precision20Icon = 'assets/png/precision20_icon.png';
+  static const String precision50Icon = 'assets/png/precision50_icon.png';
+  static const String precision70Icon = 'assets/png/precision70_icon.png';
+  static const String precision100Icon = 'assets/png/precision100_icon.png';
   static const String recordTimeIcon = 'assets/png/record_time_icon.png';
   static const String wordsLearnedIcon = 'assets/png/words_learned_icon.png';
 }

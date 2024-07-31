@@ -14,5 +14,4 @@ class ProfileSizes {
   static const double progressWordTileImageHeight = 38 / 375;
   static const double progressWordTile = 10;
   static const double progressWordTileIndicatorWidth = 120 / 375;
-  static const double progressWordTileIndicatorHeight = 11;
 }
