@@ -21,7 +21,7 @@ class _LearnClient implements LearnClient {
   String? baseUrl;
 
   @override
-  Future<List<TopicDto>> getTopics(String accessToken) async {
+  Future<List<TopicDto>> getAllWords(String accessToken) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': accessToken};
@@ -46,6 +46,69 @@ class _LearnClient implements LearnClient {
             ))));
     var value = _result.data!
         .map((dynamic i) => TopicDto.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<TopicDto>> getTopics(String accessToken) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': accessToken};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<TopicDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'user/topics',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) => TopicDto.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<WordInfoDto>> getWordsByTopicAndSubtopic(
+    String accessToken,
+    dynamic body,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': accessToken};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = body;
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<WordInfoDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'user/subtopic/words',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) => WordInfoDto.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

@@ -20,7 +20,7 @@ SubtopicDto _$SubtopicDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SubtopicDto {
-  @JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+  @JsonKey(name: "title", defaultValue: 'null subTitle')
   String get subtopicTitle => throw _privateConstructorUsedError;
   @JsonKey(name: "word_count", defaultValue: 0)
   int get wordCount => throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$SubtopicDto {
   int get progress => throw _privateConstructorUsedError;
   @JsonKey(name: "pictureLink", defaultValue: '')
   String get pictureLink => throw _privateConstructorUsedError;
-  @JsonKey(name: "words")
+  @JsonKey(name: "words", defaultValue: [])
   List<WordInfoDto> get words => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +44,12 @@ abstract class $SubtopicDtoCopyWith<$Res> {
       _$SubtopicDtoCopyWithImpl<$Res, SubtopicDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+      {@JsonKey(name: "title", defaultValue: 'null subTitle')
       String subtopicTitle,
       @JsonKey(name: "word_count", defaultValue: 0) int wordCount,
       @JsonKey(name: "progress", defaultValue: 0) int progress,
       @JsonKey(name: "pictureLink", defaultValue: '') String pictureLink,
-      @JsonKey(name: "words") List<WordInfoDto> words});
+      @JsonKey(name: "words", defaultValue: []) List<WordInfoDto> words});
 }
 
 /// @nodoc
@@ -105,12 +105,12 @@ abstract class _$$SubtopicDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+      {@JsonKey(name: "title", defaultValue: 'null subTitle')
       String subtopicTitle,
       @JsonKey(name: "word_count", defaultValue: 0) int wordCount,
       @JsonKey(name: "progress", defaultValue: 0) int progress,
       @JsonKey(name: "pictureLink", defaultValue: '') String pictureLink,
-      @JsonKey(name: "words") List<WordInfoDto> words});
+      @JsonKey(name: "words", defaultValue: []) List<WordInfoDto> words});
 }
 
 /// @nodoc
@@ -159,19 +159,20 @@ class __$$SubtopicDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SubtopicDtoImpl implements _SubtopicDto {
   const _$SubtopicDtoImpl(
-      {@JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+      {@JsonKey(name: "title", defaultValue: 'null subTitle')
       required this.subtopicTitle,
       @JsonKey(name: "word_count", defaultValue: 0) required this.wordCount,
       @JsonKey(name: "progress", defaultValue: 0) required this.progress,
       @JsonKey(name: "pictureLink", defaultValue: '') required this.pictureLink,
-      @JsonKey(name: "words") required final List<WordInfoDto> words})
+      @JsonKey(name: "words", defaultValue: [])
+      required final List<WordInfoDto> words})
       : _words = words;
 
   factory _$SubtopicDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubtopicDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+  @JsonKey(name: "title", defaultValue: 'null subTitle')
   final String subtopicTitle;
   @override
   @JsonKey(name: "word_count", defaultValue: 0)
@@ -184,7 +185,7 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
   final String pictureLink;
   final List<WordInfoDto> _words;
   @override
-  @JsonKey(name: "words")
+  @JsonKey(name: "words", defaultValue: [])
   List<WordInfoDto> get words {
     if (_words is EqualUnmodifiableListView) return _words;
     // ignore: implicit_dynamic_type
@@ -233,21 +234,21 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
 
 abstract class _SubtopicDto implements SubtopicDto {
   const factory _SubtopicDto(
-      {@JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+      {@JsonKey(name: "title", defaultValue: 'null subTitle')
       required final String subtopicTitle,
       @JsonKey(name: "word_count", defaultValue: 0)
       required final int wordCount,
       @JsonKey(name: "progress", defaultValue: 0) required final int progress,
       @JsonKey(name: "pictureLink", defaultValue: '')
       required final String pictureLink,
-      @JsonKey(name: "words")
+      @JsonKey(name: "words", defaultValue: [])
       required final List<WordInfoDto> words}) = _$SubtopicDtoImpl;
 
   factory _SubtopicDto.fromJson(Map<String, dynamic> json) =
       _$SubtopicDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
+  @JsonKey(name: "title", defaultValue: 'null subTitle')
   String get subtopicTitle;
   @override
   @JsonKey(name: "word_count", defaultValue: 0)
@@ -259,7 +260,7 @@ abstract class _SubtopicDto implements SubtopicDto {
   @JsonKey(name: "pictureLink", defaultValue: '')
   String get pictureLink;
   @override
-  @JsonKey(name: "words")
+  @JsonKey(name: "words", defaultValue: [])
   List<WordInfoDto> get words;
   @override
   @JsonKey(ignore: true)
