@@ -29,4 +29,9 @@ class AppColors {
 
   static const Color lightgrayColor = Color.fromRGBO(154, 147, 147, 1);
   static const Color lightgrayColor2 = Color.fromRGBO(133, 132, 134, 1);
+
+  static const Color goodProgressbarColor1 = Color.fromRGBO(47, 234, 155, 1);
+  static const Color goodProgressbarColor2 = Color.fromRGBO(127, 221, 83, 1);
+  static const Color badProgressbarColor1 = Color.fromRGBO(255, 191, 26, 1);
+  static const Color badProgressbarColor2 = Color.fromRGBO(255, 64, 128, 1);
 }

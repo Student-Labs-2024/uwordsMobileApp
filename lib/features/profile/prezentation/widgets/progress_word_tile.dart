@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/global/widgets/custom_image_view.dart';
+import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
@@ -39,29 +40,11 @@ class ProgressWordTile extends StatelessWidget {
                   wordInfo.word.ruValue,
                   style: AppTextStyles.ProgressWordTileTitle,
                 ),
-                Stack(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width *
-                          ProfileSizes.progressWordTileIndicatorWidth,
-                      height: ProfileSizes.progressWordTileIndicatorHeight,
-                      decoration: BoxDecoration(
-                        color: AppColors.lightgrayColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width *
-                          ProfileSizes.progressWordTileIndicatorWidth *
-                          0.5,
-                      height: ProfileSizes.progressWordTileIndicatorHeight,
-                      decoration: BoxDecoration(
-                        color: AppColors.greenColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ],
-                ),
+                CustomProgressBar(
+                  width: MediaQuery.of(context).size.width *
+                      ProfileSizes.progressWordTileIndicatorWidth,
+                  percent: wordInfo.progress,
+                )
               ],
             ),
           ),

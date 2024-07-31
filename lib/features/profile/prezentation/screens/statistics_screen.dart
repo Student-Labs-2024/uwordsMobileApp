@@ -53,7 +53,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         userId: 1,
         latestStudy: null,
         frequency: 0,
-        progress: 0),
+        progress: 20),
     WordInfo(
         id: 2,
         word: WordModel(
@@ -66,7 +66,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         userId: 2,
         latestStudy: null,
         frequency: 0,
-        progress: 0),
+        progress: 40),
     WordInfo(
         id: 3,
         word: WordModel(
@@ -79,7 +79,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         userId: 3,
         latestStudy: null,
         frequency: 0,
-        progress: 0),
+        progress: 60),
     WordInfo(
         id: 4,
         word: WordModel(
@@ -91,7 +91,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         userId: 4,
         latestStudy: null,
         frequency: 0,
-        progress: 0),
+        progress: 80),
     WordInfo(
         id: 5,
         word: WordModel(
@@ -104,7 +104,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         userId: 5,
         latestStudy: null,
         frequency: 0,
-        progress: 0),
+        progress: 100),
   ];
 
   @override
