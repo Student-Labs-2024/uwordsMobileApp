@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/global/widgets/custom_image_view.dart';
+import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
-import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
-import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
-import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 
 class ProgressWordTile extends StatelessWidget {
   const ProgressWordTile({super.key, required this.wordInfo});
@@ -19,18 +16,18 @@ class ProgressWordTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          CustomImageView(
+          CustomImageNetworkView(
               imageSource: wordInfo.word.pictureLink,
               width: MediaQuery.of(context).size.width *
                   ProfileSizes.progressWordTileImageWidth,
-              height: MediaQuery.of(context).size.width *
+              height: MediaQuery.of(context).size.height *
                   ProfileSizes.progressWordTileImageHeight,
               clipRadius: 10),
           const SizedBox(
             width: ProfileSizes.progressWordTile,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.width *
+            height: MediaQuery.of(context).size.height *
                 ProfileSizes.progressWordTileImageHeight,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

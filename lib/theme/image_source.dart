@@ -25,4 +25,6 @@ class AppImageSource {
   static const String precision100Icon = 'assets/png/precision100_icon.png';
   static const String recordTimeIcon = 'assets/png/record_time_icon.png';
   static const String wordsLearnedIcon = 'assets/png/words_learned_icon.png';
+  static const String achieveActiveIcon = 'assets/png/achieveActive.png';
+  static const String achieveInactiveIcon = 'assets/png/achieveInactive.png';
 }

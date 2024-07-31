@@ -33,6 +33,7 @@ import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
+import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -82,7 +83,7 @@ final GoRouter _goRouter = GoRouter(
         ),
         GoRoute(
           path: '/profile',
-          builder: (context, state) => const AuthPage(),
+          builder: (context, state) => const ProfilePage(),
         ),
       ],
     ),

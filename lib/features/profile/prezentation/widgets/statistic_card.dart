@@ -32,11 +32,11 @@ class StatisticCard extends StatelessWidget {
           fixedSize: WidgetStateProperty.all(Size(
               MediaQuery.of(context).size.width *
                   ProfileSizes.statisticCardWidth,
-              MediaQuery.of(context).size.width *
+              MediaQuery.of(context).size.height *
                   ProfileSizes.statisticCardHeight)),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
             ),
           ),
         ),

@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:uwords/features/global/widgets/custom_image_view.dart';
+import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/screens/achievements_screen.dart';
@@ -78,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomImageView(
+                        CustomImageNetworkView(
                             imageSource:
                                 'https://i.pinimg.com/originals/86/e9/b5/86e9b52d3cfb854b855faa0e7dabfb74.jpg',
                             width: MediaQuery.of(context).size.width *

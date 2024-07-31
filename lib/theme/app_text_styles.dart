@@ -121,7 +121,7 @@ class AppTextStyles {
       fontSize: 15,
       color: AppColors.lightgrayColor2);
 
-  static const statisticsWordTileTitle = TextStyle(
+  static const profileSubtitle = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w500,
       fontSize: 18,
@@ -141,5 +141,10 @@ class AppTextStyles {
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w600,
       fontSize: 14,
+      color: AppColors.blackColor);
+  static const achievementCard = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
       color: AppColors.blackColor);
 }

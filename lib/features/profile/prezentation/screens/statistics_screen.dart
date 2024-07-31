@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/features/global/widgets/custom_image_view.dart';
+import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
@@ -171,16 +171,18 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             ],
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 20, bottom: 15),
+            padding: EdgeInsets.only(
+                top: ProfilePaddings.subtitleHorizontal,
+                bottom: ProfilePaddings.subtitleBot),
             child: Text(
               'Почти изучено',
-              style: AppTextStyles.statisticsWordTileTitle,
+              style: AppTextStyles.profileSubtitle,
             ),
           ),
           Container(
               decoration: BoxDecoration(
                 color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(15),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
@@ -191,7 +193,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       )
                       .toList(),
                 ),
-              ))
+              )),
+          const SizedBox(
+            height: ProfileSizes.endSpacer,
+          ),
         ],
       ),
     );
