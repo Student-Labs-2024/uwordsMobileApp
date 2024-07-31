@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uwords/env.dart';
@@ -14,6 +15,7 @@ import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
 import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
 import 'package:uwords/features/main/presentation/widgets/record_button.dart';
+import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -30,6 +32,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TextEditingController textEditingController = TextEditingController();
 
+  final IExceptionWebsocketService webSocketService =
+      GetIt.instance.get<IExceptionWebsocketService>();
+  String? _errorMessage;
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
@@ -43,13 +48,24 @@ class _HomePageState extends State<HomePage> {
         _mRecorderIsInited = true;
       });
     });
+    _connect();
     super.initState();
+  }
+
+  void _connect() async {
+    webSocketService.connect(websocketLink);
+    webSocketService.listenForErrors((message) {
+      setState(() {
+        _errorMessage = message;
+      });
+    });
   }
 
   @override
   void dispose() {
     _mRecorder!.closeRecorder();
     _mRecorder = null;
+    webSocketService.disconnect();
     super.dispose();
   }
 
@@ -295,6 +311,7 @@ class _HomePageState extends State<HomePage> {
                           height: HomePageComponentSizes
                               .customTextFieldSummarizedHeight,
                         ),
+                        if (_errorMessage != null) Text(_errorMessage!),
                       ],
                     )
                   ],
