@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/profile/prezentation/widgets/statistic_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class AppTextStyles {
@@ -97,4 +98,48 @@ class AppTextStyles {
       fontWeight: FontWeight.w700,
       fontSize: 20,
       color: AppColors.darkMainColor);
+
+  static const carouselActive = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 18,
+      color: AppColors.blackColor);
+  static const carouselUnActive = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 18,
+      color: AppColors.lightgrayColor);
+
+  static const statisticCardTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 20,
+      color: AppColors.blackColor);
+  static const statisticCardSubtitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+      color: AppColors.lightgrayColor2);
+
+  static const statisticsWordTileTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 18,
+      color: AppColors.blackColor);
+
+  static const ProgressWordTileTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      color: AppColors.blackColor);
+  static const ProgressWordTileProgress = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 12,
+      color: AppColors.lightgrayColor2);
+  static const ProgressWordTileProgressBold = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      color: AppColors.blackColor);
 }

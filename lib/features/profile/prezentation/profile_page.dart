@@ -1,8 +1,13 @@
+import 'dart:developer';
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/global/widgets/custom_image_view.dart';
+import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
+import 'package:uwords/features/profile/prezentation/screens/achievements_screen.dart';
+import 'package:uwords/features/profile/prezentation/screens/activities_screen.dart';
+import 'package:uwords/features/profile/prezentation/screens/statistics_screen.dart';
 import 'package:uwords/features/profile/prezentation/widgets/options_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
@@ -20,6 +25,28 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
+  CarouselController carouselController = CarouselController();
+  int _currentPage = 0;
+
+  final List<String> pages = ['Статистика', 'Активность', 'Достижения'];
+
+  onCarouselPageChanged(int index, CarouselPageChangedReason reason) {
+    setState(() {
+      _currentPage = index;
+    });
+    log(index.toString());
+  }
+
+  Widget _buildPage() {
+    if (_currentPage == 0) {
+      return const StatisticsScreen();
+    } else if (_currentPage == 1) {
+      return const ActivitiesScreen();
+    } else {
+      return const AchievementsScreen();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +62,12 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    right: MediaQuery.of(context).size.width * 24 / 375,
-                    top: 30,
-                    left: MediaQuery.of(context).size.width * 24 / 375),
+                    right: MediaQuery.of(context).size.width *
+                        ProfilePaddings.headerHorizontal,
+                    top: ProfilePaddings.headerTop,
+                    left: MediaQuery.of(context).size.width *
+                        ProfilePaddings.headerHorizontal,
+                    bottom: ProfilePaddings.headerBottom),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,6 +99,26 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
+              CarouselSlider.builder(
+                itemCount: pages.length,
+                carouselController: carouselController,
+                options: CarouselOptions(
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.3,
+                    height: 35.0,
+                    viewportFraction: 0.32,
+                    onPageChanged: (index, reason) =>
+                        onCarouselPageChanged(index, reason)),
+                itemBuilder:
+                    (BuildContext context, int itemIndex, int pageViewIndex) =>
+                        Text(
+                  pages[itemIndex],
+                  style: _currentPage == itemIndex
+                      ? AppTextStyles.carouselActive
+                      : AppTextStyles.carouselUnActive,
+                ),
+              ),
+              _buildPage(),
             ],
           ),
         ),

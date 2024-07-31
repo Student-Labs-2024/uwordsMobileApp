@@ -17,4 +17,8 @@ class AppImageSource {
   static const String codeBackground = 'assets/png/background.png';
   static const String returnIcon = 'assets/svg/return.svg';
   static const String optionsIco = 'assets/svg/options_ico.svg';
+  static const String onfireIcon = 'assets/png/onfire_icon.png';
+  static const String precisionIcon = 'assets/png/precision_icon.png';
+  static const String recordTimeIcon = 'assets/png/record_time_icon.png';
+  static const String wordsLearnedIcon = 'assets/png/words_learned_icon.png';
 }
