@@ -27,4 +27,5 @@ abstract interface class IUserRepository {
   Future<void> authorizateFromGoogle({
     required String uid,
   });
+  Future<int> getCurrentUserId();
 }
