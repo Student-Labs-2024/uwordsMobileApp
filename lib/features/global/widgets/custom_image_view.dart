@@ -27,13 +27,26 @@ class CustomImageView extends StatelessWidget {
             return SizedBox(
               width: width,
               height: height,
-              child: const Center(
+              child: Center(
                 child: CircularProgressIndicator(
-                  color: AppColors.mainColor,
+                  value: loadingProgress.expectedTotalBytes != null
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes!
+                      : null,
                 ),
               ),
             );
           }
+        },
+        errorBuilder: (context, exception, stackTrace) {
+          return SizedBox(
+            width: width,
+            height: height,
+            child: Icon(
+              Icons.wifi_tethering_error_outlined,
+              size: height / 2,
+            ),
+          );
         },
         width: width,
         height: height,
