@@ -13,6 +13,12 @@ part 'uwords_database.g.dart';
 class UserAuth extends Table {
   IntColumn get id => integer()();
   TextColumn get email => text()();
+  TextColumn get username => text()();
+  TextColumn get firstname => text()();
+  TextColumn get lastname => text()();
+  TextColumn get avatarUrl => text()();
+  TextColumn get phoneNumber => text()();
+  DateTimeColumn get birthDate => dateTime()();
   TextColumn get accessToken => text()();
   TextColumn get refreshToken => text()();
   BoolColumn get isEducationCompleted => boolean()();

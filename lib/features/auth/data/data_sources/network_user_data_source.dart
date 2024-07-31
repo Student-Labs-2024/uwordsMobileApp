@@ -25,10 +25,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         LoginRequestBody(email: userEmail, password: password);
     try {
       final response = await client.login(jsonEncode(loginRequestBody));
+      final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+          tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
+        userMap: aboutMeResponse.data,
         userEmail: userEmail,
         provider: AuthorizationProvider.self,
-        map: response.data,
+        accessMap: response.data,
       );
     } on DioException catch (e) {
       noInternetCheck(e);
@@ -42,10 +45,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
     try {
       final response = await client.loginVK(
           joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
+      final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+          tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
+        userMap: aboutMeResponse.data,
         userEmail: '',
         provider: AuthorizationProvider.vk,
-        map: response.data,
+        accessMap: response.data,
       );
     } on DioException catch (e) {
       noInternetCheck(e);
@@ -60,10 +66,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       final response = await client.loginGoogle(
           jsonEncode(RegisterGoogleRequestBody(uid: uid)),
           joinTokenTypeAndToken(tokenType: tokenType, token: uid));
+      final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+          tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
+        userMap: aboutMeResponse.data,
         userEmail: '',
         provider: AuthorizationProvider.google,
-        map: response.data,
+        accessMap: response.data,
       );
     } on DioException catch (e) {
       noInternetCheck(e);
