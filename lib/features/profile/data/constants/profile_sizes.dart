@@ -25,4 +25,8 @@ class ProfileSizes {
   static const double activitiesTileImageSize = 40 / 375;
   static const double activitiesTile = 10;
   static const double activitiesTileIndicatorWidth = 120 / 375;
+
+  static const double headerSpacer = 10;
+  static const double carouselHeight = 42;
+  static const double activitiesTileSpacer = 5;
 }

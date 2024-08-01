@@ -41,7 +41,7 @@ class ActivitiesTile extends StatelessWidget {
                 style: AppTextStyles.activitiesTitleText,
               ),
               const SizedBox(
-                height: 5,
+                height: ProfileSizes.activitiesTileSpacer,
               ),
               Text(
                 date,

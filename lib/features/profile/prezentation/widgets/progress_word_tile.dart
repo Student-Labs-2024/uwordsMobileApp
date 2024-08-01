@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
+import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,7 +14,8 @@ class ProgressWordTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+      padding:
+          const EdgeInsets.only(bottom: ProfilePaddings.progressWordTileBottom),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

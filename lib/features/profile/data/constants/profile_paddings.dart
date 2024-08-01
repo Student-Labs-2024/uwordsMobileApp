@@ -10,4 +10,5 @@ class ProfilePaddings {
   static const double achievementCardRight = 10;
 
   static const double activitiesTileBottom = 15;
+  static const double progressWordTileBottom = 15;
 }

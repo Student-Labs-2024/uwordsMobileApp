@@ -18,8 +18,7 @@ class CustomImageNetworkView extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        borderRadius:
-            BorderRadius.circular(clipRadius), // Задаем радиус скругления
+        borderRadius: BorderRadius.circular(clipRadius),
         image: DecorationImage(
           image: NetworkImage(imageSource),
           fit: BoxFit.cover,

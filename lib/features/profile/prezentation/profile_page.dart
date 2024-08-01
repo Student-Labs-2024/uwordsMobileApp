@@ -86,7 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: MediaQuery.of(context).size.width *
                                 ProfileSizes.avatarSize,
                             clipRadius: 50),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: ProfileSizes.headerSpacer),
                         const Text(
                           ProfileDataExample.userNameExample,
                           style: AppTextStyles.profileName,
@@ -105,7 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 options: CarouselOptions(
                     enlargeCenterPage: true,
                     enlargeFactor: 0.3,
-                    height: 42.0,
+                    height: ProfileSizes.carouselHeight,
                     viewportFraction: 0.32,
                     onPageChanged: (index, reason) =>
                         onCarouselPageChanged(index, reason)),
