@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage> {
 
   final IExceptionWebsocketService webSocketService =
       GetIt.instance.get<IExceptionWebsocketService>();
-  final StreamController<String> errorStreamController = StreamController<String>.broadcast();
+  final StreamController<String> errorStreamController =
+      StreamController<String>.broadcast();
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
@@ -44,13 +45,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    super.initState();
     _connect();
     openTheRecorder().then((value) {
       setState(() {
         _mRecorderIsInited = true;
       });
     });
-    super.initState();
   }
 
   void _connect() async {

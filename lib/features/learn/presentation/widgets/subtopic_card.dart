@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
+import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/image_source.dart';
 
@@ -23,6 +24,7 @@ class SubtopicCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(15),
+          boxShadow: ProfileShadows.statisticCard,
           shape: BoxShape.rectangle,
         ),
         child: Stack(

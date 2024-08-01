@@ -6,6 +6,7 @@ import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_row.dart';
 import 'package:uwords/features/learn/presentation/widgets/topic_header.dart';
@@ -21,7 +22,8 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  startTraining() {}
+  String _searchText = "";
+  List<Subtopic> _searchList = [];
 
   @override
   void initState() {
@@ -39,7 +41,19 @@ class _LearnPageState extends State<LearnPage> {
     context.go("/learnCore");
   }
 
-  List<Topic> learnTopics = [];
+  final TextEditingController _searchQuery = TextEditingController();
+
+  List<Subtopic> _buildSearchList(List<Subtopic> _subtopicList) {
+    if (_searchText.isEmpty) {
+      return _subtopicList;
+    } else {
+      return _subtopicList
+          .where((element) => element.subtopicTitle
+              .toLowerCase()
+              .contains(_searchText.toLowerCase()))
+          .toList();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +80,32 @@ class _LearnPageState extends State<LearnPage> {
                   padding: const EdgeInsets.only(top: 36.0),
                   child: BlocBuilder<LearningBloc, LearningState>(
                     builder: (context, state) {
-                      return Text(
-                        state.whenOrNull(choseTopic: (topic)=>topic.topicTitle) ?? AppLocalizations.of(context).topics,
-                        style: AppTextStyles.recordButtonTitle,
+                      return state.maybeWhen(
+                        orElse: () {
+                          return Text(
+                            AppLocalizations.of(context).topics,
+                            style: AppTextStyles.recordButtonTitle,
+                          );
+                        },
+                        choseTopic: (topic) {
+                          _searchQuery.addListener(() {
+                            setState(() {
+                              _searchText = _searchQuery.text;
+                              _searchList = _buildSearchList(topic.subtopics);
+                            });
+                          });
+                          return Column(
+                            children: [
+                              Text(
+                                topic.topicTitle,
+                                style: AppTextStyles.recordButtonTitle,
+                              ),
+                              CustomSearchTextfield(
+                                  controller: _searchQuery,
+                                  hintText: AppLocalizations.of(context).search)
+                            ],
+                          );
+                        },
                       );
                     },
                   ),
@@ -124,12 +161,13 @@ class _LearnPageState extends State<LearnPage> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: SubtopicsGrid(
-                      topic: topic,
+                      subtopics:
+                          _searchText.isEmpty ? topic.subtopics : _searchList,
                     ),
                   );
                 },
                 orElse: () {
-                  return SizedBox();
+                  return const SizedBox();
                 },
               );
             }))));

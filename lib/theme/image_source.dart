@@ -24,4 +24,5 @@ class AppImageSource {
   static const String redAngleButton = 'assets/png/red_angle_bubble.png';
   static const String blueAngleButton = 'assets/png/blue_angle_bubble.png';
   static const String greyAngleButton = 'assets/png/grey_angle_bubble.png';
+  static const String searchIcon = 'assets/svg/search_icon.svg';
 }

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/learn/domain/models/topic_model.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopic_card.dart';
 
 class SubtopicsGrid extends StatelessWidget {
-  final Topic topic;
-  const SubtopicsGrid({super.key, required this.topic});
+  final List<Subtopic> subtopics;
+  const SubtopicsGrid({super.key, required this.subtopics});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
 
-        itemCount: topic.subtopics.length,
+        itemCount: subtopics.length,
         controller: ScrollController(),
         scrollDirection: Axis.vertical,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -21,7 +21,7 @@ class SubtopicsGrid extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return SubtopicCard(
-                width: 150, height: 120, subtopic: topic.subtopics[index]);
+                width: 150, height: 120, subtopic: subtopics[index]);
         });
   }
 }

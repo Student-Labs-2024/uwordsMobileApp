@@ -54,5 +54,6 @@
   "check": "Проверить",
   "startTraining": "Тренировать",
   "topics": "Топики",
-  "checkAll": "См. все"
+  "checkAll": "См. все",
+  "search": "Поиск"
 }
