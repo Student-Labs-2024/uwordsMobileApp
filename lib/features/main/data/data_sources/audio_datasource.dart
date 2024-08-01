@@ -7,11 +7,14 @@ import 'package:uwords/features/main/data/main_client.dart';
 class AudioDataSource implements IAudioDataSource {
   static Dio dio = Dio();
   final client = MainClient(dio);
+
   @override
-  Stream<Future<void>> sendFile(
-      {required String audioPath, required String accessToken}) async* {
+  Future<void> sendFile(
+      {required String audioPath, required String accessToken}) async {
     final audioData = FormData.fromMap({
-      'file': await MultipartFile.fromFile(audioPath),
+      'file': await MultipartFile.fromFile(
+        audioPath,
+      ),
     });
     await client
         .sendAudio("Bearer $accessToken", audioData)

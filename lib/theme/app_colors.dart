@@ -5,7 +5,7 @@ class AppColors {
   static const Color darkMainColor = Color.fromRGBO(83, 45, 106, 1);
   static const Color mainColorOpacity = Color.fromRGBO(83, 45, 106, 0.7);
   static const Color darkMainColorOpacity = Color.fromRGBO(83, 45, 106, 0.9);
-  static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.2);
+  static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.5);
   static const Color errorColor = Colors.red;
   static const Color incorrectChooseColor = Color.fromRGBO(255, 74, 74, 0.6);
 

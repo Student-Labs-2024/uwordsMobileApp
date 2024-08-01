@@ -3,3 +3,6 @@ const anotherBaseUrl = "https://app.big-nose.ru/api/";
 const voiceOverLink = "https://www.youwords.ru:9100/uwords-voiceover/do.mp3";
 const wordPictureLink =
     "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/";
+const String jrecordDirectory = 'Audiorecords';
+const String websocketLink =
+    "wss://app.big-nose.ru/api/v1/websockets/errors?user_id=";

@@ -25,10 +25,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         LoginRequestBody(email: userEmail, password: password);
     try {
       final response = await client.login(jsonEncode(loginRequestBody));
+      final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+          tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
+        userMap: aboutMeResponse.data,
         userEmail: userEmail,
         provider: AuthorizationProvider.self,
-        map: response.data,
+        accessMap: response.data,
       );
     } on DioException catch (e) {
       noInternetCheck(e);
@@ -42,10 +45,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
     try {
       final response = await client.loginVK(
           joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
+      final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+          tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
+        userMap: aboutMeResponse.data,
         userEmail: '',
         provider: AuthorizationProvider.vk,
-        map: response.data,
+        accessMap: response.data,
       );
     } on DioException catch (e) {
       noInternetCheck(e);
@@ -60,10 +66,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       final response = await client.loginGoogle(
           jsonEncode(RegisterGoogleRequestBody(uid: uid)),
           joinTokenTypeAndToken(tokenType: tokenType, token: uid));
+      final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+          tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
+        userMap: aboutMeResponse.data,
         userEmail: '',
         provider: AuthorizationProvider.google,
-        map: response.data,
+        accessMap: response.data,
       );
     } on DioException catch (e) {
       noInternetCheck(e);
@@ -74,12 +83,17 @@ class NetworkUserDataSource implements INetworkUserDataSource {
 
   @override
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto}) async {
-    Map<String, String> newAccessToken = await client.refresh(
-        joinTokenTypeAndToken(
-            tokenType: tokenType, token: userDto.refreshToken));
-    userDto.changeAccessToken(
-        newAccessToken: newAccessToken['access_token'] ?? '');
-    return userDto;
+    try {
+      Map<String, String> newAccessToken = await client.refresh(
+          joinTokenTypeAndToken(
+              tokenType: tokenType, token: userDto.refreshToken));
+      userDto.changeAccessToken(
+          newAccessToken: newAccessToken['access_token'] ?? '');
+      return userDto;
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      rethrow;
+    }
   }
 
   @override
@@ -96,7 +110,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       code: code,
       birthDate: birthDate,
     );
-    await client.registerUser(jsonEncode(registerRequestBody));
+    try {
+      await client.registerUser(jsonEncode(registerRequestBody));
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      _checkStatusCode(e: e, provider: AuthorizationProvider.self);
+      rethrow;
+    }
   }
 
   @override
@@ -125,18 +145,29 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<bool> checkCode(
       {required String userEmail, required String code}) async {
-    var response =
-        await client.checkCode(CheckCodeRequest(code: code, email: userEmail));
-    if (response.response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
+    try {
+      var response = await client
+          .checkCode(CheckCodeRequest(code: code, email: userEmail));
+      if (response.response.statusCode == 200) {
+        return response.data;
+      } else {
+        return false;
+      }
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      rethrow;
     }
   }
 
   @override
   Future<void> sendCode({required String userEmail}) async {
-    await client.sendCode(userEmail);
+    try {
+      await client.sendCode(userEmail);
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      _checkStatusCode(e: e, provider: AuthorizationProvider.self);
+      rethrow;
+    }
   }
 
   void _checkStatusCode(

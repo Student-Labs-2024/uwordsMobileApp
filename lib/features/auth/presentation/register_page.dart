@@ -135,21 +135,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: AppTextStyles.authHeaderText,
                             ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppLocalizations.of(context).chooseYourAge,
-                                style: AppTextStyles.authSmallText,
-                                textAlign: TextAlign.left,
-                              ),
-                              Text(
-                                AppLocalizations.of(context).confidentiality,
-                                style: AppTextStyles.authSmallestLinkText,
-                                textAlign: TextAlign.left,
-                              )
-                            ],
-                          ),
                           Container(
                             height: HomePageComponentSizes.linkTextFieldHeight,
                             padding: const EdgeInsets.symmetric(
@@ -160,24 +145,49 @@ class _RegisterPageState extends State<RegisterPage> {
                                     AuthDesignedConstants
                                         .customTextFieldBorderRadius),
                                 boxShadow: MainBoxShadows.main),
-                            child: TextField(
-                              controller: datePickerController,
-                              readOnly: true,
-                              onTap: () => _showDatePicker(context),
-                              obscureText: false,
-                              cursorColor: AppColors.darkMainColor,
-                              style: const TextStyle(
-                                color: AppColors.darkMainColor,
-                              ),
-                              decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context).age,
-                                hintStyle: AppTextStyles.customTextfieldInput,
-                                border: InputBorder.none,
+                            child: Expanded(
+                              child: TextField(
+                                textAlignVertical: TextAlignVertical.center,
+                                expands: true,
+                                maxLines: null,
+                                minLines: null,
+                                controller: datePickerController,
+                                readOnly: true,
+                                onTap: () => _showDatePicker(context),
+                                obscureText: false,
+                                cursorColor: AppColors.darkMainColor,
+                                style: const TextStyle(
+                                  color: AppColors.darkMainColor,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context).age,
+                                  hintStyle: AppTextStyles.customTextfieldInput,
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: AuthUndesignedConstants.smallestContainer,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: AuthDesignedPaddings.smallEmptySpace),
+                            child: Text.rich(TextSpan(children: [
+                              TextSpan(
+                                text:
+                                    '${AppLocalizations.of(context).chooseYourAge} ',
+                                style: AppTextStyles.authSmallestText,
+                              ),
+                              WidgetSpan(
+                                  child: InkWell(
+                                    onTap: _launchOurWebsite,
+                                    child: Text(
+                                      AppLocalizations.of(context)
+                                          .confidentiality,
+                                      style: AppTextStyles
+                                          .authSmallestBoldLinkText,
+                                    ),
+                                  ),
+                                  alignment: PlaceholderAlignment.middle)
+                            ])),
                           ),
                           RegistrationFields(
                               usernameController: usernameController,
@@ -230,8 +240,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               const Spacer(),
-                              TextButton(
-                                onPressed: _launchOurWebsite,
+                              InkWell(
+                                onTap: _launchOurWebsite,
                                 child: Text(
                                     AppLocalizations.of(context).conditions,
                                     style: AppTextStyles
@@ -241,8 +251,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 AppLocalizations.of(context).and,
                                 style: AppTextStyles.authSmallestTextOpacity,
                               ),
-                              TextButton(
-                                onPressed: _launchOurWebsite,
+                              InkWell(
+                                onTap: _launchOurWebsite,
                                 child: Text(
                                   AppLocalizations.of(context)
                                       .policyOfConfidentiality,
@@ -253,16 +263,18 @@ class _RegisterPageState extends State<RegisterPage> {
                               const Spacer(),
                             ],
                           ),
+                          const SizedBox(
+                            height: AuthDesignedPaddings.basePagePadding,
+                          ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const Spacer(),
                               Text(
-                                  AppLocalizations.of(context)
-                                      .alreadyHaveAccount,
+                                  '${AppLocalizations.of(context).alreadyHaveAccount} ',
                                   style: AppTextStyles.authSmallText),
-                              TextButton(
-                                onPressed: () {
+                              InkWell(
+                                onTap: () {
                                   context.go("/auth");
                                 },
                                 child: Text(
@@ -277,15 +289,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ]),
-                ),
-              );
-            }, waitingAnswer: () {
-              return Center(
-                child: Column(
-                  children: [
-                    const CircularProgressIndicator(),
-                    Text(AppLocalizations.of(context).checkingLoginData),
-                  ],
                 ),
               );
             }, success: (success) {
@@ -304,96 +307,121 @@ class _RegisterPageState extends State<RegisterPage> {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter),
                     ),
-                    child: Stack(children: [
-                      Image.asset(
-                        AppImageSource.codeBackground,
-                        width: maximumWidth,
-                      ),
-                      Padding(
+                    child: Center(
+                      child: Stack(children: [
+                        Padding(
                           padding: const EdgeInsets.only(
-                              top: AuthDesignedPaddings.returnButtonPlace,
-                              left: AuthDesignedPaddings.returnButtonPlace),
-                          child: InkWell(
-                            child: SvgPicture.asset(
-                              AppImageSource.returnIcon,
-                              width: AuthDesignedConstants.iconReturnSize,
-                              height: AuthDesignedConstants.iconReturnSize,
-                            ),
-                            onTap: () {
-                              context
-                                  .read<AuthBloc>()
-                                  .add(const AuthEvent.changeDataForRegister());
-                            },
-                          )),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: AuthDesignedPaddings.authHeaderPadding,
-                            left: AuthDesignedPaddings.middlePagePadding,
-                            right: AuthDesignedPaddings.middlePagePadding),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                              top: AuthDesignedPaddings.bubblesPadding),
+                          child: Image.asset(
+                            AppImageSource.topCodeBackground,
+                            width: maximumWidth,
+                          ),
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.only(
+                                top: AuthDesignedPaddings.returnButtonPlace,
+                                left: AuthDesignedPaddings.returnButtonPlace),
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                AppImageSource.returnIcon,
+                                width: AuthDesignedConstants.iconReturnSize,
+                                height: AuthDesignedConstants.iconReturnSize,
+                              ),
+                              onTap: () {
+                                context.read<AuthBloc>().add(
+                                    const AuthEvent.changeDataForRegister());
+                              },
+                            )),
+                        Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical:
-                                      AuthDesignedPaddings.middleEmptySpace),
-                              child: Text(
-                                AppLocalizations.of(context).enterCode,
-                                style: AppTextStyles.authHeaderText,
+                              padding: const EdgeInsets.only(
+                                  top: AuthDesignedPaddings
+                                      .sendCodeHeaderPadding,
+                                  left: AuthDesignedPaddings.middlePagePadding,
+                                  right:
+                                      AuthDesignedPaddings.middlePagePadding),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: AuthDesignedPaddings
+                                            .middleEmptySpace),
+                                    child: Text(
+                                      AppLocalizations.of(context).enterCode,
+                                      style: AppTextStyles.authHeaderText,
+                                    ),
+                                  ),
+                                  Text(
+                                    "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
+                                    style: AppTextStyles.authSendedCodeText,
+                                  ),
+                                  const SizedBox(
+                                    height:
+                                        AuthDesignedPaddings.smallEmptySpace,
+                                  ),
+                                  CustomPincode(
+                                      textEditingController: codeController),
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: AuthDesignedPaddings
+                                              .smallEmptySpace),
+                                      child: BubbleButton(
+                                        null,
+                                        maximumWidth: maximumWidth -
+                                            (AuthDesignedPaddings
+                                                .basePagePadding),
+                                        onPressed: () async {
+                                          context.read<AuthBloc>().add(
+                                              AuthEvent.registerUser(
+                                                  code: codeController.text));
+                                        },
+                                        text: AppLocalizations.of(context)
+                                            .sendCode,
+                                      )),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .haveNotGotCode,
+                                        style: AppTextStyles.authSendedCodeText,
+                                      ),
+                                      TextButton(
+                                        onPressed: () async {
+                                          context.read<AuthBloc>().add(
+                                              AuthEvent.requestCode(
+                                                  birthDate: choosenDate,
+                                                  emailAddress:
+                                                      mailController.text,
+                                                  password:
+                                                      passwordController.text,
+                                                  nickname:
+                                                      usernameController.text));
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)
+                                                .sendAgain,
+                                            style: AppTextStyles
+                                                .authSendedCodeUnderlinedText),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
-                            Text(
-                              "${AppLocalizations.of(context).useCodeToEnter}${mailController.text}",
-                              style: AppTextStyles.authSendedCodeText,
+                            const Spacer(),
+                            Image.asset(
+                              AppImageSource.bottomCodeBackground,
+                              width: maximumWidth,
                             ),
-                            const SizedBox(
-                              height: AuthDesignedPaddings.smallEmptySpace,
-                            ),
-                            CustomPincode(
-                                textEditingController: codeController),
-                            Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical:
-                                        AuthDesignedPaddings.smallEmptySpace),
-                                child: BubbleButton(
-                                  null,
-                                  maximumWidth: maximumWidth -
-                                      (AuthDesignedPaddings.basePagePadding),
-                                  onPressed: () async {
-                                    context.read<AuthBloc>().add(
-                                        AuthEvent.registerUser(
-                                            code: codeController.text));
-                                  },
-                                  text: AppLocalizations.of(context).sendCode,
-                                )),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context).haveNotGotCode,
-                                  style: AppTextStyles.authSendedCodeText,
-                                ),
-                                TextButton(
-                                  onPressed: () async {
-                                    context.read<AuthBloc>().add(
-                                        AuthEvent.requestCode(
-                                            birthDate: choosenDate,
-                                            emailAddress: mailController.text,
-                                            password: passwordController.text,
-                                            nickname: usernameController.text));
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context).sendAgain,
-                                      style: AppTextStyles
-                                          .authSendedCodeUnderlinedText),
-                                )
-                              ],
-                            )
+                            const Spacer()
                           ],
                         ),
-                      ),
-                    ]),
+                      ]),
+                    ),
                   ));
               }
             });

@@ -9,6 +9,9 @@ class SubtopicDto with _$SubtopicDto {
   const factory SubtopicDto({
     @JsonKey(name: "subtopic_title", defaultValue: 'null subTitle')
     required String subtopicTitle,
+    @JsonKey(name: "word_count", defaultValue: 0) required int wordCount,
+    @JsonKey(name: "progress", defaultValue: 0) required int progress,
+    @JsonKey(name: "pictureLink", defaultValue: '') required String pictureLink,
     @JsonKey(
       name: "words",
     )

@@ -9,6 +9,9 @@ part of 'subtopic_dto.dart';
 _$SubtopicDtoImpl _$$SubtopicDtoImplFromJson(Map<String, dynamic> json) =>
     _$SubtopicDtoImpl(
       subtopicTitle: json['subtopic_title'] as String? ?? 'null subTitle',
+      wordCount: (json['word_count'] as num?)?.toInt() ?? 0,
+      progress: (json['progress'] as num?)?.toInt() ?? 0,
+      pictureLink: json['pictureLink'] as String? ?? '',
       words: (json['words'] as List<dynamic>)
           .map((e) => WordInfoDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -17,5 +20,8 @@ _$SubtopicDtoImpl _$$SubtopicDtoImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SubtopicDtoImplToJson(_$SubtopicDtoImpl instance) =>
     <String, dynamic>{
       'subtopic_title': instance.subtopicTitle,
+      'word_count': instance.wordCount,
+      'progress': instance.progress,
+      'pictureLink': instance.pictureLink,
       'words': instance.words,
     };

@@ -33,17 +33,23 @@ class RegistrationFields extends StatelessWidget {
               borderRadius: BorderRadius.circular(
                   AuthDesignedConstants.customTextFieldBorderRadius),
               boxShadow: MainBoxShadows.main),
-          child: TextField(
-            controller: usernameController,
-            obscureText: false,
-            cursorColor: AppColors.darkMainColor,
-            style: const TextStyle(
-              color: AppColors.darkMainColor,
-            ),
-            decoration: InputDecoration(
-              hintText: AppLocalizations.of(context).name,
-              hintStyle: AppTextStyles.customTextfieldInput,
-              border: InputBorder.none,
+          child: Expanded(
+            child: TextField(
+              textAlignVertical: TextAlignVertical.center,
+              expands: true,
+              maxLines: null,
+              minLines: null,
+              controller: usernameController,
+              obscureText: false,
+              cursorColor: AppColors.darkMainColor,
+              style: const TextStyle(
+                color: AppColors.darkMainColor,
+              ),
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context).name,
+                hintStyle: AppTextStyles.customTextfieldInput,
+                border: InputBorder.none,
+              ),
             ),
           ),
         ),

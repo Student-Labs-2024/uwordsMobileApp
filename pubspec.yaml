@@ -49,6 +49,7 @@ dependencies:
   speech_to_text: ^6.6.2
   get_it: ^7.7.0
   carousel_slider: ^4.2.1
+  web_socket_channel: ^2.4.5
 
 dev_dependencies:
   flutter_test:

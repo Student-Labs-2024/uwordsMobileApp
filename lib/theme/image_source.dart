@@ -14,7 +14,8 @@ class AppImageSource {
   static const String bubbleButton = 'assets/png/bubble_button1.png';
   static const String googleIcon = 'assets/svg/google.svg';
   static const String vkIcon = 'assets/svg/vk.svg';
-  static const String codeBackground = 'assets/png/background.png';
+  static const String topCodeBackground = 'assets/png/top_background.png';
+  static const String bottomCodeBackground = 'assets/png/bottom_background.png';
   static const String returnIcon = 'assets/svg/return.svg';
   static const String optionsIco = 'assets/svg/options_ico.svg';
   static const String onfireIcon = 'assets/png/onfire_icon.png';
@@ -27,4 +28,7 @@ class AppImageSource {
   static const String wordsLearnedIcon = 'assets/png/words_learned_icon.png';
   static const String achieveActiveIcon = 'assets/png/achieveActive.png';
   static const String achieveInactiveIcon = 'assets/png/achieveInactive.png';
+  static const String visibilityOutlined = 'assets/svg/visabillity_icon.svg';
+  static const String visibilityOutlinedOff =
+      'assets/svg/visabillity_off_icon.svg';
 }

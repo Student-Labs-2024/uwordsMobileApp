@@ -19,15 +19,11 @@ class SavableUserDataSource implements ISavableUserDataSource {
   @override
   Future<void> saveUser({required UserAuthDto userDto}) async {
     var user = await (database.select(database.userAuth)
-          ..where((u) =>
-              u.email.equals(userDto.email) &
-              u.provider.equals(userDto.provider)))
+          ..where((u) => u.id.equals(userDto.id)))
         .get();
     if (user.runtimeType == List<User>) {
       await (database.delete(database.userAuth)
-            ..where((u) =>
-                u.email.equals(userDto.email) &
-                u.provider.equals(userDto.provider)))
+            ..where((u) => u.id.equals(userDto.id)))
           .go();
     }
     final current =

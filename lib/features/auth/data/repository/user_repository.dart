@@ -91,6 +91,7 @@ class UserRepository implements IUserRepository {
   }
 
   void _saveUser({required UserAuthDto userDto}) async {
+    log('Saved user:\n id: ${userDto.id},\n accessToken: ${userDto.accessToken},\n refreshToken ${userDto.refreshToken}');
     await savableUserDataSource.saveUser(userDto: userDto);
   }
 
@@ -140,5 +141,11 @@ class UserRepository implements IUserRepository {
       log(e.toString());
       rethrow;
     }
+  }
+
+  @override
+  Future<int> getCurrentUserId() async {
+    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
+    return currentUser.id;
   }
 }

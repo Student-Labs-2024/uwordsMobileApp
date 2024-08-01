@@ -18,6 +18,42 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
   late final GeneratedColumn<String> email = GeneratedColumn<String>(
       'email', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _usernameMeta =
+      const VerificationMeta('username');
+  @override
+  late final GeneratedColumn<String> username = GeneratedColumn<String>(
+      'username', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _firstnameMeta =
+      const VerificationMeta('firstname');
+  @override
+  late final GeneratedColumn<String> firstname = GeneratedColumn<String>(
+      'firstname', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _lastnameMeta =
+      const VerificationMeta('lastname');
+  @override
+  late final GeneratedColumn<String> lastname = GeneratedColumn<String>(
+      'lastname', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _avatarUrlMeta =
+      const VerificationMeta('avatarUrl');
+  @override
+  late final GeneratedColumn<String> avatarUrl = GeneratedColumn<String>(
+      'avatar_url', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _phoneNumberMeta =
+      const VerificationMeta('phoneNumber');
+  @override
+  late final GeneratedColumn<String> phoneNumber = GeneratedColumn<String>(
+      'phone_number', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _birthDateMeta =
+      const VerificationMeta('birthDate');
+  @override
+  late final GeneratedColumn<DateTime> birthDate = GeneratedColumn<DateTime>(
+      'birth_date', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _accessTokenMeta =
       const VerificationMeta('accessToken');
   @override
@@ -58,6 +94,12 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
   List<GeneratedColumn> get $columns => [
         id,
         email,
+        username,
+        firstname,
+        lastname,
+        avatarUrl,
+        phoneNumber,
+        birthDate,
         accessToken,
         refreshToken,
         isEducationCompleted,
@@ -82,6 +124,44 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           _emailMeta, email.isAcceptableOrUnknown(data['email']!, _emailMeta));
     } else if (isInserting) {
       context.missing(_emailMeta);
+    }
+    if (data.containsKey('username')) {
+      context.handle(_usernameMeta,
+          username.isAcceptableOrUnknown(data['username']!, _usernameMeta));
+    } else if (isInserting) {
+      context.missing(_usernameMeta);
+    }
+    if (data.containsKey('firstname')) {
+      context.handle(_firstnameMeta,
+          firstname.isAcceptableOrUnknown(data['firstname']!, _firstnameMeta));
+    } else if (isInserting) {
+      context.missing(_firstnameMeta);
+    }
+    if (data.containsKey('lastname')) {
+      context.handle(_lastnameMeta,
+          lastname.isAcceptableOrUnknown(data['lastname']!, _lastnameMeta));
+    } else if (isInserting) {
+      context.missing(_lastnameMeta);
+    }
+    if (data.containsKey('avatar_url')) {
+      context.handle(_avatarUrlMeta,
+          avatarUrl.isAcceptableOrUnknown(data['avatar_url']!, _avatarUrlMeta));
+    } else if (isInserting) {
+      context.missing(_avatarUrlMeta);
+    }
+    if (data.containsKey('phone_number')) {
+      context.handle(
+          _phoneNumberMeta,
+          phoneNumber.isAcceptableOrUnknown(
+              data['phone_number']!, _phoneNumberMeta));
+    } else if (isInserting) {
+      context.missing(_phoneNumberMeta);
+    }
+    if (data.containsKey('birth_date')) {
+      context.handle(_birthDateMeta,
+          birthDate.isAcceptableOrUnknown(data['birth_date']!, _birthDateMeta));
+    } else if (isInserting) {
+      context.missing(_birthDateMeta);
     }
     if (data.containsKey('access_token')) {
       context.handle(
@@ -132,6 +212,18 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       email: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}email'])!,
+      username: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}username'])!,
+      firstname: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}firstname'])!,
+      lastname: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}lastname'])!,
+      avatarUrl: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}avatar_url'])!,
+      phoneNumber: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}phone_number'])!,
+      birthDate: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}birth_date'])!,
       accessToken: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}access_token'])!,
       refreshToken: attachedDatabase.typeMapping
@@ -154,6 +246,12 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
 class User extends DataClass implements Insertable<User> {
   final int id;
   final String email;
+  final String username;
+  final String firstname;
+  final String lastname;
+  final String avatarUrl;
+  final String phoneNumber;
+  final DateTime birthDate;
   final String accessToken;
   final String refreshToken;
   final bool isEducationCompleted;
@@ -162,6 +260,12 @@ class User extends DataClass implements Insertable<User> {
   const User(
       {required this.id,
       required this.email,
+      required this.username,
+      required this.firstname,
+      required this.lastname,
+      required this.avatarUrl,
+      required this.phoneNumber,
+      required this.birthDate,
       required this.accessToken,
       required this.refreshToken,
       required this.isEducationCompleted,
@@ -172,6 +276,12 @@ class User extends DataClass implements Insertable<User> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['email'] = Variable<String>(email);
+    map['username'] = Variable<String>(username);
+    map['firstname'] = Variable<String>(firstname);
+    map['lastname'] = Variable<String>(lastname);
+    map['avatar_url'] = Variable<String>(avatarUrl);
+    map['phone_number'] = Variable<String>(phoneNumber);
+    map['birth_date'] = Variable<DateTime>(birthDate);
     map['access_token'] = Variable<String>(accessToken);
     map['refresh_token'] = Variable<String>(refreshToken);
     map['is_education_completed'] = Variable<bool>(isEducationCompleted);
@@ -184,6 +294,12 @@ class User extends DataClass implements Insertable<User> {
     return UserAuthCompanion(
       id: Value(id),
       email: Value(email),
+      username: Value(username),
+      firstname: Value(firstname),
+      lastname: Value(lastname),
+      avatarUrl: Value(avatarUrl),
+      phoneNumber: Value(phoneNumber),
+      birthDate: Value(birthDate),
       accessToken: Value(accessToken),
       refreshToken: Value(refreshToken),
       isEducationCompleted: Value(isEducationCompleted),
@@ -198,6 +314,12 @@ class User extends DataClass implements Insertable<User> {
     return User(
       id: serializer.fromJson<int>(json['id']),
       email: serializer.fromJson<String>(json['email']),
+      username: serializer.fromJson<String>(json['username']),
+      firstname: serializer.fromJson<String>(json['firstname']),
+      lastname: serializer.fromJson<String>(json['lastname']),
+      avatarUrl: serializer.fromJson<String>(json['avatarUrl']),
+      phoneNumber: serializer.fromJson<String>(json['phoneNumber']),
+      birthDate: serializer.fromJson<DateTime>(json['birthDate']),
       accessToken: serializer.fromJson<String>(json['accessToken']),
       refreshToken: serializer.fromJson<String>(json['refreshToken']),
       isEducationCompleted:
@@ -212,6 +334,12 @@ class User extends DataClass implements Insertable<User> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'email': serializer.toJson<String>(email),
+      'username': serializer.toJson<String>(username),
+      'firstname': serializer.toJson<String>(firstname),
+      'lastname': serializer.toJson<String>(lastname),
+      'avatarUrl': serializer.toJson<String>(avatarUrl),
+      'phoneNumber': serializer.toJson<String>(phoneNumber),
+      'birthDate': serializer.toJson<DateTime>(birthDate),
       'accessToken': serializer.toJson<String>(accessToken),
       'refreshToken': serializer.toJson<String>(refreshToken),
       'isEducationCompleted': serializer.toJson<bool>(isEducationCompleted),
@@ -223,6 +351,12 @@ class User extends DataClass implements Insertable<User> {
   User copyWith(
           {int? id,
           String? email,
+          String? username,
+          String? firstname,
+          String? lastname,
+          String? avatarUrl,
+          String? phoneNumber,
+          DateTime? birthDate,
           String? accessToken,
           String? refreshToken,
           bool? isEducationCompleted,
@@ -231,6 +365,12 @@ class User extends DataClass implements Insertable<User> {
       User(
         id: id ?? this.id,
         email: email ?? this.email,
+        username: username ?? this.username,
+        firstname: firstname ?? this.firstname,
+        lastname: lastname ?? this.lastname,
+        avatarUrl: avatarUrl ?? this.avatarUrl,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        birthDate: birthDate ?? this.birthDate,
         accessToken: accessToken ?? this.accessToken,
         refreshToken: refreshToken ?? this.refreshToken,
         isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
@@ -242,6 +382,12 @@ class User extends DataClass implements Insertable<User> {
     return (StringBuffer('User(')
           ..write('id: $id, ')
           ..write('email: $email, ')
+          ..write('username: $username, ')
+          ..write('firstname: $firstname, ')
+          ..write('lastname: $lastname, ')
+          ..write('avatarUrl: $avatarUrl, ')
+          ..write('phoneNumber: $phoneNumber, ')
+          ..write('birthDate: $birthDate, ')
           ..write('accessToken: $accessToken, ')
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
@@ -252,14 +398,32 @@ class User extends DataClass implements Insertable<User> {
   }
 
   @override
-  int get hashCode => Object.hash(id, email, accessToken, refreshToken,
-      isEducationCompleted, provider, isCurrent);
+  int get hashCode => Object.hash(
+      id,
+      email,
+      username,
+      firstname,
+      lastname,
+      avatarUrl,
+      phoneNumber,
+      birthDate,
+      accessToken,
+      refreshToken,
+      isEducationCompleted,
+      provider,
+      isCurrent);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is User &&
           other.id == this.id &&
           other.email == this.email &&
+          other.username == this.username &&
+          other.firstname == this.firstname &&
+          other.lastname == this.lastname &&
+          other.avatarUrl == this.avatarUrl &&
+          other.phoneNumber == this.phoneNumber &&
+          other.birthDate == this.birthDate &&
           other.accessToken == this.accessToken &&
           other.refreshToken == this.refreshToken &&
           other.isEducationCompleted == this.isEducationCompleted &&
@@ -270,6 +434,12 @@ class User extends DataClass implements Insertable<User> {
 class UserAuthCompanion extends UpdateCompanion<User> {
   final Value<int> id;
   final Value<String> email;
+  final Value<String> username;
+  final Value<String> firstname;
+  final Value<String> lastname;
+  final Value<String> avatarUrl;
+  final Value<String> phoneNumber;
+  final Value<DateTime> birthDate;
   final Value<String> accessToken;
   final Value<String> refreshToken;
   final Value<bool> isEducationCompleted;
@@ -278,6 +448,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   const UserAuthCompanion({
     this.id = const Value.absent(),
     this.email = const Value.absent(),
+    this.username = const Value.absent(),
+    this.firstname = const Value.absent(),
+    this.lastname = const Value.absent(),
+    this.avatarUrl = const Value.absent(),
+    this.phoneNumber = const Value.absent(),
+    this.birthDate = const Value.absent(),
     this.accessToken = const Value.absent(),
     this.refreshToken = const Value.absent(),
     this.isEducationCompleted = const Value.absent(),
@@ -287,12 +463,24 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   UserAuthCompanion.insert({
     this.id = const Value.absent(),
     required String email,
+    required String username,
+    required String firstname,
+    required String lastname,
+    required String avatarUrl,
+    required String phoneNumber,
+    required DateTime birthDate,
     required String accessToken,
     required String refreshToken,
     required bool isEducationCompleted,
     required String provider,
     required bool isCurrent,
   })  : email = Value(email),
+        username = Value(username),
+        firstname = Value(firstname),
+        lastname = Value(lastname),
+        avatarUrl = Value(avatarUrl),
+        phoneNumber = Value(phoneNumber),
+        birthDate = Value(birthDate),
         accessToken = Value(accessToken),
         refreshToken = Value(refreshToken),
         isEducationCompleted = Value(isEducationCompleted),
@@ -301,6 +489,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   static Insertable<User> custom({
     Expression<int>? id,
     Expression<String>? email,
+    Expression<String>? username,
+    Expression<String>? firstname,
+    Expression<String>? lastname,
+    Expression<String>? avatarUrl,
+    Expression<String>? phoneNumber,
+    Expression<DateTime>? birthDate,
     Expression<String>? accessToken,
     Expression<String>? refreshToken,
     Expression<bool>? isEducationCompleted,
@@ -310,6 +504,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (email != null) 'email': email,
+      if (username != null) 'username': username,
+      if (firstname != null) 'firstname': firstname,
+      if (lastname != null) 'lastname': lastname,
+      if (avatarUrl != null) 'avatar_url': avatarUrl,
+      if (phoneNumber != null) 'phone_number': phoneNumber,
+      if (birthDate != null) 'birth_date': birthDate,
       if (accessToken != null) 'access_token': accessToken,
       if (refreshToken != null) 'refresh_token': refreshToken,
       if (isEducationCompleted != null)
@@ -322,6 +522,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   UserAuthCompanion copyWith(
       {Value<int>? id,
       Value<String>? email,
+      Value<String>? username,
+      Value<String>? firstname,
+      Value<String>? lastname,
+      Value<String>? avatarUrl,
+      Value<String>? phoneNumber,
+      Value<DateTime>? birthDate,
       Value<String>? accessToken,
       Value<String>? refreshToken,
       Value<bool>? isEducationCompleted,
@@ -330,6 +536,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     return UserAuthCompanion(
       id: id ?? this.id,
       email: email ?? this.email,
+      username: username ?? this.username,
+      firstname: firstname ?? this.firstname,
+      lastname: lastname ?? this.lastname,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      birthDate: birthDate ?? this.birthDate,
       accessToken: accessToken ?? this.accessToken,
       refreshToken: refreshToken ?? this.refreshToken,
       isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
@@ -346,6 +558,24 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     }
     if (email.present) {
       map['email'] = Variable<String>(email.value);
+    }
+    if (username.present) {
+      map['username'] = Variable<String>(username.value);
+    }
+    if (firstname.present) {
+      map['firstname'] = Variable<String>(firstname.value);
+    }
+    if (lastname.present) {
+      map['lastname'] = Variable<String>(lastname.value);
+    }
+    if (avatarUrl.present) {
+      map['avatar_url'] = Variable<String>(avatarUrl.value);
+    }
+    if (phoneNumber.present) {
+      map['phone_number'] = Variable<String>(phoneNumber.value);
+    }
+    if (birthDate.present) {
+      map['birth_date'] = Variable<DateTime>(birthDate.value);
     }
     if (accessToken.present) {
       map['access_token'] = Variable<String>(accessToken.value);
@@ -371,6 +601,12 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     return (StringBuffer('UserAuthCompanion(')
           ..write('id: $id, ')
           ..write('email: $email, ')
+          ..write('username: $username, ')
+          ..write('firstname: $firstname, ')
+          ..write('lastname: $lastname, ')
+          ..write('avatarUrl: $avatarUrl, ')
+          ..write('phoneNumber: $phoneNumber, ')
+          ..write('birthDate: $birthDate, ')
           ..write('accessToken: $accessToken, ')
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
@@ -395,6 +631,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
 typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
   Value<int> id,
   required String email,
+  required String username,
+  required String firstname,
+  required String lastname,
+  required String avatarUrl,
+  required String phoneNumber,
+  required DateTime birthDate,
   required String accessToken,
   required String refreshToken,
   required bool isEducationCompleted,
@@ -404,6 +646,12 @@ typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
 typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<int> id,
   Value<String> email,
+  Value<String> username,
+  Value<String> firstname,
+  Value<String> lastname,
+  Value<String> avatarUrl,
+  Value<String> phoneNumber,
+  Value<DateTime> birthDate,
   Value<String> accessToken,
   Value<String> refreshToken,
   Value<bool> isEducationCompleted,
@@ -433,6 +681,12 @@ class $$UserAuthTableTableManager extends RootTableManager<
           getUpdateCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             Value<String> email = const Value.absent(),
+            Value<String> username = const Value.absent(),
+            Value<String> firstname = const Value.absent(),
+            Value<String> lastname = const Value.absent(),
+            Value<String> avatarUrl = const Value.absent(),
+            Value<String> phoneNumber = const Value.absent(),
+            Value<DateTime> birthDate = const Value.absent(),
             Value<String> accessToken = const Value.absent(),
             Value<String> refreshToken = const Value.absent(),
             Value<bool> isEducationCompleted = const Value.absent(),
@@ -442,6 +696,12 @@ class $$UserAuthTableTableManager extends RootTableManager<
               UserAuthCompanion(
             id: id,
             email: email,
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            avatarUrl: avatarUrl,
+            phoneNumber: phoneNumber,
+            birthDate: birthDate,
             accessToken: accessToken,
             refreshToken: refreshToken,
             isEducationCompleted: isEducationCompleted,
@@ -451,6 +711,12 @@ class $$UserAuthTableTableManager extends RootTableManager<
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             required String email,
+            required String username,
+            required String firstname,
+            required String lastname,
+            required String avatarUrl,
+            required String phoneNumber,
+            required DateTime birthDate,
             required String accessToken,
             required String refreshToken,
             required bool isEducationCompleted,
@@ -460,6 +726,12 @@ class $$UserAuthTableTableManager extends RootTableManager<
               UserAuthCompanion.insert(
             id: id,
             email: email,
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            avatarUrl: avatarUrl,
+            phoneNumber: phoneNumber,
+            birthDate: birthDate,
             accessToken: accessToken,
             refreshToken: refreshToken,
             isEducationCompleted: isEducationCompleted,
@@ -491,6 +763,36 @@ class $$UserAuthTableFilterComposer
 
   ColumnFilters<String> get email => $state.composableBuilder(
       column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get username => $state.composableBuilder(
+      column: $state.table.username,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get firstname => $state.composableBuilder(
+      column: $state.table.firstname,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get lastname => $state.composableBuilder(
+      column: $state.table.lastname,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get avatarUrl => $state.composableBuilder(
+      column: $state.table.avatarUrl,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get phoneNumber => $state.composableBuilder(
+      column: $state.table.phoneNumber,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get birthDate => $state.composableBuilder(
+      column: $state.table.birthDate,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -530,6 +832,36 @@ class $$UserAuthTableOrderingComposer
 
   ColumnOrderings<String> get email => $state.composableBuilder(
       column: $state.table.email,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get username => $state.composableBuilder(
+      column: $state.table.username,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get firstname => $state.composableBuilder(
+      column: $state.table.firstname,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get lastname => $state.composableBuilder(
+      column: $state.table.lastname,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get avatarUrl => $state.composableBuilder(
+      column: $state.table.avatarUrl,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get phoneNumber => $state.composableBuilder(
+      column: $state.table.phoneNumber,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get birthDate => $state.composableBuilder(
+      column: $state.table.birthDate,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 

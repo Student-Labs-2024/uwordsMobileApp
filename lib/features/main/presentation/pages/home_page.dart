@@ -1,12 +1,14 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:flutter_sound/public/flutter_sound_recorder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uwords/env.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
@@ -14,6 +16,7 @@ import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
 import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
 import 'package:uwords/features/main/presentation/widgets/record_button.dart';
+import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -30,8 +33,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TextEditingController textEditingController = TextEditingController();
 
+  final IExceptionWebsocketService webSocketService =
+      GetIt.instance.get<IExceptionWebsocketService>();
+  late StreamController errorStreamController;
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
+  String _securedPath = '';
 
   bool isRecording = false;
 
@@ -42,13 +49,20 @@ class _HomePageState extends State<HomePage> {
         _mRecorderIsInited = true;
       });
     });
+    _connect();
     super.initState();
+  }
+
+  void _connect() async {
+    errorStreamController = await webSocketService.connect(websocketLink);
+    webSocketService.listenForErrors();
   }
 
   @override
   void dispose() {
     _mRecorder!.closeRecorder();
     _mRecorder = null;
+    webSocketService.disconnect();
     super.dispose();
   }
 
@@ -71,28 +85,37 @@ class _HomePageState extends State<HomePage> {
     } else {
       appDocDirectory = (await getExternalStorageDirectory())!;
     }
-    final audioPath =
-        "${appDocDirectory.path}/audio_records${DateTime.now().millisecondsSinceEpoch}";
-    _mRecorder!
-        .startRecorder(
-      toFile: audioPath,
-    )
-        .then((value) {
-      setState(() {
-        isRecording = true;
-      });
+
+    String dato = "${DateTime.now().millisecondsSinceEpoch.toString()}.wav";
+    Directory appDirec =
+        Directory("${appDocDirectory.path}/$jrecordDirectory/");
+    if (await appDirec.exists()) {
+      String patho = "${appDirec.path}$dato";
+      await _mRecorder!.startRecorder(
+        toFile: patho,
+        codec: Codec.pcm16WAV,
+      );
+      _securedPath = patho;
+    } else {
+      appDirec.create(recursive: true);
+      String patho = "${appDirec.path}$dato";
+      await _mRecorder!.startRecorder(
+        toFile: patho,
+        codec: Codec.pcm16WAV,
+      );
+      _securedPath = patho;
+    }
+    setState(() {
+      isRecording = true;
     });
   }
 
   Future<String> stopRecorder() async {
-    String? path;
-    await _mRecorder!.stopRecorder().then((value) {
-      path = value;
-      setState(() {
-        isRecording = false;
-      });
+    await _mRecorder!.stopRecorder();
+    setState(() {
+      isRecording = false;
     });
-    return path ?? '';
+    return _securedPath;
   }
 
   Future<bool> _requestPermission() async {
@@ -282,6 +305,16 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: HomePageComponentSizes
                               .customTextFieldSummarizedHeight,
+                        ),
+                        StreamBuilder(
+                          stream: errorStreamController.stream,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(snapshot.data.toString());
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
                         ),
                       ],
                     )

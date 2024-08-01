@@ -14,4 +14,5 @@ class AuthDesignedConstants {
   static const int minimumDate = -2191196888000;
   static const double iconReturnSize = 40;
   static const double datePickerMaxHeight = 500;
+  static const double visabillityIconHeight = 12;
 }
