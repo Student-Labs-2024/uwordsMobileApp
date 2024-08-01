@@ -52,6 +52,19 @@
   "congratulations": "Молодец, ты прошел все слова!",
   "next": "Дальше",
   "check": "Проверить",
+  "daysOnFireCard": "В ударе",
+  "learnedWordsCard": "Слов",
+  "hours": "{count}ч",
+  "@hours": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "recordTimeCard": "Записи",
+  "precisionCard": "Точность",
   "startTraining": "Тренировать",
   "daysOnFireTitle": "Дней в ударе",
   "learnedWordsTitle": "Слова",
@@ -92,5 +105,10 @@
         "format": "compact"
       }
     }
-  }
+  },
+  "almostLearned": "Почти изучено",
+  "passed": "Пройдено",
+  "statistics": "Статистика",
+  "activity": "Активность",
+  "achievements": "Достижения"
 }

@@ -1,18 +1,13 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
-import 'package:uwords/features/learn/domain/models/word_info.dart';
-import 'package:uwords/features/learn/domain/models/word_model.dart';
+import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
-import 'package:uwords/features/profile/prezentation/widgets/options_button.dart';
 import 'package:uwords/features/profile/prezentation/widgets/progress_word_tile.dart';
 import 'package:uwords/features/profile/prezentation/widgets/statistic_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({super.key});
@@ -22,91 +17,6 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  final List<WordInfo> exampleWords = [
-    WordInfo(
-        id: 0,
-        word: WordModel(
-            id: 0,
-            enValue: 'Street',
-            ruValue: 'Улица',
-            audioLink: 'audioLink',
-            pictureLink:
-                'https://get.wallhere.com/photo/street-light-city-street-cityscape-car-urban-building-sky-winter-road-house-evening-morning-traffic-town-highway-transport-Manhattan-metropolis-asphalt-infrastructure-pedestrian-tree-downtown-plant-newyork-nyc-landmark-daytime-suburb-lane-urban-area-woody-plant-metropolitan-area-neighbourhood-residential-area-road-surface-cabs-thoroughfare-885905.jpg'),
-        userId: 0,
-        latestStudy: null,
-        frequency: 0,
-        progress: 0),
-    WordInfo(
-        id: 1,
-        word: WordModel(
-            id: 1,
-            enValue: 'Mountain',
-            ruValue: 'Гора',
-            audioLink: 'audioLink',
-            pictureLink:
-                'https://get.wallhere.com/photo/landscape-mountains-nature-snow-winter-mountain-pass-Alps-summit-plateau-ridge-mountain-weather-season-Massif-adventure-mountainous-landforms-landform-geographical-feature-geological-phenomenon-mountain-range-mountaineering-cirque-288828.jpg'),
-        userId: 1,
-        latestStudy: null,
-        frequency: 0,
-        progress: 20),
-    WordInfo(
-        id: 2,
-        word: WordModel(
-            id: 2,
-            enValue: 'Field',
-            ruValue: 'Поле',
-            audioLink: 'audioLink',
-            pictureLink:
-                'https://img.goodfon.com/original/2048x1363/a/9b/leto-zelen-les-pole-trava-derevia-nebo-solntse-hdr.jpg'),
-        userId: 2,
-        latestStudy: null,
-        frequency: 0,
-        progress: 40),
-    WordInfo(
-        id: 3,
-        word: WordModel(
-            id: 3,
-            enValue: 'Lake',
-            ruValue: 'Озеро',
-            audioLink: 'audioLink',
-            pictureLink:
-                'https://s1.1zoom.me/big0/21/Scenery_Mountains_Lake_489390.jpg'),
-        userId: 3,
-        latestStudy: null,
-        frequency: 0,
-        progress: 60),
-    WordInfo(
-        id: 4,
-        word: WordModel(
-            id: 4,
-            enValue: 'Forest',
-            ruValue: 'Лес',
-            audioLink: 'audioLink',
-            pictureLink: 'https://s1.1zoom.me/big3/196/396241-svetik.jpg'),
-        userId: 4,
-        latestStudy: null,
-        frequency: 0,
-        progress: 80),
-    WordInfo(
-        id: 5,
-        word: WordModel(
-            id: 5,
-            enValue: 'Winter',
-            ruValue: 'Зима',
-            audioLink: 'audioLink',
-            pictureLink:
-                'https://img3.akspic.ru/crops/7/3/6/1/4/141637/141637-sneg-vetv-sinij-nebo-zimnyaya_doroga-2560x1440.jpg'),
-        userId: 5,
-        latestStudy: null,
-        frequency: 0,
-        progress: 100),
-  ];
-
   String getPrecisionIcon(int percent) {
     if (percent == 100) {
       return AppImageSource.precision100Icon;
@@ -138,14 +48,14 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.onfireIcon,
-                title: '12',
-                subtitle: 'В ударе',
+                title: '${ProfileDataExample.exampleMetrics[0]}',
+                subtitle: AppLocalizations.of(context).daysOnFireCard,
                 onPressed: () => {},
               ),
               StatisticCard(
                 image: AppImageSource.wordsLearnedIcon,
-                title: '55',
-                subtitle: 'Слов',
+                title: '${ProfileDataExample.exampleMetrics[1]}',
+                subtitle: AppLocalizations.of(context).learnedWordsCard,
                 onPressed: () => {},
               ),
             ],
@@ -158,24 +68,25 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.recordTimeIcon,
-                title: '1ч',
-                subtitle: 'Записи',
+                title: AppLocalizations.of(context)
+                    .hours(ProfileDataExample.exampleMetrics[2]),
+                subtitle: AppLocalizations.of(context).recordTimeCard,
                 onPressed: () => {},
               ),
               StatisticCard(
                 image: getPrecisionIcon(83),
-                title: '83%',
-                subtitle: 'Точность',
+                title: '${ProfileDataExample.exampleMetrics[3]}%',
+                subtitle: AppLocalizations.of(context).precisionCard,
                 onPressed: () => {},
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
                 top: ProfilePaddings.subtitleHorizontal,
                 bottom: ProfilePaddings.subtitleBot),
             child: Text(
-              'Почти изучено',
+              AppLocalizations.of(context).almostLearned,
               style: AppTextStyles.profileSubtitle,
             ),
           ),
@@ -185,9 +96,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding: const EdgeInsets.all(
+                    ProfilePaddings.progressWordTileWrapper),
                 child: Column(
-                  children: exampleWords
+                  children: ProfileDataExample.exampleWords
                       .map(
                         (e) => ProgressWordTile(wordInfo: e),
                       )

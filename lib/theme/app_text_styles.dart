@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/profile/prezentation/widgets/statistic_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class AppTextStyles {
@@ -127,17 +126,17 @@ class AppTextStyles {
       fontSize: 18,
       color: AppColors.blackColor);
 
-  static const ProgressWordTileTitle = TextStyle(
+  static const progressWordTileTitle = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w600,
       fontSize: 14,
       color: AppColors.blackColor);
-  static const ProgressWordTileProgress = TextStyle(
+  static const progressWordTileProgress = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w600,
       fontSize: 12,
       color: AppColors.lightgrayColor2);
-  static const ProgressWordTileProgressBold = TextStyle(
+  static const progressWordTileProgressBold = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w600,
       fontSize: 14,
@@ -147,4 +146,15 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
       fontSize: 15,
       color: AppColors.blackColor);
+
+  static const activitiesTitleText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      color: AppColors.blackColor);
+  static const activitiesTitleData = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      color: AppColors.grayColor);
 }

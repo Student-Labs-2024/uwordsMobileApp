@@ -21,4 +21,8 @@ class ProfileSizes {
   static const double sachievementCardSpacer = 10;
 
   static const double endSpacer = 65;
+
+  static const double activitiesTileImageSize = 40 / 375;
+  static const double activitiesTile = 10;
+  static const double activitiesTileIndicatorWidth = 120 / 375;
 }

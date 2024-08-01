@@ -110,7 +110,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
       case 1:
         context.go("/learn");
       case 4:
-        context.go("/");
+        context.go("/profile");
     }
   }
 }

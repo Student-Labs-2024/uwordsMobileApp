@@ -22,13 +22,13 @@ class AppColors {
   static const Color white05Color = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);
   static const Color whiteColor = Color.fromARGB(255, 255, 255, 255);
-  static const Color grayColor = Color.fromARGB(200, 0, 0, 0);
   static const Color greenColor = Color.fromARGB(255, 84, 187, 92);
   static const Color brownColor = Color.fromARGB(255, 215, 204, 200);
   static const Color lightWhite = Color.fromRGBO(238, 238, 238, 1);
 
   static const Color lightgrayColor = Color.fromRGBO(154, 147, 147, 1);
   static const Color lightgrayColor2 = Color.fromRGBO(133, 132, 134, 1);
+  static const Color grayColor = Color.fromRGBO(102, 102, 102, 1);
 
   static const Color goodProgressbarColor1 = Color.fromRGBO(47, 234, 155, 1);
   static const Color goodProgressbarColor2 = Color.fromRGBO(127, 221, 83, 1);

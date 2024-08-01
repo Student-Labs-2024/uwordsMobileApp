@@ -1,12 +1,8 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
+import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
+import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
-import 'package:uwords/features/profile/prezentation/widgets/options_button.dart';
-import 'package:uwords/theme/app_colors.dart';
-import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/features/profile/prezentation/widgets/activities_tile.dart';
 
 class ActivitiesScreen extends StatefulWidget {
   const ActivitiesScreen({super.key});
@@ -17,16 +13,20 @@ class ActivitiesScreen extends StatefulWidget {
 
 class _ActivitiesScreenState extends State<ActivitiesScreen> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('Activities'),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width *
+              ProfilePaddings.headerHorizontal),
+      child: Column(
+        children: [
+          ...ProfileDataExample.activitiesTileDataExample.map((e) =>
+              ActivitiesTile(image: e.image, date: e.date, title: e.title)),
+          const SizedBox(
+            height: ProfileSizes.endSpacer,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
+import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/screens/achievements_screen.dart';
@@ -11,6 +12,7 @@ import 'package:uwords/features/profile/prezentation/screens/statistics_screen.d
 import 'package:uwords/features/profile/prezentation/widgets/options_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -20,15 +22,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   CarouselController carouselController = CarouselController();
   int _currentPage = 0;
 
-  final List<String> pages = ['Статистика', 'Активность', 'Достижения'];
+  late List<String> pages = [
+    AppLocalizations.of(context).statistics,
+    AppLocalizations.of(context).activity,
+    AppLocalizations.of(context).achievements
+  ];
 
   onCarouselPageChanged(int index, CarouselPageChangedReason reason) {
     setState(() {
@@ -79,8 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomImageNetworkView(
-                            imageSource:
-                                'https://i.pinimg.com/originals/86/e9/b5/86e9b52d3cfb854b855faa0e7dabfb74.jpg',
+                            imageSource: ProfileDataExample.userIconExample,
                             width: MediaQuery.of(context).size.width *
                                 ProfileSizes.avatarSize,
                             height: MediaQuery.of(context).size.width *
@@ -88,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             clipRadius: 50),
                         const SizedBox(height: 10),
                         const Text(
-                          'KatzeKet',
+                          ProfileDataExample.userNameExample,
                           style: AppTextStyles.profileName,
                         ),
                       ],
@@ -105,7 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 options: CarouselOptions(
                     enlargeCenterPage: true,
                     enlargeFactor: 0.3,
-                    height: 35.0,
+                    height: 42.0,
                     viewportFraction: 0.32,
                     onPageChanged: (index, reason) =>
                         onCarouselPageChanged(index, reason)),

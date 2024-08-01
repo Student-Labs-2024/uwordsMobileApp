@@ -1,10 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
-import 'package:uwords/features/learn/domain/models/word_info.dart';
-import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';

@@ -4,6 +4,7 @@ import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/theme/app_text_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProgressWordTile extends StatelessWidget {
   const ProgressWordTile({super.key, required this.wordInfo});
@@ -35,7 +36,7 @@ class ProgressWordTile extends StatelessWidget {
               children: [
                 Text(
                   wordInfo.word.ruValue,
-                  style: AppTextStyles.ProgressWordTileTitle,
+                  style: AppTextStyles.progressWordTileTitle,
                 ),
                 CustomProgressBar(
                   width: MediaQuery.of(context).size.width *
@@ -51,12 +52,12 @@ class ProgressWordTile extends StatelessWidget {
           Row(
             children: [
               Text(
-                'Пройдено',
-                style: AppTextStyles.ProgressWordTileProgress,
+                AppLocalizations.of(context).passed,
+                style: AppTextStyles.progressWordTileProgress,
               ),
               Text(
                 ' ${wordInfo.progress}%',
-                style: AppTextStyles.ProgressWordTileProgressBold,
+                style: AppTextStyles.progressWordTileProgressBold,
               ),
             ],
           )
