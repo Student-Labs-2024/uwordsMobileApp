@@ -103,10 +103,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 itemCount: pages.length,
                 carouselController: carouselController,
                 options: CarouselOptions(
-                    enlargeCenterPage: true,
-                    enlargeFactor: 0.3,
                     height: ProfileSizes.carouselHeight,
-                    viewportFraction: 0.32,
+                    viewportFraction: 0.31,
                     onPageChanged: (index, reason) =>
                         onCarouselPageChanged(index, reason)),
                 itemBuilder:

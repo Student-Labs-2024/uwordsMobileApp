@@ -106,7 +106,7 @@ class AppTextStyles {
   static const carouselUnActive = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w500,
-      fontSize: 18,
+      fontSize: 16,
       color: AppColors.lightgrayColor);
 
   static const statisticCardTitle = TextStyle(
