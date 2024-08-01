@@ -30,8 +30,8 @@ mixin _$WordInfoDto {
   DateTime? get latestStudy => throw _privateConstructorUsedError;
   @JsonKey(name: "frequency", defaultValue: 0)
   int get frequency => throw _privateConstructorUsedError;
-  @JsonKey(name: "progress", defaultValue: 0.0)
-  double get progress => throw _privateConstructorUsedError;
+  @JsonKey(name: "progress", defaultValue: 0)
+  int get progress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $WordInfoDtoCopyWith<$Res> {
       @JsonKey(name: "user_id", defaultValue: 0) int userId,
       @JsonKey(name: "latest_study", defaultValue: null) DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) int frequency,
-      @JsonKey(name: "progress", defaultValue: 0.0) double progress});
+      @JsonKey(name: "progress", defaultValue: 0) int progress});
 
   $WordModelDtoCopyWith<$Res> get word;
 }
@@ -100,7 +100,7 @@ class _$WordInfoDtoCopyWithImpl<$Res, $Val extends WordInfoDto>
       progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ) as $Val);
   }
 
@@ -127,7 +127,7 @@ abstract class _$$WordInfoDtoImplCopyWith<$Res>
       @JsonKey(name: "user_id", defaultValue: 0) int userId,
       @JsonKey(name: "latest_study", defaultValue: null) DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) int frequency,
-      @JsonKey(name: "progress", defaultValue: 0.0) double progress});
+      @JsonKey(name: "progress", defaultValue: 0) int progress});
 
   @override
   $WordModelDtoCopyWith<$Res> get word;
@@ -175,7 +175,7 @@ class __$$WordInfoDtoImplCopyWithImpl<$Res>
       progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -190,7 +190,7 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
       @JsonKey(name: "latest_study", defaultValue: null)
       required this.latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) required this.frequency,
-      @JsonKey(name: "progress", defaultValue: 0.0) required this.progress});
+      @JsonKey(name: "progress", defaultValue: 0) required this.progress});
 
   factory _$WordInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$WordInfoDtoImplFromJson(json);
@@ -211,8 +211,8 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
   @JsonKey(name: "frequency", defaultValue: 0)
   final int frequency;
   @override
-  @JsonKey(name: "progress", defaultValue: 0.0)
-  final double progress;
+  @JsonKey(name: "progress", defaultValue: 0)
+  final int progress;
 
   @override
   String toString() {
@@ -262,8 +262,8 @@ abstract class _WordInfoDto implements WordInfoDto {
       @JsonKey(name: "latest_study", defaultValue: null)
       required final DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) required final int frequency,
-      @JsonKey(name: "progress", defaultValue: 0.0)
-      required final double progress}) = _$WordInfoDtoImpl;
+      @JsonKey(name: "progress", defaultValue: 0)
+      required final int progress}) = _$WordInfoDtoImpl;
 
   factory _WordInfoDto.fromJson(Map<String, dynamic> json) =
       _$WordInfoDtoImpl.fromJson;
@@ -284,8 +284,8 @@ abstract class _WordInfoDto implements WordInfoDto {
   @JsonKey(name: "frequency", defaultValue: 0)
   int get frequency;
   @override
-  @JsonKey(name: "progress", defaultValue: 0.0)
-  double get progress;
+  @JsonKey(name: "progress", defaultValue: 0)
+  int get progress;
   @override
   @JsonKey(ignore: true)
   _$$WordInfoDtoImplCopyWith<_$WordInfoDtoImpl> get copyWith =>
