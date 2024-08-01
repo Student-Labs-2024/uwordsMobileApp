@@ -10,6 +10,10 @@ abstract class LearningState with _$LearningState {
     required List<Topic> topics,
   }) = _LearningGotWordsForStudy;
 
+  const factory LearningState.choseTopic({
+    required Topic topic,
+  }) = _LearningChoseTopic;
+
   const factory LearningState.failed({
     required List<Topic> topics,
   }) = _LearningFailed;

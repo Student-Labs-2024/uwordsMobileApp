@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
@@ -23,11 +24,13 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   LearningBloc({required this.wordsRepository, required this.userRepository})
       : super(const LearningState.initial(topics: [])) {
-    on<_GetWordsForStudy>(_handleGetWordsForStudy);
+    on<_GetTopics>(_handleGetTopics);
+    on<_ChooseTopic>(_handleChooseTopic);
+    on<_ReturnToAllTopics>(_handleReturnToAllTopics);
   }
 
-  Future<void> _handleGetWordsForStudy(
-      _GetWordsForStudy event, Emitter<LearningState> emit) async {
+  Future<void> _handleGetTopics(
+      _GetTopics event, Emitter<LearningState> emit) async {
     try {
       await _getTopicsFromServer(emit);
     } on OldAccessException catch (e) {
@@ -35,6 +38,15 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       userRepository.refreshAccessToken();
       await _getTopicsFromServer(emit);
     }
+  }
+
+  void _handleChooseTopic(_ChooseTopic event, Emitter<LearningState> emit) {
+    emit(LearningState.choseTopic(topic: event.topic));
+  }
+
+  void _handleReturnToAllTopics(
+      _ReturnToAllTopics event, Emitter<LearningState> emit) {
+    emit(LearningState.initial(topics: topics));
   }
 
   Future<void> _getTopicsFromServer(Emitter<LearningState> emit) async {

@@ -27,4 +27,11 @@ class AppColors {
   static const Color greenColor = Color.fromARGB(255, 84, 187, 92);
   static const Color brownColor = Color.fromARGB(255, 215, 204, 200);
   static const Color lightWhite = Color.fromRGBO(238, 238, 238, 1);
+
+  static const Color goodProgressbarColor1 = Color.fromRGBO(47, 234, 155, 1);
+  static const Color goodProgressbarColor2 = Color.fromRGBO(127, 221, 83, 1);
+  static const Color badProgressbarColor1 = Color.fromRGBO(255, 191, 26, 1);
+  static const Color badProgressbarColor2 = Color.fromRGBO(255, 64, 128, 1);
+
+  static const Color darkGreyColor = Color.fromRGBO(132, 127, 135, 1);
 }

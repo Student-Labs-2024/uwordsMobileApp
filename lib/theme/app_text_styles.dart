@@ -32,6 +32,16 @@ class AppTextStyles {
       fontWeight: FontWeight.w700,
       fontSize: 20,
       color: AppColors.darkMainColor);
+  static const topicHeaderText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.bold,
+      fontSize: 20,
+      color: AppColors.darkMainColor);
+  static const checkMoreText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      color: AppColors.darkMainColor);
   static const authButtonText = TextStyle(
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w600,
