@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +42,6 @@ class _ProfilePageState extends State<ProfilePage> {
       _currentPage = index;
     });
     context.read<ProfileBloc>().add(ProfileEvent.setScreen(index));
-    log(index.toString());
   }
 
   String currentUserName = ProfileDataExample.userNameExample;

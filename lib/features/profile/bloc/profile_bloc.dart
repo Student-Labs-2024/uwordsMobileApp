@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
@@ -21,7 +20,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       _GetUserInfo event, Emitter<ProfileState> emit) async {
     String userName = await userRepository.getCurrentUserName();
     String avatarUrl = await userRepository.getCurrentUserAvatarUrl();
-    log('$userName  $avatarUrl');
     emit(ProfileState.userGot(userName, avatarUrl));
     emit(const ProfileState.statisticsScreen());
   }
