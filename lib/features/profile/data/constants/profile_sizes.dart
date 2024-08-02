@@ -13,14 +13,14 @@ class ProfileSizes {
   static const double progressWordTileImageWidth = 58 / 375;
   static const double progressWordTileImageHeight = 38 / 812;
   static const double progressWordTile = 10;
-  static const double progressWordTileIndicatorWidth = 120 / 375;
+  static const double progressWordTileIndicatorWidth = 100 / 375;
 
   static const double achievementCardWidth = 146 / 375;
   static const double achievementCardHeight = 180 / 812;
   static const double sachievementCardIconWidth = 75 / 375;
   static const double sachievementCardSpacer = 10;
 
-  static const double endSpacer = 65;
+  static const double endSpacer = 105 / 812;
 
   static const double activitiesTileImageSize = 40 / 375;
   static const double activitiesTile = 10;

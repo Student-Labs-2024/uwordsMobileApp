@@ -20,8 +20,8 @@ class _AchievementsScreenState extends State<AchievementsScreen> {
       ),
       ...ProfileDataExample.exampleAchievements
           .map((e) => AchievementSection(type: e.first, count: e.second)),
-      const SizedBox(
-        height: ProfileSizes.endSpacer,
+      SizedBox(
+        height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
       ),
     ]);
   }

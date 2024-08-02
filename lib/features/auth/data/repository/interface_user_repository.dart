@@ -28,4 +28,6 @@ abstract interface class IUserRepository {
     required String uid,
   });
   Future<int> getCurrentUserId();
+  Future<String> getCurrentUserName();
+  Future<String> getCurrentUserAvatarUrl();
 }

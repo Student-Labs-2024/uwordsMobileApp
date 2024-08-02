@@ -106,8 +106,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                       .toList(),
                 ),
               )),
-          const SizedBox(
-            height: ProfileSizes.endSpacer,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
           ),
         ],
       ),

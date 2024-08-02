@@ -5,7 +5,6 @@ class AppColors {
   static const Color darkMainColor = Color.fromRGBO(83, 45, 106, 1);
   static const Color mainColorOpacity = Color.fromRGBO(83, 45, 106, 0.7);
   static const Color darkMainColorOpacity = Color.fromRGBO(83, 45, 106, 0.9);
-  static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.5);
   static const Color errorColor = Colors.red;
   static const Color incorrectChooseColor = Color.fromRGBO(255, 74, 74, 0.6);
 
@@ -14,10 +13,26 @@ class AppColors {
 
   static const Color homePageStartRecord = Color.fromRGBO(241, 245, 249, 1);
 
-  static const Color gradientBackgroundColor1 =
-      Color.fromRGBO(229, 243, 255, 1);
-  static const Color gradientBackgroundColor2 =
-      Color.fromRGBO(216, 227, 255, 1);
+  static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.5);
+
+  static const LinearGradient navBarRecord = LinearGradient(
+      colors: [AppColors.whiteBackgroundColor, AppColors.whiteBackgroundColor],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter);
+  static const LinearGradient navBarProfile = LinearGradient(colors: [
+    Color.fromRGBO(226, 234, 253, 1),
+    Color.fromRGBO(224, 233, 253, 1),
+    Color.fromRGBO(222, 231, 253, 1)
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+  static const LinearGradient navBarLearn = LinearGradient(colors: [
+    Color.fromRGBO(221, 233, 252, 1),
+    Color.fromRGBO(209, 223, 250, 1)
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+
+  static const LinearGradient backgroundGradient = LinearGradient(colors: [
+    Color.fromRGBO(229, 243, 255, 1),
+    Color.fromRGBO(216, 227, 255, 1)
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 
   static const Color white05Color = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);

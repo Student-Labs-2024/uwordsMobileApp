@@ -22,6 +22,16 @@ class ScaffoldWithNavBar extends StatefulWidget {
 class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
   int _selectedIndex = 0;
 
+  LinearGradient getGradient(String currentRoute) {
+    if (currentRoute == '/home') {
+      return AppColors.navBarRecord;
+    } else if (currentRoute == '/learn') {
+      return AppColors.navBarLearn;
+    } else {
+      return AppColors.navBarProfile;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var currentRoute =
@@ -42,7 +52,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       horizontal: ScaffoldWithNavbarPaddings.navBarHorizontal),
                   decoration: fis.BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    color: AppColors.whiteBackgroundColor,
+                    gradient: getGradient(currentRoute),
                     boxShadow: MainBoxShadows.main,
                   ),
                   child: Row(
