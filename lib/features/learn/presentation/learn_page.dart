@@ -53,12 +53,8 @@ class _LearnPageState extends State<LearnPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100),
           child: DecoratedBox(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-                AppColors.gradientBackgroundColor1,
-                AppColors.gradientBackgroundColor1
-              ], begin: Alignment.topLeft),
-            ),
+            decoration:
+                const BoxDecoration(gradient: AppColors.backgroundGradient),
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
@@ -133,12 +129,8 @@ class _LearnPageState extends State<LearnPage> {
           ),
         ),
         body: DecoratedBox(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-                AppColors.gradientBackgroundColor1,
-                AppColors.gradientBackgroundColor2
-              ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-            ),
+            decoration:
+                const BoxDecoration(gradient: AppColors.backgroundGradient),
             child: SafeArea(
                 child: BlocConsumer<LearningBloc, LearningState>(
                     listener: (context, state) {
