@@ -18,12 +18,15 @@ class TopicHeader extends StatelessWidget {
     return Row(
       children: [
         InkWell(
+          // TODO Need to think how to do it better way
           onTap: () {
             context
                 .read<LearningBloc>()
                 .add(LearningEvent.getWordsByTopic(topic));
-            context.read<TrainingBloc>().add(TrainingEvent.setTopic(topic));
-            context.go("/learnCore");
+            Future.delayed(Duration(milliseconds: 500)).whenComplete(() {
+              context.read<TrainingBloc>().add(TrainingEvent.setTopic(topic));
+              context.go("/learnCore");
+            });
           },
           child: Text(
             topic.topicTitle,

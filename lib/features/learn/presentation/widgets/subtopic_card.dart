@@ -35,10 +35,17 @@ class SubtopicCard extends StatelessWidget {
           shape: BoxShape.rectangle,
         ),
         child: InkWell(
-          onTap: (){
-            context.read<LearningBloc>().add(LearningEvent.getWordsByTopicSubtopic(topic, subtopic));
-            context.read<TrainingBloc>().add(TrainingEvent.setSubtopic(subtopic));
-    context.go("/learnCore");
+          onTap: () {
+            // TODO Need to think how to do it better way
+            context
+                .read<LearningBloc>()
+                .add(LearningEvent.getWordsByTopicSubtopic(topic, subtopic));
+            Future.delayed(const Duration(milliseconds: 500)).whenComplete(() {
+              context
+                  .read<TrainingBloc>()
+                  .add(TrainingEvent.setSubtopic(subtopic));
+              context.go("/learnCore");
+            });
           },
           child: Stack(
             children: [

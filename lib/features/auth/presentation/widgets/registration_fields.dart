@@ -33,7 +33,7 @@ class RegistrationFields extends StatelessWidget {
               borderRadius: BorderRadius.circular(
                   AuthDesignedConstants.customTextFieldBorderRadius),
               boxShadow: MainBoxShadows.main),
-          child: Expanded(
+          child: SizedBox(
             child: TextField(
               textAlignVertical: TextAlignVertical.center,
               expands: true,

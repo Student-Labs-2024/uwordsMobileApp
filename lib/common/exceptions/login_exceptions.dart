@@ -35,3 +35,8 @@ class CanceledSignIn implements Exception {
   String message;
   CanceledSignIn({this.message = ""});
 }
+
+class NotRegisteredExceptionBySelfProvider implements Exception {
+  String message;
+  NotRegisteredExceptionBySelfProvider({this.message = ""});
+}

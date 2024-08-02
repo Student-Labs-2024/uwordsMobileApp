@@ -35,7 +35,18 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       );
     } on DioException catch (e) {
       noInternetCheck(e);
-      _checkStatusCode(e: e, provider: AuthorizationProvider.self);
+      if (e.response != null) {
+        switch (e.response!.statusCode) {
+          case 400:
+            throw NotValidDataForLoginException();
+          case 403:
+            throw AccessIsBannedException();
+          case 404:
+            throw NotRegisteredExceptionBySelfProvider();
+          default:
+            break;
+        }
+      }
       rethrow;
     }
   }
