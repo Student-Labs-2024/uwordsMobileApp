@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
+import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -15,15 +17,26 @@ class TopicHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          topic.topicTitle,
-          style: AppTextStyles.topicHeaderText,
+        InkWell(
+          onTap: () {
+            context
+                .read<LearningBloc>()
+                .add(LearningEvent.getWordsByTopic(topic));
+            context.read<TrainingBloc>().add(TrainingEvent.setTopic(topic));
+            context.go("/learnCore");
+          },
+          child: Text(
+            topic.topicTitle,
+            style: AppTextStyles.topicHeaderText,
+          ),
         ),
         const Spacer(),
         if (topic.subtopics.length >= 4)
           InkWell(
             onTap: () {
-              context.read<LearningBloc>().add(LearningEvent.chooseTopic(topic));
+              context
+                  .read<LearningBloc>()
+                  .add(LearningEvent.chooseTopic(topic));
             },
             child: Row(
               children: [

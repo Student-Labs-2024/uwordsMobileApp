@@ -3,7 +3,6 @@ import 'package:uwords/features/learn/data/data_sources/interface_words_data_sou
 import 'package:uwords/features/learn/data/learn_client.dart';
 import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
 import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
-import 'package:uwords/features/learn/domain/request_bodies/topic_words_request.dart';
 
 class WordsDataSource implements IWordsDataSource {
   static Dio dio = Dio();
@@ -30,7 +29,7 @@ class WordsDataSource implements IWordsDataSource {
       required String subtopic}) async {
     List<WordInfoDto> words = [];
     words = await client.getWordsByTopicAndSubtopic(
-        accessToken, TopicWordsRequest(topic: topic, subtopic: subtopic));
+        "Bearer $accessToken", topic, subtopic);
     return words;
   }
 

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:uwords/env.dart';
 import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
@@ -19,5 +20,7 @@ abstract class LearnClient {
 
   @GET("user/subtopic/words")
   Future<List<WordInfoDto>> getWordsByTopicAndSubtopic(
-      @Header("Authorization") String accessToken, @Body() body);
+      @Header("Authorization") String accessToken,
+      @Query("topic_title") String topicTitle,
+      @Query("subtopic_title") String subtopicTitle);
 }

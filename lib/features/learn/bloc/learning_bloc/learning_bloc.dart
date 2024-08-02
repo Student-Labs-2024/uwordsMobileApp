@@ -9,7 +9,6 @@ import 'package:uwords/features/auth/data/repository/interface_user_repository.d
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
-import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 part 'learning_bloc_state.dart';
 part 'learning_bloc_event.dart';
@@ -18,8 +17,6 @@ part 'learning_bloc.freezed.dart';
 class LearningBloc extends Bloc<LearningEvent, LearningState> {
   final IWordsRepository wordsRepository;
   final IUserRepository userRepository;
-
-  List<WordModel> words = [];
 
   List<Topic> topics = [];
 
@@ -33,6 +30,8 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     on<_ReturnToAllTopics>(_handleReturnToAllTopics);
     on<_UpdateSubtopicSort>(_handleUpdateSubtopicSort);
     on<_ReverseSubtopicSort>(_handleReverseSubtopicSort);
+    on<_GetWordsByTopic>(_handleGetWordsByTopic);
+    on<_GetWordsByTopicSubtopic>(_handleGetWordsByTopicSubtopic);
   }
 
   Future<void> _handleGetTopics(
@@ -64,8 +63,10 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     emit(LearningState.choseTopic(topic: currentTopic));
   }
 
-  void _handleReverseSubtopicSort(_ReverseSubtopicSort event, Emitter<LearningState> emit){
-    currentTopic.subtopics.replaceRange(0, currentTopic.subtopics.length, currentTopic.subtopics.reversed.toList());
+  void _handleReverseSubtopicSort(
+      _ReverseSubtopicSort event, Emitter<LearningState> emit) {
+    currentTopic.subtopics.replaceRange(0, currentTopic.subtopics.length,
+        currentTopic.subtopics.reversed.toList());
     emit(const LearningState.changedSort());
     emit(LearningState.choseTopic(topic: currentTopic));
   }
@@ -79,5 +80,37 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     topics = newTopics;
     emit(LearningState.gotWordsForStudy(topics: topics));
     emit(LearningState.initial(topics: topics));
+  }
+
+  Future<void> _handleGetWordsByTopic(
+      _GetWordsByTopic event, Emitter<LearningState> emit) async {
+    String accessToken = await userRepository.getCurrentUserAccessToken();
+    await checkTokenExpirationAndUpdateIfNeed(
+        accessToken: accessToken, userRepository: userRepository);
+    List<Subtopic> subtopics = topics
+        .firstWhere((element) => event.topic.topicTitle == element.topicTitle)
+        .subtopics;
+
+    for (Subtopic element in subtopics) {
+      await _getWordsByTopicAndSubtopic(accessToken, event.topic, element);
+    }
+  }
+
+  Future<void> _handleGetWordsByTopicSubtopic(
+      _GetWordsByTopicSubtopic event, Emitter<LearningState> emit) async {
+    String accessToken = await userRepository.getCurrentUserAccessToken();
+    await checkTokenExpirationAndUpdateIfNeed(
+        accessToken: accessToken, userRepository: userRepository);
+    await _getWordsByTopicAndSubtopic(accessToken, event.topic, event.subtopic);
+  }
+
+  Future<void> _getWordsByTopicAndSubtopic(
+      String accessToken, Topic topic, Subtopic subtopic) async {
+    subtopic.wordInfoList.insertAll(
+        0,
+        await wordsRepository.getWordsByTopicAndSubtopic(
+            accessToken: accessToken,
+            topic: topic.topicTitle,
+            subtopic: subtopic.subtopicTitle));
   }
 }

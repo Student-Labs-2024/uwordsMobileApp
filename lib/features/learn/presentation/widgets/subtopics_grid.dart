@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
+import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopic_card.dart';
 
 class SubtopicsGrid extends StatelessWidget {
+  final Topic topic;
   final List<Subtopic> subtopics;
-  const SubtopicsGrid({super.key, required this.subtopics});
+  const SubtopicsGrid(
+      {super.key, required this.subtopics, required this.topic});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-
         itemCount: subtopics.length,
         controller: ScrollController(),
         scrollDirection: Axis.vertical,
@@ -21,7 +23,10 @@ class SubtopicsGrid extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return SubtopicCard(
-                width: 150, height: 120, subtopic: subtopics[index]);
+              topic: topic,
+              width: 150,
+              height: 120,
+              subtopic: subtopics[index]);
         });
   }
 }

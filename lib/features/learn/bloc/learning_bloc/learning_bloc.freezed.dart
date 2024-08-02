@@ -898,6 +898,9 @@ mixin _$LearningEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
     required TResult Function(Topic topic) chooseTopic,
     required TResult Function(Comparator<Subtopic> comparator)
         updateSubtopicsSort,
@@ -908,6 +911,8 @@ mixin _$LearningEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult? Function(Topic topic)? chooseTopic,
     TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult? Function()? reverseSubtopicsSort,
@@ -917,6 +922,8 @@ mixin _$LearningEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult Function(Topic topic)? chooseTopic,
     TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult Function()? reverseSubtopicsSort,
@@ -927,6 +934,9 @@ mixin _$LearningEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
     required TResult Function(_ChooseTopic value) chooseTopic,
     required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
@@ -936,6 +946,8 @@ mixin _$LearningEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult? Function(_ChooseTopic value)? chooseTopic,
     TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -945,6 +957,8 @@ mixin _$LearningEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult Function(_ChooseTopic value)? chooseTopic,
     TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1017,6 +1031,9 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
     required TResult Function(Topic topic) chooseTopic,
     required TResult Function(Comparator<Subtopic> comparator)
         updateSubtopicsSort,
@@ -1030,6 +1047,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult? Function(Topic topic)? chooseTopic,
     TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult? Function()? reverseSubtopicsSort,
@@ -1042,6 +1061,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult Function(Topic topic)? chooseTopic,
     TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult Function()? reverseSubtopicsSort,
@@ -1058,6 +1079,9 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
     required TResult Function(_ChooseTopic value) chooseTopic,
     required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
@@ -1070,6 +1094,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult? Function(_ChooseTopic value)? chooseTopic,
     TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1082,6 +1108,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult Function(_ChooseTopic value)? chooseTopic,
     TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1097,6 +1125,376 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
 
 abstract class _GetTopics implements LearningEvent {
   const factory _GetTopics() = _$GetTopicsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetWordsByTopicImplCopyWith<$Res> {
+  factory _$$GetWordsByTopicImplCopyWith(_$GetWordsByTopicImpl value,
+          $Res Function(_$GetWordsByTopicImpl) then) =
+      __$$GetWordsByTopicImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Topic topic});
+}
+
+/// @nodoc
+class __$$GetWordsByTopicImplCopyWithImpl<$Res>
+    extends _$LearningEventCopyWithImpl<$Res, _$GetWordsByTopicImpl>
+    implements _$$GetWordsByTopicImplCopyWith<$Res> {
+  __$$GetWordsByTopicImplCopyWithImpl(
+      _$GetWordsByTopicImpl _value, $Res Function(_$GetWordsByTopicImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? topic = null,
+  }) {
+    return _then(_$GetWordsByTopicImpl(
+      null == topic
+          ? _value.topic
+          : topic // ignore: cast_nullable_to_non_nullable
+              as Topic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetWordsByTopicImpl
+    with DiagnosticableTreeMixin
+    implements _GetWordsByTopic {
+  const _$GetWordsByTopicImpl(this.topic);
+
+  @override
+  final Topic topic;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LearningEvent.getWordsByTopic(topic: $topic)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LearningEvent.getWordsByTopic'))
+      ..add(DiagnosticsProperty('topic', topic));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetWordsByTopicImpl &&
+            (identical(other.topic, topic) || other.topic == topic));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, topic);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetWordsByTopicImplCopyWith<_$GetWordsByTopicImpl> get copyWith =>
+      __$$GetWordsByTopicImplCopyWithImpl<_$GetWordsByTopicImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
+    required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
+    required TResult Function() returnToAllTopics,
+  }) {
+    return getWordsByTopic(topic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
+    TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
+    TResult? Function()? returnToAllTopics,
+  }) {
+    return getWordsByTopic?.call(topic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
+    TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
+    TResult Function()? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (getWordsByTopic != null) {
+      return getWordsByTopic(topic);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
+    required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
+    required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
+  }) {
+    return getWordsByTopic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
+    TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
+  }) {
+    return getWordsByTopic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
+    TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (getWordsByTopic != null) {
+      return getWordsByTopic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetWordsByTopic implements LearningEvent {
+  const factory _GetWordsByTopic(final Topic topic) = _$GetWordsByTopicImpl;
+
+  Topic get topic;
+  @JsonKey(ignore: true)
+  _$$GetWordsByTopicImplCopyWith<_$GetWordsByTopicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetWordsByTopicSubtopicImplCopyWith<$Res> {
+  factory _$$GetWordsByTopicSubtopicImplCopyWith(
+          _$GetWordsByTopicSubtopicImpl value,
+          $Res Function(_$GetWordsByTopicSubtopicImpl) then) =
+      __$$GetWordsByTopicSubtopicImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Topic topic, Subtopic subtopic});
+}
+
+/// @nodoc
+class __$$GetWordsByTopicSubtopicImplCopyWithImpl<$Res>
+    extends _$LearningEventCopyWithImpl<$Res, _$GetWordsByTopicSubtopicImpl>
+    implements _$$GetWordsByTopicSubtopicImplCopyWith<$Res> {
+  __$$GetWordsByTopicSubtopicImplCopyWithImpl(
+      _$GetWordsByTopicSubtopicImpl _value,
+      $Res Function(_$GetWordsByTopicSubtopicImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? topic = null,
+    Object? subtopic = null,
+  }) {
+    return _then(_$GetWordsByTopicSubtopicImpl(
+      null == topic
+          ? _value.topic
+          : topic // ignore: cast_nullable_to_non_nullable
+              as Topic,
+      null == subtopic
+          ? _value.subtopic
+          : subtopic // ignore: cast_nullable_to_non_nullable
+              as Subtopic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetWordsByTopicSubtopicImpl
+    with DiagnosticableTreeMixin
+    implements _GetWordsByTopicSubtopic {
+  const _$GetWordsByTopicSubtopicImpl(this.topic, this.subtopic);
+
+  @override
+  final Topic topic;
+  @override
+  final Subtopic subtopic;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LearningEvent.getWordsByTopicSubtopic(topic: $topic, subtopic: $subtopic)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'LearningEvent.getWordsByTopicSubtopic'))
+      ..add(DiagnosticsProperty('topic', topic))
+      ..add(DiagnosticsProperty('subtopic', subtopic));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetWordsByTopicSubtopicImpl &&
+            (identical(other.topic, topic) || other.topic == topic) &&
+            (identical(other.subtopic, subtopic) ||
+                other.subtopic == subtopic));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, topic, subtopic);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetWordsByTopicSubtopicImplCopyWith<_$GetWordsByTopicSubtopicImpl>
+      get copyWith => __$$GetWordsByTopicSubtopicImplCopyWithImpl<
+          _$GetWordsByTopicSubtopicImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
+    required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
+    required TResult Function() returnToAllTopics,
+  }) {
+    return getWordsByTopicSubtopic(topic, subtopic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
+    TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
+    TResult? Function()? returnToAllTopics,
+  }) {
+    return getWordsByTopicSubtopic?.call(topic, subtopic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
+    TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
+    TResult Function()? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (getWordsByTopicSubtopic != null) {
+      return getWordsByTopicSubtopic(topic, subtopic);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
+    required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
+    required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
+  }) {
+    return getWordsByTopicSubtopic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
+    TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
+  }) {
+    return getWordsByTopicSubtopic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
+    TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (getWordsByTopicSubtopic != null) {
+      return getWordsByTopicSubtopic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetWordsByTopicSubtopic implements LearningEvent {
+  const factory _GetWordsByTopicSubtopic(
+          final Topic topic, final Subtopic subtopic) =
+      _$GetWordsByTopicSubtopicImpl;
+
+  Topic get topic;
+  Subtopic get subtopic;
+  @JsonKey(ignore: true)
+  _$$GetWordsByTopicSubtopicImplCopyWith<_$GetWordsByTopicSubtopicImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1172,6 +1570,9 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
     required TResult Function(Topic topic) chooseTopic,
     required TResult Function(Comparator<Subtopic> comparator)
         updateSubtopicsSort,
@@ -1185,6 +1586,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult? Function(Topic topic)? chooseTopic,
     TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult? Function()? reverseSubtopicsSort,
@@ -1197,6 +1600,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult Function(Topic topic)? chooseTopic,
     TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult Function()? reverseSubtopicsSort,
@@ -1213,6 +1618,9 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
     required TResult Function(_ChooseTopic value) chooseTopic,
     required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
@@ -1225,6 +1633,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult? Function(_ChooseTopic value)? chooseTopic,
     TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1237,6 +1647,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult Function(_ChooseTopic value)? chooseTopic,
     TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1336,6 +1748,9 @@ class _$UpdateSubtopicSortImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
     required TResult Function(Topic topic) chooseTopic,
     required TResult Function(Comparator<Subtopic> comparator)
         updateSubtopicsSort,
@@ -1349,6 +1764,8 @@ class _$UpdateSubtopicSortImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult? Function(Topic topic)? chooseTopic,
     TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult? Function()? reverseSubtopicsSort,
@@ -1361,6 +1778,8 @@ class _$UpdateSubtopicSortImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult Function(Topic topic)? chooseTopic,
     TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult Function()? reverseSubtopicsSort,
@@ -1377,6 +1796,9 @@ class _$UpdateSubtopicSortImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
     required TResult Function(_ChooseTopic value) chooseTopic,
     required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
@@ -1389,6 +1811,8 @@ class _$UpdateSubtopicSortImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult? Function(_ChooseTopic value)? chooseTopic,
     TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1401,6 +1825,8 @@ class _$UpdateSubtopicSortImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult Function(_ChooseTopic value)? chooseTopic,
     TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1473,6 +1899,9 @@ class _$ReverseSubtopicSortImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
     required TResult Function(Topic topic) chooseTopic,
     required TResult Function(Comparator<Subtopic> comparator)
         updateSubtopicsSort,
@@ -1486,6 +1915,8 @@ class _$ReverseSubtopicSortImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult? Function(Topic topic)? chooseTopic,
     TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult? Function()? reverseSubtopicsSort,
@@ -1498,6 +1929,8 @@ class _$ReverseSubtopicSortImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult Function(Topic topic)? chooseTopic,
     TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult Function()? reverseSubtopicsSort,
@@ -1514,6 +1947,9 @@ class _$ReverseSubtopicSortImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
     required TResult Function(_ChooseTopic value) chooseTopic,
     required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
@@ -1526,6 +1962,8 @@ class _$ReverseSubtopicSortImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult? Function(_ChooseTopic value)? chooseTopic,
     TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1538,6 +1976,8 @@ class _$ReverseSubtopicSortImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult Function(_ChooseTopic value)? chooseTopic,
     TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1603,6 +2043,9 @@ class _$ReturnToAllTopicsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Topic topic, Subtopic subtopic)
+        getWordsByTopicSubtopic,
     required TResult Function(Topic topic) chooseTopic,
     required TResult Function(Comparator<Subtopic> comparator)
         updateSubtopicsSort,
@@ -1616,6 +2059,8 @@ class _$ReturnToAllTopicsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult? Function(Topic topic)? chooseTopic,
     TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult? Function()? reverseSubtopicsSort,
@@ -1628,6 +2073,8 @@ class _$ReturnToAllTopicsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Topic topic, Subtopic subtopic)? getWordsByTopicSubtopic,
     TResult Function(Topic topic)? chooseTopic,
     TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
     TResult Function()? reverseSubtopicsSort,
@@ -1644,6 +2091,9 @@ class _$ReturnToAllTopicsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsByTopicSubtopic value)
+        getWordsByTopicSubtopic,
     required TResult Function(_ChooseTopic value) chooseTopic,
     required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
@@ -1656,6 +2106,8 @@ class _$ReturnToAllTopicsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult? Function(_ChooseTopic value)? chooseTopic,
     TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
@@ -1668,6 +2120,8 @@ class _$ReturnToAllTopicsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsByTopicSubtopic value)? getWordsByTopicSubtopic,
     TResult Function(_ChooseTopic value)? chooseTopic,
     TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
-import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
-import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
@@ -33,16 +30,6 @@ class _LearnPageState extends State<LearnPage> {
   void initState() {
     super.initState();
     context.read<LearningBloc>().add(const LearningEvent.getTopics());
-  }
-
-  void pressTitle(Topic topic) {
-    context.read<TrainingBloc>().add(TrainingEvent.setTopic(topic));
-    context.go("/learnCore");
-  }
-
-  void pressSubtitle(Subtopic subtopic) {
-    context.read<TrainingBloc>().add(TrainingEvent.setSubtopic(subtopic));
-    context.go("/learnCore");
   }
 
   final TextEditingController _searchQuery = TextEditingController();
@@ -110,7 +97,12 @@ class _LearnPageState extends State<LearnPage> {
                                 child: Row(
                                   children: [
                                     SizedBox(
-                                      width: _isChosenSort == false ? maximumWidth - 24.0 * 2 - 48 - 10 : maximumWidth - 24.0 * 2 - 48*2 - 10,
+                                      width: _isChosenSort == false
+                                          ? maximumWidth - 24.0 * 2 - 48 - 10
+                                          : maximumWidth -
+                                              24.0 * 2 -
+                                              48 * 2 -
+                                              10,
                                       child: CustomSearchTextfield(
                                           controller: _searchQuery,
                                           hintText: AppLocalizations.of(context)
@@ -123,7 +115,9 @@ class _LearnPageState extends State<LearnPage> {
                                       subtopics: topic.subtopics,
                                       onTap: setState,
                                     ),
-                                    _isChosenSort == true ? SortButton() : SizedBox()
+                                    _isChosenSort == true
+                                        ? SortButton()
+                                        : SizedBox()
                                   ],
                                 ),
                               )
@@ -192,6 +186,7 @@ class _LearnPageState extends State<LearnPage> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: SubtopicsGrid(
+                      topic: topic,
                       subtopics:
                           _searchText.isEmpty ? topic.subtopics : _searchList,
                     ),

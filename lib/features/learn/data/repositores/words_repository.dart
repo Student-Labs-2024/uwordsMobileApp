@@ -3,9 +3,9 @@ import 'package:uwords/features/learn/data/repositores/interface_words_repositor
 import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
 import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
 import 'package:uwords/features/learn/domain/mapper/topic_mapper.dart';
-import 'package:uwords/features/learn/domain/mapper/word_model_mapper.dart';
+import 'package:uwords/features/learn/domain/mapper/word_info_mapper.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
-import 'package:uwords/features/learn/domain/models/word_model.dart';
+import 'package:uwords/features/learn/domain/models/word_info.dart';
 
 class WordsRepository implements IWordsRepository {
   final IWordsDataSource wordsDataSource;
@@ -28,15 +28,15 @@ class WordsRepository implements IWordsRepository {
   }
 
   @override
-  Future<List<WordModel>> getWordsByTopicAndSubtopic(
+  Future<List<WordInfo>> getWordsByTopicAndSubtopic(
       {required String accessToken,
       required String topic,
       required String subtopic}) async {
     final List<WordInfoDto> wordsInfoDto =
         await wordsDataSource.fetchWordsByTopicAndSubtopic(
             accessToken: accessToken, topic: topic, subtopic: subtopic);
-    final List<WordModel> words =
-        wordsInfoDto.map((wordInfoDto) => wordInfoDto.word.toModel()).toList();
+    final List<WordInfo> words =
+        wordsInfoDto.map((element) => element.toModel()).toList();
     return words;
   }
 

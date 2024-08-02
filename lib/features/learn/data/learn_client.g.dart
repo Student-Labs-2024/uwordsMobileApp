@@ -83,13 +83,17 @@ class _LearnClient implements LearnClient {
   @override
   Future<List<WordInfoDto>> getWordsByTopicAndSubtopic(
     String accessToken,
-    dynamic body,
+    String topicTitle,
+    String subtopicTitle,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'topic_title': topicTitle,
+      r'subtopic_title': subtopicTitle,
+    };
     final _headers = <String, dynamic>{r'Authorization': accessToken};
     _headers.removeWhere((k, v) => v == null);
-    final _data = body;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<List<dynamic>>(_setStreamType<List<WordInfoDto>>(Options(
       method: 'GET',
