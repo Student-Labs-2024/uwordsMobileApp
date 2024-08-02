@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -23,7 +24,7 @@ class TopicHeader extends StatelessWidget {
             context
                 .read<LearningBloc>()
                 .add(LearningEvent.getWordsByTopic(topic));
-            Future.delayed(Duration(milliseconds: 500)).whenComplete(() {
+            Future.delayed(OtherLearnConstants.smallDuration).whenComplete(() {
               context.read<TrainingBloc>().add(TrainingEvent.setTopic(topic));
               context.go("/learnCore");
             });
@@ -34,7 +35,7 @@ class TopicHeader extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        if (topic.subtopics.length >= 4)
+        if (topic.subtopics.length >= OtherLearnConstants.checkMoreInt)
           InkWell(
             onTap: () {
               context

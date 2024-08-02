@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -21,8 +22,8 @@ class SortSettingsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 44,
-        width: 48,
+        height: LearnSizes.sortButtonHeight,
+        width: LearnSizes.sortButtonWidth,
         child: DecoratedBox(
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,

@@ -5,10 +5,15 @@ import 'package:go_router/go_router.dart';
 import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 
 class SubtopicCard extends StatelessWidget {
@@ -40,7 +45,7 @@ class SubtopicCard extends StatelessWidget {
             context
                 .read<LearningBloc>()
                 .add(LearningEvent.getWordsByTopicSubtopic(topic, subtopic));
-            Future.delayed(const Duration(milliseconds: 500)).whenComplete(() {
+            Future.delayed(OtherLearnConstants.smallDuration).whenComplete(() {
               context
                   .read<TrainingBloc>()
                   .add(TrainingEvent.setSubtopic(subtopic));
@@ -50,42 +55,40 @@ class SubtopicCard extends StatelessWidget {
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(LearnPaddings.normalEdgeInsets),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(subtopic.subtopicTitle,
+                        style: AppTextStyles.subtopicCardName),
+                    const SizedBox(height: LearnPaddings.smallestEmptySpace),
                     Text(
-                      subtopic.subtopicTitle,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      '${subtopic.wordCount} ${AppLocalizations.of(context).learnedWordsCard}',
+                      style: AppTextStyles.subtopicCardWords,
                     ),
-                    const SizedBox(height: 3),
-                    Text(
-                      '${subtopic.wordCount} words',
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: LearnPaddings.smallEmptySpace),
                     CustomProgressBar(
-                        width: width / 2.5, percent: subtopic.progress),
+                        width: width / LearnSizes.divider,
+                        percent: subtopic.progress),
                   ],
                 ),
               ),
               Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
-                  width: 85,
-                  height: 61,
-                  margin: const EdgeInsets.only(top: 15),
+                  width: LearnSizes.angleButtonWidth,
+                  height: LearnSizes.angleButtonHeight,
+                  margin: const EdgeInsets.only(
+                      top: LearnPaddings.normalEdgeInsets),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                       fit: BoxFit.fitHeight,
                       image: AssetImage(
-                        subtopic.progress <= 0
+                        subtopic.progress <= OtherLearnConstants.zeroProgress
                             ? AppImageSource.greyAngleButton
-                            : subtopic.progress >= 50
+                            : subtopic.progress >=
+                                    OtherLearnConstants.halfProgress
                                 ? AppImageSource.blueAngleButton
                                 : AppImageSource.redAngleButton,
                       ),
@@ -93,7 +96,9 @@ class SubtopicCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 32.0, top: 20),
+                      padding: const EdgeInsets.only(
+                          left: LearnPaddings.svgIconLeftPadding,
+                          top: LearnPaddings.svgIconTopPadding),
                       child: SvgPicture.network(
                         subtopic.pictureLink,
                       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
@@ -34,11 +36,11 @@ class _LearnPageState extends State<LearnPage> {
 
   final TextEditingController _searchQuery = TextEditingController();
 
-  List<Subtopic> _buildSearchList(List<Subtopic> _subtopicList) {
+  List<Subtopic> _buildSearchList(List<Subtopic> subtopicList) {
     if (_searchText.isEmpty) {
-      return _subtopicList;
+      return subtopicList;
     } else {
-      return _subtopicList
+      return subtopicList
           .where((element) => element.subtopicTitle
               .toLowerCase()
               .contains(_searchText.toLowerCase()))
@@ -51,7 +53,7 @@ class _LearnPageState extends State<LearnPage> {
     double maximumWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+          preferredSize: const Size.fromHeight(LearnSizes.learnAppbarHeight),
           child: DecoratedBox(
             decoration:
                 const BoxDecoration(gradient: AppColors.backgroundGradient),
@@ -64,7 +66,7 @@ class _LearnPageState extends State<LearnPage> {
                 ),
                 Center(
                     child: Padding(
-                  padding: const EdgeInsets.only(top: 36.0),
+                  padding: const EdgeInsets.only(top: LearnPaddings.topTopicHeaderPadding),
                   child: BlocBuilder<LearningBloc, LearningState>(
                     builder: (context, state) {
                       return state.maybeWhen(
@@ -89,31 +91,31 @@ class _LearnPageState extends State<LearnPage> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0),
+                                    horizontal: LearnPaddings.learnPagePadding),
                                 child: Row(
                                   children: [
                                     SizedBox(
                                       width: _isChosenSort == false
-                                          ? maximumWidth - 24.0 * 2 - 48 - 10
+                                          ? maximumWidth - LearnPaddings.learnPagePadding * 2 - LearnSizes.sortButtonWidth - LearnPaddings.rowBetweenPadding
                                           : maximumWidth -
-                                              24.0 * 2 -
-                                              48 * 2 -
-                                              10,
+                                              LearnPaddings.learnPagePadding * 2 -
+                                              LearnSizes.sortButtonWidth * 2 -
+                                              LearnPaddings.rowBetweenPadding,
                                       child: CustomSearchTextfield(
                                           controller: _searchQuery,
                                           hintText: AppLocalizations.of(context)
                                               .search),
                                     ),
-                                    SizedBox(
-                                      width: 10,
+                                    const SizedBox(
+                                      width: LearnPaddings.rowBetweenPadding,
                                     ),
                                     SortSettingsButton(
                                       subtopics: topic.subtopics,
                                       onTap: setState,
                                     ),
                                     _isChosenSort == true
-                                        ? SortButton()
-                                        : SizedBox()
+                                        ? const SortButton()
+                                        : const SizedBox()
                                   ],
                                 ),
                               )
@@ -154,19 +156,19 @@ class _LearnPageState extends State<LearnPage> {
                           children: [
                             Column(
                               children: [
-                                SizedBox(
-                                  height: 20,
+                                const SizedBox(
+                                  height: LearnPaddings.normalPadding,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 24.0),
+                                      horizontal: LearnPaddings.learnPagePadding),
                                   child: TopicHeader(topic: topics[index]),
                                 ),
-                                SizedBox(
-                                  height: 15,
+                                const SizedBox(
+                                  height: LearnPaddings.normalEdgeInsets,
                                 ),
                                 SizedBox(
-                                    height: 120,
+                                    height: LearnSizes.subtopicCardHeight,
                                     child: SubtopicsRow(topic: topics[index]))
                               ],
                             ),
@@ -176,7 +178,7 @@ class _LearnPageState extends State<LearnPage> {
                 },
                 choseTopic: (topic) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    padding: const EdgeInsets.symmetric(horizontal: LearnPaddings.learnPagePadding),
                     child: SubtopicsGrid(
                       topic: topic,
                       subtopics:

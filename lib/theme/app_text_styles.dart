@@ -177,4 +177,12 @@ class AppTextStyles {
     fontSize: 12,
     color: AppColors.darkMainColor,
   );
+  static const subtopicCardName = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+      color: AppColors.darkMainColor);
+  static const subtopicCardWords = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: AppColors.darkMainColor);
 }

@@ -32,4 +32,14 @@ class LearnSizes {
   static const double successfulScreenCenterSpacing = 16;
 
   static const double bigButtonHeight = 64;
+  static const double sortButtonHeight = 44;
+  static const double sortButtonWidth = 48;
+  
+  static const double angleButtonHeight = 61;
+  static const double angleButtonWidth = 85;
+
+  static const double divider = 2.5;
+  static const double subtopicCardWidth = 150;
+  static const double subtopicCardHeight = 120;
+  static const double learnAppbarHeight = 100;
 }
