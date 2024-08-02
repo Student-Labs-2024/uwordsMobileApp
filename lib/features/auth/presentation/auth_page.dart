@@ -48,7 +48,6 @@ class _AuthPageState extends State<AuthPage> {
                   case AuthSuccess.authorized:
                     context.go("/home");
                   case AuthSuccess.sendedCode:
-                  // TODO: Handle this case.
                 }
               },
               failed: (error) {
