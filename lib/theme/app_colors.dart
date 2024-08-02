@@ -52,4 +52,6 @@ class AppColors {
 
   static const Color shadowColor1 = Color.fromRGBO(97, 120, 201, 0.26);
   static const Color shadowColor2 = Color.fromRGBO(255, 255, 255, 0.08);
+
+  static const Color darkGreyColor = Color.fromRGBO(132, 127, 135, 1);
 }

@@ -48,6 +48,15 @@ void main() async {
   getIt.registerSingleton<IExceptionWebsocketService>(
       ExceptionWebsocketService());
   getIt.registerSingleton<SpeechToText>(SpeechToText());
+  getIt.registerLazySingleton<IUserRepository>(() {
+    final INetworkUserDataSource networkUserDataSource =
+        NetworkUserDataSource();
+    final ISavableUserDataSource savableUserDataSource =
+        SavableUserDataSource(AppDatabase());
+    return UserRepository(
+        networkUserDataSource: networkUserDataSource,
+        savableUserDataSource: savableUserDataSource);
+  });
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
@@ -100,15 +109,9 @@ class MainApp extends StatelessWidget {
   MainApp({super.key});
   final IAudioDataSource audioDataSource = AudioDataSource();
   final IWordsDataSource wordsDataSource = WordsDataSource();
-  final INetworkUserDataSource networkUserDataSource = NetworkUserDataSource();
-  final ISavableUserDataSource savableUserDataSource =
-      SavableUserDataSource(AppDatabase());
 
   @override
   Widget build(BuildContext context) {
-    getIt.registerSingleton<IUserRepository>(UserRepository(
-        networkUserDataSource: networkUserDataSource,
-        savableUserDataSource: savableUserDataSource));
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<IUserRepository>(

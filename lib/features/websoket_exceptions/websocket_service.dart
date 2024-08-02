@@ -16,17 +16,17 @@ class ExceptionWebsocketService extends IExceptionWebsocketService {
   late StreamController<String> _errorController;
 
   @override
-  Future<StreamController> connect(String url) async {
+  Future<void> connect(
+      String url, StreamController<String> errorStreamController) async {
     channel = IOWebSocketChannel.connect(
         '$url${await GetIt.instance.get<IUserRepository>().getCurrentUserId()}');
-    _errorController = StreamController<String>.broadcast();
-    return _errorController;
+    _errorController = errorStreamController;
   }
 
   @override
-  void disconnect() {
-    channel?.sink.close();
-    _errorController.close();
+  void disconnect() async {
+    await channel?.sink.close();
+    await _errorController.close();
   }
 
   @override

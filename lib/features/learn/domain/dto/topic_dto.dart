@@ -7,7 +7,7 @@ part 'topic_dto.g.dart';
 @freezed
 class TopicDto with _$TopicDto {
   const factory TopicDto({
-    @JsonKey(name: "topic_title", defaultValue: 'null Title')
+    @JsonKey(name: "title", defaultValue: 'null Title')
     required String topicTitle,
     @JsonKey(
       name: "subtopics",

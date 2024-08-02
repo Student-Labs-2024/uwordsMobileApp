@@ -20,7 +20,7 @@ TopicDto _$TopicDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TopicDto {
-  @JsonKey(name: "topic_title", defaultValue: 'null Title')
+  @JsonKey(name: "title", defaultValue: 'null Title')
   String get topicTitle => throw _privateConstructorUsedError;
   @JsonKey(name: "subtopics")
   List<SubtopicDto> get subtopics => throw _privateConstructorUsedError;
@@ -37,8 +37,7 @@ abstract class $TopicDtoCopyWith<$Res> {
       _$TopicDtoCopyWithImpl<$Res, TopicDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: "topic_title", defaultValue: 'null Title')
-      String topicTitle,
+      {@JsonKey(name: "title", defaultValue: 'null Title') String topicTitle,
       @JsonKey(name: "subtopics") List<SubtopicDto> subtopics});
 }
 
@@ -80,8 +79,7 @@ abstract class _$$TopicDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "topic_title", defaultValue: 'null Title')
-      String topicTitle,
+      {@JsonKey(name: "title", defaultValue: 'null Title') String topicTitle,
       @JsonKey(name: "subtopics") List<SubtopicDto> subtopics});
 }
 
@@ -116,7 +114,7 @@ class __$$TopicDtoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TopicDtoImpl implements _TopicDto {
   const _$TopicDtoImpl(
-      {@JsonKey(name: "topic_title", defaultValue: 'null Title')
+      {@JsonKey(name: "title", defaultValue: 'null Title')
       required this.topicTitle,
       @JsonKey(name: "subtopics") required final List<SubtopicDto> subtopics})
       : _subtopics = subtopics;
@@ -125,7 +123,7 @@ class _$TopicDtoImpl implements _TopicDto {
       _$$TopicDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: "topic_title", defaultValue: 'null Title')
+  @JsonKey(name: "title", defaultValue: 'null Title')
   final String topicTitle;
   final List<SubtopicDto> _subtopics;
   @override
@@ -173,7 +171,7 @@ class _$TopicDtoImpl implements _TopicDto {
 
 abstract class _TopicDto implements TopicDto {
   const factory _TopicDto(
-      {@JsonKey(name: "topic_title", defaultValue: 'null Title')
+      {@JsonKey(name: "title", defaultValue: 'null Title')
       required final String topicTitle,
       @JsonKey(name: "subtopics")
       required final List<SubtopicDto> subtopics}) = _$TopicDtoImpl;
@@ -182,7 +180,7 @@ abstract class _TopicDto implements TopicDto {
       _$TopicDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: "topic_title", defaultValue: 'null Title')
+  @JsonKey(name: "title", defaultValue: 'null Title')
   String get topicTitle;
   @override
   @JsonKey(name: "subtopics")

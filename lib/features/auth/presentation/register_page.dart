@@ -141,26 +141,32 @@ class _RegisterPageState extends State<RegisterPage> {
                                     AuthDesignedConstants
                                         .customTextFieldBorderRadius),
                                 boxShadow: MainBoxShadows.main),
-                            child: Expanded(
-                              child: TextField(
-                                textAlignVertical: TextAlignVertical.center,
-                                expands: true,
-                                maxLines: null,
-                                minLines: null,
-                                controller: datePickerController,
-                                readOnly: true,
-                                onTap: () => _showDatePicker(context),
-                                obscureText: false,
-                                cursorColor: AppColors.darkMainColor,
-                                style: const TextStyle(
-                                  color: AppColors.darkMainColor,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: TextField(
+                                    textAlignVertical: TextAlignVertical.center,
+                                    expands: true,
+                                    maxLines: null,
+                                    minLines: null,
+                                    controller: datePickerController,
+                                    readOnly: true,
+                                    onTap: () => _showDatePicker(context),
+                                    obscureText: false,
+                                    cursorColor: AppColors.darkMainColor,
+                                    style: const TextStyle(
+                                      color: AppColors.darkMainColor,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText:
+                                          AppLocalizations.of(context).age,
+                                      hintStyle:
+                                          AppTextStyles.customTextfieldInput,
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
                                 ),
-                                decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context).age,
-                                  hintStyle: AppTextStyles.customTextfieldInput,
-                                  border: InputBorder.none,
-                                ),
-                              ),
+                              ],
                             ),
                           ),
                           Padding(

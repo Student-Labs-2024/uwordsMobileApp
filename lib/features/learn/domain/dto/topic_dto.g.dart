@@ -8,7 +8,7 @@ part of 'topic_dto.dart';
 
 _$TopicDtoImpl _$$TopicDtoImplFromJson(Map<String, dynamic> json) =>
     _$TopicDtoImpl(
-      topicTitle: json['topic_title'] as String? ?? 'null Title',
+      topicTitle: json['title'] as String? ?? 'null Title',
       subtopics: (json['subtopics'] as List<dynamic>)
           .map((e) => SubtopicDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,6 +16,6 @@ _$TopicDtoImpl _$$TopicDtoImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$TopicDtoImplToJson(_$TopicDtoImpl instance) =>
     <String, dynamic>{
-      'topic_title': instance.topicTitle,
+      'title': instance.topicTitle,
       'subtopics': instance.subtopics,
     };

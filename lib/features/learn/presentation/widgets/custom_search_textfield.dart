@@ -9,31 +9,24 @@ import 'package:uwords/theme/app_text_styles.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:uwords/theme/image_source.dart';
 
-class CustomAuthTextField extends StatefulWidget {
-  const CustomAuthTextField({
+class CustomSearchTextfield extends StatefulWidget {
+  const CustomSearchTextfield({
     super.key,
     required this.controller,
     required this.hintText,
-    required this.notHidden,
-    this.obscureText = false,
   });
 
   final TextEditingController controller;
   final String hintText;
-  final bool obscureText;
-  final bool notHidden;
 
   @override
-  State<CustomAuthTextField> createState() => _CustomAuthTextFieldState();
+  State<CustomSearchTextfield> createState() => _CustomSearchTextfieldState();
 }
 
-class _CustomAuthTextFieldState extends State<CustomAuthTextField> {
-  bool _obscureText = false;
-
+class _CustomSearchTextfieldState extends State<CustomSearchTextfield> {
   @override
   void initState() {
     super.initState();
-    _obscureText = widget.obscureText;
   }
 
   @override
@@ -54,40 +47,27 @@ class _CustomAuthTextFieldState extends State<CustomAuthTextField> {
               Expanded(
                 child: TextField(
                   controller: widget.controller,
-                  obscureText: _obscureText,
-                  obscuringCharacter: '*',
                   cursorColor: AppColors.darkMainColor,
                   style: const TextStyle(
                     color: AppColors.darkMainColor,
                   ),
                   decoration: InputDecoration(
-                    hintText: widget.hintText,
-                    hintStyle: AppTextStyles.customTextfieldInput,
-                    border: InputBorder.none,
-                    suffixIcon: widget.notHidden
-                        ? Padding(
-                            padding: const EdgeInsets.all(
-                                AuthDesignedConstants.visabillityIconHeight),
-                            child: InkWell(
-                              child: SvgPicture.asset(
-                                _obscureText
-                                    ? AppImageSource.visibilityOutlinedOff
-                                    : AppImageSource.visibilityOutlined,
-                                color: AppColors.darkMainColor,
-                                height:
-                                    AuthDesignedConstants.visabillityIconHeight,
-                                width:
-                                    AuthDesignedConstants.visabillityIconHeight,
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
-                              },
-                            ),
-                          )
-                        : const SizedBox(),
-                  ),
+                      hintText: widget.hintText,
+                      hintStyle: AppTextStyles.customTextfieldInput,
+                      border: InputBorder.none,
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.all(
+                            AuthDesignedConstants.visabillityIconHeight),
+                        child: SvgPicture.asset(
+                          AppImageSource.searchIcon,
+                          color: AppColors.darkMainColor,
+                          height: AuthDesignedConstants.visabillityIconHeight,
+                          width: AuthDesignedConstants.visabillityIconHeight,
+                        ),
+                      )),
+                  onTapOutside: (event) {
+                    widget.controller.clear();
+                  },
                 ),
               ),
             ],
