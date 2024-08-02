@@ -276,8 +276,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     switch (error.runtimeType) {
       case const (SocketException):
         _emitter(const AuthState.failed(AuthError.noInternet));
-      case const(NotRegisteredExceptionBySelfProvider):
-      _emitter(const AuthState.failed(AuthError.failedAutorization));
+      case const (NotRegisteredExceptionBySelfProvider):
+        _emitter(const AuthState.failed(AuthError.failedAutorization));
       case const (NotRegisteredException):
         await _registerAndAuth(emit: _emitter);
       case const (NotValidDataForLoginException):

@@ -162,8 +162,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                       color: AppColors.darkMainColor,
                                     ),
                                     decoration: InputDecoration(
-                                      hintText: AppLocalizations.of(context).age,
-                                      hintStyle: AppTextStyles.customTextfieldInput,
+                                      hintText:
+                                          AppLocalizations.of(context).age,
+                                      hintStyle:
+                                          AppTextStyles.customTextfieldInput,
                                       border: InputBorder.none,
                                     ),
                                   ),

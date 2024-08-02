@@ -13,7 +13,8 @@ import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 
 class SortSettingsButton extends StatelessWidget {
-  const SortSettingsButton({super.key, required this.subtopics, required this.onTap});
+  const SortSettingsButton(
+      {super.key, required this.subtopics, required this.onTap});
   final List<Subtopic> subtopics;
   final Function onTap;
 
@@ -32,57 +33,68 @@ class SortSettingsButton extends StatelessWidget {
             child: IconButton(
               icon: SvgPicture.asset(AppImageSource.sortSettingsButton),
               onPressed: () {
-              showCupertinoModalPopup(context: context, builder: (BuildContext context){return CupertinoActionSheet(
-                  title: Text(AppLocalizations.of(context).sort),
-                  actions: <CupertinoActionSheetAction>[
-                    CupertinoActionSheetAction(
-                      isDefaultAction: true,
-                      onPressed: () {
-                        context.read<LearningBloc>().add(LearningEvent.updateSubtopicsSort(wordCountComparator));
-                        Navigator.pop(context);
-                        onTap;
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).sortByCoutOfWords,
-                        style: AppTextStyles.pinCodeText,
-                      ),
-                    ),
-                    CupertinoActionSheetAction(
-                      onPressed: () {
-                        subtopics.sort(progressComparator);
-                        context.read<LearningBloc>().add(LearningEvent.updateSubtopicsSort(progressComparator));
-                        Navigator.pop(context);
-                        onTap;
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).sortByProgress,
-                        style: AppTextStyles.pinCodeText,
-                      ),
-                    ),
-                    CupertinoActionSheetAction(
-                      onPressed: () {
-                        subtopics.sort(latestStudyDateComparator);
-                        context.read<LearningBloc>().add(LearningEvent.updateSubtopicsSort(latestStudyDateComparator));
-                        Navigator.pop(context);
-                        onTap;
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).sortByLastLearningDate,
-                        style: AppTextStyles.pinCodeText,
-                      ),
-                    ),
-                    CupertinoActionSheetAction(
-                      isDestructiveAction: true,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).cancel,
-                        style: AppTextStyles.topicHeaderText,
-                      ),
-                    ),
-                  ],
-                );});
+                showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return CupertinoActionSheet(
+                        title: Text(AppLocalizations.of(context).sort),
+                        actions: <CupertinoActionSheetAction>[
+                          CupertinoActionSheetAction(
+                            isDefaultAction: true,
+                            onPressed: () {
+                              context.read<LearningBloc>().add(
+                                  LearningEvent.updateSubtopicsSort(
+                                      wordCountComparator));
+                              Navigator.pop(context);
+                              onTap;
+                            },
+                            child: Text(
+                              AppLocalizations.of(context).sortByCoutOfWords,
+                              style: AppTextStyles.pinCodeText,
+                            ),
+                          ),
+                          CupertinoActionSheetAction(
+                            onPressed: () {
+                              subtopics.sort(progressComparator);
+                              context.read<LearningBloc>().add(
+                                  LearningEvent.updateSubtopicsSort(
+                                      progressComparator));
+                              Navigator.pop(context);
+                              onTap;
+                            },
+                            child: Text(
+                              AppLocalizations.of(context).sortByProgress,
+                              style: AppTextStyles.pinCodeText,
+                            ),
+                          ),
+                          CupertinoActionSheetAction(
+                            onPressed: () {
+                              subtopics.sort(latestStudyDateComparator);
+                              context.read<LearningBloc>().add(
+                                  LearningEvent.updateSubtopicsSort(
+                                      latestStudyDateComparator));
+                              Navigator.pop(context);
+                              onTap;
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)
+                                  .sortByLastLearningDate,
+                              style: AppTextStyles.pinCodeText,
+                            ),
+                          ),
+                          CupertinoActionSheetAction(
+                            isDestructiveAction: true,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              AppLocalizations.of(context).cancel,
+                              style: AppTextStyles.topicHeaderText,
+                            ),
+                          ),
+                        ],
+                      );
+                    });
               },
             ),
           ),

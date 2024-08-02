@@ -65,9 +65,9 @@ class _CustomSearchTextfieldState extends State<CustomSearchTextfield> {
                           width: AuthDesignedConstants.visabillityIconHeight,
                         ),
                       )),
-                      onTapOutside: (event) {
-                        widget.controller.clear();
-                      },
+                  onTapOutside: (event) {
+                    widget.controller.clear();
+                  },
                 ),
               ),
             ],

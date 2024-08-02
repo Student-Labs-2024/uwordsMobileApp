@@ -12,10 +12,7 @@ class SubtopicDto with _$SubtopicDto {
     @JsonKey(name: "word_count", defaultValue: 0) required int wordCount,
     @JsonKey(name: "progress", defaultValue: 0) required int progress,
     @JsonKey(name: "pictureLink", defaultValue: '') required String pictureLink,
-    @JsonKey(
-      name: "words", defaultValue: []
-    )
-    required List<WordInfoDto> words,
+    @JsonKey(name: "words", defaultValue: []) required List<WordInfoDto> words,
   }) = _SubtopicDto;
 
   factory SubtopicDto.fromJson(Map<String, Object?> json) =>

@@ -48,4 +48,3 @@ class _SortButtonState extends State<SortButton> {
         ));
   }
 }
-

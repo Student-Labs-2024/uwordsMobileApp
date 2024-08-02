@@ -16,21 +16,30 @@ class SubtopicsRow extends StatelessWidget {
           if (index == 0) {
             return Padding(
               padding: EdgeInsets.only(left: 24.0, right: 10.0),
-              child: SubtopicCard(topic: topic,
-                  width: 150, height: 120, subtopic: topic.subtopics[index]),
+              child: SubtopicCard(
+                  topic: topic,
+                  width: 150,
+                  height: 120,
+                  subtopic: topic.subtopics[index]),
             );
           }
           if (index == topic.subtopics.length - 1) {
             return Padding(
               padding: EdgeInsets.only(right: 24.0),
-              child: SubtopicCard(topic: topic,
-                  width: 150, height: 120, subtopic: topic.subtopics[index]),
+              child: SubtopicCard(
+                  topic: topic,
+                  width: 150,
+                  height: 120,
+                  subtopic: topic.subtopics[index]),
             );
           }
           return Padding(
             padding: EdgeInsets.only(right: 10.0),
-            child: SubtopicCard(topic: topic,
-                width: 150, height: 120, subtopic: topic.subtopics[index]),
+            child: SubtopicCard(
+                topic: topic,
+                width: 150,
+                height: 120,
+                subtopic: topic.subtopics[index]),
           );
         });
   }
