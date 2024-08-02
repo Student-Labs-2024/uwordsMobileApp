@@ -60,5 +60,64 @@
   "sortByCoutOfWords": "По кол-ву слов",
   "sortByProgress": "По изученности",
   "sortByLastLearningDate": "По дате изучения",
-  "cancel": "Отменить"
+  "cancel": "Отменить",
+  "daysOnFireCard": "В ударе",
+  "learnedWordsCard": "Слов",
+  "hours": "{count}ч",
+  "@hours": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "recordTimeCard": "Записи",
+  "precisionCard": "Точность",
+  "startTraining": "Тренировать",
+  "daysOnFireTitle": "Дней в ударе",
+  "learnedWordsTitle": "Слова",
+  "recordTimeTitle": "Запись",
+  "addedFriendsTitle": "Друзья",
+  "daysOnFire": "{count} дней \nв ударе",
+  "@daysOnFire": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "learnedWords": "Изучено \n{count} слов",
+  "@learnedWords": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "recordTime": "{count, plural, =1{Записано \nна {count} час} other{Записано \nна {count} часов}}",
+  "@recordTime": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "addedFriends": "{count, plural, =1{Приглашен \n{count} друг} other{Приглашено \n{count} друзей}}",
+  "@addedFriends": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "almostLearned": "Почти изучено",
+  "passed": "Пройдено",
+  "statistics": "Статистика",
+  "activity": "Активность",
+  "achievements": "Достижения"
 }

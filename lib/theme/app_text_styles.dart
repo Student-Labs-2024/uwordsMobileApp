@@ -105,6 +105,72 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       fontSize: 20,
       color: AppColors.darkMainColor);
+
+  static const profileName = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+      color: AppColors.darkMainColor);
+
+  static const carouselActive = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 18,
+      color: AppColors.blackColor);
+  static const carouselUnActive = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      color: AppColors.lightgrayColor);
+
+  static const statisticCardTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 20,
+      color: AppColors.blackColor);
+  static const statisticCardSubtitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+      color: AppColors.lightgrayColor2);
+
+  static const profileSubtitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 18,
+      color: AppColors.blackColor);
+
+  static const progressWordTileTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      color: AppColors.blackColor);
+  static const progressWordTileProgress = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 12,
+      color: AppColors.lightgrayColor2);
+  static const progressWordTileProgressBold = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      color: AppColors.blackColor);
+  static const achievementCard = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+      color: AppColors.blackColor);
+
+  static const activitiesTitleText = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      color: AppColors.blackColor);
+  static const activitiesTitleData = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      color: AppColors.grayColor);
   static const authSmallestBoldLinkText = TextStyle(
     fontFamily: 'Inter-V',
     fontWeight: FontWeight.bold,
