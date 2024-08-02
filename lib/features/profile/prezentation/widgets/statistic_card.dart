@@ -22,18 +22,13 @@ class StatisticCard extends StatelessWidget {
     return Container(
       decoration: fis.BoxDecoration(
           color: AppColors.whiteColor,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           boxShadow: ProfileShadows.statisticCard),
       width:
           MediaQuery.of(context).size.width * ProfileSizes.statisticCardWidth,
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          fixedSize: WidgetStateProperty.all(Size(
-              MediaQuery.of(context).size.width *
-                  ProfileSizes.statisticCardWidth,
-              MediaQuery.of(context).size.height *
-                  ProfileSizes.statisticCardHeight)),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),

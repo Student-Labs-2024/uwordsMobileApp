@@ -4,8 +4,8 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 class ProfileDataExample {
   static const String userIconExample =
-      'https://i.pinimg.com/originals/86/e9/b5/86e9b52d3cfb854b855faa0e7dabfb74.jpg';
-  static const String userNameExample = 'KatzeKet';
+      'https://sun9-17.userapi.com/impg/TEgK7LX3liNxWPxee8YTWeNogfAJXHqxp1y8Vw/b48v_b4xYG8.jpg?size=987x563&quality=95&sign=ec0b1559d249d05e98b4b45213dfc385&type=album';
+  static const String userNameExample = 'TestUser';
 
   static const List<ActivitiesTileDataExample> activitiesTileDataExample = [
     ActivitiesTileDataExample(
@@ -40,7 +40,7 @@ class ProfileDataExample {
         userId: 0,
         latestStudy: null,
         frequency: 0,
-        progress: 0),
+        progress: 100),
     WordInfo(
         id: 1,
         word: const WordModel(
@@ -53,7 +53,7 @@ class ProfileDataExample {
         userId: 1,
         latestStudy: null,
         frequency: 0,
-        progress: 20),
+        progress: 80),
     WordInfo(
         id: 2,
         word: const WordModel(
@@ -66,7 +66,7 @@ class ProfileDataExample {
         userId: 2,
         latestStudy: null,
         frequency: 0,
-        progress: 40),
+        progress: 60),
     WordInfo(
         id: 3,
         word: const WordModel(
@@ -79,7 +79,7 @@ class ProfileDataExample {
         userId: 3,
         latestStudy: null,
         frequency: 0,
-        progress: 60),
+        progress: 40),
     WordInfo(
         id: 4,
         word: const WordModel(
@@ -91,7 +91,7 @@ class ProfileDataExample {
         userId: 4,
         latestStudy: null,
         frequency: 0,
-        progress: 80),
+        progress: 20),
     WordInfo(
         id: 5,
         word: const WordModel(
@@ -104,7 +104,7 @@ class ProfileDataExample {
         userId: 5,
         latestStudy: null,
         frequency: 0,
-        progress: 100),
+        progress: 0),
   ];
 }
 

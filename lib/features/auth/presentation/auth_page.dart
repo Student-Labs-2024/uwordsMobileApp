@@ -66,13 +66,7 @@ class _AuthPageState extends State<AuthPage> {
                 return SafeArea(
                   child: DecoratedBox(
                     decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            AppColors.gradientBackgroundColor1,
-                            AppColors.gradientBackgroundColor2
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter),
+                      gradient: AppColors.backgroundGradient,
                     ),
                     child: Stack(children: [
                       Image.asset(

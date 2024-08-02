@@ -22,8 +22,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
         children: [
           ...ProfileDataExample.activitiesTileDataExample.map((e) =>
               ActivitiesTile(image: e.image, date: e.date, title: e.title)),
-          const SizedBox(
-            height: ProfileSizes.endSpacer,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
           ),
         ],
       ),
