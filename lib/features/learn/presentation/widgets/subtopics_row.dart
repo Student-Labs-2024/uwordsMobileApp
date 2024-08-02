@@ -22,7 +22,7 @@ class SubtopicsRow extends StatelessWidget {
                   right: LearnPaddings.rowBetweenPadding),
               child: SubtopicCard(
                   topic: topic,
-                  width: LearnSizes.letterButtonWidth,
+                  width: LearnSizes.subtopicCardWidth,
                   height: LearnSizes.subtopicCardHeight,
                   subtopic: topic.subtopics[index]),
             );
@@ -33,7 +33,7 @@ class SubtopicsRow extends StatelessWidget {
                   const EdgeInsets.only(right: LearnPaddings.learnPagePadding),
               child: SubtopicCard(
                   topic: topic,
-                  width: LearnSizes.letterButtonWidth,
+                  width: LearnSizes.subtopicCardWidth,
                   height: LearnSizes.subtopicCardHeight,
                   subtopic: topic.subtopics[index]),
             );
@@ -43,7 +43,7 @@ class SubtopicsRow extends StatelessWidget {
                 const EdgeInsets.only(right: LearnPaddings.rowBetweenPadding),
             child: SubtopicCard(
                 topic: topic,
-                width: LearnSizes.letterButtonWidth,
+                width: LearnSizes.subtopicCardWidth,
                 height: LearnSizes.subtopicCardHeight,
                 subtopic: topic.subtopics[index]),
           );

@@ -54,6 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } on Exception catch (e) {
         log(e.toString());
         emit(const AuthState.failed(AuthError.failedSendCode));
+        emit(const AuthState.initial());
       }
     } else {
       emit(const AuthState.initial());
@@ -177,8 +178,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? user = await GoogleSignIn().signIn();
-
+      final u = GoogleSignIn();
+      try {
+        await u.disconnect();
+        await FirebaseAuth.instance.signOut();
+      } on Exception {
+        return;
+      }
+      final GoogleSignInAccount? user = await u.signIn();
       final GoogleSignInAuthentication gAuth = await user!.authentication;
 
       final credential = GoogleAuthProvider.credential(

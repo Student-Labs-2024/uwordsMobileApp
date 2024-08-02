@@ -38,6 +38,9 @@ class _CustomPincodeState extends State<CustomPincode> {
           activeBorderWidth: AuthDesignedConstants.borderWidth,
           disabledBorderWidth: AuthDesignedConstants.borderWidth),
       onCompleted: (value) => widget.textEditingController.text = value,
+      onChanged: (value) => widget.textEditingController.text = value,
+      onSaved: (value) => widget.textEditingController.text = value ?? '',
+      onSubmitted: (value) => widget.textEditingController.text = value,
     );
   }
 }
