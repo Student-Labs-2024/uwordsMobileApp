@@ -33,8 +33,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
     super.initState();
+    context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
   }
 
   onCarouselPageChanged(int index, CarouselPageChangedReason reason) {
