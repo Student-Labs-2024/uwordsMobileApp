@@ -55,5 +55,10 @@
   "startTraining": "Тренировать",
   "topics": "Топики",
   "checkAll": "См. все",
-  "search": "Поиск"
+  "search": "Поиск",
+  "sort": "Сортировка",
+  "sortByCoutOfWords": "По кол-ву слов",
+  "sortByProgress": "По изученности",
+  "sortByLastLearningDate": "По дате изучения",
+  "cancel": "Отменить"
 }

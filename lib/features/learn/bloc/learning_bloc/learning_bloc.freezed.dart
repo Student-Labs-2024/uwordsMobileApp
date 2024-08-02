@@ -21,6 +21,7 @@ mixin _$LearningState {
     required TResult Function(List<Topic> topics) initial,
     required TResult Function(List<Topic> topics) gotWordsForStudy,
     required TResult Function(Topic topic) choseTopic,
+    required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$LearningState {
     TResult? Function(List<Topic> topics)? initial,
     TResult? Function(List<Topic> topics)? gotWordsForStudy,
     TResult? Function(Topic topic)? choseTopic,
+    TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$LearningState {
     TResult Function(List<Topic> topics)? initial,
     TResult Function(List<Topic> topics)? gotWordsForStudy,
     TResult Function(Topic topic)? choseTopic,
+    TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$LearningState {
     required TResult Function(_LearningInitial value) initial,
     required TResult Function(_LearningGotWordsForStudy value) gotWordsForStudy,
     required TResult Function(_LearningChoseTopic value) choseTopic,
+    required TResult Function(_ChangedSort value) changedSort,
     required TResult Function(_LearningFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$LearningState {
     TResult? Function(_LearningInitial value)? initial,
     TResult? Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult? Function(_LearningChoseTopic value)? choseTopic,
+    TResult? Function(_ChangedSort value)? changedSort,
     TResult? Function(_LearningFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$LearningState {
     TResult Function(_LearningInitial value)? initial,
     TResult Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult Function(_LearningChoseTopic value)? choseTopic,
+    TResult Function(_ChangedSort value)? changedSort,
     TResult Function(_LearningFailed value)? failed,
     required TResult orElse(),
   }) =>
@@ -171,6 +177,7 @@ class _$LearningInitialImpl
     required TResult Function(List<Topic> topics) initial,
     required TResult Function(List<Topic> topics) gotWordsForStudy,
     required TResult Function(Topic topic) choseTopic,
+    required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
   }) {
     return initial(topics);
@@ -182,6 +189,7 @@ class _$LearningInitialImpl
     TResult? Function(List<Topic> topics)? initial,
     TResult? Function(List<Topic> topics)? gotWordsForStudy,
     TResult? Function(Topic topic)? choseTopic,
+    TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
   }) {
     return initial?.call(topics);
@@ -193,6 +201,7 @@ class _$LearningInitialImpl
     TResult Function(List<Topic> topics)? initial,
     TResult Function(List<Topic> topics)? gotWordsForStudy,
     TResult Function(Topic topic)? choseTopic,
+    TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
     required TResult orElse(),
   }) {
@@ -208,6 +217,7 @@ class _$LearningInitialImpl
     required TResult Function(_LearningInitial value) initial,
     required TResult Function(_LearningGotWordsForStudy value) gotWordsForStudy,
     required TResult Function(_LearningChoseTopic value) choseTopic,
+    required TResult Function(_ChangedSort value) changedSort,
     required TResult Function(_LearningFailed value) failed,
   }) {
     return initial(this);
@@ -219,6 +229,7 @@ class _$LearningInitialImpl
     TResult? Function(_LearningInitial value)? initial,
     TResult? Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult? Function(_LearningChoseTopic value)? choseTopic,
+    TResult? Function(_ChangedSort value)? changedSort,
     TResult? Function(_LearningFailed value)? failed,
   }) {
     return initial?.call(this);
@@ -230,6 +241,7 @@ class _$LearningInitialImpl
     TResult Function(_LearningInitial value)? initial,
     TResult Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult Function(_LearningChoseTopic value)? choseTopic,
+    TResult Function(_ChangedSort value)? changedSort,
     TResult Function(_LearningFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -337,6 +349,7 @@ class _$LearningGotWordsForStudyImpl
     required TResult Function(List<Topic> topics) initial,
     required TResult Function(List<Topic> topics) gotWordsForStudy,
     required TResult Function(Topic topic) choseTopic,
+    required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
   }) {
     return gotWordsForStudy(topics);
@@ -348,6 +361,7 @@ class _$LearningGotWordsForStudyImpl
     TResult? Function(List<Topic> topics)? initial,
     TResult? Function(List<Topic> topics)? gotWordsForStudy,
     TResult? Function(Topic topic)? choseTopic,
+    TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
   }) {
     return gotWordsForStudy?.call(topics);
@@ -359,6 +373,7 @@ class _$LearningGotWordsForStudyImpl
     TResult Function(List<Topic> topics)? initial,
     TResult Function(List<Topic> topics)? gotWordsForStudy,
     TResult Function(Topic topic)? choseTopic,
+    TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
     required TResult orElse(),
   }) {
@@ -374,6 +389,7 @@ class _$LearningGotWordsForStudyImpl
     required TResult Function(_LearningInitial value) initial,
     required TResult Function(_LearningGotWordsForStudy value) gotWordsForStudy,
     required TResult Function(_LearningChoseTopic value) choseTopic,
+    required TResult Function(_ChangedSort value) changedSort,
     required TResult Function(_LearningFailed value) failed,
   }) {
     return gotWordsForStudy(this);
@@ -385,6 +401,7 @@ class _$LearningGotWordsForStudyImpl
     TResult? Function(_LearningInitial value)? initial,
     TResult? Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult? Function(_LearningChoseTopic value)? choseTopic,
+    TResult? Function(_ChangedSort value)? changedSort,
     TResult? Function(_LearningFailed value)? failed,
   }) {
     return gotWordsForStudy?.call(this);
@@ -396,6 +413,7 @@ class _$LearningGotWordsForStudyImpl
     TResult Function(_LearningInitial value)? initial,
     TResult Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult Function(_LearningChoseTopic value)? choseTopic,
+    TResult Function(_ChangedSort value)? changedSort,
     TResult Function(_LearningFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -494,6 +512,7 @@ class _$LearningChoseTopicImpl
     required TResult Function(List<Topic> topics) initial,
     required TResult Function(List<Topic> topics) gotWordsForStudy,
     required TResult Function(Topic topic) choseTopic,
+    required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
   }) {
     return choseTopic(topic);
@@ -505,6 +524,7 @@ class _$LearningChoseTopicImpl
     TResult? Function(List<Topic> topics)? initial,
     TResult? Function(List<Topic> topics)? gotWordsForStudy,
     TResult? Function(Topic topic)? choseTopic,
+    TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
   }) {
     return choseTopic?.call(topic);
@@ -516,6 +536,7 @@ class _$LearningChoseTopicImpl
     TResult Function(List<Topic> topics)? initial,
     TResult Function(List<Topic> topics)? gotWordsForStudy,
     TResult Function(Topic topic)? choseTopic,
+    TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
     required TResult orElse(),
   }) {
@@ -531,6 +552,7 @@ class _$LearningChoseTopicImpl
     required TResult Function(_LearningInitial value) initial,
     required TResult Function(_LearningGotWordsForStudy value) gotWordsForStudy,
     required TResult Function(_LearningChoseTopic value) choseTopic,
+    required TResult Function(_ChangedSort value) changedSort,
     required TResult Function(_LearningFailed value) failed,
   }) {
     return choseTopic(this);
@@ -542,6 +564,7 @@ class _$LearningChoseTopicImpl
     TResult? Function(_LearningInitial value)? initial,
     TResult? Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult? Function(_LearningChoseTopic value)? choseTopic,
+    TResult? Function(_ChangedSort value)? changedSort,
     TResult? Function(_LearningFailed value)? failed,
   }) {
     return choseTopic?.call(this);
@@ -553,6 +576,7 @@ class _$LearningChoseTopicImpl
     TResult Function(_LearningInitial value)? initial,
     TResult Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult Function(_LearningChoseTopic value)? choseTopic,
+    TResult Function(_ChangedSort value)? changedSort,
     TResult Function(_LearningFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -571,6 +595,132 @@ abstract class _LearningChoseTopic implements LearningState {
   @JsonKey(ignore: true)
   _$$LearningChoseTopicImplCopyWith<_$LearningChoseTopicImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangedSortImplCopyWith<$Res> {
+  factory _$$ChangedSortImplCopyWith(
+          _$ChangedSortImpl value, $Res Function(_$ChangedSortImpl) then) =
+      __$$ChangedSortImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChangedSortImplCopyWithImpl<$Res>
+    extends _$LearningStateCopyWithImpl<$Res, _$ChangedSortImpl>
+    implements _$$ChangedSortImplCopyWith<$Res> {
+  __$$ChangedSortImplCopyWithImpl(
+      _$ChangedSortImpl _value, $Res Function(_$ChangedSortImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ChangedSortImpl with DiagnosticableTreeMixin implements _ChangedSort {
+  const _$ChangedSortImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LearningState.changedSort()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'LearningState.changedSort'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ChangedSortImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Topic> topics) initial,
+    required TResult Function(List<Topic> topics) gotWordsForStudy,
+    required TResult Function(Topic topic) choseTopic,
+    required TResult Function() changedSort,
+    required TResult Function(List<Topic> topics) failed,
+  }) {
+    return changedSort();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Topic> topics)? initial,
+    TResult? Function(List<Topic> topics)? gotWordsForStudy,
+    TResult? Function(Topic topic)? choseTopic,
+    TResult? Function()? changedSort,
+    TResult? Function(List<Topic> topics)? failed,
+  }) {
+    return changedSort?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Topic> topics)? initial,
+    TResult Function(List<Topic> topics)? gotWordsForStudy,
+    TResult Function(Topic topic)? choseTopic,
+    TResult Function()? changedSort,
+    TResult Function(List<Topic> topics)? failed,
+    required TResult orElse(),
+  }) {
+    if (changedSort != null) {
+      return changedSort();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LearningInitial value) initial,
+    required TResult Function(_LearningGotWordsForStudy value) gotWordsForStudy,
+    required TResult Function(_LearningChoseTopic value) choseTopic,
+    required TResult Function(_ChangedSort value) changedSort,
+    required TResult Function(_LearningFailed value) failed,
+  }) {
+    return changedSort(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LearningInitial value)? initial,
+    TResult? Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
+    TResult? Function(_LearningChoseTopic value)? choseTopic,
+    TResult? Function(_ChangedSort value)? changedSort,
+    TResult? Function(_LearningFailed value)? failed,
+  }) {
+    return changedSort?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LearningInitial value)? initial,
+    TResult Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
+    TResult Function(_LearningChoseTopic value)? choseTopic,
+    TResult Function(_ChangedSort value)? changedSort,
+    TResult Function(_LearningFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (changedSort != null) {
+      return changedSort(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangedSort implements LearningState {
+  const factory _ChangedSort() = _$ChangedSortImpl;
 }
 
 /// @nodoc
@@ -658,6 +808,7 @@ class _$LearningFailedImpl
     required TResult Function(List<Topic> topics) initial,
     required TResult Function(List<Topic> topics) gotWordsForStudy,
     required TResult Function(Topic topic) choseTopic,
+    required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
   }) {
     return failed(topics);
@@ -669,6 +820,7 @@ class _$LearningFailedImpl
     TResult? Function(List<Topic> topics)? initial,
     TResult? Function(List<Topic> topics)? gotWordsForStudy,
     TResult? Function(Topic topic)? choseTopic,
+    TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
   }) {
     return failed?.call(topics);
@@ -680,6 +832,7 @@ class _$LearningFailedImpl
     TResult Function(List<Topic> topics)? initial,
     TResult Function(List<Topic> topics)? gotWordsForStudy,
     TResult Function(Topic topic)? choseTopic,
+    TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
     required TResult orElse(),
   }) {
@@ -695,6 +848,7 @@ class _$LearningFailedImpl
     required TResult Function(_LearningInitial value) initial,
     required TResult Function(_LearningGotWordsForStudy value) gotWordsForStudy,
     required TResult Function(_LearningChoseTopic value) choseTopic,
+    required TResult Function(_ChangedSort value) changedSort,
     required TResult Function(_LearningFailed value) failed,
   }) {
     return failed(this);
@@ -706,6 +860,7 @@ class _$LearningFailedImpl
     TResult? Function(_LearningInitial value)? initial,
     TResult? Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult? Function(_LearningChoseTopic value)? choseTopic,
+    TResult? Function(_ChangedSort value)? changedSort,
     TResult? Function(_LearningFailed value)? failed,
   }) {
     return failed?.call(this);
@@ -717,6 +872,7 @@ class _$LearningFailedImpl
     TResult Function(_LearningInitial value)? initial,
     TResult Function(_LearningGotWordsForStudy value)? gotWordsForStudy,
     TResult Function(_LearningChoseTopic value)? choseTopic,
+    TResult Function(_ChangedSort value)? changedSort,
     TResult Function(_LearningFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -743,6 +899,9 @@ mixin _$LearningEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
     required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
     required TResult Function() returnToAllTopics,
   }) =>
       throw _privateConstructorUsedError;
@@ -750,6 +909,8 @@ mixin _$LearningEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
     TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
     TResult? Function()? returnToAllTopics,
   }) =>
       throw _privateConstructorUsedError;
@@ -757,6 +918,8 @@ mixin _$LearningEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
     TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
     TResult Function()? returnToAllTopics,
     required TResult orElse(),
   }) =>
@@ -765,6 +928,8 @@ mixin _$LearningEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
     required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
   }) =>
       throw _privateConstructorUsedError;
@@ -772,6 +937,8 @@ mixin _$LearningEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
     TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
   }) =>
       throw _privateConstructorUsedError;
@@ -779,6 +946,8 @@ mixin _$LearningEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
     TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     required TResult orElse(),
   }) =>
@@ -849,6 +1018,9 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
     required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
     required TResult Function() returnToAllTopics,
   }) {
     return getTopics();
@@ -859,6 +1031,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
     TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
     TResult? Function()? returnToAllTopics,
   }) {
     return getTopics?.call();
@@ -869,6 +1043,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
     TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
     TResult Function()? returnToAllTopics,
     required TResult orElse(),
   }) {
@@ -883,6 +1059,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
     required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
   }) {
     return getTopics(this);
@@ -893,6 +1071,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
     TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
   }) {
     return getTopics?.call(this);
@@ -903,6 +1083,8 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
     TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     required TResult orElse(),
   }) {
@@ -991,6 +1173,9 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
     required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
     required TResult Function() returnToAllTopics,
   }) {
     return chooseTopic(topic);
@@ -1001,6 +1186,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
     TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
     TResult? Function()? returnToAllTopics,
   }) {
     return chooseTopic?.call(topic);
@@ -1011,6 +1198,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
     TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
     TResult Function()? returnToAllTopics,
     required TResult orElse(),
   }) {
@@ -1025,6 +1214,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
     required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
   }) {
     return chooseTopic(this);
@@ -1035,6 +1226,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
     TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
   }) {
     return chooseTopic?.call(this);
@@ -1045,6 +1238,8 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
     TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     required TResult orElse(),
   }) {
@@ -1062,6 +1257,302 @@ abstract class _ChooseTopic implements LearningEvent {
   @JsonKey(ignore: true)
   _$$ChooseTopicImplCopyWith<_$ChooseTopicImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateSubtopicSortImplCopyWith<$Res> {
+  factory _$$UpdateSubtopicSortImplCopyWith(_$UpdateSubtopicSortImpl value,
+          $Res Function(_$UpdateSubtopicSortImpl) then) =
+      __$$UpdateSubtopicSortImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Comparator<Subtopic> comparator});
+}
+
+/// @nodoc
+class __$$UpdateSubtopicSortImplCopyWithImpl<$Res>
+    extends _$LearningEventCopyWithImpl<$Res, _$UpdateSubtopicSortImpl>
+    implements _$$UpdateSubtopicSortImplCopyWith<$Res> {
+  __$$UpdateSubtopicSortImplCopyWithImpl(_$UpdateSubtopicSortImpl _value,
+      $Res Function(_$UpdateSubtopicSortImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comparator = null,
+  }) {
+    return _then(_$UpdateSubtopicSortImpl(
+      null == comparator
+          ? _value.comparator
+          : comparator // ignore: cast_nullable_to_non_nullable
+              as Comparator<Subtopic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateSubtopicSortImpl
+    with DiagnosticableTreeMixin
+    implements _UpdateSubtopicSort {
+  const _$UpdateSubtopicSortImpl(this.comparator);
+
+  @override
+  final Comparator<Subtopic> comparator;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LearningEvent.updateSubtopicsSort(comparator: $comparator)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LearningEvent.updateSubtopicsSort'))
+      ..add(DiagnosticsProperty('comparator', comparator));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateSubtopicSortImpl &&
+            (identical(other.comparator, comparator) ||
+                other.comparator == comparator));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, comparator);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateSubtopicSortImplCopyWith<_$UpdateSubtopicSortImpl> get copyWith =>
+      __$$UpdateSubtopicSortImplCopyWithImpl<_$UpdateSubtopicSortImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getTopics,
+    required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
+    required TResult Function() returnToAllTopics,
+  }) {
+    return updateSubtopicsSort(comparator);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
+    TResult? Function()? returnToAllTopics,
+  }) {
+    return updateSubtopicsSort?.call(comparator);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getTopics,
+    TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
+    TResult Function()? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (updateSubtopicsSort != null) {
+      return updateSubtopicsSort(comparator);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
+    required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
+  }) {
+    return updateSubtopicsSort(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
+  }) {
+    return updateSubtopicsSort?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (updateSubtopicsSort != null) {
+      return updateSubtopicsSort(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateSubtopicSort implements LearningEvent {
+  const factory _UpdateSubtopicSort(final Comparator<Subtopic> comparator) =
+      _$UpdateSubtopicSortImpl;
+
+  Comparator<Subtopic> get comparator;
+  @JsonKey(ignore: true)
+  _$$UpdateSubtopicSortImplCopyWith<_$UpdateSubtopicSortImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReverseSubtopicSortImplCopyWith<$Res> {
+  factory _$$ReverseSubtopicSortImplCopyWith(_$ReverseSubtopicSortImpl value,
+          $Res Function(_$ReverseSubtopicSortImpl) then) =
+      __$$ReverseSubtopicSortImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ReverseSubtopicSortImplCopyWithImpl<$Res>
+    extends _$LearningEventCopyWithImpl<$Res, _$ReverseSubtopicSortImpl>
+    implements _$$ReverseSubtopicSortImplCopyWith<$Res> {
+  __$$ReverseSubtopicSortImplCopyWithImpl(_$ReverseSubtopicSortImpl _value,
+      $Res Function(_$ReverseSubtopicSortImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ReverseSubtopicSortImpl
+    with DiagnosticableTreeMixin
+    implements _ReverseSubtopicSort {
+  const _$ReverseSubtopicSortImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LearningEvent.reverseSubtopicsSort()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'LearningEvent.reverseSubtopicsSort'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReverseSubtopicSortImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getTopics,
+    required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
+    required TResult Function() returnToAllTopics,
+  }) {
+    return reverseSubtopicsSort();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getTopics,
+    TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
+    TResult? Function()? returnToAllTopics,
+  }) {
+    return reverseSubtopicsSort?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getTopics,
+    TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
+    TResult Function()? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (reverseSubtopicsSort != null) {
+      return reverseSubtopicsSort();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
+    required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
+  }) {
+    return reverseSubtopicsSort(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
+  }) {
+    return reverseSubtopicsSort?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
+    required TResult orElse(),
+  }) {
+    if (reverseSubtopicsSort != null) {
+      return reverseSubtopicsSort(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReverseSubtopicSort implements LearningEvent {
+  const factory _ReverseSubtopicSort() = _$ReverseSubtopicSortImpl;
 }
 
 /// @nodoc
@@ -1113,6 +1604,9 @@ class _$ReturnToAllTopicsImpl
   TResult when<TResult extends Object?>({
     required TResult Function() getTopics,
     required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
     required TResult Function() returnToAllTopics,
   }) {
     return returnToAllTopics();
@@ -1123,6 +1617,8 @@ class _$ReturnToAllTopicsImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getTopics,
     TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
     TResult? Function()? returnToAllTopics,
   }) {
     return returnToAllTopics?.call();
@@ -1133,6 +1629,8 @@ class _$ReturnToAllTopicsImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getTopics,
     TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
     TResult Function()? returnToAllTopics,
     required TResult orElse(),
   }) {
@@ -1147,6 +1645,8 @@ class _$ReturnToAllTopicsImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_GetTopics value) getTopics,
     required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
   }) {
     return returnToAllTopics(this);
@@ -1157,6 +1657,8 @@ class _$ReturnToAllTopicsImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetTopics value)? getTopics,
     TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
   }) {
     return returnToAllTopics?.call(this);
@@ -1167,6 +1669,8 @@ class _$ReturnToAllTopicsImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetTopics value)? getTopics,
     TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     required TResult orElse(),
   }) {

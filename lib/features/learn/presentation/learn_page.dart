@@ -7,6 +7,8 @@ import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
+import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
+import 'package:uwords/features/learn/presentation/widgets/sort_settings_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_row.dart';
 import 'package:uwords/features/learn/presentation/widgets/topic_header.dart';
@@ -24,6 +26,8 @@ class LearnPage extends StatefulWidget {
 class _LearnPageState extends State<LearnPage> {
   String _searchText = "";
   List<Subtopic> _searchList = [];
+  bool _isChosenSort = false;
+  Comparator<Subtopic> comparator = latestStudyDateComparator;
 
   @override
   void initState() {
@@ -100,9 +104,29 @@ class _LearnPageState extends State<LearnPage> {
                                 topic.topicTitle,
                                 style: AppTextStyles.recordButtonTitle,
                               ),
-                              CustomSearchTextfield(
-                                  controller: _searchQuery,
-                                  hintText: AppLocalizations.of(context).search)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: _isChosenSort == false ? maximumWidth - 24.0 * 2 - 48 - 10 : maximumWidth - 24.0 * 2 - 48*2 - 10,
+                                      child: CustomSearchTextfield(
+                                          controller: _searchQuery,
+                                          hintText: AppLocalizations.of(context)
+                                              .search),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    SortSettingsButton(
+                                      subtopics: topic.subtopics,
+                                      onTap: setState,
+                                    ),
+                                    _isChosenSort == true ? SortButton() : SizedBox()
+                                  ],
+                                ),
+                              )
                             ],
                           );
                         },
@@ -124,7 +148,14 @@ class _LearnPageState extends State<LearnPage> {
             child: SafeArea(
                 child: BlocConsumer<LearningBloc, LearningState>(
                     listener: (context, state) {
-              // TODO: implement listener
+              state.whenOrNull(
+                changedSort: () {
+                  setState(() {
+                    _isChosenSort = true;
+                    _searchQuery.clear();
+                  });
+                },
+              );
             }, builder: (context, state) {
               return state.maybeWhen(
                 initial: (topics) {

@@ -14,6 +14,8 @@ abstract class LearningState with _$LearningState {
     required Topic topic,
   }) = _LearningChoseTopic;
 
+  const factory LearningState.changedSort() = _ChangedSort;
+
   const factory LearningState.failed({
     required List<Topic> topics,
   }) = _LearningFailed;

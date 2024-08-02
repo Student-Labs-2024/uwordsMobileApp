@@ -25,4 +25,6 @@ class AppImageSource {
   static const String blueAngleButton = 'assets/png/blue_angle_bubble.png';
   static const String greyAngleButton = 'assets/png/grey_angle_bubble.png';
   static const String searchIcon = 'assets/svg/search_icon.svg';
+  static const String sortSettingsButton = 'assets/svg/sort_setting_button.svg';
+  static const String sortIcon = 'assets/svg/sort_icon.svg';
 }

@@ -111,4 +111,5 @@ class AppTextStyles {
     fontSize: 12,
     color: AppColors.darkMainColor,
   );
+  
 }
