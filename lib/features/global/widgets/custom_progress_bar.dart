@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/global/data/global_sizes.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
 
 class CustomProgressBar extends StatelessWidget {

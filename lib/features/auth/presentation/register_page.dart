@@ -94,7 +94,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 case AuthSuccess.authorized:
                   context.go("/home");
                 case AuthSuccess.sendedCode:
-                // TODO: Handle this case.
               }
             }, failed: (error) {
               showModalBottomSheet(
@@ -109,10 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
               return SafeArea(
                 child: DecoratedBox(
                   decoration: const BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      AppColors.gradientBackgroundColor1,
-                      AppColors.gradientBackgroundColor2
-                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+                    gradient: AppColors.backgroundGradient,
                   ),
                   child: Stack(children: [
                     Image.asset(
@@ -303,13 +299,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   return SafeArea(
                       child: DecoratedBox(
                     decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            AppColors.gradientBackgroundColor1,
-                            AppColors.gradientBackgroundColor2
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter),
+                      gradient: AppColors.backgroundGradient,
                     ),
                     child: Center(
                       child: Stack(children: [

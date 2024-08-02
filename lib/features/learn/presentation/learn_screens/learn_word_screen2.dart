@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
-import 'package:uwords/features/main/data/models/pair_model.dart';
+import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_button.dart';

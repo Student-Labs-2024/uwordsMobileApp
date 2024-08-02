@@ -5,7 +5,7 @@ class WordInfo {
   final WordModel word;
   final int userId;
   final int frequency;
-  final double progress;
+  final int progress;
   final DateTime? latestStudy;
 
   WordInfo({
