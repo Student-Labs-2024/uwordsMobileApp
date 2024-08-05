@@ -8,7 +8,6 @@ import 'package:uwords/features/learn/data/repositores/interface_words_repositor
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
-import 'package:uwords/common/exceptions/login_exceptions.dart';
 
 class MockWordsRepository extends Mock implements IWordsRepository {}
 
@@ -115,5 +114,56 @@ void main() {
         ],
       );
     });
+  });
+
+  group('PageChanging', () {
+    blocTest(
+      'emits [Initial] when ReturnToAllTopic is added',
+      build: () => LearningBloc(
+          wordsRepository: mockWordsRepository,
+          userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(const LearningEvent.returnToAllTopics()),
+      expect: () => [const LearningState.initial(topics: [])],
+    );
+    blocTest(
+      'emits [ChoseTopic] when ChooseTopic is added',
+      build: () => LearningBloc(
+          wordsRepository: mockWordsRepository,
+          userRepository: mockUserRepository),
+      act: (bloc) => bloc.add(LearningEvent.chooseTopic(topics[0])),
+      expect: () => [LearningState.choseTopic(topic: topics[0])],
+    );
+  });
+
+  group('WordsSorting', () {
+    blocTest(
+      'emits [ChangedSort, ChoseTopic] when UpdateSubtopicSort is added',
+      build: () => LearningBloc(
+          wordsRepository: mockWordsRepository,
+          userRepository: mockUserRepository),
+      act: (bloc) => bloc
+        ..add(LearningEvent.chooseTopic(topics[0]))
+        ..add(LearningEvent.updateSubtopicsSort(progressComparator)),
+      expect: () => [
+        LearningState.choseTopic(topic: topics[0]),
+        const LearningState.changedSort(),
+        LearningState.choseTopic(topic: topics[0])
+      ],
+    );
+
+    blocTest(
+      'emits [ChangedSort, ChoseTopic] when ReverseSubtopicSort is added',
+      build: () => LearningBloc(
+          wordsRepository: mockWordsRepository,
+          userRepository: mockUserRepository),
+      act: (bloc) => bloc
+        ..add(LearningEvent.chooseTopic(topics[0]))
+        ..add(LearningEvent.updateSubtopicsSort(progressComparator)),
+      expect: () => [
+        LearningState.choseTopic(topic: topics[0]),
+        const LearningState.changedSort(),
+        LearningState.choseTopic(topic: topics[0])
+      ],
+    );
   });
 }
