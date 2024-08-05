@@ -14,17 +14,25 @@ class WordsRepository implements IWordsRepository {
 
   @override
   Future<List<Topic>> getTopicsForStudy({required String accessToken}) async {
-    List<TopicDto> newTopics =
-        await wordsDataSource.getAllTopicsInfo(accessToken: accessToken);
-    List<Topic> result = newTopics.toModel();
-    return result;
+    try {
+      List<TopicDto> newTopics =
+          await wordsDataSource.getAllTopicsInfo(accessToken: accessToken);
+      List<Topic> result = newTopics.toModel();
+      return result;
+    } on Exception {
+      rethrow;
+    }
   }
 
   @override
   Future<List<Topic>> getTopics({required String accessToken}) async {
-    final List<TopicDto> topicsDto =
-        await wordsDataSource.fetchTopics(accessToken: accessToken);
-    return topicsDto.map((topic) => topic.toModel()).toList();
+    try {
+      final List<TopicDto> topicsDto =
+          await wordsDataSource.fetchTopics(accessToken: accessToken);
+      return topicsDto.map((topic) => topic.toModel()).toList();
+    } on Exception {
+      rethrow;
+    }
   }
 
   @override
@@ -32,18 +40,26 @@ class WordsRepository implements IWordsRepository {
       {required String accessToken,
       required String topic,
       required String subtopic}) async {
-    final List<WordInfoDto> wordsInfoDto =
-        await wordsDataSource.fetchWordsByTopicAndSubtopic(
-            accessToken: accessToken, topic: topic, subtopic: subtopic);
-    final List<WordInfo> words =
-        wordsInfoDto.map((element) => element.toModel()).toList();
-    return words;
+    try {
+      final List<WordInfoDto> wordsInfoDto =
+          await wordsDataSource.fetchWordsByTopicAndSubtopic(
+              accessToken: accessToken, topic: topic, subtopic: subtopic);
+      final List<WordInfo> words =
+          wordsInfoDto.map((element) => element.toModel()).toList();
+      return words;
+    } on Exception {
+      rethrow;
+    }
   }
 
   @override
   Future<void> sendLearnedWords(
       {required String accessToken, required List<int> wordsId}) async {
-    await wordsDataSource.sendLearnedWords(
-        wordsIds: wordsId, accessToken: accessToken);
+    try {
+      await wordsDataSource.sendLearnedWords(
+          wordsIds: wordsId, accessToken: accessToken);
+    } on Exception {
+      rethrow;
+    }
   }
 }

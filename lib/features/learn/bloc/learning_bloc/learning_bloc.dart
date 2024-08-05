@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   late Topic currentTopic;
   late Comparator<Subtopic> currentComparator;
+  late Emitter<LearningState> _emitter;
 
   LearningBloc({required this.wordsRepository, required this.userRepository})
       : super(const LearningState.initial(topics: [])) {
@@ -36,13 +38,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   Future<void> _handleGetTopics(
       _GetTopics event, Emitter<LearningState> emit) async {
-    try {
-      await _getTopicsFromServer(emit);
-    } on OldAccessException catch (e) {
-      log(e.toString());
-      userRepository.refreshAccessToken();
-      await _getTopicsFromServer(emit);
-    }
+    await _getTopicsFromServer(emit);
   }
 
   void _handleChooseTopic(_ChooseTopic event, Emitter<LearningState> emit) {
@@ -75,42 +71,73 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     String accessToken = await userRepository.getCurrentUserAccessToken();
     await checkTokenExpirationAndUpdateIfNeed(
         accessToken: accessToken, userRepository: userRepository);
-    List<Topic> newTopics =
-        await wordsRepository.getTopics(accessToken: accessToken);
-    topics = newTopics;
-    emit(LearningState.gotWordsForStudy(topics: topics));
-    emit(LearningState.initial(topics: topics));
+    try {
+      List<Topic> newTopics =
+          await wordsRepository.getTopics(accessToken: accessToken);
+      topics = newTopics;
+      emit(LearningState.gotWordsForStudy(topics: topics));
+      emit(LearningState.initial(topics: topics));
+    } on Exception catch (e) {
+      _emitter = emit;
+      addError(e);
+    }
   }
 
   Future<void> _handleGetWordsByTopic(
       _GetWordsByTopic event, Emitter<LearningState> emit) async {
-    String accessToken = await userRepository.getCurrentUserAccessToken();
-    await checkTokenExpirationAndUpdateIfNeed(
-        accessToken: accessToken, userRepository: userRepository);
-    List<Subtopic> subtopics = topics
-        .firstWhere((element) => event.topic.topicTitle == element.topicTitle)
-        .subtopics;
+    try {
+      String accessToken = await userRepository.getCurrentUserAccessToken();
+      await checkTokenExpirationAndUpdateIfNeed(
+          accessToken: accessToken, userRepository: userRepository);
+      List<Subtopic> subtopics = topics
+          .firstWhere((element) => event.topic.topicTitle == element.topicTitle)
+          .subtopics;
 
-    for (Subtopic element in subtopics) {
-      await _getWordsByTopicAndSubtopic(accessToken, event.topic, element);
+      for (Subtopic element in subtopics) {
+        await _getWordsByTopicAndSubtopic(accessToken, event.topic, element);
+      }
+    } on Exception catch (e) {
+      addError(e);
     }
   }
 
   Future<void> _handleGetWordsByTopicSubtopic(
       _GetWordsByTopicSubtopic event, Emitter<LearningState> emit) async {
-    String accessToken = await userRepository.getCurrentUserAccessToken();
-    await checkTokenExpirationAndUpdateIfNeed(
-        accessToken: accessToken, userRepository: userRepository);
-    await _getWordsByTopicAndSubtopic(accessToken, event.topic, event.subtopic);
+    try {
+      String accessToken = await userRepository.getCurrentUserAccessToken();
+      await checkTokenExpirationAndUpdateIfNeed(
+          accessToken: accessToken, userRepository: userRepository);
+      await _getWordsByTopicAndSubtopic(
+          accessToken, event.topic, event.subtopic);
+    } on Exception catch (e) {
+      addError(e);
+    }
   }
 
   Future<void> _getWordsByTopicAndSubtopic(
       String accessToken, Topic topic, Subtopic subtopic) async {
-    subtopic.wordInfoList.insertAll(
-        0,
-        await wordsRepository.getWordsByTopicAndSubtopic(
-            accessToken: accessToken,
-            topic: topic.topicTitle,
-            subtopic: subtopic.subtopicTitle));
+    try {
+      subtopic.wordInfoList.insertAll(
+          0,
+          await wordsRepository.getWordsByTopicAndSubtopic(
+              accessToken: accessToken,
+              topic: topic.topicTitle,
+              subtopic: subtopic.subtopicTitle));
+    } on Exception catch (e) {
+      addError(e);
+    }
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) async {
+    log(error.toString());
+    switch (error.runtimeType) {
+      case const (OldAccessException):
+        userRepository.refreshAccessToken();
+        await _getTopicsFromServer(_emitter);
+      case const (SocketException):
+        _emitter(LearningState.failed(topics: topics));
+    }
+    super.onError(error, stackTrace);
   }
 }
