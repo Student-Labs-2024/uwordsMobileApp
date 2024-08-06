@@ -80,7 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(const AuthState.failed(AuthError.failedRegistration));
         }
       } else {
-        emit(const AuthState.failed(AuthError.codeIsNotRight));
+        emit(const AuthState.failed(AuthError.codeIsNotRightOrExpired));
         emit(const AuthState.success(AuthSuccess.sendedCode));
       }
     } on Exception catch (e) {
