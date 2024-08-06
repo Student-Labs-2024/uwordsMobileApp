@@ -20,10 +20,11 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   final IUserRepository userRepository;
 
   List<Topic> topics = [];
-
   late Topic currentTopic;
   late Comparator<Subtopic> currentComparator;
   late Emitter<LearningState> _emitter;
+  late String inProgressTopicName;
+  Map<Subtopic, Topic> findTopicBySubtopicMap = {};
 
   LearningBloc({required this.wordsRepository, required this.userRepository})
       : super(const LearningState.initial(topics: [])) {
@@ -33,17 +34,18 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     on<_UpdateSubtopicSort>(_handleUpdateSubtopicSort);
     on<_ReverseSubtopicSort>(_handleReverseSubtopicSort);
     on<_GetWordsByTopic>(_handleGetWordsByTopic);
-    on<_GetWordsByTopicSubtopic>(_handleGetWordsByTopicSubtopic);
+    on<_GetWordsBySubtopic>(_handleGetWordsByTopicSubtopic);
   }
 
   Future<void> _handleGetTopics(
       _GetTopics event, Emitter<LearningState> emit) async {
+        inProgressTopicName = event.inProgressTopicName;
     await _getTopicsFromServer(emit);
   }
 
   void _handleChooseTopic(_ChooseTopic event, Emitter<LearningState> emit) {
     currentTopic = event.topic;
-    emit(LearningState.choseTopic(topic: currentTopic));
+    emit(LearningState.openMore(topic: currentTopic));
   }
 
   void _handleReturnToAllTopics(
@@ -56,7 +58,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     currentTopic.subtopics.sort(event.comparator);
     currentComparator = event.comparator;
     emit(const LearningState.changedSort());
-    emit(LearningState.choseTopic(topic: currentTopic));
+    emit(LearningState.openMore(topic: currentTopic));
   }
 
   void _handleReverseSubtopicSort(
@@ -64,7 +66,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     currentTopic.subtopics.replaceRange(0, currentTopic.subtopics.length,
         currentTopic.subtopics.reversed.toList());
     emit(const LearningState.changedSort());
-    emit(LearningState.choseTopic(topic: currentTopic));
+    emit(LearningState.openMore(topic: currentTopic));
   }
 
   Future<void> _getTopicsFromServer(Emitter<LearningState> emit) async {
@@ -74,7 +76,26 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     try {
       List<Topic> newTopics =
           await wordsRepository.getTopics(accessToken: accessToken);
-      topics = newTopics;
+      topics = [];
+      var inProgressTopic = Topic(
+          topicTitle: inProgressTopicName,
+          subtopics: newTopics
+              .map((topic) => topic.subtopics)
+              .expand((subtopics) => subtopics)
+              .where((subtopic) =>
+                  subtopic.progress > 0 && subtopic.progress < 100)
+              .toList());
+      if (inProgressTopic.subtopics.isNotEmpty) {
+        inProgressTopic.subtopics.sort(progressComparator);
+        inProgressTopic.subtopics.replaceRange(0, inProgressTopic.subtopics.length,
+            inProgressTopic.subtopics.reversed.toList());
+        topics.add(inProgressTopic);
+      }
+      topics.addAll(newTopics);
+      findTopicBySubtopicMap = {
+        for (Topic topic in topics)
+          for (Subtopic subtopic in topic.subtopics) subtopic: topic
+      };
       emit(LearningState.gotWordsForStudy(topics: topics));
       emit(LearningState.initial(topics: topics));
     } on Exception catch (e) {
@@ -102,13 +123,14 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   }
 
   Future<void> _handleGetWordsByTopicSubtopic(
-      _GetWordsByTopicSubtopic event, Emitter<LearningState> emit) async {
+      _GetWordsBySubtopic event, Emitter<LearningState> emit) async {
     try {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
-      await _getWordsByTopicAndSubtopic(
-          accessToken, event.topic, event.subtopic);
+      //TODO REMOVE !
+      final Topic topic = findTopicBySubtopicMap[event.subtopic]!;
+      await _getWordsByTopicAndSubtopic(accessToken, topic, event.subtopic);
     } on Exception catch (e) {
       addError(e);
     }

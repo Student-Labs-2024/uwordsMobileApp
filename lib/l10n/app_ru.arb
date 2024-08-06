@@ -119,5 +119,6 @@
   "passed": "Пройдено",
   "statistics": "Статистика",
   "activity": "Активность",
-  "achievements": "Достижения"
+  "achievements": "Достижения",
+  "inProgressTopicName": "В процессе"
 }

@@ -31,7 +31,12 @@ class _LearnPageState extends State<LearnPage> {
   @override
   void initState() {
     super.initState();
-    context.read<LearningBloc>().add(const LearningEvent.getTopics());
+  }
+  @override
+  void didChangeDependencies() {
+    context.read<LearningBloc>().add(LearningEvent.getTopics(
+        AppLocalizations.of(context).inProgressTopicName));
+    super.didChangeDependencies();
   }
 
   final TextEditingController _searchQuery = TextEditingController();
@@ -77,7 +82,7 @@ class _LearnPageState extends State<LearnPage> {
                             style: AppTextStyles.recordButtonTitle,
                           );
                         },
-                        choseTopic: (topic) {
+                        openMore: (topic) {
                           _searchQuery.addListener(() {
                             setState(() {
                               _searchText = _searchQuery.text;
@@ -176,7 +181,8 @@ class _LearnPageState extends State<LearnPage> {
                                 ),
                                 SizedBox(
                                     height: LearnSizes.subtopicCardHeight,
-                                    child: SubtopicsRow(topic: topics[index])),
+                                    child: SubtopicsRow(
+                                        subtopics: topics[index].subtopics)),
                                 index == topics.length - 1
                                     ? const SizedBox(
                                         height: LearnPaddings.learnPageBottom,
@@ -188,7 +194,7 @@ class _LearnPageState extends State<LearnPage> {
                         );
                       });
                 },
-                choseTopic: (topic) {
+                openMore: (topic) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: LearnPaddings.learnPagePadding),

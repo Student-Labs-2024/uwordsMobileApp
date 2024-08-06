@@ -9,7 +9,6 @@ import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
-import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,10 +19,8 @@ class SubtopicCard extends StatelessWidget {
   final double width;
   final double height;
   final Subtopic subtopic;
-  final Topic topic;
   const SubtopicCard(
       {super.key,
-      required this.topic,
       required this.width,
       required this.height,
       required this.subtopic});
@@ -44,7 +41,7 @@ class SubtopicCard extends StatelessWidget {
             // TODO Need to think how to do it better way
             context
                 .read<LearningBloc>()
-                .add(LearningEvent.getWordsByTopicSubtopic(topic, subtopic));
+                .add(LearningEvent.getWordsBySubtopic(subtopic));
             Future.delayed(OtherLearnConstants.smallDuration).whenComplete(() {
               context
                   .read<TrainingBloc>()
