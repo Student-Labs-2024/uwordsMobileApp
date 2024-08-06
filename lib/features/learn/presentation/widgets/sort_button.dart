@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
@@ -27,8 +27,8 @@ class _SortButtonState extends State<SortButton> {
         child: DecoratedBox(
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
-              borderRadius: BorderRadius.circular(
-                  AuthDesignedConstants.customTextFieldBorderRadius),
+              borderRadius:
+                  BorderRadius.circular(GlobalSizes.borderRadiusSmall),
               boxShadow: MainBoxShadows.main),
           child: Center(
             child: IconButton(

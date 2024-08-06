@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/features/auth/presentation/auth_paddings.dart';
-import 'package:uwords/features/auth/presentation/widgets/bubble_button.dart';
+import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
+import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -118,7 +119,8 @@ class _AuthPageState extends State<AuthPage> {
                               padding: const EdgeInsets.symmetric(
                                   vertical:
                                       AuthDesignedPaddings.middleEmptySpace),
-                              child: BubbleButton(AppImageSource.googleIcon,
+                              child: BubbleButton(
+                                  SvgPicture.asset(AppImageSource.googleIcon),
                                   maximumWidth: maximumWidth -
                                       (AuthDesignedPaddings.basePagePadding),
                                   onPressed: () async {
@@ -129,7 +131,8 @@ class _AuthPageState extends State<AuthPage> {
                                   text: AppLocalizations.of(context)
                                       .signInWithGoogle),
                             ),
-                            BubbleButton(AppImageSource.vkIcon,
+                            BubbleButton(
+                                SvgPicture.asset(AppImageSource.vkIcon),
                                 maximumWidth: maximumWidth -
                                     (AuthDesignedPaddings.basePagePadding),
                                 onPressed: () async {

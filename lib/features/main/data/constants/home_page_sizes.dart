@@ -13,4 +13,6 @@ class HomePageComponentSizes {
   static const double linkTextFieldIconSize = 9.75;
   static const double linkTextFieldSpacing = 2;
   static const double linkTextFieldErrorHeight = 14;
+
+  static const double backgroundBubbles = 505 / 812;
 }
