@@ -16,7 +16,6 @@ import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
-//import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
 import 'package:uwords/features/main/presentation/widgets/record_button.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -127,7 +126,7 @@ class _HomePageState extends State<HomePage> {
       bool granted = await Permission.microphone.isGranted;
       bool denied = await Permission.microphone.isDenied;
       bool deniedPerm = await Permission.microphone.isPermanentlyDenied;
-      if (!granted || denied || deniedPerm) {
+      if (!granted || denied || deniedPerm || await Permission.microphone.isRestricted) {
         await Permission.microphone.request();
       }
       granted = await Permission.microphone.isGranted;

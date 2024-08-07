@@ -18,8 +18,9 @@ class ExceptionWebsocketService extends IExceptionWebsocketService {
   @override
   Future<void> connect(
       String url, StreamController<String> errorStreamController) async {
+        IUserRepository userRepositoryInstanse = GetIt.instance.get<IUserRepository>();
     channel = IOWebSocketChannel.connect(
-        '$url${await GetIt.instance.get<IUserRepository>().getCurrentUserId()}');
+        '$url${await userRepositoryInstanse.getCurrentUserId()}');
     _errorController = errorStreamController;
   }
 
