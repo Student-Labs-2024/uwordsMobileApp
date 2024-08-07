@@ -5,10 +5,12 @@ import 'package:uwords/features/global/widgets/custom_textfield.dart';
 class MailAndPasswordFileds extends StatefulWidget {
   final TextEditingController mailController;
   final TextEditingController passwordController;
+  final String errorMessage;
   const MailAndPasswordFileds({
     super.key,
     required this.mailController,
     required this.passwordController,
+    required this.errorMessage,
   });
 
   @override
@@ -32,7 +34,7 @@ class _MailAndPasswordFiledsState extends State<MailAndPasswordFileds> {
           isHidden: true,
           isErrorDisplay: true,
           isError: false,
-          errorMessage: 'Message Жесть, ошибка!!!',
+          errorMessage: widget.errorMessage,
         ),
       ],
     );

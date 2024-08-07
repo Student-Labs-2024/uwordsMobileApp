@@ -7,11 +7,13 @@ class RegistrationFields extends StatelessWidget {
   final TextEditingController mailController;
   final TextEditingController passwordController;
   final TextEditingController usernameController;
+  final String errorMessage;
   const RegistrationFields({
     super.key,
     required this.usernameController,
     required this.mailController,
     required this.passwordController,
+    required this.errorMessage,
   });
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,10 @@ class RegistrationFields extends StatelessWidget {
           isError: false,
         ),
         MailAndPasswordFileds(
-            mailController: mailController,
-            passwordController: passwordController)
+          mailController: mailController,
+          passwordController: passwordController,
+          errorMessage: errorMessage,
+        )
       ],
     );
   }

@@ -12,4 +12,5 @@ class GlobalSizes {
   static const double customTextFieldIconSize = 9.75;
   static const double customTextFieldSpacing = 2;
   static const double customTextFieldErrorHeight = 17;
+  static const double customTextFieldErrorSpacer = 1;
 }

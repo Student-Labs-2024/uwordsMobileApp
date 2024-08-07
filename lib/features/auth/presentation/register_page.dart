@@ -159,9 +159,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             ])),
                           ),
                           RegistrationFields(
-                              usernameController: usernameController,
-                              mailController: mailController,
-                              passwordController: passwordController),
+                            usernameController: usernameController,
+                            mailController: mailController,
+                            passwordController: passwordController,
+                            errorMessage:
+                                AppLocalizations.of(context).unknowError,
+                          ),
                           BubbleButton(null,
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),

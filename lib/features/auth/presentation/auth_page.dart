@@ -91,8 +91,11 @@ class _AuthPageState extends State<AuthPage> {
                               ),
                             ),
                             MailAndPasswordFileds(
-                                mailController: mailController,
-                                passwordController: passwordController),
+                              mailController: mailController,
+                              passwordController: passwordController,
+                              errorMessage:
+                                  AppLocalizations.of(context).unknowError,
+                            ),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical:

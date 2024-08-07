@@ -106,7 +106,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   BorderRadius.circular(GlobalSizes.borderRadiusSmall),
               border: Border(
                 bottom: isError
-                    ? const BorderSide(color: AppColors.errorColor, width: 1.0)
+                    ? const BorderSide(
+                        color: AppColors.errorColor,
+                        width: GlobalSizes.customTextFieldErrorSpacer)
                     : BorderSide.none,
               ),
               boxShadow: MainBoxShadows.main),
