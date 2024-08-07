@@ -168,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           BubbleButton(null,
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),
-                              onPressed: () async {
+                              onPressed: () {
                             context.read<AuthBloc>().add(AuthEvent.requestCode(
                                 birthDate: choosenDate,
                                 emailAddress: mailController.text,
@@ -183,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               SvgPicture.asset(AppImageSource.googleIcon),
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),
-                              onPressed: () async {
+                              onPressed: () {
                             context
                                 .read<AuthBloc>()
                                 .add(const AuthEvent.signInWithGoogle());
@@ -195,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           BubbleButton(SvgPicture.asset(AppImageSource.vkIcon),
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),
-                              onPressed: () async {
+                              onPressed: () {
                             context
                                 .read<AuthBloc>()
                                 .add(const AuthEvent.signInWithVK());

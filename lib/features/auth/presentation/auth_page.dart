@@ -63,11 +63,11 @@ class _AuthPageState extends State<AuthPage> {
           builder: (context, state) {
             return state.maybeWhen(
               orElse: () {
-                return SafeArea(
-                  child: DecoratedBox(
-                    decoration: const BoxDecoration(
-                      gradient: AppColors.backgroundGradient,
-                    ),
+                return DecoratedBox(
+                  decoration: const BoxDecoration(
+                    gradient: AppColors.backgroundGradient,
+                  ),
+                  child: SafeArea(
                     child: Stack(children: [
                       Image.asset(
                         AppImageSource.headerAuth,
@@ -103,7 +103,7 @@ class _AuthPageState extends State<AuthPage> {
                               child: BubbleButton(null,
                                   maximumWidth: maximumWidth -
                                       (AuthDesignedPaddings.basePagePadding),
-                                  onPressed: () async {
+                                  onPressed: () {
                                 context.read<AuthBloc>().add(
                                     AuthEvent.signInWithMailPassword(
                                         emailAddress: mailController.text,
@@ -126,7 +126,7 @@ class _AuthPageState extends State<AuthPage> {
                                   SvgPicture.asset(AppImageSource.googleIcon),
                                   maximumWidth: maximumWidth -
                                       (AuthDesignedPaddings.basePagePadding),
-                                  onPressed: () async {
+                                  onPressed: () {
                                 context
                                     .read<AuthBloc>()
                                     .add(const AuthEvent.signInWithGoogle());
@@ -138,7 +138,7 @@ class _AuthPageState extends State<AuthPage> {
                                 SvgPicture.asset(AppImageSource.vkIcon),
                                 maximumWidth: maximumWidth -
                                     (AuthDesignedPaddings.basePagePadding),
-                                onPressed: () async {
+                                onPressed: () {
                               context
                                   .read<AuthBloc>()
                                   .add(const AuthEvent.signInWithVK());
