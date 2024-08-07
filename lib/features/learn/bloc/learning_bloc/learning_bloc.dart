@@ -72,9 +72,9 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   Future<void> _getTopicsFromServer(Emitter<LearningState> emit) async {
     String accessToken = await userRepository.getCurrentUserAccessToken();
-    await checkTokenExpirationAndUpdateIfNeed(
-        accessToken: accessToken, userRepository: userRepository);
     try {
+      await checkTokenExpirationAndUpdateIfNeed(
+          accessToken: accessToken, userRepository: userRepository);
       List<Topic> newTopics =
           await wordsRepository.getTopics(accessToken: accessToken);
       topics = [];
