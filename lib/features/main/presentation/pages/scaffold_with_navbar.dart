@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/scaffold_with_navbar_paddings.dart';
 import 'package:uwords/features/main/data/constants/scaffold_with_navbar_sizes.dart';
@@ -51,7 +52,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: ScaffoldWithNavbarPaddings.navBarHorizontal),
                   decoration: fis.BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(
+                        Radius.circular(GlobalSizes.borderRadiusLarge)),
                     gradient: getGradient(currentRoute),
                     boxShadow: MainBoxShadows.main,
                   ),

@@ -9,12 +9,14 @@ import 'package:get_it/get_it.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uwords/env.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
+import 'package:uwords/features/global/widgets/custom_textfield.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
-import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
+//import 'package:uwords/features/main/presentation/widgets/custom_textfield.dart';
 import 'package:uwords/features/main/presentation/widgets/record_button.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -146,9 +148,14 @@ class _HomePageState extends State<HomePage> {
                 child: Stack(
                   children: [
                     Center(
-                      child: Image.asset(
-                        AppImageSource.homeScreenBackground,
-                        width: MediaQuery.of(context).size.width,
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height *
+                            HomePageComponentSizes.backgroundBubbles,
+                        child: Image.asset(
+                          fit: BoxFit.cover,
+                          AppImageSource.homeScreenBackground,
+                          width: MediaQuery.of(context).size.width,
+                        ),
                       ),
                     ),
                     Column(
@@ -177,6 +184,8 @@ class _HomePageState extends State<HomePage> {
                                                   .linkTextFieldWidth,
                                           child: CustomTextField(
                                             controller: textEditingController,
+                                            isHidden: false,
+                                            isErrorDisplay: true,
                                             hintText:
                                                 AppLocalizations.of(context)
                                                     .videoLink,
@@ -247,7 +256,9 @@ class _HomePageState extends State<HomePage> {
                                           shape: WidgetStateProperty.all(
                                             RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(10),
+                                                  BorderRadius.circular(
+                                                      GlobalSizes
+                                                          .borderRadiusSmall),
                                             ),
                                           ),
                                         ),
@@ -301,10 +312,7 @@ class _HomePageState extends State<HomePage> {
                                 });
                           },
                         ),
-                        const SizedBox(
-                          height: HomePageComponentSizes
-                              .customTextFieldSummarizedHeight,
-                        ),
+                        const SizedBox(),
                         StreamBuilder(
                           stream: errorStreamController.stream,
                           builder: (context, snapshot) {

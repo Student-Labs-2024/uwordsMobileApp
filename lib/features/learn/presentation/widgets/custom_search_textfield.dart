@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uwords/features/auth/presentation/auth_designed_constants.dart';
+import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
 import 'package:uwords/features/main/data/constants/home_page_paddings.dart';
 import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
@@ -39,8 +40,8 @@ class _CustomSearchTextfieldState extends State<CustomSearchTextfield> {
               horizontal: HomePagePaddings.baseHorizontal),
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
-              borderRadius: BorderRadius.circular(
-                  AuthDesignedConstants.customTextFieldBorderRadius),
+              borderRadius:
+                  BorderRadius.circular(GlobalSizes.borderRadiusSmall),
               boxShadow: MainBoxShadows.main),
           child: Row(
             children: [
