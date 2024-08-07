@@ -68,8 +68,10 @@ void main() {
           emailAddress: correctEmailAddress,
           password: correctPassword,
           nickname: correctUsername)),
-      expect: () =>
-          const <AuthState>[AuthState.failed(AuthError.failedSendCode)],
+      expect: () => const <AuthState>[
+        AuthState.failed(AuthError.failedSendCode),
+        AuthState.initial()
+      ],
       tearDown: () {
         reset(mockUserRepository);
       },
