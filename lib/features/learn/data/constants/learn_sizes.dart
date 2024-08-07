@@ -34,7 +34,7 @@ class LearnSizes {
   static const double bigButtonHeight = 64;
   static const double sortButtonHeight = 44;
   static const double sortButtonWidth = 48;
-  
+
   static const double angleButtonHeight = 61;
   static const double angleButtonWidth = 85;
 

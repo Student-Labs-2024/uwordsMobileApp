@@ -66,7 +66,8 @@ class _LearnPageState extends State<LearnPage> {
                 ),
                 Center(
                     child: Padding(
-                  padding: const EdgeInsets.only(top: LearnPaddings.topTopicHeaderPadding),
+                  padding: const EdgeInsets.only(
+                      top: LearnPaddings.topTopicHeaderPadding),
                   child: BlocBuilder<LearningBloc, LearningState>(
                     builder: (context, state) {
                       return state.maybeWhen(
@@ -96,9 +97,14 @@ class _LearnPageState extends State<LearnPage> {
                                   children: [
                                     SizedBox(
                                       width: _isChosenSort == false
-                                          ? maximumWidth - LearnPaddings.learnPagePadding * 2 - LearnSizes.sortButtonWidth - LearnPaddings.rowBetweenPadding
+                                          ? maximumWidth -
+                                              LearnPaddings.learnPagePadding *
+                                                  2 -
+                                              LearnSizes.sortButtonWidth -
+                                              LearnPaddings.rowBetweenPadding
                                           : maximumWidth -
-                                              LearnPaddings.learnPagePadding * 2 -
+                                              LearnPaddings.learnPagePadding *
+                                                  2 -
                                               LearnSizes.sortButtonWidth * 2 -
                                               LearnPaddings.rowBetweenPadding,
                                       child: CustomSearchTextfield(
@@ -161,7 +167,8 @@ class _LearnPageState extends State<LearnPage> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: LearnPaddings.learnPagePadding),
+                                      horizontal:
+                                          LearnPaddings.learnPagePadding),
                                   child: TopicHeader(topic: topics[index]),
                                 ),
                                 const SizedBox(
@@ -178,7 +185,8 @@ class _LearnPageState extends State<LearnPage> {
                 },
                 choseTopic: (topic) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: LearnPaddings.learnPagePadding),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: LearnPaddings.learnPagePadding),
                     child: SubtopicsGrid(
                       topic: topic,
                       subtopics:
