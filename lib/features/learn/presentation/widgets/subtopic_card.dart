@@ -98,12 +98,17 @@ class SubtopicCard extends StatelessWidget {
                           top: LearnPaddings.svgIconTopPadding),
                       child: ShaderMask(
                         blendMode: BlendMode.srcIn,
-                        shaderCallback: (bounds) {return subtopic.progress <= OtherLearnConstants.zeroProgress
-                            ? AppColors.greyIconGradient.createShader(bounds)
-                            : subtopic.progress >=
-                                    OtherLearnConstants.halfProgress
-                                ? AppColors.blueIconGradient.createShader(bounds)
-                                : AppColors.redIconGradient.createShader(bounds);},
+                        shaderCallback: (bounds) {
+                          return subtopic.progress <=
+                                  OtherLearnConstants.zeroProgress
+                              ? AppColors.greyIconGradient.createShader(bounds)
+                              : subtopic.progress >=
+                                      OtherLearnConstants.halfProgress
+                                  ? AppColors.blueIconGradient
+                                      .createShader(bounds)
+                                  : AppColors.redIconGradient
+                                      .createShader(bounds);
+                        },
                         child: SvgPicture.network(
                           subtopic.pictureLink,
                         ),

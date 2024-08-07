@@ -2,7 +2,8 @@ part of 'learning_bloc.dart';
 
 @freezed
 class LearningEvent with _$LearningEvent {
-  const factory LearningEvent.getTopics(String inProgressTopicName) = _GetTopics;
+  const factory LearningEvent.getTopics(String inProgressTopicName) =
+      _GetTopics;
   const factory LearningEvent.getWordsByTopic(Topic topic) = _GetWordsByTopic;
   const factory LearningEvent.getWordsBySubtopic(Subtopic subtopic) =
       _GetWordsBySubtopic;

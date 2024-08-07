@@ -40,7 +40,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   Future<void> _handleGetTopics(
       _GetTopics event, Emitter<LearningState> emit) async {
-        inProgressTopicName = event.inProgressTopicName;
+    inProgressTopicName = event.inProgressTopicName;
     await _getTopicsFromServer(emit);
   }
 
@@ -89,7 +89,9 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
               .toList());
       if (inProgressTopic.subtopics.isNotEmpty) {
         inProgressTopic.subtopics.sort(progressComparator);
-        inProgressTopic.subtopics.replaceRange(0, inProgressTopic.subtopics.length,
+        inProgressTopic.subtopics.replaceRange(
+            0,
+            inProgressTopic.subtopics.length,
             inProgressTopic.subtopics.reversed.toList());
         topics.add(inProgressTopic);
       }

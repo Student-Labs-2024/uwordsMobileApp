@@ -32,6 +32,7 @@ class _LearnPageState extends State<LearnPage> {
   void initState() {
     super.initState();
   }
+
   @override
   void didChangeDependencies() {
     context.read<LearningBloc>().add(LearningEvent.getTopics(
