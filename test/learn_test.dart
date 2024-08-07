@@ -88,8 +88,6 @@ void main() {
           .thenAnswer((_) => Future.value(accessToken));
       when(() => mockUserRepository.refreshAccessToken())
           .thenAnswer((_) => Future.value(refreshToken));
-      when(() => mockUserRepository.refreshAccessToken())
-          .thenAnswer((_) => Future.value(refreshToken));
     });
 
     test('initial state is correct', () {
