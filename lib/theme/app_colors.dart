@@ -54,4 +54,21 @@ class AppColors {
   static const Color shadowColor2 = Color.fromRGBO(255, 255, 255, 0.08);
 
   static const Color darkGreyColor = Color.fromRGBO(132, 127, 135, 1);
+  static const Color yellowColor = Color.fromRGBO(255, 191, 26, 1);
+  static const Color redColor = Color.fromRGBO(255, 64, 128, 1);
+  static const Color violetColor = Color.fromRGBO(150, 124, 253, 1);
+  static const Color blueColor = Color.fromRGBO(49, 119, 255, 1);
+
+  static const LinearGradient greyIconGradient = LinearGradient(
+      colors: [AppColors.darkGreyColor, AppColors.darkGreyColor],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight);
+  static const LinearGradient redIconGradient = LinearGradient(
+      colors: [AppColors.yellowColor, AppColors.redColor],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight);
+  static const LinearGradient blueIconGradient = LinearGradient(
+      colors: [AppColors.violetColor, AppColors.blueColor],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight);
 }

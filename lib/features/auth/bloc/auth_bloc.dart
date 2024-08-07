@@ -80,7 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(const AuthState.failed(AuthError.failedRegistration));
         }
       } else {
-        emit(const AuthState.failed(AuthError.codeIsNotRight));
+        emit(const AuthState.failed(AuthError.codeIsNotRightOrExpired));
         emit(const AuthState.success(AuthSuccess.sendedCode));
       }
     } on Exception catch (e) {
@@ -220,7 +220,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await _authorization(emit: _emitter);
     } else {
       emit(const AuthState.failed(AuthError.failedRegistration));
-      await Future.delayed(const Duration(milliseconds: 1500));
+      await Future.delayed(const Duration(milliseconds: 500));
       emit(const AuthState.initial());
     }
   }
@@ -285,6 +285,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _emitter(const AuthState.failed(AuthError.noInternet));
       case const (NotRegisteredExceptionBySelfProvider):
         _emitter(const AuthState.failed(AuthError.failedAutorization));
+        _emitter(const AuthState.signInScreen());
       case const (NotRegisteredException):
         await _registerAndAuth(emit: _emitter);
       case const (NotValidDataForLoginException):

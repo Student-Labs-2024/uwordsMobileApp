@@ -25,7 +25,6 @@ class SubtopicsGrid extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return SubtopicCard(
-              topic: topic,
               width: LearnSizes.subtopicCardWidth,
               height: LearnSizes.subtopicCardHeight,
               subtopic: subtopics[index]);

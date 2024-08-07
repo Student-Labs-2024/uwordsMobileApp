@@ -10,9 +10,9 @@ abstract class LearningState with _$LearningState {
     required List<Topic> topics,
   }) = _LearningGotWordsForStudy;
 
-  const factory LearningState.choseTopic({
+  const factory LearningState.openMore({
     required Topic topic,
-  }) = _LearningChoseTopic;
+  }) = _LearningOpenMore;
 
   const factory LearningState.changedSort() = _ChangedSort;
 
