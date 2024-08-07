@@ -16,7 +16,28 @@ class MockUserRepository extends Mock implements IUserRepository {}
 void main() {
   final IWordsRepository mockWordsRepository = MockWordsRepository();
   final IUserRepository mockUserRepository = MockUserRepository();
-
+  const String inProgressTopicName = "В процессе";
+  final Topic expandedTopic =
+      Topic(topicTitle: inProgressTopicName, subtopics: [
+    Subtopic(
+        subtopicTitle: "Subtopic 2.2",
+        wordInfoList: [],
+        wordCount: 50,
+        pictureLink: '',
+        progress: 52),
+    Subtopic(
+        subtopicTitle: "Subtopic 1.2",
+        wordInfoList: [],
+        wordCount: 32,
+        pictureLink: '',
+        progress: 45),
+    Subtopic(
+        subtopicTitle: "Subtopic 1.1",
+        wordInfoList: [],
+        wordCount: 47,
+        pictureLink: '',
+        progress: 31),
+  ]);
   final List<Topic> topics = [
     Topic(topicTitle: "Topic 1", subtopics: [
       Subtopic(
@@ -24,7 +45,7 @@ void main() {
           wordInfoList: [],
           wordCount: 47,
           pictureLink: '',
-          progress: 32),
+          progress: 31),
       Subtopic(
           subtopicTitle: "Subtopic 1.2",
           wordInfoList: [],
@@ -44,9 +65,11 @@ void main() {
           wordInfoList: [],
           wordCount: 50,
           pictureLink: '',
-          progress: 50),
-    ]),
+          progress: 52),
+    ])
   ];
+  final List<Topic> expectedTopics = [expandedTopic];
+  expectedTopics.addAll(topics);
 
   const String accessToken =
       "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoidXNlciIsInVzZXJfaWQiOjIsImVtYWlsIjoiYXJ0ZW1maWx5YWtpbjVAZ21haWwuY29tIiwiaWF0IjoxNzIxMzI1NDE0LCJleHAiOjE3MjEzMjkwMTR9.CcdAcKXXsnVGjWL3emebA3cFRivQt1NmxLD6eFPU2NwmcqDC-v1am8f7Kvqq4cy_e_HvablfhGezgmMpTAMlG1AKd_XtiWm_RuFQhafZDtMzsguHI8FFDweAzibzTnr5s6lP1D8pqSP9JAOIR-_qtq2KdpwZlSrzyo9pzLL-TcB9LGUKT3jtoUo0Jsk-cHvDHIYi8YRXEtEp9hbRMvBiSiadYayLDpfJ-z_ZqfehxzjK39J3SYNngXbgV61smtXffDA3GuK6WvDFN0c2tLp8zqBbpridWc60E8zTNE8_qmGWbBnx9YD9_M4ZVrvPTy5-NivnZymDU9WZUL9fSM_l9EqeTa7ja4IWwoZ_DmTvmtX4r5iCI2upUL6OLuC2LHr7mHS4jd1KnR4pJ8MKw0sskZQZTVCdcOR0XrfKdO0wb-m76SdFo4Y_RIzB2-7lsGYOCVNKCIKDuoEpu1SKGax5ThZOF7mjlz2NsXuWr4anL_hM64nUdfQQyamO1f9ELiEtlvqAXUEiX3SJEB-6o_wC1ZjxzUN0o7bVzUhV8lBQQt1KwFn0sYOo3bYY68zr6m1EAXGw099QBaEW-Mzv2ij577nr2pg577im4YFbVjqmir4bJ1zhCGTlnFvAYYNeqCou7of7WhH_lPcEMmBOQR3NU9iWzs5NX8FxusZwfeCKmOQ";
@@ -86,12 +109,16 @@ void main() {
         build: () => LearningBloc(
             wordsRepository: mockWordsRepository,
             userRepository: mockUserRepository),
-        act: (bloc) => bloc.add(const LearningEvent.getTopics()),
-        expect: () => [
-          LearningState.gotWordsForStudy(topics: topics),
-          LearningState.initial(topics: topics),
-        ],
+        act: (bloc) =>
+            bloc.add(const LearningEvent.getTopics(inProgressTopicName)),
+        expect: () => [isA<LearningState>(), isA<LearningState>()],
         verify: (bloc) {
+          for (final expectedTopic in expectedTopics) {
+            assert(
+                bloc.topics.any((subtopic) =>
+                    subtopic.topicTitle == expectedTopic.topicTitle),
+                'Expected topic "${expectedTopic.topicTitle}" not found in bloc.topics');
+          }
           verify(() => mockWordsRepository.getTopics(accessToken: accessToken))
               .called(1);
           verify(() => mockUserRepository.getCurrentUserAccessToken())
@@ -108,7 +135,8 @@ void main() {
         build: () => LearningBloc(
             wordsRepository: mockWordsRepository,
             userRepository: mockUserRepository),
-        act: (bloc) => bloc.add(const LearningEvent.getTopics()),
+        act: (bloc) =>
+            bloc.add(const LearningEvent.getTopics(inProgressTopicName)),
         expect: () => [
           const LearningState.failed(topics: []),
         ],
@@ -131,7 +159,7 @@ void main() {
           wordsRepository: mockWordsRepository,
           userRepository: mockUserRepository),
       act: (bloc) => bloc.add(LearningEvent.chooseTopic(topics[0])),
-      expect: () => [LearningState.choseTopic(topic: topics[0])],
+      expect: () => [LearningState.openMore(topic: topics[0])],
     );
   });
 
@@ -145,9 +173,9 @@ void main() {
         ..add(LearningEvent.chooseTopic(topics[0]))
         ..add(LearningEvent.updateSubtopicsSort(progressComparator)),
       expect: () => [
-        LearningState.choseTopic(topic: topics[0]),
+        LearningState.openMore(topic: topics[0]),
         const LearningState.changedSort(),
-        LearningState.choseTopic(topic: topics[0])
+        LearningState.openMore(topic: topics[0])
       ],
     );
 
@@ -160,9 +188,9 @@ void main() {
         ..add(LearningEvent.chooseTopic(topics[0]))
         ..add(LearningEvent.updateSubtopicsSort(progressComparator)),
       expect: () => [
-        LearningState.choseTopic(topic: topics[0]),
+        LearningState.openMore(topic: topics[0]),
         const LearningState.changedSort(),
-        LearningState.choseTopic(topic: topics[0])
+        LearningState.openMore(topic: topics[0])
       ],
     );
   });

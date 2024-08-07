@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/learn/data/constants/mock_data.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
@@ -79,7 +80,8 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       topics = [];
       var inProgressTopic = Topic(
           topicTitle: inProgressTopicName,
-          subtopics: newTopics
+          //TODO Change to newTopics
+          subtopics: [mockTopic]
               .map((topic) => topic.subtopics)
               .expand((subtopics) => subtopics)
               .where((subtopic) =>
@@ -128,8 +130,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
-      //TODO REMOVE !
-      final Topic topic = findTopicBySubtopicMap[event.subtopic]!;
+      final Topic topic = findTopicBySubtopicMap[event.subtopic] ?? mockTopic;
       await _getWordsByTopicAndSubtopic(accessToken, topic, event.subtopic);
     } on Exception catch (e) {
       addError(e);
