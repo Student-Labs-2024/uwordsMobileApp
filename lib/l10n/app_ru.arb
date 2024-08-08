@@ -120,5 +120,19 @@
   "statistics": "Статистика",
   "activity": "Активность",
   "achievements": "Достижения",
-  "inProgressTopicName": "В процессе"
+  "inProgressTopicName": "В процессе",
+
+  "listenAndRemember": "Послушайте и запомните!",
+  "makeWord": "Составьте слово по буквам!",
+  "clickAndSpeak": "Нажмите и говорите!",
+  "listenAndChoose": "Прослушайте и выберите!",
+  "phasePassed": "{count}-ый этап пройден!",
+  "@phasePassed": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  }
 }

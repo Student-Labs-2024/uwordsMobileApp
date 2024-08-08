@@ -40,12 +40,18 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
               child: CircularProgressIndicator(),
             ),
             screen1: (word) => LearnWordPage1(
-                word: word, goNextScreen: goNextScreen, quit: quit),
+              word: word,
+              goNextScreen: goNextScreen,
+              quit: quit,
+              progress: 65,
+            ),
             screen2: (word, letters) => LearnWordPage2(
-                word: word,
-                letters: letters,
-                goNextScreen: goSuccessfulScreen,
-                quit: quit),
+              word: word,
+              letters: letters,
+              goNextScreen: goSuccessfulScreen,
+              quit: quit,
+              progress: 65,
+            ),
             screen3: (word) => LearnWordPage3(
                 word: word, goNextScreen: goSuccessfulScreen, quit: quit),
             screen4: (word, selectableWords) => LearnWordPage4(

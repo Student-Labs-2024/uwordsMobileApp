@@ -9,7 +9,7 @@ import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/presentation/widgets/speech_button.dart';
 import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
-import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
+import 'package:uwords/features/learn/presentation/widgets/learn_bubble_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

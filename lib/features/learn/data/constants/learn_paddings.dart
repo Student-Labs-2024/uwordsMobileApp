@@ -19,4 +19,14 @@ class LearnPaddings {
   static const double rowBetweenPadding = 10;
   static const double normalPadding = 20;
   static const double topTopicHeaderPadding = 36;
+  static const double bubbleBackgroundTop = 137 / 812;
+  static const double wordScreenHorizontal = 24 / 375;
+  static const double learnProgressBottom = 20;
+  static const double learnProgressTop = 30;
+  static const double learnDescriptionBottom = 65 / 812;
+  static const double learnPlaysoundButtonTop = 34 / 812;
+  static const double learnPlaysoundButtonBottom = 20 / 812;
+  static const double learnBottom = 30;
+  static const double learnWordInputTop = 38 / 812;
+  static const double learnWordInputBottom = 20 / 812;
 }

@@ -38,4 +38,10 @@ class AppImageSource {
   static const String searchIcon = 'assets/svg/search_icon.svg';
   static const String sortSettingsButton = 'assets/svg/sort_setting_button.svg';
   static const String sortIcon = 'assets/svg/sort_icon.svg';
+  static const String testScreenBubbles = 'assets/png/bubbles_test_module.png';
+  static const String testScreenBubblesInputScreen =
+      'assets/png/bubbles_test_module_input.png';
+  static const String cancelIcon = 'assets/svg/cancel_icon.svg';
+  static const String learningHearts = 'assets/svg/learning_hearts.svg';
+  static const String soundIcon = 'assets/svg/sound_icon.svg';
 }

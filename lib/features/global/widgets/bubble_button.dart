@@ -12,12 +12,16 @@ class BubbleButton extends StatelessWidget {
     required this.maximumWidth,
     required this.onPressed,
     required this.text,
+    this.state,
+    this.textStyle,
   });
 
   final SvgPicture? icon;
   final double maximumWidth;
   final VoidCallback onPressed;
   final String text;
+  final TextStyle? textStyle;
+  final int? state;
 
   List<Widget> addIcon() {
     if (icon != null) {
@@ -49,7 +53,7 @@ class BubbleButton extends StatelessWidget {
             ...addIcon(),
             Text(
               text,
-              style: AppTextStyles.authButtonText,
+              style: textStyle ?? AppTextStyles.authButtonText,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
             ),

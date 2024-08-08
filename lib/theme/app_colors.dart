@@ -14,6 +14,8 @@ class AppColors {
   static const Color homePageStartRecord = Color.fromRGBO(241, 245, 249, 1);
 
   static const Color whiteBackgroundColor = Color.fromRGBO(248, 247, 243, 0.5);
+  static const Color wordInputBackgroundColor =
+      Color.fromRGBO(237, 243, 255, 1);
 
   static const LinearGradient navBarRecord = LinearGradient(
       colors: [AppColors.whiteBackgroundColor, AppColors.whiteBackgroundColor],
@@ -71,4 +73,6 @@ class AppColors {
       colors: [AppColors.violetColor, AppColors.blueColor],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight);
+
+  static const Color goodColor1 = Color.fromRGBO(47, 234, 155, 0.4);
 }
