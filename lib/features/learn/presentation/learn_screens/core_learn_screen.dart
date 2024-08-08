@@ -53,12 +53,18 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
               progress: 65,
             ),
             screen3: (word) => LearnWordPage3(
-                word: word, goNextScreen: goSuccessfulScreen, quit: quit),
+              word: word,
+              goNextScreen: goSuccessfulScreen,
+              quit: quit,
+              progress: 65,
+            ),
             screen4: (word, selectableWords) => LearnWordPage4(
-                word: word,
-                selectableWords: selectableWords,
-                goNextScreen: goSuccessfulScreen,
-                quit: quit),
+              word: word,
+              selectableWords: selectableWords,
+              goNextScreen: goSuccessfulScreen,
+              quit: quit,
+              progress: 65,
+            ),
             finalScreen: () => Center(
                 child: Text(AppLocalizations.of(context).congratulations)),
             success: (word) => SuccessfulWordPage(

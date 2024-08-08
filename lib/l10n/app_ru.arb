@@ -50,7 +50,7 @@
   "misspelled": "Неправильное произношение слова",
   "wrongAnswer": "Неверно!",
   "congratulations": "Молодец, ты прошел все слова!",
-  "next": "Дальше",
+  "next": "Далее",
   "check": "Проверить",
   "startTraining": "Тренировать",
   "topics": "Топики",
@@ -121,7 +121,6 @@
   "activity": "Активность",
   "achievements": "Достижения",
   "inProgressTopicName": "В процессе",
-
   "listenAndRemember": "Послушайте и запомните!",
   "makeWord": "Составьте слово по буквам!",
   "clickAndSpeak": "Нажмите и говорите!",
@@ -134,5 +133,7 @@
         "format": "compact"
       }
     }
-  }
+  },
+  "cantTell": "Не могу говорить",
+  "cantHear": "Не могу слушать"
 }

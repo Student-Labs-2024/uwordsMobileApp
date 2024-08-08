@@ -59,6 +59,7 @@ class AppColors {
   static const Color yellowColor = Color.fromRGBO(255, 191, 26, 1);
   static const Color redColor = Color.fromRGBO(255, 64, 128, 1);
   static const Color violetColor = Color.fromRGBO(150, 124, 253, 1);
+  static const Color purpleColor = Color.fromRGBO(83, 45, 106, 1);
   static const Color blueColor = Color.fromRGBO(49, 119, 255, 1);
 
   static const LinearGradient greyIconGradient = LinearGradient(
@@ -75,4 +76,26 @@ class AppColors {
       end: Alignment.bottomRight);
 
   static const Color goodColor1 = Color.fromRGBO(47, 234, 155, 0.4);
+
+  static const LinearGradient greenStandartGradient = LinearGradient(colors: [
+    AppColors.goodProgressbarColor1,
+    AppColors.goodProgressbarColor2
+  ], begin: Alignment.topLeft, end: Alignment.bottomRight);
+  static const LinearGradient redStandartGradient = LinearGradient(
+      colors: [AppColors.yellowColor, AppColors.redColor],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight);
+  static const LinearGradient purpleStandartGradient = LinearGradient(
+      colors: [AppColors.violetColor, AppColors.purpleColor],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight);
+
+  static LinearGradient wrongBubbleButtonGradient = LinearGradient(colors: [
+    AppColors.yellowColor.withOpacity(0.5),
+    AppColors.redColor.withOpacity(0.4)
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+  static LinearGradient unactiveBubbleButtonGradient = LinearGradient(colors: [
+    AppColors.lightgrayColor.withOpacity(0.4),
+    AppColors.grayColor.withOpacity(0.4)
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 }

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
-import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
-import 'package:uwords/features/learn/presentation/widgets/learn_bubble_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/learn_progress_bar.dart';
 import 'package:uwords/features/learn/presentation/widgets/letter_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_input.dart';
@@ -120,7 +119,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                             LearnSizes.imageWidth,
                         height: MediaQuery.of(context).size.height *
                             LearnSizes.imageHeight,
-                        clipRadius: 20),
+                        clipRadius: GlobalSizes.borderRadiusVeryLarge),
                     Padding(
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height *
@@ -142,6 +141,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                     ),
                     const Spacer(),
                     BubbleButton(null,
+                        state: inputState,
                         maximumWidth: MediaQuery.of(context).size.height,
                         text: isAnswerCorrect
                             ? AppLocalizations.of(context).next

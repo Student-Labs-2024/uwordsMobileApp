@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
@@ -80,7 +81,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                                 LearnSizes.imageWidth,
                             height: MediaQuery.of(context).size.height *
                                 LearnSizes.imageHeight,
-                            clipRadius: 20),
+                            clipRadius: GlobalSizes.borderRadiusVeryLarge),
                         Padding(
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height *

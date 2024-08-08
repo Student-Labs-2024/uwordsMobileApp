@@ -9,10 +9,10 @@ class LearnSizes {
   static const double playButtonSize = 90 / 375;
   static const double playButtonIconSize = 32;
 
-  static const double speechButtonSize = 80 / 375;
-  static const double speechButtonIconSize = 42 / 375;
+  static const double speechButtonSize = 106 / 375;
+  static const double speechButtonIconSize = 32 / 375;
 
-  static const double imageCardWidth = 144 / 375;
+  static const double imageCardWidth = 140 / 375;
   static const double imageCardHeight = 140 / 812;
 
   static const double imageCardBorderWidth = 6;

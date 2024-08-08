@@ -7,6 +7,7 @@ class GlobalSizes {
   static const double borderRadiusSmall = 10;
   static const double borderRadiusMedium = 15;
   static const double borderRadiusLarge = 20;
+  static const double borderRadiusVeryLarge = 45;
   static const double borderRadiusCircle = 55;
 
   static const double customTextFieldIconSize = 9.75;
