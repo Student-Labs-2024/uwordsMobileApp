@@ -126,7 +126,10 @@ class _HomePageState extends State<HomePage> {
       bool granted = await Permission.microphone.isGranted;
       bool denied = await Permission.microphone.isDenied;
       bool deniedPerm = await Permission.microphone.isPermanentlyDenied;
-      if (!granted || denied || deniedPerm || await Permission.microphone.isRestricted) {
+      if (!granted ||
+          denied ||
+          deniedPerm ||
+          await Permission.microphone.isRestricted) {
         await Permission.microphone.request();
       }
       granted = await Permission.microphone.isGranted;
