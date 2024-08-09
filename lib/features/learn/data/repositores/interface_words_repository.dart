@@ -1,5 +1,6 @@
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
+import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 abstract class IWordsRepository {
   Future<void> sendLearnedWords(
@@ -10,4 +11,8 @@ abstract class IWordsRepository {
       {required String accessToken,
       required String topic,
       required String subtopic});
+  Future<List<WordModel>> getWordsForStart(
+      {required String accessToken,
+      required String topicTitle,
+      required String subtopicTitle});
 }

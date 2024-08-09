@@ -41,6 +41,7 @@ class _CustomPincodeState extends State<CustomPincode> {
       onChanged: (value) => widget.textEditingController.text = value,
       onSaved: (value) => widget.textEditingController.text = value ?? '',
       onSubmitted: (value) => widget.textEditingController.text = value,
+      keyboardType: TextInputType.number,
     );
   }
 }

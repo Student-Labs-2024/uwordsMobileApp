@@ -23,4 +23,14 @@ abstract class LearnClient {
       @Header("Authorization") String accessToken,
       @Query("topic_title") String topicTitle,
       @Query("subtopic_title") String subtopicTitle);
+
+  @GET("user/words/study")
+  Future<List<WordInfoDto>> getWordsForStartTraining(
+      @Header("Authorization") String accessToken,
+      @Query("topic_title") String topicTitle,
+      @Query("subtopic_title") String subtopicTitle);
+
+  @POST("user/words/study")
+  Future<HttpResponse> sendWordsWhenFinished(
+      @Header("Authorization") String accessToken, @Body() body);
 }

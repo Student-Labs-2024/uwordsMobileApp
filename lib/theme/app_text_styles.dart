@@ -14,6 +14,12 @@ class AppTextStyles {
     fontSize: 18,
     color: AppColors.darkMainColor,
   );
+  static const topicOpacityTitle = TextStyle(
+    fontFamily: 'SNFBSTRD_handwrite',
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkMainColor,
+  );
   static const customTextfieldInput = TextStyle(
       color: Colors.grey,
       fontSize: 14,
@@ -185,7 +191,10 @@ class AppTextStyles {
       fontSize: 14,
       fontWeight: FontWeight.w400,
       color: AppColors.darkMainColor);
-
+  static const bigSubtopicTitle = TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkMainColor);
   static var learnCant = TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w600,

@@ -17,3 +17,21 @@ class WordInfo {
     required this.progress,
   });
 }
+
+Comparator<WordInfo> wordFrequencyComparator =
+    (a, b) => a.frequency.compareTo(b.frequency);
+
+Comparator<WordInfo> wordProgressComparator =
+    (a, b) => a.progress.compareTo(b.progress);
+
+Comparator<WordInfo> wordLatestStudyComparator = (a, b) {
+  if (a.latestStudy == null && b.latestStudy == null) {
+    return 0;
+  } else if (a.latestStudy == null) {
+    return 1;
+  } else if (b.latestStudy == null) {
+    return -1;
+  } else {
+    return a.latestStudy!.compareTo(b.latestStudy!);
+  }
+};

@@ -10,4 +10,8 @@ abstract class IWordsDataSource {
       {required String accessToken,
       required String topic,
       required String subtopic});
+  Future<List<WordInfoDto>> fetchWordsForStart(
+      {required String accessToken,
+      required String topicTitle,
+      required String subtopicTitle});
 }

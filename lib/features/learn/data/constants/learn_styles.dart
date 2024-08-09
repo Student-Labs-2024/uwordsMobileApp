@@ -53,4 +53,5 @@ class LearnStyles {
       const TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static TextStyle basicWordStyle =
       const TextStyle(fontSize: 18, fontWeight: FontWeight.w400);
+  static double topOpacity = 0.45;
 }

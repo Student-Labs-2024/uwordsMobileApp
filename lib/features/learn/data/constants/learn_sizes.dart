@@ -43,6 +43,10 @@ class LearnSizes {
   static const double subtopicCardHeight = 120;
   static const double learnAppbarHeight = 100;
 
+  static const double angleBigButtonHeight = 122;
+  static const double angleBigButtonWidth = 170;
+  static const double bigSubtopicCardHeight = 220;
+  static const double bigSubtopicIconSize = 90;
   static const double bubbleBackgroundHeight = 367 / 812;
   static const double bubbleBackgroundHeightInputScreen = 336 / 812;
 
@@ -59,4 +63,8 @@ class LearnSizes {
   static const double hpHeight = 24;
 
   static const double bottomSheetHeight = 246 / 812;
+
+  static const double wordRowMinHeight = 45;
+  static const double wordRowIconHeight = 15;
+  static const double wordRowIconWidth = 20;
 }

@@ -1,6 +1,10 @@
+import 'dart:developer' as developer;
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
@@ -21,6 +25,9 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   List<Pair<int, int>> wordScreen = [];
   int currentWordScreenIndex = -1;
+  late String _topicTitle;
+  late String _subtopicTitle;
+  late Emitter<TrainingState> _emitter;
 
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
@@ -28,6 +35,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     on<_SetSubtopic>(_getWordsFromSubtitle);
     on<_NextStep>(_eventNextTrainingStep);
     on<_GoSuccessfulScreen>(_goSuccessfulScreen);
+    on<_StartStudy>(_handleStartStudy);
   }
 
   void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
@@ -127,9 +135,13 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     _nextTrainingStep(emit);
   }
 
-  void _nextTrainingStep(Emitter<TrainingState> emit) {
+  void _nextTrainingStep(Emitter<TrainingState> emit) async {
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
+      // TODO check this line after merging
+      await wordsRepository.sendLearnedWords(
+          accessToken: await userRepository.getCurrentUserAccessToken(),
+          wordsId: words.map((word) => word.id).toList());
       emit(const TrainingState.finalScreen());
       return;
     }
@@ -159,5 +171,45 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       _GoSuccessfulScreen event, Emitter<TrainingState> emit) {
     emit(TrainingState.success(
         word: words[wordScreen[currentWordScreenIndex].first]));
+  }
+
+  Future<void> _handleStartStudy(
+      _StartStudy event, Emitter<TrainingState> emit) async {
+    emit(const TrainingState.loading());
+    try {
+      String accessToken = await userRepository.getCurrentUserAccessToken();
+      checkTokenExpirationAndUpdateIfNeed(
+          accessToken: accessToken, userRepository: userRepository);
+      List<WordModel> result = await wordsRepository.getWordsForStart(
+          accessToken: accessToken,
+          topicTitle: event.topicTitle,
+          subtopicTitle: event.subtopic.subtopicTitle);
+      List<WordModel> placeholders =
+          event.subtopic.wordInfoList.map((e) => e.word).toList();
+      words.addAll(result.isEmpty ? placeholders.take(4) : result);
+      _startTraining(emit);
+    } on Exception catch (e) {
+      _emitter = emit;
+      _topicTitle = event.topicTitle;
+      _subtopicTitle = event.subtopic.subtopicTitle;
+      addError(e);
+    }
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) async {
+    developer.log(error.toString());
+    switch (error.runtimeType) {
+      case const (OldAccessException):
+        String accessToken = await userRepository.refreshAccessToken();
+        words.addAll(await wordsRepository.getWordsForStart(
+            accessToken: accessToken,
+            topicTitle: _topicTitle,
+            subtopicTitle: _subtopicTitle));
+        _startTraining(_emitter);
+      case const (SocketException):
+        _emitter(const TrainingState.failed(message: 'No Internet'));
+    }
+    super.onError(error, stackTrace);
   }
 }
