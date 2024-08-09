@@ -12,5 +12,7 @@ abstract class IWordsRepository {
       required String topic,
       required String subtopic});
   Future<List<WordModel>> getWordsForStart(
-      {required String accessToken, required String topicTitle, required String subtopicTitle});
+      {required String accessToken,
+      required String topicTitle,
+      required String subtopicTitle});
 }

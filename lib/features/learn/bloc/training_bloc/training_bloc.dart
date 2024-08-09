@@ -26,7 +26,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   List<Pair<int, int>> wordScreen = [];
   int currentWordScreenIndex = -1;
   late String _topicTitle;
-  late String _subtopicTitle; 
+  late String _subtopicTitle;
   late Emitter<TrainingState> _emitter;
 
   TrainingBloc({required this.wordsRepository, required this.userRepository})
@@ -135,9 +135,13 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     _nextTrainingStep(emit);
   }
 
-  void _nextTrainingStep(Emitter<TrainingState> emit) {
+  void _nextTrainingStep(Emitter<TrainingState> emit) async {
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
+      // TODO check this line after merging
+      await wordsRepository.sendLearnedWords(
+          accessToken: await userRepository.getCurrentUserAccessToken(),
+          wordsId: words.map((word) => word.id).toList());
       emit(const TrainingState.finalScreen());
       return;
     }
@@ -171,15 +175,17 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   Future<void> _handleStartStudy(
       _StartStudy event, Emitter<TrainingState> emit) async {
-        emit(const TrainingState.loading());
+    emit(const TrainingState.loading());
     try {
       String accessToken = await userRepository.getCurrentUserAccessToken();
-      checkTokenExpirationAndUpdateIfNeed(accessToken: accessToken, userRepository: userRepository);
+      checkTokenExpirationAndUpdateIfNeed(
+          accessToken: accessToken, userRepository: userRepository);
       List<WordModel> result = await wordsRepository.getWordsForStart(
           accessToken: accessToken,
           topicTitle: event.topicTitle,
           subtopicTitle: event.subtopic.subtopicTitle);
-        List<WordModel> placeholders = event.subtopic.wordInfoList.map((e) => e.word).toList();
+      List<WordModel> placeholders =
+          event.subtopic.wordInfoList.map((e) => e.word).toList();
       words.addAll(result.isEmpty ? placeholders.take(4) : result);
       _startTraining(emit);
     } on Exception catch (e) {
@@ -197,10 +203,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       case const (OldAccessException):
         String accessToken = await userRepository.refreshAccessToken();
         words.addAll(await wordsRepository.getWordsForStart(
-          accessToken: accessToken,
-          topicTitle: _topicTitle,
-          subtopicTitle: _subtopicTitle));
-      _startTraining(_emitter);
+            accessToken: accessToken,
+            topicTitle: _topicTitle,
+            subtopicTitle: _subtopicTitle));
+        _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));
     }

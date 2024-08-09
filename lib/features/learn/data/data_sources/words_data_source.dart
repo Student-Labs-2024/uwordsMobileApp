@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:uwords/common/utils/exception_check.dart';
 import 'package:uwords/common/utils/jwt.dart';
@@ -55,20 +57,25 @@ class WordsDataSource implements IWordsDataSource {
     }
   }
 
+  // TODO Check this method
   @override
   Future<void> sendLearnedWords(
-      {required String accessToken, required List<int> wordsIds}) {
-    // TODO: implement sendLearnedWords
-    throw UnimplementedError();
+      {required String accessToken, required List<int> wordsIds}) async {
+    final body = {'words_ids': wordsIds};
+    await client.sendWordsWhenFinished(accessToken, jsonEncode(body));
   }
 
   @override
   Future<List<WordInfoDto>> fetchWordsForStart(
-      {required String accessToken, required String topicTitle, required String subtopicTitle}) async {
+      {required String accessToken,
+      required String topicTitle,
+      required String subtopicTitle}) async {
     try {
-      
       List<WordInfoDto> words = [];
-      words = await client.getWordsForStartTraining(joinTokenTypeAndToken(tokenType: tokenType, token: accessToken), topicTitle, subtopicTitle);
+      words = await client.getWordsForStartTraining(
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+          topicTitle,
+          subtopicTitle);
       return words;
     } on DioException catch (e) {
       noInternetCheck(e);

@@ -155,8 +155,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                       // TODO add context.read<TrainingBloc>().add();
                       onPressed: () {
                     context.read<TrainingBloc>().add(TrainingEvent.startStudy(
-                        widget.topic.topicTitle,
-                        widget.subtopic));
+                        widget.topic.topicTitle, widget.subtopic));
                   }, text: AppLocalizations.of(context).train),
                 ),
                 const SizedBox(
