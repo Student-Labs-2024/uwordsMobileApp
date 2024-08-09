@@ -32,4 +32,7 @@ class LearnPaddings {
   static const double learnSpeechButtonTop = 51 / 812;
   static const double learnSpeechButtonBottom = 43 / 812;
   static const double learnChooseDescriptionBottom = 48 / 812;
+  static const double bottomSheetTop = 30;
+  static const double bottomSheetTitleBottom = 10;
+  static const double bottomSheetSubtitleBottom = 25;
 }

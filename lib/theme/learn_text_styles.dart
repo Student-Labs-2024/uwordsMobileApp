@@ -44,4 +44,14 @@ class LearnTextStyles {
     color: AppColors.darkMainColor,
     fontWeight: FontWeight.w600,
   );
+  static const buttomSheetTitle = TextStyle(
+    fontSize: 20,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w600,
+  );
+  static const buttomSheetSubtitle = TextStyle(
+    fontSize: 18,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w500,
+  );
 }
