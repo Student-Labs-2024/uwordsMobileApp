@@ -6,6 +6,7 @@ import 'package:uwords/features/learn/domain/mapper/topic_mapper.dart';
 import 'package:uwords/features/learn/domain/mapper/word_info_mapper.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
+import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 class WordsRepository implements IWordsRepository {
   final IWordsDataSource wordsDataSource;
@@ -58,6 +59,24 @@ class WordsRepository implements IWordsRepository {
     try {
       await wordsDataSource.sendLearnedWords(
           wordsIds: wordsId, accessToken: accessToken);
+    } on Exception {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<WordModel>> getWordsForStart(
+      {required String accessToken,
+      required String topicTitle,
+      required String subtopicTitle}) async {
+    try {
+      List<WordInfoDto> wordsInfoDTOs =
+          await wordsDataSource.fetchWordsForStart(
+              accessToken: accessToken,
+              topicTitle: topicTitle,
+              subtopicTitle: subtopicTitle);
+      List<WordInfo> wordsInfo = wordsInfoDTOs.toModel();
+      return wordsInfo.map((wordInfo) => wordInfo.word).toList();
     } on Exception {
       rethrow;
     }

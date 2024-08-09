@@ -61,4 +61,18 @@ class WordsDataSource implements IWordsDataSource {
     // TODO: implement sendLearnedWords
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<WordInfoDto>> fetchWordsForStart(
+      {required String accessToken, required String topicTitle, required String subtopicTitle}) async {
+    try {
+      
+      List<WordInfoDto> words = [];
+      words = await client.getWordsForStartTraining(joinTokenTypeAndToken(tokenType: tokenType, token: accessToken), topicTitle, subtopicTitle);
+      return words;
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      rethrow;
+    }
+  }
 }
