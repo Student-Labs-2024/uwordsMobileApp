@@ -63,4 +63,8 @@ class LearnSizes {
   static const double hpHeight = 24;
 
   static const double bottomSheetHeight = 246 / 812;
+
+  static const double wordRowMinHeight = 45;
+  static const double wordRowIconHeight = 15;
+  static const double wordRowIconWidth = 20;
 }

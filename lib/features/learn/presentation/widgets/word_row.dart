@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -14,7 +15,7 @@ class WordRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        minTileHeight: 45,
+        minTileHeight: LearnSizes.wordRowMinHeight,
         leading: InkWell(
           onTap: () {
             context
@@ -22,8 +23,8 @@ class WordRow extends StatelessWidget {
                 .add(PlayerEvent.playAudio(wordInfo.word.audioLink));
           },
           child: SizedBox(
-            width: 20,
-            height: 15,
+            width: LearnSizes.wordRowIconWidth,
+            height: LearnSizes.wordRowIconHeight,
             child: ShaderMask(
               blendMode: BlendMode.srcIn,
               shaderCallback: (bounds) {
