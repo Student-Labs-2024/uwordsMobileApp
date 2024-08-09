@@ -50,6 +50,7 @@ dependencies:
   get_it: ^7.7.0
   carousel_slider: ^4.2.1
   web_socket_channel: ^2.4.5
+  gradient_borders: ^1.0.1
 
 dev_dependencies:
   flutter_test:

@@ -4,35 +4,34 @@ import 'package:uwords/theme/app_colors.dart';
 
 class CustomProgressBar extends StatelessWidget {
   const CustomProgressBar(
-      {super.key, required this.width, required this.percent});
+      {super.key, required this.width, required this.percent, this.greenOnly});
   final double width;
   final int percent;
+  final bool? greenOnly;
 
   LinearGradient backColor() {
     if (percent > 50) {
-      return LinearGradient(colors: [
-        AppColors.goodProgressbarColor1.withOpacity(0.15),
-        AppColors.goodProgressbarColor2.withOpacity(0.15)
-      ]);
+      return AppColors.progressBarGreenGradientBack;
     } else {
-      return LinearGradient(colors: [
-        AppColors.badProgressbarColor1.withOpacity(0.15),
-        AppColors.badProgressbarColor2.withOpacity(0.15)
-      ]);
+      return AppColors.progressBarRedGradientBack;
     }
   }
 
   LinearGradient progressColor() {
     if (percent > 50) {
-      return const LinearGradient(colors: [
-        AppColors.goodProgressbarColor1,
-        AppColors.goodProgressbarColor2
-      ]);
+      return AppColors.progressBarGreenGradient;
     } else {
-      return const LinearGradient(colors: [
-        AppColors.badProgressbarColor1,
-        AppColors.badProgressbarColor2
-      ]);
+      return AppColors.progressBarRedGradient;
+    }
+  }
+
+  double getVisiblePercent() {
+    if (percent < 0) {
+      return 0;
+    } else if (percent > 100) {
+      return 1;
+    } else {
+      return percent / 100;
     }
   }
 
@@ -44,15 +43,23 @@ class CustomProgressBar extends StatelessWidget {
           width: width,
           height: GlobalSizes.progressIndicatorHeight,
           decoration: BoxDecoration(
-            gradient: backColor(),
+            gradient: greenOnly != null
+                ? (greenOnly!
+                    ? AppColors.progressBarGreenGradient
+                    : backColor())
+                : backColor(),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
         Container(
-          width: width * (percent / 100),
+          width: width * getVisiblePercent(),
           height: GlobalSizes.progressIndicatorHeight,
           decoration: BoxDecoration(
-            gradient: progressColor(),
+            gradient: greenOnly != null
+                ? (greenOnly!
+                    ? AppColors.progressBarGreenGradientBack
+                    : backColor())
+                : backColor(),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

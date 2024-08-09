@@ -185,4 +185,10 @@ class AppTextStyles {
       fontSize: 14,
       fontWeight: FontWeight.w400,
       color: AppColors.darkMainColor);
+
+  static var learnCant = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkMainColor.withOpacity(0.45),
+      decoration: TextDecoration.underline);
 }

@@ -48,9 +48,9 @@
   "notValidLoginOrPassword": "Неверный логин или пароль",
   "done": "Готово",
   "misspelled": "Неправильное произношение слова",
-  "wrongAnswer": "Неверно!",
+  "wrongAnswer": "Неправильный ответ",
   "congratulations": "Молодец, ты прошел все слова!",
-  "next": "Дальше",
+  "next": "Далее",
   "check": "Проверить",
   "startTraining": "Тренировать",
   "topics": "Топики",
@@ -120,5 +120,28 @@
   "statistics": "Статистика",
   "activity": "Активность",
   "achievements": "Достижения",
-  "inProgressTopicName": "В процессе"
+  "inProgressTopicName": "В процессе",
+  "listenAndRemember": "Послушайте и запомните!",
+  "makeWord": "Составьте слово по буквам!",
+  "clickAndSpeak": "Нажмите и говорите!",
+  "listenAndChoose": "Прослушайте и выберите!",
+  "phasePassed": "{count}-ый этап пройден!",
+  "@phasePassed": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "cantTell": "Не могу говорить",
+  "cantHear": "Не могу слушать",
+  "allGood": "Всё верно!",
+  "beautiful": "Отлиная работа!",
+  "correctAnswer": "Правильный ответ:",
+  "tellOff": "Упражнения на произношение теперь отключены",
+  "hearOff": "Упражнения на произношение теперь отключены",
+  "wilReturn": "Они возобновятся через 15 минут",
+  "good": "Хорошо!",
+  "willCan": "Получится в следующий раз"
 }

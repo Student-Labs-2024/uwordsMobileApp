@@ -5,8 +5,8 @@ class LearnPaddings {
   static const double inputHorizontal = 16;
   static const double inputVertical = 8;
   static const double wrapSpacing = 8;
-  static const double imageCardHorizontal = 10;
-  static const double imageCardVertical = 9;
+  static const double imageCardHorizontal = 7;
+  static const double imageCardVertical = 7;
   static const double learnPageBottom = 96;
   static const double learnPageTop = 16;
   static const double bigButtonHorizontal = 64;
@@ -19,4 +19,22 @@ class LearnPaddings {
   static const double rowBetweenPadding = 10;
   static const double normalPadding = 20;
   static const double topTopicHeaderPadding = 36;
+  static const double bubbleBackgroundTop = 137 / 812;
+  static const double wordScreenHorizontal = 24 / 375;
+  static const double learnProgressBottom = 20;
+  static const double learnProgressTop = 30;
+  static const double learnDescriptionBottom = 70 / 812;
+  static const double learnPlaysoundButtonTop = 34 / 812;
+  static const double learnPlaysoundButtonBottom = 20 / 812;
+  static const double learnBottom = 30;
+  static const double learnWordInputTop = 38 / 812;
+  static const double learnWordInputBottom = 20 / 812;
+  static const double learnSpeechButtonTop = 51 / 812;
+  static const double learnSpeechButtonBottom = 43 / 812;
+  static const double learnChooseDescriptionBottom = 48 / 812;
+  static const double bottomSheetTop = 30;
+  static const double bottomSheetTitleBottom = 10;
+  static const double bottomSheetSubtitleBottom = 25;
+  static const double hpLeft = 10;
+  static const double bottomSheetHorizontal = 24;
 }
