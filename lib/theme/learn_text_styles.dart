@@ -15,23 +15,43 @@ class LearnTextStyles {
     fontWeight: FontWeight.w700,
   );
   static const wordScreenTitle = TextStyle(
-    fontSize: 30,
-    color: AppColors.blackColor,
+    fontSize: 25,
+    color: AppColors.darkMainColor,
     fontWeight: FontWeight.w700,
   );
   static const wordScreenSubtitle = TextStyle(
     fontSize: 20,
-    color: AppColors.blackColor,
-    fontWeight: FontWeight.w400,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w500,
+  );
+  static const wordScreenDescription = TextStyle(
+    fontSize: 22,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w600,
   );
   static const wordScreenTextInput = TextStyle(
-    fontSize: 16,
-    color: AppColors.blackColor,
-    fontWeight: FontWeight.w700,
+    fontSize: 21,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w600,
   );
   static const successfulWordScreenTitle = TextStyle(
     fontSize: 50,
     color: AppColors.greenColor,
     fontWeight: FontWeight.w700,
+  );
+  static const bubbleButton = TextStyle(
+    fontSize: 18,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w600,
+  );
+  static const buttomSheetTitle = TextStyle(
+    fontSize: 20,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w600,
+  );
+  static const buttomSheetSubtitle = TextStyle(
+    fontSize: 18,
+    color: AppColors.darkMainColor,
+    fontWeight: FontWeight.w500,
   );
 }

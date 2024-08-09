@@ -57,4 +57,14 @@ class AppImageSource {
   static const String subtopicActiveCardWithSort =
       'assets/svg/subtopic_active_with_sort.svg';
   static const String sortActiveIcon = 'assets/svg/sort_active_icon.svg';
+  static const String testScreenBubbles = 'assets/png/bubbles_test_module.png';
+  static const String testScreenBubblesInputScreen =
+      'assets/png/bubbles_test_module_input.png';
+  static const String testScreenBubblesChooseScreen =
+      'assets/png/bubbles_test_choose.png';
+  static const String cancelIcon = 'assets/svg/cancel_icon.svg';
+  static const String learningHearts = 'assets/svg/learning_hearts.svg';
+  static const String soundIcon = 'assets/svg/sound_icon.svg';
+  static const String hpIcon = 'assets/svg/hp_icon.svg';
+  static const String lostHpIcon = 'assets/svg/lostHp_icon.svg';
 }
