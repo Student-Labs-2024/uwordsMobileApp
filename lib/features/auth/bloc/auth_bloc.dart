@@ -206,14 +206,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         isSuccessRegister = await userRepository.registerUserFromVK(
             accessToken: _uPassword, name: _uName, surname: _uSurname);
       case AuthorizationProvider.self:
-        await userRepository.registerUser(
+        isSuccessRegister = await userRepository.registerUser(
             username: _username,
             emailAddress: _uEmail,
             password: _uPassword,
             birthDate: _birthDate,
             code: _uCode);
       case AuthorizationProvider.google:
-        await userRepository.registerUserFromGoogle(uid: _uPassword);
+        isSuccessRegister =
+            await userRepository.registerUserFromGoogle(uid: _uPassword);
     }
 
     if (isSuccessRegister) {

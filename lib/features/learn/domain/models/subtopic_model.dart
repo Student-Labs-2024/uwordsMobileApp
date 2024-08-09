@@ -31,4 +31,4 @@ Comparator<Subtopic> progressComparator =
     (a, b) => a.progress.compareTo(b.progress);
 
 Comparator<Subtopic> latestStudyDateComparator =
-    (a, b) => a.getLatestStudyDate().compareTo(b.getLatestStudyDate());
+    (a, b) => a.getLatestStudyDate().compareTo(b.getLatestStudyDate()) ;

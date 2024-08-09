@@ -56,7 +56,6 @@ class SortSettingsButton extends StatelessWidget {
                           ),
                           CupertinoActionSheetAction(
                             onPressed: () {
-                              subtopics.sort(progressComparator);
                               context.read<LearningBloc>().add(
                                   LearningEvent.updateSubtopicsSort(
                                       progressComparator));
@@ -70,7 +69,6 @@ class SortSettingsButton extends StatelessWidget {
                           ),
                           CupertinoActionSheetAction(
                             onPressed: () {
-                              subtopics.sort(latestStudyDateComparator);
                               context.read<LearningBloc>().add(
                                   LearningEvent.updateSubtopicsSort(
                                       latestStudyDateComparator));

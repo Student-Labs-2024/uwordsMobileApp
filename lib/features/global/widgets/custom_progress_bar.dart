@@ -4,8 +4,9 @@ import 'package:uwords/theme/app_colors.dart';
 
 class CustomProgressBar extends StatelessWidget {
   const CustomProgressBar(
-      {super.key, required this.width, required this.percent});
+      {super.key, required this.width, this.height, required this.percent});
   final double width;
+  final double? height;
   final int percent;
 
   LinearGradient backColor() {
@@ -42,7 +43,7 @@ class CustomProgressBar extends StatelessWidget {
       children: [
         Container(
           width: width,
-          height: GlobalSizes.progressIndicatorHeight,
+          height: height ?? GlobalSizes.progressIndicatorHeight,
           decoration: BoxDecoration(
             gradient: backColor(),
             borderRadius: BorderRadius.circular(10),
@@ -50,7 +51,7 @@ class CustomProgressBar extends StatelessWidget {
         ),
         Container(
           width: width * (percent / 100),
-          height: GlobalSizes.progressIndicatorHeight,
+          height: height ?? GlobalSizes.progressIndicatorHeight,
           decoration: BoxDecoration(
             gradient: progressColor(),
             borderRadius: BorderRadius.circular(10),

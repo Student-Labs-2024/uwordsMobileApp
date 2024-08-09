@@ -1,5 +1,5 @@
 class AuthDesignedConstants {
-  static const int pincodeLength = 6;
+  static const int pincodeLength = 4;
   static const double pincodeCellWidth = 45;
   static const double pincodeCellHeigth = 50;
   static const double borderWidth = 1;

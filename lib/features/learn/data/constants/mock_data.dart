@@ -81,8 +81,8 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
                     "https://app.big-nose.ru:9100/uwords-picture/this.jpg"),
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031200000),
-            frequency: 87,
-            progress: 0),
+            frequency: 20,
+            progress: 27),
         WordInfo(
             id: 6,
             word: const WordModel(
@@ -95,8 +95,8 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
                     "https://app.big-nose.ru:9100/uwords-picture/this.jpg"),
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031300000),
-            frequency: 87,
-            progress: 0),
+            frequency: 10,
+            progress: 51),
         WordInfo(
             id: 6,
             word: const WordModel(
@@ -109,8 +109,8 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
                     "https://app.big-nose.ru:9100/uwords-picture/this.jpg"),
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031400000),
-            frequency: 87,
-            progress: 0),
+            frequency: 40,
+            progress: 100),
       ]),
   Subtopic(
       subtopicTitle: 'Стандарт',

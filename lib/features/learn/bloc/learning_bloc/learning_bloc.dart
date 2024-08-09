@@ -11,6 +11,7 @@ import 'package:uwords/features/learn/data/constants/mock_data.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
+import 'package:uwords/features/learn/domain/models/word_info.dart';
 
 part 'learning_bloc_state.dart';
 part 'learning_bloc_event.dart';
@@ -35,7 +36,8 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     on<_UpdateSubtopicSort>(_handleUpdateSubtopicSort);
     on<_ReverseSubtopicSort>(_handleReverseSubtopicSort);
     on<_GetWordsByTopic>(_handleGetWordsByTopic);
-    on<_GetWordsBySubtopic>(_handleGetWordsByTopicSubtopic);
+    on<_GetWordsBySubtopic>(_handleGetWordsBySubtopic);
+    on<_SortWords>(_handleSortWords);
   }
 
   Future<void> _handleGetTopics(
@@ -126,7 +128,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     }
   }
 
-  Future<void> _handleGetWordsByTopicSubtopic(
+  Future<void> _handleGetWordsBySubtopic(
       _GetWordsBySubtopic event, Emitter<LearningState> emit) async {
     try {
       String accessToken = await userRepository.getCurrentUserAccessToken();
@@ -134,6 +136,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
           accessToken: accessToken, userRepository: userRepository);
       final Topic topic = findTopicBySubtopicMap[event.subtopic] ?? mockTopic;
       await _getWordsByTopicAndSubtopic(accessToken, topic, event.subtopic);
+      emit(LearningState.openSubtopic(topic: topic, subtopic: event.subtopic));
     } on Exception catch (e) {
       addError(e);
     }
@@ -151,6 +154,10 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     } on Exception catch (e) {
       addError(e);
     }
+  }
+
+  void _handleSortWords(_SortWords event, Emitter<LearningState> emit) {
+    event.subtopic.wordInfoList.sort(event.comparator);
   }
 
   @override

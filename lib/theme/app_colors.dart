@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -26,7 +28,7 @@ class AppColors {
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
   static const LinearGradient navBarLearn = LinearGradient(colors: [
     Color.fromRGBO(221, 233, 252, 1),
-    Color.fromRGBO(209, 223, 250, 1)
+    Color.fromRGBO(221, 223, 250, 1)
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 
   static const LinearGradient backgroundGradient = LinearGradient(colors: [
@@ -71,4 +73,11 @@ class AppColors {
       colors: [AppColors.violetColor, AppColors.blueColor],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight);
+  static const LinearGradient violetGradient = LinearGradient(
+      colors: [AppColors.violetColor, AppColors.darkMainColor],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight);
+  static const SweepGradient centralGradient = SweepGradient(
+      colors: [AppColors.violetColor, AppColors.blueColor, AppColors.violetColor, AppColors.blueColor, AppColors.violetColor],
+      tileMode: TileMode.repeated, stops: <double>[0.0, 0.25, 0.5, 0.75, 1.0],);
 }

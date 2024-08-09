@@ -38,4 +38,23 @@ class AppImageSource {
   static const String searchIcon = 'assets/svg/search_icon.svg';
   static const String sortSettingsButton = 'assets/svg/sort_setting_button.svg';
   static const String sortIcon = 'assets/svg/sort_icon.svg';
+  static const String audioGradientIcon = 'assets/svg/audio_gradient_icon.svg';
+  static const String circleEmpty = 'assets/svg/circle_empty.svg';
+  static const String circleFirstQuarter =
+      'assets/svg/circle_first_quarter.svg';
+  static const String circleSecondQuarter =
+      'assets/svg/circle_second_quarter.svg';
+  static const String circleThirdQuarter =
+      'assets/svg/circle_third_quarter.svg';
+  static const String circleFull = 'assets/svg/circle_full.svg';
+  static const String redBigAngleButton = 'assets/png/red_big_angle_bubble.png';
+  static const String blueBigAngleButton =
+      'assets/png/blue_big_angle_bubble.png';
+  static const String greyBigAngleButton =
+      'assets/png/grey_big_angle_bubble.png';
+  static const String subtopicCardWithSort =
+      'assets/svg/subtopic_with_sort.svg';
+      static const String subtopicActiveCardWithSort =
+      'assets/svg/subtopic_active_with_sort.svg';
+  static const String sortActiveIcon = 'assets/svg/sort_active_icon.svg';
 }

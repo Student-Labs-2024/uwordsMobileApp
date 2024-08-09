@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/learn/presentation/subtopic_page.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_settings_button.dart';
@@ -27,10 +30,13 @@ class _LearnPageState extends State<LearnPage> {
   List<Subtopic> _searchList = [];
   bool _isChosenSort = false;
   Comparator<Subtopic> comparator = latestStudyDateComparator;
-
+  late TextEditingController _searchQuery;
+  late PageController _pageController;
   @override
   void initState() {
     super.initState();
+    _searchQuery = TextEditingController();
+    _pageController = PageController();
   }
 
   @override
@@ -39,8 +45,6 @@ class _LearnPageState extends State<LearnPage> {
         AppLocalizations.of(context).inProgressTopicName));
     super.didChangeDependencies();
   }
-
-  final TextEditingController _searchQuery = TextEditingController();
 
   List<Subtopic> _buildSearchList(List<Subtopic> subtopicList) {
     if (_searchText.isEmpty) {
@@ -55,6 +59,13 @@ class _LearnPageState extends State<LearnPage> {
   }
 
   @override
+  void dispose() {
+    _searchQuery.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double maximumWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -62,7 +73,7 @@ class _LearnPageState extends State<LearnPage> {
           preferredSize: const Size.fromHeight(LearnSizes.learnAppbarHeight),
           child: DecoratedBox(
             decoration:
-                const BoxDecoration(gradient: AppColors.backgroundGradient),
+                const BoxDecoration(gradient: AppColors.navBarLearn),
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
@@ -77,6 +88,36 @@ class _LearnPageState extends State<LearnPage> {
                   child: BlocBuilder<LearningBloc, LearningState>(
                     builder: (context, state) {
                       return state.maybeWhen(
+                        openSubtopic: (topic, subtopic) {
+                          return Opacity(
+                            opacity: 0.45,
+                            child: Row(
+                              children: [
+                                SizedBox(width: 24,),
+                                InkWell(
+                                  onTap: () {
+                                    context.read<LearningBloc>().add(
+                                        LearningEvent.getTopics(
+                                            AppLocalizations.of(context)
+                                                .inProgressTopicName));
+                                  },
+                                  child: SvgPicture.asset(
+                                    AppImageSource.returnIcon,
+                                    width: AuthDesignedConstants.iconReturnSize,
+                                    height: AuthDesignedConstants.iconReturnSize,
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  topic.topicTitle,
+                                  style: AppTextStyles.topicOpacityTitle,
+                                ),
+                                Spacer(),
+                                SizedBox(width: 24+AuthDesignedConstants.iconReturnSize,)
+                              ],
+                            ),
+                          );
+                        },
                         orElse: () {
                           return Text(
                             AppLocalizations.of(context).topics,
@@ -161,7 +202,7 @@ class _LearnPageState extends State<LearnPage> {
                 initial: (topics) {
                   return ListView.builder(
                       itemCount: topics.length,
-                      controller: PageController(),
+                      controller: _pageController,
                       scrollDirection: Axis.vertical,
                       itemBuilder: (BuildContext context, int index) {
                         return Column(
@@ -204,6 +245,12 @@ class _LearnPageState extends State<LearnPage> {
                       subtopics:
                           _searchText.isEmpty ? topic.subtopics : _searchList,
                     ),
+                  );
+                },
+                openSubtopic: (topic, subtopic) {
+                  return SubtopicPage(
+                    topic: topic,
+                    subtopic: subtopic,
                   );
                 },
                 orElse: () {
