@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -78,6 +76,14 @@ class AppColors {
       begin: Alignment.centerLeft,
       end: Alignment.centerRight);
   static const SweepGradient centralGradient = SweepGradient(
-      colors: [AppColors.violetColor, AppColors.blueColor, AppColors.violetColor, AppColors.blueColor, AppColors.violetColor],
-      tileMode: TileMode.repeated, stops: <double>[0.0, 0.25, 0.5, 0.75, 1.0],);
+    colors: [
+      AppColors.violetColor,
+      AppColors.blueColor,
+      AppColors.violetColor,
+      AppColors.blueColor,
+      AppColors.violetColor
+    ],
+    tileMode: TileMode.repeated,
+    stops: <double>[0.0, 0.25, 0.5, 0.75, 1.0],
+  );
 }

@@ -19,4 +19,6 @@ class LearnPaddings {
   static const double rowBetweenPadding = 10;
   static const double normalPadding = 20;
   static const double topTopicHeaderPadding = 36;
+  static const double rightPaddingForSubtopicCard = 22;
+  static const double bottomSortIconPadding = 12;
 }

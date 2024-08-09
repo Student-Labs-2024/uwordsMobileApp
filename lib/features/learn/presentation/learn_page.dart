@@ -5,6 +5,7 @@ import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/data/constants/learn_styles.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/subtopic_page.dart';
@@ -72,8 +73,7 @@ class _LearnPageState extends State<LearnPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(LearnSizes.learnAppbarHeight),
           child: DecoratedBox(
-            decoration:
-                const BoxDecoration(gradient: AppColors.navBarLearn),
+            decoration: const BoxDecoration(gradient: AppColors.navBarLearn),
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
@@ -90,10 +90,12 @@ class _LearnPageState extends State<LearnPage> {
                       return state.maybeWhen(
                         openSubtopic: (topic, subtopic) {
                           return Opacity(
-                            opacity: 0.45,
+                            opacity: LearnStyles.topOpacity,
                             child: Row(
                               children: [
-                                SizedBox(width: 24,),
+                                const SizedBox(
+                                  width: LearnPaddings.learnPagePadding,
+                                ),
                                 InkWell(
                                   onTap: () {
                                     context.read<LearningBloc>().add(
@@ -104,16 +106,20 @@ class _LearnPageState extends State<LearnPage> {
                                   child: SvgPicture.asset(
                                     AppImageSource.returnIcon,
                                     width: AuthDesignedConstants.iconReturnSize,
-                                    height: AuthDesignedConstants.iconReturnSize,
+                                    height:
+                                        AuthDesignedConstants.iconReturnSize,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   topic.topicTitle,
                                   style: AppTextStyles.topicOpacityTitle,
                                 ),
-                                Spacer(),
-                                SizedBox(width: 24+AuthDesignedConstants.iconReturnSize,)
+                                const Spacer(),
+                                const SizedBox(
+                                  width: LearnPaddings.learnPagePadding +
+                                      AuthDesignedConstants.iconReturnSize,
+                                )
                               ],
                             ),
                           );
@@ -239,7 +245,8 @@ class _LearnPageState extends State<LearnPage> {
                 openMore: (topic) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: LearnPaddings.learnPagePadding),
+                        horizontal: LearnPaddings.learnPagePadding,
+                        vertical: LearnPaddings.smallEmptySpace),
                     child: SubtopicsGrid(
                       topic: topic,
                       subtopics:

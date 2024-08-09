@@ -192,9 +192,7 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       color: AppColors.darkMainColor);
   static const bigSubtopicTitle = TextStyle(
-    fontSize: 22,
+      fontSize: 22,
       fontWeight: FontWeight.w600,
-      color: AppColors.darkMainColor
-  );
-  
+      color: AppColors.darkMainColor);
 }

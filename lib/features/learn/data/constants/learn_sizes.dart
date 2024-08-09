@@ -42,7 +42,9 @@ class LearnSizes {
   static const double subtopicCardWidth = 150;
   static const double subtopicCardHeight = 120;
   static const double learnAppbarHeight = 100;
-  
+
   static const double angleBigButtonHeight = 122;
   static const double angleBigButtonWidth = 170;
+  static const double bigSubtopicCardHeight = 220;
+  static const double bigSubtopicIconSize = 90;
 }

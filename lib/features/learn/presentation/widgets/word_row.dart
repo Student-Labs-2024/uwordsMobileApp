@@ -14,7 +14,7 @@ class WordRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      minTileHeight: 45,
+        minTileHeight: 45,
         leading: InkWell(
           onTap: () {
             context

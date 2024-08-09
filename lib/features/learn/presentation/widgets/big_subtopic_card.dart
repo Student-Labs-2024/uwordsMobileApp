@@ -74,7 +74,9 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 12.0, right: 24.0),
+              padding: const EdgeInsets.only(
+                  bottom: LearnPaddings.bottomSortIconPadding,
+                  right: LearnPaddings.learnPagePadding),
               child: InkWell(
                 onTap: () {
                   setState(() {
@@ -83,13 +85,13 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                   });
                 },
                 child: SizedBox(
-                  height: 40,
-                  width: 40,
+                  height: LearnSizes.arrowBackIconSize,
+                  width: LearnSizes.arrowBackIconSize,
                   child: SvgPicture.asset(
                     _isActive
                         ? AppImageSource.sortActiveIcon
                         : AppImageSource.sortIcon,
-                        fit: BoxFit.scaleDown,
+                    fit: BoxFit.scaleDown,
                   ),
                 ),
               ),
@@ -100,7 +102,8 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
             child: Container(
               width: LearnSizes.angleBigButtonWidth,
               height: LearnSizes.angleBigButtonHeight,
-              margin: const EdgeInsets.only(right: 22),
+              margin: const EdgeInsets.only(
+                  right: LearnPaddings.rightPaddingForSubtopicCard),
               child: Stack(
                 children: [
                   Align(
@@ -121,8 +124,8 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                       child: SvgPicture.network(
                         fit: BoxFit.cover,
                         widget.subtopic.pictureLink,
-                        width: 90,
-                        height: 90,
+                        width: LearnSizes.bigSubtopicIconSize,
+                        height: LearnSizes.bigSubtopicIconSize,
                       ),
                     ),
                   ),

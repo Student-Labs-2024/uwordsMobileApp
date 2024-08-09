@@ -12,5 +12,6 @@ class LearningEvent with _$LearningEvent {
       Comparator<Subtopic> comparator) = _UpdateSubtopicSort;
   const factory LearningEvent.reverseSubtopicsSort() = _ReverseSubtopicSort;
   const factory LearningEvent.returnToAllTopics() = _ReturnToAllTopics;
-  const factory LearningEvent.sortWords(Subtopic subtopic, Comparator<WordInfo> comparator) = _SortWords;
+  const factory LearningEvent.sortWords(
+      Subtopic subtopic, Comparator<WordInfo> comparator) = _SortWords;
 }

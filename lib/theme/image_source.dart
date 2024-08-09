@@ -54,7 +54,7 @@ class AppImageSource {
       'assets/png/grey_big_angle_bubble.png';
   static const String subtopicCardWithSort =
       'assets/svg/subtopic_with_sort.svg';
-      static const String subtopicActiveCardWithSort =
+  static const String subtopicActiveCardWithSort =
       'assets/svg/subtopic_active_with_sort.svg';
   static const String sortActiveIcon = 'assets/svg/sort_active_icon.svg';
 }

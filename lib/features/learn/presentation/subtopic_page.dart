@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
@@ -45,7 +46,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
             child: SafeArea(
               child: Column(children: [
                 const SizedBox(
-                  height: 20,
+                  height: LearnPaddings.normalPadding,
                 ),
                 BlocBuilder<LearningBloc, LearningState>(
                   builder: (context, state) {
@@ -119,13 +120,14 @@ class _SubtopicPageState extends State<SubtopicPage> {
                               });
                         },
                         width: MediaQuery.of(context).size.width,
-                        height: 220,
+                        height: LearnSizes.bigSubtopicCardHeight,
                         subtopic: widget.subtopic);
                   },
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: LearnPaddings.learnPageTop),
                     child: ListView.builder(
                         itemCount: widget.subtopic.wordCount,
                         scrollDirection: Axis.vertical,
@@ -137,12 +139,13 @@ class _SubtopicPageState extends State<SubtopicPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: LearnPaddings.learnPagePadding),
                   child: BubbleButton(null,
                       maximumWidth: MediaQuery.of(context).size.width,
                       // TODO add context.read<TrainingBloc>().add();
                       onPressed: () {},
-                      text: "Тренировать"),
+                      text: AppLocalizations.of(context).train),
                 ),
                 const SizedBox(
                   height: LearnPaddings.learnPageBottom / 2,

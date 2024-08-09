@@ -47,76 +47,84 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
               bottom: ScaffoldWithNavbarPaddings.navBarBottom,
               left: (MediaQuery.of(context).size.width) *
                   ScaffoldWithNavbarPaddings.navBarLeft,
-              child: state.maybeWhen(openSubtopic: (topic, subtopic) {
-                return SizedBox();
-              },orElse: () =>  ((currentRoute == "/") || (currentRoute == "/auth"))
-                  ? const SizedBox()
-                  : Container(
-                      width: (MediaQuery.of(context).size.width) *
-                          ScaffoldWithNavbarSizes.navBarWidth,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal:
-                              ScaffoldWithNavbarPaddings.navBarHorizontal),
-                      decoration: fis.BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(GlobalSizes.borderRadiusLarge)),
-                        gradient: getGradient(currentRoute),
-                        boxShadow: MainBoxShadows.main,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            onPressed: () => pushAtIndex(0, context),
-                            icon: SvgPicture.asset(
-                              AppImageSource.voiceIco,
-                              color: _selectedIndex == 0
-                                  ? AppColors.darkMainColor
-                                  : AppColors.mainColor,
-                              height: ScaffoldWithNavbarSizes.navBarIconHeight,
+              child: state.maybeWhen(
+                openSubtopic: (topic, subtopic) {
+                  return const SizedBox();
+                },
+                orElse: () => ((currentRoute == "/") ||
+                        (currentRoute == "/auth"))
+                    ? const SizedBox()
+                    : Container(
+                        width: (MediaQuery.of(context).size.width) *
+                            ScaffoldWithNavbarSizes.navBarWidth,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal:
+                                ScaffoldWithNavbarPaddings.navBarHorizontal),
+                        decoration: fis.BoxDecoration(
+                          borderRadius: const BorderRadius.all(
+                              Radius.circular(GlobalSizes.borderRadiusLarge)),
+                          gradient: getGradient(currentRoute),
+                          boxShadow: MainBoxShadows.main,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              onPressed: () => pushAtIndex(0, context),
+                              icon: SvgPicture.asset(
+                                AppImageSource.voiceIco,
+                                color: _selectedIndex == 0
+                                    ? AppColors.darkMainColor
+                                    : AppColors.mainColor,
+                                height:
+                                    ScaffoldWithNavbarSizes.navBarIconHeight,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () => pushAtIndex(1, context),
-                            icon: SvgPicture.asset(
-                              AppImageSource.learnIco,
-                              color: _selectedIndex == 1
-                                  ? AppColors.darkMainColor
-                                  : AppColors.mainColor,
-                              height: ScaffoldWithNavbarSizes.navBarIconHeight,
+                            IconButton(
+                              onPressed: () => pushAtIndex(1, context),
+                              icon: SvgPicture.asset(
+                                AppImageSource.learnIco,
+                                color: _selectedIndex == 1
+                                    ? AppColors.darkMainColor
+                                    : AppColors.mainColor,
+                                height:
+                                    ScaffoldWithNavbarSizes.navBarIconHeight,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                              onPressed: () => pushAtIndex(2, context),
-                              icon: Image.asset(
-                                AppImageSource.navBubbleIco,
-                                height: ScaffoldWithNavbarSizes
-                                    .navBarCentralIconHeight,
-                              )),
-                          IconButton(
-                            onPressed: () => pushAtIndex(3, context),
-                            icon: SvgPicture.asset(
-                              AppImageSource.notificationIco,
-                              color: _selectedIndex == 3
-                                  ? AppColors.darkMainColor
-                                  : AppColors.mainColor,
-                              height: ScaffoldWithNavbarSizes.navBarIconHeight,
+                            IconButton(
+                                onPressed: () => pushAtIndex(2, context),
+                                icon: Image.asset(
+                                  AppImageSource.navBubbleIco,
+                                  height: ScaffoldWithNavbarSizes
+                                      .navBarCentralIconHeight,
+                                )),
+                            IconButton(
+                              onPressed: () => pushAtIndex(3, context),
+                              icon: SvgPicture.asset(
+                                AppImageSource.notificationIco,
+                                color: _selectedIndex == 3
+                                    ? AppColors.darkMainColor
+                                    : AppColors.mainColor,
+                                height:
+                                    ScaffoldWithNavbarSizes.navBarIconHeight,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () => pushAtIndex(4, context),
-                            icon: SvgPicture.asset(
-                              AppImageSource.profileIco,
-                              color: _selectedIndex == 4
-                                  ? AppColors.darkMainColor
-                                  : AppColors.mainColor,
-                              height: ScaffoldWithNavbarSizes.navBarIconHeight,
+                            IconButton(
+                              onPressed: () => pushAtIndex(4, context),
+                              icon: SvgPicture.asset(
+                                AppImageSource.profileIco,
+                                color: _selectedIndex == 4
+                                    ? AppColors.darkMainColor
+                                    : AppColors.mainColor,
+                                height:
+                                    ScaffoldWithNavbarSizes.navBarIconHeight,
+                              ),
                             ),
-                          ),
-                        ],
-                      )),
-            ),
-      )]);
+                          ],
+                        )),
+              ),
+            )
+          ]);
         },
       ),
     );
