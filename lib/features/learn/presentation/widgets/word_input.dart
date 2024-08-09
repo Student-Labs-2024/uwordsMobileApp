@@ -22,7 +22,10 @@ class WordInput extends StatelessWidget {
       alignment: Alignment.centerLeft,
       height: MediaQuery.of(context).size.height * LearnSizes.wordInputHeight,
       decoration: BoxDecoration(
-        border: state != OtherLearnConstants.stateZero
+        border: state != OtherLearnConstants.stateZero &&
+                state != OtherLearnConstants.stateActive &&
+                state != OtherLearnConstants.stateCantHear &&
+                state != OtherLearnConstants.stateCantTell
             ? GradientBoxBorder(
                 gradient: OtherLearnConstants.getGradient(state),
                 width: LearnSizes.wordInputBorder,

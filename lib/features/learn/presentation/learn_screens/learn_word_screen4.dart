@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
-import 'package:uwords/features/learn/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/learn_progress_bar.dart';
@@ -23,13 +21,15 @@ class LearnWordPage4 extends StatefulWidget {
       required this.selectableWords,
       required this.goNextScreen,
       required this.quit,
-      required this.progress});
+      required this.progress,
+      required this.hp});
 
   final WordModel word;
   final List<WordModel> selectableWords;
-  final VoidCallback goNextScreen;
+  final void Function(String) goNextScreen;
   final VoidCallback quit;
   final int progress;
+  final int hp;
 
   @override
   State<LearnWordPage4> createState() => LearnWordPage4State();
@@ -44,21 +44,17 @@ class LearnWordPage4State extends State<LearnWordPage4> {
 
   void onPressBottomButton() {
     if (currentChoose == '') return;
-    if (!isAnswerCorrect) {
-      if (currentChoose == widget.word.enValue) {
-        setState(() {
-          isAnswerCorrect = true;
-          chosedState = OtherLearnConstants.stateSuccess;
-        });
-      } else {
-        setState(() {
-          chosedState = OtherLearnConstants.stateWrong;
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(AppLocalizations.of(context).wrongAnswer)));
-      }
+    if (currentChoose == widget.word.enValue) {
+      setState(() {
+        isAnswerCorrect = true;
+        chosedState = OtherLearnConstants.stateSuccess;
+        widget.goNextScreen(OtherLearnConstants.stateSuccess);
+      });
     } else {
-      widget.goNextScreen();
+      setState(() {
+        chosedState = OtherLearnConstants.stateWrong;
+      });
+      widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
   }
 
@@ -104,7 +100,9 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                           top: LearnPaddings.learnProgressTop,
                           bottom: LearnPaddings.learnProgressBottom),
                       child: LearnProgressBar(
-                          progress: widget.progress, onPressed: widget.quit),
+                          hp: widget.hp,
+                          progress: widget.progress,
+                          onPressed: widget.quit),
                     ),
                     Text(AppLocalizations.of(context).listenAndChoose,
                         style: LearnTextStyles.wordScreenDescription),
@@ -166,7 +164,8 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () => widget
+                          .goNextScreen(OtherLearnConstants.stateCantHear),
                       child: Text(
                         AppLocalizations.of(context).cantHear,
                         style: AppTextStyles.learnCant,
@@ -185,12 +184,6 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                   ],
                 ),
               ),
-              CustomBottomSheet(
-                  onPressed: () {},
-                  title: 'Упражнения на произношение теперь отключены',
-                  state: OtherLearnConstants.stateActive,
-                  buttonText: 'Хорошо!',
-                  subtitle: 'Они возобновятся через 15 минут')
             ],
           ),
         ),

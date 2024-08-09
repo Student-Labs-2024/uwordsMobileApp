@@ -26,12 +26,14 @@ class LearnWordPage3 extends StatefulWidget {
       required this.word,
       required this.goNextScreen,
       required this.quit,
-      required this.progress});
+      required this.progress,
+      required this.hp});
 
   final WordModel word;
-  final VoidCallback goNextScreen;
+  final void Function(String) goNextScreen;
   final VoidCallback quit;
   final int progress;
+  final int hp;
 
   @override
   State<LearnWordPage3> createState() => LearnWordPage3State();
@@ -84,17 +86,13 @@ class LearnWordPage3State extends State<LearnWordPage3> {
   }
 
   void onPressBottomButton() {
-    if (!isAnswerCorrect) {
-      if (compareWords(_lastWords, widget.word.enValue)) {
-        setState(() {
-          isAnswerCorrect = true;
-        });
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(AppLocalizations.of(context).misspelled)));
-      }
+    if (compareWords(_lastWords, widget.word.enValue)) {
+      setState(() {
+        isAnswerCorrect = true;
+      });
+      widget.goNextScreen(OtherLearnConstants.stateSuccess);
     } else {
-      widget.goNextScreen();
+      widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
   }
 
@@ -133,6 +131,7 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                               top: LearnPaddings.learnProgressTop,
                               bottom: LearnPaddings.learnProgressBottom),
                           child: LearnProgressBar(
+                              hp: widget.hp,
                               progress: widget.progress,
                               onPressed: widget.quit),
                         ),
@@ -159,7 +158,8 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                               onPressed: pressSpeechButton),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () => widget
+                              .goNextScreen(OtherLearnConstants.stateCantTell),
                           child: Text(
                             AppLocalizations.of(context).cantTell,
                             style: AppTextStyles.learnCant,

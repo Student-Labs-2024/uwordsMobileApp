@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/image_source.dart';
@@ -14,7 +15,8 @@ class PlaysoundButton extends StatelessWidget {
       height: MediaQuery.of(context).size.width * LearnSizes.playButtonSize,
       width: MediaQuery.of(context).size.width * LearnSizes.playButtonSize,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius:
+            BorderRadius.circular(GlobalSizes.borderRadiusMediumLarge),
       ),
       child: IconButton(
         style: IconButton.styleFrom(

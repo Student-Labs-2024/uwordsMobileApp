@@ -43,7 +43,9 @@ class BubbleButton extends StatelessWidget {
         width: maximumWidth,
         decoration: BoxDecoration(
           gradient: state != null
-              ? (state != OtherLearnConstants.stateActive
+              ? (state != OtherLearnConstants.stateActive &&
+                      state != OtherLearnConstants.stateCantHear &&
+                      state != OtherLearnConstants.stateCantTell
                   ? OtherLearnConstants.getBubbleButtonGradient(state!)
                   : null)
               : null,

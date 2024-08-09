@@ -18,7 +18,7 @@ class CustomImageNetworkView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(clipRadius),
       child: Image.network(
         fit: BoxFit.cover,
         imageSource,
@@ -30,8 +30,8 @@ class CustomImageNetworkView extends StatelessWidget {
             return child;
           } else {
             return SizedBox(
-              width: MediaQuery.of(context).size.width * width,
-              height: MediaQuery.of(context).size.height * height,
+              width: width,
+              height: height,
               child: Center(
                 child: CircularProgressIndicator(
                   color: AppColors.mainColor,
@@ -44,21 +44,9 @@ class CustomImageNetworkView extends StatelessWidget {
             );
           }
         },
-        width: MediaQuery.of(context).size.width * width,
-        height: MediaQuery.of(context).size.height * height,
+        width: width,
+        height: height,
       ),
     );
-
-    /*Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(clipRadius),
-        image: DecorationImage(
-          image: NetworkImage(imageSource),
-          fit: BoxFit.cover,
-        ),
-      ),
-    );*/
   }
 }

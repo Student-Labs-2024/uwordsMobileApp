@@ -22,13 +22,15 @@ class LearnWordPage2 extends StatefulWidget {
       required this.letters,
       required this.goNextScreen,
       required this.quit,
-      required this.progress});
+      required this.progress,
+      required this.hp});
 
   final WordModel word;
   final List<Pair<String, int>> letters;
-  final VoidCallback goNextScreen;
+  final void Function(String) goNextScreen;
   final VoidCallback quit;
   final int progress;
+  final int hp;
 
   @override
   State<LearnWordPage2> createState() => LearnWordPage2State();
@@ -55,22 +57,24 @@ class LearnWordPage2State extends State<LearnWordPage2> {
   }
 
   void onPressBottomButton() {
-    if (!isAnswerCorrect) {
-      if (answer == widget.word.enValue) {
-        setState(() {
-          isAnswerCorrect = true;
-          inputState = OtherLearnConstants.stateSuccess;
-        });
-      } else {
-        setState(() {
-          inputState = OtherLearnConstants.stateWrong;
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(AppLocalizations.of(context).wrongAnswer)));
-      }
+    if (answer == widget.word.enValue) {
+      setState(() {
+        isAnswerCorrect = true;
+        inputState = OtherLearnConstants.stateSuccess;
+      });
+      widget.goNextScreen(OtherLearnConstants.stateSuccess);
     } else {
-      widget.goNextScreen();
+      setState(() {
+        inputState = OtherLearnConstants.stateWrong;
+      });
+      widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
+  }
+
+  @override
+  void dispose() {
+    answer = '';
+    super.dispose();
   }
 
   @override
@@ -106,7 +110,9 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                           top: LearnPaddings.learnProgressTop,
                           bottom: LearnPaddings.learnProgressBottom),
                       child: LearnProgressBar(
-                          progress: widget.progress, onPressed: widget.quit),
+                          hp: widget.hp,
+                          progress: widget.progress,
+                          onPressed: widget.quit),
                     ),
                     Text(AppLocalizations.of(context).makeWord,
                         style: LearnTextStyles.wordScreenDescription),

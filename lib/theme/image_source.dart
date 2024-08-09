@@ -46,4 +46,6 @@ class AppImageSource {
   static const String cancelIcon = 'assets/svg/cancel_icon.svg';
   static const String learningHearts = 'assets/svg/learning_hearts.svg';
   static const String soundIcon = 'assets/svg/sound_icon.svg';
+  static const String hpIcon = 'assets/svg/hp_icon.svg';
+  static const String lostHpIcon = 'assets/svg/lostHp_icon.svg';
 }

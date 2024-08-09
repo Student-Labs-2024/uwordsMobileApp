@@ -6,7 +6,7 @@ class AppColors {
   static const Color mainColorOpacity = Color.fromRGBO(83, 45, 106, 0.7);
   static const Color darkMainColorOpacity = Color.fromRGBO(83, 45, 106, 0.9);
   static const Color errorColor = Color.fromRGBO(227, 0, 0, 0.65);
-  static const Color incorrectChooseColor = Color.fromRGBO(255, 74, 74, 0.6);
+  static const Color incorrectChooseColor = Color.fromRGBO(255, 74, 74, 0.3);
 
   static const Color pushedPincodeColor = Color.fromRGBO(170, 117, 202, 1);
   static const Color defaultPincodeColor = Color.fromRGBO(211, 211, 212, 1);
@@ -75,7 +75,7 @@ class AppColors {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight);
 
-  static const Color goodColor1 = Color.fromRGBO(47, 234, 155, 0.4);
+  static const Color goodColor1 = Color.fromRGBO(47, 234, 155, 0.2);
 
   static const LinearGradient greenStandartGradient = LinearGradient(colors: [
     AppColors.goodProgressbarColor1,
@@ -98,4 +98,20 @@ class AppColors {
     AppColors.lightgrayColor.withOpacity(0.4),
     AppColors.grayColor.withOpacity(0.4)
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+
+  static LinearGradient progressBarGreenGradient = const LinearGradient(
+      colors: [
+        AppColors.goodProgressbarColor1,
+        AppColors.goodProgressbarColor2
+      ]);
+  static LinearGradient progressBarRedGradient = const LinearGradient(
+      colors: [AppColors.badProgressbarColor1, AppColors.badProgressbarColor2]);
+  static LinearGradient progressBarGreenGradientBack = LinearGradient(colors: [
+    AppColors.goodProgressbarColor1.withOpacity(0.15),
+    AppColors.goodProgressbarColor2.withOpacity(0.15)
+  ]);
+  static LinearGradient progressBarRedGradientBack = LinearGradient(colors: [
+    AppColors.badProgressbarColor1.withOpacity(0.15),
+    AppColors.badProgressbarColor2.withOpacity(0.15)
+  ]);
 }

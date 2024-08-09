@@ -20,12 +20,14 @@ class LearnWordPage1 extends StatefulWidget {
       required this.word,
       required this.goNextScreen,
       required this.quit,
-      required this.progress});
+      required this.progress,
+      required this.hp});
 
   final WordModel word;
   final VoidCallback goNextScreen;
   final VoidCallback quit;
   final int progress;
+  final int hp;
 
   @override
   State<LearnWordPage1> createState() => LearnWordPage1State();
@@ -67,6 +69,7 @@ class LearnWordPage1State extends State<LearnWordPage1> {
                               top: LearnPaddings.learnProgressTop,
                               bottom: LearnPaddings.learnProgressBottom),
                           child: LearnProgressBar(
+                              hp: widget.hp,
                               progress: widget.progress,
                               onPressed: widget.quit),
                         ),

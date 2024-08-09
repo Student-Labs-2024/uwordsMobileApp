@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
-import 'package:uwords/theme/app_text_styles.dart';
-import 'package:uwords/theme/image_source.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 
 class CustomBottomSheet extends StatelessWidget {
@@ -34,15 +32,25 @@ class CustomBottomSheet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 246 / 812,
-            decoration: const BoxDecoration(
-                gradient: AppColors.backgroundGradient,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(GlobalSizes.borderRadiusVeryLarge),
-                    topRight:
-                        Radius.circular(GlobalSizes.borderRadiusVeryLarge))),
+            height: MediaQuery.of(context).size.height *
+                LearnSizes.bottomSheetHeight,
+            decoration: BoxDecoration(
+              gradient: AppColors.backgroundGradient,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(GlobalSizes.borderRadiusVeryLarge),
+                  topRight: Radius.circular(GlobalSizes.borderRadiusVeryLarge)),
+              border: state != OtherLearnConstants.stateZero &&
+                      state != OtherLearnConstants.stateCantHear &&
+                      state != OtherLearnConstants.stateCantTell
+                  ? GradientBoxBorder(
+                      gradient: OtherLearnConstants.getGradient(state),
+                      width: LearnSizes.wordInputBorder,
+                    )
+                  : null,
+            ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: LearnPaddings.bottomSheetHorizontal),
               child: Column(
                 children: [
                   const SizedBox(
@@ -63,10 +71,13 @@ class CustomBottomSheet extends StatelessWidget {
                   const SizedBox(
                     height: LearnPaddings.bottomSheetTop,
                   ),
-                  BubbleButton(null,
-                      maximumWidth: MediaQuery.of(context).size.width,
-                      onPressed: onPressed,
-                      text: buttonText)
+                  BubbleButton(
+                    null,
+                    maximumWidth: MediaQuery.of(context).size.width,
+                    onPressed: onPressed,
+                    text: buttonText,
+                    state: state,
+                  )
                 ],
               ),
             ),

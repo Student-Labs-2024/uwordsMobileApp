@@ -35,4 +35,6 @@ class LearnPaddings {
   static const double bottomSheetTop = 30;
   static const double bottomSheetTitleBottom = 10;
   static const double bottomSheetSubtitleBottom = 25;
+  static const double hpLeft = 10;
+  static const double bottomSheetHorizontal = 24;
 }

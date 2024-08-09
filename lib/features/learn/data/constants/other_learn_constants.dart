@@ -12,6 +12,9 @@ class OtherLearnConstants {
   static const String stateWrong = 'wrong';
   static const String stateActive = 'active';
 
+  static const String stateCantHear = 'cantHear';
+  static const String stateCantTell = 'cantTell';
+
   static LinearGradient getGradient(String state) {
     switch (state) {
       case stateWrong:
