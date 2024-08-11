@@ -131,19 +131,20 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     return result;
   }
 
-  void _eventNextTrainingStep(_NextStep event, Emitter<TrainingState> emit) {
-    _nextTrainingStep(emit);
+  Future<void> _eventNextTrainingStep(_NextStep event, Emitter<TrainingState> emit) async {
+    await _nextTrainingStep(emit);
   }
 
-  void _nextTrainingStep(Emitter<TrainingState> emit) async {
+  Future<void> _nextTrainingStep(Emitter<TrainingState> emit) async {
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
+      String accessToken = await userRepository.getCurrentUserAccessToken();
       // TODO check this line after merging
       await wordsRepository.sendLearnedWords(
-          accessToken: await userRepository.getCurrentUserAccessToken(),
-          wordsId: words.map((word) => word.id).toList());
-      emit(const TrainingState.finalScreen());
-      return;
+           accessToken: accessToken,
+           wordsId: words.map((word) => word.id).toList());
+       emit(const TrainingState.finalScreen());
+       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
       case 1:

@@ -162,6 +162,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     _updateErrorState();
                     _touched = true;
                   },
+                  onSubmitted: (value) {
+                    _touched = false;
+                  },
                 ),
               ),
             ],
