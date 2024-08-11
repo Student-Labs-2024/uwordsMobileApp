@@ -61,7 +61,9 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     bsSubtitle = AppLocalizations.of(context).willCan;
     bsButtomText = AppLocalizations.of(context).next;
     bsState = OtherLearnConstants.stateWrong;
-    hp--;
+    setState(() {
+      hp--;
+    });
   }
 
   void activateSuccessAnswer() {
@@ -69,6 +71,12 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     bsSubtitle = AppLocalizations.of(context).beautiful;
     bsButtomText = AppLocalizations.of(context).next;
     bsState = OtherLearnConstants.stateSuccess;
+  }
+
+  void hit() {
+    setState(() {
+      hp--;
+    });
   }
 
   void getBottomSheet(String state) {
@@ -132,6 +140,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 quit: quit,
                 progress: progress,
                 hp: hp,
+                hit: hit,
               ),
               screen3: (word) => LearnWordPage3(
                 word: word,

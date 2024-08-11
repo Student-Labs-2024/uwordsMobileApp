@@ -138,11 +138,11 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void _nextTrainingStep(Emitter<TrainingState> emit) async {
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
+      emit(const TrainingState.finalScreen());
       // TODO check this line after merging
       await wordsRepository.sendLearnedWords(
           accessToken: await userRepository.getCurrentUserAccessToken(),
           wordsId: words.map((word) => word.id).toList());
-      emit(const TrainingState.finalScreen());
       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
@@ -177,6 +177,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       _StartStudy event, Emitter<TrainingState> emit) async {
     emit(const TrainingState.loading());
     try {
+      words = [];
       String accessToken = await userRepository.getCurrentUserAccessToken();
       checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);

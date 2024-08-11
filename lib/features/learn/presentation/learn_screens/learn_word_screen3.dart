@@ -46,6 +46,7 @@ class LearnWordPage3State extends State<LearnWordPage3> {
   bool isAnswerCorrect = false;
 
   String buttonState = OtherLearnConstants.stateZero;
+  String speechButtonState = OtherLearnConstants.stateZero;
 
   void pressSpeechButton() async {
     if (_speechToText.isNotListening) {
@@ -88,10 +89,14 @@ class LearnWordPage3State extends State<LearnWordPage3> {
   void onPressBottomButton() {
     if (compareWords(_lastWords, widget.word.enValue)) {
       setState(() {
+        speechButtonState = OtherLearnConstants.stateSuccess;
         isAnswerCorrect = true;
       });
       widget.goNextScreen(OtherLearnConstants.stateSuccess);
     } else {
+      setState(() {
+        speechButtonState = OtherLearnConstants.stateWrong;
+      });
       widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
   }
@@ -154,6 +159,7 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                               bottom: MediaQuery.of(context).size.height *
                                   LearnPaddings.learnSpeechButtonBottom),
                           child: SpeechButton(
+                              borderState: speechButtonState,
                               isPressed: _speechToText.isListening,
                               onPressed: pressSpeechButton),
                         ),
