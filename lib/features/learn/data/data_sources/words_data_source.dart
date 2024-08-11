@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:uwords/common/utils/exception_check.dart';
@@ -58,7 +57,6 @@ class WordsDataSource implements IWordsDataSource {
     }
   }
 
-  // TODO Check this method
   @override
   Future<void> sendLearnedWords(
       {required String accessToken, required List<int> wordsIds}) async {

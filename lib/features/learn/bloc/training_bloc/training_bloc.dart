@@ -139,7 +139,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
       String accessToken = await userRepository.getCurrentUserAccessToken();
-      // TODO check this line after merging
       await wordsRepository.sendLearnedWords(
            accessToken: accessToken,
            wordsId: words.map((word) => word.id).toList());
