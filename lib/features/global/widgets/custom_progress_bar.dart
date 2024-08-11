@@ -50,7 +50,7 @@ class CustomProgressBar extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: greenOnly != null
                 ? (greenOnly!
-                    ? AppColors.progressBarGreenGradient
+                    ? AppColors.progressBarGreenGradientBack
                     : backColor())
                 : backColor(),
             borderRadius: BorderRadius.circular(10),
@@ -62,9 +62,9 @@ class CustomProgressBar extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: greenOnly != null
                 ? (greenOnly!
-                    ? AppColors.progressBarGreenGradientBack
-                    : backColor())
-                : backColor(),
+                    ? AppColors.progressBarGreenGradient
+                    : progressColor())
+                : progressColor(),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

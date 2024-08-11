@@ -129,4 +129,6 @@ class AppColors {
     AppColors.badProgressbarColor1.withOpacity(0.15),
     AppColors.badProgressbarColor2.withOpacity(0.15)
   ]);
+
+  static const Color imperial45 = Color.fromRGBO(83, 45, 106, 0.45);
 }
