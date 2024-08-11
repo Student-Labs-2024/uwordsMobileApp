@@ -191,9 +191,9 @@ class _HomePageState extends State<HomePage> {
                                             hintText:
                                                 AppLocalizations.of(context)
                                                     .videoLink,
-                                            isError: state.maybeWhen(
-                                              failed: (m) => true,
-                                              orElse: () => false,
+                                            isNotError: state.maybeWhen(
+                                              failed: (m) => () => false,
+                                              orElse: () => () => true,
                                             ),
                                             errorMessage: state.maybeWhen(
                                                 failed: (m) {

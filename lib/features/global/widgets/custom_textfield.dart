@@ -17,7 +17,7 @@ class CustomTextField extends StatefulWidget {
       required this.hintText,
       required this.isHidden,
       required this.isErrorDisplay,
-      this.isError,
+      this.isNotError,
       this.errorMessage,
       this.prefixIcon,
       this.onTap});
@@ -27,7 +27,7 @@ class CustomTextField extends StatefulWidget {
   final bool isHidden;
   final bool isErrorDisplay;
 
-  final bool? isError;
+  final bool Function()? isNotError;
   final String? errorMessage;
   final Widget? prefixIcon;
   final VoidCallback? onTap;
@@ -38,54 +38,59 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool _obscureText = true;
-
-  bool isError = false;
-  String errorMessage = '';
+  bool _touched = false;
+  bool _isNotError = true;
+  String _errorMessage = '';
 
   @override
   void initState() {
-    _obscureText = widget.isHidden;
-    if (widget.isError != null) {
-      isError = widget.isError!;
-    }
-    if (widget.errorMessage != null) {
-      errorMessage = widget.errorMessage!;
-    }
     super.initState();
+    _obscureText = widget.isHidden;
+    _updateErrorState();
+  }
+
+  void _updateErrorState() {
+    if (widget.isNotError != null) {
+      _isNotError = widget.isNotError!();
+      _errorMessage = widget.errorMessage ?? '';
+    } else {
+      _isNotError = true;
+    }
+    setState(() {});
   }
 
   List<Widget> errorDisplay() {
-    if (widget.isErrorDisplay) {
+    if (widget.isErrorDisplay &&
+        !_isNotError &&
+        widget.controller.text.isNotEmpty) {
       return [
         const SizedBox(
           height: HomePageComponentSizes.linkTextFieldSpacing,
         ),
-        isError
-            ? SizedBox(
-                height: GlobalSizes.customTextFieldErrorHeight,
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        AppImageSource.errorIco,
-                        color: AppColors.errorColor,
-                        height: GlobalSizes.customTextFieldIconSize,
-                      ),
-                      const SizedBox(
-                        width: GlobalSizes.customTextFieldSpacing,
-                      ),
-                      Text(
-                        errorMessage,
-                        style: AppTextStyles.customTextfieldExeption,
-                      ),
-                    ]),
-              )
-            : const SizedBox(
-                height: GlobalSizes.customTextFieldErrorHeight,
-              )
+        SizedBox(
+          height: GlobalSizes.customTextFieldErrorHeight,
+          child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            SvgPicture.asset(
+              AppImageSource.errorIco,
+              color: AppColors.errorColor,
+              height: GlobalSizes.customTextFieldIconSize,
+            ),
+            const SizedBox(
+              width: GlobalSizes.customTextFieldSpacing,
+            ),
+            Text(
+              _errorMessage,
+              style: AppTextStyles.customTextfieldExeption,
+            ),
+          ]),
+        )
       ];
     }
-    return [];
+    return [
+      const SizedBox(
+        height: GlobalSizes.customTextFieldErrorHeight,
+      )
+    ];
   }
 
   @override
@@ -105,11 +110,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
               borderRadius:
                   BorderRadius.circular(GlobalSizes.borderRadiusSmall),
               border: Border(
-                bottom: isError
-                    ? const BorderSide(
+                bottom: (_isNotError && _touched) || (_touched == false)
+                    ? BorderSide.none
+                    : const BorderSide(
                         color: AppColors.errorColor,
-                        width: GlobalSizes.customTextFieldErrorSpacer)
-                    : BorderSide.none,
+                        width: GlobalSizes.customTextFieldErrorSpacer),
               ),
               boxShadow: MainBoxShadows.main),
           child: Row(
@@ -153,6 +158,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           )
                         : const SizedBox(),
                   ),
+                  onChanged: (value) {
+                    _updateErrorState();
+                    _touched = true;
+                  },
                 ),
               ),
             ],

@@ -145,5 +145,7 @@
   "good": "Хорошо!",
   "willCan": "Получится в следующий раз",
   "byFriquency": "По срочности повторения",
-  "byProgressWords": "По изученности"
+  "byProgressWords": "По изученности",
+  "wrongPassword": "Невалидный пароль",
+  "wrongEmail": "Невалидная почта"
 }
