@@ -42,6 +42,14 @@ class _SubtopicPageState extends State<SubtopicPage> {
     super.dispose();
   }
 
+  bool isSortActive = false;
+  void changeSortActive(bool state) {
+    if (state == isSortActive) return;
+    setState(() {
+      isSortActive = !isSortActive;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +111,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                       child: BlocBuilder<LearningBloc, LearningState>(
                         builder: (context, state) {
                           return BigSubtopicCard(
+                              isActive: isSortActive,
                               onSort: () {
                                 showCupertinoModalPopup(
                                     context: context,
@@ -119,6 +128,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                                       widget.subtopic,
                                                       wordFrequencyComparator));
                                               Navigator.pop(context);
+                                              changeSortActive(true);
                                               setState(() {});
                                             },
                                             child: Text(
@@ -134,6 +144,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                                       widget.subtopic,
                                                       wordProgressComparator));
                                               Navigator.pop(context);
+                                              changeSortActive(true);
                                               setState(() {});
                                             },
                                             child: Text(
@@ -149,6 +160,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                                       widget.subtopic,
                                                       wordLatestStudyComparator));
                                               Navigator.pop(context);
+                                              changeSortActive(true);
                                               setState(() {});
                                             },
                                             child: Text(
@@ -161,6 +173,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                             isDestructiveAction: true,
                                             onPressed: () {
                                               Navigator.pop(context);
+                                              changeSortActive(false);
                                             },
                                             child: Text(
                                               AppLocalizations.of(context)

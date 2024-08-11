@@ -16,6 +16,7 @@ class BigSubtopicCard extends StatefulWidget {
   final double height;
   final Subtopic subtopic;
   final Function onSort;
+  final bool isActive;
 
   const BigSubtopicCard({
     super.key,
@@ -23,6 +24,7 @@ class BigSubtopicCard extends StatefulWidget {
     required this.height,
     required this.subtopic,
     required this.onSort,
+    required this.isActive,
   });
 
   @override
@@ -30,17 +32,16 @@ class BigSubtopicCard extends StatefulWidget {
 }
 
 class _BigSubtopicCardState extends State<BigSubtopicCard> {
-  bool _isActive = false;
-
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: Size(widget.width, widget.height),
+    return SizedBox(
+      width: widget.width,
+      height: widget.height,
       child: Stack(
         fit: StackFit.expand,
         children: [
           SvgPicture.asset(
-            _isActive
+            widget.isActive
                 ? AppImageSource.subtopicActiveCardWithSort
                 : AppImageSource.subtopicCardWithSort,
             width: widget.width,
@@ -74,21 +75,20 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: const EdgeInsets.only(
-                  bottom: LearnPaddings.bottomSortIconPadding,
-                  right: LearnPaddings.learnPagePadding),
+              padding: EdgeInsets.only(
+                bottom: LearnPaddings.bottomSortIconPadding,
+                right: MediaQuery.of(context).size.width *
+                    LearnPaddings.bigSubtopicCardRight,
+              ),
               child: InkWell(
                 onTap: () {
-                  setState(() {
-                    _isActive = !_isActive;
-                    widget.onSort();
-                  });
+                  widget.onSort();
                 },
                 child: SizedBox(
                   height: LearnSizes.arrowBackIconSize,
                   width: LearnSizes.arrowBackIconSize,
                   child: SvgPicture.asset(
-                    _isActive
+                    widget.isActive
                         ? AppImageSource.sortActiveIcon
                         : AppImageSource.sortIcon,
                     fit: BoxFit.scaleDown,
