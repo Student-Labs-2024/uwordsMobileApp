@@ -98,9 +98,7 @@ class _LearnPageState extends State<LearnPage> {
                                 InkWell(
                                   onTap: () {
                                     context.read<LearningBloc>().add(
-                                        LearningEvent.getTopics(
-                                            AppLocalizations.of(context)
-                                                .inProgressTopicName));
+                                        const LearningEvent.returnToAllTopics());
                                   },
                                   child: SvgPicture.asset(
                                     AppImageSource.returnIcon,
