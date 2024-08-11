@@ -79,7 +79,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                         },
                                         child: Text(
                                           AppLocalizations.of(context)
-                                              .sortByCoutOfWords,
+                                              .byFriquency,
                                           style: AppTextStyles.pinCodeText,
                                         ),
                                       ),
@@ -94,7 +94,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                         },
                                         child: Text(
                                           AppLocalizations.of(context)
-                                              .sortByProgress,
+                                              .byProgressWords,
                                           style: AppTextStyles.pinCodeText,
                                         ),
                                       ),
