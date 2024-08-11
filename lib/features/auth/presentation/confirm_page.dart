@@ -93,7 +93,11 @@ class ConfirmPage extends StatelessWidget {
                       const SizedBox(
                         height: AuthDesignedPaddings.smallEmptySpace,
                       ),
-                      CustomPincode(textEditingController: codeController),
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width *
+                              AuthDesignedConstants.spaceForPinCode,
+                          child: CustomPincode(
+                              textEditingController: codeController)),
                       BubbleButton(
                         null,
                         maximumWidth: MediaQuery.of(context).size.width -

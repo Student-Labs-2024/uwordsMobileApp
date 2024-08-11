@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart';
@@ -15,33 +16,37 @@ class CustomPincode extends StatefulWidget {
 class _CustomPincodeState extends State<CustomPincode> {
   @override
   Widget build(BuildContext context) {
-    return PinCodeTextField(
-      appContext: context,
-      length: AuthDesignedConstants.pincodeLength,
-      cursorHeight: AuthDesignedConstants.cursorHeight,
-      enableActiveFill: true,
-      textStyle: AppTextStyles.pinCodeText,
-      pinTheme: PinTheme(
-          fieldHeight: AuthDesignedConstants.pincodeCellHeigth,
-          fieldWidth: AuthDesignedConstants.pincodeCellWidth,
-          activeColor: AppColors.darkMainColor,
-          selectedColor: AppColors.pushedPincodeColor,
-          shape: PinCodeFieldShape.box,
-          borderRadius:
-              BorderRadius.circular(AuthDesignedConstants.pincodeBorderRadius),
-          inactiveColor: AppColors.defaultPincodeColor,
-          selectedFillColor: AppColors.whiteColor,
-          activeFillColor: AppColors.whiteColor,
-          inactiveFillColor: AppColors.whiteColor,
-          disabledColor: AppColors.defaultPincodeColor,
-          inactiveBorderWidth: AuthDesignedConstants.borderWidth,
-          activeBorderWidth: AuthDesignedConstants.borderWidth,
-          disabledBorderWidth: AuthDesignedConstants.borderWidth),
-      onCompleted: (value) => widget.textEditingController.text = value,
-      onChanged: (value) => widget.textEditingController.text = value,
-      onSaved: (value) => widget.textEditingController.text = value ?? '',
-      onSubmitted: (value) => widget.textEditingController.text = value,
-      keyboardType: TextInputType.number,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: PinCodeTextField(
+        appContext: context,
+        length: AuthDesignedConstants.pincodeLength,
+        cursorHeight: AuthDesignedConstants.cursorHeight,
+        enableActiveFill: true,
+        textStyle: AppTextStyles.pinCodeText,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        pinTheme: PinTheme(
+            fieldHeight: AuthDesignedConstants.pincodeCellHeigth,
+            fieldWidth: AuthDesignedConstants.pincodeCellWidth,
+            activeColor: AppColors.darkMainColor,
+            selectedColor: AppColors.pushedPincodeColor,
+            shape: PinCodeFieldShape.box,
+            borderRadius: BorderRadius.circular(
+                AuthDesignedConstants.pincodeBorderRadius),
+            inactiveColor: AppColors.defaultPincodeColor,
+            selectedFillColor: AppColors.whiteColor,
+            activeFillColor: AppColors.whiteColor,
+            inactiveFillColor: AppColors.whiteColor,
+            disabledColor: AppColors.defaultPincodeColor,
+            inactiveBorderWidth: AuthDesignedConstants.borderWidth,
+            activeBorderWidth: AuthDesignedConstants.borderWidth,
+            disabledBorderWidth: AuthDesignedConstants.borderWidth),
+        onCompleted: (value) => widget.textEditingController.text = value,
+        onChanged: (value) => widget.textEditingController.text = value,
+        onSaved: (value) => widget.textEditingController.text = value ?? '',
+        onSubmitted: (value) => widget.textEditingController.text = value,
+        keyboardType: TextInputType.number,
+      ),
     );
   }
 }

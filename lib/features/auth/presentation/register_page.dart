@@ -52,9 +52,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             AuthDesignedConstants.minimumDate),
                         showDayOfWeek: false,
                         dateOrder: DatePickerDateOrder.dmy,
-                        initialDateTime: DateTime.now(),
-                        maximumDate: DateTime.now(),
-                        maximumYear: DateTime.now().year,
+                        initialDateTime: AuthDesignedConstants.maximumDate,
+                        maximumYear: AuthDesignedConstants.maximumYear,
                         onDateTimeChanged: (val) {
                           setState(() {
                             choosenDate = val;
