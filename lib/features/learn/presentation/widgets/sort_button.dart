@@ -34,21 +34,20 @@ class _SortButtonState extends State<SortButton> {
             ? LearnSizes.sortButtonWidth * 2
             : LearnSizes.sortButtonWidth,
         child: DecoratedBox(
-          decoration: fis.BoxDecoration(
-              color: AppColors.whiteBackgroundColor,
-              borderRadius:
-                  BorderRadius.circular(GlobalSizes.borderRadiusSmall),
-              boxShadow: MainBoxShadows.main),
-          child: _isActive == true
-              ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    buildSortSettingsButton(),
-                    buildReverseSortButton(),
-                  ],
-                )
-              : Center(child: buildSortSettingsButton())
-        ));
+            decoration: fis.BoxDecoration(
+                color: AppColors.whiteBackgroundColor,
+                borderRadius:
+                    BorderRadius.circular(GlobalSizes.borderRadiusSmall),
+                boxShadow: MainBoxShadows.main),
+            child: _isActive == true
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      buildSortSettingsButton(),
+                      buildReverseSortButton(),
+                    ],
+                  )
+                : Center(child: buildSortSettingsButton())));
   }
 
   Widget buildSortSettingsButton() {

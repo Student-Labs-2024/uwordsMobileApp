@@ -61,7 +61,9 @@ class WordsDataSource implements IWordsDataSource {
   Future<void> sendLearnedWords(
       {required String accessToken, required List<int> wordsIds}) async {
     final body = {'words_ids': wordsIds};
-    await client.sendWordsWhenFinished(joinTokenTypeAndToken(tokenType: tokenType, token: accessToken), jsonEncode(body));
+    await client.sendWordsWhenFinished(
+        joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+        jsonEncode(body));
   }
 
   @override

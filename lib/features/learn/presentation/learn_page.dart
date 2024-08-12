@@ -98,7 +98,8 @@ class _LearnPageState extends State<LearnPage> {
                                 InkWell(
                                   onTap: () {
                                     context.read<LearningBloc>().add(
-                                        const LearningEvent.returnToAllTopics());
+                                        const LearningEvent
+                                            .returnToAllTopics());
                                   },
                                   child: SvgPicture.asset(
                                     AppImageSource.returnIcon,
@@ -163,10 +164,14 @@ class _LearnPageState extends State<LearnPage> {
                                               .search),
                                     ),
                                     SizedBox(
-                                      width: _isChosenSort == true ? LearnPaddings.rowBetweenPadding/2 : LearnPaddings.rowBetweenPadding ,
+                                      width: _isChosenSort == true
+                                          ? LearnPaddings.rowBetweenPadding / 2
+                                          : LearnPaddings.rowBetweenPadding,
                                     ),
-                                        SortButton(subtopics: topic.subtopics,
-                                      onTap: setState,)
+                                    SortButton(
+                                      subtopics: topic.subtopics,
+                                      onTap: setState,
+                                    )
                                   ],
                                 ),
                               )

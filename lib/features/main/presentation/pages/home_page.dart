@@ -194,7 +194,10 @@ class _HomePageState extends State<HomePage> {
                                                     .videoLink,
                                             isNotError: state.maybeWhen(
                                               failed: (m) => () => false,
-                                              orElse: ()=>()=>isValidYoutubeUrl(url: textEditingController.text),
+                                              orElse: () => () =>
+                                                  isValidYoutubeUrl(
+                                                      url: textEditingController
+                                                          .text),
                                             ),
                                             errorMessage: state.maybeWhen(
                                                 failed: (m) {
@@ -237,9 +240,10 @@ class _HomePageState extends State<HomePage> {
                                         },
                                         icon: SvgPicture.asset(
                                           state.maybeMap(
-                                            sended: (value)=>
-                                              AppImageSource.sendedIco                                            ,
-                                            failed: (value) => AppImageSource.failedIcon,
+                                            sended: (value) =>
+                                                AppImageSource.sendedIco,
+                                            failed: (value) =>
+                                                AppImageSource.failedIcon,
                                             orElse: () =>
                                                 AppImageSource.sendIco,
                                           ),
