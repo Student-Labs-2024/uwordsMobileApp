@@ -8,6 +8,7 @@ import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 
@@ -246,33 +247,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  bool _isCorrectPassword({required String password}) {
-    bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
-    bool hasLowercase = password.contains(RegExp(r'[a-z]'));
-    bool hasDigits = password.contains(RegExp(r'[0-9]'));
-    bool hasMinLength = password.length >= 8;
-    bool hasNotcyrillicCharacters = !password.contains(RegExp(r'[а-яА-Я]'));
-
-    return hasLowercase &&
-        hasUppercase &&
-        hasDigits &&
-        hasMinLength &&
-        hasNotcyrillicCharacters;
-  }
-
-  bool _isCorrectEmail({required String email}) {
-    return RegExp(
-                r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-            .hasMatch(email) &&
-        !email.contains(RegExp(r'[а-яА-Я]'));
-  }
-
   bool _checkEmailAndPassword(
       {required Emitter<AuthState> emit,
       required String email,
       required String password}) {
-    if ((_isCorrectEmail(email: email) == false) ||
-        (_isCorrectPassword(password: password) == false)) {
+    if ((isCorrectEmail(email: email) == false) ||
+        (isCorrectPassword(password: password) == false)) {
       emit(const AuthState.failed(AuthError.notValidMailOrPassword));
       return false;
     }

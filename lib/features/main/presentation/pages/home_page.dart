@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/env.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/custom_textfield.dart';
@@ -191,9 +192,12 @@ class _HomePageState extends State<HomePage> {
                                             hintText:
                                                 AppLocalizations.of(context)
                                                     .videoLink,
-                                            isError: state.maybeWhen(
-                                              failed: (m) => true,
-                                              orElse: () => false,
+                                            isNotError: state.maybeWhen(
+                                              failed: (m) => () => false,
+                                              orElse: () => () =>
+                                                  isValidYoutubeUrl(
+                                                      url: textEditingController
+                                                          .text),
                                             ),
                                             errorMessage: state.maybeWhen(
                                                 failed: (m) {
@@ -208,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                                                 },
                                                 orElse: () =>
                                                     AppLocalizations.of(context)
-                                                        .unknowError),
+                                                        .invalidLink),
                                           )),
                                     ),
                                     SizedBox(
@@ -235,9 +239,11 @@ class _HomePageState extends State<HomePage> {
                                           textEditingController.clear();
                                         },
                                         icon: SvgPicture.asset(
-                                          state.maybeWhen(
-                                            sended: () =>
+                                          state.maybeMap(
+                                            sended: (value) =>
                                                 AppImageSource.sendedIco,
+                                            failed: (value) =>
+                                                AppImageSource.failedIcon,
                                             orElse: () =>
                                                 AppImageSource.sendIco,
                                           ),

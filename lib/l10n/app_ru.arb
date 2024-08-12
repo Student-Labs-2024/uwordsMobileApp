@@ -145,5 +145,9 @@
   "good": "Хорошо!",
   "willCan": "Получится в следующий раз",
   "youHaveZeroHP": "О нет, у вас кончилось здоровье",
-  "goBackToTopics": "Вернуться к топикам"
+  "goBackToTopics": "Вернуться к топикам",
+  "byFriquency": "По срочности повторения",
+  "byProgressWords": "По изученности",
+  "wrongPassword": "Невалидный пароль",
+  "wrongEmail": "Невалидная почта"
 }

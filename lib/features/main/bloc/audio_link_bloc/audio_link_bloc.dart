@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
+import 'package:uwords/common/utils/valid_string_check.dart';
 
 part 'audio_link_bloc.freezed.dart';
 part 'audio_link_state.dart';
@@ -22,7 +23,7 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
   Future<void> _handleSendLink(
       _SendLink event, Emitter<AudioLinkState> emit) async {
     try {
-      if (_isValidYoutubeUrl(event.link)) {
+      if (isValidYoutubeUrl(url: event.link)) {
         String accessToken = await userRepository.getCurrentUserAccessToken();
         await checkTokenExpirationAndUpdateIfNeed(
             accessToken: accessToken, userRepository: userRepository);
@@ -40,17 +41,5 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
       log(e.toString());
       emit(const AudioLinkState.failed('unknownError'));
     }
-  }
-
-  bool _isValidYoutubeUrl(String url) {
-    final RegExp youtubeRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
-    final RegExp youtubeShortRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
-    final RegExp youtubeShortsRegex = RegExp(
-        r'^(?:https?:\/\/)?(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})(?:[&?].*)?$');
-    return youtubeRegex.hasMatch(url) ||
-        youtubeShortRegex.hasMatch(url) ||
-        youtubeShortsRegex.hasMatch(url);
   }
 }

@@ -8,7 +8,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/subtopic_page.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
-import 'package:uwords/features/learn/presentation/widgets/sort_settings_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_row.dart';
 import 'package:uwords/features/learn/presentation/widgets/topic_header.dart';
@@ -208,10 +207,10 @@ class _LearnPageState extends State<LearnPage> {
                                   const SizedBox(
                                     width: LearnPaddings.rowBetweenPadding,
                                   ),
-                                  SortSettingsButton(
-                                    subtopics: topic.subtopics,
-                                    onTap: setState,
-                                  ),
+                                  SortButton(
+                                      subtopics: topic.subtopics,
+                                      onTap: setState,
+                                    ),
                                   _isChosenSort == true
                                       ? const SortButton()
                                       : const SizedBox()

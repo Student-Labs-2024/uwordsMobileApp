@@ -24,12 +24,11 @@ class RegistrationFields extends StatelessWidget {
           hintText: AppLocalizations.of(context).name,
           isHidden: false,
           isErrorDisplay: false,
-          isError: false,
+          isNotError: () => true,
         ),
         MailAndPasswordFileds(
           mailController: mailController,
           passwordController: passwordController,
-          errorMessage: errorMessage,
         )
       ],
     );

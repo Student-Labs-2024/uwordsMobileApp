@@ -69,4 +69,5 @@ class AppImageSource {
   static const String lostHpIcon = 'assets/svg/lostHp_icon.svg';
   static const String subtopicHeaderBubbles =
       'assets/png/subtopic_header_bubbles.png';
+  static const String failedIcon = 'assets/svg/failed.svg';
 }
