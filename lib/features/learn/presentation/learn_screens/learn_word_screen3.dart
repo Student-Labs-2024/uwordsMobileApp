@@ -165,9 +165,9 @@ class LearnWordPage3State extends State<LearnWordPage3> {
                         ),
                         InkWell(
                           onTap: () => widget
-                              .goNextScreen(OtherLearnConstants.stateCantTell),
+                              .goNextScreen(OtherLearnConstants.stateCantSpeak),
                           child: Text(
-                            AppLocalizations.of(context).cantTell,
+                            AppLocalizations.of(context).cantSpeak,
                             style: AppTextStyles.learnCant,
                           ),
                         ),

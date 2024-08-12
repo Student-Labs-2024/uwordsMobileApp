@@ -45,11 +45,11 @@ class BubbleButton extends StatelessWidget {
           gradient: state != null
               ? (state != OtherLearnConstants.stateActive &&
                       state != OtherLearnConstants.stateCantHear &&
-                      state != OtherLearnConstants.stateCantTell
+                      state != OtherLearnConstants.stateCantSpeak
                   ? OtherLearnConstants.getBubbleButtonGradient(state!)
                   : null)
               : null,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(GlobalSizes.borderRadiusLarge),
           image: const DecorationImage(
             image: AssetImage(AppImageSource.bubbleButton),
             fit: BoxFit.cover,

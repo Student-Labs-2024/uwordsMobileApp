@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen1.dart';
@@ -8,6 +9,7 @@ import 'package:uwords/features/learn/presentation/learn_screens/learn_word_scre
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen3.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen4.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/learn/presentation/learn_screens/loading_screen.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_bottom_sheet.dart';
 
 class LearnCoreScreen extends StatefulWidget {
@@ -35,11 +37,15 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
   String bsSubtitle = '';
   String bsButtomText = '';
   String bsState = '';
+
+  String lastBottomSheetState = OtherLearnConstants.stateZero;
   void bsOnpressed() {
     setState(() {
       showBottomSheet = false;
     });
-    goNextScreen();
+    if (lastBottomSheetState != OtherLearnConstants.stateCantHear) {
+      goNextScreen();
+    }
   }
 
   void activateCantHear() {
@@ -49,7 +55,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     bsState = OtherLearnConstants.stateActive;
   }
 
-  void activateCantTell() {
+  void activateCantSpeak() {
     bsTitle = AppLocalizations.of(context).hearOff;
     bsSubtitle = AppLocalizations.of(context).wilReturn;
     bsButtomText = AppLocalizations.of(context).good;
@@ -64,6 +70,9 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     setState(() {
       hp--;
     });
+    if (hp < 1) {
+      context.read<TrainingBloc>().add(const TrainingEvent.zeroHealth());
+    }
   }
 
   void activateSuccessAnswer() {
@@ -77,9 +86,13 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     setState(() {
       hp--;
     });
+    if (hp < 1) {
+      context.read<TrainingBloc>().add(const TrainingEvent.zeroHealth());
+    }
   }
 
   void getBottomSheet(String state) {
+    lastBottomSheetState = state;
     switch (state) {
       case OtherLearnConstants.stateSuccess:
         activateSuccessAnswer();
@@ -88,10 +101,12 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         activateWrongAnswer();
         break;
       case OtherLearnConstants.stateCantHear:
+        context.read<TrainingBloc>().add(const TrainingEvent.cantHear());
         activateCantHear();
         break;
-      case OtherLearnConstants.stateCantTell:
-        activateCantTell();
+      case OtherLearnConstants.stateCantSpeak:
+        context.read<TrainingBloc>().add(const TrainingEvent.cantSpeak());
+        activateCantSpeak();
         break;
       default:
         setState(() {
@@ -107,6 +122,8 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
   int progress = -7;
   int hp = 3;
 
+  List<Pair<String, int>> lettersForScreen2 = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +131,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         listener: (context, state) {
           state.maybeWhen(
               initial: () {},
-              loading: () {},
+              loading: (r) {},
               failed: (e) {},
               orElse: () {
                 progress += 7;
@@ -123,8 +140,8 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         builder: (context, state) {
           return Stack(children: [
             state.maybeWhen(
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
+              loading: (r) => LoadingScreen(
+                reason: r,
               ),
               screen1: (word) => LearnWordPage1(
                 word: word,
@@ -133,15 +150,18 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 progress: progress,
                 hp: hp,
               ),
-              screen2: (word, letters) => LearnWordPage2(
-                word: word,
-                letters: letters,
-                goNextScreen: getBottomSheet,
-                quit: quit,
-                progress: progress,
-                hp: hp,
-                hit: hit,
-              ),
+              screen2: (word, letters) {
+                lettersForScreen2 = letters;
+                return LearnWordPage2(
+                  word: word,
+                  letters: lettersForScreen2,
+                  goNextScreen: getBottomSheet,
+                  quit: quit,
+                  progress: progress,
+                  hp: hp,
+                  hit: hit,
+                );
+              },
               screen3: (word) => LearnWordPage3(
                 word: word,
                 goNextScreen: getBottomSheet,
@@ -149,16 +169,40 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 progress: progress,
                 hp: hp,
               ),
-              screen4: (word, selectableWords) => LearnWordPage4(
+              screen4: (
+                isCantHear,
+                word,
+                selectableWords,
+              ) =>
+                  LearnWordPage4(
                 word: word,
                 selectableWords: selectableWords,
                 goNextScreen: getBottomSheet,
                 quit: quit,
                 progress: progress,
                 hp: hp,
+                isCantHear: isCantHear,
               ),
               finalScreen: () => Center(
-                  child: Text(AppLocalizations.of(context).congratulations)),
+                  child: Row(
+                children: [
+                  Text(AppLocalizations.of(context).congratulations),
+                  TextButton(
+                    onPressed: quit,
+                    child: Text(AppLocalizations.of(context).goBackToTopics),
+                  ),
+                ],
+              )),
+              zeroHealthScreen: () => Center(
+                  child: Row(
+                children: [
+                  Text(AppLocalizations.of(context).youHaveZeroHP),
+                  TextButton(
+                    onPressed: quit,
+                    child: Text(AppLocalizations.of(context).goBackToTopics),
+                  ),
+                ],
+              )),
               orElse: () =>
                   Center(child: Text(AppLocalizations.of(context).unknowError)),
             ),

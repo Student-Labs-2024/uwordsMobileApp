@@ -72,12 +72,9 @@ class LearnWordPage2State extends State<LearnWordPage2> {
       });
       widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
-  }
-
-  @override
-  void dispose() {
     answer = '';
-    super.dispose();
+    isAnswerCorrect = false;
+    inputState = OtherLearnConstants.stateZero;
   }
 
   @override

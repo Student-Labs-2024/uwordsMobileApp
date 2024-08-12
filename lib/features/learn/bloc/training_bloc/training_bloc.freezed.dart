@@ -19,41 +19,49 @@ mixin _$TrainingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) =>
@@ -68,6 +76,7 @@ mixin _$TrainingState {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +90,7 @@ mixin _$TrainingState {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -94,6 +104,7 @@ mixin _$TrainingState {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
@@ -157,15 +168,17 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return initial();
@@ -175,13 +188,16 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return initial?.call();
@@ -191,13 +207,16 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -218,6 +237,7 @@ class _$TrainingInitialImpl implements _TrainingInitial {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return initial(this);
@@ -234,6 +254,7 @@ class _$TrainingInitialImpl implements _TrainingInitial {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return initial?.call(this);
@@ -250,6 +271,7 @@ class _$TrainingInitialImpl implements _TrainingInitial {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -269,6 +291,8 @@ abstract class _$$TrainingIsLoadingImplCopyWith<$Res> {
   factory _$$TrainingIsLoadingImplCopyWith(_$TrainingIsLoadingImpl value,
           $Res Function(_$TrainingIsLoadingImpl) then) =
       __$$TrainingIsLoadingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool reason});
 }
 
 /// @nodoc
@@ -278,77 +302,110 @@ class __$$TrainingIsLoadingImplCopyWithImpl<$Res>
   __$$TrainingIsLoadingImplCopyWithImpl(_$TrainingIsLoadingImpl _value,
       $Res Function(_$TrainingIsLoadingImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reason = null,
+  }) {
+    return _then(_$TrainingIsLoadingImpl(
+      reason: null == reason
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
-  const _$TrainingIsLoadingImpl();
+  const _$TrainingIsLoadingImpl({required this.reason});
+
+  @override
+  final bool reason;
 
   @override
   String toString() {
-    return 'TrainingState.loading()';
+    return 'TrainingState.loading(reason: $reason)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TrainingIsLoadingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$TrainingIsLoadingImpl &&
+            (identical(other.reason, reason) || other.reason == reason));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, reason);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TrainingIsLoadingImplCopyWith<_$TrainingIsLoadingImpl> get copyWith =>
+      __$$TrainingIsLoadingImplCopyWithImpl<_$TrainingIsLoadingImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return loading();
+    return loading(reason);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return loading?.call();
+    return loading?.call(reason);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(reason);
     }
     return orElse();
   }
@@ -364,6 +421,7 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return loading(this);
@@ -380,6 +438,7 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return loading?.call(this);
@@ -396,6 +455,7 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -407,7 +467,13 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
 }
 
 abstract class _TrainingIsLoading implements TrainingState {
-  const factory _TrainingIsLoading() = _$TrainingIsLoadingImpl;
+  const factory _TrainingIsLoading({required final bool reason}) =
+      _$TrainingIsLoadingImpl;
+
+  bool get reason;
+  @JsonKey(ignore: true)
+  _$$TrainingIsLoadingImplCopyWith<_$TrainingIsLoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -476,15 +542,17 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return failed(message);
@@ -494,13 +562,16 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return failed?.call(message);
@@ -510,13 +581,16 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -537,6 +611,7 @@ class _$TrainingFailedImpl implements _TrainingFailed {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return failed(this);
@@ -553,6 +628,7 @@ class _$TrainingFailedImpl implements _TrainingFailed {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return failed?.call(this);
@@ -569,6 +645,7 @@ class _$TrainingFailedImpl implements _TrainingFailed {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -654,15 +731,17 @@ class _$Screen1Impl implements _Screen1 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return screen1(word);
@@ -672,13 +751,16 @@ class _$Screen1Impl implements _Screen1 {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return screen1?.call(word);
@@ -688,13 +770,16 @@ class _$Screen1Impl implements _Screen1 {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -715,6 +800,7 @@ class _$Screen1Impl implements _Screen1 {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return screen1(this);
@@ -731,6 +817,7 @@ class _$Screen1Impl implements _Screen1 {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return screen1?.call(this);
@@ -747,6 +834,7 @@ class _$Screen1Impl implements _Screen1 {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -847,15 +935,17 @@ class _$Screen2Impl implements _Screen2 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return screen2(word, letters);
@@ -865,13 +955,16 @@ class _$Screen2Impl implements _Screen2 {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return screen2?.call(word, letters);
@@ -881,13 +974,16 @@ class _$Screen2Impl implements _Screen2 {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -908,6 +1004,7 @@ class _$Screen2Impl implements _Screen2 {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return screen2(this);
@@ -924,6 +1021,7 @@ class _$Screen2Impl implements _Screen2 {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return screen2?.call(this);
@@ -940,6 +1038,7 @@ class _$Screen2Impl implements _Screen2 {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -1027,15 +1126,17 @@ class _$Screen3Impl implements _Screen3 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return screen3(word);
@@ -1045,13 +1146,16 @@ class _$Screen3Impl implements _Screen3 {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return screen3?.call(word);
@@ -1061,13 +1165,16 @@ class _$Screen3Impl implements _Screen3 {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -1088,6 +1195,7 @@ class _$Screen3Impl implements _Screen3 {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return screen3(this);
@@ -1104,6 +1212,7 @@ class _$Screen3Impl implements _Screen3 {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return screen3?.call(this);
@@ -1120,6 +1229,7 @@ class _$Screen3Impl implements _Screen3 {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -1145,7 +1255,7 @@ abstract class _$$Screen4ImplCopyWith<$Res> {
           _$Screen4Impl value, $Res Function(_$Screen4Impl) then) =
       __$$Screen4ImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({WordModel word, List<WordModel> selectableWords});
+  $Res call({bool cantHear, WordModel word, List<WordModel> selectableWords});
 }
 
 /// @nodoc
@@ -1159,10 +1269,15 @@ class __$$Screen4ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? cantHear = null,
     Object? word = null,
     Object? selectableWords = null,
   }) {
     return _then(_$Screen4Impl(
+      cantHear: null == cantHear
+          ? _value.cantHear
+          : cantHear // ignore: cast_nullable_to_non_nullable
+              as bool,
       word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -1179,9 +1294,13 @@ class __$$Screen4ImplCopyWithImpl<$Res>
 
 class _$Screen4Impl implements _Screen4 {
   const _$Screen4Impl(
-      {required this.word, required final List<WordModel> selectableWords})
+      {required this.cantHear,
+      required this.word,
+      required final List<WordModel> selectableWords})
       : _selectableWords = selectableWords;
 
+  @override
+  final bool cantHear;
   @override
   final WordModel word;
   final List<WordModel> _selectableWords;
@@ -1194,7 +1313,7 @@ class _$Screen4Impl implements _Screen4 {
 
   @override
   String toString() {
-    return 'TrainingState.screen4(word: $word, selectableWords: $selectableWords)';
+    return 'TrainingState.screen4(cantHear: $cantHear, word: $word, selectableWords: $selectableWords)';
   }
 
   @override
@@ -1202,14 +1321,16 @@ class _$Screen4Impl implements _Screen4 {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Screen4Impl &&
+            (identical(other.cantHear, cantHear) ||
+                other.cantHear == cantHear) &&
             (identical(other.word, word) || other.word == word) &&
             const DeepCollectionEquality()
                 .equals(other._selectableWords, _selectableWords));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, word, const DeepCollectionEquality().hash(_selectableWords));
+  int get hashCode => Object.hash(runtimeType, cantHear, word,
+      const DeepCollectionEquality().hash(_selectableWords));
 
   @JsonKey(ignore: true)
   @override
@@ -1221,52 +1342,60 @@ class _$Screen4Impl implements _Screen4 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return screen4(word, selectableWords);
+    return screen4(cantHear, word, selectableWords);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return screen4?.call(word, selectableWords);
+    return screen4?.call(cantHear, word, selectableWords);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
     if (screen4 != null) {
-      return screen4(word, selectableWords);
+      return screen4(cantHear, word, selectableWords);
     }
     return orElse();
   }
@@ -1282,6 +1411,7 @@ class _$Screen4Impl implements _Screen4 {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return screen4(this);
@@ -1298,6 +1428,7 @@ class _$Screen4Impl implements _Screen4 {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return screen4?.call(this);
@@ -1314,6 +1445,7 @@ class _$Screen4Impl implements _Screen4 {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -1326,9 +1458,11 @@ class _$Screen4Impl implements _Screen4 {
 
 abstract class _Screen4 implements TrainingState {
   const factory _Screen4(
-      {required final WordModel word,
+      {required final bool cantHear,
+      required final WordModel word,
       required final List<WordModel> selectableWords}) = _$Screen4Impl;
 
+  bool get cantHear;
   WordModel get word;
   List<WordModel> get selectableWords;
   @JsonKey(ignore: true)
@@ -1375,15 +1509,17 @@ class _$FinalScreenImpl implements _FinalScreen {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return finalScreen();
@@ -1393,13 +1529,16 @@ class _$FinalScreenImpl implements _FinalScreen {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return finalScreen?.call();
@@ -1409,13 +1548,16 @@ class _$FinalScreenImpl implements _FinalScreen {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -1436,6 +1578,7 @@ class _$FinalScreenImpl implements _FinalScreen {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return finalScreen(this);
@@ -1452,6 +1595,7 @@ class _$FinalScreenImpl implements _FinalScreen {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return finalScreen?.call(this);
@@ -1468,6 +1612,7 @@ class _$FinalScreenImpl implements _FinalScreen {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -1480,6 +1625,163 @@ class _$FinalScreenImpl implements _FinalScreen {
 
 abstract class _FinalScreen implements TrainingState {
   const factory _FinalScreen() = _$FinalScreenImpl;
+}
+
+/// @nodoc
+abstract class _$$ZeroHealthScreenImplCopyWith<$Res> {
+  factory _$$ZeroHealthScreenImplCopyWith(_$ZeroHealthScreenImpl value,
+          $Res Function(_$ZeroHealthScreenImpl) then) =
+      __$$ZeroHealthScreenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ZeroHealthScreenImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$ZeroHealthScreenImpl>
+    implements _$$ZeroHealthScreenImplCopyWith<$Res> {
+  __$$ZeroHealthScreenImplCopyWithImpl(_$ZeroHealthScreenImpl _value,
+      $Res Function(_$ZeroHealthScreenImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ZeroHealthScreenImpl implements _ZeroHealthScreen {
+  const _$ZeroHealthScreenImpl();
+
+  @override
+  String toString() {
+    return 'TrainingState.zeroHealthScreen()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ZeroHealthScreenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(bool reason) loading,
+    required TResult Function(String message) failed,
+    required TResult Function(WordModel word) screen1,
+    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+        screen2,
+    required TResult Function(WordModel word) screen3,
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
+        screen4,
+    required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
+    required TResult Function(WordModel word) success,
+  }) {
+    return zeroHealthScreen();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(bool reason)? loading,
+    TResult? Function(String message)? failed,
+    TResult? Function(WordModel word)? screen1,
+    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
+    TResult? Function(WordModel word)? screen3,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
+    TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
+    TResult? Function(WordModel word)? success,
+  }) {
+    return zeroHealthScreen?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(bool reason)? loading,
+    TResult Function(String message)? failed,
+    TResult Function(WordModel word)? screen1,
+    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
+    TResult Function(WordModel word)? screen3,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
+    TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
+    TResult Function(WordModel word)? success,
+    required TResult orElse(),
+  }) {
+    if (zeroHealthScreen != null) {
+      return zeroHealthScreen();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingInitial value) initial,
+    required TResult Function(_TrainingIsLoading value) loading,
+    required TResult Function(_TrainingFailed value) failed,
+    required TResult Function(_Screen1 value) screen1,
+    required TResult Function(_Screen2 value) screen2,
+    required TResult Function(_Screen3 value) screen3,
+    required TResult Function(_Screen4 value) screen4,
+    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
+    required TResult Function(_Success value) success,
+  }) {
+    return zeroHealthScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TrainingInitial value)? initial,
+    TResult? Function(_TrainingIsLoading value)? loading,
+    TResult? Function(_TrainingFailed value)? failed,
+    TResult? Function(_Screen1 value)? screen1,
+    TResult? Function(_Screen2 value)? screen2,
+    TResult? Function(_Screen3 value)? screen3,
+    TResult? Function(_Screen4 value)? screen4,
+    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
+    TResult? Function(_Success value)? success,
+  }) {
+    return zeroHealthScreen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingInitial value)? initial,
+    TResult Function(_TrainingIsLoading value)? loading,
+    TResult Function(_TrainingFailed value)? failed,
+    TResult Function(_Screen1 value)? screen1,
+    TResult Function(_Screen2 value)? screen2,
+    TResult Function(_Screen3 value)? screen3,
+    TResult Function(_Screen4 value)? screen4,
+    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (zeroHealthScreen != null) {
+      return zeroHealthScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ZeroHealthScreen implements TrainingState {
+  const factory _ZeroHealthScreen() = _$ZeroHealthScreenImpl;
 }
 
 /// @nodoc
@@ -1547,15 +1849,17 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function(bool reason) loading,
     required TResult Function(String message) failed,
     required TResult Function(WordModel word) screen1,
     required TResult Function(WordModel word, List<Pair<String, int>> letters)
         screen2,
     required TResult Function(WordModel word) screen3,
-    required TResult Function(WordModel word, List<WordModel> selectableWords)
+    required TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
+    required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
     return success(word);
@@ -1565,13 +1869,16 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loading,
+    TResult? Function(bool reason)? loading,
     TResult? Function(String message)? failed,
     TResult? Function(WordModel word)? screen1,
     TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult? Function(WordModel word)? screen3,
-    TResult? Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult? Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult? Function()? finalScreen,
+    TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
     return success?.call(word);
@@ -1581,13 +1888,16 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function(bool reason)? loading,
     TResult Function(String message)? failed,
     TResult Function(WordModel word)? screen1,
     TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
     TResult Function(WordModel word)? screen3,
-    TResult Function(WordModel word, List<WordModel> selectableWords)? screen4,
+    TResult Function(
+            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+        screen4,
     TResult Function()? finalScreen,
+    TResult Function()? zeroHealthScreen,
     TResult Function(WordModel word)? success,
     required TResult orElse(),
   }) {
@@ -1608,6 +1918,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Screen3 value) screen3,
     required TResult Function(_Screen4 value) screen4,
     required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_ZeroHealthScreen value) zeroHealthScreen,
     required TResult Function(_Success value) success,
   }) {
     return success(this);
@@ -1624,6 +1935,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Screen3 value)? screen3,
     TResult? Function(_Screen4 value)? screen4,
     TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult? Function(_Success value)? success,
   }) {
     return success?.call(this);
@@ -1640,6 +1952,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Screen3 value)? screen3,
     TResult Function(_Screen4 value)? screen4,
     TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_ZeroHealthScreen value)? zeroHealthScreen,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -1667,6 +1980,9 @@ mixin _$TrainingEvent {
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
     required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
     required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
   }) =>
       throw _privateConstructorUsedError;
@@ -1676,6 +1992,9 @@ mixin _$TrainingEvent {
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
     TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
     TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
   }) =>
       throw _privateConstructorUsedError;
@@ -1685,6 +2004,9 @@ mixin _$TrainingEvent {
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
     TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
     TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) =>
@@ -1695,6 +2017,9 @@ mixin _$TrainingEvent {
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
     required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
     required TResult Function(_StartStudy value) startStudy,
   }) =>
       throw _privateConstructorUsedError;
@@ -1704,6 +2029,9 @@ mixin _$TrainingEvent {
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
     TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
     TResult? Function(_StartStudy value)? startStudy,
   }) =>
       throw _privateConstructorUsedError;
@@ -1713,6 +2041,9 @@ mixin _$TrainingEvent {
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
     TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
     TResult Function(_StartStudy value)? startStudy,
     required TResult orElse(),
   }) =>
@@ -1805,6 +2136,9 @@ class _$SetTopicImpl implements _SetTopic {
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
     required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
     required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
   }) {
     return setTopic(topic);
@@ -1817,6 +2151,9 @@ class _$SetTopicImpl implements _SetTopic {
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
     TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
     TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
   }) {
     return setTopic?.call(topic);
@@ -1829,6 +2166,9 @@ class _$SetTopicImpl implements _SetTopic {
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
     TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
     TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
@@ -1845,6 +2185,9 @@ class _$SetTopicImpl implements _SetTopic {
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
     required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
     required TResult Function(_StartStudy value) startStudy,
   }) {
     return setTopic(this);
@@ -1857,6 +2200,9 @@ class _$SetTopicImpl implements _SetTopic {
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
     TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
     TResult? Function(_StartStudy value)? startStudy,
   }) {
     return setTopic?.call(this);
@@ -1869,6 +2215,9 @@ class _$SetTopicImpl implements _SetTopic {
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
     TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
     TResult Function(_StartStudy value)? startStudy,
     required TResult orElse(),
   }) {
@@ -1957,6 +2306,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
     required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
     required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
   }) {
     return setSubtopic(subtopic);
@@ -1969,6 +2321,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
     TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
     TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
   }) {
     return setSubtopic?.call(subtopic);
@@ -1981,6 +2336,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
     TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
     TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
@@ -1997,6 +2355,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
     required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
     required TResult Function(_StartStudy value) startStudy,
   }) {
     return setSubtopic(this);
@@ -2009,6 +2370,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
     TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
     TResult? Function(_StartStudy value)? startStudy,
   }) {
     return setSubtopic?.call(this);
@@ -2021,6 +2385,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
     TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
     TResult Function(_StartStudy value)? startStudy,
     required TResult orElse(),
   }) {
@@ -2082,6 +2449,9 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
     required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
     required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
   }) {
     return nextStep();
@@ -2094,6 +2464,9 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
     TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
     TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
   }) {
     return nextStep?.call();
@@ -2106,6 +2479,9 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
     TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
     TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
@@ -2122,6 +2498,9 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
     required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
     required TResult Function(_StartStudy value) startStudy,
   }) {
     return nextStep(this);
@@ -2134,6 +2513,9 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
     TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
     TResult? Function(_StartStudy value)? startStudy,
   }) {
     return nextStep?.call(this);
@@ -2146,6 +2528,9 @@ class _$NextStepImpl implements _NextStep {
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
     TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
     TResult Function(_StartStudy value)? startStudy,
     required TResult orElse(),
   }) {
@@ -2202,6 +2587,9 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
     required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
     required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
   }) {
     return goSuccessfulScreen();
@@ -2214,6 +2602,9 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
     TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
     TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
   }) {
     return goSuccessfulScreen?.call();
@@ -2226,6 +2617,9 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
     TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
     TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
@@ -2242,6 +2636,9 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
     required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
     required TResult Function(_StartStudy value) startStudy,
   }) {
     return goSuccessfulScreen(this);
@@ -2254,6 +2651,9 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
     TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
     TResult? Function(_StartStudy value)? startStudy,
   }) {
     return goSuccessfulScreen?.call(this);
@@ -2266,6 +2666,9 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
     TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
     TResult Function(_StartStudy value)? startStudy,
     required TResult orElse(),
   }) {
@@ -2278,6 +2681,420 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
 
 abstract class _GoSuccessfulScreen implements TrainingEvent {
   const factory _GoSuccessfulScreen() = _$GoSuccessfulScreenImpl;
+}
+
+/// @nodoc
+abstract class _$$CantHearImplCopyWith<$Res> {
+  factory _$$CantHearImplCopyWith(
+          _$CantHearImpl value, $Res Function(_$CantHearImpl) then) =
+      __$$CantHearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CantHearImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$CantHearImpl>
+    implements _$$CantHearImplCopyWith<$Res> {
+  __$$CantHearImplCopyWithImpl(
+      _$CantHearImpl _value, $Res Function(_$CantHearImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CantHearImpl implements _CantHear {
+  const _$CantHearImpl();
+
+  @override
+  String toString() {
+    return 'TrainingEvent.cantHear()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CantHearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Topic topic) setTopic,
+    required TResult Function(Subtopic subtopic) setSubtopic,
+    required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
+    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+  }) {
+    return cantHear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Topic topic)? setTopic,
+    TResult? Function(Subtopic subtopic)? setSubtopic,
+    TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
+    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+  }) {
+    return cantHear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Topic topic)? setTopic,
+    TResult Function(Subtopic subtopic)? setSubtopic,
+    TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
+    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    required TResult orElse(),
+  }) {
+    if (cantHear != null) {
+      return cantHear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetTopic value) setTopic,
+    required TResult Function(_SetSubtopic value) setSubtopic,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
+    required TResult Function(_StartStudy value) startStudy,
+  }) {
+    return cantHear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetTopic value)? setTopic,
+    TResult? Function(_SetSubtopic value)? setSubtopic,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
+    TResult? Function(_StartStudy value)? startStudy,
+  }) {
+    return cantHear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetTopic value)? setTopic,
+    TResult Function(_SetSubtopic value)? setSubtopic,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
+    TResult Function(_StartStudy value)? startStudy,
+    required TResult orElse(),
+  }) {
+    if (cantHear != null) {
+      return cantHear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CantHear implements TrainingEvent {
+  const factory _CantHear() = _$CantHearImpl;
+}
+
+/// @nodoc
+abstract class _$$CantSpeakImplCopyWith<$Res> {
+  factory _$$CantSpeakImplCopyWith(
+          _$CantSpeakImpl value, $Res Function(_$CantSpeakImpl) then) =
+      __$$CantSpeakImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CantSpeakImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$CantSpeakImpl>
+    implements _$$CantSpeakImplCopyWith<$Res> {
+  __$$CantSpeakImplCopyWithImpl(
+      _$CantSpeakImpl _value, $Res Function(_$CantSpeakImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CantSpeakImpl implements _CantSpeak {
+  const _$CantSpeakImpl();
+
+  @override
+  String toString() {
+    return 'TrainingEvent.cantSpeak()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CantSpeakImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Topic topic) setTopic,
+    required TResult Function(Subtopic subtopic) setSubtopic,
+    required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
+    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+  }) {
+    return cantSpeak();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Topic topic)? setTopic,
+    TResult? Function(Subtopic subtopic)? setSubtopic,
+    TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
+    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+  }) {
+    return cantSpeak?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Topic topic)? setTopic,
+    TResult Function(Subtopic subtopic)? setSubtopic,
+    TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
+    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    required TResult orElse(),
+  }) {
+    if (cantSpeak != null) {
+      return cantSpeak();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetTopic value) setTopic,
+    required TResult Function(_SetSubtopic value) setSubtopic,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
+    required TResult Function(_StartStudy value) startStudy,
+  }) {
+    return cantSpeak(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetTopic value)? setTopic,
+    TResult? Function(_SetSubtopic value)? setSubtopic,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
+    TResult? Function(_StartStudy value)? startStudy,
+  }) {
+    return cantSpeak?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetTopic value)? setTopic,
+    TResult Function(_SetSubtopic value)? setSubtopic,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
+    TResult Function(_StartStudy value)? startStudy,
+    required TResult orElse(),
+  }) {
+    if (cantSpeak != null) {
+      return cantSpeak(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CantSpeak implements TrainingEvent {
+  const factory _CantSpeak() = _$CantSpeakImpl;
+}
+
+/// @nodoc
+abstract class _$$ZeroHealthImplCopyWith<$Res> {
+  factory _$$ZeroHealthImplCopyWith(
+          _$ZeroHealthImpl value, $Res Function(_$ZeroHealthImpl) then) =
+      __$$ZeroHealthImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ZeroHealthImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$ZeroHealthImpl>
+    implements _$$ZeroHealthImplCopyWith<$Res> {
+  __$$ZeroHealthImplCopyWithImpl(
+      _$ZeroHealthImpl _value, $Res Function(_$ZeroHealthImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ZeroHealthImpl implements _ZeroHealth {
+  const _$ZeroHealthImpl();
+
+  @override
+  String toString() {
+    return 'TrainingEvent.zeroHealth()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ZeroHealthImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Topic topic) setTopic,
+    required TResult Function(Subtopic subtopic) setSubtopic,
+    required TResult Function() nextStep,
+    required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
+    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+  }) {
+    return zeroHealth();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Topic topic)? setTopic,
+    TResult? Function(Subtopic subtopic)? setSubtopic,
+    TResult? Function()? nextStep,
+    TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
+    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+  }) {
+    return zeroHealth?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Topic topic)? setTopic,
+    TResult Function(Subtopic subtopic)? setSubtopic,
+    TResult Function()? nextStep,
+    TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
+    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    required TResult orElse(),
+  }) {
+    if (zeroHealth != null) {
+      return zeroHealth();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetTopic value) setTopic,
+    required TResult Function(_SetSubtopic value) setSubtopic,
+    required TResult Function(_NextStep value) nextStep,
+    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
+    required TResult Function(_StartStudy value) startStudy,
+  }) {
+    return zeroHealth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SetTopic value)? setTopic,
+    TResult? Function(_SetSubtopic value)? setSubtopic,
+    TResult? Function(_NextStep value)? nextStep,
+    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
+    TResult? Function(_StartStudy value)? startStudy,
+  }) {
+    return zeroHealth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetTopic value)? setTopic,
+    TResult Function(_SetSubtopic value)? setSubtopic,
+    TResult Function(_NextStep value)? nextStep,
+    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
+    TResult Function(_StartStudy value)? startStudy,
+    required TResult orElse(),
+  }) {
+    if (zeroHealth != null) {
+      return zeroHealth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ZeroHealth implements TrainingEvent {
+  const factory _ZeroHealth() = _$ZeroHealthImpl;
 }
 
 /// @nodoc
@@ -2358,6 +3175,9 @@ class _$StartStudyImpl implements _StartStudy {
     required TResult Function(Subtopic subtopic) setSubtopic,
     required TResult Function() nextStep,
     required TResult Function() goSuccessfulScreen,
+    required TResult Function() cantHear,
+    required TResult Function() cantSpeak,
+    required TResult Function() zeroHealth,
     required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
   }) {
     return startStudy(topicTitle, subtopic);
@@ -2370,6 +3190,9 @@ class _$StartStudyImpl implements _StartStudy {
     TResult? Function(Subtopic subtopic)? setSubtopic,
     TResult? Function()? nextStep,
     TResult? Function()? goSuccessfulScreen,
+    TResult? Function()? cantHear,
+    TResult? Function()? cantSpeak,
+    TResult? Function()? zeroHealth,
     TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
   }) {
     return startStudy?.call(topicTitle, subtopic);
@@ -2382,6 +3205,9 @@ class _$StartStudyImpl implements _StartStudy {
     TResult Function(Subtopic subtopic)? setSubtopic,
     TResult Function()? nextStep,
     TResult Function()? goSuccessfulScreen,
+    TResult Function()? cantHear,
+    TResult Function()? cantSpeak,
+    TResult Function()? zeroHealth,
     TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
@@ -2398,6 +3224,9 @@ class _$StartStudyImpl implements _StartStudy {
     required TResult Function(_SetSubtopic value) setSubtopic,
     required TResult Function(_NextStep value) nextStep,
     required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
+    required TResult Function(_CantHear value) cantHear,
+    required TResult Function(_CantSpeak value) cantSpeak,
+    required TResult Function(_ZeroHealth value) zeroHealth,
     required TResult Function(_StartStudy value) startStudy,
   }) {
     return startStudy(this);
@@ -2410,6 +3239,9 @@ class _$StartStudyImpl implements _StartStudy {
     TResult? Function(_SetSubtopic value)? setSubtopic,
     TResult? Function(_NextStep value)? nextStep,
     TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult? Function(_CantHear value)? cantHear,
+    TResult? Function(_CantSpeak value)? cantSpeak,
+    TResult? Function(_ZeroHealth value)? zeroHealth,
     TResult? Function(_StartStudy value)? startStudy,
   }) {
     return startStudy?.call(this);
@@ -2422,6 +3254,9 @@ class _$StartStudyImpl implements _StartStudy {
     TResult Function(_SetSubtopic value)? setSubtopic,
     TResult Function(_NextStep value)? nextStep,
     TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
+    TResult Function(_CantHear value)? cantHear,
+    TResult Function(_CantSpeak value)? cantSpeak,
+    TResult Function(_ZeroHealth value)? zeroHealth,
     TResult Function(_StartStudy value)? startStudy,
     required TResult orElse(),
   }) {

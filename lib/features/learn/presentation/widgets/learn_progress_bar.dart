@@ -21,7 +21,7 @@ class LearnProgressBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CancelProgressButton(onPressed: () {}),
+        CancelProgressButton(onPressed: onPressed),
         CustomProgressBar(
           width: MediaQuery.of(context).size.width *
               LearnSizes.learnProgressbarWidth,

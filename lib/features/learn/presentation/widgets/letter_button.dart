@@ -63,6 +63,7 @@ class LetterButtonState extends State<LetterButton> {
                     width: LearnSizes.letterButtonWidth,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
+                      color: AppColors.whiteColor,
                       borderRadius:
                           BorderRadius.circular(GlobalSizes.borderRadiusSmall),
                       gradient: currentGradient,

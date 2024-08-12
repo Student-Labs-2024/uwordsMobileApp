@@ -29,6 +29,12 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   late String _subtopicTitle;
   late Emitter<TrainingState> _emitter;
 
+  bool isCantHear = false;
+  bool isCantSpeak = false;
+
+  DateTime cantHearLimit = DateTime.now();
+  DateTime cantSpeakLimit = DateTime.now();
+
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
     on<_SetTopic>(_getWordsFromTitle);
@@ -36,11 +42,26 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     on<_NextStep>(_eventNextTrainingStep);
     on<_GoSuccessfulScreen>(_goSuccessfulScreen);
     on<_StartStudy>(_handleStartStudy);
+    on<_CantHear>(_setCantHear);
+    on<_CantSpeak>(_setCantSpeak);
+    on<_ZeroHealth>(_setZeroHealthState);
+  }
+
+  void _setZeroHealthState(_ZeroHealth event, Emitter<TrainingState> emit) {
+    emit(const TrainingState.zeroHealthScreen());
+  }
+
+  void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
+    cantHearLimit = cantHearLimit.add(const Duration(minutes: 15));
+    isCantHear = true;
+  }
+
+  void _setCantSpeak(_CantSpeak event, Emitter<TrainingState> emit) {
+    cantSpeakLimit = cantSpeakLimit.add(const Duration(minutes: 15));
+    isCantSpeak = true;
   }
 
   void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
-    emit(const TrainingState.loading());
-
     words = [];
     Topic topic = event.topic;
     for (var subtopic in topic.subtopics) {
@@ -52,8 +73,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   void _getWordsFromSubtitle(_SetSubtopic event, Emitter<TrainingState> emit) {
-    emit(const TrainingState.loading());
-
     words = [];
     Subtopic subtopic = event.subtopic;
     for (var wordInfo in subtopic.wordInfoList) {
@@ -135,7 +154,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     _nextTrainingStep(emit);
   }
 
-  void _nextTrainingStep(Emitter<TrainingState> emit) async {
+  bool reason = false;
+
+  Future<void> _nextTrainingStep(Emitter<TrainingState> emit) async {
+    emit(TrainingState.loading(reason: reason));
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
       emit(const TrainingState.finalScreen());
@@ -156,11 +178,19 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             letters: getLetters()));
         break;
       case 3:
+        if (isCantSpeak) {
+          if (cantSpeakLimit.isAfter(DateTime.now())) {
+            await _nextTrainingStep(emit);
+            return;
+          }
+          isCantSpeak = false;
+        }
         emit(TrainingState.screen3(
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 4:
         emit(TrainingState.screen4(
+            cantHear: isCantHear,
             word: words[wordScreen[currentWordScreenIndex].first],
             selectableWords: getSelectableWords()));
         break;
@@ -175,7 +205,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   Future<void> _handleStartStudy(
       _StartStudy event, Emitter<TrainingState> emit) async {
-    emit(const TrainingState.loading());
+    emit(TrainingState.loading(reason: reason));
     try {
       words = [];
       String accessToken = await userRepository.getCurrentUserAccessToken();

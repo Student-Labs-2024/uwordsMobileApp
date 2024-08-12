@@ -25,7 +25,7 @@ class WordInput extends StatelessWidget {
         border: state != OtherLearnConstants.stateZero &&
                 state != OtherLearnConstants.stateActive &&
                 state != OtherLearnConstants.stateCantHear &&
-                state != OtherLearnConstants.stateCantTell
+                state != OtherLearnConstants.stateCantSpeak
             ? GradientBoxBorder(
                 gradient: OtherLearnConstants.getGradient(state),
                 width: LearnSizes.wordInputBorder,

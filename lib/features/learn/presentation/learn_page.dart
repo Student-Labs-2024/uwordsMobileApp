@@ -104,47 +104,62 @@ class _LearnPageState extends State<LearnPage> {
                   return state.maybeWhen(
                     initial: (topics) {
                       return SafeArea(
-                        child: ListView(
+                        child: Column(
                           children: [
                             Center(
                               child: Padding(
                                 padding: const EdgeInsets.only(
-                                    top: LearnPaddings.headerTitleTop),
+                                    top: LearnPaddings.headerTitleTop,
+                                    bottom: LearnPaddings.headerTitleBottom),
                                 child: Text(
                                   AppLocalizations.of(context).topics,
                                   style: AppTextStyles.recordButtonTitle,
                                 ),
                               ),
                             ),
-                            ...topics.map(
-                              (topic) => Column(
+                            Expanded(
+                              child: ListView(
                                 children: [
-                                  Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: LearnPaddings.normalPadding,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal:
-                                                LearnPaddings.learnPagePadding),
-                                        child: TopicHeader(topic: topic),
-                                      ),
-                                      const SizedBox(
-                                        height: LearnPaddings.normalEdgeInsets,
-                                      ),
-                                      SizedBox(
-                                          height: LearnSizes.subtopicCardHeight,
-                                          child: SubtopicsRow(
-                                              subtopics: topic.subtopics)),
-                                    ],
+                                  const SizedBox(
+                                    height: LearnPaddings.smallEmptySpace,
                                   ),
+                                  ...topics.map(
+                                    (topic) => Column(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: LearnPaddings
+                                                          .learnPagePadding),
+                                              child: TopicHeader(topic: topic),
+                                            ),
+                                            const SizedBox(
+                                              height: LearnPaddings
+                                                  .normalEdgeInsets,
+                                            ),
+                                            SizedBox(
+                                                height: LearnSizes
+                                                    .subtopicCardHeight,
+                                                child: SubtopicsRow(
+                                                    subtopics:
+                                                        topic.subtopics)),
+                                            const SizedBox(
+                                              height:
+                                                  LearnPaddings.normalPadding,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: LearnPaddings.learnPageBottom,
+                                  )
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              height: LearnPaddings.learnPageBottom,
-                            )
                           ],
                         ),
                       );
