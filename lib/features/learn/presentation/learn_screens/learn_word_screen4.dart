@@ -22,7 +22,8 @@ class LearnWordPage4 extends StatefulWidget {
       required this.goNextScreen,
       required this.quit,
       required this.progress,
-      required this.hp});
+      required this.hp,
+      required this.isCantHear});
 
   final WordModel word;
   final List<WordModel> selectableWords;
@@ -30,6 +31,7 @@ class LearnWordPage4 extends StatefulWidget {
   final VoidCallback quit;
   final int progress;
   final int hp;
+  final bool isCantHear;
 
   @override
   State<LearnWordPage4> createState() => LearnWordPage4State();
@@ -41,6 +43,14 @@ class LearnWordPage4State extends State<LearnWordPage4> {
 
   String buttonState = OtherLearnConstants.stateZero;
   String chosedState = OtherLearnConstants.stateActive;
+
+  bool isCantHear = false;
+
+  @override
+  void initState() {
+    isCantHear = widget.isCantHear;
+    super.initState();
+  }
 
   void onPressBottomButton() {
     if (currentChoose == '') return;
@@ -64,6 +74,13 @@ class LearnWordPage4State extends State<LearnWordPage4> {
         buttonState = OtherLearnConstants.stateActive;
       }
       currentChoose = word.enValue;
+    });
+  }
+
+  void onCantHearTap() {
+    widget.goNextScreen(OtherLearnConstants.stateCantHear);
+    setState(() {
+      isCantHear = true;
     });
   }
 
@@ -151,26 +168,32 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height *
-                              LearnPaddings.learnPlaysoundButtonTop,
-                          bottom: MediaQuery.of(context).size.height *
-                              LearnPaddings.learnPlaysoundButtonBottom),
-                      child: PlaysoundButton(
-                        onPressed: () => context
-                            .read<PlayerBloc>()
-                            .add(PlayerEvent.playAudio(widget.word.audioLink)),
+                    if (isCantHear) ...[
+                      const Spacer(),
+                      Text(
+                        widget.word.enValue,
+                        style: LearnTextStyles.wordScreenTitle,
                       ),
-                    ),
-                    InkWell(
-                      onTap: () => widget
-                          .goNextScreen(OtherLearnConstants.stateCantHear),
-                      child: Text(
-                        AppLocalizations.of(context).cantHear,
-                        style: AppTextStyles.learnCant,
+                    ] else ...[
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height *
+                                LearnPaddings.learnPlaysoundButtonTop,
+                            bottom: MediaQuery.of(context).size.height *
+                                LearnPaddings.learnPlaysoundButtonBottom),
+                        child: PlaysoundButton(
+                          onPressed: () => context.read<PlayerBloc>().add(
+                              PlayerEvent.playAudio(widget.word.audioLink)),
+                        ),
                       ),
-                    ),
+                      InkWell(
+                        onTap: onCantHearTap,
+                        child: Text(
+                          AppLocalizations.of(context).cantHear,
+                          style: AppTextStyles.learnCant,
+                        ),
+                      ),
+                    ],
                     const Spacer(),
                     BubbleButton(null,
                         state: buttonState,

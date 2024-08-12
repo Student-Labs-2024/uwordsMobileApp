@@ -16,7 +16,7 @@ class LetterButton extends StatefulWidget {
 }
 
 class LetterButtonState extends State<LetterButton> {
-  Color currentColor = AppColors.whiteColor;
+  LinearGradient? currentGradient;
   int currentAmount = 0;
 
   @override
@@ -26,23 +26,23 @@ class LetterButtonState extends State<LetterButton> {
   }
 
   pressLetterButton() async {
-    if (currentColor == AppColors.incorrectChooseColor) return;
+    if (currentGradient == AppColors.progressBarGreenGradientBack) return;
     if (widget.onPressed(widget.letterInfo.first, currentAmount)) {
       setState(() {
-        currentColor = AppColors.goodColor1;
+        currentGradient = AppColors.progressBarGreenGradientBack;
       });
-      await Future.delayed(const Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 250));
       setState(() {
         currentAmount--;
-        currentColor = AppColors.whiteColor;
+        currentGradient = null;
       });
     } else {
       setState(() {
-        currentColor = AppColors.incorrectChooseColor;
+        currentGradient = AppColors.progressBarRedGradientBack;
       });
       await Future.delayed(const Duration(milliseconds: 500));
       setState(() {
-        currentColor = AppColors.whiteColor;
+        currentGradient = null;
       });
     }
   }
@@ -63,9 +63,11 @@ class LetterButtonState extends State<LetterButton> {
                     width: LearnSizes.letterButtonWidth,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            GlobalSizes.borderRadiusSmall),
-                        color: currentColor),
+                      color: AppColors.whiteColor,
+                      borderRadius:
+                          BorderRadius.circular(GlobalSizes.borderRadiusSmall),
+                      gradient: currentGradient,
+                    ),
                     child: TextButton(
                       onPressed: pressLetterButton,
                       style: ButtonStyle(

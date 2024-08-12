@@ -16,11 +16,12 @@ class LearnPaddings {
   static const double svgIconTopPadding = 20;
   static const double smallestEmptySpace = 3;
   static const double learnPagePadding = 24;
+  static const double bigSubtopicCardRight = 0.071;
   static const double rowBetweenPadding = 10;
   static const double normalPadding = 20;
   static const double topTopicHeaderPadding = 36;
   static const double rightPaddingForSubtopicCard = 22;
-  static const double bottomSortIconPadding = 12;
+  static const double bottomSortIconPadding = 15;
   static const double bubbleBackgroundTop = 137 / 812;
   static const double wordScreenHorizontal = 24 / 375;
   static const double learnProgressBottom = 20;
@@ -39,4 +40,8 @@ class LearnPaddings {
   static const double bottomSheetSubtitleBottom = 25;
   static const double hpLeft = 10;
   static const double bottomSheetHorizontal = 24;
+  static const double headerTitleTop = 38;
+  static const double headerTitleBottom = 10;
+  static const double headerTitleSubtopicBottom = 20;
+  static const double headerSubtopicSearchBottom = 25;
 }

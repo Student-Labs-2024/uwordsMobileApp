@@ -41,7 +41,7 @@ class CustomBottomSheet extends StatelessWidget {
                   topRight: Radius.circular(GlobalSizes.borderRadiusVeryLarge)),
               border: state != OtherLearnConstants.stateZero &&
                       state != OtherLearnConstants.stateCantHear &&
-                      state != OtherLearnConstants.stateCantTell
+                      state != OtherLearnConstants.stateCantSpeak
                   ? GradientBoxBorder(
                       gradient: OtherLearnConstants.getGradient(state),
                       width: LearnSizes.wordInputBorder,

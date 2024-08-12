@@ -23,12 +23,14 @@ class LearnWordPage2 extends StatefulWidget {
       required this.goNextScreen,
       required this.quit,
       required this.progress,
-      required this.hp});
+      required this.hp,
+      required this.hit});
 
   final WordModel word;
   final List<Pair<String, int>> letters;
   final void Function(String) goNextScreen;
   final VoidCallback quit;
+  final VoidCallback hit;
   final int progress;
   final int hp;
 
@@ -53,6 +55,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
       });
       return true;
     }
+    widget.hit();
     return false;
   }
 
@@ -69,12 +72,9 @@ class LearnWordPage2State extends State<LearnWordPage2> {
       });
       widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
-  }
-
-  @override
-  void dispose() {
     answer = '';
-    super.dispose();
+    isAnswerCorrect = false;
+    inputState = OtherLearnConstants.stateZero;
   }
 
   @override

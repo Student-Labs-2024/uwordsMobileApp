@@ -3,7 +3,9 @@ part of 'training_bloc.dart';
 @freezed
 abstract class TrainingState with _$TrainingState {
   const factory TrainingState.initial() = _TrainingInitial;
-  const factory TrainingState.loading() = _TrainingIsLoading;
+  const factory TrainingState.loading({
+    required bool reason,
+  }) = _TrainingIsLoading;
   const factory TrainingState.failed({
     required String message,
   }) = _TrainingFailed;
@@ -19,10 +21,12 @@ abstract class TrainingState with _$TrainingState {
     required WordModel word,
   }) = _Screen3;
   const factory TrainingState.screen4({
+    required bool cantHear,
     required WordModel word,
     required List<WordModel> selectableWords,
   }) = _Screen4;
   const factory TrainingState.finalScreen() = _FinalScreen;
+  const factory TrainingState.zeroHealthScreen() = _ZeroHealthScreen;
   const factory TrainingState.success({
     required WordModel word,
   }) = _Success;

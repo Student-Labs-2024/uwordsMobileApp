@@ -17,7 +17,7 @@ class AppImageSource {
   static const String topCodeBackground = 'assets/png/top_background.png';
   static const String bottomCodeBackground = 'assets/png/bottom_background.png';
   static const String returnIcon = 'assets/svg/return.svg';
-  static const String optionsIco = 'assets/svg/options_ico.svg';
+  static const String optionsIcon = 'assets/svg/options_icon.svg';
   static const String onfireIcon = 'assets/png/onfire_icon.png';
   static const String precision0Icon = 'assets/png/precision0_icon.png';
   static const String precision20Icon = 'assets/png/precision20_icon.png';
@@ -67,5 +67,7 @@ class AppImageSource {
   static const String soundIcon = 'assets/svg/sound_icon.svg';
   static const String hpIcon = 'assets/svg/hp_icon.svg';
   static const String lostHpIcon = 'assets/svg/lostHp_icon.svg';
+  static const String subtopicHeaderBubbles =
+      'assets/png/subtopic_header_bubbles.png';
   static const String failedIcon = 'assets/svg/failed.svg';
 }
