@@ -103,7 +103,7 @@ flutter run
 ```
 
 ## Suppported platforms
-Android >= 5.0, iOS >= 12.0.
+Android >= 5.0, iOS >= 13.0.
 Support for tablets and horizontal position is not provided. 
 Since we use adaptive layout, regardless of what resolution is on the phone, it will open and view correctly. In our case, the display will be checked on devices such as iPhone models XR and 11, Realme Narzo 30, Honor 20 Pro, POCO M6 Pro, Realme c31, as well as F+ R5070E with Aurora OS
 

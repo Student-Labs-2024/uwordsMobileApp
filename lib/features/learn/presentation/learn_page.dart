@@ -11,7 +11,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/subtopic_page.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
-import 'package:uwords/features/learn/presentation/widgets/sort_settings_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_row.dart';
 import 'package:uwords/features/learn/presentation/widgets/topic_header.dart';
@@ -99,9 +98,8 @@ class _LearnPageState extends State<LearnPage> {
                                 InkWell(
                                   onTap: () {
                                     context.read<LearningBloc>().add(
-                                        LearningEvent.getTopics(
-                                            AppLocalizations.of(context)
-                                                .inProgressTopicName));
+                                        const LearningEvent
+                                            .returnToAllTopics());
                                   },
                                   child: SvgPicture.asset(
                                     AppImageSource.returnIcon,
@@ -165,16 +163,15 @@ class _LearnPageState extends State<LearnPage> {
                                           hintText: AppLocalizations.of(context)
                                               .search),
                                     ),
-                                    const SizedBox(
-                                      width: LearnPaddings.rowBetweenPadding,
+                                    SizedBox(
+                                      width: _isChosenSort == true
+                                          ? LearnPaddings.rowBetweenPadding / 2
+                                          : LearnPaddings.rowBetweenPadding,
                                     ),
-                                    SortSettingsButton(
+                                    SortButton(
                                       subtopics: topic.subtopics,
                                       onTap: setState,
-                                    ),
-                                    _isChosenSort == true
-                                        ? const SortButton()
-                                        : const SizedBox()
+                                    )
                                   ],
                                 ),
                               )

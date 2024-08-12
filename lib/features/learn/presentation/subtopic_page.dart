@@ -79,7 +79,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                         },
                                         child: Text(
                                           AppLocalizations.of(context)
-                                              .sortByCoutOfWords,
+                                              .byFriquency,
                                           style: AppTextStyles.pinCodeText,
                                         ),
                                       ),
@@ -94,7 +94,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                         },
                                         child: Text(
                                           AppLocalizations.of(context)
-                                              .sortByProgress,
+                                              .byProgressWords,
                                           style: AppTextStyles.pinCodeText,
                                         ),
                                       ),
@@ -152,7 +152,6 @@ class _SubtopicPageState extends State<SubtopicPage> {
                       horizontal: LearnPaddings.learnPagePadding),
                   child: BubbleButton(null,
                       maximumWidth: MediaQuery.of(context).size.width,
-                      // TODO add context.read<TrainingBloc>().add();
                       onPressed: () {
                     context.read<TrainingBloc>().add(TrainingEvent.startStudy(
                         widget.topic.topicTitle, widget.subtopic));
