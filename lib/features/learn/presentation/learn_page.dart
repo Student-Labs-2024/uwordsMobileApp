@@ -208,12 +208,9 @@ class _LearnPageState extends State<LearnPage> {
                                     width: LearnPaddings.rowBetweenPadding,
                                   ),
                                   SortButton(
-                                      subtopics: topic.subtopics,
-                                      onTap: setState,
-                                    ),
-                                  _isChosenSort == true
-                                      ? const SortButton()
-                                      : const SizedBox()
+                                    subtopics: topic.subtopics,
+                                    onTap: setState,
+                                  ),
                                 ],
                               ),
                             ),
