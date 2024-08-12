@@ -161,7 +161,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
       emit(const TrainingState.finalScreen());
-      // TODO check this line after merging
       await wordsRepository.sendLearnedWords(
           accessToken: await userRepository.getCurrentUserAccessToken(),
           wordsId: words.map((word) => word.id).toList());
