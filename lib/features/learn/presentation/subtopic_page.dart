@@ -75,10 +75,10 @@ class _SubtopicPageState extends State<SubtopicPage> {
                           ),
                           InkWell(
                             onTap: () {
-                              context.read<LearningBloc>().add(
-                                  LearningEvent.getTopics(
-                                      AppLocalizations.of(context)
-                                          .inProgressTopicName));
+                              context
+                                  .read<LearningBloc>()
+                                  .add(const LearningEvent.returnToAllTopics());
+                              context.go('/learn');
                             },
                             child: SvgPicture.asset(
                               AppImageSource.returnIcon,

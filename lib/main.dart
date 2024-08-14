@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:animations/animations.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,8 @@ import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
+import 'package:uwords/theme/app_colors.dart';
+import 'features/learn/presentation/core_subtopic_page.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -88,9 +91,16 @@ final GoRouter _goRouter = GoRouter(
           builder: (context, state) => const HomePage(),
         ),
         GoRoute(
-          path: '/learn',
-          builder: (context, state) => const LearnPage(),
-        ),
+            path: '/learn',
+            builder: (context, state) => const LearnPage(),
+            routes: [
+              GoRoute(
+                  path: 'subtopic',
+                  name: 'subtopic',
+                  parentNavigatorKey: _rootNavKey,
+                  pageBuilder: (context, state) => SharedAxisTransitionPage(
+                      child: const CoreSubtopicPage())),
+            ]),
         GoRoute(
           path: '/learnCore',
           builder: (context, state) => const LearnCoreScreen(),
@@ -162,4 +172,28 @@ class MainApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class SharedAxisTransitionPage extends CustomTransitionPage {
+  SharedAxisTransitionPage({
+    required super.child,
+    super.name,
+    super.arguments,
+    super.restorationId,
+    super.key,
+    SharedAxisTransitionType transitionType =
+        SharedAxisTransitionType.horizontal,
+  }) : super(
+            transitionsBuilder: (
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+          Widget child,
+        ) =>
+                SharedAxisTransition(
+                    fillColor: AppColors.animationColor,
+                    transitionType: transitionType,
+                    animation: animation,
+                    secondaryAnimation: secondaryAnimation,
+                    child: child));
 }

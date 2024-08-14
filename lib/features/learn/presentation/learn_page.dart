@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
@@ -232,12 +233,6 @@ class _LearnPageState extends State<LearnPage> {
                             ),
                           ],
                         ),
-                      );
-                    },
-                    openSubtopic: (topic, subtopic) {
-                      return SubtopicPage(
-                        topic: topic,
-                        subtopic: subtopic,
                       );
                     },
                     orElse: () {
