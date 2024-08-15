@@ -145,13 +145,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
     );
     final String currentPlatform = whichPlatformIs().name;
     try {
-  await client.registerUserVk(
-      jsonEncode(registerRequestBody),
-      joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
-      currentPlatform);
-} on DioException catch (e) {
+      await client.registerUserVk(
+          jsonEncode(registerRequestBody),
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+          currentPlatform);
+    } on DioException catch (e) {
       noInternetCheck(e);
-}
+    }
   }
 
   @override
@@ -202,7 +202,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         case 400:
           throw NotValidDataForLoginException();
         case 401:
-        throw NotRegisteredException(provider: provider);
+          throw NotRegisteredException(provider: provider);
         case 403:
           throw AccessIsBannedException();
         case 404:

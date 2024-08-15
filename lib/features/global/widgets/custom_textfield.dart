@@ -85,7 +85,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
     return [
       SizedBox(
-        height: _isNotError ? GlobalSizes.borderRadiusSmall : GlobalSizes.customTextFieldErrorHeight,
+        height: _isNotError
+            ? GlobalSizes.borderRadiusSmall
+            : GlobalSizes.customTextFieldErrorHeight,
       )
     ];
   }

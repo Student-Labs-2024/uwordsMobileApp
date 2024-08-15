@@ -164,8 +164,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       emit(const TrainingState.finalScreen());
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
-          accessToken: accessToken,
-          wordsId: wordsInfoIDs);
+          accessToken: accessToken, wordsId: wordsInfoIDs);
       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
