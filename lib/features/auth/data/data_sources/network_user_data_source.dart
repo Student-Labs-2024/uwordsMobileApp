@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/exception_check.dart';
 import 'package:uwords/common/utils/jwt.dart';
+import 'package:uwords/common/utils/platform.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/auth_client.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
@@ -54,8 +55,10 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> authorizateVk({required String accessToken}) async {
     try {
+      final String currentPlatform = whichPlatformIs().name;
       final response = await client.loginVK(
-          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+          currentPlatform);
       final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
           tokenType: tokenType, token: response.data['access_token'] ?? ''));
       return UserAuthDto.fromJsonAndOtherFields(
@@ -140,17 +143,28 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       firstname: name,
       lastname: surname,
     );
-    await client.registerUserVk(jsonEncode(registerRequestBody),
-        joinTokenTypeAndToken(tokenType: tokenType, token: accessToken));
+    final String currentPlatform = whichPlatformIs().name;
+    try {
+  await client.registerUserVk(
+      jsonEncode(registerRequestBody),
+      joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+      currentPlatform);
+} on DioException catch (e) {
+      noInternetCheck(e);
+}
   }
 
   @override
   Future<void> registerUserFromGoogle({
     required String uid,
   }) async {
-    final RegisterGoogleRequestBody registerGoogleRequestBody =
-        RegisterGoogleRequestBody(uid: uid);
-    await client.registerUserGoogle(jsonEncode(registerGoogleRequestBody));
+    try {
+      final RegisterGoogleRequestBody registerGoogleRequestBody =
+          RegisterGoogleRequestBody(uid: uid);
+      await client.registerUserGoogle(jsonEncode(registerGoogleRequestBody));
+    } on DioException catch (e) {
+      noInternetCheck(e);
+    }
   }
 
   @override
@@ -187,6 +201,8 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       switch (e.response!.statusCode) {
         case 400:
           throw NotValidDataForLoginException();
+        case 401:
+        throw NotRegisteredException(provider: provider);
         case 403:
           throw AccessIsBannedException();
         case 404:

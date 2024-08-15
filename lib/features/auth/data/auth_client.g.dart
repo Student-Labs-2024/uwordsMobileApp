@@ -52,11 +52,12 @@ class _AuthClient implements AuthClient {
   @override
   Future<void> registerUserVk(
     dynamic body,
-    String accessToken, {
+    String accessToken,
+    String platform, {
     String contentType = 'application/json',
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'platform': platform};
     final _headers = <String, dynamic>{
       r'Authorization': accessToken,
       r'Content-Type': contentType,
@@ -146,11 +147,12 @@ class _AuthClient implements AuthClient {
 
   @override
   Future<HttpResponse<Map<String, String>>> loginVK(
-    String accessToken, {
+    String accessToken,
+    String platform, {
     String contentType = 'application/json',
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'platform': platform};
     final _headers = <String, dynamic>{
       r'Authorization': accessToken,
       r'Content-Type': contentType,

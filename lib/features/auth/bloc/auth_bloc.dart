@@ -180,12 +180,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _signInWithGoogle() async {
     try {
       final u = GoogleSignIn();
-      try {
-        await u.disconnect();
-        await FirebaseAuth.instance.signOut();
-      } on Exception {
-        return;
-      }
       final GoogleSignInAccount? user = await u.signIn();
       final GoogleSignInAuthentication gAuth = await user!.authentication;
 
