@@ -10,7 +10,7 @@ class CoreSubtopicPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LearningBloc, LearningState>(builder: (context, state) {
       return state.maybeMap(
-          orElse: () => Center(),
+          orElse: () => const Center(),
           openSubtopic: (state) => SubtopicPage(
                 topic: state.topic,
                 subtopic: state.subtopic,
