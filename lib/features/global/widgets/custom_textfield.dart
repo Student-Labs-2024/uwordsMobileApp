@@ -88,7 +88,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
     return [
       const SizedBox(
-        height: GlobalSizes.customTextFieldErrorHeight,
+        height: GlobalSizes.borderRadiusSmall,
       )
     ];
   }
@@ -101,10 +101,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
           height: HomePageComponentSizes.linkTextFieldHeight,
           padding: const EdgeInsets.symmetric(
               horizontal: GlobalPaddings.customTextFieldHorizontal),
-          margin: widget.isErrorDisplay
-              ? null
-              : const EdgeInsets.only(
-                  bottom: GlobalPaddings.customTextFieldTop),
           decoration: fis.BoxDecoration(
               color: AppColors.whiteBackgroundColor,
               borderRadius:
