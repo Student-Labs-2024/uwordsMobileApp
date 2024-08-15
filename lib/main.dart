@@ -24,13 +24,13 @@ import 'package:uwords/features/learn/data/data_sources/interface_words_data_sou
 import 'package:uwords/features/learn/data/data_sources/words_data_source.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/data/repositores/words_repository.dart';
+import 'package:uwords/features/learn/presentation/core_learn_page.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/core_learn_screen.dart';
 import 'package:uwords/features/main/data/data_sources/audio_datasource.dart';
 import 'package:uwords/features/main/data/repositories/audio_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
 import 'package:uwords/features/main/data/data_sources/iterface_audio_datasource.dart';
 import 'package:uwords/features/main/presentation/pages/home_page.dart';
-import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
@@ -92,7 +92,7 @@ final GoRouter _goRouter = GoRouter(
         ),
         GoRoute(
             path: '/learn',
-            builder: (context, state) => const LearnPage(),
+            builder: (context, state) => const CoreLearnPage(),
             routes: [
               GoRoute(
                   path: 'subtopic',

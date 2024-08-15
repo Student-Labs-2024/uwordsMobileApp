@@ -35,13 +35,6 @@ class _LearnPageState extends State<LearnPage> {
     _pageController = PageController();
   }
 
-  @override
-  void didChangeDependencies() {
-    context.read<LearningBloc>().add(LearningEvent.getTopics(
-        AppLocalizations.of(context).inProgressTopicName));
-    super.didChangeDependencies();
-  }
-
   List<Subtopic> _buildSearchList(List<Subtopic> subtopicList) {
     if (_searchText.isEmpty) {
       return subtopicList;
