@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/auth/domain/user_auth_mapper.dart';
+import 'package:uwords/features/database/savable_user_exception.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 
 abstract interface class ISavableUserDataSource {
@@ -60,8 +61,12 @@ class SavableUserDataSource implements ISavableUserDataSource {
 
   @override
   Future<UserAuthDto> getCurrent() async {
-    return UserAuthDto.fromDB(await (database.select(database.userAuth)
-          ..where((u) => u.isCurrent.equals(true)))
-        .getSingle());
+    try {
+      return UserAuthDto.fromDB(await (database.select(database.userAuth)
+            ..where((u) => u.isCurrent.equals(true)))
+          .getSingle());
+    } on Error {
+      throw NoneIsCurrentException();
+    }
   }
 }

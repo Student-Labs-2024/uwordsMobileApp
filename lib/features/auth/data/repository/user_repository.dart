@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/utils/jwt.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
@@ -30,10 +32,14 @@ class UserRepository implements IUserRepository {
   @override
   Future<String> refreshAccessToken() async {
     UserAuthDto userDto = await savableUserDataSource.getCurrent();
-    await _saveUser(
-        userDto:
-            await networkUserDataSource.refreshAccessToken(userDto: userDto));
-    return userDto.accessToken;
+    if (isTokenExpired(accessToken: userDto.refreshToken)) {
+      UserAuthDto newUserAuthDto =
+          await networkUserDataSource.refreshAccessToken(userDto: userDto);
+      await _saveUser(userDto: newUserAuthDto);
+      return userDto.accessToken;
+    } else {
+      throw OldRefreshToken();
+    }
   }
 
   @override
@@ -97,8 +103,12 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<String> getCurrentUserAccessToken() async {
-    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    return currentUser.accessToken;
+    try {
+      UserAuthDto currentUser = await savableUserDataSource.getCurrent();
+      return currentUser.accessToken;
+    } on Exception {
+      rethrow;
+    }
   }
 
   @override

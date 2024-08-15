@@ -75,6 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void initState() {
+    context.read<AuthBloc>().add(const AuthEvent.autoLogin());
     super.initState();
   }
 
@@ -101,7 +102,19 @@ class _RegisterPageState extends State<RegisterPage> {
             });
           },
           builder: (context, state) {
-            return state.maybeWhen(orElse: () {
+            return state.maybeWhen(waitingAnswer: () {
+              return const DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: AppColors.backgroundGradient,
+                ),
+                child: SafeArea(
+                  child: Center(
+                      child: CircularProgressIndicator(
+                    color: AppColors.darkMainColor,
+                  )),
+                ),
+              );
+            }, orElse: () {
               return DecoratedBox(
                 decoration: const BoxDecoration(
                   gradient: AppColors.backgroundGradient,

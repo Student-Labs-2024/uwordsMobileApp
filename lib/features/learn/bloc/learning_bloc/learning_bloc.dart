@@ -83,7 +83,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       var inProgressTopic = Topic(
           topicTitle: inProgressTopicName,
           //TODO Change to newTopics
-          subtopics: [mockTopic]
+          subtopics: newTopics
               .map((topic) => topic.subtopics)
               .expand((subtopics) => subtopics)
               .where((subtopic) =>
@@ -97,6 +97,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
             inProgressTopic.subtopics.reversed.toList());
         topics.add(inProgressTopic);
       }
+      newTopics.removeAt(0);
       topics.addAll(newTopics);
       findTopicBySubtopicMap = {
         for (Topic topic in topics)

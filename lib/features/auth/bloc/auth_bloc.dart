@@ -8,6 +8,7 @@ import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
@@ -29,6 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   DateTime _birthDate = DateTime.now();
   late Emitter<AuthState> _emitter;
   late AuthorizationProvider _provider;
+  bool isFirstLoginCompleted = false;
 
   AuthBloc({required this.userRepository}) : super(const AuthState.initial()) {
     on<_RequestCode>(_handleRequestCode);
@@ -38,6 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
     on<_LogOut>(_handleLogOut);
     on<_ChangeDataForRegister>(_handleChangeDataForRegister);
+    on<_AutoLogin>(_handleAutoLogin);
   }
 
   Future<void> _handleRequestCode(
@@ -148,6 +151,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _handleChangeDataForRegister(
       _ChangeDataForRegister event, Emitter<AuthState> emit) async {
     emit(const AuthState.initial());
+  }
+
+  Future<void> _handleAutoLogin(
+      _AutoLogin event, Emitter<AuthState> emit) async {
+    if (isFirstLoginCompleted == false) {
+      isFirstLoginCompleted = true;
+      emit(const AuthState.waitingAnswer());
+      try {
+        final String accessToken =
+            await userRepository.getCurrentUserAccessToken();
+        checkTokenExpirationAndUpdateIfNeed(
+            accessToken: accessToken, userRepository: userRepository);
+        emit(const AuthState.success(AuthSuccess.authorized));
+      } on Exception{
+        emit(const AuthState.initial());
+      }
+    } else {
+      emit(const AuthState.initial());
+    }
   }
 
   Future<void> _signInWithVk() async {
