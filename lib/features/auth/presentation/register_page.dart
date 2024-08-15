@@ -189,8 +189,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                               text: AppLocalizations.of(context)
                                   .signInWithGoogle),
-                          const SizedBox(
-                              height: AuthDesignedPaddings.emptySpaceVertical),
                           BubbleButton(SvgPicture.asset(AppImageSource.vkIcon),
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),

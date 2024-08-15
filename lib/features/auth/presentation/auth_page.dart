@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
-import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
@@ -107,9 +106,6 @@ class _AuthPageState extends State<AuthPage> {
                                         emailAddress: mailController.text,
                                         password: passwordController.text));
                               }, text: AppLocalizations.of(context).signIn),
-                            ),
-                            const SizedBox(
-                              height: AuthUndesignedConstants.smallestContainer,
                             ),
                             DividerWithText(
                               text: AppLocalizations.of(context).or,

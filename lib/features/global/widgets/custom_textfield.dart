@@ -64,9 +64,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
         !_isNotError &&
         widget.controller.text.isNotEmpty) {
       return [
-        const SizedBox(
-          height: HomePageComponentSizes.linkTextFieldSpacing,
-        ),
         SizedBox(
           height: GlobalSizes.customTextFieldErrorHeight,
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -87,8 +84,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ];
     }
     return [
-      const SizedBox(
-        height: GlobalSizes.borderRadiusSmall,
+      SizedBox(
+        height: _isNotError ? GlobalSizes.borderRadiusSmall : GlobalSizes.customTextFieldErrorHeight,
       )
     ];
   }
