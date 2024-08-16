@@ -40,3 +40,8 @@ class NotRegisteredExceptionBySelfProvider implements Exception {
   String message;
   NotRegisteredExceptionBySelfProvider({this.message = ""});
 }
+
+class OldRefreshToken implements Exception {
+  String message;
+  OldRefreshToken({this.message = ""});
+}

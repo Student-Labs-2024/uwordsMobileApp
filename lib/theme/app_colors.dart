@@ -131,4 +131,6 @@ class AppColors {
   ]);
 
   static const Color imperial45 = Color.fromRGBO(83, 45, 106, 0.45);
+
+  static const Color animationColor = Color.fromRGBO(216, 227, 255, 1);
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
@@ -39,6 +40,7 @@ class SubtopicCard extends StatelessWidget {
             context
                 .read<LearningBloc>()
                 .add(LearningEvent.getWordsBySubtopic(subtopic));
+            context.go("/learn/subtopic");
           },
           child: Stack(
             children: [

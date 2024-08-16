@@ -83,7 +83,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       var inProgressTopic = Topic(
           topicTitle: inProgressTopicName,
           //TODO Change to newTopics
-          subtopics: [mockTopic]
+          subtopics: newTopics
               .map((topic) => topic.subtopics)
               .expand((subtopics) => subtopics)
               .where((subtopic) =>

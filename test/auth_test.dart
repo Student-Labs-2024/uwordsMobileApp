@@ -112,6 +112,50 @@ void main() {
         reset(mockUserRepository);
       },
     );
+
+    blocTest(
+      'emits [AuthState.waitingAnswer, AuthState.success(AuthSuccess.autorized)] when Auto Login with correct token',
+      setUp: () {
+        registerUserRepositoryMethods(
+          userRepository: mockUserRepository,
+          accessToken: correctAccessToken,
+          refreshAccessToken: correctRefreshToken,
+        );
+      },
+      build: () => AuthBloc(userRepository: mockUserRepository),
+      act: (bloc) {
+        bloc.add(const AuthEvent.autoLogin());
+      },
+      expect: () => const <AuthState>[
+        AuthState.waitingAnswer(),
+        AuthState.success(AuthSuccess.authorized),
+      ],
+      tearDown: () {
+        reset(mockUserRepository);
+      },
+    );
+
+    blocTest(
+      'emits [AuthState.waitingAnswer, AuthState.initial] when Auto Login throw Exception',
+      setUp: () {
+        registerUserRepositoryMethodsWithException(
+          userRepository: mockUserRepository,
+          accessToken: correctAccessToken,
+          refreshAccessToken: correctRefreshToken,
+        );
+      },
+      build: () => AuthBloc(userRepository: mockUserRepository),
+      act: (bloc) {
+        bloc.add(const AuthEvent.autoLogin());
+      },
+      expect: () => const <AuthState>[
+        AuthState.waitingAnswer(),
+        AuthState.initial(),
+      ],
+      tearDown: () {
+        reset(mockUserRepository);
+      },
+    );
   });
 }
 

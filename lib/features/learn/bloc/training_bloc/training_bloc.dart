@@ -12,6 +12,7 @@ import 'package:uwords/features/learn/data/repositores/interface_words_repositor
 import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
+import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 part 'training_bloc_state.dart';
@@ -24,6 +25,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   final random = Random();
 
   List<WordModel> words = [];
+  List<int> wordsInfoIDs = [];
 
   List<Pair<int, int>> wordScreen = [];
   int currentWordScreenIndex = -1;
@@ -176,8 +178,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       emit(const TrainingState.finalScreen());
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
-          accessToken: accessToken,
-          wordsId: words.map((word) => word.id).toList());
+          accessToken: accessToken, wordsId: wordsInfoIDs);
       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
@@ -232,13 +233,16 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
-      List<WordModel> result = await wordsRepository.getWordsForStart(
+      List<WordInfo> result = await wordsRepository.getWordsForStart(
           accessToken: accessToken,
           topicTitle: event.topicTitle,
           subtopicTitle: event.subtopic.subtopicTitle);
       List<WordModel> placeholders =
           event.subtopic.wordInfoList.map((e) => e.word).toList();
-      words.addAll(result.isEmpty ? placeholders.take(4) : result);
+      wordsInfoIDs.addAll(result.map((wordInfo) => wordInfo.id));
+      words.addAll(result.isEmpty
+          ? placeholders.take(4)
+          : result.map((wordInfo) => wordInfo.word).toList());
       _startTraining(emit);
     } on Exception catch (e) {
       _emitter = emit;
@@ -254,10 +258,11 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     switch (error.runtimeType) {
       case const (OldAccessException):
         String accessToken = await userRepository.refreshAccessToken();
-        words.addAll(await wordsRepository.getWordsForStart(
+        List<WordInfo> result = await wordsRepository.getWordsForStart(
             accessToken: accessToken,
             topicTitle: _topicTitle,
-            subtopicTitle: _subtopicTitle));
+            subtopicTitle: _subtopicTitle);
+        words.addAll(result.map((wordInfo) => wordInfo.word).toList());
         _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));

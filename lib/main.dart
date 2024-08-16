@@ -16,6 +16,7 @@ import 'package:uwords/features/auth/presentation/auth_page.dart';
 import 'package:uwords/features/auth/presentation/register_page.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
+import 'package:uwords/features/global/animations/change_page_animation.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
@@ -23,19 +24,20 @@ import 'package:uwords/features/learn/data/data_sources/interface_words_data_sou
 import 'package:uwords/features/learn/data/data_sources/words_data_source.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/data/repositores/words_repository.dart';
+import 'package:uwords/features/learn/presentation/core_learn_page.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/core_learn_screen.dart';
 import 'package:uwords/features/main/data/data_sources/audio_datasource.dart';
 import 'package:uwords/features/main/data/repositories/audio_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
 import 'package:uwords/features/main/data/data_sources/iterface_audio_datasource.dart';
 import 'package:uwords/features/main/presentation/pages/home_page.dart';
-import 'package:uwords/features/learn/presentation/learn_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
+import 'features/learn/presentation/core_subtopic_page.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -88,9 +90,16 @@ final GoRouter _goRouter = GoRouter(
           builder: (context, state) => const HomePage(),
         ),
         GoRoute(
-          path: '/learn',
-          builder: (context, state) => const LearnPage(),
-        ),
+            path: '/learn',
+            builder: (context, state) => const CoreLearnPage(),
+            routes: [
+              GoRoute(
+                  path: 'subtopic',
+                  name: 'subtopic',
+                  parentNavigatorKey: _rootNavKey,
+                  pageBuilder: (context, state) => SharedAxisTransitionPage(
+                      child: const CoreSubtopicPage())),
+            ]),
         GoRoute(
           path: '/learnCore',
           builder: (context, state) => const LearnCoreScreen(),

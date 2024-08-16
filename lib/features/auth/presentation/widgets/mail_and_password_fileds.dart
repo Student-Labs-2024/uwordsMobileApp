@@ -41,7 +41,7 @@ class _MailAndPasswordFiledsState extends State<MailAndPasswordFileds> {
               isErrorDisplay: true,
               isNotError: () =>
                   isCorrectPassword(password: widget.passwordController.text),
-              errorMessage: AppLocalizations.of(context).wrongPassword,
+              errorMessage: AppLocalizations.of(context).simplePassword,
             ),
           ],
         );
