@@ -36,4 +36,7 @@ class OtherLearnConstants {
         return AppColors.unactiveBubbleButtonGradient;
     }
   }
+
+  static const int progressStep = 7;
+  static const int maxHP = 3;
 }
