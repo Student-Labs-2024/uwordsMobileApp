@@ -181,7 +181,7 @@ final Subtopic subtopicTest = Subtopic(
     wordInfoList: [
       WordInfo(
           id: 0,
-          word: WordModel(
+          word: const WordModel(
               id: 0,
               enValue: 'Street',
               ruValue: 'Улица',
@@ -194,7 +194,7 @@ final Subtopic subtopicTest = Subtopic(
           progress: 0),
       WordInfo(
           id: 1,
-          word: WordModel(
+          word: const WordModel(
               id: 1,
               enValue: 'Mountain',
               ruValue: 'Гора',
@@ -207,7 +207,7 @@ final Subtopic subtopicTest = Subtopic(
           progress: 0),
       WordInfo(
           id: 2,
-          word: WordModel(
+          word: const WordModel(
               id: 2,
               enValue: 'Field',
               ruValue: 'Поле',
@@ -220,7 +220,7 @@ final Subtopic subtopicTest = Subtopic(
           progress: 0),
       WordInfo(
           id: 3,
-          word: WordModel(
+          word: const WordModel(
               id: 3,
               enValue: 'Lake',
               ruValue: 'Озеро',
