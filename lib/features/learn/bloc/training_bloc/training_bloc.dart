@@ -64,6 +64,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
+    words = [];
     Topic topic = event.topic;
     for (var subtopic in topic.subtopics) {
       for (var wordInfo in subtopic.wordInfoList) {
@@ -74,6 +75,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   void _getWordsFromSubtitle(_SetSubtopic event, Emitter<TrainingState> emit) {
+    words = [];
     Subtopic subtopic = event.subtopic;
     for (var wordInfo in subtopic.wordInfoList) {
       words.add(wordInfo.word);
