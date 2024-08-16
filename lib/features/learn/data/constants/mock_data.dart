@@ -232,3 +232,5 @@ final Subtopic subtopicTest = Subtopic(
           frequency: 0,
           progress: 0),
     ]);
+final mockTopicWithOneSubtopic =
+    Topic(topicTitle: "Mock data with one subtopic", subtopics: [subtopicTest]);
