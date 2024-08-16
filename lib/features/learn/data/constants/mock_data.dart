@@ -171,3 +171,64 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             progress: 0),
       ]),
 ]);
+
+final Subtopic subtopicTest = Subtopic(
+    subtopicTitle: 'Фото',
+    wordCount: 3,
+    progress: 52,
+    pictureLink:
+        'https://app.big-nose.ru:9100/uwords-subtopic-icons/Art_Photo.svg',
+    wordInfoList: [
+      WordInfo(
+          id: 0,
+          word: WordModel(
+              id: 0,
+              enValue: 'Street',
+              ruValue: 'Улица',
+              audioLink: 'audioLink',
+              pictureLink:
+                  'https://get.wallhere.com/photo/street-light-city-street-cityscape-car-urban-building-sky-winter-road-house-evening-morning-traffic-town-highway-transport-Manhattan-metropolis-asphalt-infrastructure-pedestrian-tree-downtown-plant-newyork-nyc-landmark-daytime-suburb-lane-urban-area-woody-plant-metropolitan-area-neighbourhood-residential-area-road-surface-cabs-thoroughfare-885905.jpg'),
+          userId: 0,
+          latestStudy: null,
+          frequency: 0,
+          progress: 0),
+      WordInfo(
+          id: 1,
+          word: WordModel(
+              id: 1,
+              enValue: 'Mountain',
+              ruValue: 'Гора',
+              audioLink: 'audioLink',
+              pictureLink:
+                  'https://get.wallhere.com/photo/landscape-mountains-nature-snow-winter-mountain-pass-Alps-summit-plateau-ridge-mountain-weather-season-Massif-adventure-mountainous-landforms-landform-geographical-feature-geological-phenomenon-mountain-range-mountaineering-cirque-288828.jpg'),
+          userId: 1,
+          latestStudy: null,
+          frequency: 0,
+          progress: 0),
+      WordInfo(
+          id: 2,
+          word: WordModel(
+              id: 2,
+              enValue: 'Field',
+              ruValue: 'Поле',
+              audioLink: 'audioLink',
+              pictureLink:
+                  'https://img.goodfon.com/original/2048x1363/a/9b/leto-zelen-les-pole-trava-derevia-nebo-solntse-hdr.jpg'),
+          userId: 2,
+          latestStudy: null,
+          frequency: 0,
+          progress: 0),
+      WordInfo(
+          id: 3,
+          word: WordModel(
+              id: 3,
+              enValue: 'Lake',
+              ruValue: 'Озеро',
+              audioLink: 'audioLink',
+              pictureLink:
+                  'https://s1.1zoom.me/big0/21/Scenery_Mountains_Lake_489390.jpg'),
+          userId: 3,
+          latestStudy: null,
+          frequency: 0,
+          progress: 0),
+    ]);

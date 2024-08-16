@@ -19,14 +19,17 @@ mixin _$TrainingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
@@ -36,13 +39,15 @@ mixin _$TrainingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
@@ -52,13 +57,15 @@ mixin _$TrainingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -156,26 +163,20 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$TrainingInitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
@@ -188,13 +189,15 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
@@ -207,13 +210,15 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -291,8 +296,6 @@ abstract class _$$TrainingIsLoadingImplCopyWith<$Res> {
   factory _$$TrainingIsLoadingImplCopyWith(_$TrainingIsLoadingImpl value,
           $Res Function(_$TrainingIsLoadingImpl) then) =
       __$$TrainingIsLoadingImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool reason});
 }
 
 /// @nodoc
@@ -302,102 +305,75 @@ class __$$TrainingIsLoadingImplCopyWithImpl<$Res>
   __$$TrainingIsLoadingImplCopyWithImpl(_$TrainingIsLoadingImpl _value,
       $Res Function(_$TrainingIsLoadingImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? reason = null,
-  }) {
-    return _then(_$TrainingIsLoadingImpl(
-      reason: null == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
-  const _$TrainingIsLoadingImpl({required this.reason});
-
-  @override
-  final bool reason;
+  const _$TrainingIsLoadingImpl();
 
   @override
   String toString() {
-    return 'TrainingState.loading(reason: $reason)';
+    return 'TrainingState.loading()';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TrainingIsLoadingImpl &&
-            (identical(other.reason, reason) || other.reason == reason));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, reason);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TrainingIsLoadingImplCopyWith<_$TrainingIsLoadingImpl> get copyWith =>
-      __$$TrainingIsLoadingImplCopyWithImpl<_$TrainingIsLoadingImpl>(
-          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return loading(reason);
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return loading?.call(reason);
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -405,7 +381,7 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(reason);
+      return loading();
     }
     return orElse();
   }
@@ -467,13 +443,7 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
 }
 
 abstract class _TrainingIsLoading implements TrainingState {
-  const factory _TrainingIsLoading({required final bool reason}) =
-      _$TrainingIsLoadingImpl;
-
-  bool get reason;
-  @JsonKey(ignore: true)
-  _$$TrainingIsLoadingImplCopyWith<_$TrainingIsLoadingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _TrainingIsLoading() = _$TrainingIsLoadingImpl;
 }
 
 /// @nodoc
@@ -520,17 +490,6 @@ class _$TrainingFailedImpl implements _TrainingFailed {
     return 'TrainingState.failed(message: $message)';
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TrainingFailedImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -542,14 +501,17 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
@@ -562,13 +524,15 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
@@ -581,13 +545,15 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -672,7 +638,7 @@ abstract class _$$Screen1ImplCopyWith<$Res> {
           _$Screen1Impl value, $Res Function(_$Screen1Impl) then) =
       __$$Screen1ImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({WordModel word});
+  $Res call({ValueKey<dynamic> valueKey, WordModel word});
 }
 
 /// @nodoc
@@ -686,9 +652,14 @@ class __$$Screen1ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? valueKey = null,
     Object? word = null,
   }) {
     return _then(_$Screen1Impl(
+      valueKey: null == valueKey
+          ? _value.valueKey
+          : valueKey // ignore: cast_nullable_to_non_nullable
+              as ValueKey<dynamic>,
       word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -700,26 +671,17 @@ class __$$Screen1ImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Screen1Impl implements _Screen1 {
-  const _$Screen1Impl({required this.word});
+  const _$Screen1Impl({required this.valueKey, required this.word});
 
+  @override
+  final ValueKey<dynamic> valueKey;
   @override
   final WordModel word;
 
   @override
   String toString() {
-    return 'TrainingState.screen1(word: $word)';
+    return 'TrainingState.screen1(valueKey: $valueKey, word: $word)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Screen1Impl &&
-            (identical(other.word, word) || other.word == word));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, word);
 
   @JsonKey(ignore: true)
   @override
@@ -731,52 +693,59 @@ class _$Screen1Impl implements _Screen1 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return screen1(word);
+    return screen1(valueKey, word);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return screen1?.call(word);
+    return screen1?.call(valueKey, word);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -784,7 +753,7 @@ class _$Screen1Impl implements _Screen1 {
     required TResult orElse(),
   }) {
     if (screen1 != null) {
-      return screen1(word);
+      return screen1(valueKey, word);
     }
     return orElse();
   }
@@ -846,8 +815,11 @@ class _$Screen1Impl implements _Screen1 {
 }
 
 abstract class _Screen1 implements TrainingState {
-  const factory _Screen1({required final WordModel word}) = _$Screen1Impl;
+  const factory _Screen1(
+      {required final ValueKey<dynamic> valueKey,
+      required final WordModel word}) = _$Screen1Impl;
 
+  ValueKey<dynamic> get valueKey;
   WordModel get word;
   @JsonKey(ignore: true)
   _$$Screen1ImplCopyWith<_$Screen1Impl> get copyWith =>
@@ -860,7 +832,10 @@ abstract class _$$Screen2ImplCopyWith<$Res> {
           _$Screen2Impl value, $Res Function(_$Screen2Impl) then) =
       __$$Screen2ImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({WordModel word, List<Pair<String, int>> letters});
+  $Res call(
+      {ValueKey<dynamic> valueKey,
+      WordModel word,
+      List<Pair<String, int>> letters});
 }
 
 /// @nodoc
@@ -874,10 +849,15 @@ class __$$Screen2ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? valueKey = null,
     Object? word = null,
     Object? letters = null,
   }) {
     return _then(_$Screen2Impl(
+      valueKey: null == valueKey
+          ? _value.valueKey
+          : valueKey // ignore: cast_nullable_to_non_nullable
+              as ValueKey<dynamic>,
       word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -894,9 +874,13 @@ class __$$Screen2ImplCopyWithImpl<$Res>
 
 class _$Screen2Impl implements _Screen2 {
   const _$Screen2Impl(
-      {required this.word, required final List<Pair<String, int>> letters})
+      {required this.valueKey,
+      required this.word,
+      required final List<Pair<String, int>> letters})
       : _letters = letters;
 
+  @override
+  final ValueKey<dynamic> valueKey;
   @override
   final WordModel word;
   final List<Pair<String, int>> _letters;
@@ -909,21 +893,8 @@ class _$Screen2Impl implements _Screen2 {
 
   @override
   String toString() {
-    return 'TrainingState.screen2(word: $word, letters: $letters)';
+    return 'TrainingState.screen2(valueKey: $valueKey, word: $word, letters: $letters)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Screen2Impl &&
-            (identical(other.word, word) || other.word == word) &&
-            const DeepCollectionEquality().equals(other._letters, _letters));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, word, const DeepCollectionEquality().hash(_letters));
 
   @JsonKey(ignore: true)
   @override
@@ -935,52 +906,59 @@ class _$Screen2Impl implements _Screen2 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return screen2(word, letters);
+    return screen2(valueKey, word, letters);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return screen2?.call(word, letters);
+    return screen2?.call(valueKey, word, letters);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -988,7 +966,7 @@ class _$Screen2Impl implements _Screen2 {
     required TResult orElse(),
   }) {
     if (screen2 != null) {
-      return screen2(word, letters);
+      return screen2(valueKey, word, letters);
     }
     return orElse();
   }
@@ -1051,9 +1029,11 @@ class _$Screen2Impl implements _Screen2 {
 
 abstract class _Screen2 implements TrainingState {
   const factory _Screen2(
-      {required final WordModel word,
+      {required final ValueKey<dynamic> valueKey,
+      required final WordModel word,
       required final List<Pair<String, int>> letters}) = _$Screen2Impl;
 
+  ValueKey<dynamic> get valueKey;
   WordModel get word;
   List<Pair<String, int>> get letters;
   @JsonKey(ignore: true)
@@ -1067,7 +1047,7 @@ abstract class _$$Screen3ImplCopyWith<$Res> {
           _$Screen3Impl value, $Res Function(_$Screen3Impl) then) =
       __$$Screen3ImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({WordModel word});
+  $Res call({ValueKey<dynamic> valueKey, WordModel word});
 }
 
 /// @nodoc
@@ -1081,9 +1061,14 @@ class __$$Screen3ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? valueKey = null,
     Object? word = null,
   }) {
     return _then(_$Screen3Impl(
+      valueKey: null == valueKey
+          ? _value.valueKey
+          : valueKey // ignore: cast_nullable_to_non_nullable
+              as ValueKey<dynamic>,
       word: null == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -1095,26 +1080,17 @@ class __$$Screen3ImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Screen3Impl implements _Screen3 {
-  const _$Screen3Impl({required this.word});
+  const _$Screen3Impl({required this.valueKey, required this.word});
 
+  @override
+  final ValueKey<dynamic> valueKey;
   @override
   final WordModel word;
 
   @override
   String toString() {
-    return 'TrainingState.screen3(word: $word)';
+    return 'TrainingState.screen3(valueKey: $valueKey, word: $word)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Screen3Impl &&
-            (identical(other.word, word) || other.word == word));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, word);
 
   @JsonKey(ignore: true)
   @override
@@ -1126,52 +1102,59 @@ class _$Screen3Impl implements _Screen3 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return screen3(word);
+    return screen3(valueKey, word);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return screen3?.call(word);
+    return screen3?.call(valueKey, word);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -1179,7 +1162,7 @@ class _$Screen3Impl implements _Screen3 {
     required TResult orElse(),
   }) {
     if (screen3 != null) {
-      return screen3(word);
+      return screen3(valueKey, word);
     }
     return orElse();
   }
@@ -1241,8 +1224,11 @@ class _$Screen3Impl implements _Screen3 {
 }
 
 abstract class _Screen3 implements TrainingState {
-  const factory _Screen3({required final WordModel word}) = _$Screen3Impl;
+  const factory _Screen3(
+      {required final ValueKey<dynamic> valueKey,
+      required final WordModel word}) = _$Screen3Impl;
 
+  ValueKey<dynamic> get valueKey;
   WordModel get word;
   @JsonKey(ignore: true)
   _$$Screen3ImplCopyWith<_$Screen3Impl> get copyWith =>
@@ -1255,7 +1241,11 @@ abstract class _$$Screen4ImplCopyWith<$Res> {
           _$Screen4Impl value, $Res Function(_$Screen4Impl) then) =
       __$$Screen4ImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool cantHear, WordModel word, List<WordModel> selectableWords});
+  $Res call(
+      {ValueKey<dynamic> valueKey,
+      bool cantHear,
+      WordModel word,
+      List<WordModel> selectableWords});
 }
 
 /// @nodoc
@@ -1269,11 +1259,16 @@ class __$$Screen4ImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? valueKey = null,
     Object? cantHear = null,
     Object? word = null,
     Object? selectableWords = null,
   }) {
     return _then(_$Screen4Impl(
+      valueKey: null == valueKey
+          ? _value.valueKey
+          : valueKey // ignore: cast_nullable_to_non_nullable
+              as ValueKey<dynamic>,
       cantHear: null == cantHear
           ? _value.cantHear
           : cantHear // ignore: cast_nullable_to_non_nullable
@@ -1294,11 +1289,14 @@ class __$$Screen4ImplCopyWithImpl<$Res>
 
 class _$Screen4Impl implements _Screen4 {
   const _$Screen4Impl(
-      {required this.cantHear,
+      {required this.valueKey,
+      required this.cantHear,
       required this.word,
       required final List<WordModel> selectableWords})
       : _selectableWords = selectableWords;
 
+  @override
+  final ValueKey<dynamic> valueKey;
   @override
   final bool cantHear;
   @override
@@ -1313,24 +1311,8 @@ class _$Screen4Impl implements _Screen4 {
 
   @override
   String toString() {
-    return 'TrainingState.screen4(cantHear: $cantHear, word: $word, selectableWords: $selectableWords)';
+    return 'TrainingState.screen4(valueKey: $valueKey, cantHear: $cantHear, word: $word, selectableWords: $selectableWords)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Screen4Impl &&
-            (identical(other.cantHear, cantHear) ||
-                other.cantHear == cantHear) &&
-            (identical(other.word, word) || other.word == word) &&
-            const DeepCollectionEquality()
-                .equals(other._selectableWords, _selectableWords));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, cantHear, word,
-      const DeepCollectionEquality().hash(_selectableWords));
 
   @JsonKey(ignore: true)
   @override
@@ -1342,52 +1324,59 @@ class _$Screen4Impl implements _Screen4 {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
     required TResult Function(WordModel word) success,
   }) {
-    return screen4(cantHear, word, selectableWords);
+    return screen4(valueKey, cantHear, word, selectableWords);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
     TResult? Function(WordModel word)? success,
   }) {
-    return screen4?.call(cantHear, word, selectableWords);
+    return screen4?.call(valueKey, cantHear, word, selectableWords);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -1395,7 +1384,7 @@ class _$Screen4Impl implements _Screen4 {
     required TResult orElse(),
   }) {
     if (screen4 != null) {
-      return screen4(cantHear, word, selectableWords);
+      return screen4(valueKey, cantHear, word, selectableWords);
     }
     return orElse();
   }
@@ -1458,10 +1447,12 @@ class _$Screen4Impl implements _Screen4 {
 
 abstract class _Screen4 implements TrainingState {
   const factory _Screen4(
-      {required final bool cantHear,
+      {required final ValueKey<dynamic> valueKey,
+      required final bool cantHear,
       required final WordModel word,
       required final List<WordModel> selectableWords}) = _$Screen4Impl;
 
+  ValueKey<dynamic> get valueKey;
   bool get cantHear;
   WordModel get word;
   List<WordModel> get selectableWords;
@@ -1497,26 +1488,20 @@ class _$FinalScreenImpl implements _FinalScreen {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FinalScreenImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
@@ -1529,13 +1514,15 @@ class _$FinalScreenImpl implements _FinalScreen {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
@@ -1548,13 +1535,15 @@ class _$FinalScreenImpl implements _FinalScreen {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -1654,26 +1643,20 @@ class _$ZeroHealthScreenImpl implements _ZeroHealthScreen {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ZeroHealthScreenImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
@@ -1686,13 +1669,15 @@ class _$ZeroHealthScreenImpl implements _ZeroHealthScreen {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
@@ -1705,13 +1690,15 @@ class _$ZeroHealthScreenImpl implements _ZeroHealthScreen {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,
@@ -1828,17 +1815,6 @@ class _$SuccessImpl implements _Success {
     return 'TrainingState.success(word: $word)';
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            (identical(other.word, word) || other.word == word));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, word);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1849,14 +1825,17 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool reason) loading,
+    required TResult Function() loading,
     required TResult Function(String message) failed,
-    required TResult Function(WordModel word) screen1,
-    required TResult Function(WordModel word, List<Pair<String, int>> letters)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen1,
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)
         screen2,
-    required TResult Function(WordModel word) screen3,
-    required TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)
+    required TResult Function(ValueKey<dynamic> valueKey, WordModel word)
+        screen3,
+    required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
+            WordModel word, List<WordModel> selectableWords)
         screen4,
     required TResult Function() finalScreen,
     required TResult Function() zeroHealthScreen,
@@ -1869,13 +1848,15 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool reason)? loading,
+    TResult? Function()? loading,
     TResult? Function(String message)? failed,
-    TResult? Function(WordModel word)? screen1,
-    TResult? Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult? Function(WordModel word)? screen3,
-    TResult? Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult? Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult? Function()? finalScreen,
     TResult? Function()? zeroHealthScreen,
@@ -1888,13 +1869,15 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool reason)? loading,
+    TResult Function()? loading,
     TResult Function(String message)? failed,
-    TResult Function(WordModel word)? screen1,
-    TResult Function(WordModel word, List<Pair<String, int>> letters)? screen2,
-    TResult Function(WordModel word)? screen3,
-    TResult Function(
-            bool cantHear, WordModel word, List<WordModel> selectableWords)?
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen1,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word,
+            List<Pair<String, int>> letters)?
+        screen2,
+    TResult Function(ValueKey<dynamic> valueKey, WordModel word)? screen3,
+    TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
+            List<WordModel> selectableWords)?
         screen4,
     TResult Function()? finalScreen,
     TResult Function()? zeroHealthScreen,

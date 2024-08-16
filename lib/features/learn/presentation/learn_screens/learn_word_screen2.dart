@@ -39,11 +39,18 @@ class LearnWordPage2 extends StatefulWidget {
 }
 
 class LearnWordPage2State extends State<LearnWordPage2> {
+  @override
+  void initState() {
+    currenLetters = widget.letters;
+    super.initState();
+  }
+
   String answer = '';
   bool isAnswerCorrect = false;
 
   String inputState = OtherLearnConstants.stateZero;
 
+  List<Pair<String, int>> currenLetters = [];
   bool pressLetterButton(String letter, int amount) {
     if (amount == 0) return false;
     if (letter == widget.word.enValue[answer.length]) {
@@ -72,9 +79,13 @@ class LearnWordPage2State extends State<LearnWordPage2> {
       });
       widget.goNextScreen(OtherLearnConstants.stateWrong);
     }
-    answer = '';
-    isAnswerCorrect = false;
-    inputState = OtherLearnConstants.stateZero;
+  }
+
+  List<Widget> getLetters() {
+    return currenLetters
+        .map((letterInfo) =>
+            LetterButton(letterInfo: letterInfo, onPressed: pressLetterButton))
+        .toList();
   }
 
   @override
@@ -139,11 +150,7 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                     ),
                     Wrap(
                       runSpacing: LearnPaddings.wrapSpacing,
-                      children: widget.letters
-                          .map((letterInfo) => LetterButton(
-                              letterInfo: letterInfo,
-                              onPressed: pressLetterButton))
-                          .toList(),
+                      children: getLetters(),
                     ),
                     const Spacer(),
                     BubbleButton(null,

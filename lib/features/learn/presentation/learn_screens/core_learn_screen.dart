@@ -122,10 +122,14 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     });
   }
 
-  int progress = -7;
-  int hp = 3;
+  int progress = -OtherLearnConstants.progressStep;
+  int hp = OtherLearnConstants.maxHP;
 
-  List<Pair<String, int>> lettersForScreen2 = [];
+  void progressUp() {
+    setState(() {
+      progress += OtherLearnConstants.progressStep;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,38 +138,37 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         listener: (context, state) {
           state.maybeWhen(
               initial: () {},
-              loading: (r) {},
+              loading: () {},
               failed: (e) {},
               orElse: () {
-                progress += 7;
+                progressUp();
               });
         },
         builder: (context, state) {
           return Stack(children: [
             state.maybeWhen(
-              loading: (r) => LoadingScreen(
-                reason: r,
-              ),
-              screen1: (word) => LearnWordPage1(
+              initial: () => const LoadingScreen(),
+              loading: () => const LoadingScreen(),
+              screen1: (valueKey, word) => LearnWordPage1(
+                key: valueKey,
                 word: word,
                 goNextScreen: goNextScreen,
                 quit: quit,
                 progress: progress,
                 hp: hp,
               ),
-              screen2: (word, letters) {
-                lettersForScreen2 = letters;
-                return LearnWordPage2(
-                  word: word,
-                  letters: lettersForScreen2,
-                  goNextScreen: getBottomSheet,
-                  quit: quit,
-                  progress: progress,
-                  hp: hp,
-                  hit: hit,
-                );
-              },
-              screen3: (word) => LearnWordPage3(
+              screen2: (valueKey, word, letters) => LearnWordPage2(
+                key: valueKey,
+                word: word,
+                letters: letters,
+                goNextScreen: getBottomSheet,
+                quit: quit,
+                progress: progress,
+                hp: hp,
+                hit: hit,
+              ),
+              screen3: (valueKey, word) => LearnWordPage3(
+                key: valueKey,
                 word: word,
                 goNextScreen: getBottomSheet,
                 quit: quit,
@@ -173,11 +176,13 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 hp: hp,
               ),
               screen4: (
+                valueKey,
                 isCantHear,
                 word,
                 selectableWords,
               ) =>
                   LearnWordPage4(
+                key: valueKey,
                 word: word,
                 selectableWords: selectableWords,
                 goNextScreen: getBottomSheet,
@@ -187,7 +192,8 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 isCantHear: isCantHear,
               ),
               finalScreen: () => Center(
-                  child: Row(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(AppLocalizations.of(context).congratulations),
                   TextButton(
@@ -197,7 +203,8 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 ],
               )),
               zeroHealthScreen: () => Center(
-                  child: Row(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(AppLocalizations.of(context).youHaveZeroHP),
                   TextButton(

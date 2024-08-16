@@ -1,11 +1,13 @@
 import 'dart:developer' as developer;
 import 'dart:io';
 import 'dart:math';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
@@ -37,6 +39,8 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   DateTime cantHearLimit = DateTime.now();
   DateTime cantSpeakLimit = DateTime.now();
 
+  List<ValueKey<String>> keys = [];
+
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
     on<_SetTopic>(_getWordsFromTitle);
@@ -54,12 +58,14 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
-    cantHearLimit = cantHearLimit.add(const Duration(minutes: 15));
+    cantHearLimit = cantHearLimit
+        .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantHear = true;
   }
 
   void _setCantSpeak(_CantSpeak event, Emitter<TrainingState> emit) {
-    cantSpeakLimit = cantSpeakLimit.add(const Duration(minutes: 15));
+    cantSpeakLimit = cantSpeakLimit
+        .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantSpeak = true;
   }
 
@@ -86,6 +92,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void _startTraining(Emitter<TrainingState> emit) {
     wordScreen = [];
     currentWordScreenIndex = -1;
+    keys = [];
     _createTraining();
     _mixTraining();
     _nextTrainingStep(emit);
@@ -110,6 +117,14 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       wordScreen[selectedIndex] = wordScreen[i];
       wordScreen[i] = temp;
     }
+
+    List<ValueKey<String>> tempKeys = [];
+    DateTime tempTime = DateTime.now();
+    for (int i = 0; i < wordScreen.length; i++) {
+      tempKeys.add(
+          ValueKey('$tempTime ${wordScreen[i].first} ${wordScreen[i].second}'));
+    }
+    keys = tempKeys;
   }
 
   List<WordModel> getSelectableWords() {
@@ -157,10 +172,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     await _nextTrainingStep(emit);
   }
 
-  bool reason = false;
-
   Future<void> _nextTrainingStep(Emitter<TrainingState> emit) async {
-    emit(TrainingState.loading(reason: reason));
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
       emit(const TrainingState.finalScreen());
@@ -172,10 +184,12 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     switch (wordScreen[currentWordScreenIndex].second) {
       case 1:
         emit(TrainingState.screen1(
+            valueKey: keys[currentWordScreenIndex],
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 2:
         emit(TrainingState.screen2(
+            valueKey: keys[currentWordScreenIndex],
             word: words[wordScreen[currentWordScreenIndex].first],
             letters: getLetters()));
         break;
@@ -188,10 +202,17 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
           isCantSpeak = false;
         }
         emit(TrainingState.screen3(
+            valueKey: keys[currentWordScreenIndex],
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 4:
+        if (isCantHear) {
+          if (cantHearLimit.isBefore(DateTime.now())) {
+            isCantHear = false;
+          }
+        }
         emit(TrainingState.screen4(
+            valueKey: keys[currentWordScreenIndex],
             cantHear: isCantHear,
             word: words[wordScreen[currentWordScreenIndex].first],
             selectableWords: getSelectableWords()));
@@ -207,7 +228,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   Future<void> _handleStartStudy(
       _StartStudy event, Emitter<TrainingState> emit) async {
-    emit(TrainingState.loading(reason: reason));
     try {
       words = [];
       String accessToken = await userRepository.getCurrentUserAccessToken();
