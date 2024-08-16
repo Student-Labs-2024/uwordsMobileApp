@@ -39,4 +39,9 @@ class OtherLearnConstants {
 
   static const int progressStep = 7;
   static const int maxHP = 3;
+
+  static const int cantMinutes = 15;
+
+  static const int milisecGood = 180;
+  static const int milisecWrong = 500;
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 
@@ -31,7 +32,8 @@ class LetterButtonState extends State<LetterButton> {
       setState(() {
         currentGradient = AppColors.progressBarGreenGradientBack;
       });
-      await Future.delayed(const Duration(milliseconds: 180));
+      await Future.delayed(
+          const Duration(milliseconds: OtherLearnConstants.milisecGood));
       setState(() {
         currentAmount--;
         currentGradient = null;
@@ -40,7 +42,8 @@ class LetterButtonState extends State<LetterButton> {
       setState(() {
         currentGradient = AppColors.progressBarRedGradientBack;
       });
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(
+          const Duration(milliseconds: OtherLearnConstants.milisecWrong));
       setState(() {
         currentGradient = null;
       });

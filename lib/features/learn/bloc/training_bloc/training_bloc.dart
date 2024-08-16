@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
@@ -55,12 +56,14 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
-    cantHearLimit = cantHearLimit.add(const Duration(minutes: 15));
+    cantHearLimit = cantHearLimit
+        .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantHear = true;
   }
 
   void _setCantSpeak(_CantSpeak event, Emitter<TrainingState> emit) {
-    cantSpeakLimit = cantSpeakLimit.add(const Duration(minutes: 15));
+    cantSpeakLimit = cantSpeakLimit
+        .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantSpeak = true;
   }
 
@@ -168,8 +171,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   Future<void> _nextTrainingStep(Emitter<TrainingState> emit) async {
-    //emit(TrainingState.loading(reason: true));
-    //await Future.delayed(const Duration(seconds: 1));
     currentWordScreenIndex++;
     if (currentWordScreenIndex == wordScreen.length) {
       emit(const TrainingState.finalScreen());
@@ -226,7 +227,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   Future<void> _handleStartStudy(
       _StartStudy event, Emitter<TrainingState> emit) async {
-    //emit(TrainingState.loading(reason: reason));
     try {
       words = [];
       String accessToken = await userRepository.getCurrentUserAccessToken();
