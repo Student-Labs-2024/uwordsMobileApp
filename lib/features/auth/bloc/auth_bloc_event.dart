@@ -21,4 +21,6 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.logOut() = _LogOut;
 
   const factory AuthEvent.changeDataForRegister() = _ChangeDataForRegister;
+
+  const factory AuthEvent.autoLogin() = _AutoLogin;
 }

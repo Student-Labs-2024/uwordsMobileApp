@@ -14,7 +14,9 @@ abstract class AuthClient {
 
   @POST("users/register/vk")
   Future<void> registerUserVk(
-      @Body() body, @Header("Authorization") String accessToken,
+      @Body() body,
+      @Header("Authorization") String accessToken,
+      @Query('platform') String platform,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/register/google")
@@ -28,6 +30,7 @@ abstract class AuthClient {
   @POST("users/login/vk")
   Future<HttpResponse<Map<String, String>>> loginVK(
       @Header("Authorization") String accessToken,
+      @Query('platform') String platform,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("users/login/google")

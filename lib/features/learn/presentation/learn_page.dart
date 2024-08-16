@@ -5,7 +5,6 @@ import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/features/learn/presentation/subtopic_page.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
@@ -34,13 +33,6 @@ class _LearnPageState extends State<LearnPage> {
     super.initState();
     _searchQuery = TextEditingController();
     _pageController = PageController();
-  }
-
-  @override
-  void didChangeDependencies() {
-    context.read<LearningBloc>().add(LearningEvent.getTopics(
-        AppLocalizations.of(context).inProgressTopicName));
-    super.didChangeDependencies();
   }
 
   List<Subtopic> _buildSearchList(List<Subtopic> subtopicList) {
@@ -232,12 +224,6 @@ class _LearnPageState extends State<LearnPage> {
                             ),
                           ],
                         ),
-                      );
-                    },
-                    openSubtopic: (topic, subtopic) {
-                      return SubtopicPage(
-                        topic: topic,
-                        subtopic: subtopic,
                       );
                     },
                     orElse: () {

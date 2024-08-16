@@ -148,6 +148,6 @@
   "goBackToTopics": "Вернуться к топикам",
   "byFriquency": "По срочности повторения",
   "byProgressWords": "По изученности",
-  "wrongPassword": "Невалидный пароль",
+  "simplePassword": "Слишком простой пароль",
   "wrongEmail": "Невалидная почта"
 }
