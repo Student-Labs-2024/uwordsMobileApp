@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:animations/animations.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +16,7 @@ import 'package:uwords/features/auth/presentation/auth_page.dart';
 import 'package:uwords/features/auth/presentation/register_page.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
+import 'package:uwords/features/global/animations/change_page_animation.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
@@ -37,7 +37,6 @@ import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
-import 'package:uwords/theme/app_colors.dart';
 import 'features/learn/presentation/core_subtopic_page.dart';
 import 'firebase_options.dart';
 
@@ -172,28 +171,4 @@ class MainApp extends StatelessWidget {
       ),
     );
   }
-}
-
-class SharedAxisTransitionPage extends CustomTransitionPage {
-  SharedAxisTransitionPage({
-    required super.child,
-    super.name,
-    super.arguments,
-    super.restorationId,
-    super.key,
-    SharedAxisTransitionType transitionType =
-        SharedAxisTransitionType.horizontal,
-  }) : super(
-            transitionsBuilder: (
-          BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation,
-          Widget child,
-        ) =>
-                SharedAxisTransition(
-                    fillColor: AppColors.animationColor,
-                    transitionType: transitionType,
-                    animation: animation,
-                    secondaryAnimation: secondaryAnimation,
-                    child: child));
 }
