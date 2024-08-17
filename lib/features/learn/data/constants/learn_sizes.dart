@@ -60,9 +60,11 @@ class LearnSizes {
   static const double wordInputHeight = 58 / 812;
 
   static const double wordInputBorder = 3;
-  static const double hpHeight = 24;
+  static const double hpHeight = 20;
+  static const double hpSizeModifier = 2;
 
   static const double bottomSheetHeight = 246 / 812;
+  static const double bottomSheetLoseHealthHeight = 301 / 812;
 
   static const double wordRowMinHeight = 45;
   static const double wordRowIconHeight = 15;

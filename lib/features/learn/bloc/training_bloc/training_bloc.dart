@@ -138,6 +138,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       selectableWords.add(tempWords[selectedIndex]);
       tempWords.removeAt(selectedIndex);
     }
+    int selectedIndex = random.nextInt(selectableWords.length);
+    WordModel temp = selectableWords[selectedIndex];
+    selectableWords[selectedIndex] = selectableWords[0];
+    selectableWords[selectedIndex] = temp;
     return selectableWords;
   }
 
