@@ -9,8 +9,6 @@ import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
-import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
-import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_subtopic_card.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_row.dart';
@@ -20,9 +18,7 @@ import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 
 class SubtopicPage extends StatefulWidget {
-  const SubtopicPage({super.key, required this.topic, required this.subtopic});
-  final Topic topic;
-  final Subtopic subtopic;
+  const SubtopicPage({super.key});
 
   @override
   State<SubtopicPage> createState() => _SubtopicPageState();
@@ -52,171 +48,181 @@ class _SubtopicPageState extends State<SubtopicPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: DecoratedBox(
-            decoration:
-                const BoxDecoration(gradient: AppColors.backgroundGradient),
-            child: Stack(
-              children: [
-                Image.asset(
-                  AppImageSource.subtopicHeaderBubbles,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-                SafeArea(
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: LearnPaddings.headerTitleTop),
-                      child: Row(
-                        children: [
-                          const SizedBox(
-                            width: LearnPaddings.learnPagePadding,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              context
-                                  .read<LearningBloc>()
-                                  .add(const LearningEvent.returnToAllTopics());
-                              context.go('/learn');
-                            },
-                            child: SvgPicture.asset(
-                              AppImageSource.returnIcon,
-                              width: AuthDesignedConstants.iconReturnSize,
-                              height: AuthDesignedConstants.iconReturnSize,
+    return BlocBuilder<LearningBloc, LearningState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+            orElse: () => const Center(),
+            openSubtopic: (topic, subtopic) => Scaffold(
+                body: DecoratedBox(
+                    decoration: const BoxDecoration(
+                        gradient: AppColors.backgroundGradient),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          AppImageSource.subtopicHeaderBubbles,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        ),
+                        SafeArea(
+                          child: Column(children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: LearnPaddings.headerTitleTop),
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    width: LearnPaddings.learnPagePadding,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      context.read<LearningBloc>().add(
+                                          const LearningEvent
+                                              .returnToAllTopics());
+                                      context.go('/learn');
+                                    },
+                                    child: SvgPicture.asset(
+                                      AppImageSource.returnIcon,
+                                      width:
+                                          AuthDesignedConstants.iconReturnSize,
+                                      height:
+                                          AuthDesignedConstants.iconReturnSize,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    topic.topicTitle,
+                                    style: AppTextStyles.recordButtonTitle,
+                                  ),
+                                  const Spacer(),
+                                  const SizedBox(
+                                    width: LearnPaddings.learnPagePadding +
+                                        AuthDesignedConstants.iconReturnSize,
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            widget.topic.topicTitle,
-                            style: AppTextStyles.recordButtonTitle,
-                          ),
-                          const Spacer(),
-                          const SizedBox(
-                            width: LearnPaddings.learnPagePadding +
-                                AuthDesignedConstants.iconReturnSize,
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: LearnPaddings.normalPadding,
-                    ),
-                    BlocBuilder<LearningBloc, LearningState>(
-                      builder: (context, state) {
-                        return BigSubtopicCard(
-                            isActive: isSortActive,
-                            onSort: () {
-                              showCupertinoModalPopup(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return CupertinoActionSheet(
-                                      title: Text(
-                                          AppLocalizations.of(context).sort),
-                                      actions: <CupertinoActionSheetAction>[
-                                        CupertinoActionSheetAction(
-                                          isDefaultAction: true,
-                                          onPressed: () {
-                                            context.read<LearningBloc>().add(
-                                                LearningEvent.sortWords(
-                                                    widget.subtopic,
-                                                    wordFrequencyComparator));
-                                            Navigator.pop(context);
-                                            changeSortActive(true);
-                                            setState(() {});
-                                          },
-                                          child: Text(
-                                            AppLocalizations.of(context)
-                                                .byFriquency,
-                                            style: AppTextStyles.pinCodeText,
-                                          ),
-                                        ),
-                                        CupertinoActionSheetAction(
-                                          onPressed: () {
-                                            context.read<LearningBloc>().add(
-                                                LearningEvent.sortWords(
-                                                    widget.subtopic,
-                                                    wordProgressComparator));
-                                            Navigator.pop(context);
-                                            changeSortActive(true);
-                                            setState(() {});
-                                          },
-                                          child: Text(
-                                            AppLocalizations.of(context)
-                                                .byProgressWords,
-                                            style: AppTextStyles.pinCodeText,
-                                          ),
-                                        ),
-                                        CupertinoActionSheetAction(
-                                          onPressed: () {
-                                            context.read<LearningBloc>().add(
-                                                LearningEvent.sortWords(
-                                                    widget.subtopic,
-                                                    wordLatestStudyComparator));
-                                            Navigator.pop(context);
-                                            changeSortActive(true);
-                                            setState(() {});
-                                          },
-                                          child: Text(
-                                            AppLocalizations.of(context)
-                                                .sortByLastLearningDate,
-                                            style: AppTextStyles.pinCodeText,
-                                          ),
-                                        ),
-                                        CupertinoActionSheetAction(
-                                          isDestructiveAction: true,
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            changeSortActive(false);
-                                          },
-                                          child: Text(
-                                            AppLocalizations.of(context).cancel,
-                                            style:
-                                                AppTextStyles.topicHeaderText,
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  });
-                            },
-                            width: MediaQuery.of(context).size.width,
-                            height: LearnSizes.bigSubtopicCardHeight,
-                            subtopic: widget.subtopic);
-                      },
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: LearnPaddings.learnPageTop),
-                        child: ListView.builder(
-                            itemCount: widget.subtopic.wordCount,
-                            scrollDirection: Axis.vertical,
-                            controller: _scrollController,
-                            itemBuilder: (context, index) {
-                              return WordRow(
-                                  wordInfo:
-                                      widget.subtopic.wordInfoList[index]);
-                            }),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: LearnPaddings.learnPagePadding),
-                      child: BubbleButton(null,
-                          maximumWidth: MediaQuery.of(context).size.width,
-                          onPressed: () {
-                        context.read<TrainingBloc>().add(
-                            TrainingEvent.startStudy(
-                                widget.topic.topicTitle, widget.subtopic));
-                        context.go('/learnCore');
-                      }, text: AppLocalizations.of(context).train),
-                    ),
-                    const SizedBox(
-                      height: LearnPaddings.learnPageBottom / 2,
-                    ),
-                  ]),
-                ),
-              ],
-            )));
+                            const SizedBox(
+                              height: LearnPaddings.normalPadding,
+                            ),
+                            BigSubtopicCard(
+                                isActive: isSortActive,
+                                onSort: () {
+                                  showCupertinoModalPopup(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return CupertinoActionSheet(
+                                          title: Text(
+                                              AppLocalizations.of(context)
+                                                  .sort),
+                                          actions: <CupertinoActionSheetAction>[
+                                            CupertinoActionSheetAction(
+                                              isDefaultAction: true,
+                                              onPressed: () {
+                                                context.read<LearningBloc>().add(
+                                                    LearningEvent.sortWords(
+                                                        subtopic,
+                                                        wordFrequencyComparator));
+                                                Navigator.pop(context);
+                                                changeSortActive(true);
+                                                setState(() {});
+                                              },
+                                              child: Text(
+                                                AppLocalizations.of(context)
+                                                    .byFriquency,
+                                                style:
+                                                    AppTextStyles.pinCodeText,
+                                              ),
+                                            ),
+                                            CupertinoActionSheetAction(
+                                              onPressed: () {
+                                                context.read<LearningBloc>().add(
+                                                    LearningEvent.sortWords(
+                                                        subtopic,
+                                                        wordProgressComparator));
+                                                Navigator.pop(context);
+                                                changeSortActive(true);
+                                                setState(() {});
+                                              },
+                                              child: Text(
+                                                AppLocalizations.of(context)
+                                                    .byProgressWords,
+                                                style:
+                                                    AppTextStyles.pinCodeText,
+                                              ),
+                                            ),
+                                            CupertinoActionSheetAction(
+                                              onPressed: () {
+                                                context.read<LearningBloc>().add(
+                                                    LearningEvent.sortWords(
+                                                        subtopic,
+                                                        wordLatestStudyComparator));
+                                                Navigator.pop(context);
+                                                changeSortActive(true);
+                                                setState(() {});
+                                              },
+                                              child: Text(
+                                                AppLocalizations.of(context)
+                                                    .sortByLastLearningDate,
+                                                style:
+                                                    AppTextStyles.pinCodeText,
+                                              ),
+                                            ),
+                                            CupertinoActionSheetAction(
+                                              isDestructiveAction: true,
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                changeSortActive(false);
+                                              },
+                                              child: Text(
+                                                AppLocalizations.of(context)
+                                                    .cancel,
+                                                style: AppTextStyles
+                                                    .topicHeaderText,
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      });
+                                },
+                                width: MediaQuery.of(context).size.width,
+                                height: LearnSizes.bigSubtopicCardHeight,
+                                subtopic: subtopic),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: LearnPaddings.learnPageTop),
+                                child: ListView.builder(
+                                    itemCount: subtopic.wordCount,
+                                    scrollDirection: Axis.vertical,
+                                    controller: _scrollController,
+                                    itemBuilder: (context, index) {
+                                      return WordRow(
+                                          wordInfo:
+                                              subtopic.wordInfoList[index]);
+                                    }),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: LearnPaddings.learnPagePadding),
+                              child: BubbleButton(null,
+                                  maximumWidth: MediaQuery.of(context)
+                                      .size
+                                      .width, onPressed: () {
+                                context.read<TrainingBloc>().add(
+                                    TrainingEvent.startStudy(
+                                        topic.topicTitle, subtopic));
+                                context.go('/learnCore');
+                              }, text: AppLocalizations.of(context).train),
+                            ),
+                            const SizedBox(
+                              height: LearnPaddings.learnPageBottom / 2,
+                            ),
+                          ]),
+                        ),
+                      ],
+                    ))));
+      },
+    );
   }
 }

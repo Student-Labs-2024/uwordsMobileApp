@@ -136,6 +136,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
           accessToken: accessToken, userRepository: userRepository);
       final Topic topic = findTopicBySubtopicMap[event.subtopic] ?? mockTopic;
       await _getWordsByTopicAndSubtopic(accessToken, topic, event.subtopic);
+      currentTopic = topic;
       emit(LearningState.openSubtopic(topic: topic, subtopic: event.subtopic));
     } on Exception catch (e) {
       addError(e);
