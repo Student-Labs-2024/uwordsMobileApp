@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/exceptions/training_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
@@ -266,6 +267,8 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));
+      case const (NoEnergy):
+        _emitter(const TrainingState.failed(message: 'No energy'));
     }
     super.onError(error, stackTrace);
   }

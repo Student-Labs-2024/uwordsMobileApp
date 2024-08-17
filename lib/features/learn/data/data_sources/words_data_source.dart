@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:uwords/common/exceptions/training_exceptions.dart';
 import 'package:uwords/common/utils/exception_check.dart';
 import 'package:uwords/common/utils/jwt.dart';
 import 'package:uwords/features/learn/data/data_sources/interface_words_data_source.dart';
@@ -80,7 +81,15 @@ class WordsDataSource implements IWordsDataSource {
       return words;
     } on DioException catch (e) {
       noInternetCheck(e);
+      _isEnergyEnded(e);
       rethrow;
+    }
+  }
+
+  void _isEnergyEnded(DioException exception) {
+    switch (exception.response!.statusCode) {
+      case 404:
+        throw NoEnergy();
     }
   }
 }
