@@ -27,8 +27,4 @@ abstract class TrainingState with _$TrainingState {
     required List<WordModel> selectableWords,
   }) = _Screen4;
   const factory TrainingState.finalScreen() = _FinalScreen;
-  const factory TrainingState.zeroHealthScreen() = _ZeroHealthScreen;
-  const factory TrainingState.success({
-    required WordModel word,
-  }) = _Success;
 }

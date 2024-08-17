@@ -46,15 +46,9 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     on<_SetTopic>(_getWordsFromTitle);
     on<_SetSubtopic>(_getWordsFromSubtitle);
     on<_NextStep>(_eventNextTrainingStep);
-    on<_GoSuccessfulScreen>(_goSuccessfulScreen);
     on<_StartStudy>(_handleStartStudy);
     on<_CantHear>(_setCantHear);
     on<_CantSpeak>(_setCantSpeak);
-    on<_ZeroHealth>(_setZeroHealthState);
-  }
-
-  void _setZeroHealthState(_ZeroHealth event, Emitter<TrainingState> emit) {
-    emit(const TrainingState.zeroHealthScreen());
   }
 
   void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
@@ -222,12 +216,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             selectableWords: getSelectableWords()));
         break;
     }
-  }
-
-  void _goSuccessfulScreen(
-      _GoSuccessfulScreen event, Emitter<TrainingState> emit) {
-    emit(TrainingState.success(
-        word: words[wordScreen[currentWordScreenIndex].first]));
   }
 
   Future<void> _handleStartStudy(
