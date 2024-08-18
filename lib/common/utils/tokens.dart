@@ -5,7 +5,7 @@ import 'package:uwords/features/auth/data/repository/interface_user_repository.d
 Future<void> checkTokenExpirationAndUpdateIfNeed(
     {required String accessToken,
     required IUserRepository userRepository}) async {
-  if (isTokenExpired(accessToken: accessToken)) {
+  if (isTokenExpired(accessToken: accessToken) == false) {
     try {
       accessToken = await userRepository.refreshAccessToken();
     } on OldRefreshToken {
