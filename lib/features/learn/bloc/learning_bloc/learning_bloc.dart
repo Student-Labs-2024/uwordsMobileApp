@@ -78,24 +78,6 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       List<Topic> newTopics =
           await wordsRepository.getTopics(accessToken: accessToken);
       topics = [];
-      //TODO remove it
-      var inProgressTopic = Topic(
-          topicTitle: inProgressTopicName,
-          //TODO Change to newTopics
-          subtopics: newTopics
-              .map((topic) => topic.subtopics)
-              .expand((subtopics) => subtopics)
-              .where((subtopic) =>
-                  subtopic.progress > 0 && subtopic.progress < 100)
-              .toList());
-      if (inProgressTopic.subtopics.isNotEmpty) {
-        inProgressTopic.subtopics.sort(progressComparator);
-        inProgressTopic.subtopics.replaceRange(
-            0,
-            inProgressTopic.subtopics.length,
-            inProgressTopic.subtopics.reversed.toList());
-        topics.add(inProgressTopic);
-      }
       topics.addAll(newTopics);
       emit(LearningState.gotWordsForStudy(topics: topics));
       emit(LearningState.initial(topics: topics));
