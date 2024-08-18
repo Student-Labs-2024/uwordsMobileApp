@@ -26,6 +26,7 @@ import 'package:uwords/features/learn/data/repositores/interface_words_repositor
 import 'package:uwords/features/learn/data/repositores/words_repository.dart';
 import 'package:uwords/features/learn/presentation/core_learn_page.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/core_learn_screen.dart';
+import 'package:uwords/features/learn/presentation/subtopic_page.dart';
 import 'package:uwords/features/main/data/data_sources/audio_datasource.dart';
 import 'package:uwords/features/main/data/repositories/audio_repository.dart';
 import 'package:uwords/features/main/data/repositories/interface_audio_repository.dart';
@@ -37,7 +38,6 @@ import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
-import 'features/learn/presentation/core_subtopic_page.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -97,8 +97,8 @@ final GoRouter _goRouter = GoRouter(
                   path: 'subtopic',
                   name: 'subtopic',
                   parentNavigatorKey: _rootNavKey,
-                  pageBuilder: (context, state) => SharedAxisTransitionPage(
-                      child: const CoreSubtopicPage())),
+                  pageBuilder: (context, state) =>
+                      SharedAxisTransitionPage(child: const SubtopicPage())),
             ]),
         GoRoute(
           path: '/learnCore',

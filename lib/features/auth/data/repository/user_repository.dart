@@ -32,7 +32,7 @@ class UserRepository implements IUserRepository {
   @override
   Future<String> refreshAccessToken() async {
     UserAuthDto userDto = await savableUserDataSource.getCurrent();
-    if (isTokenExpired(accessToken: userDto.refreshToken)) {
+    if (!isTokenExpired(token: userDto.refreshToken)) {
       UserAuthDto newUserAuthDto =
           await networkUserDataSource.refreshAccessToken(userDto: userDto);
       await _saveUser(userDto: newUserAuthDto);

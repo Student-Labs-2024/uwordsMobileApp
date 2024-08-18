@@ -5,6 +5,7 @@ import 'package:uwords/features/learn/domain/mapper/word_info_mapper.dart';
 extension SubtopicMapper on SubtopicDto {
   Subtopic toModel() => Subtopic(
         subtopicTitle: subtopicTitle,
+        topicTitle: topicTitle,
         wordCount: wordCount,
         progress: progress,
         pictureLink: pictureLink,

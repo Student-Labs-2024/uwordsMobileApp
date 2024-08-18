@@ -161,7 +161,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         final String accessToken =
             await userRepository.getCurrentUserAccessToken();
-        checkTokenExpirationAndUpdateIfNeed(
+        await checkTokenExpirationAndUpdateIfNeed(
             accessToken: accessToken, userRepository: userRepository);
         emit(const AuthState.success(AuthSuccess.authorized));
       } on Exception {

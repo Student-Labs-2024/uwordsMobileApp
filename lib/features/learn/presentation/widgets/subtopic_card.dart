@@ -78,7 +78,7 @@ class SubtopicCard extends StatelessWidget {
                         subtopic.progress <= OtherLearnConstants.zeroProgress
                             ? AppImageSource.greyAngleButton
                             : subtopic.progress >=
-                                    OtherLearnConstants.halfProgress
+                                    OtherLearnConstants.halfProgressBar
                                 ? AppImageSource.blueAngleButton
                                 : AppImageSource.redAngleButton,
                       ),
@@ -96,7 +96,7 @@ class SubtopicCard extends StatelessWidget {
                                   OtherLearnConstants.zeroProgress
                               ? AppColors.greyIconGradient.createShader(bounds)
                               : subtopic.progress >=
-                                      OtherLearnConstants.halfProgress
+                                      OtherLearnConstants.halfProgressBar
                                   ? AppColors.blueIconGradient
                                       .createShader(bounds)
                                   : AppColors.redIconGradient

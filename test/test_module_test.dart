@@ -47,8 +47,8 @@ void main() {
           wordsRepository: mockWordsRepository,
           userRepository: mockUserRepository),
       act: (bloc) async {
-        bloc.add(TrainingEvent.startStudy(mockTopicWithOneSubtopic.topicTitle,
-            mockTopicWithOneSubtopic.subtopics.first));
+        bloc.add(
+            TrainingEvent.startStudy(mockTopicWithOneSubtopic.subtopics.first));
         await Future.delayed(const Duration(milliseconds: 1));
         addNextStep(bloc, mockSubtopics.first.wordInfoList.length * 4);
       },
