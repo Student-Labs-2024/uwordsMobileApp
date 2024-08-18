@@ -1966,7 +1966,7 @@ mixin _$TrainingEvent {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1978,7 +1978,7 @@ mixin _$TrainingEvent {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1990,7 +1990,7 @@ mixin _$TrainingEvent {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2122,7 +2122,7 @@ class _$SetTopicImpl implements _SetTopic {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return setTopic(topic);
   }
@@ -2137,7 +2137,7 @@ class _$SetTopicImpl implements _SetTopic {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return setTopic?.call(topic);
   }
@@ -2152,7 +2152,7 @@ class _$SetTopicImpl implements _SetTopic {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (setTopic != null) {
@@ -2292,7 +2292,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return setSubtopic(subtopic);
   }
@@ -2307,7 +2307,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return setSubtopic?.call(subtopic);
   }
@@ -2322,7 +2322,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (setSubtopic != null) {
@@ -2435,7 +2435,7 @@ class _$NextStepImpl implements _NextStep {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return nextStep();
   }
@@ -2450,7 +2450,7 @@ class _$NextStepImpl implements _NextStep {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return nextStep?.call();
   }
@@ -2465,7 +2465,7 @@ class _$NextStepImpl implements _NextStep {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -2573,7 +2573,7 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return goSuccessfulScreen();
   }
@@ -2588,7 +2588,7 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return goSuccessfulScreen?.call();
   }
@@ -2603,7 +2603,7 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (goSuccessfulScreen != null) {
@@ -2711,7 +2711,7 @@ class _$CantHearImpl implements _CantHear {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return cantHear();
   }
@@ -2726,7 +2726,7 @@ class _$CantHearImpl implements _CantHear {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return cantHear?.call();
   }
@@ -2741,7 +2741,7 @@ class _$CantHearImpl implements _CantHear {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (cantHear != null) {
@@ -2849,7 +2849,7 @@ class _$CantSpeakImpl implements _CantSpeak {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return cantSpeak();
   }
@@ -2864,7 +2864,7 @@ class _$CantSpeakImpl implements _CantSpeak {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return cantSpeak?.call();
   }
@@ -2879,7 +2879,7 @@ class _$CantSpeakImpl implements _CantSpeak {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (cantSpeak != null) {
@@ -2987,7 +2987,7 @@ class _$ZeroHealthImpl implements _ZeroHealth {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
     return zeroHealth();
   }
@@ -3002,7 +3002,7 @@ class _$ZeroHealthImpl implements _ZeroHealth {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
     return zeroHealth?.call();
   }
@@ -3017,7 +3017,7 @@ class _$ZeroHealthImpl implements _ZeroHealth {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (zeroHealth != null) {
@@ -3086,7 +3086,7 @@ abstract class _$$StartStudyImplCopyWith<$Res> {
           _$StartStudyImpl value, $Res Function(_$StartStudyImpl) then) =
       __$$StartStudyImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String topicTitle, Subtopic subtopic});
+  $Res call({Subtopic subtopic});
 }
 
 /// @nodoc
@@ -3100,14 +3100,9 @@ class __$$StartStudyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? topicTitle = null,
     Object? subtopic = null,
   }) {
     return _then(_$StartStudyImpl(
-      null == topicTitle
-          ? _value.topicTitle
-          : topicTitle // ignore: cast_nullable_to_non_nullable
-              as String,
       null == subtopic
           ? _value.subtopic
           : subtopic // ignore: cast_nullable_to_non_nullable
@@ -3119,16 +3114,14 @@ class __$$StartStudyImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartStudyImpl implements _StartStudy {
-  const _$StartStudyImpl(this.topicTitle, this.subtopic);
+  const _$StartStudyImpl(this.subtopic);
 
-  @override
-  final String topicTitle;
   @override
   final Subtopic subtopic;
 
   @override
   String toString() {
-    return 'TrainingEvent.startStudy(topicTitle: $topicTitle, subtopic: $subtopic)';
+    return 'TrainingEvent.startStudy(subtopic: $subtopic)';
   }
 
   @override
@@ -3136,14 +3129,12 @@ class _$StartStudyImpl implements _StartStudy {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartStudyImpl &&
-            (identical(other.topicTitle, topicTitle) ||
-                other.topicTitle == topicTitle) &&
             (identical(other.subtopic, subtopic) ||
                 other.subtopic == subtopic));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, topicTitle, subtopic);
+  int get hashCode => Object.hash(runtimeType, subtopic);
 
   @JsonKey(ignore: true)
   @override
@@ -3161,9 +3152,9 @@ class _$StartStudyImpl implements _StartStudy {
     required TResult Function() cantHear,
     required TResult Function() cantSpeak,
     required TResult Function() zeroHealth,
-    required TResult Function(String topicTitle, Subtopic subtopic) startStudy,
+    required TResult Function(Subtopic subtopic) startStudy,
   }) {
-    return startStudy(topicTitle, subtopic);
+    return startStudy(subtopic);
   }
 
   @override
@@ -3176,9 +3167,9 @@ class _$StartStudyImpl implements _StartStudy {
     TResult? Function()? cantHear,
     TResult? Function()? cantSpeak,
     TResult? Function()? zeroHealth,
-    TResult? Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult? Function(Subtopic subtopic)? startStudy,
   }) {
-    return startStudy?.call(topicTitle, subtopic);
+    return startStudy?.call(subtopic);
   }
 
   @override
@@ -3191,11 +3182,11 @@ class _$StartStudyImpl implements _StartStudy {
     TResult Function()? cantHear,
     TResult Function()? cantSpeak,
     TResult Function()? zeroHealth,
-    TResult Function(String topicTitle, Subtopic subtopic)? startStudy,
+    TResult Function(Subtopic subtopic)? startStudy,
     required TResult orElse(),
   }) {
     if (startStudy != null) {
-      return startStudy(topicTitle, subtopic);
+      return startStudy(subtopic);
     }
     return orElse();
   }
@@ -3251,10 +3242,8 @@ class _$StartStudyImpl implements _StartStudy {
 }
 
 abstract class _StartStudy implements TrainingEvent {
-  const factory _StartStudy(final String topicTitle, final Subtopic subtopic) =
-      _$StartStudyImpl;
+  const factory _StartStudy(final Subtopic subtopic) = _$StartStudyImpl;
 
-  String get topicTitle;
   Subtopic get subtopic;
   @JsonKey(ignore: true)
   _$$StartStudyImplCopyWith<_$StartStudyImpl> get copyWith =>

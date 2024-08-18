@@ -236,7 +236,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
           accessToken: accessToken, userRepository: userRepository);
       List<WordInfo> result = await wordsRepository.getWordsForStart(
           accessToken: accessToken,
-          topicTitle: event.topicTitle,
+          topicTitle: event.subtopic.topicTitle,
           subtopicTitle: event.subtopic.subtopicTitle);
       List<WordModel> placeholders =
           event.subtopic.wordInfoList.map((e) => e.word).toList();
@@ -247,7 +247,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       _startTraining(emit);
     } on Exception catch (e) {
       _emitter = emit;
-      _topicTitle = event.topicTitle;
+      _topicTitle = event.subtopic.topicTitle;
       _subtopicTitle = event.subtopic.subtopicTitle;
       addError(e);
     }
@@ -257,7 +257,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void onError(Object error, StackTrace stackTrace) async {
     developer.log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessException):
+      case const (OldAccessToken):
         String accessToken = await userRepository.refreshAccessToken();
         List<WordInfo> result = await wordsRepository.getWordsForStart(
             accessToken: accessToken,

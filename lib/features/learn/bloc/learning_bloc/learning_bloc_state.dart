@@ -21,5 +21,5 @@ abstract class LearningState with _$LearningState {
   }) = _LearningFailed;
 
   const factory LearningState.openSubtopic(
-      {required Topic topic, required Subtopic subtopic}) = _OpenSubtopic;
+     {required Subtopic subtopic}) = _OpenSubtopic;
 }

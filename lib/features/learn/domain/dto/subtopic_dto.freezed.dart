@@ -22,6 +22,8 @@ SubtopicDto _$SubtopicDtoFromJson(Map<String, dynamic> json) {
 mixin _$SubtopicDto {
   @JsonKey(name: "title", defaultValue: 'null subTitle')
   String get subtopicTitle => throw _privateConstructorUsedError;
+  @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+  String get topicTitle => throw _privateConstructorUsedError;
   @JsonKey(name: "word_count", defaultValue: 0)
   int get wordCount => throw _privateConstructorUsedError;
   @JsonKey(name: "progress", defaultValue: 0)
@@ -46,6 +48,8 @@ abstract class $SubtopicDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "title", defaultValue: 'null subTitle')
       String subtopicTitle,
+      @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+      String topicTitle,
       @JsonKey(name: "word_count", defaultValue: 0) int wordCount,
       @JsonKey(name: "progress", defaultValue: 0) int progress,
       @JsonKey(name: "pictureLink", defaultValue: '') String pictureLink,
@@ -66,6 +70,7 @@ class _$SubtopicDtoCopyWithImpl<$Res, $Val extends SubtopicDto>
   @override
   $Res call({
     Object? subtopicTitle = null,
+    Object? topicTitle = null,
     Object? wordCount = null,
     Object? progress = null,
     Object? pictureLink = null,
@@ -75,6 +80,10 @@ class _$SubtopicDtoCopyWithImpl<$Res, $Val extends SubtopicDto>
       subtopicTitle: null == subtopicTitle
           ? _value.subtopicTitle
           : subtopicTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      topicTitle: null == topicTitle
+          ? _value.topicTitle
+          : topicTitle // ignore: cast_nullable_to_non_nullable
               as String,
       wordCount: null == wordCount
           ? _value.wordCount
@@ -107,6 +116,8 @@ abstract class _$$SubtopicDtoImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "title", defaultValue: 'null subTitle')
       String subtopicTitle,
+      @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+      String topicTitle,
       @JsonKey(name: "word_count", defaultValue: 0) int wordCount,
       @JsonKey(name: "progress", defaultValue: 0) int progress,
       @JsonKey(name: "pictureLink", defaultValue: '') String pictureLink,
@@ -125,6 +136,7 @@ class __$$SubtopicDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? subtopicTitle = null,
+    Object? topicTitle = null,
     Object? wordCount = null,
     Object? progress = null,
     Object? pictureLink = null,
@@ -134,6 +146,10 @@ class __$$SubtopicDtoImplCopyWithImpl<$Res>
       subtopicTitle: null == subtopicTitle
           ? _value.subtopicTitle
           : subtopicTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      topicTitle: null == topicTitle
+          ? _value.topicTitle
+          : topicTitle // ignore: cast_nullable_to_non_nullable
               as String,
       wordCount: null == wordCount
           ? _value.wordCount
@@ -161,6 +177,8 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
   const _$SubtopicDtoImpl(
       {@JsonKey(name: "title", defaultValue: 'null subTitle')
       required this.subtopicTitle,
+      @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+      required this.topicTitle,
       @JsonKey(name: "word_count", defaultValue: 0) required this.wordCount,
       @JsonKey(name: "progress", defaultValue: 0) required this.progress,
       @JsonKey(name: "pictureLink", defaultValue: '') required this.pictureLink,
@@ -174,6 +192,9 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
   @override
   @JsonKey(name: "title", defaultValue: 'null subTitle')
   final String subtopicTitle;
+  @override
+  @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+  final String topicTitle;
   @override
   @JsonKey(name: "word_count", defaultValue: 0)
   final int wordCount;
@@ -194,7 +215,7 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
 
   @override
   String toString() {
-    return 'SubtopicDto(subtopicTitle: $subtopicTitle, wordCount: $wordCount, progress: $progress, pictureLink: $pictureLink, words: $words)';
+    return 'SubtopicDto(subtopicTitle: $subtopicTitle, topicTitle: $topicTitle, wordCount: $wordCount, progress: $progress, pictureLink: $pictureLink, words: $words)';
   }
 
   @override
@@ -204,6 +225,8 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
             other is _$SubtopicDtoImpl &&
             (identical(other.subtopicTitle, subtopicTitle) ||
                 other.subtopicTitle == subtopicTitle) &&
+            (identical(other.topicTitle, topicTitle) ||
+                other.topicTitle == topicTitle) &&
             (identical(other.wordCount, wordCount) ||
                 other.wordCount == wordCount) &&
             (identical(other.progress, progress) ||
@@ -215,8 +238,14 @@ class _$SubtopicDtoImpl implements _SubtopicDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, subtopicTitle, wordCount,
-      progress, pictureLink, const DeepCollectionEquality().hash(_words));
+  int get hashCode => Object.hash(
+      runtimeType,
+      subtopicTitle,
+      topicTitle,
+      wordCount,
+      progress,
+      pictureLink,
+      const DeepCollectionEquality().hash(_words));
 
   @JsonKey(ignore: true)
   @override
@@ -236,6 +265,8 @@ abstract class _SubtopicDto implements SubtopicDto {
   const factory _SubtopicDto(
       {@JsonKey(name: "title", defaultValue: 'null subTitle')
       required final String subtopicTitle,
+      @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+      required final String topicTitle,
       @JsonKey(name: "word_count", defaultValue: 0)
       required final int wordCount,
       @JsonKey(name: "progress", defaultValue: 0) required final int progress,
@@ -250,6 +281,9 @@ abstract class _SubtopicDto implements SubtopicDto {
   @override
   @JsonKey(name: "title", defaultValue: 'null subTitle')
   String get subtopicTitle;
+  @override
+  @JsonKey(name: "topic_title", defaultValue: 'null topic_title')
+  String get topicTitle;
   @override
   @JsonKey(name: "word_count", defaultValue: 0)
   int get wordCount;

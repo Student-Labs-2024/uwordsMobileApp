@@ -6,6 +6,7 @@ import 'package:uwords/features/learn/domain/models/word_model.dart';
 final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
   Subtopic(
       subtopicTitle: 'Бизнес',
+      topicTitle: "Mock data",
       wordCount: 1,
       progress: 20,
       pictureLink:
@@ -28,6 +29,7 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
       ]),
   Subtopic(
       subtopicTitle: 'Карьера',
+      topicTitle: "Mock data",
       wordCount: 2,
       progress: 48,
       pictureLink:
@@ -64,6 +66,7 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
       ]),
   Subtopic(
       subtopicTitle: 'Фото',
+      topicTitle: "Mock data",
       wordCount: 3,
       progress: 52,
       pictureLink:
@@ -114,6 +117,7 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
       ]),
   Subtopic(
       subtopicTitle: 'Стандарт',
+      topicTitle: "Mock data",
       wordCount: 2,
       progress: 100,
       pictureLink:
@@ -150,6 +154,7 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
       ]),
   Subtopic(
       subtopicTitle: 'Ремонт дома',
+      topicTitle: "Mock data",
       wordCount: 1,
       progress: 99,
       pictureLink:
@@ -174,6 +179,7 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
 
 final Subtopic subtopicTest = Subtopic(
     subtopicTitle: 'Фото',
+    topicTitle: "Mock data with one subtopic",
     wordCount: 3,
     progress: 52,
     pictureLink:

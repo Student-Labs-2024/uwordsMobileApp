@@ -7,7 +7,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/learn/data/constants/mock_data.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
@@ -26,7 +25,6 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   late Comparator<Subtopic> currentComparator;
   late Emitter<LearningState> _emitter;
   late String inProgressTopicName;
-  Map<Subtopic, Topic> findTopicBySubtopicMap = {};
 
   LearningBloc({required this.wordsRepository, required this.userRepository})
       : super(const LearningState.initial(topics: [])) {
@@ -80,6 +78,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       List<Topic> newTopics =
           await wordsRepository.getTopics(accessToken: accessToken);
       topics = [];
+      //TODO remove it
       var inProgressTopic = Topic(
           topicTitle: inProgressTopicName,
           //TODO Change to newTopics
@@ -98,10 +97,6 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
         topics.add(inProgressTopic);
       }
       topics.addAll(newTopics);
-      findTopicBySubtopicMap = {
-        for (Topic topic in topics)
-          for (Subtopic subtopic in topic.subtopics) subtopic: topic
-      };
       emit(LearningState.gotWordsForStudy(topics: topics));
       emit(LearningState.initial(topics: topics));
     } on Exception catch (e) {
@@ -121,7 +116,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
           .subtopics;
 
       for (Subtopic element in subtopics) {
-        await _getWordsByTopicAndSubtopic(accessToken, event.topic, element);
+        await _getWordsByTopicAndSubtopic(accessToken, element);
       }
     } on Exception catch (e) {
       addError(e);
@@ -134,23 +129,21 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
-      final Topic topic = findTopicBySubtopicMap[event.subtopic] ?? mockTopic;
-      await _getWordsByTopicAndSubtopic(accessToken, topic, event.subtopic);
-      currentTopic = topic;
-      emit(LearningState.openSubtopic(topic: topic, subtopic: event.subtopic));
+      await _getWordsByTopicAndSubtopic(accessToken,event.subtopic);
+      emit(LearningState.openSubtopic(subtopic: event.subtopic));
     } on Exception catch (e) {
       addError(e);
     }
   }
 
   Future<void> _getWordsByTopicAndSubtopic(
-      String accessToken, Topic topic, Subtopic subtopic) async {
+      String accessToken, Subtopic subtopic) async {
     try {
       subtopic.wordInfoList.insertAll(
           0,
           await wordsRepository.getWordsByTopicAndSubtopic(
               accessToken: accessToken,
-              topic: topic.topicTitle,
+              topic: subtopic.topicTitle,
               subtopic: subtopic.subtopicTitle));
     } on Exception catch (e) {
       addError(e);
@@ -165,7 +158,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   void onError(Object error, StackTrace stackTrace) async {
     log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessException):
+      case const (OldAccessToken):
         userRepository.refreshAccessToken();
         await _getTopicsFromServer(_emitter);
       case const (SocketException):

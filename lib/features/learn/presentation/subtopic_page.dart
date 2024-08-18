@@ -52,7 +52,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
       builder: (context, state) {
         return state.maybeWhen(
             orElse: () => const Center(),
-            openSubtopic: (topic, subtopic) => Scaffold(
+            openSubtopic: (subtopic) => Scaffold(
                 body: DecoratedBox(
                     decoration: const BoxDecoration(
                         gradient: AppColors.backgroundGradient),
@@ -90,7 +90,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    topic.topicTitle,
+                                    subtopic.topicTitle,
                                     style: AppTextStyles.recordButtonTitle,
                                   ),
                                   const Spacer(),
@@ -209,9 +209,9 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                   maximumWidth: MediaQuery.of(context)
                                       .size
                                       .width, onPressed: () {
-                                context.read<TrainingBloc>().add(
-                                    TrainingEvent.startStudy(
-                                        topic.topicTitle, subtopic));
+                                context
+                                    .read<TrainingBloc>()
+                                    .add(TrainingEvent.startStudy(subtopic));
                                 context.go('/learnCore');
                               }, text: AppLocalizations.of(context).train),
                             ),
