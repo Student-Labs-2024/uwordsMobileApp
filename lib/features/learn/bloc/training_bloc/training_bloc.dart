@@ -27,6 +27,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   List<WordModel> words = [];
   List<int> wordsInfoIDs = [];
+  List<int> wordsInfoProgress = [];
 
   List<Pair<int, int>> wordScreen = [];
   int currentWordScreenIndex = -1;
@@ -51,15 +52,9 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     on<_SetTopic>(_getWordsFromTitle);
     on<_SetSubtopic>(_getWordsFromSubtitle);
     on<_NextStep>(_eventNextTrainingStep);
-    on<_GoSuccessfulScreen>(_goSuccessfulScreen);
     on<_StartStudy>(_handleStartStudy);
     on<_CantHear>(_setCantHear);
     on<_CantSpeak>(_setCantSpeak);
-    on<_ZeroHealth>(_setZeroHealthState);
-  }
-
-  void _setZeroHealthState(_ZeroHealth event, Emitter<TrainingState> emit) {
-    emit(const TrainingState.zeroHealthScreen());
   }
 
   void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
@@ -76,10 +71,14 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
     words = [];
+    wordsInfoProgress = [];
+    wordsInfoIDs = [];
     Topic topic = event.topic;
     for (var subtopic in topic.subtopics) {
       for (var wordInfo in subtopic.wordInfoList) {
         words.add(wordInfo.word);
+        wordsInfoProgress.add(wordInfo.progress);
+        wordsInfoIDs.add(wordInfo.id);
       }
     }
     _startTraining(emit);
@@ -87,9 +86,13 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   void _getWordsFromSubtitle(_SetSubtopic event, Emitter<TrainingState> emit) {
     words = [];
+    wordsInfoProgress = [];
+    wordsInfoIDs = [];
     Subtopic subtopic = event.subtopic;
     for (var wordInfo in subtopic.wordInfoList) {
       words.add(wordInfo.word);
+      wordsInfoProgress.add(wordInfo.progress);
+      wordsInfoIDs.add(wordInfo.id);
     }
     _startTraining(emit);
   }
@@ -133,20 +136,14 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       tempKeys.add(
           ValueKey('$tempTime ${wordScreen[i].first} ${wordScreen[i].second}'));
     }
+    tempKeys.add(ValueKey('$tempTime finalScreen'));
     keys = tempKeys;
   }
 
   List<WordModel> getSelectableWords() {
     List<WordModel> selectableWords = [];
-    List<WordModel> tempWords = [];
-    tempWords.addAll(words);
-    selectableWords.add(tempWords[wordScreen[currentWordScreenIndex].first]);
-    tempWords.removeAt(wordScreen[currentWordScreenIndex].first);
-    for (int i = 0; i < 3; i++) {
-      int selectedIndex = random.nextInt(tempWords.length);
-      selectableWords.add(tempWords[selectedIndex]);
-      tempWords.removeAt(selectedIndex);
-    }
+    selectableWords.addAll(words);
+    selectableWords.shuffle();
     return selectableWords;
   }
 
@@ -183,8 +180,13 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   Future<void> _nextTrainingStep(Emitter<TrainingState> emit) async {
     currentWordScreenIndex++;
+
     if (currentWordScreenIndex == wordScreen.length) {
-      emit(const TrainingState.finalScreen());
+      emit(TrainingState.finalScreen(
+          words: words,
+          newProgress: wordsInfoProgress,
+          valueKey: keys.last,
+          progress: progress));
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
           accessToken: accessToken, wordsId: wordsInfoIDs);
@@ -241,16 +243,12 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     }
   }
 
-  void _goSuccessfulScreen(
-      _GoSuccessfulScreen event, Emitter<TrainingState> emit) {
-    emit(TrainingState.success(
-        word: words[wordScreen[currentWordScreenIndex].first]));
-  }
-
   Future<void> _handleStartStudy(
       _StartStudy event, Emitter<TrainingState> emit) async {
     try {
       words = [];
+      wordsInfoProgress = [];
+      wordsInfoIDs = [];
       String accessToken = await userRepository.getCurrentUserAccessToken();
       checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
@@ -261,6 +259,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       List<WordModel> placeholders =
           event.subtopic.wordInfoList.map((e) => e.word).toList();
       wordsInfoIDs.addAll(result.map((wordInfo) => wordInfo.id));
+      wordsInfoProgress.addAll(result.map((wordInfo) => wordInfo.progress));
       words.addAll(result.isEmpty
           ? placeholders.take(4)
           : result.map((wordInfo) => wordInfo.word).toList());

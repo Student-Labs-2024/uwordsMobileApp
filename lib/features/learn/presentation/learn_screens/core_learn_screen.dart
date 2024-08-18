@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/learn/presentation/learn_screens/final_learn_screen.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen1.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen2.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen3.dart';
@@ -32,6 +33,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     context.read<LearningBloc>().add(LearningEvent.getTopics(
         AppLocalizations.of(context).inProgressTopicName));
     context.go("/learn");
+    showBottomSheet = false;
   }
 
   bool showBottomSheet = false;
@@ -54,27 +56,28 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     bsTitle = AppLocalizations.of(context).hearOff;
     bsSubtitle = AppLocalizations.of(context).wilReturn;
     bsButtomText = AppLocalizations.of(context).good;
-    bsState = OtherLearnConstants.stateActive;
+    bsState = OtherLearnConstants.stateCantHear;
   }
 
   void activateCantSpeak() {
     bsTitle = AppLocalizations.of(context).hearOff;
     bsSubtitle = AppLocalizations.of(context).wilReturn;
     bsButtomText = AppLocalizations.of(context).good;
-    bsState = OtherLearnConstants.stateActive;
+    bsState = OtherLearnConstants.stateCantSpeak;
   }
 
-  void activateWrongAnswer() {
-    bsTitle = AppLocalizations.of(context).wrongAnswer;
-    bsSubtitle = AppLocalizations.of(context).willCan;
-    bsButtomText = AppLocalizations.of(context).next;
-    bsState = OtherLearnConstants.stateWrong;
+  bool activateWrongAnswer() {
     setState(() {
       hp--;
     });
     if (hp < 1) {
-      context.read<TrainingBloc>().add(const TrainingEvent.zeroHealth());
+      return true;
     }
+    bsTitle = AppLocalizations.of(context).wrongAnswer;
+    bsSubtitle = AppLocalizations.of(context).willCan;
+    bsButtomText = AppLocalizations.of(context).next;
+    bsState = OtherLearnConstants.stateWrong;
+    return false;
   }
 
   void activateSuccessAnswer() {
@@ -84,13 +87,30 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     bsState = OtherLearnConstants.stateSuccess;
   }
 
+  void activateFinalBottomSheet() {
+    bsTitle = AppLocalizations.of(context).stillRepeats;
+    bsSubtitle = AppLocalizations.of(context).weWillRemind;
+    bsButtomText = AppLocalizations.of(context).finish;
+    bsState = OtherLearnConstants.stateFinal;
+  }
+
   void hit() {
     setState(() {
       hp--;
     });
     if (hp < 1) {
-      context.read<TrainingBloc>().add(const TrainingEvent.zeroHealth());
+      getLoseHelthBottomSheet();
     }
+  }
+
+  void getLoseHelthBottomSheet() {
+    setState(() {
+      bsTitle = AppLocalizations.of(context).onNo;
+      bsSubtitle = AppLocalizations.of(context).tryStartAgain;
+      bsButtomText = AppLocalizations.of(context).good;
+      bsState = OtherLearnConstants.stateLoseHealth;
+      showBottomSheet = true;
+    });
   }
 
   void getBottomSheet(String state) {
@@ -100,7 +120,10 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         activateSuccessAnswer();
         break;
       case OtherLearnConstants.stateWrong:
-        activateWrongAnswer();
+        if (activateWrongAnswer()) {
+          getLoseHelthBottomSheet();
+          return;
+        }
         break;
       case OtherLearnConstants.stateCantHear:
         context.read<TrainingBloc>().add(const TrainingEvent.cantHear());
@@ -110,6 +133,8 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         context.read<TrainingBloc>().add(const TrainingEvent.cantSpeak());
         activateCantSpeak();
         break;
+      case OtherLearnConstants.stateFinal:
+        activateFinalBottomSheet();
       default:
         setState(() {
           showBottomSheet = false;
@@ -174,38 +199,30 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 hp: hp,
                 isCantHear: isCantHear,
               ),
-              finalScreen: () => Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context).congratulations),
-                  TextButton(
-                    onPressed: quit,
-                    child: Text(AppLocalizations.of(context).goBackToTopics),
-                  ),
-                ],
-              )),
-              zeroHealthScreen: () => Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context).youHaveZeroHP),
-                  TextButton(
-                    onPressed: quit,
-                    child: Text(AppLocalizations.of(context).goBackToTopics),
-                  ),
-                ],
-              )),
+              finalScreen: (valueKey, words, newProgress, progress) =>
+                  FinalLearnScreen(
+                      key: valueKey,
+                      words: words,
+                      newProgress: newProgress,
+                      quit: quit,
+                      goNextScreen: getBottomSheet,
+                      progress: progress,
+                      hp: hp),
               orElse: () =>
                   Center(child: Text(AppLocalizations.of(context).unknowError)),
             ),
             showBottomSheet
                 ? CustomBottomSheet(
-                    onPressed: bsOnpressed,
+                    onPressed:
+                        (bsState == OtherLearnConstants.stateLoseHealth ||
+                                bsState == OtherLearnConstants.stateFinal)
+                            ? quit
+                            : bsOnpressed,
                     title: bsTitle,
                     state: bsState,
                     buttonText: bsButtomText,
-                    subtitle: bsSubtitle)
+                    subtitle: bsSubtitle,
+                  )
                 : const SizedBox(),
           ]);
         },

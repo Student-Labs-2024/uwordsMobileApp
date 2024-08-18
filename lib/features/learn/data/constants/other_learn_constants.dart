@@ -8,6 +8,7 @@ class OtherLearnConstants {
   static const int quarterProgress = 1;
   static const int halfProgress = 2;
   static const int thirdQuarterProgress = 3;
+  static const int fullProgress = 4;
   static const int halfProgressBar = 50;
   static const int countOfTypesOfTests = 4;
   static const int maxProgress = 100;
@@ -19,6 +20,11 @@ class OtherLearnConstants {
 
   static const String stateCantHear = 'cantHear';
   static const String stateCantSpeak = 'cantTell';
+
+  static const String stateLoseHealth = 'zeroHP';
+  static const String stateFinal = 'finaly';
+
+  static const String stateDarkened = 'darkened';
 
   static LinearGradient getGradient(String state) {
     switch (state) {
@@ -47,4 +53,16 @@ class OtherLearnConstants {
 
   static const int milisecGood = 180;
   static const int milisecWrong = 500;
+
+  static const int progressMilisec1 = 2500;
+  static const int progressMilisec2 = 3000;
+  static const int progressMilisec3 = 1000;
+
+  static const int animationAlignChangeMilisecDuration = 500;
+
+  static const int animationBottomSheetShowMilisecDuration = 400;
+
+  static const int circleImageStage0 = 0;
+  static const int circleImageStage1 = 1;
+  static const int circleImageStage2 = 2;
 }

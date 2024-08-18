@@ -197,7 +197,7 @@ final Subtopic subtopicTest = Subtopic(
           userId: 0,
           latestStudy: null,
           frequency: 0,
-          progress: 0),
+          progress: 1),
       WordInfo(
           id: 1,
           word: const WordModel(
@@ -223,7 +223,7 @@ final Subtopic subtopicTest = Subtopic(
           userId: 2,
           latestStudy: null,
           frequency: 0,
-          progress: 0),
+          progress: 2),
       WordInfo(
           id: 3,
           word: const WordModel(
@@ -236,7 +236,7 @@ final Subtopic subtopicTest = Subtopic(
           userId: 3,
           latestStudy: null,
           frequency: 0,
-          progress: 0),
+          progress: 3),
     ]);
 final mockTopicWithOneSubtopic =
     Topic(topicTitle: "Mock data with one subtopic", subtopics: [subtopicTest]);

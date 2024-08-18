@@ -30,9 +30,10 @@ abstract class TrainingState with _$TrainingState {
     required List<WordModel> selectableWords,
     required int progress,
   }) = _Screen4;
-  const factory TrainingState.finalScreen() = _FinalScreen;
-  const factory TrainingState.zeroHealthScreen() = _ZeroHealthScreen;
-  const factory TrainingState.success({
-    required WordModel word,
-  }) = _Success;
+  const factory TrainingState.finalScreen({
+    required ValueKey valueKey,
+    required List<WordModel> words,
+    required List<int> newProgress,
+    required int progress,
+  }) = _FinalScreen;
 }
