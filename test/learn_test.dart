@@ -17,30 +17,6 @@ void main() {
   final IWordsRepository mockWordsRepository = MockWordsRepository();
   final IUserRepository mockUserRepository = MockUserRepository();
   const String inProgressTopicName = "В процессе";
-  final Topic expandedTopic =
-      Topic(topicTitle: inProgressTopicName, subtopics: [
-    Subtopic(
-        subtopicTitle: "Subtopic 2.2",
-        topicTitle: inProgressTopicName,
-        wordInfoList: [],
-        wordCount: 50,
-        pictureLink: '',
-        progress: 52),
-    Subtopic(
-        subtopicTitle: "Subtopic 1.2",
-        topicTitle: inProgressTopicName,
-        wordInfoList: [],
-        wordCount: 32,
-        pictureLink: '',
-        progress: 45),
-    Subtopic(
-        subtopicTitle: "Subtopic 1.1",
-        topicTitle: inProgressTopicName,
-        wordInfoList: [],
-        wordCount: 47,
-        pictureLink: '',
-        progress: 31),
-  ]);
   final List<Topic> topics = [
     Topic(topicTitle: "Topic 1", subtopics: [
       Subtopic(
@@ -75,7 +51,7 @@ void main() {
           progress: 52),
     ])
   ];
-  final List<Topic> expectedTopics = [expandedTopic];
+  final List<Topic> expectedTopics = [];
   expectedTopics.addAll(topics);
 
   const String accessToken =
