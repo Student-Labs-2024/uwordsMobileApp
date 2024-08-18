@@ -42,6 +42,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   List<ValueKey<String>> keys = [];
 
+  int countOfScreens = 0;
+  int progress = 0;
+  int step = 0;
+
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
     on<_SetTopic>(_getWordsFromTitle);
@@ -108,6 +112,9 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       wordScreen.add(Pair(i, 3));
       wordScreen.add(Pair(i, 4));
     }
+    countOfScreens = words.length * OtherLearnConstants.countOfTypesOfTests;
+    step = OtherLearnConstants.maxProgress ~/ countOfScreens;
+    progress -= step;
   }
 
   void _mixTraining() {
@@ -180,30 +187,41 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
           accessToken: accessToken, wordsId: wordsInfoIDs);
+      _dropToDefaultZeroValue();
       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
       case 1:
+        _calculateProgress();
         emit(TrainingState.screen1(
             valueKey: keys[currentWordScreenIndex],
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 2:
+        _calculateProgress();
         emit(TrainingState.screen2(
             valueKey: keys[currentWordScreenIndex],
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first],
             letters: getLetters()));
         break;
       case 3:
         if (isCantSpeak) {
           if (cantSpeakLimit.isAfter(DateTime.now())) {
+            countOfScreens = countOfScreens - words.length;
+            _calculateProgress();
             await _nextTrainingStep(emit);
             return;
           }
+          countOfScreens =
+              words.length * OtherLearnConstants.countOfTypesOfTests;
           isCantSpeak = false;
         }
+        _calculateProgress();
         emit(TrainingState.screen3(
             valueKey: keys[currentWordScreenIndex],
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 4:
@@ -212,9 +230,11 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             isCantHear = false;
           }
         }
+        _calculateProgress();
         emit(TrainingState.screen4(
             valueKey: keys[currentWordScreenIndex],
             cantHear: isCantHear,
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first],
             selectableWords: getSelectableWords()));
         break;
@@ -271,5 +291,15 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         _emitter(const TrainingState.failed(message: 'No energy'));
     }
     super.onError(error, stackTrace);
+  }
+
+  void _calculateProgress() {
+    progress = progress + step;
+  }
+
+  void _dropToDefaultZeroValue() {
+    countOfScreens = 0;
+    progress = 0;
+    step = 0;
   }
 }

@@ -111,7 +111,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
-      await _getWordsByTopicAndSubtopic(accessToken,event.subtopic);
+      await _getWordsByTopicAndSubtopic(accessToken, event.subtopic);
       emit(LearningState.openSubtopic(subtopic: event.subtopic));
     } on Exception catch (e) {
       addError(e);

@@ -121,14 +121,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     });
   }
 
-  int progress = -OtherLearnConstants.progressStep;
   int hp = OtherLearnConstants.maxHP;
-
-  void progressUp() {
-    setState(() {
-      progress += OtherLearnConstants.progressStep;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,19 +129,14 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
       body: BlocConsumer<TrainingBloc, TrainingState>(
         listener: (context, state) {
           state.maybeWhen(
-              initial: () {},
-              loading: () {},
-              failed: (e) {},
-              orElse: () {
-                progressUp();
-              });
+              initial: () {}, loading: () {}, failed: (e) {}, orElse: () {});
         },
         builder: (context, state) {
           return Stack(children: [
             state.maybeWhen(
               initial: () => const LoadingScreen(),
               loading: () => const LoadingScreen(),
-              screen1: (valueKey, word) => LearnWordPage1(
+              screen1: (valueKey, word, progress) => LearnWordPage1(
                 key: valueKey,
                 word: word,
                 goNextScreen: goNextScreen,
@@ -156,7 +144,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 progress: progress,
                 hp: hp,
               ),
-              screen2: (valueKey, word, letters) => LearnWordPage2(
+              screen2: (valueKey, word, letters, progress) => LearnWordPage2(
                 key: valueKey,
                 word: word,
                 letters: letters,
@@ -166,7 +154,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 hp: hp,
                 hit: hit,
               ),
-              screen3: (valueKey, word) => LearnWordPage3(
+              screen3: (valueKey, word, progress) => LearnWordPage3(
                 key: valueKey,
                 word: word,
                 goNextScreen: getBottomSheet,
@@ -174,13 +162,9 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 progress: progress,
                 hp: hp,
               ),
-              screen4: (
-                valueKey,
-                isCantHear,
-                word,
-                selectableWords,
-              ) =>
-                  LearnWordPage4(
+              screen4:
+                  (valueKey, isCantHear, word, selectableWords, progress) =>
+                      LearnWordPage4(
                 key: valueKey,
                 word: word,
                 selectableWords: selectableWords,
