@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
+import 'package:uwords/common/exceptions/training_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
@@ -41,6 +42,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   DateTime cantSpeakLimit = DateTime.now();
 
   List<ValueKey<String>> keys = [];
+
+  int countOfScreens = 0;
+  int progress = 0;
+  int step = 0;
 
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
@@ -96,6 +101,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     wordScreen = [];
     currentWordScreenIndex = -1;
     keys = [];
+    _dropToDefaultZeroValue();
     _createTraining();
     _mixTraining();
     _nextTrainingStep(emit);
@@ -110,6 +116,9 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       wordScreen.add(Pair(i, 3));
       wordScreen.add(Pair(i, 4));
     }
+    countOfScreens = words.length * OtherLearnConstants.countOfTypesOfTests;
+    step = OtherLearnConstants.maxProgress ~/ countOfScreens;
+    progress -= step;
   }
 
   void _mixTraining() {
@@ -185,26 +194,36 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     }
     switch (wordScreen[currentWordScreenIndex].second) {
       case 1:
+        _calculateProgress();
         emit(TrainingState.screen1(
             valueKey: keys[currentWordScreenIndex],
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 2:
+        _calculateProgress();
         emit(TrainingState.screen2(
             valueKey: keys[currentWordScreenIndex],
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first],
             letters: getLetters()));
         break;
       case 3:
         if (isCantSpeak) {
           if (cantSpeakLimit.isAfter(DateTime.now())) {
+            countOfScreens = countOfScreens - words.length;
+            _calculateProgress();
             await _nextTrainingStep(emit);
             return;
           }
+          countOfScreens =
+              words.length * OtherLearnConstants.countOfTypesOfTests;
           isCantSpeak = false;
         }
+        _calculateProgress();
         emit(TrainingState.screen3(
             valueKey: keys[currentWordScreenIndex],
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first]));
         break;
       case 4:
@@ -213,9 +232,11 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             isCantHear = false;
           }
         }
+        _calculateProgress();
         emit(TrainingState.screen4(
             valueKey: keys[currentWordScreenIndex],
             cantHear: isCantHear,
+            progress: progress,
             word: words[wordScreen[currentWordScreenIndex].first],
             selectableWords: getSelectableWords()));
         break;
@@ -233,7 +254,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
           accessToken: accessToken, userRepository: userRepository);
       List<WordInfo> result = await wordsRepository.getWordsForStart(
           accessToken: accessToken,
-          topicTitle: event.topicTitle,
+          topicTitle: event.subtopic.topicTitle,
           subtopicTitle: event.subtopic.subtopicTitle);
       List<WordModel> placeholders =
           event.subtopic.wordInfoList.map((e) => e.word).toList();
@@ -245,7 +266,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       _startTraining(emit);
     } on Exception catch (e) {
       _emitter = emit;
-      _topicTitle = event.topicTitle;
+      _topicTitle = event.subtopic.topicTitle;
       _subtopicTitle = event.subtopic.subtopicTitle;
       addError(e);
     }
@@ -255,7 +276,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void onError(Object error, StackTrace stackTrace) async {
     developer.log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessException):
+      case const (OldAccessToken):
         String accessToken = await userRepository.refreshAccessToken();
         List<WordInfo> result = await wordsRepository.getWordsForStart(
             accessToken: accessToken,
@@ -265,7 +286,19 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));
+      case const (NoEnergy):
+        _emitter(const TrainingState.failed(message: 'No energy'));
     }
     super.onError(error, stackTrace);
+  }
+
+  void _calculateProgress() {
+    progress = progress + step;
+  }
+
+  void _dropToDefaultZeroValue() {
+    countOfScreens = 0;
+    progress = 0;
+    step = 0;
   }
 }

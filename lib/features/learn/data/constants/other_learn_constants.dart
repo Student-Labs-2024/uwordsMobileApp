@@ -9,6 +9,9 @@ class OtherLearnConstants {
   static const int halfProgress = 2;
   static const int thirdQuarterProgress = 3;
   static const int fullProgress = 4;
+  static const int halfProgressBar = 50;
+  static const int countOfTypesOfTests = 4;
+  static const int maxProgress = 100;
 
   static const String stateSuccess = 'success';
   static const String stateZero = 'zero';

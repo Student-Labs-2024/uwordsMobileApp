@@ -23,7 +23,7 @@ mixin _$LearningState {
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +33,7 @@ mixin _$LearningState {
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$LearningState {
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -185,7 +185,7 @@ class _$LearningInitialImpl
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) {
     return initial(topics);
   }
@@ -198,7 +198,7 @@ class _$LearningInitialImpl
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) {
     return initial?.call(topics);
   }
@@ -211,7 +211,7 @@ class _$LearningInitialImpl
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -363,7 +363,7 @@ class _$LearningGotWordsForStudyImpl
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) {
     return gotWordsForStudy(topics);
   }
@@ -376,7 +376,7 @@ class _$LearningGotWordsForStudyImpl
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) {
     return gotWordsForStudy?.call(topics);
   }
@@ -389,7 +389,7 @@ class _$LearningGotWordsForStudyImpl
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) {
     if (gotWordsForStudy != null) {
@@ -532,7 +532,7 @@ class _$LearningOpenMoreImpl
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) {
     return openMore(topic);
   }
@@ -545,7 +545,7 @@ class _$LearningOpenMoreImpl
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) {
     return openMore?.call(topic);
   }
@@ -558,7 +558,7 @@ class _$LearningOpenMoreImpl
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) {
     if (openMore != null) {
@@ -670,7 +670,7 @@ class _$ChangedSortImpl with DiagnosticableTreeMixin implements _ChangedSort {
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) {
     return changedSort();
   }
@@ -683,7 +683,7 @@ class _$ChangedSortImpl with DiagnosticableTreeMixin implements _ChangedSort {
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) {
     return changedSort?.call();
   }
@@ -696,7 +696,7 @@ class _$ChangedSortImpl with DiagnosticableTreeMixin implements _ChangedSort {
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) {
     if (changedSort != null) {
@@ -840,7 +840,7 @@ class _$LearningFailedImpl
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) {
     return failed(topics);
   }
@@ -853,7 +853,7 @@ class _$LearningFailedImpl
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) {
     return failed?.call(topics);
   }
@@ -866,7 +866,7 @@ class _$LearningFailedImpl
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -935,7 +935,7 @@ abstract class _$$OpenSubtopicImplCopyWith<$Res> {
           _$OpenSubtopicImpl value, $Res Function(_$OpenSubtopicImpl) then) =
       __$$OpenSubtopicImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Topic topic, Subtopic subtopic});
+  $Res call({Subtopic subtopic});
 }
 
 /// @nodoc
@@ -949,14 +949,9 @@ class __$$OpenSubtopicImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? topic = null,
     Object? subtopic = null,
   }) {
     return _then(_$OpenSubtopicImpl(
-      topic: null == topic
-          ? _value.topic
-          : topic // ignore: cast_nullable_to_non_nullable
-              as Topic,
       subtopic: null == subtopic
           ? _value.subtopic
           : subtopic // ignore: cast_nullable_to_non_nullable
@@ -968,16 +963,14 @@ class __$$OpenSubtopicImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
-  const _$OpenSubtopicImpl({required this.topic, required this.subtopic});
+  const _$OpenSubtopicImpl({required this.subtopic});
 
-  @override
-  final Topic topic;
   @override
   final Subtopic subtopic;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LearningState.openSubtopic(topic: $topic, subtopic: $subtopic)';
+    return 'LearningState.openSubtopic(subtopic: $subtopic)';
   }
 
   @override
@@ -985,7 +978,6 @@ class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'LearningState.openSubtopic'))
-      ..add(DiagnosticsProperty('topic', topic))
       ..add(DiagnosticsProperty('subtopic', subtopic));
   }
 
@@ -994,13 +986,12 @@ class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenSubtopicImpl &&
-            (identical(other.topic, topic) || other.topic == topic) &&
             (identical(other.subtopic, subtopic) ||
                 other.subtopic == subtopic));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, topic, subtopic);
+  int get hashCode => Object.hash(runtimeType, subtopic);
 
   @JsonKey(ignore: true)
   @override
@@ -1016,9 +1007,9 @@ class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
     required TResult Function(Topic topic) openMore,
     required TResult Function() changedSort,
     required TResult Function(List<Topic> topics) failed,
-    required TResult Function(Topic topic, Subtopic subtopic) openSubtopic,
+    required TResult Function(Subtopic subtopic) openSubtopic,
   }) {
-    return openSubtopic(topic, subtopic);
+    return openSubtopic(subtopic);
   }
 
   @override
@@ -1029,9 +1020,9 @@ class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
     TResult? Function(Topic topic)? openMore,
     TResult? Function()? changedSort,
     TResult? Function(List<Topic> topics)? failed,
-    TResult? Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult? Function(Subtopic subtopic)? openSubtopic,
   }) {
-    return openSubtopic?.call(topic, subtopic);
+    return openSubtopic?.call(subtopic);
   }
 
   @override
@@ -1042,11 +1033,11 @@ class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
     TResult Function(Topic topic)? openMore,
     TResult Function()? changedSort,
     TResult Function(List<Topic> topics)? failed,
-    TResult Function(Topic topic, Subtopic subtopic)? openSubtopic,
+    TResult Function(Subtopic subtopic)? openSubtopic,
     required TResult orElse(),
   }) {
     if (openSubtopic != null) {
-      return openSubtopic(topic, subtopic);
+      return openSubtopic(subtopic);
     }
     return orElse();
   }
@@ -1096,11 +1087,9 @@ class _$OpenSubtopicImpl with DiagnosticableTreeMixin implements _OpenSubtopic {
 }
 
 abstract class _OpenSubtopic implements LearningState {
-  const factory _OpenSubtopic(
-      {required final Topic topic,
-      required final Subtopic subtopic}) = _$OpenSubtopicImpl;
+  const factory _OpenSubtopic({required final Subtopic subtopic}) =
+      _$OpenSubtopicImpl;
 
-  Topic get topic;
   Subtopic get subtopic;
   @JsonKey(ignore: true)
   _$$OpenSubtopicImplCopyWith<_$OpenSubtopicImpl> get copyWith =>

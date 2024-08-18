@@ -115,7 +115,7 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                                 OtherLearnConstants.zeroProgress
                             ? AppColors.greyIconGradient.createShader(bounds)
                             : widget.subtopic.progress >=
-                                    OtherLearnConstants.halfProgress
+                                    OtherLearnConstants.halfProgressBar
                                 ? AppColors.blueIconGradient
                                     .createShader(bounds)
                                 : AppColors.redIconGradient
@@ -136,7 +136,7 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                               OtherLearnConstants.zeroProgress
                           ? AppImageSource.greyBigAngleButton
                           : widget.subtopic.progress >=
-                                  OtherLearnConstants.halfProgress
+                                  OtherLearnConstants.halfProgressBar
                               ? AppImageSource.blueBigAngleButton
                               : AppImageSource.redBigAngleButton,
                     ),

@@ -9,6 +9,5 @@ class TrainingEvent with _$TrainingEvent {
   const factory TrainingEvent.cantHear() = _CantHear;
   const factory TrainingEvent.cantSpeak() = _CantSpeak;
   const factory TrainingEvent.zeroHealth() = _ZeroHealth;
-  const factory TrainingEvent.startStudy(String topicTitle, Subtopic subtopic) =
-      _StartStudy;
+  const factory TrainingEvent.startStudy(Subtopic subtopic) = _StartStudy;
 }
