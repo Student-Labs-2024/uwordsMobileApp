@@ -98,6 +98,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     wordScreen = [];
     currentWordScreenIndex = -1;
     keys = [];
+    _dropToDefaultZeroValue();
     _createTraining();
     _mixTraining();
     _nextTrainingStep(emit);
@@ -145,7 +146,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       int selectedIndex = random.nextInt(tempWords.length);
       selectableWords.add(tempWords[selectedIndex]);
       tempWords.removeAt(selectedIndex);
-      
     }
     return selectableWords;
   }
@@ -188,7 +188,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
           accessToken: accessToken, wordsId: wordsInfoIDs);
-      _dropToDefaultZeroValue();
       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
