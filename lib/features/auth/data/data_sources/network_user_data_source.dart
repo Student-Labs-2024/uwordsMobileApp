@@ -13,6 +13,7 @@ import 'package:uwords/features/auth/data/request_bodies/code_request.dart';
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
 import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/secrets.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
   static Dio dio = GetIt.instance.get<Dio>();
@@ -187,7 +188,10 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<void> sendCode({required String userEmail}) async {
     try {
-      await client.sendCode(userEmail);
+      await client.sendCode(
+          joinTokenTypeAndToken(
+              tokenType: tokenType, token: tokenForSendingCode),
+          userEmail);
     } on DioException catch (e) {
       noInternetCheck(e);
       _checkStatusCode(e: e, provider: AuthorizationProvider.self);

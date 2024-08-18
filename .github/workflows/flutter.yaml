@@ -36,6 +36,11 @@ jobs:
           firebase_options_dart: ${{secrets.FIREBASE_OPTIONS}}
         run : echo "$firebase_options_dart" > lib/firebase_options.dart
 
+      - name: Decode secrtets_tokens
+        env:
+          secrets_tokens: ${{secrets.SECRETS_TOKENS}}
+        run : echo "$secrets_tokens" > lib/secrets.dart
+
       - name: Run linter checking
         run: dart analyze --no-fatal-warnings
 
