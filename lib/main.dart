@@ -97,8 +97,8 @@ final GoRouter _goRouter = GoRouter(
                   path: 'subtopic',
                   name: 'subtopic',
                   parentNavigatorKey: _rootNavKey,
-                  pageBuilder: (context, state) => SharedAxisTransitionPage(
-                      child: const SubtopicPage())),
+                  pageBuilder: (context, state) =>
+                      SharedAxisTransitionPage(child: const SubtopicPage())),
             ]),
         GoRoute(
           path: '/learnCore',
