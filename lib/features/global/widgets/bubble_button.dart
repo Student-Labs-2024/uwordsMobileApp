@@ -46,6 +46,7 @@ class BubbleButton extends StatelessWidget {
               ? (state != OtherLearnConstants.stateActive &&
                       state != OtherLearnConstants.stateCantHear &&
                       state != OtherLearnConstants.stateLoseHealth &&
+                      state != OtherLearnConstants.stateFinal &&
                       state != OtherLearnConstants.stateCantSpeak
                   ? OtherLearnConstants.getBubbleButtonGradient(state!)
                   : null)

@@ -70,4 +70,9 @@ class AppImageSource {
   static const String subtopicHeaderBubbles =
       'assets/png/subtopic_header_bubbles.png';
   static const String failedIcon = 'assets/svg/failed.svg';
+  static const String sircleGreen0 = 'assets/svg/sircle_green_0.svg';
+  static const String sircleGreen1 = 'assets/svg/sircle_green_1.svg';
+  static const String sircleGreen2 = 'assets/svg/sircle_green_2.svg';
+  static const String sircleGreen3 = 'assets/svg/sircle_green_3.svg';
+  static const String sircleGreen4 = 'assets/svg/sircle_green_4.svg';
 }

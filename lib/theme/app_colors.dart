@@ -133,4 +133,11 @@ class AppColors {
   static const Color imperial45 = Color.fromRGBO(83, 45, 106, 0.45);
 
   static const Color animationColor = Color.fromRGBO(216, 227, 255, 1);
+
+  static const LinearGradient greenCircleProgressGradient =
+      LinearGradient(colors: [
+    AppColors.goodProgressbarColor1,
+    AppColors.goodProgressbarColor2,
+    AppColors.goodProgressbarColor1,
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 }

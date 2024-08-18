@@ -26,5 +26,9 @@ abstract class TrainingState with _$TrainingState {
     required WordModel word,
     required List<WordModel> selectableWords,
   }) = _Screen4;
-  const factory TrainingState.finalScreen() = _FinalScreen;
+  const factory TrainingState.finalScreen({
+    required ValueKey valueKey,
+    required List<WordModel> words,
+    required List<int> newProgress,
+  }) = _FinalScreen;
 }

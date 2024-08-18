@@ -8,12 +8,34 @@ class CustomImageNetworkView extends StatelessWidget {
       required this.width,
       required this.height,
       required this.clipRadius,
-      this.darken});
+      this.darken,
+      this.extraDarken});
   final String imageSource;
   final double width;
   final double height;
   final double clipRadius;
   final bool? darken;
+  final bool? extraDarken;
+
+  Color? getDarkness() {
+    if (extraDarken != null) {
+      if (extraDarken == true) return Colors.black45;
+    }
+    if (darken != null) {
+      if (darken == true) return Colors.black26;
+    }
+    return null;
+  }
+
+  BlendMode? getBlendMode() {
+    if (extraDarken != null) {
+      if (extraDarken == true) return BlendMode.darken;
+    }
+    if (darken != null) {
+      if (darken == true) return BlendMode.darken;
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +44,8 @@ class CustomImageNetworkView extends StatelessWidget {
       child: Image.network(
         fit: BoxFit.cover,
         imageSource,
-        color: darken != null ? (darken == true ? Colors.black26 : null) : null,
-        colorBlendMode:
-            darken != null ? (darken == true ? BlendMode.darken : null) : null,
+        color: getDarkness(),
+        colorBlendMode: getBlendMode(),
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) {
             return child;

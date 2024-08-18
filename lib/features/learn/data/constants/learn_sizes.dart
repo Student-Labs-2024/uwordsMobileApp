@@ -63,10 +63,14 @@ class LearnSizes {
   static const double hpHeight = 20;
   static const double hpSizeModifier = 2;
 
-  static const double bottomSheetHeight = 246 / 812;
+  static const double bottomSheetHeight = 222 / 812;
+  static const double bottomSheetFinalHeight = 246 / 812;
   static const double bottomSheetLoseHealthHeight = 301 / 812;
 
   static const double wordRowMinHeight = 45;
   static const double wordRowIconHeight = 15;
   static const double wordRowIconWidth = 20;
+
+  static const double circleGreenBigProgressSize = 80 / 375;
+  static const double circleGreenSmallProgressSize = 45 / 375;
 }

@@ -5,6 +5,7 @@ import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/constants/mock_data.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/learn/presentation/learn_screens/final_learn_screen.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen1.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen2.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen3.dart';
@@ -93,6 +94,13 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     bsState = OtherLearnConstants.stateSuccess;
   }
 
+  void activateFinalBottomSheet() {
+    bsTitle = AppLocalizations.of(context).stillRepeats;
+    bsSubtitle = AppLocalizations.of(context).weWillRemind;
+    bsButtomText = AppLocalizations.of(context).finish;
+    bsState = OtherLearnConstants.stateFinal;
+  }
+
   void hit() {
     setState(() {
       hp--;
@@ -132,6 +140,8 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         context.read<TrainingBloc>().add(const TrainingEvent.cantSpeak());
         activateCantSpeak();
         break;
+      case OtherLearnConstants.stateFinal:
+        activateFinalBottomSheet();
       default:
         setState(() {
           showBottomSheet = false;
@@ -212,25 +222,24 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 hp: hp,
                 isCantHear: isCantHear,
               ),
-              finalScreen: () => Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context).congratulations),
-                  TextButton(
-                    onPressed: quit,
-                    child: Text(AppLocalizations.of(context).goBackToTopics),
-                  ),
-                ],
-              )),
+              finalScreen: (valueKey, words, newProgress) => FinalLearnScreen(
+                  key: valueKey,
+                  words: words,
+                  newProgress: newProgress,
+                  quit: quit,
+                  goNextScreen: getBottomSheet,
+                  progress: progress,
+                  hp: hp),
               orElse: () =>
                   Center(child: Text(AppLocalizations.of(context).unknowError)),
             ),
             showBottomSheet
                 ? CustomBottomSheet(
-                    onPressed: bsState == OtherLearnConstants.stateLoseHealth
-                        ? quit
-                        : bsOnpressed,
+                    onPressed:
+                        (bsState == OtherLearnConstants.stateLoseHealth ||
+                                bsState == OtherLearnConstants.stateFinal)
+                            ? quit
+                            : bsOnpressed,
                     title: bsTitle,
                     state: bsState,
                     buttonText: bsButtomText,
