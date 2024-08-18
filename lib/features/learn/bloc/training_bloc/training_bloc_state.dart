@@ -34,5 +34,6 @@ abstract class TrainingState with _$TrainingState {
     required ValueKey valueKey,
     required List<WordModel> words,
     required List<int> newProgress,
+    required int progress,
   }) = _FinalScreen;
 }

@@ -183,10 +183,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
     if (currentWordScreenIndex == wordScreen.length) {
       emit(TrainingState.finalScreen(
-        words: words,
-        newProgress: wordsInfoProgress,
-        valueKey: keys.last,
-      ));
+          words: words,
+          newProgress: wordsInfoProgress,
+          valueKey: keys.last,
+          progress: progress));
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
           accessToken: accessToken, wordsId: wordsInfoIDs);

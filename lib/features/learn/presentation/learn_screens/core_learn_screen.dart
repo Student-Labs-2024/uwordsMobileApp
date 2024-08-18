@@ -199,14 +199,15 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 hp: hp,
                 isCantHear: isCantHear,
               ),
-              finalScreen: (valueKey, words, newProgress) => FinalLearnScreen(
-                  key: valueKey,
-                  words: words,
-                  newProgress: newProgress,
-                  quit: quit,
-                  goNextScreen: getBottomSheet,
-                  progress: progress,
-                  hp: hp),
+              finalScreen: (valueKey, words, newProgress, progress) =>
+                  FinalLearnScreen(
+                      key: valueKey,
+                      words: words,
+                      newProgress: newProgress,
+                      quit: quit,
+                      goNextScreen: getBottomSheet,
+                      progress: progress,
+                      hp: hp),
               orElse: () =>
                   Center(child: Text(AppLocalizations.of(context).unknowError)),
             ),
