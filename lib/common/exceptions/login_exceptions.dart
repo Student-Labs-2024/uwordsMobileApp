@@ -16,9 +16,9 @@ class NotRegisteredException implements Exception {
   NotRegisteredException({this.message = "", required this.provider});
 }
 
-class OldAccessException implements Exception {
+class OldAccessToken implements Exception {
   String message;
-  OldAccessException({this.message = ""});
+  OldAccessToken({this.message = ""});
 }
 
 class AccessIsBannedException implements Exception {
