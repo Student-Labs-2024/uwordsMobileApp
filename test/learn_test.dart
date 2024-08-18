@@ -21,18 +21,21 @@ void main() {
       Topic(topicTitle: inProgressTopicName, subtopics: [
     Subtopic(
         subtopicTitle: "Subtopic 2.2",
+        topicTitle: inProgressTopicName,
         wordInfoList: [],
         wordCount: 50,
         pictureLink: '',
         progress: 52),
     Subtopic(
         subtopicTitle: "Subtopic 1.2",
+        topicTitle: inProgressTopicName,
         wordInfoList: [],
         wordCount: 32,
         pictureLink: '',
         progress: 45),
     Subtopic(
         subtopicTitle: "Subtopic 1.1",
+        topicTitle: inProgressTopicName,
         wordInfoList: [],
         wordCount: 47,
         pictureLink: '',
@@ -42,12 +45,14 @@ void main() {
     Topic(topicTitle: "Topic 1", subtopics: [
       Subtopic(
           subtopicTitle: "Subtopic 1.1",
+          topicTitle: "Topic 1",
           wordInfoList: [],
           wordCount: 47,
           pictureLink: '',
           progress: 31),
       Subtopic(
           subtopicTitle: "Subtopic 1.2",
+          topicTitle: "Topic 1",
           wordInfoList: [],
           wordCount: 32,
           pictureLink: '',
@@ -56,12 +61,14 @@ void main() {
     Topic(topicTitle: "Topic 2", subtopics: [
       Subtopic(
           subtopicTitle: "Subtopic 2.1",
+          topicTitle: "Topic 2",
           wordInfoList: [],
           wordCount: 70,
           pictureLink: '',
           progress: 100),
       Subtopic(
           subtopicTitle: "Subtopic 2.2",
+          topicTitle: "Topic 2",
           wordInfoList: [],
           wordCount: 50,
           pictureLink: '',
