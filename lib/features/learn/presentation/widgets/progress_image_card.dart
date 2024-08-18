@@ -26,23 +26,23 @@ class ProgressImageCardState extends State<ProgressImageCard> {
     startAnimation();
   }
 
-  int stage = 0;
+  int stage = OtherLearnConstants.circleImageStage0;
 
   void startAnimation() async {
     await Future.delayed(
         const Duration(milliseconds: OtherLearnConstants.progressMilisec1));
     setState(() {
-      stage = 1;
+      stage = OtherLearnConstants.circleImageStage1;
     });
     await Future.delayed(
         const Duration(milliseconds: OtherLearnConstants.progressMilisec2));
     setState(() {
-      stage = 2;
+      stage = OtherLearnConstants.circleImageStage2;
     });
   }
 
   String getImage() {
-    if (stage == 0) {
+    if (stage == OtherLearnConstants.circleImageStage0) {
       return AppImageSource.circleEmpty;
     }
     switch (widget.currentProgress + 1) {
@@ -81,7 +81,8 @@ class ProgressImageCardState extends State<ProgressImageCard> {
                     BorderRadius.circular(GlobalSizes.borderRadiusLarge)),
             child: CustomImageNetworkView(
               imageSource: widget.word.pictureLink,
-              extraDarken: stage == 2 ? null : true,
+              extraDarken:
+                  stage == OtherLearnConstants.circleImageStage2 ? null : true,
               width:
                   MediaQuery.of(context).size.width * LearnSizes.imageCardWidth,
               height: MediaQuery.of(context).size.height *
@@ -99,7 +100,9 @@ class ProgressImageCardState extends State<ProgressImageCard> {
                     milliseconds: OtherLearnConstants
                         .animationAlignChangeMilisecDuration),
                 curve: Curves.easeOutQuart,
-                alignment: stage == 2 ? Alignment.topRight : Alignment.center,
+                alignment: stage == OtherLearnConstants.circleImageStage2
+                    ? Alignment.topRight
+                    : Alignment.center,
                 child: Padding(
                   padding:
                       const EdgeInsets.all(LearnPaddings.greenProgressCircle),
@@ -111,7 +114,7 @@ class ProgressImageCardState extends State<ProgressImageCard> {
                     },
                     child: SvgPicture.asset(
                       getImage(),
-                      width: stage == 2
+                      width: stage == OtherLearnConstants.circleImageStage2
                           ? MediaQuery.of(context).size.width *
                               LearnSizes.circleGreenSmallProgressSize
                           : MediaQuery.of(context).size.width *

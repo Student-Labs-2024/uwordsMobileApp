@@ -58,4 +58,8 @@ class OtherLearnConstants {
   static const int animationAlignChangeMilisecDuration = 500;
 
   static const int animationBottomSheetShowMilisecDuration = 400;
+
+  static const int circleImageStage0 = 0;
+  static const int circleImageStage1 = 1;
+  static const int circleImageStage2 = 2;
 }

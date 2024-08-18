@@ -19,10 +19,10 @@ class CustomImageNetworkView extends StatelessWidget {
 
   Color? getDarkness() {
     if (extraDarken != null) {
-      if (extraDarken == true) return Colors.black45;
+      if (extraDarken == true) return AppColors.black45Color;
     }
     if (darken != null) {
-      if (darken == true) return Colors.black26;
+      if (darken == true) return AppColors.black25Color;
     }
     return null;
   }

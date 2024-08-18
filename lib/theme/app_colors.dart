@@ -43,6 +43,9 @@ class AppColors {
   static const Color brownColor = Color.fromARGB(255, 215, 204, 200);
   static const Color lightWhite = Color.fromRGBO(238, 238, 238, 1);
 
+  static Color black45Color = blackColor.withOpacity(45);
+  static Color black25Color = blackColor.withOpacity(25);
+
   static const Color lightgrayColor = Color.fromRGBO(154, 147, 147, 1);
   static const Color lightgrayColor2 = Color.fromRGBO(133, 132, 134, 1);
   static const Color grayColor = Color.fromRGBO(102, 102, 102, 1);
