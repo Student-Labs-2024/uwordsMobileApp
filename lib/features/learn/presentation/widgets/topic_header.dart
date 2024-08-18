@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
-import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,21 +16,9 @@ class TopicHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        InkWell(
-          // TODO Need to think how to do it better way
-          onTap: () {
-            context
-                .read<LearningBloc>()
-                .add(LearningEvent.getWordsByTopic(topic));
-            Future.delayed(OtherLearnConstants.smallDuration).whenComplete(() {
-              context.read<TrainingBloc>().add(TrainingEvent.setTopic(topic));
-              context.go("/learnCore");
-            });
-          },
-          child: Text(
-            topic.topicTitle,
-            style: AppTextStyles.topicHeaderText,
-          ),
+        Text(
+          topic.topicTitle,
+          style: AppTextStyles.topicHeaderText,
         ),
         const Spacer(),
         if (topic.subtopics.length >= OtherLearnConstants.checkMoreInt)
