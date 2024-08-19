@@ -130,10 +130,10 @@ class _CustomTextFieldState extends State<CustomTextFieldWithRules> {
               borderRadius:
                   BorderRadius.circular(GlobalSizes.borderRadiusSmall),
               border: (_isNotError && _touched) || (_touched == false)
-                    ? const Border()
-                    : Border.all(
-                        color: AppColors.errorColor,
-                        width: GlobalSizes.customTextFieldErrorSpacer),
+                  ? const Border()
+                  : Border.all(
+                      color: AppColors.errorColor,
+                      width: GlobalSizes.customTextFieldErrorSpacer),
               boxShadow: MainBoxShadows.main),
           child: Row(
             children: [

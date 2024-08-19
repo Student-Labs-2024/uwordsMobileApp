@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
@@ -10,6 +11,7 @@ import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
@@ -25,10 +27,26 @@ class _AuthPageState extends State<AuthPage> {
   final TextEditingController mailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final codeController = TextEditingController();
+  String inputState = OtherLearnConstants.stateZero;
   String regUser = '';
   @override
   void initState() {
     super.initState();
+  }
+
+  void updateValidDataForButton() {
+    if (isCorrectEmail(email: mailController.text) &&
+        isCorrectPassword(password: passwordController.text)) {
+      inputState = OtherLearnConstants.stateActive;
+    } else {
+      inputState = OtherLearnConstants.stateZero;
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    updateValidDataForButton();
+    super.didChangeDependencies();
   }
 
   @override
@@ -98,14 +116,21 @@ class _AuthPageState extends State<AuthPage> {
                                   vertical:
                                       AuthDesignedPaddings.middleEmptySpace),
                               child: BubbleButton(null,
+                                  state: inputState,
                                   maximumWidth: maximumWidth -
                                       (AuthDesignedPaddings.basePagePadding),
-                                  onPressed: () {
-                                context.read<AuthBloc>().add(
-                                    AuthEvent.signInWithMailPassword(
-                                        emailAddress: mailController.text,
-                                        password: passwordController.text));
-                              }, text: AppLocalizations.of(context).signIn),
+                                  onPressed: inputState ==
+                                          OtherLearnConstants.stateZero
+                                      ? () {}
+                                      : () {
+                                          context.read<AuthBloc>().add(
+                                              AuthEvent.signInWithMailPassword(
+                                                  emailAddress:
+                                                      mailController.text,
+                                                  password:
+                                                      passwordController.text));
+                                        },
+                                  text: AppLocalizations.of(context).signIn),
                             ),
                             DividerWithText(
                               text: AppLocalizations.of(context).or,

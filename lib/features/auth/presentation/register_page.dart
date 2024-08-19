@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:uwords/common/utils/url_launch.dart';
+import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/registration_fields.dart';
 import 'package:uwords/features/global/widgets/custom_textfield.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
@@ -34,8 +36,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final mailController = TextEditingController();
   final passwordController = TextEditingController();
   final codeController = TextEditingController();
+  String inputState = OtherLearnConstants.stateZero;
   DateTime choosenDate = DateTime.now();
   TextEditingController datePickerController = TextEditingController();
+
   void _showDatePicker(BuildContext ctx) {
     showCupertinoModalPopup(
         context: ctx,
@@ -73,10 +77,26 @@ class _RegisterPageState extends State<RegisterPage> {
             ));
   }
 
+  void updateValidDataForButton() {
+    if (datePickerController.text.isNotEmpty &&
+        isCorrectEmail(email: mailController.text) &&
+        isCorrectPassword(password: passwordController.text)) {
+      inputState = OtherLearnConstants.stateActive;
+    } else {
+      inputState = OtherLearnConstants.stateZero;
+    }
+  }
+
   @override
   void initState() {
     context.read<AuthBloc>().add(const AuthEvent.autoLogin());
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    updateValidDataForButton();
+    super.didChangeDependencies();
   }
 
   @override
@@ -178,14 +198,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                 AppLocalizations.of(context).unknowError,
                           ),
                           BubbleButton(null,
+                              state: inputState,
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),
-                              onPressed: () {
-                            context.read<AuthBloc>().add(AuthEvent.requestCode(
-                                birthDate: choosenDate,
-                                emailAddress: mailController.text,
-                                password: passwordController.text));
-                          }, text: AppLocalizations.of(context).createAccount),
+                              onPressed: inputState ==
+                                      OtherLearnConstants.stateZero
+                                  ? () {}
+                                  : () {
+                                      context.read<AuthBloc>().add(
+                                          AuthEvent.requestCode(
+                                              birthDate: choosenDate,
+                                              emailAddress: mailController.text,
+                                              password:
+                                                  passwordController.text));
+                                    },
+                              text: AppLocalizations.of(context).createAccount),
                           DividerWithText(
                             text: AppLocalizations.of(context).or,
                             maximumWidth: maximumWidth -
