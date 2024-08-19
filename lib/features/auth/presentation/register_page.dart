@@ -11,13 +11,14 @@ import 'package:uwords/features/auth/data/auth_undesigned_constants.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart';
 import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
+import 'package:uwords/features/auth/domain/validation.dart';
 import 'package:uwords/features/auth/presentation/confirm_page.dart';
+import 'package:uwords/features/auth/presentation/widgets/custom_textfield_with_rules.dart';
 import 'package:uwords/features/global/data/constants/global_paddings.dart';
 import 'package:uwords/features/global/widgets/bubble_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:uwords/features/auth/presentation/widgets/registration_fields.dart';
-import 'package:uwords/features/global/widgets/custom_textfield.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
@@ -161,12 +162,15 @@ class _RegisterPageState extends State<RegisterPage> {
                               style: AppTextStyles.authHeaderText,
                             ),
                           ),
-                          CustomTextField(
+                          CustomTextFieldWithRules(
                             controller: datePickerController,
                             hintText: AppLocalizations.of(context).age,
                             isHidden: false,
-                            isErrorDisplay: false,
+                            isErrorDisplay: true,
                             onTap: () => _showDatePicker(context),
+                            validationRules: validationDatePickerRules,
+                            isReadOnly: true,
+                            isRequiredField: true,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(

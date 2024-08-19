@@ -60,3 +60,14 @@ final List<ValidationRule> validationEmailRules = [
         return true;
       })
 ];
+
+final List<ValidationRule> validationDatePickerRules = [
+  ValidationRule(
+      errorMessage: FieldUnderlineText.requiredField,
+      isValid: (text) {
+        if (text.isEmpty) {
+          return false;
+        }
+        return true;
+      })
+];

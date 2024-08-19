@@ -5,12 +5,15 @@ enum FieldUnderlineText {
   shortLength,
   wrongEmail,
   wrongPassword,
-  simplePassword
+  simplePassword,
+  requiredField
 }
 
 String getLocalizedFieldUnderlineText(
     BuildContext context, FieldUnderlineText enumerated) {
   switch (enumerated) {
+    case FieldUnderlineText.requiredField:
+      return AppLocalizations.of(context).requiredField;
     case FieldUnderlineText.shortLength:
       return AppLocalizations.of(context).shortPassword;
     case FieldUnderlineText.wrongEmail:

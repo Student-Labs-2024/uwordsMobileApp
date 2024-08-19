@@ -24,6 +24,7 @@ class CustomTextFieldWithRules extends StatefulWidget {
     this.prefixIcon,
     this.onTap,
     this.isRequiredField,
+    this.isReadOnly = false,
     required this.validationRules,
   });
 
@@ -33,6 +34,7 @@ class CustomTextFieldWithRules extends StatefulWidget {
   final bool isErrorDisplay;
 
   final bool? isRequiredField;
+  final bool? isReadOnly;
   final bool Function()? isNotError;
   final Widget? prefixIcon;
   final VoidCallback? onTap;
@@ -180,6 +182,7 @@ class _CustomTextFieldState extends State<CustomTextFieldWithRules> {
                     _updateErrorState();
                     _touched = true;
                   },
+                  readOnly: widget.isReadOnly ?? false,
                   onSubmitted: (value) {
                     _touched = false;
                   },
