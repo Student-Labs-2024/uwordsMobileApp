@@ -43,11 +43,11 @@ class WordRow extends StatelessWidget {
           shaderCallback: (bounds) {
             return AppColors.centralGradient.createShader(bounds);
           },
-          child: wordInfo.progress >= OtherLearnConstants.thirdQuarterProgress
+          child: wordInfo.progress > OtherLearnConstants.thirdQuarterProgress
               ? SvgPicture.asset(AppImageSource.circleFull)
-              : wordInfo.progress >= OtherLearnConstants.halfProgress
+              : wordInfo.progress > OtherLearnConstants.halfProgress
                   ? SvgPicture.asset(AppImageSource.circleThirdQuarter)
-                  : wordInfo.progress >= OtherLearnConstants.quarterProgress
+                  : wordInfo.progress > OtherLearnConstants.quarterProgress
                       ? SvgPicture.asset(AppImageSource.circleSecondQuarter)
                       : wordInfo.progress > OtherLearnConstants.zeroProgress
                           ? SvgPicture.asset(AppImageSource.circleFirstQuarter)
