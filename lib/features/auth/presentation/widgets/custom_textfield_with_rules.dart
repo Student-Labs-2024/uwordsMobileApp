@@ -129,13 +129,11 @@ class _CustomTextFieldState extends State<CustomTextFieldWithRules> {
               color: AppColors.whiteBackgroundColor,
               borderRadius:
                   BorderRadius.circular(GlobalSizes.borderRadiusSmall),
-              border: Border(
-                bottom: (_isNotError && _touched) || (_touched == false)
-                    ? BorderSide.none
-                    : const BorderSide(
+              border: (_isNotError && _touched) || (_touched == false)
+                    ? const Border()
+                    : Border.all(
                         color: AppColors.errorColor,
                         width: GlobalSizes.customTextFieldErrorSpacer),
-              ),
               boxShadow: MainBoxShadows.main),
           child: Row(
             children: [
