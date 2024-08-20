@@ -32,7 +32,8 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage>
+    with TickerProviderStateMixin {
   final usernameController = TextEditingController();
   final mailController = TextEditingController();
   final passwordController = TextEditingController();
