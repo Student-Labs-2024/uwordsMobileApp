@@ -49,7 +49,8 @@ abstract class AuthClient {
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @POST("email/check_code")
-  Future<HttpResponse> checkCode(@Body() body,
+  Future<HttpResponse> checkCode(
+      @Header("Authorization") String secretToken, @Body() body,
       {@Header('Content-Type') String contentType = 'application/json'});
 
   @GET("users/me")
