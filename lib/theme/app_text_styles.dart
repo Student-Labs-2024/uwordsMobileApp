@@ -200,4 +200,17 @@ class AppTextStyles {
       fontWeight: FontWeight.w600,
       color: AppColors.darkMainColor.withOpacity(0.45),
       decoration: TextDecoration.underline);
+
+  static const profileNavActive = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
+    color: AppColors.blackColor,
+  );
+  static const profileNavNotActive = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    color: AppColors.lightgrayColor,
+  );
 }

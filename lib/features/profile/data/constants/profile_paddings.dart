@@ -11,4 +11,6 @@ class ProfilePaddings {
 
   static const double activitiesTileBottom = 15;
   static const double progressWordTileBottom = 15;
+  static const double navButtonHorizontal = 9;
+  static const double navButtonVertical = 6;
 }

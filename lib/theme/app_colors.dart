@@ -43,8 +43,8 @@ class AppColors {
   static const Color brownColor = Color.fromARGB(255, 215, 204, 200);
   static const Color lightWhite = Color.fromRGBO(238, 238, 238, 1);
 
-  static Color black45Color = Color.fromARGB((255*0.45).toInt(), 0, 0, 0);
-  static Color black25Color = Color.fromARGB((255*0.25).toInt(), 0, 0, 0);
+  static Color black45Color = Color.fromARGB((255 * 0.45).toInt(), 0, 0, 0);
+  static Color black25Color = Color.fromARGB((255 * 0.25).toInt(), 0, 0, 0);
 
   static const Color lightgrayColor = Color.fromRGBO(154, 147, 147, 1);
   static const Color lightgrayColor2 = Color.fromRGBO(133, 132, 134, 1);
@@ -134,6 +134,7 @@ class AppColors {
   ]);
 
   static const Color imperial45 = Color.fromRGBO(83, 45, 106, 0.45);
+  static const Color imperial = Color.fromRGBO(83, 45, 106, 1);
 
   static const Color animationColor = Color.fromRGBO(216, 227, 255, 1);
 
@@ -143,4 +144,9 @@ class AppColors {
     AppColors.goodProgressbarColor2,
     AppColors.goodProgressbarColor1,
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+
+  static const LinearGradient purpleGradient = LinearGradient(colors: [
+    Color.fromRGBO(150, 124, 253, 1),
+    Color.fromRGBO(83, 45, 106, 1),
+  ], begin: Alignment.centerLeft, end: Alignment.centerRight);
 }
