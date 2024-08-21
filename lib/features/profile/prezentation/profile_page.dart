@@ -5,7 +5,6 @@ import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/data/constants/other_profile_constants.dart';
-import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/screens/achievements_screen.dart';
@@ -30,9 +29,6 @@ class _ProfilePageState extends State<ProfilePage> {
     context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
   }
 
-  String currentUserName = ProfileDataExample.userNameExample;
-  String currentUserAvatarUrl = ProfileDataExample.userIconExample;
-
   String currentScreen = OtherProfileConstants.staticticsScreen;
 
   void changeNavState(String buttonTag) {
@@ -50,109 +46,111 @@ class _ProfilePageState extends State<ProfilePage> {
           gradient: AppColors.backgroundGradient,
         ),
         child: SafeArea(
-          child: BlocConsumer<ProfileBloc, ProfileState>(
-            listener: (context, state) {
-              state.whenOrNull(
-                userGot: (userName, avatarUrl) {
-                  setState(() {
-                    if (userName != '') {
-                      currentUserName = userName;
-                    }
-                    if (avatarUrl != '') {
-                      currentUserAvatarUrl = avatarUrl;
-                    }
-                  });
-                },
-              );
-            },
+          child: BlocBuilder<ProfileBloc, ProfileState>(
             builder: (BuildContext context, ProfileState state) {
-              state.whenOrNull(initial: () {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.darkMainColor,
-                  ),
-                );
-              });
-              return ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        right: MediaQuery.of(context).size.width *
-                            ProfilePaddings.headerHorizontal,
-                        top: ProfilePaddings.headerTop,
-                        left: MediaQuery.of(context).size.width *
-                            ProfilePaddings.headerHorizontal,
-                        bottom: ProfilePaddings.headerBottom),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          width: ProfileSizes.optionsButtonSize,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+              return state.maybeWhen(
+                gotInfo: (userName, avatarUrl, almostLearned, learned) {
+                  return ListView(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            right: MediaQuery.of(context).size.width *
+                                ProfilePaddings.headerHorizontal,
+                            top: ProfilePaddings.headerTop,
+                            left: MediaQuery.of(context).size.width *
+                                ProfilePaddings.headerHorizontal,
+                            bottom: ProfilePaddings.headerBottom),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    GlobalSizes.borderRadiusCircle),
-                                border: const GradientBoxBorder(
-                                  gradient: AppColors.purpleGradient,
-                                  width: ProfileSizes.avatarBorder,
-                                ),
-                              ),
-                              child: CustomImageNetworkView(
-                                  imageSource: currentUserAvatarUrl,
-                                  width: MediaQuery.of(context).size.width *
-                                      ProfileSizes.avatarSize,
-                                  height: MediaQuery.of(context).size.width *
-                                      ProfileSizes.avatarSize,
-                                  clipRadius: GlobalSizes.borderRadiusCircle),
+                            const SizedBox(
+                              width: ProfileSizes.optionsButtonSize,
                             ),
-                            const SizedBox(height: ProfileSizes.headerSpacer),
-                            Text(
-                              currentUserName,
-                              style: AppTextStyles.profileName,
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        GlobalSizes.borderRadiusCircle),
+                                    border: const GradientBoxBorder(
+                                      gradient: AppColors.purpleGradient,
+                                      width: ProfileSizes.avatarBorder,
+                                    ),
+                                  ),
+                                  child: CustomImageNetworkView(
+                                      imageSource: avatarUrl == ''
+                                          ? OtherProfileConstants
+                                              .haventAvatarUrl
+                                          : avatarUrl,
+                                      width: MediaQuery.of(context).size.width *
+                                          ProfileSizes.avatarSize,
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              ProfileSizes.avatarSize,
+                                      clipRadius:
+                                          GlobalSizes.borderRadiusCircle),
+                                ),
+                                const SizedBox(
+                                    height: ProfileSizes.headerSpacer),
+                                Text(
+                                  userName == ''
+                                      ? OtherProfileConstants.haventName
+                                      : userName,
+                                  style: AppTextStyles.profileName,
+                                ),
+                              ],
+                            ),
+                            OptionsButton(
+                              onPressed: () => {},
                             ),
                           ],
                         ),
-                        OptionsButton(
-                          onPressed: () => {},
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      NavButton(
-                        text: AppLocalizations.of(context).statistics,
-                        onPressed: () => changeNavState(
-                            OtherProfileConstants.staticticsScreen),
-                        isSelected: currentScreen ==
-                                OtherProfileConstants.staticticsScreen
-                            ? true
-                            : false,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          NavButton(
+                            text: AppLocalizations.of(context).statistics,
+                            onPressed: () => changeNavState(
+                                OtherProfileConstants.staticticsScreen),
+                            isSelected: currentScreen ==
+                                    OtherProfileConstants.staticticsScreen
+                                ? true
+                                : false,
+                          ),
+                          const SizedBox(
+                            width: ProfileSizes.navButtonSpacer,
+                          ),
+                          NavButton(
+                            text: AppLocalizations.of(context).achievements,
+                            onPressed: () => changeNavState(
+                                OtherProfileConstants.achievementsScreen),
+                            isSelected: currentScreen ==
+                                    OtherProfileConstants.achievementsScreen
+                                ? true
+                                : false,
+                          ),
+                        ],
                       ),
                       const SizedBox(
-                        width: ProfileSizes.navButtonSpacer,
+                        height: ProfilePaddings.navButtonBottom,
                       ),
-                      NavButton(
-                        text: AppLocalizations.of(context).achievements,
-                        onPressed: () => changeNavState(
-                            OtherProfileConstants.achievementsScreen),
-                        isSelected: currentScreen ==
-                                OtherProfileConstants.achievementsScreen
-                            ? true
-                            : false,
-                      ),
+                      currentScreen == OtherProfileConstants.staticticsScreen
+                          ? StatisticsScreen(
+                              learned: learned,
+                              almostLearned: almostLearned,
+                            )
+                          : const AchievementsScreen(),
                     ],
+                  );
+                },
+                orElse: () => const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.darkMainColor,
                   ),
-                  currentScreen == OtherProfileConstants.staticticsScreen
-                      ? const StatisticsScreen()
-                      : const AchievementsScreen(),
-                ],
+                ),
               );
             },
           ),

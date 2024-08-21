@@ -65,4 +65,7 @@ class OtherLearnConstants {
   static const int circleImageStage0 = 0;
   static const int circleImageStage1 = 1;
   static const int circleImageStage2 = 2;
+
+  static const String topickNameInProgress = 'In Progress';
+  static const String subtopickNameUnsorted = 'Unsorted';
 }

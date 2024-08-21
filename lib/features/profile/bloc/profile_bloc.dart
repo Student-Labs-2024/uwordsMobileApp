@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
+import 'package:uwords/common/utils/tokens.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_state.dart';
@@ -9,32 +12,34 @@ part 'profile_event.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final IUserRepository userRepository;
+  final IWordsRepository wordsRepository;
 
-  ProfileBloc({required this.userRepository})
+  ProfileBloc({required this.userRepository, required this.wordsRepository})
       : super(const ProfileState.initial()) {
     on<_GetUserInfo>(_handleGetUserInfo);
-    on<_SetScreen>(_handleSetScreen);
   }
 
   Future<void> _handleGetUserInfo(
       _GetUserInfo event, Emitter<ProfileState> emit) async {
     String userName = await userRepository.getCurrentUserName();
     String avatarUrl = await userRepository.getCurrentUserAvatarUrl();
-    emit(ProfileState.userGot(userName, avatarUrl));
-    emit(const ProfileState.statisticsScreen());
-  }
 
-  void _handleSetScreen(_SetScreen event, Emitter<ProfileState> emit) {
-    switch (event.id) {
-      case 0:
-        emit(const ProfileState.statisticsScreen());
-        return;
-      case 1:
-        emit(const ProfileState.activitiesScreen());
-        return;
-      default:
-        emit(const ProfileState.achievementsScreen());
-        return;
+    String accessToken = await userRepository.getCurrentUserAccessToken();
+    await checkTokenExpirationAndUpdateIfNeed(
+        accessToken: accessToken, userRepository: userRepository);
+    List<Subtopic> subtopics =
+        await wordsRepository.getAllSubtopics(accessToken: accessToken);
+    List<Subtopic> almostLearned = [];
+    List<Subtopic> learned = [];
+
+    for (Subtopic st in subtopics) {
+      if (st.progress == 100) {
+        learned.add(st);
+      } else if (st.progress > 50) {
+        almostLearned.add(st);
+      }
     }
+
+    emit(ProfileState.gotInfo(userName, avatarUrl, almostLearned, learned));
   }
 }

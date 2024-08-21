@@ -155,5 +155,18 @@
   "wrongEmail": "Невалидная почта",
   "stillRepeats" : "Остались повторения",
   "weWillRemind" : "Мы напомним, когда настанет время для следующего этапа!",
-  "finish" : "Закончить"
+  "finish" : "Закончить",
+  "upgradeSubscription": "Продление {date}",
+  "@upgradeSubscription": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscriptionIsActive" : "Подписка активна",
+  "subscriptionIsNotActive" : "Подписка неактивна",
+  "subscribe" : "Оформите подписку и получите все возможности uwords",
+  "learned" : "Изученные темы"
+  
 }

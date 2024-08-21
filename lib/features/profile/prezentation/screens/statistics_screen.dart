@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
-import 'package:uwords/features/profile/prezentation/widgets/progress_word_tile.dart';
+import 'package:uwords/features/profile/prezentation/widgets/progress_category.dart';
 import 'package:uwords/features/profile/prezentation/widgets/statistic_card.dart';
-import 'package:uwords/theme/app_colors.dart';
-import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/features/profile/prezentation/widgets/subscription_view.dart';
 import 'package:uwords/theme/image_source.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StatisticsScreen extends StatefulWidget {
-  const StatisticsScreen({super.key});
+  const StatisticsScreen(
+      {super.key, required this.learned, required this.almostLearned});
 
+  final List<Subtopic> learned;
+  final List<Subtopic> almostLearned;
   @override
   State<StatisticsScreen> createState() => _StatisticsScreenState();
 }
@@ -31,6 +34,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     }
   }
 
+  bool haveSubscription = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,8 +45,20 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SubscriptionView(
+            image: haveSubscription
+                ? AppImageSource.subscriptionActive
+                : AppImageSource.subscriptionInactive,
+            title: haveSubscription
+                ? AppLocalizations.of(context).subscriptionIsActive
+                : AppLocalizations.of(context).subscriptionIsNotActive,
+            subtitle: haveSubscription
+                ? AppLocalizations.of(context).upgradeSubscription('03.10.2024')
+                : AppLocalizations.of(context).subscribe,
+            onPressed: () {},
+          ),
           const SizedBox(
-            height: ProfileSizes.statisticSpacer,
+            height: ProfilePaddings.subscriptionBottom,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,31 +98,16 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: ProfilePaddings.subtitleHorizontal,
-                bottom: ProfilePaddings.subtitleBot),
-            child: Text(
-              AppLocalizations.of(context).almostLearned,
-              style: AppTextStyles.profileSubtitle,
+          if (widget.almostLearned.isNotEmpty)
+            ProgressCategory(
+              subtopics: widget.almostLearned,
+              title: AppLocalizations.of(context).almostLearned,
             ),
-          ),
-          Container(
-              decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(
-                    ProfilePaddings.progressWordTileWrapper),
-                child: Column(
-                  children: ProfileDataExample.exampleWords
-                      .map(
-                        (e) => ProgressWordTile(wordInfo: e),
-                      )
-                      .toList(),
-                ),
-              )),
+          if (widget.learned.isNotEmpty)
+            ProgressCategory(
+              subtopics: widget.learned,
+              title: AppLocalizations.of(context).learned,
+            ),
           SizedBox(
             height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
           ),

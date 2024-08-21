@@ -4,9 +4,6 @@ part of 'profile_bloc.dart';
 class ProfileState with _$ProfileState {
   const factory ProfileState.initial() = _ProfileInitial;
   const factory ProfileState.failed(String message) = _ProfileFailed;
-  const factory ProfileState.userGot(String userName, String avatarUrl) =
-      _UserGot;
-  const factory ProfileState.achievementsScreen() = _AchievementsScreen;
-  const factory ProfileState.statisticsScreen() = _StatisticsScreen;
-  const factory ProfileState.activitiesScreen() = _ActivitiesScreen;
+  const factory ProfileState.gotInfo(String userName, String avatarUrl,
+      List<Subtopic> almostLearned, List<Subtopic> learned) = _GotInfo;
 }

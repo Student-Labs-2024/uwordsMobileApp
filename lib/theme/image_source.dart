@@ -18,6 +18,9 @@ class AppImageSource {
   static const String bottomCodeBackground = 'assets/png/bottom_background.png';
   static const String returnIcon = 'assets/svg/return.svg';
   static const String optionsIcon = 'assets/svg/options_icon.svg';
+  static const String subscriptionActive = 'assets/png/subscription_active.png';
+  static const String subscriptionInactive =
+      'assets/png/subscription_inactive.png';
   static const String onfireIcon = 'assets/png/onfire_icon.png';
   static const String precision0Icon = 'assets/png/precision0_icon.png';
   static const String precision20Icon = 'assets/png/precision20_icon.png';
