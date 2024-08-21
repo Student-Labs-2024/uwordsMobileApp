@@ -35,10 +35,8 @@ class SavableUserDataSource implements ISavableUserDataSource {
           .into(database.userAuth)
           .insertReturning(userDto.toDB());
       await database.into(database.metricDB).insert(userDto.metricsDto.toDB());
-      for (AchievementInfoDto achievement in userDto.achievements) {
-        await database.into(database.achievementDB).insert(achievement.toDB());
-      }
-
+      await database.achievementDB
+          .insertAll(userDto.achievements.map((a) => a.toDB()).toList());
       changeCurrent(id: current.id);
     }
   }

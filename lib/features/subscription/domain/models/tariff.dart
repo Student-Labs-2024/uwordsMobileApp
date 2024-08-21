@@ -2,8 +2,8 @@ class Tariff {
   final int id;
   final String name;
   final int months;
-  final double price;
-  final double oldPrice;
+  final int price;
+  final int oldPrice;
   Tariff(
       {required this.id,
       required this.name,

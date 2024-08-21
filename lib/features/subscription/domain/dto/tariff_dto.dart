@@ -2,8 +2,8 @@ class TariffDto {
   final int id;
   final String name;
   final int months;
-  final double price;
-  final double oldPrice;
+  final int price;
+  final int oldPrice;
 
   TariffDto(
       {required this.id,
@@ -18,6 +18,6 @@ class TariffDto {
         name: tariffMap['name'],
         months: tariffMap['months'],
         price: tariffMap['price'],
-        oldPrice: tariffMap['oldPrice']);
+        oldPrice: tariffMap['oldPrice'] ?? 0);
   }
 }

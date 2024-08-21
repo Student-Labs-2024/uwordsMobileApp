@@ -75,7 +75,7 @@ class _SubscriptionClient implements SubscriptionClient {
     )
         .compose(
           _dio.options,
-          'payment/form',
+          'payment/check',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -89,7 +89,7 @@ class _SubscriptionClient implements SubscriptionClient {
   }
 
   @override
-  Future<List<TariffDto>> getAllTariffs(
+  Future<HttpResponse<dynamic>> getAllTariffs(
     String accessToken, {
     String contentType = 'application/json',
   }) async {
@@ -102,7 +102,7 @@ class _SubscriptionClient implements SubscriptionClient {
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<TariffDto>>(Options(
+        await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -119,10 +119,9 @@ class _SubscriptionClient implements SubscriptionClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => TariffDto.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
+    final value = _result.data;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
