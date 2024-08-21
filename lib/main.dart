@@ -40,6 +40,7 @@ import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/features/subscription/data/data_sources/network_tariff_data_source.dart';
 import 'package:uwords/features/subscription/data/repositories/subscription_repository.dart';
+import 'package:uwords/features/subscription/presentation/subscription_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'firebase_options.dart';
 
@@ -92,6 +93,9 @@ final GoRouter _goRouter = GoRouter(
           path: '/home',
           builder: (context, state) => const HomePage(),
         ),
+        GoRoute(
+            path: '/subscription',
+            builder: (context, state) => const SubscriptionPage()),
         GoRoute(
             path: '/learn',
             builder: (context, state) => const CoreLearnPage(),
