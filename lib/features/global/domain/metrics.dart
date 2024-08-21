@@ -99,16 +99,16 @@ extension MetricsMapper on MetricsDto {
       speechSeconds: speechSeconds,
       videoSeconds: videoSeconds);
   MetricDBCompanion toDB() => MetricDBCompanion(
-      userId: Value(userId),
-      alltimeUserwordsAmount: Value(alltimeUserwordsAmount),
-      alltimeLearnedAmount: Value(alltimeLearnedAmount),
-      alltimeLearnedPercents: Value(alltimeLearnedPercents),
-      alltimeSpeechSeconds: Value(alltimeSpeechSeconds),
-      alltimeVideoSeconds: Value(alltimeVideoSeconds),
-      wordsAmount: Value(wordsAmount),
-      userwordsAmount: Value(userwordsAmount),
-      learnedPercents: Value(learnedPercents),
-      speechSeconds: Value(speechSeconds),
-      videoSeconds: Value(videoSeconds),
-    );
+        userId: Value(userId),
+        alltimeUserwordsAmount: Value(alltimeUserwordsAmount),
+        alltimeLearnedAmount: Value(alltimeLearnedAmount),
+        alltimeLearnedPercents: Value(alltimeLearnedPercents),
+        alltimeSpeechSeconds: Value(alltimeSpeechSeconds),
+        alltimeVideoSeconds: Value(alltimeVideoSeconds),
+        wordsAmount: Value(wordsAmount),
+        userwordsAmount: Value(userwordsAmount),
+        learnedPercents: Value(learnedPercents),
+        speechSeconds: Value(speechSeconds),
+        videoSeconds: Value(videoSeconds),
+      );
 }

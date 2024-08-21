@@ -78,7 +78,7 @@ class AchievementInfoDto {
       required this.isCompleted,
       required this.achievementDto});
 
-  factory AchievementInfoDto.fromJson( 
+  factory AchievementInfoDto.fromJson(
       {required Map<String, dynamic> achievementInfoMap}) {
     return AchievementInfoDto(
         id: achievementInfoMap['id'],
