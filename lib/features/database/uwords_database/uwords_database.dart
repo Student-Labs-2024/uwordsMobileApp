@@ -19,6 +19,10 @@ class UserAuth extends Table {
   TextColumn get avatarUrl => text()();
   TextColumn get phoneNumber => text()();
   DateTimeColumn get birthDate => dateTime()();
+  IntColumn get days => integer()();
+  IntColumn get allowedAudioSeconds => integer()();
+  IntColumn get allowedVideoSeconds => integer()();
+  IntColumn get energy => integer()();
   TextColumn get accessToken => text()();
   TextColumn get refreshToken => text()();
   BoolColumn get isEducationCompleted => boolean()();
@@ -28,7 +32,43 @@ class UserAuth extends Table {
   Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [UserAuth])
+@DataClassName('Metric')
+class MetricDB extends Table {
+  IntColumn get id => integer()();
+  IntColumn get userId => integer().references(UserAuth, #id)();
+  IntColumn get alltimeUserwordsAmount => integer()();
+  IntColumn get alltimeLearnedAmount => integer()();
+  RealColumn get alltimeLearnedPercents => real()();
+  IntColumn get alltimeSpeechSeconds => integer()();
+  IntColumn get alltimeVideoSeconds => integer()();
+  IntColumn get wordsAmount => integer()();
+  IntColumn get userwordsAmount => integer()();
+  RealColumn get learnedPercents => real()();
+  IntColumn get speechSeconds => integer()();
+  IntColumn get videoSeconds => integer()();
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('Achievement')
+class AchievementDB extends Table {
+  IntColumn get id => integer()();
+  IntColumn get userId => integer().references(UserAuth, #id)();
+  IntColumn get progress => integer()();
+  RealColumn get progressPercent => real()();
+  BoolColumn get isCompleted => boolean()();
+  TextColumn get title => text()();
+  TextColumn get description => text()();
+  TextColumn get pictureLink => text()();
+  TextColumn get category => text()();
+  IntColumn get stage => integer()();
+  IntColumn get target => integer()();
+  IntColumn get achievementId => integer()();
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DriftDatabase(tables: [UserAuth, MetricDB, AchievementDB])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
