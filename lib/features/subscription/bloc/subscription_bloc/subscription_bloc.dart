@@ -27,7 +27,8 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       _DownloadSubscriptionTypes event, Emitter<SubscriptionState> emit) async {
     emit(const SubscriptionState.loading());
     try {
-      tariffs = await subscriptionRepository.getTariffList();
+      tariffs = await subscriptionRepository.getTariffList(
+          accessToken: await userRepository.getCurrentUserAccessToken());
       emit(SubscriptionState.initial(tariffs));
     } on Exception catch (e) {
       _emitter = emit;

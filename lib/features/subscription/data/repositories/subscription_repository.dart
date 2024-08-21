@@ -5,8 +5,8 @@ import 'package:uwords/features/subscription/domain/mapper/tariff_mapper.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
 
 abstract interface class ISubscriptionRepository {
-  Future<List<Tariff>> getTariffList();
-  Future<bool> checkPayment();
+  Future<List<Tariff>> getTariffList({required String accessToken});
+  Future<bool> checkPayment({required String accessToken});
   Future<String> getPaymentLink(Tariff tariff);
 }
 
@@ -17,10 +17,10 @@ class SubscriptionRepository implements ISubscriptionRepository {
   SubscriptionRepository({required this.networkTariffDataSource});
 
   @override
-  Future<bool> checkPayment() async {
+  Future<bool> checkPayment({required String accessToken}) async {
     try {
       return await networkTariffDataSource.checkPayment(
-          paymentId: formDto.paymentId);
+          accessToken: accessToken, paymentId: formDto.paymentId);
     } on Exception {
       rethrow;
     }
@@ -38,10 +38,10 @@ class SubscriptionRepository implements ISubscriptionRepository {
   }
 
   @override
-  Future<List<Tariff>> getTariffList() async {
+  Future<List<Tariff>> getTariffList({required String accessToken}) async {
     try {
-      List<TariffDto> tariffDtoList =
-          await networkTariffDataSource.fetchTariffList();
+      List<TariffDto> tariffDtoList = await networkTariffDataSource
+          .fetchTariffList(accessToken: accessToken);
       return tariffDtoList.map((t) => t.toModel()).toList();
     } on Exception {
       rethrow;
