@@ -29,6 +29,12 @@ class SavableUserDataSource implements ISavableUserDataSource {
         await (database.delete(database.userAuth)
               ..where((u) => u.id.equals(userDto.id)))
             .go();
+        await (database.delete(database.metricDB)
+              ..where((metric) => metric.userId.equals(userDto.id)))
+            .go();
+        await (database.delete(database.achievementDB)
+              ..where((achievement) => achievement.userId.equals(userDto.id)))
+            .go();
       }
     } finally {
       final current = await database
