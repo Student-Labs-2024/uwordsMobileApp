@@ -16,6 +16,8 @@
 		<string>vk</string> 
 		<string>vk-share</string> 
 		<string>vkauthorize</string> 
+		<string>sms</string>
+  		<string>tel</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
