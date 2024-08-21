@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uwords/common/exceptions/subscription_eceptions.dart';
+import 'package:uwords/common/exceptions/subscription_exceptions.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/subscription/data/repositories/subscription_repository.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
