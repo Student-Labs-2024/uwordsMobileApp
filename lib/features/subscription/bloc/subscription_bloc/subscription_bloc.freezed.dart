@@ -19,21 +19,21 @@ mixin _$SubscriptionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadSubcriptionsTypes,
-    required TResult Function() paySubscription,
+    required TResult Function(Subscription subscription) paySubscription,
     required TResult Function() checkSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadSubcriptionsTypes,
-    TResult? Function()? paySubscription,
+    TResult? Function(Subscription subscription)? paySubscription,
     TResult? Function()? checkSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadSubcriptionsTypes,
-    TResult Function()? paySubscription,
+    TResult Function(Subscription subscription)? paySubscription,
     TResult Function()? checkSubscription,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadSubcriptionsTypes,
-    required TResult Function() paySubscription,
+    required TResult Function(Subscription subscription) paySubscription,
     required TResult Function() checkSubscription,
   }) {
     return downloadSubcriptionsTypes();
@@ -136,7 +136,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadSubcriptionsTypes,
-    TResult? Function()? paySubscription,
+    TResult? Function(Subscription subscription)? paySubscription,
     TResult? Function()? checkSubscription,
   }) {
     return downloadSubcriptionsTypes?.call();
@@ -146,7 +146,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadSubcriptionsTypes,
-    TResult Function()? paySubscription,
+    TResult Function(Subscription subscription)? paySubscription,
     TResult Function()? checkSubscription,
     required TResult orElse(),
   }) {
@@ -203,6 +203,8 @@ abstract class _$$PaySubscriptionImplCopyWith<$Res> {
   factory _$$PaySubscriptionImplCopyWith(_$PaySubscriptionImpl value,
           $Res Function(_$PaySubscriptionImpl) then) =
       __$$PaySubscriptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Subscription subscription});
 }
 
 /// @nodoc
@@ -212,57 +214,83 @@ class __$$PaySubscriptionImplCopyWithImpl<$Res>
   __$$PaySubscriptionImplCopyWithImpl(
       _$PaySubscriptionImpl _value, $Res Function(_$PaySubscriptionImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscription = null,
+  }) {
+    return _then(_$PaySubscriptionImpl(
+      null == subscription
+          ? _value.subscription
+          : subscription // ignore: cast_nullable_to_non_nullable
+              as Subscription,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$PaySubscriptionImpl implements _PaySubscription {
-  const _$PaySubscriptionImpl();
+  const _$PaySubscriptionImpl(this.subscription);
+
+  @override
+  final Subscription subscription;
 
   @override
   String toString() {
-    return 'SubscriptionEvent.paySubscription()';
+    return 'SubscriptionEvent.paySubscription(subscription: $subscription)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PaySubscriptionImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$PaySubscriptionImpl &&
+            (identical(other.subscription, subscription) ||
+                other.subscription == subscription));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, subscription);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaySubscriptionImplCopyWith<_$PaySubscriptionImpl> get copyWith =>
+      __$$PaySubscriptionImplCopyWithImpl<_$PaySubscriptionImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadSubcriptionsTypes,
-    required TResult Function() paySubscription,
+    required TResult Function(Subscription subscription) paySubscription,
     required TResult Function() checkSubscription,
   }) {
-    return paySubscription();
+    return paySubscription(subscription);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadSubcriptionsTypes,
-    TResult? Function()? paySubscription,
+    TResult? Function(Subscription subscription)? paySubscription,
     TResult? Function()? checkSubscription,
   }) {
-    return paySubscription?.call();
+    return paySubscription?.call(subscription);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadSubcriptionsTypes,
-    TResult Function()? paySubscription,
+    TResult Function(Subscription subscription)? paySubscription,
     TResult Function()? checkSubscription,
     required TResult orElse(),
   }) {
     if (paySubscription != null) {
-      return paySubscription();
+      return paySubscription(subscription);
     }
     return orElse();
   }
@@ -306,7 +334,13 @@ class _$PaySubscriptionImpl implements _PaySubscription {
 }
 
 abstract class _PaySubscription implements SubscriptionEvent {
-  const factory _PaySubscription() = _$PaySubscriptionImpl;
+  const factory _PaySubscription(final Subscription subscription) =
+      _$PaySubscriptionImpl;
+
+  Subscription get subscription;
+  @JsonKey(ignore: true)
+  _$$PaySubscriptionImplCopyWith<_$PaySubscriptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -348,7 +382,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadSubcriptionsTypes,
-    required TResult Function() paySubscription,
+    required TResult Function(Subscription subscription) paySubscription,
     required TResult Function() checkSubscription,
   }) {
     return checkSubscription();
@@ -358,7 +392,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadSubcriptionsTypes,
-    TResult? Function()? paySubscription,
+    TResult? Function(Subscription subscription)? paySubscription,
     TResult? Function()? checkSubscription,
   }) {
     return checkSubscription?.call();
@@ -368,7 +402,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadSubcriptionsTypes,
-    TResult Function()? paySubscription,
+    TResult Function(Subscription subscription)? paySubscription,
     TResult Function()? checkSubscription,
     required TResult orElse(),
   }) {
