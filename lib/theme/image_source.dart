@@ -80,4 +80,8 @@ class AppImageSource {
   static const String redButton = 'assets/png/button_red.png';
   static const String onboarding1 = 'assets/png/telephone1.png';
   static const String onboarding2 = 'assets/png/telephone2.png';
+  static const String youtubeIcon = 'assets/svg/youtube.svg';
+  static const String telegramIcon = 'assets/svg/telegram.svg';
+  static const String discordIcon = 'assets/svg/discord.svg';
+  static const String chromeIcon = 'assets/svg/chrome.svg';
 }

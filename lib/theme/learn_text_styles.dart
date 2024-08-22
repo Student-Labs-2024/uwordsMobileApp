@@ -57,7 +57,11 @@ class LearnTextStyles {
   static const onboardingText = TextStyle(
       fontSize: 17,
       color: AppColors.darkMainColor,
-      fontWeight: FontWeight.w500);
-  static const otherText = TextStyle(fontSize: 12, color: AppColors.imperialOpacity45, fontWeight: FontWeight.w500);
-  static const linkText = TextStyle(fontSize: 12, color: AppColors.imperialOpacity45, fontWeight: FontWeight.w500, decoration: TextDecoration.underline);
+      fontWeight: FontWeight.w500, fontFamily: 'Inter-V',);
+  static const alternativesTile = TextStyle(
+      fontSize: 17,
+      color: AppColors.blackColor,
+      fontWeight: FontWeight.w500, fontFamily: 'Inter-V',);
+  static const otherText = TextStyle(fontSize: 12, color: AppColors.imperialOpacity45, fontWeight: FontWeight.w500, fontFamily: 'Inter-V',);
+  static const linkText = TextStyle(fontSize: 12, color: AppColors.imperialOpacity45, fontWeight: FontWeight.w500, decoration: TextDecoration.underline, fontFamily: 'Inter-V',);
 }

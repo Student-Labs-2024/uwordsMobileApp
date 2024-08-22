@@ -162,5 +162,17 @@
   "payByLink":"Оплата подписки по ссылке",
   "shortPassword": "Не менее 8 символов",
   "requiredField": "Обязательное поле для заполнения",
-  "wrongPassword": "Неверно указан пароль"
+  "wrongPassword": "Неверно указан пароль",
+  "youtubeVideo": "YouTube-видео",
+  "telegramBot": "Telegram-бот",
+  "discordBot": "Discord-бот",
+  "chromeWidget": "Chrome-виджет",
+  "alternative": "Альтернативный подход",
+  "alternativeText": "Альтернативные способы предоставления доступа к речи",
+  "themesForLearning": "Темы для изучения",
+  "themesForLearningText": "Cлова для тем формируются на основе вашей речи и формируются в темы",
+  "recordingWords": "Запись слов",
+  "recordingWordsText": "Записывайте свои повседневные разговоры, а мы оставим только Ваши любимые слова",
+  "recordingWordsOtherText": "Алгоритмы uwords не хранят записи, а используют речь только для определения самых частотных слов",
+  "moreDetails": "Подробнее"
 }

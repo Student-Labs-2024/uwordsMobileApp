@@ -5,7 +5,6 @@ import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/first_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/second_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/third_onboarding_page.dart';
-
 import 'package:uwords/theme/app_colors.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -18,10 +17,14 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final pageController = PageController();
   bool isNotLastPage = true;
-
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
   }
 
   @override
@@ -37,17 +40,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
           controller: pageController,
           onPageChanged: (index) {
             isNotLastPage = index < 3;
-            if (index <=3){
-              setState(() {
-                
-              });
+            if (index <= 3) {
+              setState(() {});
             }
           },
-          children: const [
-            FirstOnboardingPage(),
-            SecondOnboardingPage(),
+          children: [
+            const FirstOnboardingPage(),
+            const SecondOnboardingPage(),
             ThirdOnboardingPage(),
-            Center(
+            const Center(
               child: Text("Start?"),
             )
           ],
@@ -56,7 +57,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ? ColoredBox(
                 color: AppColors.whiteColor,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height* OnboardingConsts.bottomSpace,
+                  height: MediaQuery.of(context).size.height *
+                      OnboardingConsts.bottomSpace,
                   child: Center(
                     child: SmoothPageIndicator(
                       controller: pageController,
