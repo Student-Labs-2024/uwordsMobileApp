@@ -19,7 +19,9 @@ class UserAuth extends Table {
   TextColumn get avatarUrl => text()();
   TextColumn get phoneNumber => text()();
   DateTimeColumn get birthDate => dateTime()();
-  IntColumn get days => integer()();
+  IntColumn get subscriptionType => integer().nullable()();
+  DateTimeColumn get subscriptionAcquisition => dateTime().nullable()();
+  DateTimeColumn get subscriptionExpired => dateTime().nullable()();
   IntColumn get allowedAudioSeconds => integer()();
   IntColumn get allowedVideoSeconds => integer()();
   IntColumn get energy => integer()();
@@ -36,24 +38,29 @@ class UserAuth extends Table {
 class MetricDB extends Table {
   IntColumn get id => integer()();
   IntColumn get userId => integer().references(UserAuth, #id)();
+  IntColumn get days => integer()();
   IntColumn get alltimeUserwordsAmount => integer()();
   IntColumn get alltimeLearnedAmount => integer()();
   RealColumn get alltimeLearnedPercents => real()();
   IntColumn get alltimeSpeechSeconds => integer()();
   IntColumn get alltimeVideoSeconds => integer()();
-  IntColumn get wordsAmount => integer()();
-  IntColumn get userwordsAmount => integer()();
-  RealColumn get learnedPercents => real()();
-  IntColumn get speechSeconds => integer()();
-  IntColumn get videoSeconds => integer()();
   @override
   Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('AchievementCategory')
+class AchievementCategoryDB extends Table {
+  TextColumn get title => text()();
+  @override
+  Set<Column> get primaryKey => {title};
 }
 
 @DataClassName('Achievement')
 class AchievementDB extends Table {
   IntColumn get id => integer()();
   IntColumn get userId => integer().references(UserAuth, #id)();
+  TextColumn get categoryTitle =>
+      text().references(AchievementCategoryDB, #title)();
   IntColumn get progress => integer()();
   RealColumn get progressPercent => real()();
   BoolColumn get isCompleted => boolean()();
@@ -68,7 +75,8 @@ class AchievementDB extends Table {
   Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [UserAuth, MetricDB, AchievementDB])
+@DriftDatabase(
+    tables: [UserAuth, MetricDB, AchievementDB, AchievementCategoryDB])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

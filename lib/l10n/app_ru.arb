@@ -156,6 +156,10 @@
   "stillRepeats" : "Остались повторения",
   "weWillRemind" : "Мы напомним, когда настанет время для следующего этапа!",
   "finish" : "Закончить",
+  "checkSubscriptionStatusButton": "Проверить статус подписки",
+  "successfulPaymentOfTariff": "Оплата проведена успешно тарифа",
+  "failedPaymentOfTariff": "Оплата не была проведена для тарифа",
+  "payByLink":"Оплата подписки по ссылке",
   "shortPassword": "Не менее 8 символов",
   "requiredField": "Обязательное поле для заполнения",
   "wrongPassword": "Неверно указан пароль"

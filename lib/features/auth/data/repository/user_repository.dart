@@ -1,15 +1,16 @@
 import 'dart:developer';
-
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/jwt.dart';
 import 'package:uwords/features/auth/data/data_sources/interface_network_user_data_source.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/global/domain/simple_user_info.dart';
 
 class UserRepository implements IUserRepository {
   final ISavableUserDataSource savableUserDataSource;
   final INetworkUserDataSource networkUserDataSource;
+  late SimpleUserInfo _currentUser;
 
   UserRepository(
       {required this.networkUserDataSource,
@@ -36,6 +37,8 @@ class UserRepository implements IUserRepository {
       UserAuthDto newUserAuthDto =
           await networkUserDataSource.refreshAccessToken(userDto: userDto);
       await _saveUser(userDto: newUserAuthDto);
+      _currentUser =
+          SimpleUserInfo.fromUserAuthDto(userAuthDto: newUserAuthDto);
       return userDto.accessToken;
     } else {
       throw OldRefreshToken();
@@ -99,13 +102,21 @@ class UserRepository implements IUserRepository {
   Future<void> _saveUser({required UserAuthDto userDto}) async {
     log('Saved user:\n id: ${userDto.id},\n accessToken: ${userDto.accessToken},\n refreshToken ${userDto.refreshToken}');
     await savableUserDataSource.saveUser(userDto: userDto);
+    _currentUser = SimpleUserInfo.fromUserAuthDto(userAuthDto: userDto);
   }
 
   @override
   Future<String> getCurrentUserAccessToken() async {
     try {
-      UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-      return currentUser.accessToken;
+      return _currentUser.accessToken;
+    } on Error {
+      try {
+        UserAuthDto userAuthDto = await savableUserDataSource.getCurrent();
+        _currentUser = SimpleUserInfo.fromUserAuthDto(userAuthDto: userAuthDto);
+        return _currentUser.accessToken;
+      } on Exception {
+        rethrow;
+      }
     } on Exception {
       rethrow;
     }
@@ -155,19 +166,39 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<int> getCurrentUserId() async {
-    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    return currentUser.id;
+    return _currentUser.id;
   }
 
   @override
   Future<String> getCurrentUserName() async {
-    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    return currentUser.username;
+    return _currentUser.username;
   }
 
   @override
   Future<String> getCurrentUserAvatarUrl() async {
-    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    return currentUser.avatarUrl;
+    return _currentUser.avatarUrl;
+  }
+
+  @override
+  Future<void> updateInfoAboutUser() async {
+    final UserAuthDto userAuthDto = await savableUserDataSource.getCurrent();
+    final UserAuthDto result =
+        await networkUserDataSource.fetchAboutMe(userDto: userAuthDto);
+    _currentUser = SimpleUserInfo.fromUserAuthDto(userAuthDto: result);
+    //TODO need to add into savable user data source update method
+    await _saveUser(userDto: result);
+  }
+
+  @override
+  bool isSubscriptionActive() {
+    if (_currentUser.subscriptionType == null) {
+      return false;
+    } else {
+      if (_currentUser.subscriptionExpired != null) {
+        return DateTime.now().isBefore(_currentUser.subscriptionExpired!);
+      } else {
+        return false;
+      }
+    }
   }
 }

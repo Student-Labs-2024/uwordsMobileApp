@@ -124,6 +124,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
         context.go("/home");
       case 1:
         context.go("/learn");
+      case 2:
+        context.go("/subscription");
       case 3:
         context.read<AuthBloc>().add(const AuthEvent.logOut());
         context.go("/");
