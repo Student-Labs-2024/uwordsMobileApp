@@ -1,10 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
+import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
@@ -37,7 +37,6 @@ class _SubscriptionPageState extends State<SubscriptionPage>
         context
             .read<SubscriptionBloc>()
             .add(const SubscriptionEvent.checkSubscription());
-        log("app in reusmed");
         break;
       default:
         break;
@@ -69,7 +68,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   initial: (tariffs) => Column(
                     children: [
                       SizedBox(
-                        height: 200,
+                        height: SubscriptionConsts.viewBuilderSpace,
                         child: ListView.builder(
                             itemCount: tariffs.length,
                             itemBuilder: (BuildContext context, int index) {
@@ -89,31 +88,33 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                             context.read<SubscriptionBloc>().add(
                                 const SubscriptionEvent.isSubscriptionActive());
                           },
-                          child: Text("Проверить статус подписки"))
+                          child: Text(AppLocalizations.of(context)
+                              .checkSubscriptionStatusButton))
                     ],
                   ),
                   subscriptionStatus: (isActive) {
                     return Text(isActive.toString());
                   },
                   subscriptionPaid: () {
-                    return const Column(
+                    return Column(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.done,
-                          size: 40,
+                          size: SubscriptionConsts.iconSize,
                         ),
-                        Text("Оплата проведена успешно тарифа")
+                        Text(AppLocalizations.of(context)
+                            .successfulPaymentOfTariff)
                       ],
                     );
                   },
                   subscriptionNotPaid: () {
-                    return const Column(
+                    return Column(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.close,
-                          size: 40,
+                          size: SubscriptionConsts.iconSize,
                         ),
-                        Text("Оплата не была проведена для тарифа")
+                        Text(AppLocalizations.of(context).failedPaymentOfTariff)
                       ],
                     );
                   },
@@ -121,7 +122,8 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                     return Column(
                       children: [
                         const CircularProgressIndicator(),
-                        Text("Оплата подписки по ссылке $paymentLink")
+                        Text(
+                            "${AppLocalizations.of(context).payByLink} $paymentLink")
                       ],
                     );
                   },
