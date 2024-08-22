@@ -75,7 +75,8 @@ class AchievementDB extends Table {
   Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [UserAuth, MetricDB, AchievementDB, AchievementCategoryDB])
+@DriftDatabase(
+    tables: [UserAuth, MetricDB, AchievementDB, AchievementCategoryDB])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

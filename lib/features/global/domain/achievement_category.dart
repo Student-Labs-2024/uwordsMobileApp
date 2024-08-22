@@ -46,7 +46,8 @@ class AchievementCategoryModel {
       {required this.title, required this.achievementsInfoDtoList});
 }
 
-List<AchievementCategoryDto> createAchievementCategoryDtos(Map<AchievementCategory, List<Achievement>> categoryMap) {
+List<AchievementCategoryDto> createAchievementCategoryDtos(
+    Map<AchievementCategory, List<Achievement>> categoryMap) {
   return categoryMap.entries.map((entry) {
     final category = entry.key;
     final achievements = entry.value;
@@ -56,4 +57,3 @@ List<AchievementCategoryDto> createAchievementCategoryDtos(Map<AchievementCatego
     );
   }).toList();
 }
-

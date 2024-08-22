@@ -48,8 +48,8 @@ class UserAuthDto {
     required this.provider,
   });
 
-  factory UserAuthDto.fromDB(
-      User user, Metric metric, Map<AchievementCategory, List<Achievement>> categoryMap) {
+  factory UserAuthDto.fromDB(User user, Metric metric,
+      Map<AchievementCategory, List<Achievement>> categoryMap) {
     return UserAuthDto(
         id: user.id,
         email: user.email,
