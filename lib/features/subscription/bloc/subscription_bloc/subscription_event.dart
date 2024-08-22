@@ -7,5 +7,6 @@ class SubscriptionEvent with _$SubscriptionEvent {
   const factory SubscriptionEvent.paySubscription(Tariff tariff) =
       _PaySubscription;
   const factory SubscriptionEvent.checkSubscription() = _CheckSubscription;
-  const factory SubscriptionEvent.isSubscriptionActive() = _IsSubscriptionActive;
+  const factory SubscriptionEvent.isSubscriptionActive() =
+      _IsSubscriptionActive;
 }
