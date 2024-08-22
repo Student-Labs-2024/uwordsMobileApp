@@ -9,7 +9,6 @@ class UserAuthModel {
   final String avatarUrl;
   final String phoneNumber;
   final Metrics metrics;
-  final int days;
   final int allowedAudioSeconds;
   final int allowedVideoSeconds;
   final int energy;
@@ -29,7 +28,6 @@ class UserAuthModel {
       required this.phoneNumber,
       required this.birthDate,
       required this.metrics,
-      required this.days,
       required this.allowedAudioSeconds,
       required this.allowedVideoSeconds,
       required this.energy,

@@ -1,6 +1,6 @@
 import 'package:uwords/features/auth/bloc/auth_enum.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
-import 'package:uwords/features/global/domain/achievement.dart';
+import 'package:uwords/features/global/domain/achievement_category.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
 
 class UserAuthDto {
@@ -16,7 +16,6 @@ class UserAuthDto {
   final int? subscriptionType;
   final DateTime? subscriptionAcquisition;
   final DateTime? subscriptionExpired;
-  final int days;
   final int allowedAudioSeconds;
   final int allowedVideoSeconds;
   final int energy;
@@ -24,7 +23,7 @@ class UserAuthDto {
   final String refreshToken;
   final bool isEducationCompleted;
   final String provider;
-  final List<AchievementInfoDto> achievements;
+  final List<AchievementCategoryDto> achievementsCategories;
 
   UserAuthDto({
     required this.id,
@@ -36,14 +35,13 @@ class UserAuthDto {
     required this.phoneNumber,
     required this.birthDate,
     required this.metricsDto,
-    required this.days,
     required this.subscriptionType,
     required this.subscriptionAcquisition,
     required this.subscriptionExpired,
     required this.allowedAudioSeconds,
     required this.allowedVideoSeconds,
     required this.energy,
-    required this.achievements,
+    required this.achievementsCategories,
     required this.accessToken,
     required this.refreshToken,
     required this.isEducationCompleted,
@@ -51,7 +49,7 @@ class UserAuthDto {
   });
 
   factory UserAuthDto.fromDB(
-      User user, Metric metric, List<Achievement> achievementsList) {
+      User user, Metric metric, Map<AchievementCategory, List<Achievement>> categoryMap) {
     return UserAuthDto(
         id: user.id,
         email: user.email,
@@ -63,16 +61,12 @@ class UserAuthDto {
         birthDate: user.birthDate,
         allowedAudioSeconds: user.allowedAudioSeconds,
         allowedVideoSeconds: user.allowedVideoSeconds,
-        days: user.days,
         energy: user.energy,
         subscriptionType: user.subscriptionType,
         subscriptionAcquisition: user.subscriptionAcquisition,
         subscriptionExpired: user.subscriptionExpired,
         metricsDto: MetricsDto.fromDB(metric: metric),
-        achievements: achievementsList
-            .map((achievement) =>
-                AchievementInfoDto.fromDB(achievement: achievement))
-            .toList(),
+        achievementsCategories: createAchievementCategoryDtos(categoryMap),
         accessToken: user.accessToken,
         refreshToken: user.refreshToken,
         isEducationCompleted: user.isEducationCompleted,
@@ -95,7 +89,6 @@ class UserAuthDto {
         birthDate:
             DateTime.tryParse(userMap['birth_date'] ?? '') ?? DateTime.now(),
         metricsDto: MetricsDto.fromJson(metricMap: userMap['metrics']),
-        days: userMap['days'],
         subscriptionType: userMap['subscription_type'],
         subscriptionAcquisition:
             DateTime.tryParse(userMap['subscription_acquisition']),
@@ -103,9 +96,9 @@ class UserAuthDto {
         allowedAudioSeconds: userMap['allowed_audio_seconds'],
         allowedVideoSeconds: userMap['allowed_video_seconds'],
         energy: userMap['energy'],
-        achievements: (userMap['achievements'] as List<dynamic>?)
-                ?.map((achievement) => AchievementInfoDto.fromJson(
-                    achievementInfoMap: achievement))
+        achievementsCategories: (userMap['achievements'] as List<dynamic>?)
+                ?.map((achievementCategory) => AchievementCategoryDto.fromJson(
+                    achievementCategoryDtoMap: achievementCategory))
                 .toList() ??
             [],
         accessToken: accessMap['access_token'] ?? '',
@@ -137,9 +130,9 @@ class UserAuthDto {
       allowedAudioSeconds: userMap['allowed_audio_seconds'],
       allowedVideoSeconds: userMap['allowed_video_seconds'],
       energy: userMap['energy'],
-      achievements: (userMap['achievements'] as List<dynamic>?)
-              ?.map((achievement) =>
-                  AchievementInfoDto.fromJson(achievementInfoMap: achievement))
+      achievementsCategories: (userMap['achievements'] as List<dynamic>?)
+              ?.map((achievementCategory) => AchievementCategoryDto.fromJson(
+                  achievementCategoryDtoMap: achievementCategory))
               .toList() ??
           [],
     );
@@ -166,7 +159,7 @@ class UserAuthDto {
     String? refreshToken,
     bool? isEducationCompleted,
     String? provider,
-    List<AchievementInfoDto>? achievements,
+    List<AchievementCategoryDto>? achievementsCategories,
   }) {
     return UserAuthDto(
       id: id ?? this.id,
@@ -178,7 +171,6 @@ class UserAuthDto {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       birthDate: birthDate ?? this.birthDate,
       metricsDto: metricsDto ?? this.metricsDto,
-      days: days ?? this.days,
       allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
       allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
       subscriptionType: subscriptionType,
@@ -189,7 +181,8 @@ class UserAuthDto {
       refreshToken: refreshToken ?? this.refreshToken,
       isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
       provider: provider ?? this.provider,
-      achievements: achievements ?? this.achievements,
+      achievementsCategories:
+          achievementsCategories ?? this.achievementsCategories,
     );
   }
 }

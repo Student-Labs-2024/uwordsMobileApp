@@ -1,5 +1,5 @@
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
-import 'package:uwords/features/global/domain/achievement.dart';
+import 'package:uwords/features/global/domain/achievement_category.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
 
 class SimpleUserInfo {
@@ -12,7 +12,6 @@ class SimpleUserInfo {
   String phoneNumber;
   DateTime birthDate;
   MetricsDto metricsDto;
-  final int days;
   int? subscriptionType;
   DateTime? subscriptionAcquisition;
   DateTime? subscriptionExpired;
@@ -20,7 +19,7 @@ class SimpleUserInfo {
   int allowedVideoSeconds;
   int energy;
   String accessToken;
-  final List<AchievementInfoDto> achievements;
+  final List<AchievementCategoryDto> achievements;
 
   SimpleUserInfo(
       {required this.id,
@@ -32,7 +31,6 @@ class SimpleUserInfo {
       required this.phoneNumber,
       required this.birthDate,
       required this.metricsDto,
-      required this.days,
       required this.subscriptionType,
       required this.subscriptionAcquisition,
       required this.subscriptionExpired,
@@ -52,7 +50,6 @@ class SimpleUserInfo {
         phoneNumber: userAuthDto.phoneNumber,
         birthDate: userAuthDto.birthDate,
         metricsDto: userAuthDto.metricsDto,
-        days: userAuthDto.days,
         subscriptionType: userAuthDto.subscriptionType,
         subscriptionAcquisition: userAuthDto.subscriptionAcquisition,
         subscriptionExpired: userAuthDto.subscriptionExpired,
@@ -60,7 +57,7 @@ class SimpleUserInfo {
         allowedVideoSeconds: userAuthDto.allowedVideoSeconds,
         accessToken: userAuthDto.accessToken,
         energy: userAuthDto.energy,
-        achievements: userAuthDto.achievements);
+        achievements: userAuthDto.achievementsCategories);
   }
   void changeAccessToken({required String newAccessToken}) {
     accessToken = newAccessToken;

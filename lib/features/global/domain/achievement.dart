@@ -132,9 +132,10 @@ extension AchievementInfoMapper on AchievementInfoDto {
       progressPercent: progressPercent,
       isCompleted: isCompleted,
       achievementModel: achievementDto.toModel());
-  AchievementDBCompanion toDB() => AchievementDBCompanion(
+  AchievementDBCompanion toDB({required AchievementCategory achievementCategory}) => AchievementDBCompanion(
       id: Value(id),
       userId: Value(userId),
+      categoryTitle: Value(achievementCategory.title),
       progress: Value(progress),
       progressPercent: Value(progressPercent),
       isCompleted: Value(isCompleted),

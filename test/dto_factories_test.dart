@@ -35,11 +35,7 @@ void main() {
           alltimeLearnedPercents: 100.0,
           alltimeSpeechSeconds: 2,
           alltimeVideoSeconds: 900,
-          wordsAmount: 547,
-          userwordsAmount: 1040,
-          learnedPercents: 30.0,
-          speechSeconds: 240,
-          videoSeconds: 960);
+          days: 2);
       const List<Achievement> achievements = [
         Achievement(
             id: 1,

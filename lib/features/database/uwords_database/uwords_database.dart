@@ -19,7 +19,6 @@ class UserAuth extends Table {
   TextColumn get avatarUrl => text()();
   TextColumn get phoneNumber => text()();
   DateTimeColumn get birthDate => dateTime()();
-  IntColumn get days => integer()();
   IntColumn get subscriptionType => integer().nullable()();
   DateTimeColumn get subscriptionAcquisition => dateTime().nullable()();
   DateTimeColumn get subscriptionExpired => dateTime().nullable()();
@@ -49,11 +48,19 @@ class MetricDB extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+@DataClassName('AchievementCategory')
+class AchievementCategoryDB extends Table {
+  TextColumn get title => text()();
+  @override
+  Set<Column> get primaryKey => {title};
+}
 
 @DataClassName('Achievement')
 class AchievementDB extends Table {
   IntColumn get id => integer()();
   IntColumn get userId => integer().references(UserAuth, #id)();
+  TextColumn get categoryTitle =>
+      text().references(AchievementCategoryDB, #title)();
   IntColumn get progress => integer()();
   RealColumn get progressPercent => real()();
   BoolColumn get isCompleted => boolean()();
@@ -68,7 +75,7 @@ class AchievementDB extends Table {
   Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [UserAuth, MetricDB, AchievementDB])
+@DriftDatabase(tables: [UserAuth, MetricDB, AchievementDB, AchievementCategoryDB])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

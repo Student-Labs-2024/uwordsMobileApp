@@ -186,7 +186,7 @@ class UserRepository implements IUserRepository {
         await networkUserDataSource.fetchAboutMe(userDto: userAuthDto);
     _currentUser = SimpleUserInfo.fromUserAuthDto(userAuthDto: result);
     //TODO need to add into savable user data source update method
-    _saveUser(userDto: result);
+    await _saveUser(userDto: result);
   }
 
   @override
