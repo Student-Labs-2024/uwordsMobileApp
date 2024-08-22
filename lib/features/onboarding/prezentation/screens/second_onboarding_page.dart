@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/onboarding/prezentation/widgets/onboarding_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/image_source.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SecondOnboardingPage extends StatelessWidget {
   const SecondOnboardingPage({super.key});
@@ -10,7 +11,7 @@ class SecondOnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
         decoration:
-            BoxDecoration(gradient: AppColors.backgroundOnboardingGradient),
+            const BoxDecoration(gradient: AppColors.backgroundOnboardingGradient),
         child: SafeArea(
             child: Stack(
           children: [
@@ -22,10 +23,10 @@ class SecondOnboardingPage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
                 child: OnboardingBottomSheet(
-                    title: "Темы для изучения",
+                    title: AppLocalizations.of(context).themesForLearning,
                     heightMultiplication: 0.3,
                     subtitle:
-                        "Cлова для тем формируются на основе вашей речи и формируются в темы"))
+                        AppLocalizations.of(context).themesForLearningText))
           ],
         )));
   }

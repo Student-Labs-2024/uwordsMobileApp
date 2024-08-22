@@ -3,9 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/first_onboarding_page.dart';
+import 'package:uwords/features/onboarding/prezentation/screens/fourth_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/second_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/third_onboarding_page.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -44,13 +46,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
               setState(() {});
             }
           },
-          children: [
-            const FirstOnboardingPage(),
-            const SecondOnboardingPage(),
+          children: const [
+            FirstOnboardingPage(),
+            SecondOnboardingPage(),
             ThirdOnboardingPage(),
-            const Center(
-              child: Text("Start?"),
-            )
+            FourthOnboardingPage()
           ],
         ),
         bottomSheet: isNotLastPage
@@ -85,7 +85,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   width: MediaQuery.of(context).size.width,
                   height: 80,
                   child: InkWell(
-                    child: Center(child: Text("Начать")),
+                    child: Center(
+                        child:
+                            Text(AppLocalizations.of(context).startQuestion)),
                     onTap: () => context.go("/home"),
                   ),
                 )));

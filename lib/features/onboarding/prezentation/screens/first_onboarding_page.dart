@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/onboarding/prezentation/widgets/onboarding_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/image_source.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstOnboardingPage extends StatelessWidget {
   const FirstOnboardingPage({super.key});
@@ -9,8 +10,8 @@ class FirstOnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-        decoration:
-            BoxDecoration(gradient: AppColors.backgroundOnboardingGradient),
+        decoration: const BoxDecoration(
+            gradient: AppColors.backgroundOnboardingGradient),
         child: Stack(
           children: [
             Center(
@@ -21,13 +22,12 @@ class FirstOnboardingPage extends StatelessWidget {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: OnboardingBottomSheet(
-                  title: "Запись слов",
+                  title: AppLocalizations.of(context).recordingWords,
                   heightMultiplication: 0.4,
-                  subtitle:
-                      "Записывайте свои повседневные разговоры, а мы оставим только Ваши любимые слова",
+                  subtitle: AppLocalizations.of(context).recordingWordsText,
                   otherText:
-                      "Алгоритмы uwords не хранят записи, а используют речь только для определения самых частотных слов",
-                  linkText: "Подробнее",
+                      AppLocalizations.of(context).recordingWordsOtherText,
+                  linkText: AppLocalizations.of(context).moreDetails,
                 ))
           ],
         ));
