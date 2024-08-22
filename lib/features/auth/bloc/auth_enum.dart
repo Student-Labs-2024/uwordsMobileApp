@@ -13,6 +13,7 @@ enum AuthError {
 enum AuthSuccess {
   authorized,
   sendedCode,
+  educationNotCompleted
 }
 
 enum AuthorizationProvider {

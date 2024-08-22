@@ -5,6 +5,6 @@ class FirstOnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Center());
+    return SafeArea(child: Center(child: Text("first screen")));
   }
 }

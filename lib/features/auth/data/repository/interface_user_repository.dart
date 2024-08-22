@@ -32,4 +32,5 @@ abstract interface class IUserRepository {
   Future<String> getCurrentUserAvatarUrl();
   Future<void> updateInfoAboutUser();
   bool isSubscriptionActive();
+  Future<bool> isEducationCompleted();
 }

@@ -201,4 +201,10 @@ class UserRepository implements IUserRepository {
       }
     }
   }
+
+  @override
+  Future<bool> isEducationCompleted() async {
+    final UserAuthDto userAuthDto = await savableUserDataSource.getCurrent();
+    return userAuthDto.isEducationCompleted;
+  }
 }
