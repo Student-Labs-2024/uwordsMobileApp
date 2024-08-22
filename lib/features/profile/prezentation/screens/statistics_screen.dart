@@ -116,13 +116,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               subtopics: widget.learned,
               title: AppLocalizations.of(context).learned,
             ),
-          //if (widget.almostLearned.isEmpty && widget.learned.isEmpty)
-          Center(
-            child: Text(
-              AppLocalizations.of(context).haveNoThemeInStatistics,
-              style: AppTextStyles.profileNavNotActive,
+          if (widget.almostLearned.isEmpty && widget.learned.isEmpty)
+            Center(
+              child: Text(
+                AppLocalizations.of(context).haveNoThemeInStatistics,
+                style: AppTextStyles.profileNavNotActive,
+              ),
             ),
-          ),
           SizedBox(
             height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
           ),
