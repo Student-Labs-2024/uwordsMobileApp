@@ -59,6 +59,24 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
   late final GeneratedColumn<int> days = GeneratedColumn<int>(
       'days', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _subscriptionTypeMeta =
+      const VerificationMeta('subscriptionType');
+  @override
+  late final GeneratedColumn<int> subscriptionType = GeneratedColumn<int>(
+      'subscription_type', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _subscriptionAcquisitionMeta =
+      const VerificationMeta('subscriptionAcquisition');
+  @override
+  late final GeneratedColumn<DateTime> subscriptionAcquisition =
+      GeneratedColumn<DateTime>('subscription_acquisition', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _subscriptionExpiredMeta =
+      const VerificationMeta('subscriptionExpired');
+  @override
+  late final GeneratedColumn<DateTime> subscriptionExpired =
+      GeneratedColumn<DateTime>('subscription_expired', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   static const VerificationMeta _allowedAudioSecondsMeta =
       const VerificationMeta('allowedAudioSeconds');
   @override
@@ -123,6 +141,9 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
         phoneNumber,
         birthDate,
         days,
+        subscriptionType,
+        subscriptionAcquisition,
+        subscriptionExpired,
         allowedAudioSeconds,
         allowedVideoSeconds,
         energy,
@@ -194,6 +215,24 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           _daysMeta, days.isAcceptableOrUnknown(data['days']!, _daysMeta));
     } else if (isInserting) {
       context.missing(_daysMeta);
+    }
+    if (data.containsKey('subscription_type')) {
+      context.handle(
+          _subscriptionTypeMeta,
+          subscriptionType.isAcceptableOrUnknown(
+              data['subscription_type']!, _subscriptionTypeMeta));
+    }
+    if (data.containsKey('subscription_acquisition')) {
+      context.handle(
+          _subscriptionAcquisitionMeta,
+          subscriptionAcquisition.isAcceptableOrUnknown(
+              data['subscription_acquisition']!, _subscriptionAcquisitionMeta));
+    }
+    if (data.containsKey('subscription_expired')) {
+      context.handle(
+          _subscriptionExpiredMeta,
+          subscriptionExpired.isAcceptableOrUnknown(
+              data['subscription_expired']!, _subscriptionExpiredMeta));
     }
     if (data.containsKey('allowed_audio_seconds')) {
       context.handle(
@@ -280,6 +319,14 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           .read(DriftSqlType.dateTime, data['${effectivePrefix}birth_date'])!,
       days: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}days'])!,
+      subscriptionType: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}subscription_type']),
+      subscriptionAcquisition: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime,
+          data['${effectivePrefix}subscription_acquisition']),
+      subscriptionExpired: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime,
+          data['${effectivePrefix}subscription_expired']),
       allowedAudioSeconds: attachedDatabase.typeMapping.read(
           DriftSqlType.int, data['${effectivePrefix}allowed_audio_seconds'])!,
       allowedVideoSeconds: attachedDatabase.typeMapping.read(
@@ -315,6 +362,9 @@ class User extends DataClass implements Insertable<User> {
   final String phoneNumber;
   final DateTime birthDate;
   final int days;
+  final int? subscriptionType;
+  final DateTime? subscriptionAcquisition;
+  final DateTime? subscriptionExpired;
   final int allowedAudioSeconds;
   final int allowedVideoSeconds;
   final int energy;
@@ -333,6 +383,9 @@ class User extends DataClass implements Insertable<User> {
       required this.phoneNumber,
       required this.birthDate,
       required this.days,
+      this.subscriptionType,
+      this.subscriptionAcquisition,
+      this.subscriptionExpired,
       required this.allowedAudioSeconds,
       required this.allowedVideoSeconds,
       required this.energy,
@@ -353,6 +406,16 @@ class User extends DataClass implements Insertable<User> {
     map['phone_number'] = Variable<String>(phoneNumber);
     map['birth_date'] = Variable<DateTime>(birthDate);
     map['days'] = Variable<int>(days);
+    if (!nullToAbsent || subscriptionType != null) {
+      map['subscription_type'] = Variable<int>(subscriptionType);
+    }
+    if (!nullToAbsent || subscriptionAcquisition != null) {
+      map['subscription_acquisition'] =
+          Variable<DateTime>(subscriptionAcquisition);
+    }
+    if (!nullToAbsent || subscriptionExpired != null) {
+      map['subscription_expired'] = Variable<DateTime>(subscriptionExpired);
+    }
     map['allowed_audio_seconds'] = Variable<int>(allowedAudioSeconds);
     map['allowed_video_seconds'] = Variable<int>(allowedVideoSeconds);
     map['energy'] = Variable<int>(energy);
@@ -375,6 +438,15 @@ class User extends DataClass implements Insertable<User> {
       phoneNumber: Value(phoneNumber),
       birthDate: Value(birthDate),
       days: Value(days),
+      subscriptionType: subscriptionType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subscriptionType),
+      subscriptionAcquisition: subscriptionAcquisition == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subscriptionAcquisition),
+      subscriptionExpired: subscriptionExpired == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subscriptionExpired),
       allowedAudioSeconds: Value(allowedAudioSeconds),
       allowedVideoSeconds: Value(allowedVideoSeconds),
       energy: Value(energy),
@@ -399,6 +471,11 @@ class User extends DataClass implements Insertable<User> {
       phoneNumber: serializer.fromJson<String>(json['phoneNumber']),
       birthDate: serializer.fromJson<DateTime>(json['birthDate']),
       days: serializer.fromJson<int>(json['days']),
+      subscriptionType: serializer.fromJson<int?>(json['subscriptionType']),
+      subscriptionAcquisition:
+          serializer.fromJson<DateTime?>(json['subscriptionAcquisition']),
+      subscriptionExpired:
+          serializer.fromJson<DateTime?>(json['subscriptionExpired']),
       allowedAudioSeconds:
           serializer.fromJson<int>(json['allowedAudioSeconds']),
       allowedVideoSeconds:
@@ -425,6 +502,10 @@ class User extends DataClass implements Insertable<User> {
       'phoneNumber': serializer.toJson<String>(phoneNumber),
       'birthDate': serializer.toJson<DateTime>(birthDate),
       'days': serializer.toJson<int>(days),
+      'subscriptionType': serializer.toJson<int?>(subscriptionType),
+      'subscriptionAcquisition':
+          serializer.toJson<DateTime?>(subscriptionAcquisition),
+      'subscriptionExpired': serializer.toJson<DateTime?>(subscriptionExpired),
       'allowedAudioSeconds': serializer.toJson<int>(allowedAudioSeconds),
       'allowedVideoSeconds': serializer.toJson<int>(allowedVideoSeconds),
       'energy': serializer.toJson<int>(energy),
@@ -446,6 +527,9 @@ class User extends DataClass implements Insertable<User> {
           String? phoneNumber,
           DateTime? birthDate,
           int? days,
+          Value<int?> subscriptionType = const Value.absent(),
+          Value<DateTime?> subscriptionAcquisition = const Value.absent(),
+          Value<DateTime?> subscriptionExpired = const Value.absent(),
           int? allowedAudioSeconds,
           int? allowedVideoSeconds,
           int? energy,
@@ -464,6 +548,15 @@ class User extends DataClass implements Insertable<User> {
         phoneNumber: phoneNumber ?? this.phoneNumber,
         birthDate: birthDate ?? this.birthDate,
         days: days ?? this.days,
+        subscriptionType: subscriptionType.present
+            ? subscriptionType.value
+            : this.subscriptionType,
+        subscriptionAcquisition: subscriptionAcquisition.present
+            ? subscriptionAcquisition.value
+            : this.subscriptionAcquisition,
+        subscriptionExpired: subscriptionExpired.present
+            ? subscriptionExpired.value
+            : this.subscriptionExpired,
         allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
         allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
         energy: energy ?? this.energy,
@@ -485,6 +578,9 @@ class User extends DataClass implements Insertable<User> {
           ..write('phoneNumber: $phoneNumber, ')
           ..write('birthDate: $birthDate, ')
           ..write('days: $days, ')
+          ..write('subscriptionType: $subscriptionType, ')
+          ..write('subscriptionAcquisition: $subscriptionAcquisition, ')
+          ..write('subscriptionExpired: $subscriptionExpired, ')
           ..write('allowedAudioSeconds: $allowedAudioSeconds, ')
           ..write('allowedVideoSeconds: $allowedVideoSeconds, ')
           ..write('energy: $energy, ')
@@ -508,6 +604,9 @@ class User extends DataClass implements Insertable<User> {
       phoneNumber,
       birthDate,
       days,
+      subscriptionType,
+      subscriptionAcquisition,
+      subscriptionExpired,
       allowedAudioSeconds,
       allowedVideoSeconds,
       energy,
@@ -529,6 +628,9 @@ class User extends DataClass implements Insertable<User> {
           other.phoneNumber == this.phoneNumber &&
           other.birthDate == this.birthDate &&
           other.days == this.days &&
+          other.subscriptionType == this.subscriptionType &&
+          other.subscriptionAcquisition == this.subscriptionAcquisition &&
+          other.subscriptionExpired == this.subscriptionExpired &&
           other.allowedAudioSeconds == this.allowedAudioSeconds &&
           other.allowedVideoSeconds == this.allowedVideoSeconds &&
           other.energy == this.energy &&
@@ -549,6 +651,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   final Value<String> phoneNumber;
   final Value<DateTime> birthDate;
   final Value<int> days;
+  final Value<int?> subscriptionType;
+  final Value<DateTime?> subscriptionAcquisition;
+  final Value<DateTime?> subscriptionExpired;
   final Value<int> allowedAudioSeconds;
   final Value<int> allowedVideoSeconds;
   final Value<int> energy;
@@ -567,6 +672,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     this.phoneNumber = const Value.absent(),
     this.birthDate = const Value.absent(),
     this.days = const Value.absent(),
+    this.subscriptionType = const Value.absent(),
+    this.subscriptionAcquisition = const Value.absent(),
+    this.subscriptionExpired = const Value.absent(),
     this.allowedAudioSeconds = const Value.absent(),
     this.allowedVideoSeconds = const Value.absent(),
     this.energy = const Value.absent(),
@@ -586,6 +694,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     required String phoneNumber,
     required DateTime birthDate,
     required int days,
+    this.subscriptionType = const Value.absent(),
+    this.subscriptionAcquisition = const Value.absent(),
+    this.subscriptionExpired = const Value.absent(),
     required int allowedAudioSeconds,
     required int allowedVideoSeconds,
     required int energy,
@@ -620,6 +731,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     Expression<String>? phoneNumber,
     Expression<DateTime>? birthDate,
     Expression<int>? days,
+    Expression<int>? subscriptionType,
+    Expression<DateTime>? subscriptionAcquisition,
+    Expression<DateTime>? subscriptionExpired,
     Expression<int>? allowedAudioSeconds,
     Expression<int>? allowedVideoSeconds,
     Expression<int>? energy,
@@ -639,6 +753,11 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       if (phoneNumber != null) 'phone_number': phoneNumber,
       if (birthDate != null) 'birth_date': birthDate,
       if (days != null) 'days': days,
+      if (subscriptionType != null) 'subscription_type': subscriptionType,
+      if (subscriptionAcquisition != null)
+        'subscription_acquisition': subscriptionAcquisition,
+      if (subscriptionExpired != null)
+        'subscription_expired': subscriptionExpired,
       if (allowedAudioSeconds != null)
         'allowed_audio_seconds': allowedAudioSeconds,
       if (allowedVideoSeconds != null)
@@ -663,6 +782,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       Value<String>? phoneNumber,
       Value<DateTime>? birthDate,
       Value<int>? days,
+      Value<int?>? subscriptionType,
+      Value<DateTime?>? subscriptionAcquisition,
+      Value<DateTime?>? subscriptionExpired,
       Value<int>? allowedAudioSeconds,
       Value<int>? allowedVideoSeconds,
       Value<int>? energy,
@@ -681,6 +803,10 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       birthDate: birthDate ?? this.birthDate,
       days: days ?? this.days,
+      subscriptionType: subscriptionType ?? this.subscriptionType,
+      subscriptionAcquisition:
+          subscriptionAcquisition ?? this.subscriptionAcquisition,
+      subscriptionExpired: subscriptionExpired ?? this.subscriptionExpired,
       allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
       allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
       energy: energy ?? this.energy,
@@ -722,6 +848,17 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     if (days.present) {
       map['days'] = Variable<int>(days.value);
     }
+    if (subscriptionType.present) {
+      map['subscription_type'] = Variable<int>(subscriptionType.value);
+    }
+    if (subscriptionAcquisition.present) {
+      map['subscription_acquisition'] =
+          Variable<DateTime>(subscriptionAcquisition.value);
+    }
+    if (subscriptionExpired.present) {
+      map['subscription_expired'] =
+          Variable<DateTime>(subscriptionExpired.value);
+    }
     if (allowedAudioSeconds.present) {
       map['allowed_audio_seconds'] = Variable<int>(allowedAudioSeconds.value);
     }
@@ -762,6 +899,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
           ..write('phoneNumber: $phoneNumber, ')
           ..write('birthDate: $birthDate, ')
           ..write('days: $days, ')
+          ..write('subscriptionType: $subscriptionType, ')
+          ..write('subscriptionAcquisition: $subscriptionAcquisition, ')
+          ..write('subscriptionExpired: $subscriptionExpired, ')
           ..write('allowedAudioSeconds: $allowedAudioSeconds, ')
           ..write('allowedVideoSeconds: $allowedVideoSeconds, ')
           ..write('energy: $energy, ')
@@ -1973,6 +2113,9 @@ typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
   required String phoneNumber,
   required DateTime birthDate,
   required int days,
+  Value<int?> subscriptionType,
+  Value<DateTime?> subscriptionAcquisition,
+  Value<DateTime?> subscriptionExpired,
   required int allowedAudioSeconds,
   required int allowedVideoSeconds,
   required int energy,
@@ -1992,6 +2135,9 @@ typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<String> phoneNumber,
   Value<DateTime> birthDate,
   Value<int> days,
+  Value<int?> subscriptionType,
+  Value<DateTime?> subscriptionAcquisition,
+  Value<DateTime?> subscriptionExpired,
   Value<int> allowedAudioSeconds,
   Value<int> allowedVideoSeconds,
   Value<int> energy,
@@ -2031,6 +2177,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             Value<String> phoneNumber = const Value.absent(),
             Value<DateTime> birthDate = const Value.absent(),
             Value<int> days = const Value.absent(),
+            Value<int?> subscriptionType = const Value.absent(),
+            Value<DateTime?> subscriptionAcquisition = const Value.absent(),
+            Value<DateTime?> subscriptionExpired = const Value.absent(),
             Value<int> allowedAudioSeconds = const Value.absent(),
             Value<int> allowedVideoSeconds = const Value.absent(),
             Value<int> energy = const Value.absent(),
@@ -2050,6 +2199,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             phoneNumber: phoneNumber,
             birthDate: birthDate,
             days: days,
+            subscriptionType: subscriptionType,
+            subscriptionAcquisition: subscriptionAcquisition,
+            subscriptionExpired: subscriptionExpired,
             allowedAudioSeconds: allowedAudioSeconds,
             allowedVideoSeconds: allowedVideoSeconds,
             energy: energy,
@@ -2069,6 +2221,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             required String phoneNumber,
             required DateTime birthDate,
             required int days,
+            Value<int?> subscriptionType = const Value.absent(),
+            Value<DateTime?> subscriptionAcquisition = const Value.absent(),
+            Value<DateTime?> subscriptionExpired = const Value.absent(),
             required int allowedAudioSeconds,
             required int allowedVideoSeconds,
             required int energy,
@@ -2088,6 +2243,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             phoneNumber: phoneNumber,
             birthDate: birthDate,
             days: days,
+            subscriptionType: subscriptionType,
+            subscriptionAcquisition: subscriptionAcquisition,
+            subscriptionExpired: subscriptionExpired,
             allowedAudioSeconds: allowedAudioSeconds,
             allowedVideoSeconds: allowedVideoSeconds,
             energy: energy,
@@ -2157,6 +2315,22 @@ class $$UserAuthTableFilterComposer
 
   ColumnFilters<int> get days => $state.composableBuilder(
       column: $state.table.days,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get subscriptionType => $state.composableBuilder(
+      column: $state.table.subscriptionType,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get subscriptionAcquisition =>
+      $state.composableBuilder(
+          column: $state.table.subscriptionAcquisition,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get subscriptionExpired => $state.composableBuilder(
+      column: $state.table.subscriptionExpired,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -2272,6 +2446,22 @@ class $$UserAuthTableOrderingComposer
 
   ColumnOrderings<int> get days => $state.composableBuilder(
       column: $state.table.days,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get subscriptionType => $state.composableBuilder(
+      column: $state.table.subscriptionType,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get subscriptionAcquisition => $state
+      .composableBuilder(
+          column: $state.table.subscriptionAcquisition,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get subscriptionExpired => $state.composableBuilder(
+      column: $state.table.subscriptionExpired,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 

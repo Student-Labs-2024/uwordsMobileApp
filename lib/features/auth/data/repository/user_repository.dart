@@ -117,7 +117,7 @@ class UserRepository implements IUserRepository {
       } on Exception {
         rethrow;
       }
-    } on Exception catch (e) {
+    } on Exception {
       rethrow;
     }
   }

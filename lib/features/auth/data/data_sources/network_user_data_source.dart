@@ -220,7 +220,6 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   @override
   Future<UserAuthDto> fetchAboutMe({required UserAuthDto userDto}) async{
     final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(tokenType: tokenType, token: userDto.accessToken));
-    userDto.updateInfoAboutUserByMap(userMap: aboutMeResponse.data, user: userDto);
-    return userDto;
+    return userDto.updateInfoAboutUserByMap(userMap: aboutMeResponse.data, user: userDto);
   }
 }

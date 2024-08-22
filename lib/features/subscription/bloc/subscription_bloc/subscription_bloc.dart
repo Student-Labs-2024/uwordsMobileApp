@@ -64,6 +64,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
         await userRepository.updateInfoAboutUser();
         emit(const SubscriptionState.subscriptionPaid());
       } else {
+        await userRepository.updateInfoAboutUser();
         emit(const SubscriptionState.subscriptionNotPaid());
       }
     } on Exception catch (e) {

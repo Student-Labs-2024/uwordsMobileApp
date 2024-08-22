@@ -13,6 +13,9 @@ class SimpleUserInfo {
   DateTime birthDate;
   MetricsDto metricsDto;
   final int days;
+  int? subscriptionType;
+  DateTime? subscriptionAcquisition;
+  DateTime? subscriptionExpired;
   int allowedAudioSeconds;
   int allowedVideoSeconds;
   int energy;
@@ -30,6 +33,9 @@ class SimpleUserInfo {
       required this.birthDate,
       required this.metricsDto,
       required this.days,
+      required this.subscriptionType,
+      required this.subscriptionAcquisition,
+      required this.subscriptionExpired,
       required this.allowedAudioSeconds,
       required this.allowedVideoSeconds,
       required this.accessToken,
@@ -37,7 +43,7 @@ class SimpleUserInfo {
       required this.achievements});
   factory SimpleUserInfo.fromUserAuthDto({required UserAuthDto userAuthDto}) {
     return SimpleUserInfo(
-      id: userAuthDto.id,
+        id: userAuthDto.id,
         email: userAuthDto.email,
         username: userAuthDto.username,
         firstname: userAuthDto.firstname,
@@ -47,6 +53,9 @@ class SimpleUserInfo {
         birthDate: userAuthDto.birthDate,
         metricsDto: userAuthDto.metricsDto,
         days: userAuthDto.days,
+        subscriptionType: userAuthDto.subscriptionType,
+        subscriptionAcquisition: userAuthDto.subscriptionAcquisition,
+        subscriptionExpired: userAuthDto.subscriptionExpired,
         allowedAudioSeconds: userAuthDto.allowedAudioSeconds,
         allowedVideoSeconds: userAuthDto.allowedVideoSeconds,
         accessToken: userAuthDto.accessToken,

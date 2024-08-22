@@ -13,6 +13,9 @@ class UserAuthDto {
   final String phoneNumber;
   final DateTime birthDate;
   final MetricsDto metricsDto;
+  final int? subscriptionType;
+  final DateTime? subscriptionAcquisition;
+  final DateTime? subscriptionExpired;
   final int days;
   final int allowedAudioSeconds;
   final int allowedVideoSeconds;
@@ -34,6 +37,9 @@ class UserAuthDto {
     required this.birthDate,
     required this.metricsDto,
     required this.days,
+    required this.subscriptionType,
+    required this.subscriptionAcquisition,
+    required this.subscriptionExpired,
     required this.allowedAudioSeconds,
     required this.allowedVideoSeconds,
     required this.energy,
@@ -59,6 +65,9 @@ class UserAuthDto {
         allowedVideoSeconds: user.allowedVideoSeconds,
         days: user.days,
         energy: user.energy,
+        subscriptionType: user.subscriptionType,
+        subscriptionAcquisition: user.subscriptionAcquisition,
+        subscriptionExpired: user.subscriptionExpired,
         metricsDto: MetricsDto.fromDB(metric: metric),
         achievements: achievementsList
             .map((achievement) =>
@@ -87,6 +96,10 @@ class UserAuthDto {
             DateTime.tryParse(userMap['birth_date'] ?? '') ?? DateTime.now(),
         metricsDto: MetricsDto.fromJson(metricMap: userMap['metrics']),
         days: userMap['days'],
+        subscriptionType: userMap['subscription_type'],
+        subscriptionAcquisition:
+            DateTime.tryParse(userMap['subscription_acquisition']),
+        subscriptionExpired: DateTime.tryParse(userMap['subscription_expired']),
         allowedAudioSeconds: userMap['allowed_audio_seconds'],
         allowedVideoSeconds: userMap['allowed_video_seconds'],
         energy: userMap['energy'],
@@ -117,6 +130,10 @@ class UserAuthDto {
           DateTime.tryParse(userMap['birth_date'] ?? '') ?? DateTime.now(),
       metricsDto: MetricsDto.fromJson(metricMap: userMap['metrics']),
       days: userMap['days'],
+      subscriptionType: userMap['subscription_type'],
+      subscriptionAcquisition:
+          DateTime.tryParse(userMap['subscription_acquisition']),
+      subscriptionExpired: DateTime.tryParse(userMap['subscription_expired']),
       allowedAudioSeconds: userMap['allowed_audio_seconds'],
       allowedVideoSeconds: userMap['allowed_video_seconds'],
       energy: userMap['energy'],
@@ -139,6 +156,9 @@ class UserAuthDto {
     DateTime? birthDate,
     MetricsDto? metricsDto,
     int? days,
+    int? subscriptionType,
+    DateTime? subscriptionAcquisition,
+    DateTime? subscriptionExpired,
     int? allowedAudioSeconds,
     int? allowedVideoSeconds,
     int? energy,
@@ -161,6 +181,9 @@ class UserAuthDto {
       days: days ?? this.days,
       allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
       allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
+      subscriptionType: subscriptionType,
+      subscriptionAcquisition: subscriptionAcquisition,
+      subscriptionExpired: subscriptionExpired,
       energy: energy ?? this.energy,
       accessToken: accessToken ?? this.accessToken,
       refreshToken: refreshToken ?? this.refreshToken,

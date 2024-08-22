@@ -20,6 +20,9 @@ class UserAuth extends Table {
   TextColumn get phoneNumber => text()();
   DateTimeColumn get birthDate => dateTime()();
   IntColumn get days => integer()();
+  IntColumn get subscriptionType => integer().nullable()();
+  DateTimeColumn get subscriptionAcquisition => dateTime().nullable()();
+  DateTimeColumn get subscriptionExpired => dateTime().nullable()();
   IntColumn get allowedAudioSeconds => integer()();
   IntColumn get allowedVideoSeconds => integer()();
   IntColumn get energy => integer()();
