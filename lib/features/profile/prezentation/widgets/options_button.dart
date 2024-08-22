@@ -15,7 +15,7 @@ class OptionsButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(GlobalSizes.borderRadiusCircle),
         border: Border.all(
-          color: AppColors.imperial45,
+          color: AppColors.imperial,
           width: ProfileSizes.optionsBordedSize,
         ),
       ),

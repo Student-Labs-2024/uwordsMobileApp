@@ -1,9 +1,11 @@
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/data/data_sources/interface_words_data_source.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
 import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
 import 'package:uwords/features/learn/domain/mapper/topic_mapper.dart';
 import 'package:uwords/features/learn/domain/mapper/word_info_mapper.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 
@@ -30,6 +32,28 @@ class WordsRepository implements IWordsRepository {
       final List<TopicDto> topicsDto =
           await wordsDataSource.fetchTopics(accessToken: accessToken);
       return topicsDto.map((topic) => topic.toModel()).toList();
+    } on Exception {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<Subtopic>> getAllSubtopics({required String accessToken}) async {
+    try {
+      List<Subtopic> subtopics = [];
+      List<Topic> topics = await getTopics(accessToken: accessToken);
+      for (Topic topic in topics) {
+        if (topic.topicTitle == OtherLearnConstants.topickNameInProgress) {
+          continue;
+        }
+        for (Subtopic subtopic in topic.subtopics) {
+          if (subtopic.subtopicTitle !=
+              OtherLearnConstants.subtopickNameUnsorted) {
+            subtopics.add(subtopic);
+          }
+        }
+      }
+      return subtopics;
     } on Exception {
       rethrow;
     }

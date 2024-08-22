@@ -143,6 +143,7 @@ class AppColors {
 
   static const Color imperial45 = Color.fromRGBO(83, 45, 106, 0.45);
   static const Color imperialOpacity45 = Color.fromRGBO(178, 160, 188, 1);
+  static const Color imperial = Color.fromRGBO(83, 45, 106, 1);
 
   static const Color animationColor = Color.fromRGBO(216, 227, 255, 1);
 
@@ -152,4 +153,11 @@ class AppColors {
     AppColors.goodProgressbarColor2,
     AppColors.goodProgressbarColor1,
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+
+  static const LinearGradient purpleGradient = LinearGradient(colors: [
+    Color.fromRGBO(150, 124, 253, 1),
+    Color.fromRGBO(83, 45, 106, 1),
+  ], begin: Alignment.centerLeft, end: Alignment.centerRight);
+
+  static const Color haventStatisticsColor = Color.fromRGBO(132, 127, 135, 1);
 }
