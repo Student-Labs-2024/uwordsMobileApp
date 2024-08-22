@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
-import 'package:uwords/features/global/domain/achievement.dart';
 import 'package:uwords/features/global/domain/achievement_category.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
+import 'package:uwords/features/profile/data/constants/other_profile_constants.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_state.dart';
@@ -42,9 +42,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     List<Subtopic> learned = [];
 
     for (Subtopic st in subtopics) {
-      if (st.progress == 100) {
+      if (st.progress == OtherProfileConstants.learnedProgress) {
         learned.add(st);
-      } else if (st.progress > 50) {
+      } else if (st.progress > OtherProfileConstants.almostLearnedProgress) {
         almostLearned.add(st);
       }
     }

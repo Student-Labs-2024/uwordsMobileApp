@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
+import 'package:uwords/features/profile/data/constants/other_profile_constants.dart';
 import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
+import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/widgets/progress_category.dart';
 import 'package:uwords/features/profile/prezentation/widgets/statistic_card.dart';
 import 'package:uwords/features/profile/prezentation/widgets/subscription_view.dart';
+import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
+import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen(
@@ -27,13 +35,13 @@ class StatisticsScreen extends StatefulWidget {
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
   String getPrecisionIcon(int percent) {
-    if (percent == 100) {
+    if (percent == OtherProfileConstants.percentFor100Icon) {
       return AppImageSource.precision100Icon;
-    } else if (percent >= 70) {
+    } else if (percent >= OtherProfileConstants.percentFor70Icon) {
       return AppImageSource.precision70Icon;
-    } else if (percent >= 50) {
+    } else if (percent >= OtherProfileConstants.percentFor50Icon) {
       return AppImageSource.precision50Icon;
-    } else if (percent >= 20) {
+    } else if (percent >= OtherProfileConstants.percentFor20Icon) {
       return AppImageSource.precision20Icon;
     } else {
       return AppImageSource.precision0Icon;
@@ -41,6 +49,14 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   }
 
   bool haveSubscription = false;
+
+  @override
+  void initState() {
+    context
+        .read<SubscriptionBloc>()
+        .add(const SubscriptionEvent.isSubscriptionActive());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,18 +67,38 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SubscriptionView(
-            image: haveSubscription
-                ? AppImageSource.subscriptionActive
-                : AppImageSource.subscriptionInactive,
-            title: haveSubscription
-                ? AppLocalizations.of(context).subscriptionIsActive
-                : AppLocalizations.of(context).subscriptionIsNotActive,
-            subtitle: haveSubscription
-                ? AppLocalizations.of(context).upgradeSubscription('03.10.2024')
-                : AppLocalizations.of(context).subscribe,
-            onPressed: () {},
-          ),
+          BlocBuilder<SubscriptionBloc, SubscriptionState>(
+              builder: (BuildContext context, SubscriptionState state) {
+            return state.maybeWhen(
+              subscriptionStatus: (status) => SubscriptionView(
+                haveSubscription: status,
+                updateDate: OtherProfileConstants.mockSubscriptionData,
+                onPressed: () {
+                  context.go("/subscription");
+                },
+              ),
+              loading: () => Container(
+                decoration: fis.BoxDecoration(
+                    color: AppColors.whiteColor,
+                    borderRadius:
+                        BorderRadius.circular(GlobalSizes.borderRadiusMedium),
+                    boxShadow: ProfileShadows.statisticCard),
+                child: const Center(
+                    child: CircularProgressIndicator(
+                  color: AppColors.darkMainColor,
+                )),
+              ),
+              orElse: () => Container(
+                decoration: fis.BoxDecoration(
+                    color: AppColors.whiteColor,
+                    borderRadius:
+                        BorderRadius.circular(GlobalSizes.borderRadiusMedium),
+                    boxShadow: ProfileShadows.statisticCard),
+                child: Center(
+                    child: Text(AppLocalizations.of(context).unknowError)),
+              ),
+            );
+          }),
           const SizedBox(
             height: ProfilePaddings.subscriptionBottom,
           ),
