@@ -229,4 +229,12 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
       fontSize: 17,
       color: AppColors.haventStatisticsColor);
+  static const animatedSubtopicCardName = TextStyle(
+      fontSize: 23,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkMainColor);
+  static const animatedSubtopicCardWords = TextStyle(
+      fontSize: 21,
+      fontWeight: FontWeight.w400,
+      color: AppColors.darkMainColor);
 }
