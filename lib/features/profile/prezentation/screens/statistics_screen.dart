@@ -7,6 +7,7 @@ import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/widgets/progress_category.dart';
 import 'package:uwords/features/profile/prezentation/widgets/statistic_card.dart';
 import 'package:uwords/features/profile/prezentation/widgets/subscription_view.dart';
+import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -115,6 +116,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               subtopics: widget.learned,
               title: AppLocalizations.of(context).learned,
             ),
+          //if (widget.almostLearned.isEmpty && widget.learned.isEmpty)
+          Center(
+            child: Text(
+              AppLocalizations.of(context).haveNoThemeInStatistics,
+              style: AppTextStyles.profileNavNotActive,
+            ),
+          ),
           SizedBox(
             height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
           ),
