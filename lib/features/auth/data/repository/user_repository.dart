@@ -160,14 +160,8 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<String> getCurrentUserName() async {
+  Future<UserAuthDto> getCurrentUserInfo() async {
     UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    return currentUser.username;
-  }
-
-  @override
-  Future<String> getCurrentUserAvatarUrl() async {
-    UserAuthDto currentUser = await savableUserDataSource.getCurrent();
-    return currentUser.avatarUrl;
+    return currentUser;
   }
 }

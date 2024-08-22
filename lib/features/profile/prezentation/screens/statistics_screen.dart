@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
@@ -11,10 +12,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen(
-      {super.key, required this.learned, required this.almostLearned});
+      {super.key,
+      required this.learned,
+      required this.almostLearned,
+      required this.metrics});
 
   final List<Subtopic> learned;
   final List<Subtopic> almostLearned;
+  final Metrics metrics;
   @override
   State<StatisticsScreen> createState() => _StatisticsScreenState();
 }
@@ -71,7 +76,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               ),
               StatisticCard(
                 image: AppImageSource.wordsLearnedIcon,
-                title: '${ProfileDataExample.exampleMetrics[1]}',
+                title: '${widget.metrics.alltimeLearnedAmount}',
                 subtitle: AppLocalizations.of(context).learnedWordsCard,
                 onPressed: () => {},
               ),
@@ -85,8 +90,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.recordTimeIcon,
-                title: AppLocalizations.of(context)
-                    .hours(ProfileDataExample.exampleMetrics[2]),
+                title: AppLocalizations.of(context).hours(
+                    (widget.metrics.alltimeSpeechSeconds +
+                            widget.metrics.alltimeVideoSeconds) /
+                        3600),
                 subtitle: AppLocalizations.of(context).recordTimeCard,
                 onPressed: () => {},
               ),

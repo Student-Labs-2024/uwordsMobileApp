@@ -49,7 +49,8 @@ class _ProfilePageState extends State<ProfilePage> {
           child: BlocBuilder<ProfileBloc, ProfileState>(
             builder: (BuildContext context, ProfileState state) {
               return state.maybeWhen(
-                gotInfo: (userName, avatarUrl, almostLearned, learned) {
+                gotInfo: (userName, avatarUrl, almostLearned, learned,
+                    achievements, metrics) {
                   return ListView(
                     children: [
                       Padding(
@@ -141,8 +142,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           ? StatisticsScreen(
                               learned: learned,
                               almostLearned: almostLearned,
+                              metrics: metrics,
                             )
-                          : const AchievementsScreen(),
+                          : AchievementsScreen(achievements: achievements),
                     ],
                   );
                 },

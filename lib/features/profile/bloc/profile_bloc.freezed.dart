@@ -20,8 +20,13 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)
         gotInfo,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,8 +34,13 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,8 +48,13 @@ mixin _$ProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
     required TResult orElse(),
   }) =>
@@ -126,8 +141,13 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)
         gotInfo,
   }) {
     return initial();
@@ -138,8 +158,13 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
   }) {
     return initial?.call();
@@ -150,8 +175,13 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
     required TResult orElse(),
   }) {
@@ -266,8 +296,13 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)
         gotInfo,
   }) {
     return failed(message);
@@ -278,8 +313,13 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
   }) {
     return failed?.call(message);
@@ -290,8 +330,13 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
     required TResult orElse(),
   }) {
@@ -355,7 +400,9 @@ abstract class _$$GotInfoImplCopyWith<$Res> {
       {String userName,
       String avatarUrl,
       List<Subtopic> almostLearned,
-      List<Subtopic> learned});
+      List<Subtopic> learned,
+      List<AchievementInfoModel> achievements,
+      Metrics metrics});
 }
 
 /// @nodoc
@@ -373,6 +420,8 @@ class __$$GotInfoImplCopyWithImpl<$Res>
     Object? avatarUrl = null,
     Object? almostLearned = null,
     Object? learned = null,
+    Object? achievements = null,
+    Object? metrics = null,
   }) {
     return _then(_$GotInfoImpl(
       null == userName
@@ -391,6 +440,14 @@ class __$$GotInfoImplCopyWithImpl<$Res>
           ? _value._learned
           : learned // ignore: cast_nullable_to_non_nullable
               as List<Subtopic>,
+      null == achievements
+          ? _value._achievements
+          : achievements // ignore: cast_nullable_to_non_nullable
+              as List<AchievementInfoModel>,
+      null == metrics
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metrics,
     ));
   }
 }
@@ -398,10 +455,16 @@ class __$$GotInfoImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GotInfoImpl implements _GotInfo {
-  const _$GotInfoImpl(this.userName, this.avatarUrl,
-      final List<Subtopic> almostLearned, final List<Subtopic> learned)
+  const _$GotInfoImpl(
+      this.userName,
+      this.avatarUrl,
+      final List<Subtopic> almostLearned,
+      final List<Subtopic> learned,
+      final List<AchievementInfoModel> achievements,
+      this.metrics)
       : _almostLearned = almostLearned,
-        _learned = learned;
+        _learned = learned,
+        _achievements = achievements;
 
   @override
   final String userName;
@@ -423,9 +486,20 @@ class _$GotInfoImpl implements _GotInfo {
     return EqualUnmodifiableListView(_learned);
   }
 
+  final List<AchievementInfoModel> _achievements;
+  @override
+  List<AchievementInfoModel> get achievements {
+    if (_achievements is EqualUnmodifiableListView) return _achievements;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_achievements);
+  }
+
+  @override
+  final Metrics metrics;
+
   @override
   String toString() {
-    return 'ProfileState.gotInfo(userName: $userName, avatarUrl: $avatarUrl, almostLearned: $almostLearned, learned: $learned)';
+    return 'ProfileState.gotInfo(userName: $userName, avatarUrl: $avatarUrl, almostLearned: $almostLearned, learned: $learned, achievements: $achievements, metrics: $metrics)';
   }
 
   @override
@@ -439,7 +513,10 @@ class _$GotInfoImpl implements _GotInfo {
                 other.avatarUrl == avatarUrl) &&
             const DeepCollectionEquality()
                 .equals(other._almostLearned, _almostLearned) &&
-            const DeepCollectionEquality().equals(other._learned, _learned));
+            const DeepCollectionEquality().equals(other._learned, _learned) &&
+            const DeepCollectionEquality()
+                .equals(other._achievements, _achievements) &&
+            (identical(other.metrics, metrics) || other.metrics == metrics));
   }
 
   @override
@@ -448,7 +525,9 @@ class _$GotInfoImpl implements _GotInfo {
       userName,
       avatarUrl,
       const DeepCollectionEquality().hash(_almostLearned),
-      const DeepCollectionEquality().hash(_learned));
+      const DeepCollectionEquality().hash(_learned),
+      const DeepCollectionEquality().hash(_achievements),
+      metrics);
 
   @JsonKey(ignore: true)
   @override
@@ -461,11 +540,17 @@ class _$GotInfoImpl implements _GotInfo {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)
         gotInfo,
   }) {
-    return gotInfo(userName, avatarUrl, almostLearned, learned);
+    return gotInfo(
+        userName, avatarUrl, almostLearned, learned, achievements, metrics);
   }
 
   @override
@@ -473,11 +558,17 @@ class _$GotInfoImpl implements _GotInfo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
   }) {
-    return gotInfo?.call(userName, avatarUrl, almostLearned, learned);
+    return gotInfo?.call(
+        userName, avatarUrl, almostLearned, learned, achievements, metrics);
   }
 
   @override
@@ -485,13 +576,19 @@ class _$GotInfoImpl implements _GotInfo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl,
-            List<Subtopic> almostLearned, List<Subtopic> learned)?
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementInfoModel> achievements,
+            Metrics metrics)?
         gotInfo,
     required TResult orElse(),
   }) {
     if (gotInfo != null) {
-      return gotInfo(userName, avatarUrl, almostLearned, learned);
+      return gotInfo(
+          userName, avatarUrl, almostLearned, learned, achievements, metrics);
     }
     return orElse();
   }
@@ -536,12 +633,16 @@ abstract class _GotInfo implements ProfileState {
       final String userName,
       final String avatarUrl,
       final List<Subtopic> almostLearned,
-      final List<Subtopic> learned) = _$GotInfoImpl;
+      final List<Subtopic> learned,
+      final List<AchievementInfoModel> achievements,
+      final Metrics metrics) = _$GotInfoImpl;
 
   String get userName;
   String get avatarUrl;
   List<Subtopic> get almostLearned;
   List<Subtopic> get learned;
+  List<AchievementInfoModel> get achievements;
+  Metrics get metrics;
   @JsonKey(ignore: true)
   _$$GotInfoImplCopyWith<_$GotInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
