@@ -4,7 +4,7 @@ class OtherProfileConstants {
   static const String haventAvatarUrl =
       'https://yt3.googleusercontent.com/ytc/AOPolaRBRHJn61AJQpeAztkMqxdGsZ7CWvewrcEQd374zg=s900-c-k-c0x00ffffff-no-rj';
   static const String haventName = 'Nameless';
-  static const String mockSubscriptionData = '03.10.2024';
+  static const String mockSubscriptionData = '00.00.0000';
 
   static const int learnedProgress = 100;
   static const int almostLearnedProgress = 50;

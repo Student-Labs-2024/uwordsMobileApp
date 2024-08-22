@@ -70,9 +70,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           BlocBuilder<SubscriptionBloc, SubscriptionState>(
               builder: (BuildContext context, SubscriptionState state) {
             return state.maybeWhen(
-              subscriptionStatus: (status) => SubscriptionView(
+              subscriptionStatus: (status, date) => SubscriptionView(
                 haveSubscription: status,
-                updateDate: OtherProfileConstants.mockSubscriptionData,
+                updateDate: date,
                 onPressed: () {
                   context.go("/subscription");
                 },
@@ -152,13 +152,17 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               subtopics: widget.learned,
               title: AppLocalizations.of(context).learned,
             ),
-          if (widget.almostLearned.isEmpty && widget.learned.isEmpty)
+          if (widget.almostLearned.isEmpty && widget.learned.isEmpty) ...[
+            const SizedBox(
+              height: ProfilePaddings.haventStatisticsTop,
+            ),
             Center(
               child: Text(
                 AppLocalizations.of(context).haveNoThemeInStatistics,
-                style: AppTextStyles.profileNavNotActive,
+                style: AppTextStyles.haventStatistics,
               ),
             ),
+          ],
           SizedBox(
             height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
           ),

@@ -43,8 +43,9 @@ class WordsRepository implements IWordsRepository {
       List<Subtopic> subtopics = [];
       List<Topic> topics = await getTopics(accessToken: accessToken);
       for (Topic topic in topics) {
-        if (topic.topicTitle == OtherLearnConstants.topickNameInProgress)
+        if (topic.topicTitle == OtherLearnConstants.topickNameInProgress) {
           continue;
+        }
         for (Subtopic subtopic in topic.subtopics) {
           if (subtopic.subtopicTitle !=
               OtherLearnConstants.subtopickNameUnsorted) {

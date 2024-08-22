@@ -18,4 +18,6 @@ class ProfilePaddings {
 
   static const double cardHorizontal = 3;
   static const double subscriptionBottom = 20;
+
+  static const double haventStatisticsTop = 30;
 }

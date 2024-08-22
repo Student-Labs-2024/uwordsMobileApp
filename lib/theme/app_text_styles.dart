@@ -224,4 +224,9 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
       fontSize: 15,
       color: AppColors.lightgrayColor2);
+  static const haventStatistics = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 17,
+      color: AppColors.haventStatisticsColor);
 }

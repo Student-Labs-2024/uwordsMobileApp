@@ -149,4 +149,6 @@ class AppColors {
     Color.fromRGBO(150, 124, 253, 1),
     Color.fromRGBO(83, 45, 106, 1),
   ], begin: Alignment.centerLeft, end: Alignment.centerRight);
+
+  static const Color haventStatisticsColor = Color.fromRGBO(132, 127, 135, 1);
 }

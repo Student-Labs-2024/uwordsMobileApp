@@ -605,7 +605,7 @@ mixin _$SubscriptionState {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -617,7 +617,7 @@ mixin _$SubscriptionState {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -629,7 +629,7 @@ mixin _$SubscriptionState {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -767,7 +767,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return initial(tariffs);
   }
@@ -782,7 +782,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return initial?.call(tariffs);
   }
@@ -797,7 +797,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -910,7 +910,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return loading();
   }
@@ -925,7 +925,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return loading?.call();
   }
@@ -940,7 +940,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1048,7 +1048,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return subscriptionPaid();
   }
@@ -1063,7 +1063,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return subscriptionPaid?.call();
   }
@@ -1078,7 +1078,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionPaid != null) {
@@ -1187,7 +1187,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return subscriptionNotPaid();
   }
@@ -1202,7 +1202,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return subscriptionNotPaid?.call();
   }
@@ -1217,7 +1217,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionNotPaid != null) {
@@ -1353,7 +1353,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return payingSubscription(paymentLink);
   }
@@ -1368,7 +1368,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return payingSubscription?.call(paymentLink);
   }
@@ -1383,7 +1383,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (payingSubscription != null) {
@@ -1523,7 +1523,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return falied(failed);
   }
@@ -1538,7 +1538,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return falied?.call(failed);
   }
@@ -1553,7 +1553,7 @@ class _$FailedImpl implements _Failed {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (falied != null) {
@@ -1692,7 +1692,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
     return success(this.success);
   }
@@ -1707,7 +1707,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
     return success?.call(this.success);
   }
@@ -1722,7 +1722,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1796,7 +1796,7 @@ abstract class _$$SubscriptionStatusImplCopyWith<$Res> {
           $Res Function(_$SubscriptionStatusImpl) then) =
       __$$SubscriptionStatusImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool isActive});
+  $Res call({bool isActive, String date});
 }
 
 /// @nodoc
@@ -1811,12 +1811,17 @@ class __$$SubscriptionStatusImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isActive = null,
+    Object? date = null,
   }) {
     return _then(_$SubscriptionStatusImpl(
       null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1824,14 +1829,16 @@ class __$$SubscriptionStatusImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SubscriptionStatusImpl implements _SubscriptionStatus {
-  const _$SubscriptionStatusImpl(this.isActive);
+  const _$SubscriptionStatusImpl(this.isActive, this.date);
 
   @override
   final bool isActive;
+  @override
+  final String date;
 
   @override
   String toString() {
-    return 'SubscriptionState.subscriptionStatus(isActive: $isActive)';
+    return 'SubscriptionState.subscriptionStatus(isActive: $isActive, date: $date)';
   }
 
   @override
@@ -1840,11 +1847,12 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
         (other.runtimeType == runtimeType &&
             other is _$SubscriptionStatusImpl &&
             (identical(other.isActive, isActive) ||
-                other.isActive == isActive));
+                other.isActive == isActive) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isActive);
+  int get hashCode => Object.hash(runtimeType, isActive, date);
 
   @JsonKey(ignore: true)
   @override
@@ -1863,9 +1871,9 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
-    required TResult Function(bool isActive) subscriptionStatus,
+    required TResult Function(bool isActive, String date) subscriptionStatus,
   }) {
-    return subscriptionStatus(isActive);
+    return subscriptionStatus(isActive, date);
   }
 
   @override
@@ -1878,9 +1886,9 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
-    TResult? Function(bool isActive)? subscriptionStatus,
+    TResult? Function(bool isActive, String date)? subscriptionStatus,
   }) {
-    return subscriptionStatus?.call(isActive);
+    return subscriptionStatus?.call(isActive, date);
   }
 
   @override
@@ -1893,11 +1901,11 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
-    TResult Function(bool isActive)? subscriptionStatus,
+    TResult Function(bool isActive, String date)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionStatus != null) {
-      return subscriptionStatus(isActive);
+      return subscriptionStatus(isActive, date);
     }
     return orElse();
   }
@@ -1953,10 +1961,11 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
 }
 
 abstract class _SubscriptionStatus implements SubscriptionState {
-  const factory _SubscriptionStatus(final bool isActive) =
+  const factory _SubscriptionStatus(final bool isActive, final String date) =
       _$SubscriptionStatusImpl;
 
   bool get isActive;
+  String get date;
   @JsonKey(ignore: true)
   _$$SubscriptionStatusImplCopyWith<_$SubscriptionStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
