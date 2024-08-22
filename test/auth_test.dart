@@ -94,6 +94,8 @@ void main() {
         when(() => mockUserRepository.authorizate(
             emailAddress: correctEmailAddress,
             password: correctPassword)).thenAnswer((_) async {});
+        when(() => mockUserRepository.isEducationCompleted())
+            .thenAnswer((_) => Future<bool>.value(true));
       },
       build: () => AuthBloc(userRepository: mockUserRepository),
       act: (bloc) {
