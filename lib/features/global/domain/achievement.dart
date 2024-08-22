@@ -149,3 +149,9 @@ extension AchievementInfoMapper on AchievementInfoDto {
           stage: Value(achievementDto.stage),
           target: Value(achievementDto.target));
 }
+
+extension AchievementInfoListMapper on List<AchievementInfoDto> {
+  List<AchievementInfoModel> toModel() {
+    return map((achievementInfoDto) => achievementInfoDto.toModel()).toList();
+  }
+}

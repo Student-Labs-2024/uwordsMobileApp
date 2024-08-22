@@ -149,8 +149,10 @@ class MainApp extends StatelessWidget {
               create: (context) =>
                   AuthBloc(userRepository: context.read<IUserRepository>())),
           BlocProvider(
-              create: (context) =>
-                  ProfileBloc(userRepository: context.read<IUserRepository>())),
+              create: (context) => ProfileBloc(
+                    userRepository: context.read<IUserRepository>(),
+                    wordsRepository: context.read<IWordsRepository>(),
+                  )),
           BlocProvider(
               create: (context) => AudioLinkBloc(
                   audioRepository: context.read<IAudioRepository>(),

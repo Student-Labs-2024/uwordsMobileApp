@@ -92,7 +92,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                               .checkSubscriptionStatusButton))
                     ],
                   ),
-                  subscriptionStatus: (isActive) {
+                  subscriptionStatus: (isActive, date) {
                     return Text(isActive.toString());
                   },
                   subscriptionPaid: () {

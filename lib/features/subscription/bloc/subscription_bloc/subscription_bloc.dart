@@ -77,8 +77,9 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
 
   Future<void> _handleIsSubscriptionActive(
       _IsSubscriptionActive event, Emitter<SubscriptionState> emit) async {
+    String finalDate = userRepository.getSubscriptionExpired();
     bool isActive = userRepository.isSubscriptionActive();
-    emit(SubscriptionState.subscriptionStatus(isActive));
+    emit(SubscriptionState.subscriptionStatus(isActive, finalDate));
   }
 
   @override
