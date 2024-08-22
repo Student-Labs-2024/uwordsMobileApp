@@ -13,4 +13,6 @@ class OtherProfileConstants {
   static const int percentFor70Icon = 70;
   static const int percentFor50Icon = 50;
   static const int percentFor20Icon = 20;
+
+  static const int secondsInHour = 3600;
 }

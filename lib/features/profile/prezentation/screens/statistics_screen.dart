@@ -128,9 +128,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               StatisticCard(
                 image: AppImageSource.recordTimeIcon,
                 title: AppLocalizations.of(context).hours(
-                    (widget.metrics.alltimeSpeechSeconds +
-                            widget.metrics.alltimeVideoSeconds) /
-                        3600),
+                  (widget.metrics.alltimeSpeechSeconds +
+                          widget.metrics.alltimeVideoSeconds) /
+                      OtherProfileConstants.secondsInHour,
+                ),
                 subtitle: AppLocalizations.of(context).recordTimeCard,
                 onPressed: () => {},
               ),
