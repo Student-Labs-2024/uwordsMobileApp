@@ -54,4 +54,10 @@ class LearnTextStyles {
     color: AppColors.darkMainColor,
     fontWeight: FontWeight.w500,
   );
+  static const onboardingText = TextStyle(
+      fontSize: 17,
+      color: AppColors.darkMainColor,
+      fontWeight: FontWeight.w500);
+  static const otherText = TextStyle(fontSize: 12, color: AppColors.imperialOpacity45, fontWeight: FontWeight.w500);
+  static const linkText = TextStyle(fontSize: 12, color: AppColors.imperialOpacity45, fontWeight: FontWeight.w500, decoration: TextDecoration.underline);
 }

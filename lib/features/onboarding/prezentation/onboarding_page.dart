@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/first_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/second_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/third_onboarding_page.dart';
@@ -18,7 +19,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   final pageController = PageController();
   bool isNotLastPage = true;
 
-@override
+  @override
   void initState() {
     super.initState();
   }
@@ -34,34 +35,57 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Scaffold(
         body: PageView(
           controller: pageController,
+          onPageChanged: (index) {
+            isNotLastPage = index < 3;
+            if (index <=3){
+              setState(() {
+                
+              });
+            }
+          },
           children: const [
             FirstOnboardingPage(),
             SecondOnboardingPage(),
-            ThirdOnboardingPage()
+            ThirdOnboardingPage(),
+            Center(
+              child: Text("Start?"),
+            )
           ],
         ),
-        bottomSheet:  isNotLastPage ? ColoredBox(
-          color: AppColors.whiteColor,
-          child: SizedBox(
-            height: 80,
-            child: Center(
-              child: SmoothPageIndicator(
-                controller: pageController,
-                count: 3,
-                effect: const SwapEffect(
-                  type: SwapType.yRotation,
-                  dotColor: AppColors.imperial45,
-                  activeDotColor: AppColors.darkMainColor,
-                  dotHeight: 15,
-                  dotWidth: 15,
-                  spacing: 14,
+        bottomSheet: isNotLastPage
+            ? ColoredBox(
+                color: AppColors.whiteColor,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height* OnboardingConsts.bottomSpace,
+                  child: Center(
+                    child: SmoothPageIndicator(
+                      controller: pageController,
+                      count: 4,
+                      effect: const SwapEffect(
+                        type: SwapType.yRotation,
+                        dotColor: AppColors.imperial45,
+                        activeDotColor: AppColors.darkMainColor,
+                        dotHeight: 15,
+                        dotWidth: 15,
+                        spacing: 14,
+                      ),
+                      onDotClicked: (index) => pageController.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 600),
+                          curve: Curves.easeInOut),
+                    ),
+                  ),
                 ),
-                onDotClicked: (index) => pageController.animateToPage(index,
-                    duration: const Duration(milliseconds: 600),
-                    curve: Curves.easeInOut),
-              ),
-            ),
-          ),
-        ) : ColoredBox(color: AppColors.whiteColor, child: SizedBox(height: 80,child: InkWell(child: Text("Начать"),onTap: ()=>context.go("/home"),),)));
+              )
+            : ColoredBox(
+                color: AppColors.whiteColor,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 80,
+                  child: InkWell(
+                    child: Center(child: Text("Начать")),
+                    onTap: () => context.go("/home"),
+                  ),
+                )));
   }
 }
