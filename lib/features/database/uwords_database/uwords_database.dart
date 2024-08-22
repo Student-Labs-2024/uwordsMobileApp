@@ -39,19 +39,16 @@ class UserAuth extends Table {
 class MetricDB extends Table {
   IntColumn get id => integer()();
   IntColumn get userId => integer().references(UserAuth, #id)();
+  IntColumn get days => integer()();
   IntColumn get alltimeUserwordsAmount => integer()();
   IntColumn get alltimeLearnedAmount => integer()();
   RealColumn get alltimeLearnedPercents => real()();
   IntColumn get alltimeSpeechSeconds => integer()();
   IntColumn get alltimeVideoSeconds => integer()();
-  IntColumn get wordsAmount => integer()();
-  IntColumn get userwordsAmount => integer()();
-  RealColumn get learnedPercents => real()();
-  IntColumn get speechSeconds => integer()();
-  IntColumn get videoSeconds => integer()();
   @override
   Set<Column> get primaryKey => {id};
 }
+
 
 @DataClassName('Achievement')
 class AchievementDB extends Table {

@@ -8,11 +8,7 @@ class MetricsDto {
   final double alltimeLearnedPercents;
   final int alltimeSpeechSeconds;
   final int alltimeVideoSeconds;
-  final int wordsAmount;
-  final int userwordsAmount;
-  final double learnedPercents;
-  final int speechSeconds;
-  final int videoSeconds;
+  final int days;
   MetricsDto({
     required this.userId,
     required this.alltimeUserwordsAmount,
@@ -20,11 +16,7 @@ class MetricsDto {
     required this.alltimeLearnedPercents,
     required this.alltimeSpeechSeconds,
     required this.alltimeVideoSeconds,
-    required this.wordsAmount,
-    required this.userwordsAmount,
-    required this.learnedPercents,
-    required this.speechSeconds,
-    required this.videoSeconds,
+    required this.days,
   });
 
   factory MetricsDto.fromJson({required Map<String, dynamic> metricMap}) {
@@ -35,26 +27,19 @@ class MetricsDto {
         alltimeLearnedPercents: metricMap['alltime_learned_percents'],
         alltimeSpeechSeconds: metricMap['alltime_speech_seconds'],
         alltimeVideoSeconds: metricMap['alltime_video_seconds'],
-        wordsAmount: metricMap['words_amount'],
-        userwordsAmount: metricMap['learned_amount'],
-        learnedPercents: metricMap['learned_percents'],
-        speechSeconds: metricMap['speech_seconds'],
-        videoSeconds: metricMap['video_seconds']);
+        days: metricMap['days']);
   }
 
   factory MetricsDto.fromDB({required Metric metric}) {
     return MetricsDto(
-        userId: metric.userId,
-        alltimeUserwordsAmount: metric.alltimeUserwordsAmount,
-        alltimeLearnedAmount: metric.alltimeLearnedAmount,
-        alltimeLearnedPercents: metric.alltimeLearnedPercents,
-        alltimeSpeechSeconds: metric.alltimeSpeechSeconds,
-        alltimeVideoSeconds: metric.alltimeVideoSeconds,
-        wordsAmount: metric.wordsAmount,
-        userwordsAmount: metric.userwordsAmount,
-        learnedPercents: metric.learnedPercents,
-        speechSeconds: metric.speechSeconds,
-        videoSeconds: metric.videoSeconds);
+      userId: metric.userId,
+      alltimeUserwordsAmount: metric.alltimeUserwordsAmount,
+      alltimeLearnedAmount: metric.alltimeLearnedAmount,
+      alltimeLearnedPercents: metric.alltimeLearnedPercents,
+      alltimeSpeechSeconds: metric.alltimeSpeechSeconds,
+      alltimeVideoSeconds: metric.alltimeVideoSeconds,
+      days: metric.days,
+    );
   }
 }
 
@@ -65,11 +50,7 @@ class Metrics {
   final double alltimeLearnedPercents;
   final int alltimeSpeechSeconds;
   final int alltimeVideoSeconds;
-  final int wordsAmount;
-  final int userwordsAmount;
-  final double learnedPercents;
-  final int speechSeconds;
-  final int videoSeconds;
+  final int days;
   Metrics({
     required this.userId,
     required this.alltimeUserwordsAmount,
@@ -77,27 +58,20 @@ class Metrics {
     required this.alltimeLearnedPercents,
     required this.alltimeSpeechSeconds,
     required this.alltimeVideoSeconds,
-    required this.wordsAmount,
-    required this.userwordsAmount,
-    required this.learnedPercents,
-    required this.speechSeconds,
-    required this.videoSeconds,
+    required this.days,
   });
 }
 
 extension MetricsMapper on MetricsDto {
   Metrics toModel() => Metrics(
-      userId: userId,
-      alltimeUserwordsAmount: alltimeUserwordsAmount,
-      alltimeLearnedAmount: alltimeLearnedAmount,
-      alltimeLearnedPercents: alltimeLearnedPercents,
-      alltimeSpeechSeconds: alltimeSpeechSeconds,
-      alltimeVideoSeconds: alltimeVideoSeconds,
-      wordsAmount: wordsAmount,
-      userwordsAmount: userwordsAmount,
-      learnedPercents: learnedPercents,
-      speechSeconds: speechSeconds,
-      videoSeconds: videoSeconds);
+        userId: userId,
+        alltimeUserwordsAmount: alltimeUserwordsAmount,
+        alltimeLearnedAmount: alltimeLearnedAmount,
+        alltimeLearnedPercents: alltimeLearnedPercents,
+        alltimeSpeechSeconds: alltimeSpeechSeconds,
+        alltimeVideoSeconds: alltimeVideoSeconds,
+        days: days,
+      );
   MetricDBCompanion toDB() => MetricDBCompanion(
         userId: Value(userId),
         alltimeUserwordsAmount: Value(alltimeUserwordsAmount),
@@ -105,10 +79,6 @@ extension MetricsMapper on MetricsDto {
         alltimeLearnedPercents: Value(alltimeLearnedPercents),
         alltimeSpeechSeconds: Value(alltimeSpeechSeconds),
         alltimeVideoSeconds: Value(alltimeVideoSeconds),
-        wordsAmount: Value(wordsAmount),
-        userwordsAmount: Value(userwordsAmount),
-        learnedPercents: Value(learnedPercents),
-        speechSeconds: Value(speechSeconds),
-        videoSeconds: Value(videoSeconds),
+        days: Value(days),
       );
 }
