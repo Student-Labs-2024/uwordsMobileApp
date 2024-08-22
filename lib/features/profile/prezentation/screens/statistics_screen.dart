@@ -70,7 +70,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.onfireIcon,
-                title: '${ProfileDataExample.exampleMetrics[0]}',
+                title: '${widget.metrics.days}',
                 subtitle: AppLocalizations.of(context).daysOnFireCard,
                 onPressed: () => {},
               ),
