@@ -9,6 +9,6 @@ class ProfileState with _$ProfileState {
       String avatarUrl,
       List<Subtopic> almostLearned,
       List<Subtopic> learned,
-      List<AchievementInfoModel> achievements,
+      List<AchievementCategoryModel> achievements,
       Metrics metrics) = _GotInfo;
 }

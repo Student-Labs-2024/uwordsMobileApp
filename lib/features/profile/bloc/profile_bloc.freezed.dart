@@ -25,7 +25,7 @@ mixin _$ProfileState {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)
         gotInfo,
   }) =>
@@ -39,7 +39,7 @@ mixin _$ProfileState {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
   }) =>
@@ -53,7 +53,7 @@ mixin _$ProfileState {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
     required TResult orElse(),
@@ -146,7 +146,7 @@ class _$ProfileInitialImpl implements _ProfileInitial {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)
         gotInfo,
   }) {
@@ -163,7 +163,7 @@ class _$ProfileInitialImpl implements _ProfileInitial {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
   }) {
@@ -180,7 +180,7 @@ class _$ProfileInitialImpl implements _ProfileInitial {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
     required TResult orElse(),
@@ -301,7 +301,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)
         gotInfo,
   }) {
@@ -318,7 +318,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
   }) {
@@ -335,7 +335,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
     required TResult orElse(),
@@ -401,7 +401,7 @@ abstract class _$$GotInfoImplCopyWith<$Res> {
       String avatarUrl,
       List<Subtopic> almostLearned,
       List<Subtopic> learned,
-      List<AchievementInfoModel> achievements,
+      List<AchievementCategoryModel> achievements,
       Metrics metrics});
 }
 
@@ -443,7 +443,7 @@ class __$$GotInfoImplCopyWithImpl<$Res>
       null == achievements
           ? _value._achievements
           : achievements // ignore: cast_nullable_to_non_nullable
-              as List<AchievementInfoModel>,
+              as List<AchievementCategoryModel>,
       null == metrics
           ? _value.metrics
           : metrics // ignore: cast_nullable_to_non_nullable
@@ -460,7 +460,7 @@ class _$GotInfoImpl implements _GotInfo {
       this.avatarUrl,
       final List<Subtopic> almostLearned,
       final List<Subtopic> learned,
-      final List<AchievementInfoModel> achievements,
+      final List<AchievementCategoryModel> achievements,
       this.metrics)
       : _almostLearned = almostLearned,
         _learned = learned,
@@ -486,9 +486,9 @@ class _$GotInfoImpl implements _GotInfo {
     return EqualUnmodifiableListView(_learned);
   }
 
-  final List<AchievementInfoModel> _achievements;
+  final List<AchievementCategoryModel> _achievements;
   @override
-  List<AchievementInfoModel> get achievements {
+  List<AchievementCategoryModel> get achievements {
     if (_achievements is EqualUnmodifiableListView) return _achievements;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_achievements);
@@ -545,7 +545,7 @@ class _$GotInfoImpl implements _GotInfo {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)
         gotInfo,
   }) {
@@ -563,7 +563,7 @@ class _$GotInfoImpl implements _GotInfo {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
   }) {
@@ -581,7 +581,7 @@ class _$GotInfoImpl implements _GotInfo {
             String avatarUrl,
             List<Subtopic> almostLearned,
             List<Subtopic> learned,
-            List<AchievementInfoModel> achievements,
+            List<AchievementCategoryModel> achievements,
             Metrics metrics)?
         gotInfo,
     required TResult orElse(),
@@ -634,14 +634,14 @@ abstract class _GotInfo implements ProfileState {
       final String avatarUrl,
       final List<Subtopic> almostLearned,
       final List<Subtopic> learned,
-      final List<AchievementInfoModel> achievements,
+      final List<AchievementCategoryModel> achievements,
       final Metrics metrics) = _$GotInfoImpl;
 
   String get userName;
   String get avatarUrl;
   List<Subtopic> get almostLearned;
   List<Subtopic> get learned;
-  List<AchievementInfoModel> get achievements;
+  List<AchievementCategoryModel> get achievements;
   Metrics get metrics;
   @JsonKey(ignore: true)
   _$$GotInfoImplCopyWith<_$GotInfoImpl> get copyWith =>
