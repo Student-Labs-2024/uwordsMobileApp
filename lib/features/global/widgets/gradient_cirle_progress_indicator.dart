@@ -6,7 +6,8 @@ class GradientCircularProgressIndicator extends StatelessWidget {
   final List<Color> gradientColors;
   final double strokeWidth;
 
-  const GradientCircularProgressIndicator({super.key, 
+  const GradientCircularProgressIndicator({
+    super.key,
     required this.radius,
     required this.gradientColors,
     this.strokeWidth = 10.0,
