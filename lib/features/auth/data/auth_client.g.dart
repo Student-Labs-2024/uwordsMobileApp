@@ -282,12 +282,16 @@ class _AuthClient implements AuthClient {
 
   @override
   Future<HttpResponse<dynamic>> checkCode(
+    String secretToken,
     dynamic body, {
     String contentType = 'application/json',
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Content-Type': contentType};
+    final _headers = <String, dynamic>{
+      r'Authorization': secretToken,
+      r'Content-Type': contentType,
+    };
     _headers.removeWhere((k, v) => v == null);
     final _data = body;
     final _result =

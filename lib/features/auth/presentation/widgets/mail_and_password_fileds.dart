@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
-import 'package:uwords/features/global/widgets/custom_textfield.dart';
+import 'package:uwords/features/auth/domain/validation.dart';
+import 'package:uwords/features/auth/presentation/widgets/custom_textfield_with_rules.dart';
 
 class MailAndPasswordFileds extends StatefulWidget {
   final TextEditingController mailController;
@@ -25,24 +25,22 @@ class _MailAndPasswordFiledsState extends State<MailAndPasswordFileds> {
       builder: (context, state) {
         return Column(
           children: [
-            CustomTextField(
+            CustomTextFieldWithRules(
               controller: widget.mailController,
               hintText: AppLocalizations.of(context).mail,
               isHidden: false,
               isErrorDisplay: true,
-              isNotError: () =>
-                  isCorrectEmail(email: widget.mailController.text),
-              errorMessage: AppLocalizations.of(context).wrongEmail,
+              validationRules: validationEmailRules,
+              isRequiredField: true,
             ),
-            CustomTextField(
+            CustomTextFieldWithRules(
               controller: widget.passwordController,
               hintText: AppLocalizations.of(context).password,
               isHidden: true,
               isErrorDisplay: true,
-              isNotError: () =>
-                  isCorrectPassword(password: widget.passwordController.text),
-              errorMessage: AppLocalizations.of(context).simplePassword,
-            ),
+              validationRules: validationPasswordRules,
+              isRequiredField: true,
+            )
           ],
         );
       },
