@@ -18,7 +18,8 @@ class FirstOnboardingPage extends StatelessWidget {
             Center(
                 child: Image.asset(
               AppImageSource.onboarding1,
-              width: MediaQuery.of(context).size.width * OnboardingConsts.onboardingMulti1,
+              width: MediaQuery.of(context).size.width *
+                  OnboardingConsts.onboardingMulti1,
             )),
             Align(
                 alignment: Alignment.bottomCenter,

@@ -10,11 +10,7 @@ enum AuthError {
   canceledSignIn,
 }
 
-enum AuthSuccess {
-  authorized,
-  sendedCode,
-  educationNotCompleted
-}
+enum AuthSuccess { authorized, sendedCode, educationNotCompleted }
 
 enum AuthorizationProvider {
   vk,
