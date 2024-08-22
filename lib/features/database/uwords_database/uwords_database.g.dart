@@ -793,6 +793,11 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES user_auth (id)'));
+  static const VerificationMeta _daysMeta = const VerificationMeta('days');
+  @override
+  late final GeneratedColumn<int> days = GeneratedColumn<int>(
+      'days', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
   static const VerificationMeta _alltimeUserwordsAmountMeta =
       const VerificationMeta('alltimeUserwordsAmount');
   @override
@@ -823,50 +828,16 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
   late final GeneratedColumn<int> alltimeVideoSeconds = GeneratedColumn<int>(
       'alltime_video_seconds', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _wordsAmountMeta =
-      const VerificationMeta('wordsAmount');
-  @override
-  late final GeneratedColumn<int> wordsAmount = GeneratedColumn<int>(
-      'words_amount', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _userwordsAmountMeta =
-      const VerificationMeta('userwordsAmount');
-  @override
-  late final GeneratedColumn<int> userwordsAmount = GeneratedColumn<int>(
-      'userwords_amount', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _learnedPercentsMeta =
-      const VerificationMeta('learnedPercents');
-  @override
-  late final GeneratedColumn<double> learnedPercents = GeneratedColumn<double>(
-      'learned_percents', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _speechSecondsMeta =
-      const VerificationMeta('speechSeconds');
-  @override
-  late final GeneratedColumn<int> speechSeconds = GeneratedColumn<int>(
-      'speech_seconds', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
-  static const VerificationMeta _videoSecondsMeta =
-      const VerificationMeta('videoSeconds');
-  @override
-  late final GeneratedColumn<int> videoSeconds = GeneratedColumn<int>(
-      'video_seconds', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns => [
         id,
         userId,
+        days,
         alltimeUserwordsAmount,
         alltimeLearnedAmount,
         alltimeLearnedPercents,
         alltimeSpeechSeconds,
-        alltimeVideoSeconds,
-        wordsAmount,
-        userwordsAmount,
-        learnedPercents,
-        speechSeconds,
-        videoSeconds
+        alltimeVideoSeconds
       ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -886,6 +857,12 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
           userId.isAcceptableOrUnknown(data['user_id']!, _userIdMeta));
     } else if (isInserting) {
       context.missing(_userIdMeta);
+    }
+    if (data.containsKey('days')) {
+      context.handle(
+          _daysMeta, days.isAcceptableOrUnknown(data['days']!, _daysMeta));
+    } else if (isInserting) {
+      context.missing(_daysMeta);
     }
     if (data.containsKey('alltime_userwords_amount')) {
       context.handle(
@@ -927,46 +904,6 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
     } else if (isInserting) {
       context.missing(_alltimeVideoSecondsMeta);
     }
-    if (data.containsKey('words_amount')) {
-      context.handle(
-          _wordsAmountMeta,
-          wordsAmount.isAcceptableOrUnknown(
-              data['words_amount']!, _wordsAmountMeta));
-    } else if (isInserting) {
-      context.missing(_wordsAmountMeta);
-    }
-    if (data.containsKey('userwords_amount')) {
-      context.handle(
-          _userwordsAmountMeta,
-          userwordsAmount.isAcceptableOrUnknown(
-              data['userwords_amount']!, _userwordsAmountMeta));
-    } else if (isInserting) {
-      context.missing(_userwordsAmountMeta);
-    }
-    if (data.containsKey('learned_percents')) {
-      context.handle(
-          _learnedPercentsMeta,
-          learnedPercents.isAcceptableOrUnknown(
-              data['learned_percents']!, _learnedPercentsMeta));
-    } else if (isInserting) {
-      context.missing(_learnedPercentsMeta);
-    }
-    if (data.containsKey('speech_seconds')) {
-      context.handle(
-          _speechSecondsMeta,
-          speechSeconds.isAcceptableOrUnknown(
-              data['speech_seconds']!, _speechSecondsMeta));
-    } else if (isInserting) {
-      context.missing(_speechSecondsMeta);
-    }
-    if (data.containsKey('video_seconds')) {
-      context.handle(
-          _videoSecondsMeta,
-          videoSeconds.isAcceptableOrUnknown(
-              data['video_seconds']!, _videoSecondsMeta));
-    } else if (isInserting) {
-      context.missing(_videoSecondsMeta);
-    }
     return context;
   }
 
@@ -980,6 +917,8 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       userId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}user_id'])!,
+      days: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}days'])!,
       alltimeUserwordsAmount: attachedDatabase.typeMapping.read(
           DriftSqlType.int,
           data['${effectivePrefix}alltime_userwords_amount'])!,
@@ -992,16 +931,6 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
           DriftSqlType.int, data['${effectivePrefix}alltime_speech_seconds'])!,
       alltimeVideoSeconds: attachedDatabase.typeMapping.read(
           DriftSqlType.int, data['${effectivePrefix}alltime_video_seconds'])!,
-      wordsAmount: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}words_amount'])!,
-      userwordsAmount: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}userwords_amount'])!,
-      learnedPercents: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}learned_percents'])!,
-      speechSeconds: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}speech_seconds'])!,
-      videoSeconds: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}video_seconds'])!,
     );
   }
 
@@ -1014,44 +943,32 @@ class $MetricDBTable extends MetricDB with TableInfo<$MetricDBTable, Metric> {
 class Metric extends DataClass implements Insertable<Metric> {
   final int id;
   final int userId;
+  final int days;
   final int alltimeUserwordsAmount;
   final int alltimeLearnedAmount;
   final double alltimeLearnedPercents;
   final int alltimeSpeechSeconds;
   final int alltimeVideoSeconds;
-  final int wordsAmount;
-  final int userwordsAmount;
-  final double learnedPercents;
-  final int speechSeconds;
-  final int videoSeconds;
   const Metric(
       {required this.id,
       required this.userId,
+      required this.days,
       required this.alltimeUserwordsAmount,
       required this.alltimeLearnedAmount,
       required this.alltimeLearnedPercents,
       required this.alltimeSpeechSeconds,
-      required this.alltimeVideoSeconds,
-      required this.wordsAmount,
-      required this.userwordsAmount,
-      required this.learnedPercents,
-      required this.speechSeconds,
-      required this.videoSeconds});
+      required this.alltimeVideoSeconds});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['user_id'] = Variable<int>(userId);
+    map['days'] = Variable<int>(days);
     map['alltime_userwords_amount'] = Variable<int>(alltimeUserwordsAmount);
     map['alltime_learned_amount'] = Variable<int>(alltimeLearnedAmount);
     map['alltime_learned_percents'] = Variable<double>(alltimeLearnedPercents);
     map['alltime_speech_seconds'] = Variable<int>(alltimeSpeechSeconds);
     map['alltime_video_seconds'] = Variable<int>(alltimeVideoSeconds);
-    map['words_amount'] = Variable<int>(wordsAmount);
-    map['userwords_amount'] = Variable<int>(userwordsAmount);
-    map['learned_percents'] = Variable<double>(learnedPercents);
-    map['speech_seconds'] = Variable<int>(speechSeconds);
-    map['video_seconds'] = Variable<int>(videoSeconds);
     return map;
   }
 
@@ -1059,16 +976,12 @@ class Metric extends DataClass implements Insertable<Metric> {
     return MetricDBCompanion(
       id: Value(id),
       userId: Value(userId),
+      days: Value(days),
       alltimeUserwordsAmount: Value(alltimeUserwordsAmount),
       alltimeLearnedAmount: Value(alltimeLearnedAmount),
       alltimeLearnedPercents: Value(alltimeLearnedPercents),
       alltimeSpeechSeconds: Value(alltimeSpeechSeconds),
       alltimeVideoSeconds: Value(alltimeVideoSeconds),
-      wordsAmount: Value(wordsAmount),
-      userwordsAmount: Value(userwordsAmount),
-      learnedPercents: Value(learnedPercents),
-      speechSeconds: Value(speechSeconds),
-      videoSeconds: Value(videoSeconds),
     );
   }
 
@@ -1078,6 +991,7 @@ class Metric extends DataClass implements Insertable<Metric> {
     return Metric(
       id: serializer.fromJson<int>(json['id']),
       userId: serializer.fromJson<int>(json['userId']),
+      days: serializer.fromJson<int>(json['days']),
       alltimeUserwordsAmount:
           serializer.fromJson<int>(json['alltimeUserwordsAmount']),
       alltimeLearnedAmount:
@@ -1088,11 +1002,6 @@ class Metric extends DataClass implements Insertable<Metric> {
           serializer.fromJson<int>(json['alltimeSpeechSeconds']),
       alltimeVideoSeconds:
           serializer.fromJson<int>(json['alltimeVideoSeconds']),
-      wordsAmount: serializer.fromJson<int>(json['wordsAmount']),
-      userwordsAmount: serializer.fromJson<int>(json['userwordsAmount']),
-      learnedPercents: serializer.fromJson<double>(json['learnedPercents']),
-      speechSeconds: serializer.fromJson<int>(json['speechSeconds']),
-      videoSeconds: serializer.fromJson<int>(json['videoSeconds']),
     );
   }
   @override
@@ -1101,36 +1010,29 @@ class Metric extends DataClass implements Insertable<Metric> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'userId': serializer.toJson<int>(userId),
+      'days': serializer.toJson<int>(days),
       'alltimeUserwordsAmount': serializer.toJson<int>(alltimeUserwordsAmount),
       'alltimeLearnedAmount': serializer.toJson<int>(alltimeLearnedAmount),
       'alltimeLearnedPercents':
           serializer.toJson<double>(alltimeLearnedPercents),
       'alltimeSpeechSeconds': serializer.toJson<int>(alltimeSpeechSeconds),
       'alltimeVideoSeconds': serializer.toJson<int>(alltimeVideoSeconds),
-      'wordsAmount': serializer.toJson<int>(wordsAmount),
-      'userwordsAmount': serializer.toJson<int>(userwordsAmount),
-      'learnedPercents': serializer.toJson<double>(learnedPercents),
-      'speechSeconds': serializer.toJson<int>(speechSeconds),
-      'videoSeconds': serializer.toJson<int>(videoSeconds),
     };
   }
 
   Metric copyWith(
           {int? id,
           int? userId,
+          int? days,
           int? alltimeUserwordsAmount,
           int? alltimeLearnedAmount,
           double? alltimeLearnedPercents,
           int? alltimeSpeechSeconds,
-          int? alltimeVideoSeconds,
-          int? wordsAmount,
-          int? userwordsAmount,
-          double? learnedPercents,
-          int? speechSeconds,
-          int? videoSeconds}) =>
+          int? alltimeVideoSeconds}) =>
       Metric(
         id: id ?? this.id,
         userId: userId ?? this.userId,
+        days: days ?? this.days,
         alltimeUserwordsAmount:
             alltimeUserwordsAmount ?? this.alltimeUserwordsAmount,
         alltimeLearnedAmount: alltimeLearnedAmount ?? this.alltimeLearnedAmount,
@@ -1138,27 +1040,18 @@ class Metric extends DataClass implements Insertable<Metric> {
             alltimeLearnedPercents ?? this.alltimeLearnedPercents,
         alltimeSpeechSeconds: alltimeSpeechSeconds ?? this.alltimeSpeechSeconds,
         alltimeVideoSeconds: alltimeVideoSeconds ?? this.alltimeVideoSeconds,
-        wordsAmount: wordsAmount ?? this.wordsAmount,
-        userwordsAmount: userwordsAmount ?? this.userwordsAmount,
-        learnedPercents: learnedPercents ?? this.learnedPercents,
-        speechSeconds: speechSeconds ?? this.speechSeconds,
-        videoSeconds: videoSeconds ?? this.videoSeconds,
       );
   @override
   String toString() {
     return (StringBuffer('Metric(')
           ..write('id: $id, ')
           ..write('userId: $userId, ')
+          ..write('days: $days, ')
           ..write('alltimeUserwordsAmount: $alltimeUserwordsAmount, ')
           ..write('alltimeLearnedAmount: $alltimeLearnedAmount, ')
           ..write('alltimeLearnedPercents: $alltimeLearnedPercents, ')
           ..write('alltimeSpeechSeconds: $alltimeSpeechSeconds, ')
-          ..write('alltimeVideoSeconds: $alltimeVideoSeconds, ')
-          ..write('wordsAmount: $wordsAmount, ')
-          ..write('userwordsAmount: $userwordsAmount, ')
-          ..write('learnedPercents: $learnedPercents, ')
-          ..write('speechSeconds: $speechSeconds, ')
-          ..write('videoSeconds: $videoSeconds')
+          ..write('alltimeVideoSeconds: $alltimeVideoSeconds')
           ..write(')'))
         .toString();
   }
@@ -1167,102 +1060,75 @@ class Metric extends DataClass implements Insertable<Metric> {
   int get hashCode => Object.hash(
       id,
       userId,
+      days,
       alltimeUserwordsAmount,
       alltimeLearnedAmount,
       alltimeLearnedPercents,
       alltimeSpeechSeconds,
-      alltimeVideoSeconds,
-      wordsAmount,
-      userwordsAmount,
-      learnedPercents,
-      speechSeconds,
-      videoSeconds);
+      alltimeVideoSeconds);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Metric &&
           other.id == this.id &&
           other.userId == this.userId &&
+          other.days == this.days &&
           other.alltimeUserwordsAmount == this.alltimeUserwordsAmount &&
           other.alltimeLearnedAmount == this.alltimeLearnedAmount &&
           other.alltimeLearnedPercents == this.alltimeLearnedPercents &&
           other.alltimeSpeechSeconds == this.alltimeSpeechSeconds &&
-          other.alltimeVideoSeconds == this.alltimeVideoSeconds &&
-          other.wordsAmount == this.wordsAmount &&
-          other.userwordsAmount == this.userwordsAmount &&
-          other.learnedPercents == this.learnedPercents &&
-          other.speechSeconds == this.speechSeconds &&
-          other.videoSeconds == this.videoSeconds);
+          other.alltimeVideoSeconds == this.alltimeVideoSeconds);
 }
 
 class MetricDBCompanion extends UpdateCompanion<Metric> {
   final Value<int> id;
   final Value<int> userId;
+  final Value<int> days;
   final Value<int> alltimeUserwordsAmount;
   final Value<int> alltimeLearnedAmount;
   final Value<double> alltimeLearnedPercents;
   final Value<int> alltimeSpeechSeconds;
   final Value<int> alltimeVideoSeconds;
-  final Value<int> wordsAmount;
-  final Value<int> userwordsAmount;
-  final Value<double> learnedPercents;
-  final Value<int> speechSeconds;
-  final Value<int> videoSeconds;
   const MetricDBCompanion({
     this.id = const Value.absent(),
     this.userId = const Value.absent(),
+    this.days = const Value.absent(),
     this.alltimeUserwordsAmount = const Value.absent(),
     this.alltimeLearnedAmount = const Value.absent(),
     this.alltimeLearnedPercents = const Value.absent(),
     this.alltimeSpeechSeconds = const Value.absent(),
     this.alltimeVideoSeconds = const Value.absent(),
-    this.wordsAmount = const Value.absent(),
-    this.userwordsAmount = const Value.absent(),
-    this.learnedPercents = const Value.absent(),
-    this.speechSeconds = const Value.absent(),
-    this.videoSeconds = const Value.absent(),
   });
   MetricDBCompanion.insert({
     this.id = const Value.absent(),
     required int userId,
+    required int days,
     required int alltimeUserwordsAmount,
     required int alltimeLearnedAmount,
     required double alltimeLearnedPercents,
     required int alltimeSpeechSeconds,
     required int alltimeVideoSeconds,
-    required int wordsAmount,
-    required int userwordsAmount,
-    required double learnedPercents,
-    required int speechSeconds,
-    required int videoSeconds,
   })  : userId = Value(userId),
+        days = Value(days),
         alltimeUserwordsAmount = Value(alltimeUserwordsAmount),
         alltimeLearnedAmount = Value(alltimeLearnedAmount),
         alltimeLearnedPercents = Value(alltimeLearnedPercents),
         alltimeSpeechSeconds = Value(alltimeSpeechSeconds),
-        alltimeVideoSeconds = Value(alltimeVideoSeconds),
-        wordsAmount = Value(wordsAmount),
-        userwordsAmount = Value(userwordsAmount),
-        learnedPercents = Value(learnedPercents),
-        speechSeconds = Value(speechSeconds),
-        videoSeconds = Value(videoSeconds);
+        alltimeVideoSeconds = Value(alltimeVideoSeconds);
   static Insertable<Metric> custom({
     Expression<int>? id,
     Expression<int>? userId,
+    Expression<int>? days,
     Expression<int>? alltimeUserwordsAmount,
     Expression<int>? alltimeLearnedAmount,
     Expression<double>? alltimeLearnedPercents,
     Expression<int>? alltimeSpeechSeconds,
     Expression<int>? alltimeVideoSeconds,
-    Expression<int>? wordsAmount,
-    Expression<int>? userwordsAmount,
-    Expression<double>? learnedPercents,
-    Expression<int>? speechSeconds,
-    Expression<int>? videoSeconds,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (userId != null) 'user_id': userId,
+      if (days != null) 'days': days,
       if (alltimeUserwordsAmount != null)
         'alltime_userwords_amount': alltimeUserwordsAmount,
       if (alltimeLearnedAmount != null)
@@ -1273,30 +1139,22 @@ class MetricDBCompanion extends UpdateCompanion<Metric> {
         'alltime_speech_seconds': alltimeSpeechSeconds,
       if (alltimeVideoSeconds != null)
         'alltime_video_seconds': alltimeVideoSeconds,
-      if (wordsAmount != null) 'words_amount': wordsAmount,
-      if (userwordsAmount != null) 'userwords_amount': userwordsAmount,
-      if (learnedPercents != null) 'learned_percents': learnedPercents,
-      if (speechSeconds != null) 'speech_seconds': speechSeconds,
-      if (videoSeconds != null) 'video_seconds': videoSeconds,
     });
   }
 
   MetricDBCompanion copyWith(
       {Value<int>? id,
       Value<int>? userId,
+      Value<int>? days,
       Value<int>? alltimeUserwordsAmount,
       Value<int>? alltimeLearnedAmount,
       Value<double>? alltimeLearnedPercents,
       Value<int>? alltimeSpeechSeconds,
-      Value<int>? alltimeVideoSeconds,
-      Value<int>? wordsAmount,
-      Value<int>? userwordsAmount,
-      Value<double>? learnedPercents,
-      Value<int>? speechSeconds,
-      Value<int>? videoSeconds}) {
+      Value<int>? alltimeVideoSeconds}) {
     return MetricDBCompanion(
       id: id ?? this.id,
       userId: userId ?? this.userId,
+      days: days ?? this.days,
       alltimeUserwordsAmount:
           alltimeUserwordsAmount ?? this.alltimeUserwordsAmount,
       alltimeLearnedAmount: alltimeLearnedAmount ?? this.alltimeLearnedAmount,
@@ -1304,11 +1162,6 @@ class MetricDBCompanion extends UpdateCompanion<Metric> {
           alltimeLearnedPercents ?? this.alltimeLearnedPercents,
       alltimeSpeechSeconds: alltimeSpeechSeconds ?? this.alltimeSpeechSeconds,
       alltimeVideoSeconds: alltimeVideoSeconds ?? this.alltimeVideoSeconds,
-      wordsAmount: wordsAmount ?? this.wordsAmount,
-      userwordsAmount: userwordsAmount ?? this.userwordsAmount,
-      learnedPercents: learnedPercents ?? this.learnedPercents,
-      speechSeconds: speechSeconds ?? this.speechSeconds,
-      videoSeconds: videoSeconds ?? this.videoSeconds,
     );
   }
 
@@ -1320,6 +1173,9 @@ class MetricDBCompanion extends UpdateCompanion<Metric> {
     }
     if (userId.present) {
       map['user_id'] = Variable<int>(userId.value);
+    }
+    if (days.present) {
+      map['days'] = Variable<int>(days.value);
     }
     if (alltimeUserwordsAmount.present) {
       map['alltime_userwords_amount'] =
@@ -1338,21 +1194,6 @@ class MetricDBCompanion extends UpdateCompanion<Metric> {
     if (alltimeVideoSeconds.present) {
       map['alltime_video_seconds'] = Variable<int>(alltimeVideoSeconds.value);
     }
-    if (wordsAmount.present) {
-      map['words_amount'] = Variable<int>(wordsAmount.value);
-    }
-    if (userwordsAmount.present) {
-      map['userwords_amount'] = Variable<int>(userwordsAmount.value);
-    }
-    if (learnedPercents.present) {
-      map['learned_percents'] = Variable<double>(learnedPercents.value);
-    }
-    if (speechSeconds.present) {
-      map['speech_seconds'] = Variable<int>(speechSeconds.value);
-    }
-    if (videoSeconds.present) {
-      map['video_seconds'] = Variable<int>(videoSeconds.value);
-    }
     return map;
   }
 
@@ -1361,16 +1202,12 @@ class MetricDBCompanion extends UpdateCompanion<Metric> {
     return (StringBuffer('MetricDBCompanion(')
           ..write('id: $id, ')
           ..write('userId: $userId, ')
+          ..write('days: $days, ')
           ..write('alltimeUserwordsAmount: $alltimeUserwordsAmount, ')
           ..write('alltimeLearnedAmount: $alltimeLearnedAmount, ')
           ..write('alltimeLearnedPercents: $alltimeLearnedPercents, ')
           ..write('alltimeSpeechSeconds: $alltimeSpeechSeconds, ')
-          ..write('alltimeVideoSeconds: $alltimeVideoSeconds, ')
-          ..write('wordsAmount: $wordsAmount, ')
-          ..write('userwordsAmount: $userwordsAmount, ')
-          ..write('learnedPercents: $learnedPercents, ')
-          ..write('speechSeconds: $speechSeconds, ')
-          ..write('videoSeconds: $videoSeconds')
+          ..write('alltimeVideoSeconds: $alltimeVideoSeconds')
           ..write(')'))
         .toString();
   }
@@ -2319,30 +2156,22 @@ class $$UserAuthTableOrderingComposer
 typedef $$MetricDBTableInsertCompanionBuilder = MetricDBCompanion Function({
   Value<int> id,
   required int userId,
+  required int days,
   required int alltimeUserwordsAmount,
   required int alltimeLearnedAmount,
   required double alltimeLearnedPercents,
   required int alltimeSpeechSeconds,
   required int alltimeVideoSeconds,
-  required int wordsAmount,
-  required int userwordsAmount,
-  required double learnedPercents,
-  required int speechSeconds,
-  required int videoSeconds,
 });
 typedef $$MetricDBTableUpdateCompanionBuilder = MetricDBCompanion Function({
   Value<int> id,
   Value<int> userId,
+  Value<int> days,
   Value<int> alltimeUserwordsAmount,
   Value<int> alltimeLearnedAmount,
   Value<double> alltimeLearnedPercents,
   Value<int> alltimeSpeechSeconds,
   Value<int> alltimeVideoSeconds,
-  Value<int> wordsAmount,
-  Value<int> userwordsAmount,
-  Value<double> learnedPercents,
-  Value<int> speechSeconds,
-  Value<int> videoSeconds,
 });
 
 class $$MetricDBTableTableManager extends RootTableManager<
@@ -2367,58 +2196,42 @@ class $$MetricDBTableTableManager extends RootTableManager<
           getUpdateCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             Value<int> userId = const Value.absent(),
+            Value<int> days = const Value.absent(),
             Value<int> alltimeUserwordsAmount = const Value.absent(),
             Value<int> alltimeLearnedAmount = const Value.absent(),
             Value<double> alltimeLearnedPercents = const Value.absent(),
             Value<int> alltimeSpeechSeconds = const Value.absent(),
             Value<int> alltimeVideoSeconds = const Value.absent(),
-            Value<int> wordsAmount = const Value.absent(),
-            Value<int> userwordsAmount = const Value.absent(),
-            Value<double> learnedPercents = const Value.absent(),
-            Value<int> speechSeconds = const Value.absent(),
-            Value<int> videoSeconds = const Value.absent(),
           }) =>
               MetricDBCompanion(
             id: id,
             userId: userId,
+            days: days,
             alltimeUserwordsAmount: alltimeUserwordsAmount,
             alltimeLearnedAmount: alltimeLearnedAmount,
             alltimeLearnedPercents: alltimeLearnedPercents,
             alltimeSpeechSeconds: alltimeSpeechSeconds,
             alltimeVideoSeconds: alltimeVideoSeconds,
-            wordsAmount: wordsAmount,
-            userwordsAmount: userwordsAmount,
-            learnedPercents: learnedPercents,
-            speechSeconds: speechSeconds,
-            videoSeconds: videoSeconds,
           ),
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             required int userId,
+            required int days,
             required int alltimeUserwordsAmount,
             required int alltimeLearnedAmount,
             required double alltimeLearnedPercents,
             required int alltimeSpeechSeconds,
             required int alltimeVideoSeconds,
-            required int wordsAmount,
-            required int userwordsAmount,
-            required double learnedPercents,
-            required int speechSeconds,
-            required int videoSeconds,
           }) =>
               MetricDBCompanion.insert(
             id: id,
             userId: userId,
+            days: days,
             alltimeUserwordsAmount: alltimeUserwordsAmount,
             alltimeLearnedAmount: alltimeLearnedAmount,
             alltimeLearnedPercents: alltimeLearnedPercents,
             alltimeSpeechSeconds: alltimeSpeechSeconds,
             alltimeVideoSeconds: alltimeVideoSeconds,
-            wordsAmount: wordsAmount,
-            userwordsAmount: userwordsAmount,
-            learnedPercents: learnedPercents,
-            speechSeconds: speechSeconds,
-            videoSeconds: videoSeconds,
           ),
         ));
 }
@@ -2440,6 +2253,11 @@ class $$MetricDBTableFilterComposer
   $$MetricDBTableFilterComposer(super.$state);
   ColumnFilters<int> get id => $state.composableBuilder(
       column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get days => $state.composableBuilder(
+      column: $state.table.days,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -2468,31 +2286,6 @@ class $$MetricDBTableFilterComposer
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
-  ColumnFilters<int> get wordsAmount => $state.composableBuilder(
-      column: $state.table.wordsAmount,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
-  ColumnFilters<int> get userwordsAmount => $state.composableBuilder(
-      column: $state.table.userwordsAmount,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
-  ColumnFilters<double> get learnedPercents => $state.composableBuilder(
-      column: $state.table.learnedPercents,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
-  ColumnFilters<int> get speechSeconds => $state.composableBuilder(
-      column: $state.table.speechSeconds,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
-  ColumnFilters<int> get videoSeconds => $state.composableBuilder(
-      column: $state.table.videoSeconds,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
   $$UserAuthTableFilterComposer get userId {
     final $$UserAuthTableFilterComposer composer = $state.composerBuilder(
         composer: this,
@@ -2511,6 +2304,11 @@ class $$MetricDBTableOrderingComposer
   $$MetricDBTableOrderingComposer(super.$state);
   ColumnOrderings<int> get id => $state.composableBuilder(
       column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get days => $state.composableBuilder(
+      column: $state.table.days,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
@@ -2537,31 +2335,6 @@ class $$MetricDBTableOrderingComposer
 
   ColumnOrderings<int> get alltimeVideoSeconds => $state.composableBuilder(
       column: $state.table.alltimeVideoSeconds,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
-  ColumnOrderings<int> get wordsAmount => $state.composableBuilder(
-      column: $state.table.wordsAmount,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
-  ColumnOrderings<int> get userwordsAmount => $state.composableBuilder(
-      column: $state.table.userwordsAmount,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
-  ColumnOrderings<double> get learnedPercents => $state.composableBuilder(
-      column: $state.table.learnedPercents,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
-  ColumnOrderings<int> get speechSeconds => $state.composableBuilder(
-      column: $state.table.speechSeconds,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
-  ColumnOrderings<int> get videoSeconds => $state.composableBuilder(
-      column: $state.table.videoSeconds,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
