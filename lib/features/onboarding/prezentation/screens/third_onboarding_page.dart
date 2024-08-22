@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/widgets/alternatives_row.dart';
 import 'package:uwords/features/onboarding/prezentation/widgets/onboarding_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -16,40 +17,51 @@ class ThirdOnboardingPage extends StatelessWidget {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: OnboardingConsts.horizontalEdges),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height* 0.24),
+                padding: EdgeInsets.symmetric(
+                    vertical: MediaQuery.of(context).size.height *
+                        OnboardingConsts.onboardingMulti3),
                 child: Center(
                   child: Column(
                     children: [
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 17.0),
+                          padding: const EdgeInsets.only(
+                              bottom:
+                                  OnboardingConsts.alternativesSpacingBetween),
                           child: SizedBox(
-                              height: 60,
+                              height: OnboardingConsts.alternativesHeight,
                               child: AlternativesRow(
                                   svgIconAssest: AppImageSource.youtubeIcon,
                                   text: AppLocalizations.of(context)
                                       .youtubeVideo))),
                       Padding(
-                          padding: const EdgeInsets.only(bottom:  17.0),
+                          padding: const EdgeInsets.only(
+                              bottom:
+                                  OnboardingConsts.alternativesSpacingBetween),
                           child: SizedBox(
-                              height: 60,
+                              height: OnboardingConsts.alternativesHeight,
                               child: AlternativesRow(
                                   svgIconAssest: AppImageSource.telegramIcon,
-                                  text:
-                                      AppLocalizations.of(context).telegramBot))),
+                                  text: AppLocalizations.of(context)
+                                      .telegramBot))),
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 17.0),
+                          padding: const EdgeInsets.only(
+                              bottom:
+                                  OnboardingConsts.alternativesSpacingBetween),
                           child: SizedBox(
-                              height: 60,
+                              height: OnboardingConsts.alternativesHeight,
                               child: AlternativesRow(
                                   svgIconAssest: AppImageSource.discordIcon,
-                                  text:
-                                      AppLocalizations.of(context).discordBot))),
+                                  text: AppLocalizations.of(context)
+                                      .discordBot))),
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 17.0),
+                          padding: const EdgeInsets.only(
+                              bottom:
+                                  OnboardingConsts.alternativesSpacingBetween),
                           child: SizedBox(
-                              height: 60,
+                              height: OnboardingConsts.alternativesHeight,
                               child: AlternativesRow(
                                   svgIconAssest: AppImageSource.chromeIcon,
                                   text: AppLocalizations.of(context)
@@ -64,7 +76,8 @@ class ThirdOnboardingPage extends StatelessWidget {
                 child: OnboardingBottomSheet(
                     title: AppLocalizations.of(context).alternative,
                     subtitle: AppLocalizations.of(context).alternativeText,
-                    heightMultiplication: 0.28))
+                    heightMultiplication:
+                        OnboardingConsts.onboardingBottomMulti3))
           ],
         ));
   }

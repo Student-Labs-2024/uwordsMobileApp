@@ -14,35 +14,41 @@ class AlternativesRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: AppColors.whiteColor,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: ProfileShadows.statisticCard,
-          shape: BoxShape.rectangle,),      child: Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15+OnboardingConsts.iconSize,),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: OnboardingConsts.iconSize,
-                  height: OnboardingConsts.iconSize,
-                  child: ShaderMask(
-                    blendMode: BlendMode.srcIn,
-                    shaderCallback: (bounds) {
-                      return AppColors.violetGradient.createShader(bounds);
-                    },
-                    child: SvgPicture.asset(
-                      svgIconAssest,
-                    ),
-                  ),
+      decoration: BoxDecoration(
+        color: AppColors.whiteColor,
+        borderRadius: BorderRadius.circular(OnboardingConsts.aroundSpace),
+        boxShadow: ProfileShadows.statisticCard,
+        shape: BoxShape.rectangle,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: OnboardingConsts.aroundSpace,
+          right: OnboardingConsts.aroundSpace + OnboardingConsts.iconSize,
+        ),
+        child: Row(
+          children: [
+            SizedBox(
+              width: OnboardingConsts.iconSize,
+              height: OnboardingConsts.iconSize,
+              child: ShaderMask(
+                blendMode: BlendMode.srcIn,
+                shaderCallback: (bounds) {
+                  return AppColors.violetGradient.createShader(bounds);
+                },
+                child: SvgPicture.asset(
+                  svgIconAssest,
                 ),
-                const Spacer(),
-                Text(
-                  text,
-                  style: LearnTextStyles.alternativesTile,
-                ),
-                const Spacer()
-              ],
+              ),
             ),
-          ),
+            const Spacer(),
+            Text(
+              text,
+              style: LearnTextStyles.alternativesTile,
+            ),
+            const Spacer()
+          ],
+        ),
+      ),
     );
   }
 }

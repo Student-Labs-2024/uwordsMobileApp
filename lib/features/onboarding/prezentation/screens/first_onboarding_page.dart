@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/widgets/onboarding_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/image_source.dart';
@@ -17,13 +18,13 @@ class FirstOnboardingPage extends StatelessWidget {
             Center(
                 child: Image.asset(
               AppImageSource.onboarding1,
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * OnboardingConsts.onboardingMulti1,
             )),
             Align(
                 alignment: Alignment.bottomCenter,
                 child: OnboardingBottomSheet(
                   title: AppLocalizations.of(context).recordingWords,
-                  heightMultiplication: 0.4,
+                  heightMultiplication: OnboardingConsts.onboardingBottomMulti1,
                   subtitle: AppLocalizations.of(context).recordingWordsText,
                   otherText:
                       AppLocalizations.of(context).recordingWordsOtherText,

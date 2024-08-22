@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/widgets/onboarding_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,7 +19,10 @@ class FourthOnboardingPage extends StatelessWidget {
           Center(
             child: Text(AppLocalizations.of(context).startQuestion),
           ),
-          OnboardingBottomSheet(title: AppLocalizations.of(context).startQuestion, subtitle: AppLocalizations.of(context).startQuestionText, heightMultiplication: 0.25)
+          OnboardingBottomSheet(
+              title: AppLocalizations.of(context).startQuestion,
+              subtitle: AppLocalizations.of(context).startQuestionText,
+              heightMultiplication: OnboardingConsts.onboardingMulti4)
         ],
       ),
     ));

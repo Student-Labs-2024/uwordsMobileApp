@@ -80,22 +80,20 @@ class _OnboardingBottomSheetState extends State<OnboardingBottomSheet> {
                   style: LearnTextStyles.onboardingText,
                 ),
                 SizedBox(
-                  height: widget.otherText == null
-                      ? 0
-                      : MediaQuery.of(context).size.height *
-                          OnboardingConsts.emptySpace
-                ),
+                    height: widget.otherText == null
+                        ? OnboardingConsts.zero
+                        : MediaQuery.of(context).size.height *
+                            OnboardingConsts.emptySpace),
                 Text(
                   widget.otherText ?? "",
                   textAlign: TextAlign.center,
                   style: LearnTextStyles.otherText,
                 ),
                 SizedBox(
-                  height: widget.linkText == null
-                      ? 0
-                      : MediaQuery.of(context).size.height *
-                          OnboardingConsts.smallEmptySpace
-                ),
+                    height: widget.linkText == null
+                        ? OnboardingConsts.zero
+                        : MediaQuery.of(context).size.height *
+                            OnboardingConsts.smallEmptySpace),
                 InkWell(
                   child: Text(
                     widget.linkText ?? "",

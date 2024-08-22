@@ -25,11 +25,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   void dispose() {
     pageController.dispose();
     super.dispose();
@@ -41,8 +36,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
         body: PageView(
           controller: pageController,
           onPageChanged: (index) {
-            isNotLastPage = index < 3;
-            if (index <= 3) {
+            isNotLastPage = index < OnboardingConsts.beforeLastScreen;
+            if (index <= OnboardingConsts.beforeLastScreen) {
               setState(() {});
             }
           },
@@ -62,18 +57,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   child: Center(
                     child: SmoothPageIndicator(
                       controller: pageController,
-                      count: 4,
+                      count: OnboardingConsts.countOfScreens,
                       effect: const SwapEffect(
                         type: SwapType.yRotation,
                         dotColor: AppColors.imperial45,
                         activeDotColor: AppColors.darkMainColor,
-                        dotHeight: 15,
-                        dotWidth: 15,
-                        spacing: 14,
+                        dotHeight: OnboardingConsts.dotSize,
+                        dotWidth: OnboardingConsts.dotSize,
+                        spacing: OnboardingConsts.dotSpacing,
                       ),
                       onDotClicked: (index) => pageController.animateToPage(
                           index,
-                          duration: const Duration(milliseconds: 600),
+                          duration: const Duration(
+                              milliseconds: OnboardingConsts.animationDuration),
                           curve: Curves.easeInOut),
                     ),
                   ),
@@ -83,7 +79,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 color: AppColors.whiteColor,
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: 80,
+                  height: OnboardingConsts.bottom,
                   child: InkWell(
                     child: Center(
                         child:
