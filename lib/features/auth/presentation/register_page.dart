@@ -206,18 +206,12 @@ class _RegisterPageState extends State<RegisterPage>
                               state: inputState,
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),
-                              onPressed: inputState ==
-                                      OtherLearnConstants.stateZero
-                                  ? () {}
-                                  : () {
-                                      context.read<AuthBloc>().add(
-                                          AuthEvent.requestCode(
-                                              birthDate: choosenDate,
-                                              emailAddress: mailController.text,
-                                              password:
-                                                  passwordController.text));
-                                    },
-                              text: AppLocalizations.of(context).createAccount),
+                              onPressed: () {
+                            context.read<AuthBloc>().add(AuthEvent.requestCode(
+                                birthDate: choosenDate,
+                                emailAddress: mailController.text,
+                                password: passwordController.text));
+                          }, text: AppLocalizations.of(context).createAccount),
                           DividerWithText(
                             text: AppLocalizations.of(context).or,
                             maximumWidth: maximumWidth -
@@ -234,6 +228,9 @@ class _RegisterPageState extends State<RegisterPage>
                           },
                               text: AppLocalizations.of(context)
                                   .signInWithGoogle),
+                          const SizedBox(
+                            height: AuthDesignedPaddings.middleEmptySpace,
+                          ),
                           BubbleButton(SvgPicture.asset(AppImageSource.vkIcon),
                               maximumWidth: maximumWidth -
                                   (AuthDesignedPaddings.bigBasePagepadding),

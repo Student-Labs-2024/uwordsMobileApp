@@ -119,18 +119,12 @@ class _AuthPageState extends State<AuthPage> {
                                   state: inputState,
                                   maximumWidth: maximumWidth -
                                       (AuthDesignedPaddings.basePagePadding),
-                                  onPressed: inputState ==
-                                          OtherLearnConstants.stateZero
-                                      ? () {}
-                                      : () {
-                                          context.read<AuthBloc>().add(
-                                              AuthEvent.signInWithMailPassword(
-                                                  emailAddress:
-                                                      mailController.text,
-                                                  password:
-                                                      passwordController.text));
-                                        },
-                                  text: AppLocalizations.of(context).signIn),
+                                  onPressed: () {
+                                context.read<AuthBloc>().add(
+                                    AuthEvent.signInWithMailPassword(
+                                        emailAddress: mailController.text,
+                                        password: passwordController.text));
+                              }, text: AppLocalizations.of(context).signIn),
                             ),
                             DividerWithText(
                               text: AppLocalizations.of(context).or,
