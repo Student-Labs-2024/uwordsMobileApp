@@ -15,4 +15,6 @@ class GlobalSizes {
   static const double customTextFieldSpacing = 2;
   static const double customTextFieldErrorHeight = 17;
   static const double customTextFieldErrorSpacer = 1;
+
+  static const double customCircleProgressIndicatorWidth = 10;
 }
