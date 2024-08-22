@@ -75,4 +75,7 @@ class AppImageSource {
   static const String sircleGreen2 = 'assets/svg/sircle_green_2.svg';
   static const String sircleGreen3 = 'assets/svg/sircle_green_3.svg';
   static const String sircleGreen4 = 'assets/svg/sircle_green_4.svg';
+  static const String activeButton = 'assets/png/button_active.png';
+  static const String disabledButton = 'assets/png/button_disabled.png';
+  static const String redButton = 'assets/png/button_red.png';
 }
