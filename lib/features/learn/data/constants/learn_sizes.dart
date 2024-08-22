@@ -73,4 +73,13 @@ class LearnSizes {
 
   static const double circleGreenBigProgressSize = 80 / 375;
   static const double circleGreenSmallProgressSize = 45 / 375;
+
+  static const double animatedSubtopicSpacer = 60 / 812;
+
+  static const double animatedSubtopicWidth = 225 / 375;
+  static const double animatedSubtopicHeight = 180 / 812;
+  static const double animatedSubtopicProgressbarWidthModifier = 91 / 225;
+  static const double animatedSubtopicIconWidth = 43 / 375;
+  static const double animatedSubtopicBackWidth = 126 / 375;
+  static const double animatedSubtopicBackHeight = 105 / 812;
 }

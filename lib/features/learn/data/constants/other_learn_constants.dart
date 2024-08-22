@@ -68,4 +68,16 @@ class OtherLearnConstants {
 
   static const String topickNameInProgress = 'In Progress';
   static const String subtopickNameUnsorted = 'Unsorted';
+
+  static const String animatedSubtopicpictureLink =
+      'app.big-nose.ru:9100/uwords-subtopic-icons/Default Subtopic.svg';
+  static const String animatedSubtopicTitle = 'Тема';
+  static const int animatedSubtopicWordsCount = 31;
+
+  static const int animatedSubtopicProgressMax = 100;
+  static const int animatedSubtopicProgressMedium = 40;
+  static const int animatedSubtopicProgressRepeatMiliseconds = 4100;
+
+  static const int animatedSubtopicProgressSmallSecondsPart = 1;
+  static const int animatedSubtopicProgressMediumSecondsPart = 2;
 }
