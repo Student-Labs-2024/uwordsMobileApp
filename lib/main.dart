@@ -37,6 +37,10 @@ import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/profile_page.dart';
+import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
+import 'package:uwords/features/subscription/data/data_sources/network_tariff_data_source.dart';
+import 'package:uwords/features/subscription/data/repositories/subscription_repository.dart';
+import 'package:uwords/features/subscription/presentation/subscription_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'firebase_options.dart';
 
@@ -90,6 +94,9 @@ final GoRouter _goRouter = GoRouter(
           builder: (context, state) => const HomePage(),
         ),
         GoRoute(
+            path: '/subscription',
+            builder: (context, state) => const SubscriptionPage()),
+        GoRoute(
             path: '/learn',
             builder: (context, state) => const CoreLearnPage(),
             routes: [
@@ -118,7 +125,8 @@ class MainApp extends StatelessWidget {
   MainApp({super.key});
   final IAudioDataSource audioDataSource = AudioDataSource();
   final IWordsDataSource wordsDataSource = WordsDataSource();
-
+  final INetworkTariffDataSource networkTariffDataSource =
+      NetworkTariffDataSource();
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
@@ -130,7 +138,10 @@ class MainApp extends StatelessWidget {
                 AudioRepository(audioDataSource: audioDataSource)),
         RepositoryProvider<IWordsRepository>(
             create: (context) =>
-                WordsRepository(wordsDataSource: wordsDataSource))
+                WordsRepository(wordsDataSource: wordsDataSource)),
+        RepositoryProvider<ISubscriptionRepository>(
+            create: (context) => SubscriptionRepository(
+                networkTariffDataSource: networkTariffDataSource))
       ],
       child: MultiBlocProvider(
         providers: [
@@ -158,6 +169,11 @@ class MainApp extends StatelessWidget {
           BlocProvider(
               create: (context) => TrainingBloc(
                   wordsRepository: context.read<IWordsRepository>(),
+                  userRepository: context.read<IUserRepository>())),
+          BlocProvider(
+              create: (context) => SubscriptionBloc(
+                  subscriptionRepository:
+                      context.read<ISubscriptionRepository>(),
                   userRepository: context.read<IUserRepository>()))
         ],
         child: MaterialApp.router(

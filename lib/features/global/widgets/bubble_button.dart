@@ -34,26 +34,28 @@ class BubbleButton extends StatelessWidget {
     return [];
   }
 
+  String getImage() {
+    if (state == OtherLearnConstants.stateZero) {
+      return AppImageSource.disabledButton;
+    } else if (state == OtherLearnConstants.stateWrong) {
+      return AppImageSource.redButton;
+    }
+    return AppImageSource.activeButton;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: state == OtherLearnConstants.stateZero ? null : onPressed,
       child: Container(
         height: GlobalSizes.bubbleButtonHeight,
         width: maximumWidth,
         decoration: BoxDecoration(
-          gradient: state != null
-              ? (state != OtherLearnConstants.stateActive &&
-                      state != OtherLearnConstants.stateCantHear &&
-                      state != OtherLearnConstants.stateLoseHealth &&
-                      state != OtherLearnConstants.stateFinal &&
-                      state != OtherLearnConstants.stateCantSpeak
-                  ? OtherLearnConstants.getBubbleButtonGradient(state!)
-                  : null)
-              : null,
           borderRadius: BorderRadius.circular(GlobalSizes.borderRadiusLarge),
-          image: const DecorationImage(
-            image: AssetImage(AppImageSource.bubbleButton),
+          image: DecorationImage(
+            image: AssetImage(
+              getImage(),
+            ),
             fit: BoxFit.cover,
             opacity: GlobalSizes.bubbleOpacity,
           ),

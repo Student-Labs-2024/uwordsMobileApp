@@ -152,7 +152,7 @@
   "onNo": "Какая жалость!",
   "tryStartAgain": "Ваши попытки на этом этапе закончились. Попробуйте сначала!",
   "newStageReached" : "Новый этап пройден!",
-  "wrongEmail": "Невалидная почта",
+  "wrongEmail": "Неверный адрес почты",
   "stillRepeats" : "Остались повторения",
   "weWillRemind" : "Мы напомним, когда настанет время для следующего этапа!",
   "finish" : "Закончить",
@@ -168,5 +168,11 @@
   "subscriptionIsNotActive" : "Подписка неактивна",
   "subscribe" : "Оформите подписку и получите все возможности uwords",
   "learned" : "Изученные темы"
-  
+  "checkSubscriptionStatusButton": "Проверить статус подписки",
+  "successfulPaymentOfTariff": "Оплата проведена успешно тарифа",
+  "failedPaymentOfTariff": "Оплата не была проведена для тарифа",
+  "payByLink":"Оплата подписки по ссылке",
+  "shortPassword": "Не менее 8 символов",
+  "requiredField": "Обязательное поле для заполнения",
+  "wrongPassword": "Неверно указан пароль"
 }

@@ -172,8 +172,10 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   Future<bool> checkCode(
       {required String userEmail, required String code}) async {
     try {
-      var response = await client
-          .checkCode(CheckCodeRequest(code: code, email: userEmail));
+      var response = await client.checkCode(
+          joinTokenTypeAndToken(
+              tokenType: tokenType, token: tokenForSendingCode),
+          CheckCodeRequest(code: code, email: userEmail));
       if (response.response.statusCode == 200) {
         return response.data;
       } else {
@@ -215,5 +217,13 @@ class NetworkUserDataSource implements INetworkUserDataSource {
           break;
       }
     }
+  }
+
+  @override
+  Future<UserAuthDto> fetchAboutMe({required UserAuthDto userDto}) async {
+    final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+        tokenType: tokenType, token: userDto.accessToken));
+    return userDto.updateInfoAboutUserByMap(
+        userMap: aboutMeResponse.data, user: userDto);
   }
 }

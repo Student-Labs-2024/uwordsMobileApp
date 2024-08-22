@@ -54,11 +54,24 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
   late final GeneratedColumn<DateTime> birthDate = GeneratedColumn<DateTime>(
       'birth_date', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _daysMeta = const VerificationMeta('days');
+  static const VerificationMeta _subscriptionTypeMeta =
+      const VerificationMeta('subscriptionType');
   @override
-  late final GeneratedColumn<int> days = GeneratedColumn<int>(
-      'days', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+  late final GeneratedColumn<int> subscriptionType = GeneratedColumn<int>(
+      'subscription_type', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _subscriptionAcquisitionMeta =
+      const VerificationMeta('subscriptionAcquisition');
+  @override
+  late final GeneratedColumn<DateTime> subscriptionAcquisition =
+      GeneratedColumn<DateTime>('subscription_acquisition', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _subscriptionExpiredMeta =
+      const VerificationMeta('subscriptionExpired');
+  @override
+  late final GeneratedColumn<DateTime> subscriptionExpired =
+      GeneratedColumn<DateTime>('subscription_expired', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   static const VerificationMeta _allowedAudioSecondsMeta =
       const VerificationMeta('allowedAudioSeconds');
   @override
@@ -122,7 +135,9 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
         avatarUrl,
         phoneNumber,
         birthDate,
-        days,
+        subscriptionType,
+        subscriptionAcquisition,
+        subscriptionExpired,
         allowedAudioSeconds,
         allowedVideoSeconds,
         energy,
@@ -189,11 +204,23 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
     } else if (isInserting) {
       context.missing(_birthDateMeta);
     }
-    if (data.containsKey('days')) {
+    if (data.containsKey('subscription_type')) {
       context.handle(
-          _daysMeta, days.isAcceptableOrUnknown(data['days']!, _daysMeta));
-    } else if (isInserting) {
-      context.missing(_daysMeta);
+          _subscriptionTypeMeta,
+          subscriptionType.isAcceptableOrUnknown(
+              data['subscription_type']!, _subscriptionTypeMeta));
+    }
+    if (data.containsKey('subscription_acquisition')) {
+      context.handle(
+          _subscriptionAcquisitionMeta,
+          subscriptionAcquisition.isAcceptableOrUnknown(
+              data['subscription_acquisition']!, _subscriptionAcquisitionMeta));
+    }
+    if (data.containsKey('subscription_expired')) {
+      context.handle(
+          _subscriptionExpiredMeta,
+          subscriptionExpired.isAcceptableOrUnknown(
+              data['subscription_expired']!, _subscriptionExpiredMeta));
     }
     if (data.containsKey('allowed_audio_seconds')) {
       context.handle(
@@ -278,8 +305,14 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           .read(DriftSqlType.string, data['${effectivePrefix}phone_number'])!,
       birthDate: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}birth_date'])!,
-      days: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}days'])!,
+      subscriptionType: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}subscription_type']),
+      subscriptionAcquisition: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime,
+          data['${effectivePrefix}subscription_acquisition']),
+      subscriptionExpired: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime,
+          data['${effectivePrefix}subscription_expired']),
       allowedAudioSeconds: attachedDatabase.typeMapping.read(
           DriftSqlType.int, data['${effectivePrefix}allowed_audio_seconds'])!,
       allowedVideoSeconds: attachedDatabase.typeMapping.read(
@@ -314,7 +347,9 @@ class User extends DataClass implements Insertable<User> {
   final String avatarUrl;
   final String phoneNumber;
   final DateTime birthDate;
-  final int days;
+  final int? subscriptionType;
+  final DateTime? subscriptionAcquisition;
+  final DateTime? subscriptionExpired;
   final int allowedAudioSeconds;
   final int allowedVideoSeconds;
   final int energy;
@@ -332,7 +367,9 @@ class User extends DataClass implements Insertable<User> {
       required this.avatarUrl,
       required this.phoneNumber,
       required this.birthDate,
-      required this.days,
+      this.subscriptionType,
+      this.subscriptionAcquisition,
+      this.subscriptionExpired,
       required this.allowedAudioSeconds,
       required this.allowedVideoSeconds,
       required this.energy,
@@ -352,7 +389,16 @@ class User extends DataClass implements Insertable<User> {
     map['avatar_url'] = Variable<String>(avatarUrl);
     map['phone_number'] = Variable<String>(phoneNumber);
     map['birth_date'] = Variable<DateTime>(birthDate);
-    map['days'] = Variable<int>(days);
+    if (!nullToAbsent || subscriptionType != null) {
+      map['subscription_type'] = Variable<int>(subscriptionType);
+    }
+    if (!nullToAbsent || subscriptionAcquisition != null) {
+      map['subscription_acquisition'] =
+          Variable<DateTime>(subscriptionAcquisition);
+    }
+    if (!nullToAbsent || subscriptionExpired != null) {
+      map['subscription_expired'] = Variable<DateTime>(subscriptionExpired);
+    }
     map['allowed_audio_seconds'] = Variable<int>(allowedAudioSeconds);
     map['allowed_video_seconds'] = Variable<int>(allowedVideoSeconds);
     map['energy'] = Variable<int>(energy);
@@ -374,7 +420,15 @@ class User extends DataClass implements Insertable<User> {
       avatarUrl: Value(avatarUrl),
       phoneNumber: Value(phoneNumber),
       birthDate: Value(birthDate),
-      days: Value(days),
+      subscriptionType: subscriptionType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subscriptionType),
+      subscriptionAcquisition: subscriptionAcquisition == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subscriptionAcquisition),
+      subscriptionExpired: subscriptionExpired == null && nullToAbsent
+          ? const Value.absent()
+          : Value(subscriptionExpired),
       allowedAudioSeconds: Value(allowedAudioSeconds),
       allowedVideoSeconds: Value(allowedVideoSeconds),
       energy: Value(energy),
@@ -398,7 +452,11 @@ class User extends DataClass implements Insertable<User> {
       avatarUrl: serializer.fromJson<String>(json['avatarUrl']),
       phoneNumber: serializer.fromJson<String>(json['phoneNumber']),
       birthDate: serializer.fromJson<DateTime>(json['birthDate']),
-      days: serializer.fromJson<int>(json['days']),
+      subscriptionType: serializer.fromJson<int?>(json['subscriptionType']),
+      subscriptionAcquisition:
+          serializer.fromJson<DateTime?>(json['subscriptionAcquisition']),
+      subscriptionExpired:
+          serializer.fromJson<DateTime?>(json['subscriptionExpired']),
       allowedAudioSeconds:
           serializer.fromJson<int>(json['allowedAudioSeconds']),
       allowedVideoSeconds:
@@ -424,7 +482,10 @@ class User extends DataClass implements Insertable<User> {
       'avatarUrl': serializer.toJson<String>(avatarUrl),
       'phoneNumber': serializer.toJson<String>(phoneNumber),
       'birthDate': serializer.toJson<DateTime>(birthDate),
-      'days': serializer.toJson<int>(days),
+      'subscriptionType': serializer.toJson<int?>(subscriptionType),
+      'subscriptionAcquisition':
+          serializer.toJson<DateTime?>(subscriptionAcquisition),
+      'subscriptionExpired': serializer.toJson<DateTime?>(subscriptionExpired),
       'allowedAudioSeconds': serializer.toJson<int>(allowedAudioSeconds),
       'allowedVideoSeconds': serializer.toJson<int>(allowedVideoSeconds),
       'energy': serializer.toJson<int>(energy),
@@ -445,7 +506,9 @@ class User extends DataClass implements Insertable<User> {
           String? avatarUrl,
           String? phoneNumber,
           DateTime? birthDate,
-          int? days,
+          Value<int?> subscriptionType = const Value.absent(),
+          Value<DateTime?> subscriptionAcquisition = const Value.absent(),
+          Value<DateTime?> subscriptionExpired = const Value.absent(),
           int? allowedAudioSeconds,
           int? allowedVideoSeconds,
           int? energy,
@@ -463,7 +526,15 @@ class User extends DataClass implements Insertable<User> {
         avatarUrl: avatarUrl ?? this.avatarUrl,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         birthDate: birthDate ?? this.birthDate,
-        days: days ?? this.days,
+        subscriptionType: subscriptionType.present
+            ? subscriptionType.value
+            : this.subscriptionType,
+        subscriptionAcquisition: subscriptionAcquisition.present
+            ? subscriptionAcquisition.value
+            : this.subscriptionAcquisition,
+        subscriptionExpired: subscriptionExpired.present
+            ? subscriptionExpired.value
+            : this.subscriptionExpired,
         allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
         allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
         energy: energy ?? this.energy,
@@ -484,7 +555,9 @@ class User extends DataClass implements Insertable<User> {
           ..write('avatarUrl: $avatarUrl, ')
           ..write('phoneNumber: $phoneNumber, ')
           ..write('birthDate: $birthDate, ')
-          ..write('days: $days, ')
+          ..write('subscriptionType: $subscriptionType, ')
+          ..write('subscriptionAcquisition: $subscriptionAcquisition, ')
+          ..write('subscriptionExpired: $subscriptionExpired, ')
           ..write('allowedAudioSeconds: $allowedAudioSeconds, ')
           ..write('allowedVideoSeconds: $allowedVideoSeconds, ')
           ..write('energy: $energy, ')
@@ -507,7 +580,9 @@ class User extends DataClass implements Insertable<User> {
       avatarUrl,
       phoneNumber,
       birthDate,
-      days,
+      subscriptionType,
+      subscriptionAcquisition,
+      subscriptionExpired,
       allowedAudioSeconds,
       allowedVideoSeconds,
       energy,
@@ -528,7 +603,9 @@ class User extends DataClass implements Insertable<User> {
           other.avatarUrl == this.avatarUrl &&
           other.phoneNumber == this.phoneNumber &&
           other.birthDate == this.birthDate &&
-          other.days == this.days &&
+          other.subscriptionType == this.subscriptionType &&
+          other.subscriptionAcquisition == this.subscriptionAcquisition &&
+          other.subscriptionExpired == this.subscriptionExpired &&
           other.allowedAudioSeconds == this.allowedAudioSeconds &&
           other.allowedVideoSeconds == this.allowedVideoSeconds &&
           other.energy == this.energy &&
@@ -548,7 +625,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   final Value<String> avatarUrl;
   final Value<String> phoneNumber;
   final Value<DateTime> birthDate;
-  final Value<int> days;
+  final Value<int?> subscriptionType;
+  final Value<DateTime?> subscriptionAcquisition;
+  final Value<DateTime?> subscriptionExpired;
   final Value<int> allowedAudioSeconds;
   final Value<int> allowedVideoSeconds;
   final Value<int> energy;
@@ -566,7 +645,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     this.avatarUrl = const Value.absent(),
     this.phoneNumber = const Value.absent(),
     this.birthDate = const Value.absent(),
-    this.days = const Value.absent(),
+    this.subscriptionType = const Value.absent(),
+    this.subscriptionAcquisition = const Value.absent(),
+    this.subscriptionExpired = const Value.absent(),
     this.allowedAudioSeconds = const Value.absent(),
     this.allowedVideoSeconds = const Value.absent(),
     this.energy = const Value.absent(),
@@ -585,7 +666,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     required String avatarUrl,
     required String phoneNumber,
     required DateTime birthDate,
-    required int days,
+    this.subscriptionType = const Value.absent(),
+    this.subscriptionAcquisition = const Value.absent(),
+    this.subscriptionExpired = const Value.absent(),
     required int allowedAudioSeconds,
     required int allowedVideoSeconds,
     required int energy,
@@ -601,7 +684,6 @@ class UserAuthCompanion extends UpdateCompanion<User> {
         avatarUrl = Value(avatarUrl),
         phoneNumber = Value(phoneNumber),
         birthDate = Value(birthDate),
-        days = Value(days),
         allowedAudioSeconds = Value(allowedAudioSeconds),
         allowedVideoSeconds = Value(allowedVideoSeconds),
         energy = Value(energy),
@@ -619,7 +701,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     Expression<String>? avatarUrl,
     Expression<String>? phoneNumber,
     Expression<DateTime>? birthDate,
-    Expression<int>? days,
+    Expression<int>? subscriptionType,
+    Expression<DateTime>? subscriptionAcquisition,
+    Expression<DateTime>? subscriptionExpired,
     Expression<int>? allowedAudioSeconds,
     Expression<int>? allowedVideoSeconds,
     Expression<int>? energy,
@@ -638,7 +722,11 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       if (avatarUrl != null) 'avatar_url': avatarUrl,
       if (phoneNumber != null) 'phone_number': phoneNumber,
       if (birthDate != null) 'birth_date': birthDate,
-      if (days != null) 'days': days,
+      if (subscriptionType != null) 'subscription_type': subscriptionType,
+      if (subscriptionAcquisition != null)
+        'subscription_acquisition': subscriptionAcquisition,
+      if (subscriptionExpired != null)
+        'subscription_expired': subscriptionExpired,
       if (allowedAudioSeconds != null)
         'allowed_audio_seconds': allowedAudioSeconds,
       if (allowedVideoSeconds != null)
@@ -662,7 +750,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       Value<String>? avatarUrl,
       Value<String>? phoneNumber,
       Value<DateTime>? birthDate,
-      Value<int>? days,
+      Value<int?>? subscriptionType,
+      Value<DateTime?>? subscriptionAcquisition,
+      Value<DateTime?>? subscriptionExpired,
       Value<int>? allowedAudioSeconds,
       Value<int>? allowedVideoSeconds,
       Value<int>? energy,
@@ -680,7 +770,10 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       avatarUrl: avatarUrl ?? this.avatarUrl,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       birthDate: birthDate ?? this.birthDate,
-      days: days ?? this.days,
+      subscriptionType: subscriptionType ?? this.subscriptionType,
+      subscriptionAcquisition:
+          subscriptionAcquisition ?? this.subscriptionAcquisition,
+      subscriptionExpired: subscriptionExpired ?? this.subscriptionExpired,
       allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
       allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
       energy: energy ?? this.energy,
@@ -719,8 +812,16 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     if (birthDate.present) {
       map['birth_date'] = Variable<DateTime>(birthDate.value);
     }
-    if (days.present) {
-      map['days'] = Variable<int>(days.value);
+    if (subscriptionType.present) {
+      map['subscription_type'] = Variable<int>(subscriptionType.value);
+    }
+    if (subscriptionAcquisition.present) {
+      map['subscription_acquisition'] =
+          Variable<DateTime>(subscriptionAcquisition.value);
+    }
+    if (subscriptionExpired.present) {
+      map['subscription_expired'] =
+          Variable<DateTime>(subscriptionExpired.value);
     }
     if (allowedAudioSeconds.present) {
       map['allowed_audio_seconds'] = Variable<int>(allowedAudioSeconds.value);
@@ -761,7 +862,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
           ..write('avatarUrl: $avatarUrl, ')
           ..write('phoneNumber: $phoneNumber, ')
           ..write('birthDate: $birthDate, ')
-          ..write('days: $days, ')
+          ..write('subscriptionType: $subscriptionType, ')
+          ..write('subscriptionAcquisition: $subscriptionAcquisition, ')
+          ..write('subscriptionExpired: $subscriptionExpired, ')
           ..write('allowedAudioSeconds: $allowedAudioSeconds, ')
           ..write('allowedVideoSeconds: $allowedVideoSeconds, ')
           ..write('energy: $energy, ')
@@ -1213,6 +1316,159 @@ class MetricDBCompanion extends UpdateCompanion<Metric> {
   }
 }
 
+class $AchievementCategoryDBTable extends AchievementCategoryDB
+    with TableInfo<$AchievementCategoryDBTable, AchievementCategory> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AchievementCategoryDBTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+      'title', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [title];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'achievement_category_d_b';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<AchievementCategory> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('title')) {
+      context.handle(
+          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {title};
+  @override
+  AchievementCategory map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AchievementCategory(
+      title: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}title'])!,
+    );
+  }
+
+  @override
+  $AchievementCategoryDBTable createAlias(String alias) {
+    return $AchievementCategoryDBTable(attachedDatabase, alias);
+  }
+}
+
+class AchievementCategory extends DataClass
+    implements Insertable<AchievementCategory> {
+  final String title;
+  const AchievementCategory({required this.title});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['title'] = Variable<String>(title);
+    return map;
+  }
+
+  AchievementCategoryDBCompanion toCompanion(bool nullToAbsent) {
+    return AchievementCategoryDBCompanion(
+      title: Value(title),
+    );
+  }
+
+  factory AchievementCategory.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AchievementCategory(
+      title: serializer.fromJson<String>(json['title']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'title': serializer.toJson<String>(title),
+    };
+  }
+
+  AchievementCategory copyWith({String? title}) => AchievementCategory(
+        title: title ?? this.title,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('AchievementCategory(')
+          ..write('title: $title')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => title.hashCode;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AchievementCategory && other.title == this.title);
+}
+
+class AchievementCategoryDBCompanion
+    extends UpdateCompanion<AchievementCategory> {
+  final Value<String> title;
+  final Value<int> rowid;
+  const AchievementCategoryDBCompanion({
+    this.title = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  AchievementCategoryDBCompanion.insert({
+    required String title,
+    this.rowid = const Value.absent(),
+  }) : title = Value(title);
+  static Insertable<AchievementCategory> custom({
+    Expression<String>? title,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (title != null) 'title': title,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  AchievementCategoryDBCompanion copyWith(
+      {Value<String>? title, Value<int>? rowid}) {
+    return AchievementCategoryDBCompanion(
+      title: title ?? this.title,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AchievementCategoryDBCompanion(')
+          ..write('title: $title, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $AchievementDBTable extends AchievementDB
     with TableInfo<$AchievementDBTable, Achievement> {
   @override
@@ -1232,6 +1488,15 @@ class $AchievementDBTable extends AchievementDB
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES user_auth (id)'));
+  static const VerificationMeta _categoryTitleMeta =
+      const VerificationMeta('categoryTitle');
+  @override
+  late final GeneratedColumn<String> categoryTitle = GeneratedColumn<String>(
+      'category_title', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES achievement_category_d_b (title)'));
   static const VerificationMeta _progressMeta =
       const VerificationMeta('progress');
   @override
@@ -1296,6 +1561,7 @@ class $AchievementDBTable extends AchievementDB
   List<GeneratedColumn> get $columns => [
         id,
         userId,
+        categoryTitle,
         progress,
         progressPercent,
         isCompleted,
@@ -1325,6 +1591,14 @@ class $AchievementDBTable extends AchievementDB
           userId.isAcceptableOrUnknown(data['user_id']!, _userIdMeta));
     } else if (isInserting) {
       context.missing(_userIdMeta);
+    }
+    if (data.containsKey('category_title')) {
+      context.handle(
+          _categoryTitleMeta,
+          categoryTitle.isAcceptableOrUnknown(
+              data['category_title']!, _categoryTitleMeta));
+    } else if (isInserting) {
+      context.missing(_categoryTitleMeta);
     }
     if (data.containsKey('progress')) {
       context.handle(_progressMeta,
@@ -1409,6 +1683,8 @@ class $AchievementDBTable extends AchievementDB
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       userId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}user_id'])!,
+      categoryTitle: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}category_title'])!,
       progress: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}progress'])!,
       progressPercent: attachedDatabase.typeMapping.read(
@@ -1441,6 +1717,7 @@ class $AchievementDBTable extends AchievementDB
 class Achievement extends DataClass implements Insertable<Achievement> {
   final int id;
   final int userId;
+  final String categoryTitle;
   final int progress;
   final double progressPercent;
   final bool isCompleted;
@@ -1454,6 +1731,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
   const Achievement(
       {required this.id,
       required this.userId,
+      required this.categoryTitle,
       required this.progress,
       required this.progressPercent,
       required this.isCompleted,
@@ -1469,6 +1747,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['user_id'] = Variable<int>(userId);
+    map['category_title'] = Variable<String>(categoryTitle);
     map['progress'] = Variable<int>(progress);
     map['progress_percent'] = Variable<double>(progressPercent);
     map['is_completed'] = Variable<bool>(isCompleted);
@@ -1486,6 +1765,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
     return AchievementDBCompanion(
       id: Value(id),
       userId: Value(userId),
+      categoryTitle: Value(categoryTitle),
       progress: Value(progress),
       progressPercent: Value(progressPercent),
       isCompleted: Value(isCompleted),
@@ -1505,6 +1785,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
     return Achievement(
       id: serializer.fromJson<int>(json['id']),
       userId: serializer.fromJson<int>(json['userId']),
+      categoryTitle: serializer.fromJson<String>(json['categoryTitle']),
       progress: serializer.fromJson<int>(json['progress']),
       progressPercent: serializer.fromJson<double>(json['progressPercent']),
       isCompleted: serializer.fromJson<bool>(json['isCompleted']),
@@ -1523,6 +1804,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'userId': serializer.toJson<int>(userId),
+      'categoryTitle': serializer.toJson<String>(categoryTitle),
       'progress': serializer.toJson<int>(progress),
       'progressPercent': serializer.toJson<double>(progressPercent),
       'isCompleted': serializer.toJson<bool>(isCompleted),
@@ -1539,6 +1821,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
   Achievement copyWith(
           {int? id,
           int? userId,
+          String? categoryTitle,
           int? progress,
           double? progressPercent,
           bool? isCompleted,
@@ -1552,6 +1835,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
       Achievement(
         id: id ?? this.id,
         userId: userId ?? this.userId,
+        categoryTitle: categoryTitle ?? this.categoryTitle,
         progress: progress ?? this.progress,
         progressPercent: progressPercent ?? this.progressPercent,
         isCompleted: isCompleted ?? this.isCompleted,
@@ -1568,6 +1852,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
     return (StringBuffer('Achievement(')
           ..write('id: $id, ')
           ..write('userId: $userId, ')
+          ..write('categoryTitle: $categoryTitle, ')
           ..write('progress: $progress, ')
           ..write('progressPercent: $progressPercent, ')
           ..write('isCompleted: $isCompleted, ')
@@ -1586,6 +1871,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
   int get hashCode => Object.hash(
       id,
       userId,
+      categoryTitle,
       progress,
       progressPercent,
       isCompleted,
@@ -1602,6 +1888,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
       (other is Achievement &&
           other.id == this.id &&
           other.userId == this.userId &&
+          other.categoryTitle == this.categoryTitle &&
           other.progress == this.progress &&
           other.progressPercent == this.progressPercent &&
           other.isCompleted == this.isCompleted &&
@@ -1617,6 +1904,7 @@ class Achievement extends DataClass implements Insertable<Achievement> {
 class AchievementDBCompanion extends UpdateCompanion<Achievement> {
   final Value<int> id;
   final Value<int> userId;
+  final Value<String> categoryTitle;
   final Value<int> progress;
   final Value<double> progressPercent;
   final Value<bool> isCompleted;
@@ -1630,6 +1918,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
   const AchievementDBCompanion({
     this.id = const Value.absent(),
     this.userId = const Value.absent(),
+    this.categoryTitle = const Value.absent(),
     this.progress = const Value.absent(),
     this.progressPercent = const Value.absent(),
     this.isCompleted = const Value.absent(),
@@ -1644,6 +1933,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
   AchievementDBCompanion.insert({
     this.id = const Value.absent(),
     required int userId,
+    required String categoryTitle,
     required int progress,
     required double progressPercent,
     required bool isCompleted,
@@ -1655,6 +1945,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
     required int target,
     required int achievementId,
   })  : userId = Value(userId),
+        categoryTitle = Value(categoryTitle),
         progress = Value(progress),
         progressPercent = Value(progressPercent),
         isCompleted = Value(isCompleted),
@@ -1668,6 +1959,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
   static Insertable<Achievement> custom({
     Expression<int>? id,
     Expression<int>? userId,
+    Expression<String>? categoryTitle,
     Expression<int>? progress,
     Expression<double>? progressPercent,
     Expression<bool>? isCompleted,
@@ -1682,6 +1974,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (userId != null) 'user_id': userId,
+      if (categoryTitle != null) 'category_title': categoryTitle,
       if (progress != null) 'progress': progress,
       if (progressPercent != null) 'progress_percent': progressPercent,
       if (isCompleted != null) 'is_completed': isCompleted,
@@ -1698,6 +1991,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
   AchievementDBCompanion copyWith(
       {Value<int>? id,
       Value<int>? userId,
+      Value<String>? categoryTitle,
       Value<int>? progress,
       Value<double>? progressPercent,
       Value<bool>? isCompleted,
@@ -1711,6 +2005,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
     return AchievementDBCompanion(
       id: id ?? this.id,
       userId: userId ?? this.userId,
+      categoryTitle: categoryTitle ?? this.categoryTitle,
       progress: progress ?? this.progress,
       progressPercent: progressPercent ?? this.progressPercent,
       isCompleted: isCompleted ?? this.isCompleted,
@@ -1732,6 +2027,9 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
     }
     if (userId.present) {
       map['user_id'] = Variable<int>(userId.value);
+    }
+    if (categoryTitle.present) {
+      map['category_title'] = Variable<String>(categoryTitle.value);
     }
     if (progress.present) {
       map['progress'] = Variable<int>(progress.value);
@@ -1771,6 +2069,7 @@ class AchievementDBCompanion extends UpdateCompanion<Achievement> {
     return (StringBuffer('AchievementDBCompanion(')
           ..write('id: $id, ')
           ..write('userId: $userId, ')
+          ..write('categoryTitle: $categoryTitle, ')
           ..write('progress: $progress, ')
           ..write('progressPercent: $progressPercent, ')
           ..write('isCompleted: $isCompleted, ')
@@ -1791,13 +2090,15 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabaseManager get managers => _$AppDatabaseManager(this);
   late final $UserAuthTable userAuth = $UserAuthTable(this);
   late final $MetricDBTable metricDB = $MetricDBTable(this);
+  late final $AchievementCategoryDBTable achievementCategoryDB =
+      $AchievementCategoryDBTable(this);
   late final $AchievementDBTable achievementDB = $AchievementDBTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [userAuth, metricDB, achievementDB];
+      [userAuth, metricDB, achievementCategoryDB, achievementDB];
 }
 
 typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
@@ -1809,7 +2110,9 @@ typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
   required String avatarUrl,
   required String phoneNumber,
   required DateTime birthDate,
-  required int days,
+  Value<int?> subscriptionType,
+  Value<DateTime?> subscriptionAcquisition,
+  Value<DateTime?> subscriptionExpired,
   required int allowedAudioSeconds,
   required int allowedVideoSeconds,
   required int energy,
@@ -1828,7 +2131,9 @@ typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<String> avatarUrl,
   Value<String> phoneNumber,
   Value<DateTime> birthDate,
-  Value<int> days,
+  Value<int?> subscriptionType,
+  Value<DateTime?> subscriptionAcquisition,
+  Value<DateTime?> subscriptionExpired,
   Value<int> allowedAudioSeconds,
   Value<int> allowedVideoSeconds,
   Value<int> energy,
@@ -1867,7 +2172,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             Value<String> avatarUrl = const Value.absent(),
             Value<String> phoneNumber = const Value.absent(),
             Value<DateTime> birthDate = const Value.absent(),
-            Value<int> days = const Value.absent(),
+            Value<int?> subscriptionType = const Value.absent(),
+            Value<DateTime?> subscriptionAcquisition = const Value.absent(),
+            Value<DateTime?> subscriptionExpired = const Value.absent(),
             Value<int> allowedAudioSeconds = const Value.absent(),
             Value<int> allowedVideoSeconds = const Value.absent(),
             Value<int> energy = const Value.absent(),
@@ -1886,7 +2193,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             avatarUrl: avatarUrl,
             phoneNumber: phoneNumber,
             birthDate: birthDate,
-            days: days,
+            subscriptionType: subscriptionType,
+            subscriptionAcquisition: subscriptionAcquisition,
+            subscriptionExpired: subscriptionExpired,
             allowedAudioSeconds: allowedAudioSeconds,
             allowedVideoSeconds: allowedVideoSeconds,
             energy: energy,
@@ -1905,7 +2214,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             required String avatarUrl,
             required String phoneNumber,
             required DateTime birthDate,
-            required int days,
+            Value<int?> subscriptionType = const Value.absent(),
+            Value<DateTime?> subscriptionAcquisition = const Value.absent(),
+            Value<DateTime?> subscriptionExpired = const Value.absent(),
             required int allowedAudioSeconds,
             required int allowedVideoSeconds,
             required int energy,
@@ -1924,7 +2235,9 @@ class $$UserAuthTableTableManager extends RootTableManager<
             avatarUrl: avatarUrl,
             phoneNumber: phoneNumber,
             birthDate: birthDate,
-            days: days,
+            subscriptionType: subscriptionType,
+            subscriptionAcquisition: subscriptionAcquisition,
+            subscriptionExpired: subscriptionExpired,
             allowedAudioSeconds: allowedAudioSeconds,
             allowedVideoSeconds: allowedVideoSeconds,
             energy: energy,
@@ -1992,8 +2305,19 @@ class $$UserAuthTableFilterComposer
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
-  ColumnFilters<int> get days => $state.composableBuilder(
-      column: $state.table.days,
+  ColumnFilters<int> get subscriptionType => $state.composableBuilder(
+      column: $state.table.subscriptionType,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get subscriptionAcquisition =>
+      $state.composableBuilder(
+          column: $state.table.subscriptionAcquisition,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get subscriptionExpired => $state.composableBuilder(
+      column: $state.table.subscriptionExpired,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -2107,8 +2431,19 @@ class $$UserAuthTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
-  ColumnOrderings<int> get days => $state.composableBuilder(
-      column: $state.table.days,
+  ColumnOrderings<int> get subscriptionType => $state.composableBuilder(
+      column: $state.table.subscriptionType,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get subscriptionAcquisition => $state
+      .composableBuilder(
+          column: $state.table.subscriptionAcquisition,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get subscriptionExpired => $state.composableBuilder(
+      column: $state.table.subscriptionExpired,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
@@ -2351,10 +2686,105 @@ class $$MetricDBTableOrderingComposer
   }
 }
 
+typedef $$AchievementCategoryDBTableInsertCompanionBuilder
+    = AchievementCategoryDBCompanion Function({
+  required String title,
+  Value<int> rowid,
+});
+typedef $$AchievementCategoryDBTableUpdateCompanionBuilder
+    = AchievementCategoryDBCompanion Function({
+  Value<String> title,
+  Value<int> rowid,
+});
+
+class $$AchievementCategoryDBTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $AchievementCategoryDBTable,
+    AchievementCategory,
+    $$AchievementCategoryDBTableFilterComposer,
+    $$AchievementCategoryDBTableOrderingComposer,
+    $$AchievementCategoryDBTableProcessedTableManager,
+    $$AchievementCategoryDBTableInsertCompanionBuilder,
+    $$AchievementCategoryDBTableUpdateCompanionBuilder> {
+  $$AchievementCategoryDBTableTableManager(
+      _$AppDatabase db, $AchievementCategoryDBTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$AchievementCategoryDBTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$AchievementCategoryDBTableOrderingComposer(
+              ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$AchievementCategoryDBTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<String> title = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              AchievementCategoryDBCompanion(
+            title: title,
+            rowid: rowid,
+          ),
+          getInsertCompanionBuilder: ({
+            required String title,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              AchievementCategoryDBCompanion.insert(
+            title: title,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$AchievementCategoryDBTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$AppDatabase,
+        $AchievementCategoryDBTable,
+        AchievementCategory,
+        $$AchievementCategoryDBTableFilterComposer,
+        $$AchievementCategoryDBTableOrderingComposer,
+        $$AchievementCategoryDBTableProcessedTableManager,
+        $$AchievementCategoryDBTableInsertCompanionBuilder,
+        $$AchievementCategoryDBTableUpdateCompanionBuilder> {
+  $$AchievementCategoryDBTableProcessedTableManager(super.$state);
+}
+
+class $$AchievementCategoryDBTableFilterComposer
+    extends FilterComposer<_$AppDatabase, $AchievementCategoryDBTable> {
+  $$AchievementCategoryDBTableFilterComposer(super.$state);
+  ColumnFilters<String> get title => $state.composableBuilder(
+      column: $state.table.title,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ComposableFilter achievementDBRefs(
+      ComposableFilter Function($$AchievementDBTableFilterComposer f) f) {
+    final $$AchievementDBTableFilterComposer composer = $state.composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.title,
+        referencedTable: $state.db.achievementDB,
+        getReferencedColumn: (t) => t.categoryTitle,
+        builder: (joinBuilder, parentComposers) =>
+            $$AchievementDBTableFilterComposer(ComposerState($state.db,
+                $state.db.achievementDB, joinBuilder, parentComposers)));
+    return f(composer);
+  }
+}
+
+class $$AchievementCategoryDBTableOrderingComposer
+    extends OrderingComposer<_$AppDatabase, $AchievementCategoryDBTable> {
+  $$AchievementCategoryDBTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get title => $state.composableBuilder(
+      column: $state.table.title,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
 typedef $$AchievementDBTableInsertCompanionBuilder = AchievementDBCompanion
     Function({
   Value<int> id,
   required int userId,
+  required String categoryTitle,
   required int progress,
   required double progressPercent,
   required bool isCompleted,
@@ -2370,6 +2800,7 @@ typedef $$AchievementDBTableUpdateCompanionBuilder = AchievementDBCompanion
     Function({
   Value<int> id,
   Value<int> userId,
+  Value<String> categoryTitle,
   Value<int> progress,
   Value<double> progressPercent,
   Value<bool> isCompleted,
@@ -2404,6 +2835,7 @@ class $$AchievementDBTableTableManager extends RootTableManager<
           getUpdateCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             Value<int> userId = const Value.absent(),
+            Value<String> categoryTitle = const Value.absent(),
             Value<int> progress = const Value.absent(),
             Value<double> progressPercent = const Value.absent(),
             Value<bool> isCompleted = const Value.absent(),
@@ -2418,6 +2850,7 @@ class $$AchievementDBTableTableManager extends RootTableManager<
               AchievementDBCompanion(
             id: id,
             userId: userId,
+            categoryTitle: categoryTitle,
             progress: progress,
             progressPercent: progressPercent,
             isCompleted: isCompleted,
@@ -2432,6 +2865,7 @@ class $$AchievementDBTableTableManager extends RootTableManager<
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             required int userId,
+            required String categoryTitle,
             required int progress,
             required double progressPercent,
             required bool isCompleted,
@@ -2446,6 +2880,7 @@ class $$AchievementDBTableTableManager extends RootTableManager<
               AchievementDBCompanion.insert(
             id: id,
             userId: userId,
+            categoryTitle: categoryTitle,
             progress: progress,
             progressPercent: progressPercent,
             isCompleted: isCompleted,
@@ -2541,6 +2976,22 @@ class $$AchievementDBTableFilterComposer
                 $state.db, $state.db.userAuth, joinBuilder, parentComposers)));
     return composer;
   }
+
+  $$AchievementCategoryDBTableFilterComposer get categoryTitle {
+    final $$AchievementCategoryDBTableFilterComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.categoryTitle,
+            referencedTable: $state.db.achievementCategoryDB,
+            getReferencedColumn: (t) => t.title,
+            builder: (joinBuilder, parentComposers) =>
+                $$AchievementCategoryDBTableFilterComposer(ComposerState(
+                    $state.db,
+                    $state.db.achievementCategoryDB,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
 }
 
 class $$AchievementDBTableOrderingComposer
@@ -2612,6 +3063,22 @@ class $$AchievementDBTableOrderingComposer
                 $state.db, $state.db.userAuth, joinBuilder, parentComposers)));
     return composer;
   }
+
+  $$AchievementCategoryDBTableOrderingComposer get categoryTitle {
+    final $$AchievementCategoryDBTableOrderingComposer composer =
+        $state.composerBuilder(
+            composer: this,
+            getCurrentColumn: (t) => t.categoryTitle,
+            referencedTable: $state.db.achievementCategoryDB,
+            getReferencedColumn: (t) => t.title,
+            builder: (joinBuilder, parentComposers) =>
+                $$AchievementCategoryDBTableOrderingComposer(ComposerState(
+                    $state.db,
+                    $state.db.achievementCategoryDB,
+                    joinBuilder,
+                    parentComposers)));
+    return composer;
+  }
 }
 
 class _$AppDatabaseManager {
@@ -2621,6 +3088,8 @@ class _$AppDatabaseManager {
       $$UserAuthTableTableManager(_db, _db.userAuth);
   $$MetricDBTableTableManager get metricDB =>
       $$MetricDBTableTableManager(_db, _db.metricDB);
+  $$AchievementCategoryDBTableTableManager get achievementCategoryDB =>
+      $$AchievementCategoryDBTableTableManager(_db, _db.achievementCategoryDB);
   $$AchievementDBTableTableManager get achievementDB =>
       $$AchievementDBTableTableManager(_db, _db.achievementDB);
 }

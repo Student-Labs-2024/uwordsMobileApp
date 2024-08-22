@@ -22,4 +22,5 @@ abstract interface class INetworkUserDataSource {
   Future<UserAuthDto> refreshAccessToken({required UserAuthDto userDto});
   Future<void> sendCode({required String userEmail});
   Future<bool> checkCode({required String userEmail, required String code});
+  Future<UserAuthDto> fetchAboutMe({required UserAuthDto userDto});
 }
