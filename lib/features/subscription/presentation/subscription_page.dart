@@ -64,21 +64,22 @@ class _SubscriptionPageState extends State<SubscriptionPage>
             }, builder: (BuildContext context, SubscriptionState state) {
               return SafeArea(
                   child: Center(
-                    child: state.maybeWhen(
-                                    orElse: () => const SizedBox(),
-                                    initial: (tariffs) => ListView.builder(
-                                      itemCount: tariffs.length,
+                child: state.maybeWhen(
+                  orElse: () => const SizedBox(),
+                  initial: (tariffs) => ListView.builder(
+                      itemCount: tariffs.length,
                       itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      title: Text(tariffs[index].name),
-                      subtitle: Text(tariffs[index].price.toString()),
-                      onTap: () {
-                        context.read<SubscriptionBloc>().add(
-                            SubscriptionEvent.paySubscription(tariffs[index]));
-                      },
-                    );
-                                    }),
-                                    subscriptionPaid: () {
+                        return ListTile(
+                          title: Text(tariffs[index].name),
+                          subtitle: Text(tariffs[index].price.toString()),
+                          onTap: () {
+                            context.read<SubscriptionBloc>().add(
+                                SubscriptionEvent.paySubscription(
+                                    tariffs[index]));
+                          },
+                        );
+                      }),
+                  subscriptionPaid: () {
                     return const Column(
                       children: [
                         Icon(
@@ -88,8 +89,8 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                         Text("Оплата проведена успешно тарифа")
                       ],
                     );
-                                    },
-                                    subscriptionNotPaid: () {
+                  },
+                  subscriptionNotPaid: () {
                     return const Column(
                       children: [
                         Icon(
@@ -99,20 +100,20 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                         Text("Оплата не была проведена для тарифа")
                       ],
                     );
-                                    },
-                                    payingSubscription: (paymentLink) {
+                  },
+                  payingSubscription: (paymentLink) {
                     return Column(
                       children: [
                         const CircularProgressIndicator(),
                         Text("Оплата подписки по ссылке $paymentLink")
                       ],
                     );
-                                    },
-                                    loading: () {
+                  },
+                  loading: () {
                     return const CircularProgressIndicator();
-                                    },
-                                  ),
-                  ));
+                  },
+                ),
+              ));
             })));
   }
 }

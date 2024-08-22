@@ -216,10 +216,12 @@ class NetworkUserDataSource implements INetworkUserDataSource {
       }
     }
   }
-  
+
   @override
-  Future<UserAuthDto> fetchAboutMe({required UserAuthDto userDto}) async{
-    final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(tokenType: tokenType, token: userDto.accessToken));
-    return userDto.updateInfoAboutUserByMap(userMap: aboutMeResponse.data, user: userDto);
+  Future<UserAuthDto> fetchAboutMe({required UserAuthDto userDto}) async {
+    final aboutMeResponse = await client.aboutMe(joinTokenTypeAndToken(
+        tokenType: tokenType, token: userDto.accessToken));
+    return userDto.updateInfoAboutUserByMap(
+        userMap: aboutMeResponse.data, user: userDto);
   }
 }

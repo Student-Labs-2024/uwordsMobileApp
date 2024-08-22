@@ -23,7 +23,7 @@ class NetworkTariffDataSource implements INetworkTariffDataSource {
       return await client.checkPaymentStatus(
           joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
           paymentId);
-    } on Exception catch (e) {
+    } on Exception {
       // TODO: Change Rethrow;
       rethrow;
     }
@@ -38,7 +38,7 @@ class NetworkTariffDataSource implements INetworkTariffDataSource {
       return data
           .map((tariff) => TariffDto.fromJson(tariffMap: tariff))
           .toList();
-    } on Exception catch (e) {
+    } on Exception {
       // TODO change rethrow;
       rethrow;
     }
@@ -50,7 +50,7 @@ class NetworkTariffDataSource implements INetworkTariffDataSource {
       final response = await client.payByTariffName(tariffTitle);
       FormDto formDto = FormDto.fromJson(infoList: response.data);
       return formDto;
-    } on Exception catch (e) {
+    } on Exception {
       // TODO change rethrow;
       rethrow;
     }
