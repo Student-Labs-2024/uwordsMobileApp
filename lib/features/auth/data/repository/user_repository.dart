@@ -188,4 +188,17 @@ class UserRepository implements IUserRepository {
     //TODO need to add into savable user data source update method
     _saveUser(userDto: result);
   }
+
+  @override
+  bool isSubscriptionActive() {
+    if (_currentUser.subscriptionType == null) {
+      return false;
+    } else {
+      if (_currentUser.subscriptionExpired != null) {
+        return DateTime.now().isBefore(_currentUser.subscriptionExpired!);
+      } else {
+        return false;
+      }
+    }
+  }
 }

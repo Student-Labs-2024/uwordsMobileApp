@@ -21,6 +21,7 @@ mixin _$SubscriptionEvent {
     required TResult Function() downloadSubcriptionsTypes,
     required TResult Function(Tariff tariff) paySubscription,
     required TResult Function() checkSubscription,
+    required TResult Function() isSubscriptionActive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$SubscriptionEvent {
     TResult? Function()? downloadSubcriptionsTypes,
     TResult? Function(Tariff tariff)? paySubscription,
     TResult? Function()? checkSubscription,
+    TResult? Function()? isSubscriptionActive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$SubscriptionEvent {
     TResult Function()? downloadSubcriptionsTypes,
     TResult Function(Tariff tariff)? paySubscription,
     TResult Function()? checkSubscription,
+    TResult Function()? isSubscriptionActive,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$SubscriptionEvent {
         downloadSubcriptionsTypes,
     required TResult Function(_PaySubscription value) paySubscription,
     required TResult Function(_CheckSubscription value) checkSubscription,
+    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +56,7 @@ mixin _$SubscriptionEvent {
         downloadSubcriptionsTypes,
     TResult? Function(_PaySubscription value)? paySubscription,
     TResult? Function(_CheckSubscription value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +65,7 @@ mixin _$SubscriptionEvent {
         downloadSubcriptionsTypes,
     TResult Function(_PaySubscription value)? paySubscription,
     TResult Function(_CheckSubscription value)? checkSubscription,
+    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
     required TResult Function() downloadSubcriptionsTypes,
     required TResult Function(Tariff tariff) paySubscription,
     required TResult Function() checkSubscription,
+    required TResult Function() isSubscriptionActive,
   }) {
     return downloadSubcriptionsTypes();
   }
@@ -138,6 +145,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
     TResult? Function()? downloadSubcriptionsTypes,
     TResult? Function(Tariff tariff)? paySubscription,
     TResult? Function()? checkSubscription,
+    TResult? Function()? isSubscriptionActive,
   }) {
     return downloadSubcriptionsTypes?.call();
   }
@@ -148,6 +156,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
     TResult Function()? downloadSubcriptionsTypes,
     TResult Function(Tariff tariff)? paySubscription,
     TResult Function()? checkSubscription,
+    TResult Function()? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (downloadSubcriptionsTypes != null) {
@@ -163,6 +172,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
         downloadSubcriptionsTypes,
     required TResult Function(_PaySubscription value) paySubscription,
     required TResult Function(_CheckSubscription value) checkSubscription,
+    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
   }) {
     return downloadSubcriptionsTypes(this);
   }
@@ -174,6 +184,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
         downloadSubcriptionsTypes,
     TResult? Function(_PaySubscription value)? paySubscription,
     TResult? Function(_CheckSubscription value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
   }) {
     return downloadSubcriptionsTypes?.call(this);
   }
@@ -185,6 +196,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
         downloadSubcriptionsTypes,
     TResult Function(_PaySubscription value)? paySubscription,
     TResult Function(_CheckSubscription value)? checkSubscription,
+    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (downloadSubcriptionsTypes != null) {
@@ -266,6 +278,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
     required TResult Function() downloadSubcriptionsTypes,
     required TResult Function(Tariff tariff) paySubscription,
     required TResult Function() checkSubscription,
+    required TResult Function() isSubscriptionActive,
   }) {
     return paySubscription(tariff);
   }
@@ -276,6 +289,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
     TResult? Function()? downloadSubcriptionsTypes,
     TResult? Function(Tariff tariff)? paySubscription,
     TResult? Function()? checkSubscription,
+    TResult? Function()? isSubscriptionActive,
   }) {
     return paySubscription?.call(tariff);
   }
@@ -286,6 +300,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
     TResult Function()? downloadSubcriptionsTypes,
     TResult Function(Tariff tariff)? paySubscription,
     TResult Function()? checkSubscription,
+    TResult Function()? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (paySubscription != null) {
@@ -301,6 +316,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
         downloadSubcriptionsTypes,
     required TResult Function(_PaySubscription value) paySubscription,
     required TResult Function(_CheckSubscription value) checkSubscription,
+    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
   }) {
     return paySubscription(this);
   }
@@ -312,6 +328,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
         downloadSubcriptionsTypes,
     TResult? Function(_PaySubscription value)? paySubscription,
     TResult? Function(_CheckSubscription value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
   }) {
     return paySubscription?.call(this);
   }
@@ -323,6 +340,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
         downloadSubcriptionsTypes,
     TResult Function(_PaySubscription value)? paySubscription,
     TResult Function(_CheckSubscription value)? checkSubscription,
+    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (paySubscription != null) {
@@ -382,6 +400,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
     required TResult Function() downloadSubcriptionsTypes,
     required TResult Function(Tariff tariff) paySubscription,
     required TResult Function() checkSubscription,
+    required TResult Function() isSubscriptionActive,
   }) {
     return checkSubscription();
   }
@@ -392,6 +411,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
     TResult? Function()? downloadSubcriptionsTypes,
     TResult? Function(Tariff tariff)? paySubscription,
     TResult? Function()? checkSubscription,
+    TResult? Function()? isSubscriptionActive,
   }) {
     return checkSubscription?.call();
   }
@@ -402,6 +422,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
     TResult Function()? downloadSubcriptionsTypes,
     TResult Function(Tariff tariff)? paySubscription,
     TResult Function()? checkSubscription,
+    TResult Function()? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (checkSubscription != null) {
@@ -417,6 +438,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
         downloadSubcriptionsTypes,
     required TResult Function(_PaySubscription value) paySubscription,
     required TResult Function(_CheckSubscription value) checkSubscription,
+    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
   }) {
     return checkSubscription(this);
   }
@@ -428,6 +450,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
         downloadSubcriptionsTypes,
     TResult? Function(_PaySubscription value)? paySubscription,
     TResult? Function(_CheckSubscription value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
   }) {
     return checkSubscription?.call(this);
   }
@@ -439,6 +462,7 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
         downloadSubcriptionsTypes,
     TResult Function(_PaySubscription value)? paySubscription,
     TResult Function(_CheckSubscription value)? checkSubscription,
+    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (checkSubscription != null) {
@@ -453,6 +477,124 @@ abstract class _CheckSubscription implements SubscriptionEvent {
 }
 
 /// @nodoc
+abstract class _$$IsSubscriptionActiveImplCopyWith<$Res> {
+  factory _$$IsSubscriptionActiveImplCopyWith(_$IsSubscriptionActiveImpl value,
+          $Res Function(_$IsSubscriptionActiveImpl) then) =
+      __$$IsSubscriptionActiveImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$IsSubscriptionActiveImplCopyWithImpl<$Res>
+    extends _$SubscriptionEventCopyWithImpl<$Res, _$IsSubscriptionActiveImpl>
+    implements _$$IsSubscriptionActiveImplCopyWith<$Res> {
+  __$$IsSubscriptionActiveImplCopyWithImpl(_$IsSubscriptionActiveImpl _value,
+      $Res Function(_$IsSubscriptionActiveImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
+  const _$IsSubscriptionActiveImpl();
+
+  @override
+  String toString() {
+    return 'SubscriptionEvent.isSubscriptionActive()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IsSubscriptionActiveImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() downloadSubcriptionsTypes,
+    required TResult Function(Tariff tariff) paySubscription,
+    required TResult Function() checkSubscription,
+    required TResult Function() isSubscriptionActive,
+  }) {
+    return isSubscriptionActive();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? downloadSubcriptionsTypes,
+    TResult? Function(Tariff tariff)? paySubscription,
+    TResult? Function()? checkSubscription,
+    TResult? Function()? isSubscriptionActive,
+  }) {
+    return isSubscriptionActive?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? downloadSubcriptionsTypes,
+    TResult Function(Tariff tariff)? paySubscription,
+    TResult Function()? checkSubscription,
+    TResult Function()? isSubscriptionActive,
+    required TResult orElse(),
+  }) {
+    if (isSubscriptionActive != null) {
+      return isSubscriptionActive();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DownloadSubscriptionTypes value)
+        downloadSubcriptionsTypes,
+    required TResult Function(_PaySubscription value) paySubscription,
+    required TResult Function(_CheckSubscription value) checkSubscription,
+    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
+  }) {
+    return isSubscriptionActive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DownloadSubscriptionTypes value)?
+        downloadSubcriptionsTypes,
+    TResult? Function(_PaySubscription value)? paySubscription,
+    TResult? Function(_CheckSubscription value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
+  }) {
+    return isSubscriptionActive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DownloadSubscriptionTypes value)?
+        downloadSubcriptionsTypes,
+    TResult Function(_PaySubscription value)? paySubscription,
+    TResult Function(_CheckSubscription value)? checkSubscription,
+    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    required TResult orElse(),
+  }) {
+    if (isSubscriptionActive != null) {
+      return isSubscriptionActive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsSubscriptionActive implements SubscriptionEvent {
+  const factory _IsSubscriptionActive() = _$IsSubscriptionActiveImpl;
+}
+
+/// @nodoc
 mixin _$SubscriptionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -463,6 +605,7 @@ mixin _$SubscriptionState {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -474,6 +617,7 @@ mixin _$SubscriptionState {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -485,6 +629,7 @@ mixin _$SubscriptionState {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -497,6 +642,7 @@ mixin _$SubscriptionState {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -508,6 +654,7 @@ mixin _$SubscriptionState {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -519,6 +666,7 @@ mixin _$SubscriptionState {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -619,6 +767,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return initial(tariffs);
   }
@@ -633,6 +782,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return initial?.call(tariffs);
   }
@@ -647,6 +797,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -665,6 +816,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return initial(this);
   }
@@ -679,6 +831,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return initial?.call(this);
   }
@@ -693,6 +846,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -756,6 +910,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return loading();
   }
@@ -770,6 +925,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return loading?.call();
   }
@@ -784,6 +940,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -802,6 +959,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return loading(this);
   }
@@ -816,6 +974,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return loading?.call(this);
   }
@@ -830,6 +989,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -888,6 +1048,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return subscriptionPaid();
   }
@@ -902,6 +1063,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return subscriptionPaid?.call();
   }
@@ -916,6 +1078,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionPaid != null) {
@@ -934,6 +1097,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return subscriptionPaid(this);
   }
@@ -948,6 +1112,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return subscriptionPaid?.call(this);
   }
@@ -962,6 +1127,7 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionPaid != null) {
@@ -1021,6 +1187,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return subscriptionNotPaid();
   }
@@ -1035,6 +1202,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return subscriptionNotPaid?.call();
   }
@@ -1049,6 +1217,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionNotPaid != null) {
@@ -1067,6 +1236,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return subscriptionNotPaid(this);
   }
@@ -1081,6 +1251,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return subscriptionNotPaid?.call(this);
   }
@@ -1095,6 +1266,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionNotPaid != null) {
@@ -1181,6 +1353,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return payingSubscription(paymentLink);
   }
@@ -1195,6 +1368,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return payingSubscription?.call(paymentLink);
   }
@@ -1209,6 +1383,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (payingSubscription != null) {
@@ -1227,6 +1402,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return payingSubscription(this);
   }
@@ -1241,6 +1417,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return payingSubscription?.call(this);
   }
@@ -1255,6 +1432,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (payingSubscription != null) {
@@ -1345,6 +1523,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return falied(failed);
   }
@@ -1359,6 +1538,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return falied?.call(failed);
   }
@@ -1373,6 +1553,7 @@ class _$FailedImpl implements _Failed {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (falied != null) {
@@ -1391,6 +1572,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return falied(this);
   }
@@ -1405,6 +1587,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return falied?.call(this);
   }
@@ -1419,6 +1602,7 @@ class _$FailedImpl implements _Failed {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (falied != null) {
@@ -1508,6 +1692,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(String paymentLink) payingSubscription,
     required TResult Function(SubscriptionCheckStatus failed) falied,
     required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
   }) {
     return success(this.success);
   }
@@ -1522,6 +1707,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(String paymentLink)? payingSubscription,
     TResult? Function(SubscriptionCheckStatus failed)? falied,
     TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
   }) {
     return success?.call(this.success);
   }
@@ -1536,6 +1722,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(String paymentLink)? payingSubscription,
     TResult Function(SubscriptionCheckStatus failed)? falied,
     TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1554,6 +1741,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_PayingSubscription value) payingSubscription,
     required TResult Function(_Failed value) falied,
     required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
   }) {
     return success(this);
   }
@@ -1568,6 +1756,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_PayingSubscription value)? payingSubscription,
     TResult? Function(_Failed value)? falied,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
   }) {
     return success?.call(this);
   }
@@ -1582,6 +1771,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_PayingSubscription value)? payingSubscription,
     TResult Function(_Failed value)? falied,
     TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1597,5 +1787,177 @@ abstract class _Success implements SubscriptionState {
   SubscriptionCheckStatus get success;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubscriptionStatusImplCopyWith<$Res> {
+  factory _$$SubscriptionStatusImplCopyWith(_$SubscriptionStatusImpl value,
+          $Res Function(_$SubscriptionStatusImpl) then) =
+      __$$SubscriptionStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isActive});
+}
+
+/// @nodoc
+class __$$SubscriptionStatusImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$SubscriptionStatusImpl>
+    implements _$$SubscriptionStatusImplCopyWith<$Res> {
+  __$$SubscriptionStatusImplCopyWithImpl(_$SubscriptionStatusImpl _value,
+      $Res Function(_$SubscriptionStatusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isActive = null,
+  }) {
+    return _then(_$SubscriptionStatusImpl(
+      null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SubscriptionStatusImpl implements _SubscriptionStatus {
+  const _$SubscriptionStatusImpl(this.isActive);
+
+  @override
+  final bool isActive;
+
+  @override
+  String toString() {
+    return 'SubscriptionState.subscriptionStatus(isActive: $isActive)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubscriptionStatusImpl &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isActive);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubscriptionStatusImplCopyWith<_$SubscriptionStatusImpl> get copyWith =>
+      __$$SubscriptionStatusImplCopyWithImpl<_$SubscriptionStatusImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Tariff> tariffs) initial,
+    required TResult Function() loading,
+    required TResult Function() subscriptionPaid,
+    required TResult Function() subscriptionNotPaid,
+    required TResult Function(String paymentLink) payingSubscription,
+    required TResult Function(SubscriptionCheckStatus failed) falied,
+    required TResult Function(SubscriptionCheckStatus success) success,
+    required TResult Function(bool isActive) subscriptionStatus,
+  }) {
+    return subscriptionStatus(isActive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Tariff> tariffs)? initial,
+    TResult? Function()? loading,
+    TResult? Function()? subscriptionPaid,
+    TResult? Function()? subscriptionNotPaid,
+    TResult? Function(String paymentLink)? payingSubscription,
+    TResult? Function(SubscriptionCheckStatus failed)? falied,
+    TResult? Function(SubscriptionCheckStatus success)? success,
+    TResult? Function(bool isActive)? subscriptionStatus,
+  }) {
+    return subscriptionStatus?.call(isActive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Tariff> tariffs)? initial,
+    TResult Function()? loading,
+    TResult Function()? subscriptionPaid,
+    TResult Function()? subscriptionNotPaid,
+    TResult Function(String paymentLink)? payingSubscription,
+    TResult Function(SubscriptionCheckStatus failed)? falied,
+    TResult Function(SubscriptionCheckStatus success)? success,
+    TResult Function(bool isActive)? subscriptionStatus,
+    required TResult orElse(),
+  }) {
+    if (subscriptionStatus != null) {
+      return subscriptionStatus(isActive);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
+    required TResult Function(_PayingSubscription value) payingSubscription,
+    required TResult Function(_Failed value) falied,
+    required TResult Function(_Success value) success,
+    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+  }) {
+    return subscriptionStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscription value)? payingSubscription,
+    TResult? Function(_Failed value)? falied,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+  }) {
+    return subscriptionStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscription value)? payingSubscription,
+    TResult Function(_Failed value)? falied,
+    TResult Function(_Success value)? success,
+    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    required TResult orElse(),
+  }) {
+    if (subscriptionStatus != null) {
+      return subscriptionStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubscriptionStatus implements SubscriptionState {
+  const factory _SubscriptionStatus(final bool isActive) =
+      _$SubscriptionStatusImpl;
+
+  bool get isActive;
+  @JsonKey(ignore: true)
+  _$$SubscriptionStatusImplCopyWith<_$SubscriptionStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -7,6 +7,7 @@ import 'package:uwords/features/auth/data/repository/interface_user_repository.d
 import 'package:uwords/features/subscription/data/repositories/subscription_repository.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
 import 'package:uwords/features/subscription/domain/subscription_enum.dart';
+
 part 'subscription_event.dart';
 part 'subscription_state.dart';
 part 'subscription_bloc.freezed.dart';
@@ -25,6 +26,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
     on<_DownloadSubscriptionTypes>(_handleDownloadSubscriptionTypes);
     on<_PaySubscription>(_handlePaySubscription);
     on<_CheckSubscription>(_handleCheckSubscription);
+    on<_IsSubscriptionActive>(_handleIsSubscriptionActive);
   }
   Future<void> _handleDownloadSubscriptionTypes(
       _DownloadSubscriptionTypes event, Emitter<SubscriptionState> emit) async {
@@ -71,6 +73,12 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       _emitter = emit;
       addError(e);
     }
+  }
+
+  Future<void> _handleIsSubscriptionActive(
+      _IsSubscriptionActive event, Emitter<SubscriptionState> emit) async {
+    bool isActive = userRepository.isSubscriptionActive();
+    emit(SubscriptionState.subscriptionStatus(isActive));
   }
 
   @override

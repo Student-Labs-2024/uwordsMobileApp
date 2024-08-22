@@ -66,19 +66,35 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   child: Center(
                 child: state.maybeWhen(
                   orElse: () => const SizedBox(),
-                  initial: (tariffs) => ListView.builder(
-                      itemCount: tariffs.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(tariffs[index].name),
-                          subtitle: Text(tariffs[index].price.toString()),
-                          onTap: () {
+                  initial: (tariffs) => Column(
+                    children: [
+                      SizedBox(
+                        height: 200,
+                        child: ListView.builder(
+                            itemCount: tariffs.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ListTile(
+                                title: Text(tariffs[index].name),
+                                subtitle: Text(tariffs[index].price.toString()),
+                                onTap: () {
+                                  context.read<SubscriptionBloc>().add(
+                                      SubscriptionEvent.paySubscription(
+                                          tariffs[index]));
+                                },
+                              );
+                            }),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
                             context.read<SubscriptionBloc>().add(
-                                SubscriptionEvent.paySubscription(
-                                    tariffs[index]));
+                                const SubscriptionEvent.isSubscriptionActive());
                           },
-                        );
-                      }),
+                          child: Text("Проверить статус подписки"))
+                    ],
+                  ),
+                  subscriptionStatus: (isActive) {
+                    return Text(isActive.toString());
+                  },
                   subscriptionPaid: () {
                     return const Column(
                       children: [

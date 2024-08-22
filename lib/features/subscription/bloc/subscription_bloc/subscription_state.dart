@@ -12,4 +12,5 @@ class SubscriptionState with _$SubscriptionState {
       _Failed;
   const factory SubscriptionState.success(SubscriptionCheckStatus success) =
       _Success;
+  const factory SubscriptionState.subscriptionStatus(bool isActive) = _SubscriptionStatus;
 }
