@@ -30,4 +30,5 @@ abstract interface class IUserRepository {
   Future<int> getCurrentUserId();
   Future<String> getCurrentUserName();
   Future<String> getCurrentUserAvatarUrl();
+  Future<void> updateInfoAboutUser();
 }

@@ -61,6 +61,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       final bool paymentStatus =
           await subscriptionRepository.checkPayment(accessToken: accessToken);
       if (paymentStatus) {
+        await userRepository.updateInfoAboutUser();
         emit(const SubscriptionState.subscriptionPaid());
       } else {
         emit(const SubscriptionState.subscriptionNotPaid());

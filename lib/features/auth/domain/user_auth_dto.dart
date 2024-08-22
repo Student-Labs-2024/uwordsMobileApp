@@ -6,17 +6,17 @@ import 'package:uwords/features/global/domain/metrics.dart';
 class UserAuthDto {
   final int id;
   final String email;
-  String username;
-  String firstname;
-  String lastname;
-  String avatarUrl;
-  String phoneNumber;
-  DateTime birthDate;
-  MetricsDto metricsDto;
+  final String username;
+  final String firstname;
+  final String lastname;
+  final String avatarUrl;
+  final String phoneNumber;
+  final DateTime birthDate;
+  final MetricsDto metricsDto;
   final int days;
-  int allowedAudioSeconds;
-  int allowedVideoSeconds;
-  int energy;
+  final int allowedAudioSeconds;
+  final int allowedVideoSeconds;
+  final int energy;
   String accessToken;
   final String refreshToken;
   final bool isEducationCompleted;
@@ -105,27 +105,68 @@ class UserAuthDto {
     accessToken = newAccessToken;
   }
 
-  void changeUsername({required String newUsername}) {
-    username = newUsername;
+  UserAuthDto updateInfoAboutUserByMap(
+      {required Map<String, dynamic> userMap, required UserAuthDto user}) {
+    return user.copyWith(
+      username: userMap['username'] ?? '',
+      firstname: userMap['firstname'] ?? '',
+      lastname: userMap['lastname'] ?? '',
+      avatarUrl: userMap['avatar_url'] ?? '',
+      phoneNumber: userMap['phone_number'] ?? '',
+      birthDate:
+          DateTime.tryParse(userMap['birth_date'] ?? '') ?? DateTime.now(),
+      metricsDto: MetricsDto.fromJson(metricMap: userMap['metrics']),
+      days: userMap['days'],
+      allowedAudioSeconds: userMap['allowed_audio_seconds'],
+      allowedVideoSeconds: userMap['allowed_video_seconds'],
+      energy: userMap['energy'],
+      achievements: (userMap['achievements'] as List<dynamic>?)
+              ?.map((achievement) =>
+                  AchievementInfoDto.fromJson(achievementInfoMap: achievement))
+              .toList() ??
+          [],
+    );
   }
 
-  void changeFirstname({required String newFirstname}) {
-    firstname = newFirstname;
-  }
-
-  void changeLastname({required String newLastname}) {
-    lastname = newLastname;
-  }
-
-  void changeAvatarUrl({required String newAvatarUrl}) {
-    avatarUrl = newAvatarUrl;
-  }
-
-  void changePhoneNumber({required String newPhoneNumber}) {
-    phoneNumber = newPhoneNumber;
-  }
-
-  void changeBirthDate({required DateTime newBirthDate}) {
-    birthDate = newBirthDate;
+  UserAuthDto copyWith({
+    int? id,
+    String? email,
+    String? username,
+    String? firstname,
+    String? lastname,
+    String? avatarUrl,
+    String? phoneNumber,
+    DateTime? birthDate,
+    MetricsDto? metricsDto,
+    int? days,
+    int? allowedAudioSeconds,
+    int? allowedVideoSeconds,
+    int? energy,
+    String? accessToken,
+    String? refreshToken,
+    bool? isEducationCompleted,
+    String? provider,
+    List<AchievementInfoDto>? achievements,
+  }) {
+    return UserAuthDto(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      username: username ?? this.username,
+      firstname: firstname ?? this.firstname,
+      lastname: lastname ?? this.lastname,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      birthDate: birthDate ?? this.birthDate,
+      metricsDto: metricsDto ?? this.metricsDto,
+      days: days ?? this.days,
+      allowedAudioSeconds: allowedAudioSeconds ?? this.allowedAudioSeconds,
+      allowedVideoSeconds: allowedVideoSeconds ?? this.allowedVideoSeconds,
+      energy: energy ?? this.energy,
+      accessToken: accessToken ?? this.accessToken,
+      refreshToken: refreshToken ?? this.refreshToken,
+      isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
+      provider: provider ?? this.provider,
+      achievements: achievements ?? this.achievements,
+    );
   }
 }
