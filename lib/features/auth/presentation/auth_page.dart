@@ -66,6 +66,8 @@ class _AuthPageState extends State<AuthPage> {
                   case AuthSuccess.authorized:
                     context.go("/home");
                   case AuthSuccess.sendedCode:
+                  case AuthSuccess.educationNotCompleted:
+                    context.go("/onboarding");
                 }
               },
               failed: (error) {

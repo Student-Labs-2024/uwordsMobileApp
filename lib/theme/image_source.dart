@@ -81,6 +81,12 @@ class AppImageSource {
   static const String activeButton = 'assets/png/button_active.png';
   static const String disabledButton = 'assets/png/button_disabled.png';
   static const String redButton = 'assets/png/button_red.png';
+  static const String onboarding1 = 'assets/png/telephone1.png';
+  static const String onboarding2 = 'assets/png/telephone2.png';
+  static const String youtubeIcon = 'assets/svg/youtube.svg';
+  static const String telegramIcon = 'assets/svg/telegram.svg';
+  static const String discordIcon = 'assets/svg/discord.svg';
+  static const String chromeIcon = 'assets/svg/chrome.svg';
   static const String animatedSubtopicIcon =
       'assets/svg/animated_subtopic_image.svg';
 }

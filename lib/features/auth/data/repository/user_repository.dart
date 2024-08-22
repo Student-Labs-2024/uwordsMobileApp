@@ -204,6 +204,13 @@ class UserRepository implements IUserRepository {
     }
   }
 
+  //TODO Change educationCompleted checking
+  @override
+  Future<bool> isEducationCompleted() async {
+    final UserAuthDto userAuthDto = await savableUserDataSource.getCurrent();
+    return userAuthDto.isEducationCompleted;
+  }
+
   @override
   String getSubscriptionExpired() {
     if (_currentUser.subscriptionExpired != null) {

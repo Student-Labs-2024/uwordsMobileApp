@@ -114,6 +114,8 @@ class _RegisterPageState extends State<RegisterPage>
                 case AuthSuccess.authorized:
                   context.go("/home");
                 case AuthSuccess.sendedCode:
+                case AuthSuccess.educationNotCompleted:
+                  context.go("/onboarding");
               }
             }, failed: (error) {
               showModalBottomSheet(
@@ -294,6 +296,8 @@ class _RegisterPageState extends State<RegisterPage>
             }, success: (success) {
               switch (success) {
                 case AuthSuccess.authorized:
+                  return const SizedBox();
+                case AuthSuccess.educationNotCompleted:
                   return const SizedBox();
                 case AuthSuccess.sendedCode:
                   return ConfirmPage(
