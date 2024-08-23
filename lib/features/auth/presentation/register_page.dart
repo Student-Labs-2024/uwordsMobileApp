@@ -41,6 +41,7 @@ class _RegisterPageState extends State<RegisterPage>
   String inputState = OtherLearnConstants.stateZero;
   DateTime choosenDate = DateTime.now();
   TextEditingController datePickerController = TextEditingController();
+  String username = '';
 
   void _showDatePicker(BuildContext ctx) {
     showCupertinoModalPopup(
@@ -113,9 +114,10 @@ class _RegisterPageState extends State<RegisterPage>
               switch (success) {
                 case AuthSuccess.authorized:
                   context.go("/home");
-                case AuthSuccess.sendedCode:
                 case AuthSuccess.educationNotCompleted:
                   context.go("/onboarding");
+                case AuthSuccess.sendedCode:
+                  username = usernameController.text;
               }
             }, failed: (error) {
               showModalBottomSheet(
@@ -306,7 +308,7 @@ class _RegisterPageState extends State<RegisterPage>
                             birthDate: choosenDate,
                             emailAddress: mailController.text,
                             password: passwordController.text,
-                            nickname: usernameController.text));
+                            nickname: username));
                       },
                       goBack: () {
                         context
