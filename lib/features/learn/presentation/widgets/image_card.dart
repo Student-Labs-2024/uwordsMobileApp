@@ -1,59 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:uwords/features/global/data/constants/global_sizes.dart';
+import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 
-import '../../../../theme/app_colors.dart';
-
-class ImageCard extends StatefulWidget {
+class ImageCard extends StatelessWidget {
   const ImageCard({
     super.key,
     required this.word,
+    required this.onPressed,
+    required this.state,
   });
 
   final WordModel word;
-
-  @override
-  State<ImageCard> createState() => _ImageCardState();
-}
-
-class _ImageCardState extends State<ImageCard> {
-  bool isSelected = false;
+  final Function(WordModel) onPressed;
+  final String state;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 9, bottom: 9),
+      padding: const EdgeInsets.symmetric(
+          horizontal: LearnPaddings.imageCardHorizontal,
+          vertical: LearnPaddings.imageCardVertical),
       child: GestureDetector(
-        onTap: () => setState(() {
-          isSelected = !isSelected;
-        }),
+        onTap: () => onPressed(word),
         child: Container(
-          width: MediaQuery.of(context).size.width * 146 / 375,
-          height: MediaQuery.of(context).size.height * 146 / 812,
+          width: MediaQuery.of(context).size.width * LearnSizes.imageCardWidth,
+          height:
+              MediaQuery.of(context).size.height * LearnSizes.imageCardHeight,
           decoration: BoxDecoration(
-              border: Border.all(
-                color: isSelected ? AppColors.mainColor : Colors.transparent,
-                width: 6,
-              ),
-              borderRadius: BorderRadius.circular(20)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(13.5),
-            child: Image.network(
-              widget.word.pictureLink,
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                } else {
-                  return const SizedBox(
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.mainColor,
-                      ),
-                    ),
-                  );
-                }
-              },
-            ),
+              border: state != OtherLearnConstants.stateZero
+                  ? GradientBoxBorder(
+                      gradient: OtherLearnConstants.getGradient(state),
+                      width: LearnSizes.wordInputBorder,
+                    )
+                  : null,
+              borderRadius:
+                  BorderRadius.circular(GlobalSizes.borderRadiusLarge)),
+          child: CustomImageNetworkView(
+            imageSource: word.pictureLink,
+            darken: state == OtherLearnConstants.stateActive,
+            width:
+                MediaQuery.of(context).size.width * LearnSizes.imageCardWidth,
+            height:
+                MediaQuery.of(context).size.height * LearnSizes.imageCardHeight,
+            clipRadius: GlobalSizes.borderRadiusLarge,
           ),
         ),
       ),

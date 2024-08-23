@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
-import 'package:uwords/features/learn/presentation/widgets/big_button.dart';
-import 'package:uwords/features/learn/presentation/widgets/word_tile.dart';
+import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/learn/presentation/widgets/animated_subtopic.dart';
+import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
+import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
+import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
+import 'package:uwords/features/learn/presentation/widgets/subtopics_row.dart';
+import 'package:uwords/features/learn/presentation/widgets/topic_header.dart';
+import 'package:uwords/theme/app_colors.dart';
+import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class LearnPage extends StatefulWidget {
   const LearnPage({super.key});
@@ -13,56 +23,249 @@ class LearnPage extends StatefulWidget {
 }
 
 class _LearnPageState extends State<LearnPage> {
-  startTraining() {
-    //что-то делает
-    debugPrint('Нажал большую кнопку!!!');
-  }
-
+  String _searchText = "";
+  List<Subtopic> _searchList = [];
+  bool _isChosenSort = false;
+  Comparator<Subtopic> comparator = latestStudyDateComparator;
+  late TextEditingController _searchQuery;
+  late PageController _pageController;
   @override
   void initState() {
     super.initState();
-    context.read<LearningBloc>().add(const LearningEvent.getWordsForStudy());
+    _searchQuery = TextEditingController();
+    _pageController = PageController();
+  }
+
+  List<Subtopic> _buildSearchList(List<Subtopic> subtopicList) {
+    if (_searchText.isEmpty) {
+      return subtopicList;
+    } else {
+      return subtopicList
+          .where((element) => element.subtopicTitle
+              .toLowerCase()
+              .contains(_searchText.toLowerCase()))
+          .toList();
+    }
   }
 
   @override
+  void dispose() {
+    _searchQuery.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  String currentBackBubbles = AppImageSource.topicBackground;
+
+  @override
   Widget build(BuildContext context) {
+    double maximumWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: BlocConsumer<LearningBloc, LearningState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return SafeArea(
-            child: Column(
+        body: DecoratedBox(
+            decoration:
+                const BoxDecoration(gradient: AppColors.backgroundGradient),
+            child: Stack(
               children: [
-                Expanded(
-                  child: ListView.separated(
-                      separatorBuilder: (context, _) =>
-                          const SizedBox(height: 4),
-                      itemCount: state.words.length, //exampleData.length,
-                      itemBuilder: (context, index) => WordTile(
-                        data: state.words[index], //exampleData[index],
-                        checked: false,
-                        onPressed: () => GoRouter.of(context).go(
-                          "/learn/screen1",
-                          extra: state.words[index],
-                        ),
-                      ),
-                    ),
+                Image.asset(
+                  currentBackBubbles,
+                  width: maximumWidth,
+                  fit: BoxFit.cover,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: BigButton(
-                    text: 'Тренировать',
-                    onPressed: startTraining,
-                  ),
-                )
+                BlocConsumer<LearningBloc, LearningState>(
+                    listener: (context, state) {
+                  state.whenOrNull(
+                    changedSort: () {
+                      setState(() {
+                        _isChosenSort = true;
+                        _searchQuery.clear();
+                      });
+                    },
+                    initial: (topics) {
+                      setState(() {
+                        currentBackBubbles = AppImageSource.topicBackground;
+                      });
+                    },
+                    openMore: (topic) {
+                      setState(() {
+                        currentBackBubbles =
+                            AppImageSource.subtopicHeaderBubbles;
+                      });
+                    },
+                  );
+                }, builder: (context, state) {
+                  return state.maybeWhen(
+                    initial: (topics) {
+                      return SafeArea(
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: LearnPaddings.headerTitleTop,
+                                    bottom: LearnPaddings.headerTitleBottom),
+                                child: Text(
+                                  AppLocalizations.of(context).topics,
+                                  style: AppTextStyles.recordButtonTitle,
+                                ),
+                              ),
+                            ),
+                            if (topics.isNotEmpty)
+                              Expanded(
+                                child: ListView(
+                                  children: [
+                                    const SizedBox(
+                                      height: LearnPaddings.smallEmptySpace,
+                                    ),
+                                    ...topics.map(
+                                      (topic) => Column(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets
+                                                    .symmetric(
+                                                    horizontal: LearnPaddings
+                                                        .learnPagePadding),
+                                                child:
+                                                    TopicHeader(topic: topic),
+                                              ),
+                                              const SizedBox(
+                                                height: LearnPaddings
+                                                    .normalEdgeInsets,
+                                              ),
+                                              SizedBox(
+                                                  height: LearnSizes
+                                                      .subtopicCardHeight,
+                                                  child: SubtopicsRow(
+                                                      subtopics:
+                                                          topic.subtopics)),
+                                              const SizedBox(
+                                                height:
+                                                    LearnPaddings.normalPadding,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: LearnPaddings.learnPageBottom,
+                                    )
+                                  ],
+                                ),
+                              )
+                            else
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal:
+                                          LearnPaddings.learnPagePadding),
+                                  child: Column(
+                                    children: [
+                                      const Spacer(
+                                        flex: 1,
+                                      ),
+                                      const AnimatedSubtopic(),
+                                      SizedBox(
+                                        height: MediaQuery.of(context)
+                                                .size
+                                                .height *
+                                            LearnSizes.animatedSubtopicSpacer,
+                                      ),
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .haveNoSubtopics,
+                                        style: AppTextStyles.haventStatistics,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const Spacer(
+                                        flex: 3,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      );
+                    },
+                    openMore: (topic) {
+                      _searchQuery.addListener(() {
+                        setState(() {
+                          _searchText = _searchQuery.text;
+                          _searchList = _buildSearchList(topic.subtopics);
+                        });
+                      });
+                      return SafeArea(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: LearnPaddings.headerTitleTop),
+                              child: Text(
+                                topic.topicTitle,
+                                style: AppTextStyles.recordButtonTitle,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: LearnPaddings.headerTitleSubtopicBottom,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: LearnPaddings.learnPagePadding),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: _isChosenSort == false
+                                        ? maximumWidth -
+                                            LearnPaddings.learnPagePadding * 2 -
+                                            LearnSizes.sortButtonWidth -
+                                            LearnPaddings.rowBetweenPadding
+                                        : maximumWidth -
+                                            LearnPaddings.learnPagePadding * 2 -
+                                            LearnSizes.sortButtonWidth * 2 -
+                                            LearnPaddings.rowBetweenPadding,
+                                    child: CustomSearchTextfield(
+                                        controller: _searchQuery,
+                                        hintText: AppLocalizations.of(context)
+                                            .search),
+                                  ),
+                                  const SizedBox(
+                                    width: LearnPaddings.rowBetweenPadding,
+                                  ),
+                                  SortButton(
+                                    subtopics: topic.subtopics,
+                                    onTap: setState,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: LearnPaddings.headerSubtopicSearchBottom,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: LearnPaddings.learnPagePadding,
+                                    vertical: LearnPaddings.smallEmptySpace),
+                                child: SubtopicsGrid(
+                                  topic: topic,
+                                  subtopics: _searchText.isEmpty
+                                      ? topic.subtopics
+                                      : _searchList,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    orElse: () {
+                      return const SizedBox();
+                    },
+                  );
+                }),
               ],
-            ),
-          );
-        },
-      ),
-    );
+            )));
   }
 }

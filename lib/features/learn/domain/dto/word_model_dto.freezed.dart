@@ -22,20 +22,13 @@ WordModelDto _$WordModelDtoFromJson(Map<String, dynamic> json) {
 mixin _$WordModelDto {
   @JsonKey(name: "id", defaultValue: 0)
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "category", defaultValue: null)
-  dynamic get category => throw _privateConstructorUsedError;
   @JsonKey(name: "enValue", defaultValue: "Error")
   String get enValue => throw _privateConstructorUsedError;
   @JsonKey(name: "ruValue", defaultValue: "Ошибка")
   String get ruValue => throw _privateConstructorUsedError;
-  @JsonKey(
-      name: "audioLink",
-      defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
+  @JsonKey(name: "audioLink", defaultValue: voiceOverLink)
   String get audioLink => throw _privateConstructorUsedError;
-  @JsonKey(
-      name: "pictureLink",
-      defaultValue:
-          "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+  @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
   String get pictureLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,17 +45,10 @@ abstract class $WordModelDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id", defaultValue: 0) int id,
-      @JsonKey(name: "category", defaultValue: null) dynamic category,
       @JsonKey(name: "enValue", defaultValue: "Error") String enValue,
       @JsonKey(name: "ruValue", defaultValue: "Ошибка") String ruValue,
-      @JsonKey(
-          name: "audioLink",
-          defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
-      String audioLink,
-      @JsonKey(
-          name: "pictureLink",
-          defaultValue:
-              "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+      @JsonKey(name: "audioLink", defaultValue: voiceOverLink) String audioLink,
+      @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
       String pictureLink});
 }
 
@@ -80,7 +66,6 @@ class _$WordModelDtoCopyWithImpl<$Res, $Val extends WordModelDto>
   @override
   $Res call({
     Object? id = null,
-    Object? category = freezed,
     Object? enValue = null,
     Object? ruValue = null,
     Object? audioLink = null,
@@ -91,10 +76,6 @@ class _$WordModelDtoCopyWithImpl<$Res, $Val extends WordModelDto>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       enValue: null == enValue
           ? _value.enValue
           : enValue // ignore: cast_nullable_to_non_nullable
@@ -125,17 +106,10 @@ abstract class _$$WordModelDtoImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "id", defaultValue: 0) int id,
-      @JsonKey(name: "category", defaultValue: null) dynamic category,
       @JsonKey(name: "enValue", defaultValue: "Error") String enValue,
       @JsonKey(name: "ruValue", defaultValue: "Ошибка") String ruValue,
-      @JsonKey(
-          name: "audioLink",
-          defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
-      String audioLink,
-      @JsonKey(
-          name: "pictureLink",
-          defaultValue:
-              "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+      @JsonKey(name: "audioLink", defaultValue: voiceOverLink) String audioLink,
+      @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
       String pictureLink});
 }
 
@@ -151,7 +125,6 @@ class __$$WordModelDtoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? category = freezed,
     Object? enValue = null,
     Object? ruValue = null,
     Object? audioLink = null,
@@ -162,10 +135,6 @@ class __$$WordModelDtoImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       enValue: null == enValue
           ? _value.enValue
           : enValue // ignore: cast_nullable_to_non_nullable
@@ -191,17 +160,11 @@ class __$$WordModelDtoImplCopyWithImpl<$Res>
 class _$WordModelDtoImpl implements _WordModelDto {
   const _$WordModelDtoImpl(
       {@JsonKey(name: "id", defaultValue: 0) required this.id,
-      @JsonKey(name: "category", defaultValue: null) required this.category,
       @JsonKey(name: "enValue", defaultValue: "Error") required this.enValue,
       @JsonKey(name: "ruValue", defaultValue: "Ошибка") required this.ruValue,
-      @JsonKey(
-          name: "audioLink",
-          defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
+      @JsonKey(name: "audioLink", defaultValue: voiceOverLink)
       required this.audioLink,
-      @JsonKey(
-          name: "pictureLink",
-          defaultValue:
-              "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+      @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
       required this.pictureLink});
 
   factory _$WordModelDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -211,29 +174,21 @@ class _$WordModelDtoImpl implements _WordModelDto {
   @JsonKey(name: "id", defaultValue: 0)
   final int id;
   @override
-  @JsonKey(name: "category", defaultValue: null)
-  final dynamic category;
-  @override
   @JsonKey(name: "enValue", defaultValue: "Error")
   final String enValue;
   @override
   @JsonKey(name: "ruValue", defaultValue: "Ошибка")
   final String ruValue;
   @override
-  @JsonKey(
-      name: "audioLink",
-      defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
+  @JsonKey(name: "audioLink", defaultValue: voiceOverLink)
   final String audioLink;
   @override
-  @JsonKey(
-      name: "pictureLink",
-      defaultValue:
-          "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+  @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
   final String pictureLink;
 
   @override
   String toString() {
-    return 'WordModelDto(id: $id, category: $category, enValue: $enValue, ruValue: $ruValue, audioLink: $audioLink, pictureLink: $pictureLink)';
+    return 'WordModelDto(id: $id, enValue: $enValue, ruValue: $ruValue, audioLink: $audioLink, pictureLink: $pictureLink)';
   }
 
   @override
@@ -242,7 +197,6 @@ class _$WordModelDtoImpl implements _WordModelDto {
         (other.runtimeType == runtimeType &&
             other is _$WordModelDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
             (identical(other.enValue, enValue) || other.enValue == enValue) &&
             (identical(other.ruValue, ruValue) || other.ruValue == ruValue) &&
             (identical(other.audioLink, audioLink) ||
@@ -253,14 +207,8 @@ class _$WordModelDtoImpl implements _WordModelDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      const DeepCollectionEquality().hash(category),
-      enValue,
-      ruValue,
-      audioLink,
-      pictureLink);
+  int get hashCode =>
+      Object.hash(runtimeType, id, enValue, ruValue, audioLink, pictureLink);
 
   @JsonKey(ignore: true)
   @override
@@ -279,20 +227,13 @@ class _$WordModelDtoImpl implements _WordModelDto {
 abstract class _WordModelDto implements WordModelDto {
   const factory _WordModelDto(
       {@JsonKey(name: "id", defaultValue: 0) required final int id,
-      @JsonKey(name: "category", defaultValue: null)
-      required final dynamic category,
       @JsonKey(name: "enValue", defaultValue: "Error")
       required final String enValue,
       @JsonKey(name: "ruValue", defaultValue: "Ошибка")
       required final String ruValue,
-      @JsonKey(
-          name: "audioLink",
-          defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
+      @JsonKey(name: "audioLink", defaultValue: voiceOverLink)
       required final String audioLink,
-      @JsonKey(
-          name: "pictureLink",
-          defaultValue:
-              "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+      @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
       required final String pictureLink}) = _$WordModelDtoImpl;
 
   factory _WordModelDto.fromJson(Map<String, dynamic> json) =
@@ -302,24 +243,16 @@ abstract class _WordModelDto implements WordModelDto {
   @JsonKey(name: "id", defaultValue: 0)
   int get id;
   @override
-  @JsonKey(name: "category", defaultValue: null)
-  dynamic get category;
-  @override
   @JsonKey(name: "enValue", defaultValue: "Error")
   String get enValue;
   @override
   @JsonKey(name: "ruValue", defaultValue: "Ошибка")
   String get ruValue;
   @override
-  @JsonKey(
-      name: "audioLink",
-      defaultValue: "https://www.youwords.ru:9100/uwords-voiceover/do.mp3")
+  @JsonKey(name: "audioLink", defaultValue: voiceOverLink)
   String get audioLink;
   @override
-  @JsonKey(
-      name: "pictureLink",
-      defaultValue:
-          "https://umbrellacreative.com.au/why-you-shouldnt-use-stock-photos/")
+  @JsonKey(name: "pictureLink", defaultValue: wordPictureLink)
   String get pictureLink;
   @override
   @JsonKey(ignore: true)

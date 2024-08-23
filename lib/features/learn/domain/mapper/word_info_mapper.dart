@@ -7,8 +7,14 @@ extension WordInfoMapper on WordInfoDto {
         id: id,
         word: word.toModel(),
         userId: userId,
-        topicId: topicId,
+        latestStudy: latestStudy,
         frequency: frequency,
         progress: progress,
       );
+}
+
+extension WordInfoListMapper on List<WordInfoDto> {
+  List<WordInfo> toModel() {
+    return map((wordInfoDto) => wordInfoDto.toModel()).toList();
+  }
 }

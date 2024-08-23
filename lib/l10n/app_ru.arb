@@ -1,0 +1,194 @@
+{
+  "@@locale": "ru",
+  "appTitle": "uwords",
+  "videoLink": "Ссылка на видео",
+  "unknowError": "Неизвестная ошибка",
+  "allowUseMicrophone": "Разрешите использование микрофона",
+  "mediaSent": "Медиа отправлено",
+  "press": "Нажмите",
+  "toStopRecording": "чтобы остановить запись",
+  "toStartRecording": "чтобы начать запись",
+  "unknownDioError": "Ошибка соединения с сервером",
+  "lostFilePath": "Путь к файлу утерян",
+  "invalidLink": "Невалидная ссылка",
+  "successRegistration": "Вы были успешно зарегистрированы",
+  "failedRegistration": "Регистрация завершена с ошибкой",
+  "canNotAuthorizate": "Не удалось выполнить вход",
+  "dontHaveAnAccount": "Ещё нет аккаунта?",
+  "signUp": "Зарегистрируйтесь!",
+  "mail": "Электронная почта",
+  "email": "E-mail",
+  "password": "Пароль",
+  "signIn": "Войти",
+  "registerUserWithMailAndPassword": "Зарегистровать пользователя через почту и пароль",
+  "signInWithGoogle": "Google",
+  "signInWithVK": "ВКонтакте",
+  "nextPage": "goHome сразу другая страница",
+  "logOut": "Выйти из любого пользователя",
+  "checkingLoginData": "Подождите выполняется проверка данных",
+  "next": "Далее",
+  "train": "Тренировать",
+  "or": " или ",
+  "and": " и ",
+  "sendCode": "Отправить",
+  "haveNotGotCode": "Не получили код?",
+  "sendAgain": "Отправить еще раз",
+  "enterCode": "Введите код",
+  "useCodeToEnter": "Используйте одноразовый код, который выслан на ",
+  "authIntoAccount": "Вход в аккаунт",
+  "age": "Возраст",
+  "createAccount": "Создать аккаунт",
+  "accountCreation": "Создание аккаунта",
+  "chooseYourAge": "Укажите свой возраст, чтобы Ваша работа с UWords была оптимизирована. Более подробная информация доступна в разделе ",
+  "confidentiality": "«Конфиденциальность»",
+  "policyOfConfidentiality": "Политика конфиденциальности",
+  "conditions": "Условия",
+  "name": "Имя (необязательно)",
+  "alreadyHaveAccount": "Уже есть аккаунт?",
+  "notValidLoginOrPassword": "Неверный логин или пароль",
+  "done": "Готово",
+  "misspelled": "Неправильное произношение слова",
+  "wrongAnswer": "Неправильный ответ",
+  "congratulations": "Молодец, ты прошел все слова!",
+  "next": "Далее",
+  "check": "Проверить",
+  "startTraining": "Тренировать",
+  "topics": "Топики",
+  "checkAll": "См. все",
+  "search": "Поиск",
+  "sort": "Сортировка",
+  "sortByCoutOfWords": "По кол-ву слов",
+  "sortByProgress": "По изученности",
+  "sortByLastLearningDate": "По дате изучения",
+  "cancel": "Отменить",
+  "daysOnFireCard": "В ударе",
+  "learnedWordsCard": "Слов",
+  "hours": "{count}ч",
+  "@hours": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "recordTimeCard": "Записи",
+  "precisionCard": "Точность",
+  "startTraining": "Тренировать",
+  "daysOnFireTitle": "Дней в ударе",
+  "learnedWordsTitle": "Слова",
+  "recordTimeTitle": "Запись",
+  "addedFriendsTitle": "Друзья",
+  "daysOnFire": "{count} дней \nв ударе",
+  "@daysOnFire": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "learnedWords": "Изучено \n{count} слов",
+  "@learnedWords": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "recordTime": "{count, plural, =1{Записано \nна {count} час} other{Записано \nна {count} часов}}",
+  "@recordTime": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "addedFriends": "{count, plural, =1{Приглашен \n{count} друг} other{Приглашено \n{count} друзей}}",
+  "@addedFriends": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "almostLearned": "Почти изучено",
+  "passed": "Пройдено",
+  "statistics": "Статистика",
+  "activity": "Активность",
+  "achievements": "Достижения",
+  "inProgressTopicName": "В процессе",
+  "listenAndRemember": "Послушайте и запомните!",
+  "makeWord": "Составьте слово по буквам!",
+  "clickAndSpeak": "Нажмите и говорите!",
+  "listenAndChoose": "Прослушайте и выберите!",
+  "phasePassed": "{count}-ый этап пройден!",
+  "@phasePassed": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "cantSpeak": "Не могу говорить",
+  "cantHear": "Не могу слушать",
+  "allGood": "Всё верно!",
+  "beautiful": "Отлиная работа!",
+  "correctAnswer": "Правильный ответ:",
+  "tellOff": "Упражнения на произношение теперь отключены",
+  "hearOff": "Упражнения на произношение теперь отключены",
+  "wilReturn": "Они возобновятся через 15 минут",
+  "good": "Хорошо!",
+  "willCan": "Получится в следующий раз",
+  "youHaveZeroHP": "О нет, у вас кончилось здоровье",
+  "goBackToTopics": "Вернуться к топикам",
+  "byFriquency": "По срочности повторения",
+  "byProgressWords": "По изученности",
+  "simplePassword": "Слишком простой пароль",
+  "onNo": "Какая жалость!",
+  "tryStartAgain": "Ваши попытки на этом этапе закончились. Попробуйте сначала!",
+  "newStageReached" : "Новый этап пройден!",
+  "wrongEmail": "Неверный адрес почты",
+  "stillRepeats" : "Остались повторения",
+  "weWillRemind" : "Мы напомним, когда настанет время для следующего этапа!",
+  "finish" : "Закончить",
+  "upgradeSubscription": "Продление {date}",
+  "@upgradeSubscription": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscriptionIsActive" : "Подписка активна",
+  "subscriptionIsNotActive" : "Подписка неактивна",
+  "subscribe" : "Оформите подписку и получите все возможности uwords",
+  "learned" : "Изученные темы",
+  "checkSubscriptionStatusButton": "Проверить статус подписки",
+  "successfulPaymentOfTariff": "Оплата проведена успешно тарифа",
+  "failedPaymentOfTariff": "Оплата не была проведена для тарифа",
+  "payByLink":"Оплата подписки по ссылке",
+  "shortPassword": "Не менее 8 символов",
+  "requiredField": "Обязательное поле для заполнения",
+  "wrongPassword": "Неверно указан пароль",
+  "youtubeVideo": "YouTube-видео",
+  "telegramBot": "Telegram-бот",
+  "discordBot": "Discord-бот",
+  "chromeWidget": "Chrome-виджет",
+  "alternative": "Альтернативный подход",
+  "alternativeText": "Альтернативные способы предоставления доступа к речи",
+  "themesForLearning": "Темы для изучения",
+  "themesForLearningText": "Cлова для тем формируются на основе вашей речи и формируются в темы",
+  "recordingWords": "Запись слов",
+  "recordingWordsText": "Записывайте свои повседневные разговоры, а мы оставим только Ваши любимые слова",
+  "recordingWordsOtherText": "Алгоритмы uwords не хранят записи, а используют речь только для определения самых частотных слов",
+  "moreDetails": "Подробнее",
+  "startQuestion": "Начнем же?",
+  "startQuestionText": "Говорите, учите слова и наблюдайте за своим прогрессом",
+  "haveNoThemeInStatistics" : "Здесь будут появляться темы, которые Вы изучили полностью, либо изучили более, чем на 50%",
+  "haveNoSubtopics" : "Пока здесь ничего нет....\nОтправьте первую запись, а мы сформируем список тем для изучения"
+}

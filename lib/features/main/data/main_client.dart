@@ -1,21 +1,22 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:uwords/env.dart';
 
 part 'main_client.g.dart';
 
-@RestApi(baseUrl: "https://big-nose.ru/api/v1/")
+@RestApi(baseUrl: baseUrl)
 abstract class MainClient {
   factory MainClient(Dio dio, {String baseUrl}) = _MainClient;
 
-  @POST("words/user/{user_id}/audio")
+  @POST("user/audio")
   Future<void> sendAudio(
-    @Path("user_id") String user_id,
+    @Header("Authorization") String accessToken,
     @Body() FormData file,
   );
 
-  @POST("words/user/{user_id}/youtube")
+  @POST("user/youtube")
   Future<void> sendLink(
-    @Path("user_id") String user_id,
-    @Body() String link,
+    @Header("Authorization") String accessToken,
+    @Field("link") String link,
   );
 }

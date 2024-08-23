@@ -3,18 +3,23 @@ part of 'learning_bloc.dart';
 @freezed
 abstract class LearningState with _$LearningState {
   const factory LearningState.initial({
-    required List<WordModel> words,
+    required List<Topic> topics,
   }) = _LearningInitial;
 
   const factory LearningState.gotWordsForStudy({
-    required List<WordModel> words,
+    required List<Topic> topics,
   }) = _LearningGotWordsForStudy;
 
-  const factory LearningState.sendedLearnedWords({
-    required List<WordModel> words,
-  }) = _LearningSendedLearnedWords;
+  const factory LearningState.openMore({
+    required Topic topic,
+  }) = _LearningOpenMore;
+
+  const factory LearningState.changedSort() = _ChangedSort;
 
   const factory LearningState.failed({
-    required List<WordModel> words,
+    required List<Topic> topics,
   }) = _LearningFailed;
+
+  const factory LearningState.openSubtopic({required Subtopic subtopic}) =
+      _OpenSubtopic;
 }

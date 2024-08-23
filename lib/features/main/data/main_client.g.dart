@@ -13,7 +13,7 @@ class _MainClient implements MainClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://big-nose.ru/api/v1/';
+    baseUrl ??= 'https://app.big-nose.ru/api/v1/';
   }
 
   final Dio _dio;
@@ -22,12 +22,13 @@ class _MainClient implements MainClient {
 
   @override
   Future<void> sendAudio(
-    String user_id,
+    String accessToken,
     FormData file,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': accessToken};
+    _headers.removeWhere((k, v) => v == null);
     final _data = file;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
@@ -36,7 +37,7 @@ class _MainClient implements MainClient {
     )
         .compose(
           _dio.options,
-          'words/user/${user_id}/audio',
+          'user/audio',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -49,13 +50,14 @@ class _MainClient implements MainClient {
 
   @override
   Future<void> sendLink(
-    String user_id,
+    String accessToken,
     String link,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = link;
+    final _headers = <String, dynamic>{r'Authorization': accessToken};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {'link': link};
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
@@ -63,7 +65,7 @@ class _MainClient implements MainClient {
     )
         .compose(
           _dio.options,
-          'words/user/${user_id}/youtube',
+          'user/youtube',
           queryParameters: queryParameters,
           data: _data,
         )

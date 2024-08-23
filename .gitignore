@@ -46,5 +46,11 @@ app.*.map.json
 # Web related
 lib/generated_plugin_registrant.dart
 
+# Secrets
 google-services.json
 GoogleService-Info.plist
+lib/firebase_options.dart
+android/app/src/main/res/values/strings.xml
+firebase.json
+ios/Runner/Info.plist
+lib/secrets.dart

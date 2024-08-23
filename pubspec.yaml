@@ -1,13 +1,13 @@
 name: uwords
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
-  build_runner: ^2.4.9
+  build_runner: ^2.4.11
   flutter:
     sdk: flutter
   dio: ^5.4.3+1
@@ -29,14 +29,48 @@ dependencies:
   flutter_bloc: ^8.1.6
   just_audio: ^0.9.38
   freezed_annotation: ^2.4.1
+  flutter_login_vk: ^2.2.2+1
+  drift: ^2.18.0
+  sqlite3: ^2.4.4
+  path: ^1.8.3
+  build_runner_core: ^7.3.1
+  sqlite3_flutter_libs: ^0.5.0
+  jwt_decoder: ^2.0.1
+  flutter_inset_shadow: ^2.0.3
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  mockito: ^5.4.4
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
+  firebase_core_platform_interface: ^5.1.0
+  url_launcher: ^6.3.0
+  pin_code_fields: ^8.0.1
+  speech_to_text: ^6.6.2
+  get_it: ^7.7.0
+  carousel_slider: ^4.2.1
+  web_socket_channel: ^2.4.5
+  gradient_borders: ^1.0.1
+  animations: ^2.0.11
+  smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
+  drift_dev: ^2.9.0
+  test: ^1.25.2
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/svg/
     - assets/png/
+  fonts:
+    - family: SNFBSTRD_handwrite
+      fonts:
+        - asset: fonts/SNFBSTRD_handwrite.ttf
+    - family: Inter-V
+      fonts:
+        - asset: fonts/Inter.otf
