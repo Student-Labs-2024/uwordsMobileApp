@@ -18,8 +18,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   Future<void> _handleGetUserInfo(
       _GetUserInfo event, Emitter<ProfileState> emit) async {
-    String userName = await userRepository.getCurrentUserName();
-    String avatarUrl = await userRepository.getCurrentUserAvatarUrl();
+    String userName = userRepository.getCurrentUserName();
+    String avatarUrl = userRepository.getCurrentUserAvatarUrl();
     emit(ProfileState.userGot(userName, avatarUrl));
     emit(const ProfileState.statisticsScreen());
   }

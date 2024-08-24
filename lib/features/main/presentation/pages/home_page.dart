@@ -10,8 +10,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/env.dart';
+import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/custom_textfield.dart';
+import 'package:uwords/features/home_widget/home_widget_functions.dart';
+import 'package:uwords/features/home_widget/home_widgets_conts.dart';
+import 'package:uwords/features/home_widget/streak_widget_data.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
@@ -24,6 +28,7 @@ import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/theme/image_source.dart';
+import 'package:home_widget/home_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -49,11 +54,24 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _connect();
+    HomeWidget.setAppGroupId(HomeWidgetsConts.appGroupId);
     openTheRecorder().then((value) {
       setState(() {
         _mRecorderIsInited = true;
       });
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    IUserRepository userRepositoryInstanse =
+        GetIt.instance.get<IUserRepository>();
+    StreakWidgetData streakWidgetData = StreakWidgetData(
+        title: AppLocalizations.of(context)
+            .daysOnFire(userRepositoryInstanse.getCurrentUserDaysStreak()),
+        description: AppLocalizations.of(context).goDayStreak);
+    updateHeadline(streakWidgetData);
+    super.didChangeDependencies();
   }
 
   void _connect() async {

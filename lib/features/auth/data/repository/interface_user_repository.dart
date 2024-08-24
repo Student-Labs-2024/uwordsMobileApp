@@ -27,9 +27,10 @@ abstract interface class IUserRepository {
   Future<void> authorizateFromGoogle({
     required String uid,
   });
-  Future<int> getCurrentUserId();
-  Future<String> getCurrentUserName();
-  Future<String> getCurrentUserAvatarUrl();
+  int getCurrentUserId();
+  String getCurrentUserName();
+  String getCurrentUserAvatarUrl();
   Future<void> updateInfoAboutUser();
   bool isSubscriptionActive();
+  int getCurrentUserDaysStreak();
 }

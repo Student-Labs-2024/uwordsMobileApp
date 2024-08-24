@@ -165,17 +165,17 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<int> getCurrentUserId() async {
+  int getCurrentUserId() {
     return _currentUser.id;
   }
 
   @override
-  Future<String> getCurrentUserName() async {
+  String getCurrentUserName() {
     return _currentUser.username;
   }
 
   @override
-  Future<String> getCurrentUserAvatarUrl() async {
+  String getCurrentUserAvatarUrl() {
     return _currentUser.avatarUrl;
   }
 
@@ -187,6 +187,11 @@ class UserRepository implements IUserRepository {
     _currentUser = SimpleUserInfo.fromUserAuthDto(userAuthDto: result);
     //TODO need to add into savable user data source update method
     await _saveUser(userDto: result);
+  }
+
+  @override
+  int getCurrentUserDaysStreak() {
+    return _currentUser.metricsDto.days;
   }
 
   @override
