@@ -9,6 +9,7 @@ import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WordRow extends StatefulWidget {
   const WordRow({super.key, required this.wordInfo});
@@ -26,7 +27,7 @@ class _WordRowState extends State<WordRow> {
     setState(() {
       _isDismissed = true;
     });
-    await Future.delayed(const Duration(milliseconds: 800));
+    await Future.delayed(OtherLearnConstants.wordRowDeletedTime);
     setState(() {
       _isDeleted = true;
     });
@@ -35,10 +36,10 @@ class _WordRowState extends State<WordRow> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 100),
+      duration: OtherLearnConstants.wordRowAnimation,
       child: _isDismissed
           ? AnimatedSwitcher(
-              duration: const Duration(milliseconds: 100),
+              duration: OtherLearnConstants.wordRowAnimation,
               child: _isDeleted
                   ? const SizedBox()
                   : Container(
@@ -54,11 +55,12 @@ class _WordRowState extends State<WordRow> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Слово было удалено',
+                            AppLocalizations.of(context).wordRemoved,
                             style: AppTextStyles.animatedWordRow,
                           ),
                           IconButton(
-                            icon: const Icon(Icons.check, color: Colors.white),
+                            icon: const Icon(Icons.check,
+                                color: AppColors.whiteColor),
                             onPressed: () {},
                           ),
                         ],
@@ -74,11 +76,11 @@ class _WordRowState extends State<WordRow> {
               background: Container(
                 decoration: BoxDecoration(
                   gradient: AppColors.deleteWordRow,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius:
+                      BorderRadius.circular(GlobalSizes.borderRadiusSmall),
                 ),
                 alignment: Alignment.centerRight,
-                padding: const EdgeInsets.only(right: 20),
-                child: const Icon(Icons.delete, color: Colors.white),
+                child: const Icon(Icons.delete, color: AppColors.whiteColor),
               ),
               child: ListTile(
                 minTileHeight: LearnSizes.wordRowMinHeight,

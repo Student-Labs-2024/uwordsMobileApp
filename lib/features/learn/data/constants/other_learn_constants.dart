@@ -80,4 +80,7 @@ class OtherLearnConstants {
 
   static const int animatedSubtopicProgressSmallSecondsPart = 1;
   static const int animatedSubtopicProgressMediumSecondsPart = 2;
+
+  static const Duration wordRowAnimation = Duration(milliseconds: 100);
+  static const Duration wordRowDeletedTime = Duration(milliseconds: 800);
 }
