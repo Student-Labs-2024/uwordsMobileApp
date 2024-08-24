@@ -12,9 +12,9 @@ import 'package:uwords/theme/image_source.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WordRow extends StatefulWidget {
-  const WordRow({super.key, required this.wordInfo});
+  const WordRow({super.key, required this.wordInfo, required this.onDelete});
   final WordInfo wordInfo;
-
+  final VoidCallback onDelete;
   @override
   State<WordRow> createState() => _WordRowState();
 }
@@ -31,6 +31,7 @@ class _WordRowState extends State<WordRow> {
     setState(() {
       _isDeleted = true;
     });
+    widget.onDelete();
   }
 
   @override

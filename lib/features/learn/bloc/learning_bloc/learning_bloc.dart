@@ -36,12 +36,76 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     on<_GetWordsByTopic>(_handleGetWordsByTopic);
     on<_GetWordsBySubtopic>(_handleGetWordsBySubtopic);
     on<_SortWords>(_handleSortWords);
+    on<_DeleteWord>(_handleDeleteWord);
   }
 
   Future<void> _handleGetTopics(
       _GetTopics event, Emitter<LearningState> emit) async {
     inProgressTopicName = event.inProgressTopicName;
     await _getTopicsFromServer(emit);
+  }
+
+  int getSubtopicProgress(Subtopic subtopic) {
+    if (subtopic.wordInfoList.isEmpty) {
+      return 0;
+    }
+    int maxProgress = subtopic.wordInfoList.length * 4;
+    int currentProgress = 0;
+    for (WordInfo wordInfo in subtopic.wordInfoList) {
+      currentProgress += wordInfo.progress;
+    }
+    int result = ((currentProgress / maxProgress) * 100).toInt();
+    return result;
+  }
+
+  Future<void> _handleDeleteWord(
+      _DeleteWord event, Emitter<LearningState> emit) async {
+    Subtopic saveSubtopic = event.subtopic;
+    List<Topic> saveTopics = [];
+    saveTopics.addAll(topics);
+
+    for (Topic topic in saveTopics) {
+      if (topic.topicTitle != event.subtopic.topicTitle) continue;
+      for (int i = 0; i < topic.subtopics.length; i++) {
+        if (topic.subtopics[i].subtopicTitle != event.subtopic.subtopicTitle) {
+          continue;
+        }
+        topic.subtopics[i].wordInfoList
+            .removeWhere((item) => item == event.wordInfo);
+        saveSubtopic = Subtopic(
+            subtopicTitle: topic.subtopics[i].subtopicTitle,
+            topicTitle: topic.subtopics[i].topicTitle,
+            wordCount: topic.subtopics[i].wordInfoList.length,
+            progress: getSubtopicProgress(topic.subtopics[i]),
+            pictureLink: topic.subtopics[i].pictureLink,
+            wordInfoList: topic.subtopics[i].wordInfoList);
+        if (topic.subtopics[i].wordInfoList.isNotEmpty) {
+          topic.subtopics.removeAt(i);
+          topic.subtopics.insert(i, saveSubtopic);
+        }
+      }
+    }
+    if (saveSubtopic.wordInfoList.isEmpty) {
+      List<int> unusedTopicsIndex = [];
+      for (int i = 0; i < saveTopics.length; i++) {
+        if (saveTopics[i].topicTitle == saveSubtopic.topicTitle) {
+          saveTopics[i].subtopics.removeWhere(
+              (el) => el.subtopicTitle == saveSubtopic.subtopicTitle);
+          if (saveTopics[i].subtopics.isEmpty) {
+            unusedTopicsIndex.add(i);
+          }
+        }
+      }
+      int offset = 0;
+      if (unusedTopicsIndex.isNotEmpty) {
+        for (int unusedTopicIndex in unusedTopicsIndex) {
+          saveTopics.removeAt(unusedTopicIndex - offset);
+          offset++;
+        }
+      }
+    }
+    topics = saveTopics;
+    emit(LearningState.openSubtopic(subtopic: saveSubtopic));
   }
 
   void _handleChooseTopic(_ChooseTopic event, Emitter<LearningState> emit) {
@@ -121,12 +185,13 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   Future<void> _getWordsByTopicAndSubtopic(
       String accessToken, Subtopic subtopic) async {
     try {
-      subtopic.wordInfoList.insertAll(
-          0,
+      List<WordInfo> newWords =
           await wordsRepository.getWordsByTopicAndSubtopic(
               accessToken: accessToken,
               topic: subtopic.topicTitle,
-              subtopic: subtopic.subtopicTitle));
+              subtopic: subtopic.subtopicTitle);
+      subtopic.wordInfoList.clear();
+      subtopic.wordInfoList.addAll(newWords);
     } on Exception catch (e) {
       addError(e);
     }
