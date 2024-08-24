@@ -10,12 +10,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/env.dart';
-import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/custom_textfield.dart';
-import 'package:uwords/features/home_widget/home_widget_functions.dart';
 import 'package:uwords/features/home_widget/home_widgets_conts.dart';
-import 'package:uwords/features/home_widget/streak_widget_data.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
@@ -47,11 +44,7 @@ class _HomePageState extends State<HomePage> {
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
-  IUserRepository userRepositoryInstanse =
-      GetIt.instance.get<IUserRepository>();
   bool isRecording = false;
-  late int days;
-  String? imagePath;
 
   @override
   void initState() {
@@ -67,12 +60,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void didChangeDependencies() {
-    days = userRepositoryInstanse.getCurrentUserDaysStreak();
-    final StreakWidgetData streakWidgetData = StreakWidgetData(
-        days: days,
-        title: AppLocalizations.of(context).streakDays(days),
-        description: AppLocalizations.of(context).goDayStreak);
-    updateHeadline(streakWidgetData);
+
     super.didChangeDependencies();
   }
 
