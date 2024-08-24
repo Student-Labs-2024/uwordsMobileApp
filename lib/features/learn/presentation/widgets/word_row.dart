@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
@@ -104,28 +103,19 @@ class _WordRowState extends State<WordRow> {
                 ),
                 title: Text(widget.wordInfo.word.enValue),
                 subtitle: Text(widget.wordInfo.word.ruValue),
-                trailing: ShaderMask(
-                  blendMode: BlendMode.modulate,
-                  shaderCallback: (bounds) {
-                    return AppColors.centralGradient.createShader(bounds);
-                  },
-                  child: widget.wordInfo.progress >
-                          OtherLearnConstants.thirdQuarterProgress
-                      ? SvgPicture.asset(AppImageSource.circleFull)
-                      : widget.wordInfo.progress >
-                              OtherLearnConstants.halfProgress
-                          ? SvgPicture.asset(AppImageSource.circleThirdQuarter)
-                          : widget.wordInfo.progress >
-                                  OtherLearnConstants.quarterProgress
-                              ? SvgPicture.asset(
-                                  AppImageSource.circleSecondQuarter)
-                              : widget.wordInfo.progress >
-                                      OtherLearnConstants.zeroProgress
-                                  ? SvgPicture.asset(
-                                      AppImageSource.circleFirstQuarter)
-                                  : SvgPicture.asset(
-                                      AppImageSource.circleEmpty),
-                ),
+                trailing: widget.wordInfo.progress >
+                        OtherLearnConstants.thirdQuarterProgress
+                    ? Image.asset(AppImageSource.circleFull)
+                    : widget.wordInfo.progress >
+                            OtherLearnConstants.halfProgress
+                        ? Image.asset(AppImageSource.circleThirdQuarter)
+                        : widget.wordInfo.progress >
+                                OtherLearnConstants.quarterProgress
+                            ? Image.asset(AppImageSource.circleSecondQuarter)
+                            : widget.wordInfo.progress >
+                                    OtherLearnConstants.zeroProgress
+                                ? Image.asset(AppImageSource.circleFirstQuarter)
+                                : Image.asset(AppImageSource.circleEmpty),
               ),
             ),
     );
