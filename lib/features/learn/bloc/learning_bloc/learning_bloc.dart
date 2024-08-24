@@ -61,50 +61,62 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   Future<void> _handleDeleteWord(
       _DeleteWord event, Emitter<LearningState> emit) async {
     Subtopic saveSubtopic = event.subtopic;
-    List<Topic> saveTopics = [];
-    saveTopics.addAll(topics);
+    try {
+      List<Topic> saveTopics = [];
+      saveTopics.addAll(topics);
 
-    for (Topic topic in saveTopics) {
-      if (topic.topicTitle != event.subtopic.topicTitle) continue;
-      for (int i = 0; i < topic.subtopics.length; i++) {
-        if (topic.subtopics[i].subtopicTitle != event.subtopic.subtopicTitle) {
-          continue;
-        }
-        topic.subtopics[i].wordInfoList
-            .removeWhere((item) => item == event.wordInfo);
-        saveSubtopic = Subtopic(
-            subtopicTitle: topic.subtopics[i].subtopicTitle,
-            topicTitle: topic.subtopics[i].topicTitle,
-            wordCount: topic.subtopics[i].wordInfoList.length,
-            progress: getSubtopicProgress(topic.subtopics[i]),
-            pictureLink: topic.subtopics[i].pictureLink,
-            wordInfoList: topic.subtopics[i].wordInfoList);
-        if (topic.subtopics[i].wordInfoList.isNotEmpty) {
-          topic.subtopics.removeAt(i);
-          topic.subtopics.insert(i, saveSubtopic);
-        }
-      }
-    }
-    if (saveSubtopic.wordInfoList.isEmpty) {
-      List<int> unusedTopicsIndex = [];
-      for (int i = 0; i < saveTopics.length; i++) {
-        if (saveTopics[i].topicTitle == saveSubtopic.topicTitle) {
-          saveTopics[i].subtopics.removeWhere(
-              (el) => el.subtopicTitle == saveSubtopic.subtopicTitle);
-          if (saveTopics[i].subtopics.isEmpty) {
-            unusedTopicsIndex.add(i);
+      String accessToken = await userRepository.getCurrentUserAccessToken();
+      await checkTokenExpirationAndUpdateIfNeed(
+          accessToken: accessToken, userRepository: userRepository);
+
+      await wordsRepository.deleteWord(
+          accessToken: accessToken, id: event.wordInfo.word.id);
+
+      for (Topic topic in saveTopics) {
+        if (topic.topicTitle != event.subtopic.topicTitle) continue;
+        for (int i = 0; i < topic.subtopics.length; i++) {
+          if (topic.subtopics[i].subtopicTitle !=
+              event.subtopic.subtopicTitle) {
+            continue;
+          }
+          topic.subtopics[i].wordInfoList
+              .removeWhere((item) => item == event.wordInfo);
+          saveSubtopic = Subtopic(
+              subtopicTitle: topic.subtopics[i].subtopicTitle,
+              topicTitle: topic.subtopics[i].topicTitle,
+              wordCount: topic.subtopics[i].wordInfoList.length,
+              progress: getSubtopicProgress(topic.subtopics[i]),
+              pictureLink: topic.subtopics[i].pictureLink,
+              wordInfoList: topic.subtopics[i].wordInfoList);
+          if (topic.subtopics[i].wordInfoList.isNotEmpty) {
+            topic.subtopics.removeAt(i);
+            topic.subtopics.insert(i, saveSubtopic);
           }
         }
       }
-      int offset = 0;
-      if (unusedTopicsIndex.isNotEmpty) {
-        for (int unusedTopicIndex in unusedTopicsIndex) {
-          saveTopics.removeAt(unusedTopicIndex - offset);
-          offset++;
+      if (saveSubtopic.wordInfoList.isEmpty) {
+        List<int> unusedTopicsIndex = [];
+        for (int i = 0; i < saveTopics.length; i++) {
+          if (saveTopics[i].topicTitle == saveSubtopic.topicTitle) {
+            saveTopics[i].subtopics.removeWhere(
+                (el) => el.subtopicTitle == saveSubtopic.subtopicTitle);
+            if (saveTopics[i].subtopics.isEmpty) {
+              unusedTopicsIndex.add(i);
+            }
+          }
+        }
+        int offset = 0;
+        if (unusedTopicsIndex.isNotEmpty) {
+          for (int unusedTopicIndex in unusedTopicsIndex) {
+            saveTopics.removeAt(unusedTopicIndex - offset);
+            offset++;
+          }
         }
       }
+      topics = saveTopics;
+    } on Exception catch (e) {
+      addError(e);
     }
-    topics = saveTopics;
     emit(LearningState.openSubtopic(subtopic: saveSubtopic));
   }
 

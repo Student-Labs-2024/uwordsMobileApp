@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -208,15 +206,9 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                     itemBuilder: (context, index) {
                                       return WordRow(
                                           onDelete: () {
-                                            log('---');
-                                            log('i $index');
-                                            log('mi ${subtopic.wordInfoList.length}');
                                             deleteWord(
                                                 subtopic.wordInfoList[index],
                                                 subtopic);
-                                            log('i $index');
-                                            log('mi ${subtopic.wordInfoList.length}');
-                                            log('---');
                                           },
                                           wordInfo:
                                               subtopic.wordInfoList[index]);

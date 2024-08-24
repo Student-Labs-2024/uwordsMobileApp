@@ -104,4 +104,14 @@ class WordsRepository implements IWordsRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> deleteWord(
+      {required String accessToken, required int id}) async {
+    try {
+      await wordsDataSource.deleteWord(accessToken: accessToken, id: id);
+    } on Exception {
+      rethrow;
+    }
+  }
 }
