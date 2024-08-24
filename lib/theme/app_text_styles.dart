@@ -237,4 +237,9 @@ class AppTextStyles {
       fontSize: 21,
       fontWeight: FontWeight.w400,
       color: AppColors.darkMainColor);
+  static const animatedWordRow = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w800,
+      fontSize: 17,
+      color: AppColors.whiteColor);
 }
