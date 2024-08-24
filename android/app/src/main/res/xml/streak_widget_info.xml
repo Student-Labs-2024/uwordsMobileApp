@@ -4,8 +4,8 @@
     android:description="@string/app_widget_description"
     android:initialKeyguardLayout="@layout/streak_widget"
     android:initialLayout="@layout/streak_widget"
-    android:minWidth="180dp"
-    android:minHeight="180dp"
+    android:minWidth="160dp"
+    android:minHeight="160dp"
     android:previewImage="@drawable/example_appwidget_preview"
 
     android:previewLayout="@layout/streak_widget"
