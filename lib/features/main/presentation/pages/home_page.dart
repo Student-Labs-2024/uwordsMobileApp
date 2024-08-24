@@ -15,6 +15,7 @@ import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/custom_textfield.dart';
 import 'package:uwords/features/home_widget/home_widget_functions.dart';
 import 'package:uwords/features/home_widget/home_widgets_conts.dart';
+import 'package:uwords/features/home_widget/streak_widget.dart';
 import 'package:uwords/features/home_widget/streak_widget_data.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
@@ -47,14 +48,17 @@ class _HomePageState extends State<HomePage> {
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
-
+  IUserRepository userRepositoryInstanse =
+      GetIt.instance.get<IUserRepository>();
   bool isRecording = false;
+  late int days;
 
   @override
   void initState() {
     super.initState();
     _connect();
     HomeWidget.setAppGroupId(HomeWidgetsConts.appGroupId);
+    days = userRepositoryInstanse.getCurrentUserDaysStreak();
     openTheRecorder().then((value) {
       setState(() {
         _mRecorderIsInited = true;
@@ -64,11 +68,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void didChangeDependencies() {
-    IUserRepository userRepositoryInstanse =
-        GetIt.instance.get<IUserRepository>();
     StreakWidgetData streakWidgetData = StreakWidgetData(
+        days: days,
         title: AppLocalizations.of(context)
-            .daysOnFire(userRepositoryInstanse.getCurrentUserDaysStreak()),
+            .streakDays(days),
         description: AppLocalizations.of(context).goDayStreak);
     updateHeadline(streakWidgetData);
     super.didChangeDependencies();
@@ -168,6 +171,14 @@ class _HomePageState extends State<HomePage> {
             ? SafeArea(
                 child: Stack(
                   children: [
+                    StreakWidget(
+                      streakWidgetData: StreakWidgetData(
+                          days:
+                              days,
+                          title: AppLocalizations.of(context).streakDays(days),
+                          description:
+                              AppLocalizations.of(context).goDayStreak),
+                    ),
                     Center(
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height *
