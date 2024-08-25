@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/grade/data/constants/grade_paddings.dart';
 import 'package:uwords/features/grade/data/constants/grade_sizes.dart';
+import 'package:uwords/features/grade/data/constants/other_grade_constants.dart';
 import 'package:uwords/features/grade/presentation/widgets/grade_button.dart';
+import 'package:uwords/features/grade/presentation/widgets/select_grade.dart';
 import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
@@ -46,6 +48,12 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
     super.dispose();
   }
 
+  int selectedGrade = OtherGradeConstants.standartGrade;
+
+  void setSelectedGrade(int grade) {
+    selectedGrade = grade;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,6 +90,7 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
                         style: AppTextStyles.gradeTitle,
                       ),
                     ),
+                    SelectGrade(onChoose: setSelectedGrade),
                     Container(
                       height: MediaQuery.of(context).size.height *
                           GradeSizes.inputHeight,

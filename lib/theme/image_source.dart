@@ -89,4 +89,15 @@ class AppImageSource {
   static const String chromeIcon = 'assets/svg/chrome.svg';
   static const String animatedSubtopicIcon =
       'assets/svg/animated_subtopic_image.svg';
+  static const String grade1 = 'assets/png/grade1_icon.png';
+  static const String grade2 = 'assets/png/grade2_icon.png';
+  static const String grade3 = 'assets/png/grade3_icon.png';
+  static const String grade4 = 'assets/png/grade4_icon.png';
+  static const String grade5 = 'assets/png/grade5_icon.png';
+  static const String grade1Active = 'assets/png/grade1_active_icon.png';
+  static const String grade2Active = 'assets/png/grade2_active_icon.png';
+  static const String grade3Active = 'assets/png/grade3_active_icon.png';
+  static const String grade4Active = 'assets/png/grade4_active_icon.png';
+  static const String grade5Active = 'assets/png/grade5_active_icon.png';
+  static const String gradeBack = 'assets/svg/grade_back.svg';
 }
