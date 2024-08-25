@@ -64,7 +64,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
           child: (((currentRoute == "/") ||
                       (currentRoute == "/auth") ||
                       (currentRoute == "/learn/subtopic") ||
-                      (currentRoute == "/learnCore") || 
+                      (currentRoute == "/learnCore") ||
                       (currentRoute == "/subscription") ||
                       (currentRoute == "/onboarding")) ||
                   _isNavBarHiden)
