@@ -238,4 +238,15 @@ class UserRepository implements IUserRepository {
         userAccessToken: _currentUser.accessToken);
     await updateInfoAboutUser();
   }
+
+  @override
+  Future<void> sendGrade(
+      String accessToken, int grade, String gradeMessage) async {
+    try {
+      await networkUserDataSource.sendGrade(accessToken, grade, gradeMessage);
+    } on Exception catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
 }
