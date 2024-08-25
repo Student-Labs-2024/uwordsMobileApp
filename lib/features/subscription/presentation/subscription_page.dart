@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/presentation/widgets/animated_card.dart';
+import 'package:uwords/features/subscription/presentation/widgets/big_subscription_bottom_sheet.dart';
 import 'package:uwords/features/subscription/presentation/widgets/small_subcription_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -20,7 +21,6 @@ class SubscriptionPage extends StatefulWidget {
 
 class _SubscriptionPageState extends State<SubscriptionPage>
     with WidgetsBindingObserver {
-  bool _showBottomSheet = false;
 
   @override
   void initState() {
@@ -117,24 +117,6 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                                   const Duration(milliseconds: 3000),
                             ),
                             const Spacer(),
-                            SizedBox(
-                              height: SubscriptionConsts.viewBuilderSpace,
-                              child: ListView.builder(
-                                  itemCount: tariffs.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return ListTile(
-                                      title: Text(tariffs[index].name),
-                                      subtitle:
-                                          Text(tariffs[index].price.toString()),
-                                      onTap: () {
-                                        context.read<SubscriptionBloc>().add(
-                                            SubscriptionEvent.paySubscription(
-                                                tariffs[index]));
-                                      },
-                                    );
-                                  }),
-                            ),
                           ],
                         ),
                       ),
@@ -144,7 +126,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                               backgroundColor: AppColors.whiteColor,
                               context: context,
                               builder: (BuildContext context) {
-                                return SizedBox();
+                                return BigSubscriptionBottomSheet(tariffs: tariffs);
                               });
                         },
                         onTapSecondButton: () => context.go("/profile"),
