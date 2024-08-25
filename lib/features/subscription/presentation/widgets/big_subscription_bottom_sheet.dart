@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uwords/features/global/data/constants/global_shadows.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
+import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
 import 'package:uwords/features/subscription/presentation/widgets/active_and_passive_buttons.dart';
 import 'package:uwords/features/subscription/presentation/widgets/tariff_card.dart';
@@ -32,10 +32,12 @@ class _BigSubscriptionBottomSheetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: const EdgeInsets.symmetric(
+          horizontal: SubscriptionConsts.normalSpace),
       child: Stack(children: [
         Padding(
-          padding: const EdgeInsets.only(top: 30.0),
+          padding:
+              const EdgeInsets.only(top: SubscriptionConsts.biggestPadding),
           child: Align(
             alignment: Alignment.topCenter,
             child: Text(
@@ -46,16 +48,19 @@ class _BigSubscriptionBottomSheetState
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 100.0, bottom: 144),
+          padding: const EdgeInsets.only(
+              top: SubscriptionConsts.topPaddingBottomSheet,
+              bottom: SubscriptionConsts.bottomPaddingBottomSheet),
           child: SizedBox(
-            height: 800,
+            height: SubscriptionConsts.bigBottomSheetHeight,
             child: Center(
               child: ListView.builder(
                   controller: controller,
                   itemCount: widget.tariffs.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 10.0),
+                      padding: const EdgeInsets.only(
+                          bottom: SubscriptionConsts.smallBottomPadding),
                       child: TariffCard(
                         name: widget.tariffs[index].name,
                         priceStr: widget.tariffs[index].priceStr,
@@ -79,16 +84,20 @@ class _BigSubscriptionBottomSheetState
           alignment: Alignment.bottomCenter,
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: MediaQuery.of(context).size.height *
+                SubscriptionConsts.widthMultiply02,
             child: DecoratedBox(
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40.0),
-                      topRight: Radius.circular(40.0)),
+                      topLeft:
+                          Radius.circular(SubscriptionConsts.hugeBorderRadius),
+                      topRight:
+                          Radius.circular(SubscriptionConsts.hugeBorderRadius)),
                   color: AppColors.whiteColor,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
+                  padding: const EdgeInsets.only(
+                      top: SubscriptionConsts.biggestPadding),
                   child: ActiveAndPassiveButtons(
                       firstButtonText: AppLocalizations.of(context).payButton,
                       onTapFirstButton: () {

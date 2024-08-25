@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
@@ -20,13 +21,13 @@ class ActiveAndPassiveButtons extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 53,
-          width: MediaQuery.of(context).size.width * 0.8,
+          height: SubscriptionConsts.buttonHeight,
+          width: MediaQuery.of(context).size.width * SubscriptionConsts.widthMultiply08,
           child: InkWell(
               onTap: onTapFirstButton,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(SubscriptionConsts.borderRadius),
                     gradient: AppColors.blueIconGradient),
                 child: Center(
                   child: Text(
@@ -37,13 +38,13 @@ class ActiveAndPassiveButtons extends StatelessWidget {
               )),
         ),
         SizedBox(
-          height: 53,
-          width: MediaQuery.of(context).size.width * 0.8,
+          height: SubscriptionConsts.buttonHeight,
+          width: MediaQuery.of(context).size.width * SubscriptionConsts.widthMultiply08,
           child: InkWell(
               onTap: onTapSecondButton,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(SubscriptionConsts.borderRadius),
                     color: AppColors.whiteColor),
                 child: Center(
                   child: Text(

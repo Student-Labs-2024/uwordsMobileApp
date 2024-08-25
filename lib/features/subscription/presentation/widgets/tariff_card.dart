@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/subscription_styles.dart';
 import 'package:uwords/theme/app_colors.dart';
 
@@ -31,22 +32,15 @@ class TariffCard extends StatelessWidget {
         onTap(index);
       },
       child: Container(
-        height: 150,
+        height: SubscriptionConsts.containerHeight,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(SubscriptionConsts.borderRadius),
+          boxShadow: const [SubscriptionShadow.shadow],
         ),
-        child: Stack(
-          children:[ Padding(
-            padding: const EdgeInsets.all(15.0),
+        child: Stack(children: [
+          Padding(
+            padding: const EdgeInsets.all(SubscriptionConsts.fifteenPadding),
             child: Stack(children: [
               Row(
                 children: [
@@ -54,40 +48,37 @@ class TariffCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          name,
-                          style: SubscriptionsStyles.name
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          priceStr,
-                          style: SubscriptionsStyles.price
-                        ),
-                        const SizedBox(height: 4),
+                        Text(name, style: SubscriptionsStyles.name),
+                        const SizedBox(
+                            height:
+                                SubscriptionConsts.biggerThanSmallestPadding),
+                        Text(priceStr, style: SubscriptionsStyles.price),
+                        const SizedBox(
+                            height: SubscriptionConsts.smallestPadding),
                         if (freePeriodStr != null)
                           Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 4,
+                              horizontal: SubscriptionConsts.smallBottomPadding,
+                              vertical: SubscriptionConsts.smallestPadding,
                             ),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFE9F2FF),
-                              borderRadius: BorderRadius.circular(20),
+                              gradient: AppColors.backgroundOnboardingGradient,
+                              borderRadius: BorderRadius.circular(
+                                  SubscriptionConsts.normalBorderRadius),
                             ),
                             child: Text(
                               freePeriodStr!,
+                              //TODO change style
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF3498DB),
+                                color: AppColors.blueColor,
                               ),
                             ),
                           ),
-                        const SizedBox(height: 4),
-                        Text(
-                          comment,
-                          style: SubscriptionsStyles.comment
-                        ),
+                        const SizedBox(
+                            height: SubscriptionConsts.smallestPadding),
+                        Text(comment, style: SubscriptionsStyles.comment),
                       ],
                     ),
                   ),
@@ -96,19 +87,21 @@ class TariffCard extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: SizedBox(
-                  width: 40,
-                  height: 40,
+                  width: SubscriptionConsts.iconSize,
+                  height: SubscriptionConsts.iconSize,
                   child: Stack(
                     alignment: Alignment.topRight,
                     children: [
                       SizedBox(
-                        width: 30,
-                        height: 30,
+                        width: SubscriptionConsts.biggestPadding,
+                        height: SubscriptionConsts.biggestPadding,
                         child: Center(
                           child: Icon(
                             isSelected ? Icons.check_circle : Icons.circle,
-                            color: isSelected ? Colors.blue : Colors.grey,
-                            size: 25,
+                            color: isSelected
+                                ? AppColors.blueColor
+                                : AppColors.darkGreyColor,
+                            size: SubscriptionConsts.normalSpace,
                           ),
                         ),
                       ),
@@ -122,17 +115,22 @@ class TariffCard extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: SizedBox(
-                width: 60,
-                height: 34,
+                width: SubscriptionConsts.smallAngleWidth,
+                height: SubscriptionConsts.smallAngleHeight,
                 child: DecoratedBox(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
+                        topLeft:
+                            Radius.circular(SubscriptionConsts.borderRadius),
+                        bottomRight:
+                            Radius.circular(SubscriptionConsts.borderRadius)),
                     gradient: AppColors.backgroundOnboardingGradient,
                   ),
                   child: Center(
-                    child: Text("-$discount%", style: SubscriptionsStyles.discount,),
+                    child: Text(
+                      "-$discount%",
+                      style: SubscriptionsStyles.discount,
+                    ),
                   ),
                 ),
               ),

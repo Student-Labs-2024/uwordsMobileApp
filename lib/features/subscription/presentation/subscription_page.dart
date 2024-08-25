@@ -21,7 +21,6 @@ class SubscriptionPage extends StatefulWidget {
 
 class _SubscriptionPageState extends State<SubscriptionPage>
     with WidgetsBindingObserver {
-
   @override
   void initState() {
     context
@@ -75,13 +74,14 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   initial: (tariffs) => Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: SubscriptionConsts.normalSpace),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 30.0),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: SubscriptionConsts.biggestPadding),
                               child: Text(
                                 AppLocalizations.of(context).subscriptionTitle,
                                 style: AppTextStyles.subscriptionTitle,
@@ -92,29 +92,35 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                               imageString: AppImageSource.endlessEnergy,
                               text: AppLocalizations.of(context)
                                   .subscriptionEnergyText,
-                              offesetAnimationPositioned: 0.9,
-                              animationDuration:
-                                  const Duration(milliseconds: 1000),
+                              offesetAnimationPositioned:
+                                  SubscriptionConsts.widthMultiply09,
+                              animationDuration: const Duration(
+                                  milliseconds:
+                                      SubscriptionsDuration.oneInMilliseconds),
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(vertical: 15.0),
+                                  const EdgeInsets.symmetric(vertical: SubscriptionConsts.fifteenPadding),
                               child: AnimatedCardWidget(
                                 imageString: AppImageSource.cloak,
                                 text: AppLocalizations.of(context)
                                     .subscriptionTimeText,
-                                offesetAnimationPositioned: 1.3,
-                                animationDuration:
-                                    const Duration(milliseconds: 2000),
+                                offesetAnimationPositioned:
+                                    SubscriptionConsts.widthMultiply13,
+                                animationDuration: const Duration(
+                                    milliseconds: SubscriptionsDuration
+                                        .twoSecondsInMilliseconds),
                               ),
                             ),
                             AnimatedCardWidget(
                               imageString: AppImageSource.youtube,
                               text: AppLocalizations.of(context)
                                   .subscriptionYoutubeText,
-                              offesetAnimationPositioned: 1.3,
-                              animationDuration:
-                                  const Duration(milliseconds: 3000),
+                              offesetAnimationPositioned:
+                                  SubscriptionConsts.widthMultiply13,
+                              animationDuration: const Duration(
+                                  milliseconds: SubscriptionsDuration
+                                      .threeSecondsInMilliseconds),
                             ),
                             const Spacer(),
                           ],
@@ -126,7 +132,8 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                               backgroundColor: AppColors.whiteColor,
                               context: context,
                               builder: (BuildContext context) {
-                                return BigSubscriptionBottomSheet(tariffs: tariffs);
+                                return BigSubscriptionBottomSheet(
+                                    tariffs: tariffs);
                               });
                         },
                         onTapSecondButton: () => context.go("/profile"),
