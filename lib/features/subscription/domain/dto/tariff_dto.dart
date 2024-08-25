@@ -4,11 +4,11 @@ class TariffDto {
   final int months;
   final int price;
   final String priceStr;
-  final int oldPrice;
-  final String oldPriceStr;
-  final int freePeriodDays;
-  final String freePeriodStr;
-  final int discount;
+  final int? oldPrice;
+  final String? oldPriceStr;
+  final int? freePeriodDays;
+  final String? freePeriodStr;
+  final int? discount;
   final String comment;
 
   TariffDto(

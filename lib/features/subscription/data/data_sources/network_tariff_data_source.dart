@@ -38,7 +38,7 @@ class NetworkTariffDataSource implements INetworkTariffDataSource {
       return data
           .map((tariff) => TariffDto.fromJson(tariffMap: tariff))
           .toList();
-    } on Exception catch (e) {
+    } on Exception{
       // TODO change rethrow;
       rethrow;
     }
