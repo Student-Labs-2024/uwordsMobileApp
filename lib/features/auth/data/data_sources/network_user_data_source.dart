@@ -226,4 +226,15 @@ class NetworkUserDataSource implements INetworkUserDataSource {
     return userDto.updateInfoAboutUserByMap(
         userMap: aboutMeResponse.data, user: userDto);
   }
+
+  @override
+  Future<void> updateOnboardingComplete(
+      {required String userAccessToken}) async {
+    try {
+      await client.sendThatUserCompletedOnboarding(
+          joinTokenTypeAndToken(tokenType: tokenType, token: userAccessToken));
+    } on DioException catch (e) {
+      noInternetCheck(e);
+    }
+  }
 }

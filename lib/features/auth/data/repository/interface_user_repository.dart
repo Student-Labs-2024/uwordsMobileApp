@@ -38,4 +38,5 @@ abstract interface class IUserRepository {
   Future<UserAuthDto> getCurrentUserInfo();
   Future<bool> isEducationCompleted();
   String getSubscriptionExpired();
+  Future<void> onboardingCompleted();
 }
