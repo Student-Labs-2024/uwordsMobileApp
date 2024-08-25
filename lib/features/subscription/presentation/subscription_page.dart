@@ -6,6 +6,7 @@ import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/presentation/widgets/animated_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 
 class SubscriptionPage extends StatefulWidget {
@@ -16,8 +17,7 @@ class SubscriptionPage extends StatefulWidget {
 }
 
 class _SubscriptionPageState extends State<SubscriptionPage>
-    with WidgetsBindingObserver{
-
+    with WidgetsBindingObserver {
   @override
   void initState() {
     context
@@ -56,7 +56,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
     return Scaffold(
         body: DecoratedBox(
             decoration: const BoxDecoration(
-              gradient: AppColors.backgroundGradient,
+              gradient: AppColors.backgroundOnboardingGradient,
             ),
             child: BlocConsumer<SubscriptionBloc, SubscriptionState>(
                 listener: (context, subscriptionState) {
@@ -71,10 +71,40 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   initial: (tariffs) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AnimatedCardWidget(imageString: AppImageSource.endlessEnergy,text: AppLocalizations.of(context).subscriptionEnergyText, offesetAnimationPositioned: 0.9, animationDuration: Duration(milliseconds: 1000),),
-                        AnimatedCardWidget(imageString: AppImageSource.cloak,text: AppLocalizations.of(context).subscriptionTimeText, offesetAnimationPositioned: 1.3, animationDuration: Duration(milliseconds: 2000),),
-                        AnimatedCardWidget(imageString: AppImageSource.youtube,text: AppLocalizations.of(context).subscriptionYoutubeText, offesetAnimationPositioned: 1.3, animationDuration: Duration(milliseconds: 3000),),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 30.0),
+                          child: Text(
+                            AppLocalizations.of(context).subscriptionTitle,
+                            style: AppTextStyles.subscriptionTitle,textAlign: TextAlign.center,
+                          ),
+                        ),
+                        AnimatedCardWidget(
+                          imageString: AppImageSource.endlessEnergy,
+                          text: AppLocalizations.of(context)
+                              .subscriptionEnergyText,
+                          offesetAnimationPositioned: 0.9,
+                          animationDuration: Duration(milliseconds: 1000),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          child: AnimatedCardWidget(
+                            imageString: AppImageSource.cloak,
+                            text:
+                                AppLocalizations.of(context).subscriptionTimeText,
+                            offesetAnimationPositioned: 1.3,
+                            animationDuration: Duration(milliseconds: 2000),
+                          ),
+                        ),
+                        AnimatedCardWidget(
+                          imageString: AppImageSource.youtube,
+                          text: AppLocalizations.of(context)
+                              .subscriptionYoutubeText,
+                          offesetAnimationPositioned: 1.3,
+                          animationDuration: Duration(milliseconds: 3000),
+                        ),
+                        Spacer(),
                         SizedBox(
                           height: SubscriptionConsts.viewBuilderSpace,
                           child: ListView.builder(
@@ -82,7 +112,8 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                               itemBuilder: (BuildContext context, int index) {
                                 return ListTile(
                                   title: Text(tariffs[index].name),
-                                  subtitle: Text(tariffs[index].price.toString()),
+                                  subtitle:
+                                      Text(tariffs[index].price.toString()),
                                   onTap: () {
                                     context.read<SubscriptionBloc>().add(
                                         SubscriptionEvent.paySubscription(
@@ -91,13 +122,6 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                                 );
                               }),
                         ),
-                        ElevatedButton(
-                            onPressed: () {
-                              context.read<SubscriptionBloc>().add(
-                                  const SubscriptionEvent.isSubscriptionActive());
-                            },
-                            child: Text(AppLocalizations.of(context)
-                                .checkSubscriptionStatusButton))
                       ],
                     ),
                   ),

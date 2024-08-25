@@ -237,4 +237,9 @@ class AppTextStyles {
       fontSize: 21,
       fontWeight: FontWeight.w400,
       color: AppColors.darkMainColor);
+  static const subscriptionTitle = TextStyle(
+    fontSize: 22,
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.w600,
+  );
 }
