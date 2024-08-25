@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/first_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/fourth_onboarding_page.dart';
@@ -28,6 +30,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void dispose() {
     pageController.dispose();
     super.dispose();
+  }
+
+  void updateDataWithServer() async {
+    IUserRepository userRepositoryInstanse =
+        GetIt.instance.get<IUserRepository>();
+        await userRepositoryInstanse.onboardingCompleted();
   }
 
   @override
@@ -84,7 +92,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     child: Center(
                         child:
                             Text(AppLocalizations.of(context).startQuestion)),
-                    onTap: () => context.go("/home"),
+                    onTap: () {
+                      updateDataWithServer();
+                      context.go("/home");
+                    },
                   ),
                 )));
   }

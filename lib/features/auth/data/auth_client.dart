@@ -55,4 +55,8 @@ abstract class AuthClient {
 
   @GET("users/me")
   Future<HttpResponse> aboutMe(@Header("Authorization") accessToken);
+
+  @POST("users/update_onboarding_complete")
+  Future<void> sendThatUserCompletedOnboarding(
+      @Header("Authorization") accessToken);
 }

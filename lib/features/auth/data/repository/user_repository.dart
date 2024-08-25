@@ -231,4 +231,10 @@ class UserRepository implements IUserRepository {
     UserAuthDto currentUser = await savableUserDataSource.getCurrent();
     return currentUser;
   }
+
+  @override
+  Future<void> onboardingCompleted() async{
+    await networkUserDataSource.updateOnboardingComplete(userAccessToken: _currentUser.accessToken);
+    await updateInfoAboutUser();
+  }
 }
