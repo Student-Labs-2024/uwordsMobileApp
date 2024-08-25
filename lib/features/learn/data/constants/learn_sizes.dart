@@ -82,4 +82,6 @@ class LearnSizes {
   static const double animatedSubtopicIconWidth = 43 / 375;
   static const double animatedSubtopicBackWidth = 126 / 375;
   static const double animatedSubtopicBackHeight = 105 / 812;
+
+  static const double animatedSubtopicIconHeight = 20;
 }

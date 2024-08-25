@@ -83,4 +83,5 @@ class OtherLearnConstants {
 
   static const Duration wordRowAnimation = Duration(milliseconds: 100);
   static const Duration wordRowDeletedTime = Duration(milliseconds: 800);
+  static const int countRepeats = 4;
 }

@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
+import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
@@ -49,7 +50,8 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     if (subtopic.wordInfoList.isEmpty) {
       return 0;
     }
-    int maxProgress = subtopic.wordInfoList.length * 4;
+    int maxProgress =
+        subtopic.wordInfoList.length * OtherLearnConstants.countRepeats;
     int currentProgress = 0;
     for (WordInfo wordInfo in subtopic.wordInfoList) {
       currentProgress += wordInfo.progress;
@@ -64,14 +66,13 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     try {
       List<Topic> saveTopics = [];
       saveTopics.addAll(topics);
-
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
 
       await wordsRepository.deleteWord(
           accessToken: accessToken, id: event.wordInfo.word.id);
-
+      //TODO Think about optimization
       for (Topic topic in saveTopics) {
         if (topic.topicTitle != event.subtopic.topicTitle) continue;
         for (int i = 0; i < topic.subtopics.length; i++) {
