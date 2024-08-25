@@ -1,3 +1,5 @@
+import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+
 abstract interface class IUserRepository {
   void localLogOut();
   Future<bool> registerUser({
@@ -33,4 +35,7 @@ abstract interface class IUserRepository {
   Future<void> updateInfoAboutUser();
   bool isSubscriptionActive();
   int getCurrentUserDaysStreak();
+  Future<UserAuthDto> getCurrentUserInfo();
+  Future<bool> isEducationCompleted();
+  String getSubscriptionExpired();
 }

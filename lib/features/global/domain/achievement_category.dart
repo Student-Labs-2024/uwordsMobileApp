@@ -39,6 +39,12 @@ extension AchievementCategoryMapper on AchievementCategoryDto {
   AchievementCategory toDB() => AchievementCategory(title: title);
 }
 
+extension AchievementCategoryListMapper on List<AchievementCategoryDto> {
+  List<AchievementCategoryModel> toModel() {
+    return map((e) => e.toModel()).toList();
+  }
+}
+
 class AchievementCategoryModel {
   final String title;
   final List<AchievementInfoModel> achievementsInfoDtoList;

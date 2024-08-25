@@ -35,6 +35,7 @@ import 'package:uwords/features/main/presentation/pages/home_page.dart';
 import 'package:uwords/features/main/presentation/pages/scaffold_with_navbar.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
+import 'package:uwords/features/onboarding/prezentation/onboarding_page.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/profile_page.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
@@ -89,6 +90,9 @@ final GoRouter _goRouter = GoRouter(
           builder: (context, state) => const RegisterPage(),
         ),
         GoRoute(path: '/auth', builder: (context, state) => const AuthPage()),
+        GoRoute(
+            path: "/onboarding",
+            builder: (context, state) => const OnboardingPage()),
         GoRoute(
           path: '/home',
           builder: (context, state) => const HomePage(),
@@ -149,8 +153,10 @@ class MainApp extends StatelessWidget {
               create: (context) =>
                   AuthBloc(userRepository: context.read<IUserRepository>())),
           BlocProvider(
-              create: (context) =>
-                  ProfileBloc(userRepository: context.read<IUserRepository>())),
+              create: (context) => ProfileBloc(
+                    userRepository: context.read<IUserRepository>(),
+                    wordsRepository: context.read<IWordsRepository>(),
+                  )),
           BlocProvider(
               create: (context) => AudioLinkBloc(
                   audioRepository: context.read<IAudioRepository>(),

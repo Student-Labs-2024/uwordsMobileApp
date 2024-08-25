@@ -5,6 +5,7 @@ import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/features/learn/presentation/widgets/animated_subtopic.dart';
 import 'package:uwords/features/learn/presentation/widgets/custom_search_textfield.dart';
 import 'package:uwords/features/learn/presentation/widgets/sort_button.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopics_grid.dart';
@@ -108,49 +109,82 @@ class _LearnPageState extends State<LearnPage> {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: ListView(
-                                children: [
-                                  const SizedBox(
-                                    height: LearnPaddings.smallEmptySpace,
-                                  ),
-                                  ...topics.map(
-                                    (topic) => Column(
-                                      children: [
-                                        Column(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: LearnPaddings
-                                                          .learnPagePadding),
-                                              child: TopicHeader(topic: topic),
-                                            ),
-                                            const SizedBox(
-                                              height: LearnPaddings
-                                                  .normalEdgeInsets,
-                                            ),
-                                            SizedBox(
-                                                height: LearnSizes
-                                                    .subtopicCardHeight,
-                                                child: SubtopicsRow(
-                                                    subtopics:
-                                                        topic.subtopics)),
-                                            const SizedBox(
-                                              height:
-                                                  LearnPaddings.normalPadding,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                            if (topics.isNotEmpty)
+                              Expanded(
+                                child: ListView(
+                                  children: [
+                                    const SizedBox(
+                                      height: LearnPaddings.smallEmptySpace,
                                     ),
+                                    ...topics.map(
+                                      (topic) => Column(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets
+                                                    .symmetric(
+                                                    horizontal: LearnPaddings
+                                                        .learnPagePadding),
+                                                child:
+                                                    TopicHeader(topic: topic),
+                                              ),
+                                              const SizedBox(
+                                                height: LearnPaddings
+                                                    .normalEdgeInsets,
+                                              ),
+                                              SizedBox(
+                                                  height: LearnSizes
+                                                      .subtopicCardHeight,
+                                                  child: SubtopicsRow(
+                                                      subtopics:
+                                                          topic.subtopics)),
+                                              const SizedBox(
+                                                height:
+                                                    LearnPaddings.normalPadding,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: LearnPaddings.learnPageBottom,
+                                    )
+                                  ],
+                                ),
+                              )
+                            else
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal:
+                                          LearnPaddings.learnPagePadding),
+                                  child: Column(
+                                    children: [
+                                      const Spacer(
+                                        flex: 1,
+                                      ),
+                                      const AnimatedSubtopic(),
+                                      SizedBox(
+                                        height: MediaQuery.of(context)
+                                                .size
+                                                .height *
+                                            LearnSizes.animatedSubtopicSpacer,
+                                      ),
+                                      Text(
+                                        AppLocalizations.of(context)
+                                            .haveNoSubtopics,
+                                        style: AppTextStyles.haventStatistics,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const Spacer(
+                                        flex: 3,
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    height: LearnPaddings.learnPageBottom,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       );

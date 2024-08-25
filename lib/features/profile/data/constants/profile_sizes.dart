@@ -29,4 +29,7 @@ class ProfileSizes {
   static const double headerSpacer = 10;
   static const double carouselHeight = 42;
   static const double activitiesTileSpacer = 5;
+
+  static const double avatarBorder = 3;
+  static const double navButtonSpacer = 15;
 }
