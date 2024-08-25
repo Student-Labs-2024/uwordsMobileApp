@@ -16,4 +16,5 @@ abstract class IWordsRepository {
       {required String accessToken,
       required String topicTitle,
       required String subtopicTitle});
+  Future<void> deleteWord({required String accessToken, required int id});
 }

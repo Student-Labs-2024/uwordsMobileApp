@@ -92,4 +92,16 @@ class WordsDataSource implements IWordsDataSource {
         throw NoEnergy();
     }
   }
+
+  @override
+  Future<void> deleteWord(
+      {required String accessToken, required int id}) async {
+    try {
+      await client.deleteWords(
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken), id);
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      rethrow;
+    }
+  }
 }

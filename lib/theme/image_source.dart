@@ -42,14 +42,14 @@ class AppImageSource {
   static const String sortSettingsButton = 'assets/svg/sort_setting_button.svg';
   static const String sortIcon = 'assets/svg/sort_icon.svg';
   static const String audioGradientIcon = 'assets/svg/audio_gradient_icon.svg';
-  static const String circleEmpty = 'assets/svg/circle_empty.svg';
+  static const String circleEmpty = 'assets/png/circle_empty.png';
   static const String circleFirstQuarter =
-      'assets/svg/circle_first_quarter.svg';
+      'assets/png/circle_first_quarter.png';
   static const String circleSecondQuarter =
-      'assets/svg/circle_second_quarter.svg';
+      'assets/png/circle_second_quarter.png';
   static const String circleThirdQuarter =
-      'assets/svg/circle_third_quarter.svg';
-  static const String circleFull = 'assets/svg/circle_full.svg';
+      'assets/png/circle_third_quarter.png';
+  static const String circleFull = 'assets/png/circle_full.png';
   static const String redBigAngleButton = 'assets/png/red_big_angle_bubble.png';
   static const String blueBigAngleButton =
       'assets/png/blue_big_angle_bubble.png';
