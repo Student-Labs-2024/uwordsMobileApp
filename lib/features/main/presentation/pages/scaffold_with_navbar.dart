@@ -23,6 +23,8 @@ class ScaffoldWithNavBar extends StatefulWidget {
 class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
   int _selectedIndex = 0;
 
+  bool _isNavBarHiden = true;
+
   LinearGradient getGradient(String currentRoute) {
     if (currentRoute == '/home') {
       return AppColors.navBarRecord;
@@ -43,11 +45,12 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
         bottom: ScaffoldWithNavbarPaddings.navBarBottom,
         left: (MediaQuery.of(context).size.width) *
             ScaffoldWithNavbarPaddings.navBarLeft,
-        child: ((currentRoute == "/") ||
-                (currentRoute == "/auth") ||
-                (currentRoute == "/learn/subtopic") ||
-                (currentRoute == "/learnCore") ||
-                (currentRoute == "/onboarding"))
+        child: (((currentRoute == "/") ||
+                    (currentRoute == "/auth") ||
+                    (currentRoute == "/learn/subtopic") ||
+                    (currentRoute == "/learnCore") ||
+                    (currentRoute == "/onboarding")) ||
+                _isNavBarHiden)
             ? const SizedBox()
             : Container(
                 width: (MediaQuery.of(context).size.width) *

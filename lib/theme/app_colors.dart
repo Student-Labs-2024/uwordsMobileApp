@@ -165,4 +165,9 @@ class AppColors {
     AppColors.badProgressbarColor1.withOpacity(0.55),
     AppColors.badProgressbarColor2.withOpacity(0.55)
   ]);
+
+  static const LinearGradient gradeButtonGradient = LinearGradient(colors: [
+    Color.fromRGBO(150, 124, 253, 1),
+    Color.fromRGBO(49, 119, 255, 1),
+  ], begin: Alignment.centerLeft, end: Alignment.centerRight);
 }
