@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -113,7 +115,9 @@ class _RegisterPageState extends State<RegisterPage>
             state.whenOrNull(success: (success) {
               switch (success) {
                 case AuthSuccess.authorized:
-                updateHomeWidgetByUserData(context: context);
+                if(Platform.isAndroid){
+                  updateHomeWidgetByUserData(context: context);
+                }
                   context.go("/home");
                 case AuthSuccess.sendedCode:
               }
