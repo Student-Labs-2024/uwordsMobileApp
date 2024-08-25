@@ -44,6 +44,7 @@ import 'package:uwords/features/subscription/data/repositories/subscription_repo
 import 'package:uwords/features/subscription/presentation/subscription_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'firebase_options.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -69,6 +70,10 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]).then((value) => runApp(MainApp()));
     runApp(MainApp());
   }, (error, stack) async {
     log(error.toString(), name: 'App Error', stackTrace: stack);

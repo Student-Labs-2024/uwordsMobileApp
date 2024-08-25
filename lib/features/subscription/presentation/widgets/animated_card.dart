@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:uwords/theme/app_colors.dart';
-import 'package:uwords/theme/image_source.dart';
+import 'package:uwords/theme/learn_text_styles.dart';
 
 class AnimatedCardWidget extends StatefulWidget {
-  const AnimatedCardWidget({super.key});
+  const AnimatedCardWidget({super.key, required this.imageString, required this.text, required this.offesetAnimationPositioned, required this.animationDuration});
+  final String imageString;
+  final String text;
+  final double offesetAnimationPositioned;
+  final Duration animationDuration;
 
   @override
   State<AnimatedCardWidget> createState() => _AnimatedCardWidgetState();
@@ -21,7 +23,7 @@ class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1500),
+      duration: widget.animationDuration,
       vsync: this,
     );
 
@@ -63,54 +65,55 @@ class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        return SizedBox(
-          height: 109,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 1000),
-                  curve: Curves.easeInOut,
-                  left: _iconOffsetAnimation.value.dx *  MediaQuery.of(context).size.width*1.4,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width*0.9,
-                      height: 60,
-                      child: Transform.scale(
-                        scale: _iconScaleAnimation.value,
-                        child: ShaderMask(
-                blendMode: BlendMode.srcIn,
-                shaderCallback: (bounds) {
-                  return AppColors.backgroundOnboardingGradientReversed.createShader(bounds);
-                },child: SvgPicture.asset(AppImageSource.endlessEnergySvg))
-                      ),
-                    ),
-                  ),
-                ),
-                AnimatedOpacity(
-                  duration: const Duration(milliseconds: 2000),
-                  opacity: _textOpacityAnimation.value,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Text(
-                        'Бесконечный запас энергии',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
+        return AnimatedOpacity(
+          duration: const Duration(milliseconds: 1000),
+                      curve: Curves.easeIn,
+                      opacity: _textOpacityAnimation.value,
+          child: SizedBox(
+            height: 109,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 28.0, vertical: 28.0),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 800),
+                      curve: Curves.easeInOut,
+                      left: _iconOffsetAnimation.value.dx *
+                          MediaQuery.of(context).size.width*widget.offesetAnimationPositioned - MediaQuery.of(context).viewPadding.left - MediaQuery.of(context).viewPadding.right,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width*0.7,
+                          height: 53,
+                          child: Transform.scale(
+                              scale: _iconScaleAnimation.value,
+                              child: Image.asset(widget.imageString)),
                         ),
                       ),
                     ),
-                  ),
+                    AnimatedOpacity(
+                      duration: const Duration(milliseconds: 2000),
+                      curve: Curves.easeIn,
+                      opacity: _textOpacityAnimation.value,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            widget.text,
+                            style: LearnTextStyles.bubbleButton
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         );

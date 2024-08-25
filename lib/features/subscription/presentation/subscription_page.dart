@@ -6,6 +6,7 @@ import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/presentation/widgets/animated_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
@@ -15,7 +16,8 @@ class SubscriptionPage extends StatefulWidget {
 }
 
 class _SubscriptionPageState extends State<SubscriptionPage>
-    with WidgetsBindingObserver {
+    with WidgetsBindingObserver{
+
   @override
   void initState() {
     context
@@ -70,7 +72,9 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Column(
                       children: [
-                        AnimatedCardWidget(),
+                        AnimatedCardWidget(imageString: AppImageSource.endlessEnergy,text: AppLocalizations.of(context).subscriptionEnergyText, offesetAnimationPositioned: 0.9, animationDuration: Duration(milliseconds: 1000),),
+                        AnimatedCardWidget(imageString: AppImageSource.cloak,text: AppLocalizations.of(context).subscriptionTimeText, offesetAnimationPositioned: 1.3, animationDuration: Duration(milliseconds: 2000),),
+                        AnimatedCardWidget(imageString: AppImageSource.youtube,text: AppLocalizations.of(context).subscriptionYoutubeText, offesetAnimationPositioned: 1.3, animationDuration: Duration(milliseconds: 3000),),
                         SizedBox(
                           height: SubscriptionConsts.viewBuilderSpace,
                           child: ListView.builder(
