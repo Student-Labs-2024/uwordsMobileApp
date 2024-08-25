@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/presentation/widgets/animated_card.dart';
+import 'package:uwords/features/subscription/presentation/widgets/small_subcription_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/theme/app_text_styles.dart';
@@ -18,6 +20,8 @@ class SubscriptionPage extends StatefulWidget {
 
 class _SubscriptionPageState extends State<SubscriptionPage>
     with WidgetsBindingObserver {
+  bool _showBottomSheet = false;
+
   @override
   void initState() {
     context
@@ -68,62 +72,84 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   child: Center(
                 child: state.maybeWhen(
                   orElse: () => const SizedBox(),
-                  initial: (tariffs) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 30.0),
-                          child: Text(
-                            AppLocalizations.of(context).subscriptionTitle,
-                            style: AppTextStyles.subscriptionTitle,textAlign: TextAlign.center,
-                          ),
+                  initial: (tariffs) => Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 30.0),
+                              child: Text(
+                                AppLocalizations.of(context).subscriptionTitle,
+                                style: AppTextStyles.subscriptionTitle,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            AnimatedCardWidget(
+                              imageString: AppImageSource.endlessEnergy,
+                              text: AppLocalizations.of(context)
+                                  .subscriptionEnergyText,
+                              offesetAnimationPositioned: 0.9,
+                              animationDuration:
+                                  const Duration(milliseconds: 1000),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 15.0),
+                              child: AnimatedCardWidget(
+                                imageString: AppImageSource.cloak,
+                                text: AppLocalizations.of(context)
+                                    .subscriptionTimeText,
+                                offesetAnimationPositioned: 1.3,
+                                animationDuration:
+                                    const Duration(milliseconds: 2000),
+                              ),
+                            ),
+                            AnimatedCardWidget(
+                              imageString: AppImageSource.youtube,
+                              text: AppLocalizations.of(context)
+                                  .subscriptionYoutubeText,
+                              offesetAnimationPositioned: 1.3,
+                              animationDuration:
+                                  const Duration(milliseconds: 3000),
+                            ),
+                            const Spacer(),
+                            SizedBox(
+                              height: SubscriptionConsts.viewBuilderSpace,
+                              child: ListView.builder(
+                                  itemCount: tariffs.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return ListTile(
+                                      title: Text(tariffs[index].name),
+                                      subtitle:
+                                          Text(tariffs[index].price.toString()),
+                                      onTap: () {
+                                        context.read<SubscriptionBloc>().add(
+                                            SubscriptionEvent.paySubscription(
+                                                tariffs[index]));
+                                      },
+                                    );
+                                  }),
+                            ),
+                          ],
                         ),
-                        AnimatedCardWidget(
-                          imageString: AppImageSource.endlessEnergy,
-                          text: AppLocalizations.of(context)
-                              .subscriptionEnergyText,
-                          offesetAnimationPositioned: 0.9,
-                          animationDuration: Duration(milliseconds: 1000),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15.0),
-                          child: AnimatedCardWidget(
-                            imageString: AppImageSource.cloak,
-                            text:
-                                AppLocalizations.of(context).subscriptionTimeText,
-                            offesetAnimationPositioned: 1.3,
-                            animationDuration: Duration(milliseconds: 2000),
-                          ),
-                        ),
-                        AnimatedCardWidget(
-                          imageString: AppImageSource.youtube,
-                          text: AppLocalizations.of(context)
-                              .subscriptionYoutubeText,
-                          offesetAnimationPositioned: 1.3,
-                          animationDuration: Duration(milliseconds: 3000),
-                        ),
-                        Spacer(),
-                        SizedBox(
-                          height: SubscriptionConsts.viewBuilderSpace,
-                          child: ListView.builder(
-                              itemCount: tariffs.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return ListTile(
-                                  title: Text(tariffs[index].name),
-                                  subtitle:
-                                      Text(tariffs[index].price.toString()),
-                                  onTap: () {
-                                    context.read<SubscriptionBloc>().add(
-                                        SubscriptionEvent.paySubscription(
-                                            tariffs[index]));
-                                  },
-                                );
-                              }),
-                        ),
-                      ],
-                    ),
+                      ),
+                      SmallSubcriptionBottomSheet(
+                        onTapFirstButton: () {
+                          showModalBottomSheet(
+                              backgroundColor: AppColors.whiteColor,
+                              context: context,
+                              builder: (BuildContext context) {
+                                return SizedBox();
+                              });
+                        },
+                        onTapSecondButton: () => context.go("/profile"),
+                      )
+                    ],
                   ),
                   subscriptionStatus: (isActive, date) {
                     return Text(isActive.toString());
