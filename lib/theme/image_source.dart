@@ -89,4 +89,5 @@ class AppImageSource {
   static const String chromeIcon = 'assets/svg/chrome.svg';
   static const String animatedSubtopicIcon =
       'assets/svg/animated_subtopic_image.svg';
+  static const String endlessEnergySvg = 'assets/svg/endless_energy.svg';
 }

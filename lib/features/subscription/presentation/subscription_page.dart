@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/features/subscription/data/subscription_consts.dart';
+import 'package:uwords/features/subscription/presentation/widgets/animated_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -65,32 +66,36 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   child: Center(
                 child: state.maybeWhen(
                   orElse: () => const SizedBox(),
-                  initial: (tariffs) => Column(
-                    children: [
-                      SizedBox(
-                        height: SubscriptionConsts.viewBuilderSpace,
-                        child: ListView.builder(
-                            itemCount: tariffs.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ListTile(
-                                title: Text(tariffs[index].name),
-                                subtitle: Text(tariffs[index].price.toString()),
-                                onTap: () {
-                                  context.read<SubscriptionBloc>().add(
-                                      SubscriptionEvent.paySubscription(
-                                          tariffs[index]));
-                                },
-                              );
-                            }),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            context.read<SubscriptionBloc>().add(
-                                const SubscriptionEvent.isSubscriptionActive());
-                          },
-                          child: Text(AppLocalizations.of(context)
-                              .checkSubscriptionStatusButton))
-                    ],
+                  initial: (tariffs) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Column(
+                      children: [
+                        AnimatedCardWidget(),
+                        SizedBox(
+                          height: SubscriptionConsts.viewBuilderSpace,
+                          child: ListView.builder(
+                              itemCount: tariffs.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return ListTile(
+                                  title: Text(tariffs[index].name),
+                                  subtitle: Text(tariffs[index].price.toString()),
+                                  onTap: () {
+                                    context.read<SubscriptionBloc>().add(
+                                        SubscriptionEvent.paySubscription(
+                                            tariffs[index]));
+                                  },
+                                );
+                              }),
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              context.read<SubscriptionBloc>().add(
+                                  const SubscriptionEvent.isSubscriptionActive());
+                            },
+                            child: Text(AppLocalizations.of(context)
+                                .checkSubscriptionStatusButton))
+                      ],
+                    ),
                   ),
                   subscriptionStatus: (isActive, date) {
                     return Text(isActive.toString());
