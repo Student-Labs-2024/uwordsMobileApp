@@ -5,6 +5,7 @@ import 'package:uwords/features/global/data/constants/global_shadows.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
 import 'package:uwords/features/subscription/presentation/widgets/active_and_passive_buttons.dart';
+import 'package:uwords/features/subscription/presentation/widgets/tariff_card.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/theme/app_text_styles.dart';
@@ -12,7 +13,6 @@ import 'package:uwords/theme/app_text_styles.dart';
 class BigSubscriptionBottomSheet extends StatefulWidget {
   const BigSubscriptionBottomSheet({super.key, required this.tariffs});
   final List<Tariff> tariffs;
-
   @override
   State<BigSubscriptionBottomSheet> createState() =>
       _BigSubscriptionBottomSheetState();
@@ -20,7 +20,14 @@ class BigSubscriptionBottomSheet extends StatefulWidget {
 
 class _BigSubscriptionBottomSheetState
     extends State<BigSubscriptionBottomSheet> {
-  int chosenTariff = 0;
+  final ScrollController controller = ScrollController();
+  int? selectedIndex;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +51,26 @@ class _BigSubscriptionBottomSheetState
             height: 800,
             child: Center(
               child: ListView.builder(
+                  controller: controller,
                   itemCount: widget.tariffs.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return DecoratedBox(decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(15),boxShadow: GlobalShadows.basicShadow));
-                    // return ListTile(
-                    //   title: Text(widget.tariffs[index].name),
-                    //   subtitle: Text(widget.tariffs[index].price.toString()),
-                    //   onTap: () {
-                    //     context.read<SubscriptionBloc>().add(
-                    //         SubscriptionEvent.paySubscription(
-                    //             widget.tariffs[index]));
-                    //   },
-                    // );
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: TariffCard(
+                        name: widget.tariffs[index].name,
+                        priceStr: widget.tariffs[index].priceStr,
+                        freePeriodStr: widget.tariffs[index].freePeriodStr,
+                        comment: widget.tariffs[index].comment,
+                        discount: widget.tariffs[index].discount,
+                        isSelected: selectedIndex == index,
+                        onTap: (int index) {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        index: index,
+                      ),
+                    );
                   }),
             ),
           ),
@@ -76,7 +91,12 @@ class _BigSubscriptionBottomSheetState
                   padding: const EdgeInsets.only(top: 30.0),
                   child: ActiveAndPassiveButtons(
                       firstButtonText: AppLocalizations.of(context).payButton,
-                      onTapFirstButton: () {},
+                      onTapFirstButton: () {
+                        context.read<SubscriptionBloc>().add(
+                            SubscriptionEvent.paySubscription(
+                                widget.tariffs[selectedIndex ?? 0]));
+                        context.pop();
+                      },
                       seconButtonText: AppLocalizations.of(context).noThanks,
                       onTapSecondButton: () => context.pop()),
                 )),
