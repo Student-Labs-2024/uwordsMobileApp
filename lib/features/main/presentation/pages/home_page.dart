@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
-
   bool isRecording = false;
 
   @override
