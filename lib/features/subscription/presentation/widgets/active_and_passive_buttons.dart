@@ -22,12 +22,14 @@ class ActiveAndPassiveButtons extends StatelessWidget {
       children: [
         SizedBox(
           height: SubscriptionConsts.buttonHeight,
-          width: MediaQuery.of(context).size.width * SubscriptionConsts.widthMultiply08,
+          width: MediaQuery.of(context).size.width *
+              SubscriptionConsts.widthMultiply08,
           child: InkWell(
               onTap: onTapFirstButton,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(SubscriptionConsts.borderRadius),
+                    borderRadius:
+                        BorderRadius.circular(SubscriptionConsts.borderRadius),
                     gradient: AppColors.blueIconGradient),
                 child: Center(
                   child: Text(
@@ -39,12 +41,14 @@ class ActiveAndPassiveButtons extends StatelessWidget {
         ),
         SizedBox(
           height: SubscriptionConsts.buttonHeight,
-          width: MediaQuery.of(context).size.width * SubscriptionConsts.widthMultiply08,
+          width: MediaQuery.of(context).size.width *
+              SubscriptionConsts.widthMultiply08,
           child: InkWell(
               onTap: onTapSecondButton,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(SubscriptionConsts.borderRadius),
+                    borderRadius:
+                        BorderRadius.circular(SubscriptionConsts.borderRadius),
                     color: AppColors.whiteColor),
                 child: Center(
                   child: Text(

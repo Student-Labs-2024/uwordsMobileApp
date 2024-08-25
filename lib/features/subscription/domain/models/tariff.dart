@@ -1,5 +1,5 @@
 class Tariff {
-    final int id;
+  final int id;
   final String name;
   final int months;
   final int price;

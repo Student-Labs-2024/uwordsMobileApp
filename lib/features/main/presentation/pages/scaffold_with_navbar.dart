@@ -47,7 +47,8 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                 (currentRoute == "/auth") ||
                 (currentRoute == "/learn/subtopic") ||
                 (currentRoute == "/learnCore") ||
-                (currentRoute == "/onboarding") || (currentRoute == "/subscription"))
+                (currentRoute == "/onboarding") ||
+                (currentRoute == "/subscription"))
             ? const SizedBox()
             : Container(
                 width: (MediaQuery.of(context).size.width) *

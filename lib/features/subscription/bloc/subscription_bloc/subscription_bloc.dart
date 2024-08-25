@@ -68,7 +68,8 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
         emit(const SubscriptionState.subscriptionPaid());
       } else {
         emit(const SubscriptionState.subscriptionNotPaid());
-        await(Future.delayed(const Duration(microseconds: SubscriptionsDuration.twoSecondsInMilliseconds)));
+        await (Future.delayed(const Duration(
+            microseconds: SubscriptionsDuration.twoSecondsInMilliseconds)));
         emit(SubscriptionState.initial(tariffs));
       }
     } on Exception catch (e) {

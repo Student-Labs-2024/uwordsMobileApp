@@ -30,14 +30,16 @@ class SubscriptionConsts {
   static const Offset offest = Offset(0, 3);
   static const double normalBorderRadius = 20;
 }
+
 class SubscriptionShadow {
   static const BoxShadow shadow = BoxShadow(
-              color: AppColors.darkGreyColor,
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: SubscriptionConsts.offest,
-            );
+    color: AppColors.darkGreyColor,
+    spreadRadius: 2,
+    blurRadius: 5,
+    offset: SubscriptionConsts.offest,
+  );
 }
+
 class SubscriptionsDuration {
   static const int pointEighttInMilliseconds = 800;
   static const int oneInMilliseconds = 1000;

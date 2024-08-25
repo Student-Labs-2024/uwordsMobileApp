@@ -99,8 +99,8 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                                       SubscriptionsDuration.oneInMilliseconds),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: SubscriptionConsts.fifteenPadding),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: SubscriptionConsts.fifteenPadding),
                               child: AnimatedCardWidget(
                                 imageString: AppImageSource.cloak,
                                 text: AppLocalizations.of(context)
