@@ -15,6 +15,7 @@ import 'package:uwords/features/learn/data/constants/other_learn_constants.dart'
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
+import 'package:uwords/features/home_widget/home_widget_functions.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -64,6 +65,7 @@ class _AuthPageState extends State<AuthPage> {
               success: (success) {
                 switch (success) {
                   case AuthSuccess.authorized:
+                    updateHomeWidgetByUserData(context: context);
                     context.go("/home");
                   case AuthSuccess.educationNotCompleted:
                     context.go("/onboarding");

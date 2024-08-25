@@ -167,17 +167,17 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<int> getCurrentUserId() async {
+  int getCurrentUserId() {
     return _currentUser.id;
   }
 
   @override
-  Future<String> getCurrentUserName() async {
+  String getCurrentUserName() {
     return _currentUser.username;
   }
 
   @override
-  Future<String> getCurrentUserAvatarUrl() async {
+  String getCurrentUserAvatarUrl() {
     return _currentUser.avatarUrl;
   }
 
@@ -189,6 +189,11 @@ class UserRepository implements IUserRepository {
     _currentUser = SimpleUserInfo.fromUserAuthDto(userAuthDto: result);
     //TODO need to add into savable user data source update method
     await _saveUser(userDto: result);
+  }
+
+  @override
+  int getCurrentUserDaysStreak() {
+    return _currentUser.metricsDto.days;
   }
 
   @override
@@ -225,5 +230,23 @@ class UserRepository implements IUserRepository {
   Future<UserAuthDto> getCurrentUserInfo() async {
     UserAuthDto currentUser = await savableUserDataSource.getCurrent();
     return currentUser;
+  }
+
+  @override
+  Future<void> onboardingCompleted() async {
+    await networkUserDataSource.updateOnboardingComplete(
+        userAccessToken: _currentUser.accessToken);
+    await updateInfoAboutUser();
+  }
+
+  @override
+  Future<void> sendGrade(
+      String accessToken, int grade, String gradeMessage) async {
+    try {
+      await networkUserDataSource.sendGrade(accessToken, grade, gradeMessage);
+    } on Exception catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 }

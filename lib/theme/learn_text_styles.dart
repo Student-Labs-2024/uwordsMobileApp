@@ -14,6 +14,11 @@ class LearnTextStyles {
     color: AppColors.whiteColor,
     fontWeight: FontWeight.w700,
   );
+  static const paySubscriptionButton = TextStyle(
+    fontSize: 18,
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.w600,
+  );
   static const wordScreenTitle = TextStyle(
     fontSize: 25,
     color: AppColors.darkMainColor,

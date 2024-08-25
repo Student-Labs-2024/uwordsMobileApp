@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/features/subscription/data/subscription_consts.dart';
+import 'package:uwords/features/subscription/presentation/widgets/animated_card.dart';
+import 'package:uwords/features/subscription/presentation/widgets/big_subscription_bottom_sheet.dart';
+import 'package:uwords/features/subscription/presentation/widgets/small_subcription_bottom_sheet.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/app_text_styles.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
@@ -53,7 +59,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
     return Scaffold(
         body: DecoratedBox(
             decoration: const BoxDecoration(
-              gradient: AppColors.backgroundGradient,
+              gradient: AppColors.backgroundOnboardingGradient,
             ),
             child: BlocConsumer<SubscriptionBloc, SubscriptionState>(
                 listener: (context, subscriptionState) {
@@ -65,31 +71,73 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                   child: Center(
                 child: state.maybeWhen(
                   orElse: () => const SizedBox(),
-                  initial: (tariffs) => Column(
+                  initial: (tariffs) => Stack(
                     children: [
-                      SizedBox(
-                        height: SubscriptionConsts.viewBuilderSpace,
-                        child: ListView.builder(
-                            itemCount: tariffs.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ListTile(
-                                title: Text(tariffs[index].name),
-                                subtitle: Text(tariffs[index].price.toString()),
-                                onTap: () {
-                                  context.read<SubscriptionBloc>().add(
-                                      SubscriptionEvent.paySubscription(
-                                          tariffs[index]));
-                                },
-                              );
-                            }),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: SubscriptionConsts.normalSpace),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: SubscriptionConsts.biggestPadding),
+                              child: Text(
+                                AppLocalizations.of(context).subscriptionTitle,
+                                style: AppTextStyles.subscriptionTitle,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            AnimatedCardWidget(
+                              imageString: AppImageSource.endlessEnergy,
+                              text: AppLocalizations.of(context)
+                                  .subscriptionEnergyText,
+                              offesetAnimationPositioned:
+                                  SubscriptionConsts.widthMultiply09,
+                              animationDuration: const Duration(
+                                  milliseconds:
+                                      SubscriptionsDuration.oneInMilliseconds),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: SubscriptionConsts.fifteenPadding),
+                              child: AnimatedCardWidget(
+                                imageString: AppImageSource.cloak,
+                                text: AppLocalizations.of(context)
+                                    .subscriptionTimeText,
+                                offesetAnimationPositioned:
+                                    SubscriptionConsts.widthMultiply13,
+                                animationDuration: const Duration(
+                                    milliseconds: SubscriptionsDuration
+                                        .twoSecondsInMilliseconds),
+                              ),
+                            ),
+                            AnimatedCardWidget(
+                              imageString: AppImageSource.youtube,
+                              text: AppLocalizations.of(context)
+                                  .subscriptionYoutubeText,
+                              offesetAnimationPositioned:
+                                  SubscriptionConsts.widthMultiply13,
+                              animationDuration: const Duration(
+                                  milliseconds: SubscriptionsDuration
+                                      .threeSecondsInMilliseconds),
+                            ),
+                            const Spacer(),
+                          ],
+                        ),
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            context.read<SubscriptionBloc>().add(
-                                const SubscriptionEvent.isSubscriptionActive());
-                          },
-                          child: Text(AppLocalizations.of(context)
-                              .checkSubscriptionStatusButton))
+                      SmallSubcriptionBottomSheet(
+                        onTapFirstButton: () {
+                          showModalBottomSheet(
+                              backgroundColor: AppColors.whiteColor,
+                              context: context,
+                              builder: (BuildContext context) {
+                                return BigSubscriptionBottomSheet(
+                                    tariffs: tariffs);
+                              });
+                        },
+                        onTapSecondButton: () => context.go("/profile"),
+                      )
                     ],
                   ),
                   subscriptionStatus: (isActive, date) {

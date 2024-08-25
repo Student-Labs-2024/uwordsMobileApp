@@ -9,6 +9,7 @@ import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
 import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_subtopic_card.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_row.dart';
@@ -44,6 +45,12 @@ class _SubtopicPageState extends State<SubtopicPage> {
     setState(() {
       isSortActive = !isSortActive;
     });
+  }
+
+  void deleteWord(WordInfo wordInfo, Subtopic subtopic) {
+    context
+        .read<LearningBloc>()
+        .add(LearningEvent.deleteWord(wordInfo, subtopic));
   }
 
   @override
@@ -192,11 +199,17 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: LearnPaddings.learnPageTop),
                                 child: ListView.builder(
-                                    itemCount: subtopic.wordCount,
+                                    key: ValueKey(subtopic),
+                                    itemCount: subtopic.wordInfoList.length,
                                     scrollDirection: Axis.vertical,
                                     controller: _scrollController,
                                     itemBuilder: (context, index) {
                                       return WordRow(
+                                          onDelete: () {
+                                            deleteWord(
+                                                subtopic.wordInfoList[index],
+                                                subtopic);
+                                          },
                                           wordInfo:
                                               subtopic.wordInfoList[index]);
                                     }),

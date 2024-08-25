@@ -23,4 +23,6 @@ abstract interface class INetworkUserDataSource {
   Future<void> sendCode({required String userEmail});
   Future<bool> checkCode({required String userEmail, required String code});
   Future<UserAuthDto> fetchAboutMe({required UserAuthDto userDto});
+  Future<void> sendGrade(String accessToken, int grade, String gradeMessage);
+  Future<void> updateOnboardingComplete({required String userAccessToken});
 }

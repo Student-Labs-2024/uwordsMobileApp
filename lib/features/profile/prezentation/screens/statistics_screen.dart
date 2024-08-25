@@ -161,6 +161,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               child: Text(
                 AppLocalizations.of(context).haveNoThemeInStatistics,
                 style: AppTextStyles.haventStatistics,
+                textAlign: TextAlign.center,
               ),
             ),
           ],

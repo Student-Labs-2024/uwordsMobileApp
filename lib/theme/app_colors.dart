@@ -43,6 +43,11 @@ class AppColors {
       ],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight);
+  static const LinearGradient backgroundOnboardingGradientReversed =
+      LinearGradient(
+    colors: [AppColors.blueColor, AppColors.violetColor, AppColors.blueColor],
+    stops: [0, 0.5, 1],
+  );
 
   static const Color white05Color = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);
@@ -160,4 +165,14 @@ class AppColors {
   ], begin: Alignment.centerLeft, end: Alignment.centerRight);
 
   static const Color haventStatisticsColor = Color.fromRGBO(132, 127, 135, 1);
+
+  static LinearGradient deleteWordRow = LinearGradient(colors: [
+    AppColors.badProgressbarColor1.withOpacity(0.55),
+    AppColors.badProgressbarColor2.withOpacity(0.55)
+  ]);
+
+  static const LinearGradient gradeButtonGradient = LinearGradient(colors: [
+    Color.fromRGBO(150, 124, 253, 1),
+    Color.fromRGBO(49, 119, 255, 1),
+  ], begin: Alignment.centerLeft, end: Alignment.centerRight);
 }

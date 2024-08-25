@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/subscription_exceptions.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/subscription/data/repositories/subscription_repository.dart';
+import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
 import 'package:uwords/features/subscription/domain/subscription_enum.dart';
 
@@ -66,8 +67,10 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
         await userRepository.updateInfoAboutUser();
         emit(const SubscriptionState.subscriptionPaid());
       } else {
-        await userRepository.updateInfoAboutUser();
         emit(const SubscriptionState.subscriptionNotPaid());
+        await (Future.delayed(const Duration(
+            microseconds: SubscriptionsDuration.twoSecondsInMilliseconds)));
+        emit(SubscriptionState.initial(tariffs));
       }
     } on Exception catch (e) {
       _emitter = emit;

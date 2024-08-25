@@ -17,6 +17,7 @@ import 'package:uwords/features/auth/presentation/register_page.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 import 'package:uwords/features/global/animations/change_page_animation.dart';
+import 'package:uwords/features/grade/bloc/grade_bloc.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
@@ -44,6 +45,7 @@ import 'package:uwords/features/subscription/data/repositories/subscription_repo
 import 'package:uwords/features/subscription/presentation/subscription_page.dart';
 import 'package:uwords/features/websoket_exceptions/websocket_service.dart';
 import 'firebase_options.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -69,6 +71,10 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]).then((value) => runApp(MainApp()));
     runApp(MainApp());
   }, (error, stack) async {
     log(error.toString(), name: 'App Error', stackTrace: stack);
@@ -178,7 +184,11 @@ class MainApp extends StatelessWidget {
               create: (context) => SubscriptionBloc(
                   subscriptionRepository:
                       context.read<ISubscriptionRepository>(),
-                  userRepository: context.read<IUserRepository>()))
+                  userRepository: context.read<IUserRepository>())),
+          BlocProvider(
+              create: (context) => GradeBloc(
+                    userRepository: context.read<IUserRepository>(),
+                  )),
         ],
         child: MaterialApp.router(
           localizationsDelegates: const [

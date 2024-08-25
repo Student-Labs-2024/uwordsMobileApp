@@ -34,8 +34,8 @@ class AchievementCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            getImageSource(),
+          Image.network(
+            achievement.achievementModel.pictureLink,
             width: MediaQuery.of(context).size.width *
                 ProfileSizes.sachievementCardIconWidth,
             height: MediaQuery.of(context).size.width *

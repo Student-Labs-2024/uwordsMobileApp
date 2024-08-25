@@ -166,7 +166,7 @@
   },
   "subscriptionIsActive" : "Подписка активна",
   "subscriptionIsNotActive" : "Подписка неактивна",
-  "subscribe" : "Оформите подписку и получите все возможности uwords",
+  "subscribe" : "Оформить подписку",
   "learned" : "Изученные темы",
   "checkSubscriptionStatusButton": "Проверить статус подписки",
   "successfulPaymentOfTariff": "Оплата проведена успешно тарифа",
@@ -175,6 +175,16 @@
   "shortPassword": "Не менее 8 символов",
   "requiredField": "Обязательное поле для заполнения",
   "wrongPassword": "Неверно указан пароль",
+  "goDayStreak": "Продолжай в том же духе",
+  "streakDays": "{count, plural, =0{{count} дней} =1{{count} день} few{{count} дня} other{{count} дней}}",
+  "@streakDays": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
   "youtubeVideo": "YouTube-видео",
   "telegramBot": "Telegram-бот",
   "discordBot": "Discord-бот",
@@ -190,5 +200,17 @@
   "startQuestion": "Начнем же?",
   "startQuestionText": "Говорите, учите слова и наблюдайте за своим прогрессом",
   "haveNoThemeInStatistics" : "Здесь будут появляться темы, которые Вы изучили полностью, либо изучили более, чем на 50%",
-  "haveNoSubtopics" : "Пока здесь ничего нет....\nОтправьте первую запись, а мы сформируем список тем для изучения"
+  "haveNoSubtopics" : "Пока здесь ничего нет....\nОтправьте первую запись, а мы сформируем список тем для изучения",
+  "subscriptionEnergyText": "Бесконечный\nзапас энергии",
+  "subscriptionTimeText": "Бесконечное время\nна запись слов",
+  "subscriptionYoutubeText": "Бесконечное время\nна youtube-видео",
+  "subscriptionTitle": "Подписчики UWORDS BURST получают безграничные возможности",
+  "noThanks": "Нет, спасибо",
+  "chooseSubscriptionType": "Выберите варианты подписки\nUWORDS BURST",
+  "payButton": "Оформить подписку",
+  "wordRemoved" : "Слово было удалено",
+  "howGrade" : "Как вы оцениваете приложение?",
+  "writeGrade" : "Напишите отзыв",
+  "sendGrade" : "Отправить отзыв",
+  "notNow" : "Не сейчас"
 }

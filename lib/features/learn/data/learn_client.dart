@@ -32,4 +32,8 @@ abstract class LearnClient {
   @POST("user/words/study")
   Future<HttpResponse> sendWordsWhenFinished(
       @Header("Authorization") String accessToken, @Body() body);
+
+  @DELETE("user/word")
+  Future<HttpResponse> deleteWords(@Header("Authorization") String accessToken,
+      @Query("user_word_id") int userWordId);
 }

@@ -12,6 +12,8 @@ import 'package:uwords/common/utils/valid_string_check.dart';
 import 'package:uwords/env.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
 import 'package:uwords/features/global/widgets/custom_textfield.dart';
+import 'package:uwords/features/grade/bloc/grade_bloc.dart';
+import 'package:uwords/features/grade/presentation/widgets/grade_bottom_sheet.dart';
 import 'package:uwords/features/main/bloc/audio_link_bloc/audio_link_bloc.dart';
 import 'package:uwords/features/main/bloc/record_bloc/record_bloc.dart';
 import 'package:uwords/features/main/data/constants/box_shadows.dart';
@@ -42,7 +44,6 @@ class _HomePageState extends State<HomePage> {
   FlutterSoundRecorder? _mRecorder = FlutterSoundRecorder();
   bool _mRecorderIsInited = false;
   String _securedPath = '';
-
   bool isRecording = false;
 
   @override
@@ -54,6 +55,10 @@ class _HomePageState extends State<HomePage> {
         _mRecorderIsInited = true;
       });
     });
+
+    context.read<GradeBloc>().add(
+          const GradeEvent.open(),
+        );
   }
 
   void _connect() async {
@@ -332,7 +337,12 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ],
-                    )
+                    ),
+                    BlocBuilder<GradeBloc, GradeState>(
+                        builder: (BuildContext context, GradeState state) =>
+                            state.maybeWhen(
+                                enabled: () => const GradeBottomSheet(),
+                                orElse: () => const SizedBox())),
                   ],
                 ),
               )

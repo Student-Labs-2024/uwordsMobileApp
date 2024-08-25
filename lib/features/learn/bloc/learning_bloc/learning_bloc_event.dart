@@ -14,4 +14,6 @@ class LearningEvent with _$LearningEvent {
   const factory LearningEvent.returnToAllTopics() = _ReturnToAllTopics;
   const factory LearningEvent.sortWords(
       Subtopic subtopic, Comparator<WordInfo> comparator) = _SortWords;
+  const factory LearningEvent.deleteWord(WordInfo wordInfo, Subtopic subtopic) =
+      _DeleteWord;
 }
