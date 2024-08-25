@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:home_widget/home_widget.dart';
@@ -16,11 +18,13 @@ void updateHeadline(StreakWidgetData newHeadline) {
 }
 
 void updateHomeWidgetByUserData({required BuildContext context}) {
-  final IUserRepository userRepositoryInstanse =
-      GetIt.instance.get<IUserRepository>();
-  final days = userRepositoryInstanse.getCurrentUserDaysStreak();
-  final StreakWidgetData streakWidgetData = StreakWidgetData(
-      title: AppLocalizations.of(context).streakDays(days),
-      description: AppLocalizations.of(context).goDayStreak);
-  updateHeadline(streakWidgetData);
+  if (Platform.isAndroid) {
+    final IUserRepository userRepositoryInstanse =
+        GetIt.instance.get<IUserRepository>();
+    final days = userRepositoryInstanse.getCurrentUserDaysStreak();
+    final StreakWidgetData streakWidgetData = StreakWidgetData(
+        title: AppLocalizations.of(context).streakDays(days),
+        description: AppLocalizations.of(context).goDayStreak);
+    updateHeadline(streakWidgetData);
+  }
 }

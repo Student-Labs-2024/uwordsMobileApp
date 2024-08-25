@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -67,9 +65,7 @@ class _AuthPageState extends State<AuthPage> {
               success: (success) {
                 switch (success) {
                   case AuthSuccess.authorized:
-                  if(Platform.isAndroid){
                     updateHomeWidgetByUserData(context: context);
-                  }
                     context.go("/home");
                   case AuthSuccess.sendedCode:
                 }
