@@ -42,14 +42,14 @@ class AppImageSource {
   static const String sortSettingsButton = 'assets/svg/sort_setting_button.svg';
   static const String sortIcon = 'assets/svg/sort_icon.svg';
   static const String audioGradientIcon = 'assets/svg/audio_gradient_icon.svg';
-  static const String circleEmpty = 'assets/svg/circle_empty.svg';
+  static const String circleEmpty = 'assets/png/circle_empty.png';
   static const String circleFirstQuarter =
-      'assets/svg/circle_first_quarter.svg';
+      'assets/png/circle_first_quarter.png';
   static const String circleSecondQuarter =
-      'assets/svg/circle_second_quarter.svg';
+      'assets/png/circle_second_quarter.png';
   static const String circleThirdQuarter =
-      'assets/svg/circle_third_quarter.svg';
-  static const String circleFull = 'assets/svg/circle_full.svg';
+      'assets/png/circle_third_quarter.png';
+  static const String circleFull = 'assets/png/circle_full.png';
   static const String redBigAngleButton = 'assets/png/red_big_angle_bubble.png';
   static const String blueBigAngleButton =
       'assets/png/blue_big_angle_bubble.png';
@@ -92,4 +92,15 @@ class AppImageSource {
   static const String endlessEnergy = 'assets/png/endless_energy.png';
   static const String cloak = 'assets/png/clock.png';
   static const String youtube = 'assets/png/youtube.png';
+  static const String grade1 = 'assets/png/grade1_icon.png';
+  static const String grade2 = 'assets/png/grade2_icon.png';
+  static const String grade3 = 'assets/png/grade3_icon.png';
+  static const String grade4 = 'assets/png/grade4_icon.png';
+  static const String grade5 = 'assets/png/grade5_icon.png';
+  static const String grade1Active = 'assets/png/grade1_active_icon.png';
+  static const String grade2Active = 'assets/png/grade2_active_icon.png';
+  static const String grade3Active = 'assets/png/grade3_active_icon.png';
+  static const String grade4Active = 'assets/png/grade4_active_icon.png';
+  static const String grade5Active = 'assets/png/grade5_active_icon.png';
+  static const String gradeBack = 'assets/svg/grade_back.svg';
 }

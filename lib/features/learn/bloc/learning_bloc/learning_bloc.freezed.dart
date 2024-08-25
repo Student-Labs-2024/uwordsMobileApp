@@ -1111,6 +1111,7 @@ mixin _$LearningEvent {
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1124,6 +1125,7 @@ mixin _$LearningEvent {
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1137,6 +1139,7 @@ mixin _$LearningEvent {
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1150,6 +1153,7 @@ mixin _$LearningEvent {
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1162,6 +1166,7 @@ mixin _$LearningEvent {
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1174,6 +1179,7 @@ mixin _$LearningEvent {
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1281,6 +1287,7 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return getTopics(inProgressTopicName);
   }
@@ -1297,6 +1304,7 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return getTopics?.call(inProgressTopicName);
   }
@@ -1313,6 +1321,7 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (getTopics != null) {
@@ -1332,6 +1341,7 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return getTopics(this);
   }
@@ -1347,6 +1357,7 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return getTopics?.call(this);
   }
@@ -1362,6 +1373,7 @@ class _$GetTopicsImpl with DiagnosticableTreeMixin implements _GetTopics {
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (getTopics != null) {
@@ -1466,6 +1478,7 @@ class _$GetWordsByTopicImpl
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return getWordsByTopic(topic);
   }
@@ -1482,6 +1495,7 @@ class _$GetWordsByTopicImpl
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return getWordsByTopic?.call(topic);
   }
@@ -1498,6 +1512,7 @@ class _$GetWordsByTopicImpl
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (getWordsByTopic != null) {
@@ -1517,6 +1532,7 @@ class _$GetWordsByTopicImpl
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return getWordsByTopic(this);
   }
@@ -1532,6 +1548,7 @@ class _$GetWordsByTopicImpl
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return getWordsByTopic?.call(this);
   }
@@ -1547,6 +1564,7 @@ class _$GetWordsByTopicImpl
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (getWordsByTopic != null) {
@@ -1652,6 +1670,7 @@ class _$GetWordsBySubtopicImpl
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return getWordsBySubtopic(subtopic);
   }
@@ -1668,6 +1687,7 @@ class _$GetWordsBySubtopicImpl
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return getWordsBySubtopic?.call(subtopic);
   }
@@ -1684,6 +1704,7 @@ class _$GetWordsBySubtopicImpl
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (getWordsBySubtopic != null) {
@@ -1703,6 +1724,7 @@ class _$GetWordsBySubtopicImpl
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return getWordsBySubtopic(this);
   }
@@ -1718,6 +1740,7 @@ class _$GetWordsBySubtopicImpl
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return getWordsBySubtopic?.call(this);
   }
@@ -1733,6 +1756,7 @@ class _$GetWordsBySubtopicImpl
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (getWordsBySubtopic != null) {
@@ -1835,6 +1859,7 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return chooseTopic(topic);
   }
@@ -1851,6 +1876,7 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return chooseTopic?.call(topic);
   }
@@ -1867,6 +1893,7 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (chooseTopic != null) {
@@ -1886,6 +1913,7 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return chooseTopic(this);
   }
@@ -1901,6 +1929,7 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return chooseTopic?.call(this);
   }
@@ -1916,6 +1945,7 @@ class _$ChooseTopicImpl with DiagnosticableTreeMixin implements _ChooseTopic {
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (chooseTopic != null) {
@@ -2021,6 +2051,7 @@ class _$UpdateSubtopicSortImpl
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return updateSubtopicsSort(comparator);
   }
@@ -2037,6 +2068,7 @@ class _$UpdateSubtopicSortImpl
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return updateSubtopicsSort?.call(comparator);
   }
@@ -2053,6 +2085,7 @@ class _$UpdateSubtopicSortImpl
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (updateSubtopicsSort != null) {
@@ -2072,6 +2105,7 @@ class _$UpdateSubtopicSortImpl
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return updateSubtopicsSort(this);
   }
@@ -2087,6 +2121,7 @@ class _$UpdateSubtopicSortImpl
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return updateSubtopicsSort?.call(this);
   }
@@ -2102,6 +2137,7 @@ class _$UpdateSubtopicSortImpl
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (updateSubtopicsSort != null) {
@@ -2180,6 +2216,7 @@ class _$ReverseSubtopicSortImpl
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return reverseSubtopicsSort();
   }
@@ -2196,6 +2233,7 @@ class _$ReverseSubtopicSortImpl
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return reverseSubtopicsSort?.call();
   }
@@ -2212,6 +2250,7 @@ class _$ReverseSubtopicSortImpl
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (reverseSubtopicsSort != null) {
@@ -2231,6 +2270,7 @@ class _$ReverseSubtopicSortImpl
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return reverseSubtopicsSort(this);
   }
@@ -2246,6 +2286,7 @@ class _$ReverseSubtopicSortImpl
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return reverseSubtopicsSort?.call(this);
   }
@@ -2261,6 +2302,7 @@ class _$ReverseSubtopicSortImpl
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (reverseSubtopicsSort != null) {
@@ -2332,6 +2374,7 @@ class _$ReturnToAllTopicsImpl
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return returnToAllTopics();
   }
@@ -2348,6 +2391,7 @@ class _$ReturnToAllTopicsImpl
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return returnToAllTopics?.call();
   }
@@ -2364,6 +2408,7 @@ class _$ReturnToAllTopicsImpl
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (returnToAllTopics != null) {
@@ -2383,6 +2428,7 @@ class _$ReturnToAllTopicsImpl
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return returnToAllTopics(this);
   }
@@ -2398,6 +2444,7 @@ class _$ReturnToAllTopicsImpl
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return returnToAllTopics?.call(this);
   }
@@ -2413,6 +2460,7 @@ class _$ReturnToAllTopicsImpl
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (returnToAllTopics != null) {
@@ -2520,6 +2568,7 @@ class _$SortWordsImpl with DiagnosticableTreeMixin implements _SortWords {
     required TResult Function(
             Subtopic subtopic, Comparator<WordInfo> comparator)
         sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
   }) {
     return sortWords(subtopic, comparator);
   }
@@ -2536,6 +2585,7 @@ class _$SortWordsImpl with DiagnosticableTreeMixin implements _SortWords {
     TResult? Function()? returnToAllTopics,
     TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
   }) {
     return sortWords?.call(subtopic, comparator);
   }
@@ -2552,6 +2602,7 @@ class _$SortWordsImpl with DiagnosticableTreeMixin implements _SortWords {
     TResult Function()? returnToAllTopics,
     TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
         sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
     required TResult orElse(),
   }) {
     if (sortWords != null) {
@@ -2571,6 +2622,7 @@ class _$SortWordsImpl with DiagnosticableTreeMixin implements _SortWords {
     required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
     required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
     required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
   }) {
     return sortWords(this);
   }
@@ -2586,6 +2638,7 @@ class _$SortWordsImpl with DiagnosticableTreeMixin implements _SortWords {
     TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
   }) {
     return sortWords?.call(this);
   }
@@ -2601,6 +2654,7 @@ class _$SortWordsImpl with DiagnosticableTreeMixin implements _SortWords {
     TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
     TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
     TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
     required TResult orElse(),
   }) {
     if (sortWords != null) {
@@ -2619,5 +2673,206 @@ abstract class _SortWords implements LearningEvent {
   Comparator<WordInfo> get comparator;
   @JsonKey(ignore: true)
   _$$SortWordsImplCopyWith<_$SortWordsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteWordImplCopyWith<$Res> {
+  factory _$$DeleteWordImplCopyWith(
+          _$DeleteWordImpl value, $Res Function(_$DeleteWordImpl) then) =
+      __$$DeleteWordImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WordInfo wordInfo, Subtopic subtopic});
+}
+
+/// @nodoc
+class __$$DeleteWordImplCopyWithImpl<$Res>
+    extends _$LearningEventCopyWithImpl<$Res, _$DeleteWordImpl>
+    implements _$$DeleteWordImplCopyWith<$Res> {
+  __$$DeleteWordImplCopyWithImpl(
+      _$DeleteWordImpl _value, $Res Function(_$DeleteWordImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? wordInfo = null,
+    Object? subtopic = null,
+  }) {
+    return _then(_$DeleteWordImpl(
+      null == wordInfo
+          ? _value.wordInfo
+          : wordInfo // ignore: cast_nullable_to_non_nullable
+              as WordInfo,
+      null == subtopic
+          ? _value.subtopic
+          : subtopic // ignore: cast_nullable_to_non_nullable
+              as Subtopic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteWordImpl with DiagnosticableTreeMixin implements _DeleteWord {
+  const _$DeleteWordImpl(this.wordInfo, this.subtopic);
+
+  @override
+  final WordInfo wordInfo;
+  @override
+  final Subtopic subtopic;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LearningEvent.deleteWord(wordInfo: $wordInfo, subtopic: $subtopic)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LearningEvent.deleteWord'))
+      ..add(DiagnosticsProperty('wordInfo', wordInfo))
+      ..add(DiagnosticsProperty('subtopic', subtopic));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteWordImpl &&
+            (identical(other.wordInfo, wordInfo) ||
+                other.wordInfo == wordInfo) &&
+            (identical(other.subtopic, subtopic) ||
+                other.subtopic == subtopic));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, wordInfo, subtopic);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteWordImplCopyWith<_$DeleteWordImpl> get copyWith =>
+      __$$DeleteWordImplCopyWithImpl<_$DeleteWordImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String inProgressTopicName) getTopics,
+    required TResult Function(Topic topic) getWordsByTopic,
+    required TResult Function(Subtopic subtopic) getWordsBySubtopic,
+    required TResult Function(Topic topic) chooseTopic,
+    required TResult Function(Comparator<Subtopic> comparator)
+        updateSubtopicsSort,
+    required TResult Function() reverseSubtopicsSort,
+    required TResult Function() returnToAllTopics,
+    required TResult Function(
+            Subtopic subtopic, Comparator<WordInfo> comparator)
+        sortWords,
+    required TResult Function(WordInfo wordInfo, Subtopic subtopic) deleteWord,
+  }) {
+    return deleteWord(wordInfo, subtopic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String inProgressTopicName)? getTopics,
+    TResult? Function(Topic topic)? getWordsByTopic,
+    TResult? Function(Subtopic subtopic)? getWordsBySubtopic,
+    TResult? Function(Topic topic)? chooseTopic,
+    TResult? Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult? Function()? reverseSubtopicsSort,
+    TResult? Function()? returnToAllTopics,
+    TResult? Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
+        sortWords,
+    TResult? Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
+  }) {
+    return deleteWord?.call(wordInfo, subtopic);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String inProgressTopicName)? getTopics,
+    TResult Function(Topic topic)? getWordsByTopic,
+    TResult Function(Subtopic subtopic)? getWordsBySubtopic,
+    TResult Function(Topic topic)? chooseTopic,
+    TResult Function(Comparator<Subtopic> comparator)? updateSubtopicsSort,
+    TResult Function()? reverseSubtopicsSort,
+    TResult Function()? returnToAllTopics,
+    TResult Function(Subtopic subtopic, Comparator<WordInfo> comparator)?
+        sortWords,
+    TResult Function(WordInfo wordInfo, Subtopic subtopic)? deleteWord,
+    required TResult orElse(),
+  }) {
+    if (deleteWord != null) {
+      return deleteWord(wordInfo, subtopic);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetTopics value) getTopics,
+    required TResult Function(_GetWordsByTopic value) getWordsByTopic,
+    required TResult Function(_GetWordsBySubtopic value) getWordsBySubtopic,
+    required TResult Function(_ChooseTopic value) chooseTopic,
+    required TResult Function(_UpdateSubtopicSort value) updateSubtopicsSort,
+    required TResult Function(_ReverseSubtopicSort value) reverseSubtopicsSort,
+    required TResult Function(_ReturnToAllTopics value) returnToAllTopics,
+    required TResult Function(_SortWords value) sortWords,
+    required TResult Function(_DeleteWord value) deleteWord,
+  }) {
+    return deleteWord(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetTopics value)? getTopics,
+    TResult? Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult? Function(_GetWordsBySubtopic value)? getWordsBySubtopic,
+    TResult? Function(_ChooseTopic value)? chooseTopic,
+    TResult? Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult? Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult? Function(_ReturnToAllTopics value)? returnToAllTopics,
+    TResult? Function(_SortWords value)? sortWords,
+    TResult? Function(_DeleteWord value)? deleteWord,
+  }) {
+    return deleteWord?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetTopics value)? getTopics,
+    TResult Function(_GetWordsByTopic value)? getWordsByTopic,
+    TResult Function(_GetWordsBySubtopic value)? getWordsBySubtopic,
+    TResult Function(_ChooseTopic value)? chooseTopic,
+    TResult Function(_UpdateSubtopicSort value)? updateSubtopicsSort,
+    TResult Function(_ReverseSubtopicSort value)? reverseSubtopicsSort,
+    TResult Function(_ReturnToAllTopics value)? returnToAllTopics,
+    TResult Function(_SortWords value)? sortWords,
+    TResult Function(_DeleteWord value)? deleteWord,
+    required TResult orElse(),
+  }) {
+    if (deleteWord != null) {
+      return deleteWord(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteWord implements LearningEvent {
+  const factory _DeleteWord(final WordInfo wordInfo, final Subtopic subtopic) =
+      _$DeleteWordImpl;
+
+  WordInfo get wordInfo;
+  Subtopic get subtopic;
+  @JsonKey(ignore: true)
+  _$$DeleteWordImplCopyWith<_$DeleteWordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

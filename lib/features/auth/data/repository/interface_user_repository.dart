@@ -29,12 +29,15 @@ abstract interface class IUserRepository {
   Future<void> authorizateFromGoogle({
     required String uid,
   });
-  Future<int> getCurrentUserId();
-  Future<UserAuthDto> getCurrentUserInfo();
-  Future<String> getCurrentUserName();
-  Future<String> getCurrentUserAvatarUrl();
+  int getCurrentUserId();
+  String getCurrentUserName();
+  String getCurrentUserAvatarUrl();
   Future<void> updateInfoAboutUser();
   bool isSubscriptionActive();
+  int getCurrentUserDaysStreak();
+  Future<UserAuthDto> getCurrentUserInfo();
   Future<bool> isEducationCompleted();
   String getSubscriptionExpired();
+  Future<void> sendGrade(String accessToken, int grade, String gradeMessage);
+  Future<void> onboardingCompleted();
 }

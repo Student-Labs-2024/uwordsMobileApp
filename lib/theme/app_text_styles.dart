@@ -242,4 +242,24 @@ class AppTextStyles {
     color: AppColors.whiteColor,
     fontWeight: FontWeight.w600,
   );
+  static const animatedWordRow = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w800,
+      fontSize: 17,
+      color: AppColors.whiteColor);
+  static const gradeButton = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 18,
+      color: AppColors.whiteColor);
+  static const gradeNotNow = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 16,
+      color: AppColors.imperial);
+  static const gradeTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w600,
+      fontSize: 20,
+      color: AppColors.imperial);
 }

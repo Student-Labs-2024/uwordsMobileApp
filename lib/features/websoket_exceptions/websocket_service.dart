@@ -21,7 +21,7 @@ class ExceptionWebsocketService extends IExceptionWebsocketService {
     IUserRepository userRepositoryInstanse =
         GetIt.instance.get<IUserRepository>();
     channel = IOWebSocketChannel.connect(
-        '$url${await userRepositoryInstanse.getCurrentUserId()}');
+        '$url${userRepositoryInstanse.getCurrentUserId()}');
     _errorController = errorStreamController;
   }
 

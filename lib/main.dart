@@ -17,6 +17,7 @@ import 'package:uwords/features/auth/presentation/register_page.dart';
 import 'package:uwords/features/database/data_sources/savable_user_data_source.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';
 import 'package:uwords/features/global/animations/change_page_animation.dart';
+import 'package:uwords/features/grade/bloc/grade_bloc.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
@@ -183,7 +184,11 @@ class MainApp extends StatelessWidget {
               create: (context) => SubscriptionBloc(
                   subscriptionRepository:
                       context.read<ISubscriptionRepository>(),
-                  userRepository: context.read<IUserRepository>()))
+                  userRepository: context.read<IUserRepository>())),
+          BlocProvider(
+              create: (context) => GradeBloc(
+                    userRepository: context.read<IUserRepository>(),
+                  )),
         ],
         child: MaterialApp.router(
           localizationsDelegates: const [

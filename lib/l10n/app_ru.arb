@@ -175,6 +175,16 @@
   "shortPassword": "Не менее 8 символов",
   "requiredField": "Обязательное поле для заполнения",
   "wrongPassword": "Неверно указан пароль",
+  "goDayStreak": "Продолжай в том же духе",
+  "streakDays": "{count, plural, =0{{count} дней} =1{{count} день} few{{count} дня} other{{count} дней}}",
+  "@streakDays": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
   "youtubeVideo": "YouTube-видео",
   "telegramBot": "Telegram-бот",
   "discordBot": "Discord-бот",
@@ -197,5 +207,10 @@
   "subscriptionTitle": "Подписчики UWORDS BURST получают безграничные возможности",
   "noThanks": "Нет, спасибо",
   "chooseSubscriptionType": "Выберите варианты подписки\nUWORDS BURST",
-  "payButton": "Оформить подписку"
+  "payButton": "Оформить подписку",
+  "wordRemoved" : "Слово было удалено",
+  "howGrade" : "Как вы оцениваете приложение?",
+  "writeGrade" : "Напишите отзыв",
+  "sendGrade" : "Отправить отзыв",
+  "notNow" : "Не сейчас"
 }

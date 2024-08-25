@@ -20,6 +20,7 @@ class SimpleUserInfo {
   int energy;
   String accessToken;
   final List<AchievementCategoryDto> achievements;
+  bool isEducationCompleted;
 
   SimpleUserInfo(
       {required this.id,
@@ -38,7 +39,8 @@ class SimpleUserInfo {
       required this.allowedVideoSeconds,
       required this.accessToken,
       required this.energy,
-      required this.achievements});
+      required this.achievements,
+      required this.isEducationCompleted});
   factory SimpleUserInfo.fromUserAuthDto({required UserAuthDto userAuthDto}) {
     return SimpleUserInfo(
         id: userAuthDto.id,
@@ -57,7 +59,8 @@ class SimpleUserInfo {
         allowedVideoSeconds: userAuthDto.allowedVideoSeconds,
         accessToken: userAuthDto.accessToken,
         energy: userAuthDto.energy,
-        achievements: userAuthDto.achievementsCategories);
+        achievements: userAuthDto.achievementsCategories,
+        isEducationCompleted: userAuthDto.isEducationCompleted);
   }
   void changeAccessToken({required String newAccessToken}) {
     accessToken = newAccessToken;

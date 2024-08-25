@@ -13,6 +13,7 @@ import 'package:uwords/features/auth/data/request_bodies/code_request.dart';
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
 import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
 import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/features/grade/data/domain/grade_class.dart';
 import 'package:uwords/secrets.dart';
 
 class NetworkUserDataSource implements INetworkUserDataSource {
@@ -225,5 +226,30 @@ class NetworkUserDataSource implements INetworkUserDataSource {
         tokenType: tokenType, token: userDto.accessToken));
     return userDto.updateInfoAboutUserByMap(
         userMap: aboutMeResponse.data, user: userDto);
+  }
+
+  @override
+  Future<void> updateOnboardingComplete(
+      {required String userAccessToken}) async {
+    try {
+      await client.sendThatUserCompletedOnboarding(
+          joinTokenTypeAndToken(tokenType: tokenType, token: userAccessToken));
+    } on DioException catch (e) {
+      noInternetCheck(e);
+    }
+  }
+
+  @override
+  Future<void> sendGrade(
+      String accessToken, int grade, String gradeMessage) async {
+    try {
+      var hclass = GradeClass(stars: grade, message: gradeMessage);
+      await client.sendGrade(
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+          jsonEncode(hclass));
+    } on DioException catch (e) {
+      noInternetCheck(e);
+      rethrow;
+    }
   }
 }

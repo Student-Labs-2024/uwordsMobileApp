@@ -106,7 +106,7 @@ class UserAuthDto {
             [],
         accessToken: accessMap['access_token'] ?? '',
         refreshToken: accessMap['refresh_token'] ?? '',
-        isEducationCompleted: false,
+        isEducationCompleted: userMap['is_onboarding_complete'] ?? false,
         provider: provider.name);
   }
 
@@ -141,6 +141,7 @@ class UserAuthDto {
                   achievementCategoryDtoMap: achievementCategory))
               .toList() ??
           [],
+      isEducationCompleted: userMap['is_onboarding_complete'] ?? false,
     );
   }
 
