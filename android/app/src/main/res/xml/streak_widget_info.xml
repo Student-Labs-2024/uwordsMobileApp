@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:configure="com.example.uwords.StreakWidgetConfigureActivity"
     android:description="@string/app_widget_description"
     android:initialKeyguardLayout="@layout/streak_widget"
     android:initialLayout="@layout/streak_widget"
     android:minWidth="160dp"
     android:minHeight="160dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/image"
 
     android:previewLayout="@layout/streak_widget"
     android:targetCellWidth="1"

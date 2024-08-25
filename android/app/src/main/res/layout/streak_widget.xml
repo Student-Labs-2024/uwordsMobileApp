@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/headline_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/headline_container"
         android:layout_marginTop="24dp"
@@ -48,6 +48,7 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:background="@android:color/white"
+        android:gravity="center"  
         android:textSize="18sp" />
 
 </RelativeLayout>
