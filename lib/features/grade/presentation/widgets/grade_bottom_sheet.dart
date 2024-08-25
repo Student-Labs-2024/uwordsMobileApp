@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/global/data/constants/global_sizes.dart';
+import 'package:uwords/features/grade/bloc/grade_bloc.dart';
 import 'package:uwords/features/grade/data/constants/grade_paddings.dart';
 import 'package:uwords/features/grade/data/constants/grade_sizes.dart';
 import 'package:uwords/features/grade/data/constants/other_grade_constants.dart';
@@ -11,7 +13,9 @@ import 'package:uwords/theme/app_text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GradeBottomSheet extends StatefulWidget {
-  const GradeBottomSheet({super.key});
+  const GradeBottomSheet({
+    super.key,
+  });
 
   @override
   State<GradeBottomSheet> createState() => _GradeBottomSheetState();
@@ -49,9 +53,22 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
   }
 
   int selectedGrade = OtherGradeConstants.standartGrade;
+  TextEditingController controller = TextEditingController();
 
   void setSelectedGrade(int grade) {
     selectedGrade = grade;
+  }
+
+  void sendGrade() {
+    context.read<GradeBloc>().add(
+          GradeEvent.sendGrade(selectedGrade, controller.text),
+        );
+  }
+
+  void quit() {
+    context.read<GradeBloc>().add(
+          const GradeEvent.close(),
+        );
   }
 
   @override
@@ -108,6 +125,7 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
                         ),
                       ),
                       child: TextField(
+                        controller: controller,
                         minLines: 1,
                         maxLines: 5,
                         expands: false,
@@ -121,14 +139,14 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
                       ),
                     ),
                     GradeButton(
-                      onPressed: () {},
+                      onPressed: sendGrade,
                       text: AppLocalizations.of(context).sendGrade,
                     ),
                     const SizedBox(
                       height: GradePaddings.buttonBottom,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: quit,
                       child: Text(
                         AppLocalizations.of(context).notNow,
                         style: AppTextStyles.gradeNotNow,
