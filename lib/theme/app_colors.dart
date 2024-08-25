@@ -43,6 +43,11 @@ class AppColors {
       ],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight);
+  static const LinearGradient backgroundOnboardingGradientReversed =
+      LinearGradient(
+    colors: [AppColors.blueColor, AppColors.violetColor, AppColors.blueColor],
+    stops: [0, 0.5, 1],
+  );
 
   static const Color white05Color = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);

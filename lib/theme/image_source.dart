@@ -89,6 +89,9 @@ class AppImageSource {
   static const String chromeIcon = 'assets/svg/chrome.svg';
   static const String animatedSubtopicIcon =
       'assets/svg/animated_subtopic_image.svg';
+  static const String endlessEnergy = 'assets/png/endless_energy.png';
+  static const String cloak = 'assets/png/clock.png';
+  static const String youtube = 'assets/png/youtube.png';
   static const String grade1 = 'assets/png/grade1_icon.png';
   static const String grade2 = 'assets/png/grade2_icon.png';
   static const String grade3 = 'assets/png/grade3_icon.png';

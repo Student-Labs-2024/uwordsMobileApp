@@ -127,9 +127,12 @@ class UserAuthDto {
       metricsDto: MetricsDto.fromJson(metricMap: userMap['metrics']),
       days: userMap['days'],
       subscriptionType: userMap['subscription_type'],
-      subscriptionAcquisition:
-          DateTime.tryParse(userMap['subscription_acquisition']),
-      subscriptionExpired: DateTime.tryParse(userMap['subscription_expired']),
+      subscriptionAcquisition: userMap['subscription_acquisition'] != null
+          ? DateTime.tryParse(userMap['subscription_acquisition'])
+          : null,
+      subscriptionExpired: userMap['subscription_expired'] != null
+          ? DateTime.tryParse(userMap['subscription_expired'])
+          : null,
       allowedAudioSeconds: userMap['allowed_audio_seconds'],
       allowedVideoSeconds: userMap['allowed_video_seconds'],
       energy: userMap['energy'],

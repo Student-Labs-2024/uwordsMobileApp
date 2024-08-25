@@ -65,6 +65,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                       (currentRoute == "/auth") ||
                       (currentRoute == "/learn/subtopic") ||
                       (currentRoute == "/learnCore") ||
+                      (currentRoute == "/subscription") ||
                       (currentRoute == "/onboarding")) ||
                   _isNavBarHiden)
               ? const SizedBox()
