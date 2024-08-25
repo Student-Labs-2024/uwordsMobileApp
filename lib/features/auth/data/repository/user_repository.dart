@@ -233,6 +233,13 @@ class UserRepository implements IUserRepository {
   }
 
   @override
+  Future<void> onboardingCompleted() async {
+    await networkUserDataSource.updateOnboardingComplete(
+        userAccessToken: _currentUser.accessToken);
+    await updateInfoAboutUser();
+  }
+
+  @override
   Future<void> sendGrade(
       String accessToken, int grade, String gradeMessage) async {
     try {

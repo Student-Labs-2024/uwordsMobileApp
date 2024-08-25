@@ -347,21 +347,31 @@ class _AuthClient implements AuthClient {
   }
 
   @override
+<<<<<<< HEAD
   Future<HttpResponse<dynamic>> sendGrade(
     dynamic accessToken,
     dynamic body,
   ) async {
+=======
+  Future<void> sendThatUserCompletedOnboarding(dynamic accessToken) async {
+>>>>>>> develop
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': accessToken};
     _headers.removeWhere((k, v) => v == null);
+<<<<<<< HEAD
     final _data = body;
     final _result =
         await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(Options(
+=======
+    const Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+>>>>>>> develop
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
+<<<<<<< HEAD
             .compose(
               _dio.options,
               'users/feedback',
@@ -376,6 +386,19 @@ class _AuthClient implements AuthClient {
     final value = _result.data;
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
+=======
+        .compose(
+          _dio.options,
+          'users/update_onboarding_complete',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+>>>>>>> develop
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

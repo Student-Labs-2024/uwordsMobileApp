@@ -229,6 +229,16 @@ class NetworkUserDataSource implements INetworkUserDataSource {
   }
 
   @override
+  Future<void> updateOnboardingComplete(
+      {required String userAccessToken}) async {
+    try {
+      await client.sendThatUserCompletedOnboarding(
+          joinTokenTypeAndToken(tokenType: tokenType, token: userAccessToken));
+    } on DioException catch (e) {
+      noInternetCheck(e);
+    }
+  }
+
   @override
   Future<void> sendGrade(
       String accessToken, int grade, String gradeMessage) async {
