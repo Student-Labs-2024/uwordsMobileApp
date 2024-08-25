@@ -233,8 +233,9 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<void> onboardingCompleted() async{
-    await networkUserDataSource.updateOnboardingComplete(userAccessToken: _currentUser.accessToken);
+  Future<void> onboardingCompleted() async {
+    await networkUserDataSource.updateOnboardingComplete(
+        userAccessToken: _currentUser.accessToken);
     await updateInfoAboutUser();
   }
 }

@@ -35,7 +35,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void updateDataWithServer() async {
     IUserRepository userRepositoryInstanse =
         GetIt.instance.get<IUserRepository>();
-        await userRepositoryInstanse.onboardingCompleted();
+    await userRepositoryInstanse.onboardingCompleted();
   }
 
   @override

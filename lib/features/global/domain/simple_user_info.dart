@@ -39,7 +39,8 @@ class SimpleUserInfo {
       required this.allowedVideoSeconds,
       required this.accessToken,
       required this.energy,
-      required this.achievements, required this.isEducationCompleted});
+      required this.achievements,
+      required this.isEducationCompleted});
   factory SimpleUserInfo.fromUserAuthDto({required UserAuthDto userAuthDto}) {
     return SimpleUserInfo(
         id: userAuthDto.id,
