@@ -20,30 +20,42 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)
+        gotInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,30 +63,21 @@ mixin _$ProfileState {
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileInitial value) initial,
     required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
+    required TResult Function(_GotInfo value) gotInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileInitial value)? initial,
     TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult? Function(_GotInfo value)? gotInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileInitial value)? initial,
     TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult Function(_GotInfo value)? gotInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,10 +141,14 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)
+        gotInfo,
   }) {
     return initial();
   }
@@ -151,10 +158,14 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
   }) {
     return initial?.call();
   }
@@ -164,10 +175,14 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,10 +196,7 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileInitial value) initial,
     required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
+    required TResult Function(_GotInfo value) gotInfo,
   }) {
     return initial(this);
   }
@@ -194,10 +206,7 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileInitial value)? initial,
     TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult? Function(_GotInfo value)? gotInfo,
   }) {
     return initial?.call(this);
   }
@@ -207,10 +216,7 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileInitial value)? initial,
     TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult Function(_GotInfo value)? gotInfo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -290,10 +296,14 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)
+        gotInfo,
   }) {
     return failed(message);
   }
@@ -303,10 +313,14 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
   }) {
     return failed?.call(message);
   }
@@ -316,10 +330,14 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -333,10 +351,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileInitial value) initial,
     required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
+    required TResult Function(_GotInfo value) gotInfo,
   }) {
     return failed(this);
   }
@@ -346,10 +361,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileInitial value)? initial,
     TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult? Function(_GotInfo value)? gotInfo,
   }) {
     return failed?.call(this);
   }
@@ -359,10 +371,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileInitial value)? initial,
     TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult Function(_GotInfo value)? gotInfo,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -382,20 +391,26 @@ abstract class _ProfileFailed implements ProfileState {
 }
 
 /// @nodoc
-abstract class _$$UserGotImplCopyWith<$Res> {
-  factory _$$UserGotImplCopyWith(
-          _$UserGotImpl value, $Res Function(_$UserGotImpl) then) =
-      __$$UserGotImplCopyWithImpl<$Res>;
+abstract class _$$GotInfoImplCopyWith<$Res> {
+  factory _$$GotInfoImplCopyWith(
+          _$GotInfoImpl value, $Res Function(_$GotInfoImpl) then) =
+      __$$GotInfoImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String userName, String avatarUrl});
+  $Res call(
+      {String userName,
+      String avatarUrl,
+      List<Subtopic> almostLearned,
+      List<Subtopic> learned,
+      List<AchievementCategoryModel> achievements,
+      Metrics metrics});
 }
 
 /// @nodoc
-class __$$UserGotImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$UserGotImpl>
-    implements _$$UserGotImplCopyWith<$Res> {
-  __$$UserGotImplCopyWithImpl(
-      _$UserGotImpl _value, $Res Function(_$UserGotImpl) _then)
+class __$$GotInfoImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$GotInfoImpl>
+    implements _$$GotInfoImplCopyWith<$Res> {
+  __$$GotInfoImplCopyWithImpl(
+      _$GotInfoImpl _value, $Res Function(_$GotInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -403,8 +418,12 @@ class __$$UserGotImplCopyWithImpl<$Res>
   $Res call({
     Object? userName = null,
     Object? avatarUrl = null,
+    Object? almostLearned = null,
+    Object? learned = null,
+    Object? achievements = null,
+    Object? metrics = null,
   }) {
-    return _then(_$UserGotImpl(
+    return _then(_$GotInfoImpl(
       null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -413,56 +432,125 @@ class __$$UserGotImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      null == almostLearned
+          ? _value._almostLearned
+          : almostLearned // ignore: cast_nullable_to_non_nullable
+              as List<Subtopic>,
+      null == learned
+          ? _value._learned
+          : learned // ignore: cast_nullable_to_non_nullable
+              as List<Subtopic>,
+      null == achievements
+          ? _value._achievements
+          : achievements // ignore: cast_nullable_to_non_nullable
+              as List<AchievementCategoryModel>,
+      null == metrics
+          ? _value.metrics
+          : metrics // ignore: cast_nullable_to_non_nullable
+              as Metrics,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UserGotImpl implements _UserGot {
-  const _$UserGotImpl(this.userName, this.avatarUrl);
+class _$GotInfoImpl implements _GotInfo {
+  const _$GotInfoImpl(
+      this.userName,
+      this.avatarUrl,
+      final List<Subtopic> almostLearned,
+      final List<Subtopic> learned,
+      final List<AchievementCategoryModel> achievements,
+      this.metrics)
+      : _almostLearned = almostLearned,
+        _learned = learned,
+        _achievements = achievements;
 
   @override
   final String userName;
   @override
   final String avatarUrl;
+  final List<Subtopic> _almostLearned;
+  @override
+  List<Subtopic> get almostLearned {
+    if (_almostLearned is EqualUnmodifiableListView) return _almostLearned;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_almostLearned);
+  }
+
+  final List<Subtopic> _learned;
+  @override
+  List<Subtopic> get learned {
+    if (_learned is EqualUnmodifiableListView) return _learned;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_learned);
+  }
+
+  final List<AchievementCategoryModel> _achievements;
+  @override
+  List<AchievementCategoryModel> get achievements {
+    if (_achievements is EqualUnmodifiableListView) return _achievements;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_achievements);
+  }
+
+  @override
+  final Metrics metrics;
 
   @override
   String toString() {
-    return 'ProfileState.userGot(userName: $userName, avatarUrl: $avatarUrl)';
+    return 'ProfileState.gotInfo(userName: $userName, avatarUrl: $avatarUrl, almostLearned: $almostLearned, learned: $learned, achievements: $achievements, metrics: $metrics)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserGotImpl &&
+            other is _$GotInfoImpl &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl));
+                other.avatarUrl == avatarUrl) &&
+            const DeepCollectionEquality()
+                .equals(other._almostLearned, _almostLearned) &&
+            const DeepCollectionEquality().equals(other._learned, _learned) &&
+            const DeepCollectionEquality()
+                .equals(other._achievements, _achievements) &&
+            (identical(other.metrics, metrics) || other.metrics == metrics));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userName, avatarUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userName,
+      avatarUrl,
+      const DeepCollectionEquality().hash(_almostLearned),
+      const DeepCollectionEquality().hash(_learned),
+      const DeepCollectionEquality().hash(_achievements),
+      metrics);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserGotImplCopyWith<_$UserGotImpl> get copyWith =>
-      __$$UserGotImplCopyWithImpl<_$UserGotImpl>(this, _$identity);
+  _$$GotInfoImplCopyWith<_$GotInfoImpl> get copyWith =>
+      __$$GotInfoImplCopyWithImpl<_$GotInfoImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
+    required TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)
+        gotInfo,
   }) {
-    return userGot(userName, avatarUrl);
+    return gotInfo(
+        userName, avatarUrl, almostLearned, learned, achievements, metrics);
   }
 
   @override
@@ -470,12 +558,17 @@ class _$UserGotImpl implements _UserGot {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
+    TResult? Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
   }) {
-    return userGot?.call(userName, avatarUrl);
+    return gotInfo?.call(
+        userName, avatarUrl, almostLearned, learned, achievements, metrics);
   }
 
   @override
@@ -483,14 +576,19 @@ class _$UserGotImpl implements _UserGot {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
+    TResult Function(
+            String userName,
+            String avatarUrl,
+            List<Subtopic> almostLearned,
+            List<Subtopic> learned,
+            List<AchievementCategoryModel> achievements,
+            Metrics metrics)?
+        gotInfo,
     required TResult orElse(),
   }) {
-    if (userGot != null) {
-      return userGot(userName, avatarUrl);
+    if (gotInfo != null) {
+      return gotInfo(
+          userName, avatarUrl, almostLearned, learned, achievements, metrics);
     }
     return orElse();
   }
@@ -500,12 +598,9 @@ class _$UserGotImpl implements _UserGot {
   TResult map<TResult extends Object?>({
     required TResult Function(_ProfileInitial value) initial,
     required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
+    required TResult Function(_GotInfo value) gotInfo,
   }) {
-    return userGot(this);
+    return gotInfo(this);
   }
 
   @override
@@ -513,12 +608,9 @@ class _$UserGotImpl implements _UserGot {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ProfileInitial value)? initial,
     TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult? Function(_GotInfo value)? gotInfo,
   }) {
-    return userGot?.call(this);
+    return gotInfo?.call(this);
   }
 
   @override
@@ -526,406 +618,34 @@ class _$UserGotImpl implements _UserGot {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ProfileInitial value)? initial,
     TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
+    TResult Function(_GotInfo value)? gotInfo,
     required TResult orElse(),
   }) {
-    if (userGot != null) {
-      return userGot(this);
+    if (gotInfo != null) {
+      return gotInfo(this);
     }
     return orElse();
   }
 }
 
-abstract class _UserGot implements ProfileState {
-  const factory _UserGot(final String userName, final String avatarUrl) =
-      _$UserGotImpl;
+abstract class _GotInfo implements ProfileState {
+  const factory _GotInfo(
+      final String userName,
+      final String avatarUrl,
+      final List<Subtopic> almostLearned,
+      final List<Subtopic> learned,
+      final List<AchievementCategoryModel> achievements,
+      final Metrics metrics) = _$GotInfoImpl;
 
   String get userName;
   String get avatarUrl;
+  List<Subtopic> get almostLearned;
+  List<Subtopic> get learned;
+  List<AchievementCategoryModel> get achievements;
+  Metrics get metrics;
   @JsonKey(ignore: true)
-  _$$UserGotImplCopyWith<_$UserGotImpl> get copyWith =>
+  _$$GotInfoImplCopyWith<_$GotInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AchievementsScreenImplCopyWith<$Res> {
-  factory _$$AchievementsScreenImplCopyWith(_$AchievementsScreenImpl value,
-          $Res Function(_$AchievementsScreenImpl) then) =
-      __$$AchievementsScreenImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AchievementsScreenImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$AchievementsScreenImpl>
-    implements _$$AchievementsScreenImplCopyWith<$Res> {
-  __$$AchievementsScreenImplCopyWithImpl(_$AchievementsScreenImpl _value,
-      $Res Function(_$AchievementsScreenImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AchievementsScreenImpl implements _AchievementsScreen {
-  const _$AchievementsScreenImpl();
-
-  @override
-  String toString() {
-    return 'ProfileState.achievementsScreen()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AchievementsScreenImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
-  }) {
-    return achievementsScreen();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
-  }) {
-    return achievementsScreen?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
-    required TResult orElse(),
-  }) {
-    if (achievementsScreen != null) {
-      return achievementsScreen();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
-  }) {
-    return achievementsScreen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
-  }) {
-    return achievementsScreen?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
-    required TResult orElse(),
-  }) {
-    if (achievementsScreen != null) {
-      return achievementsScreen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AchievementsScreen implements ProfileState {
-  const factory _AchievementsScreen() = _$AchievementsScreenImpl;
-}
-
-/// @nodoc
-abstract class _$$StatisticsScreenImplCopyWith<$Res> {
-  factory _$$StatisticsScreenImplCopyWith(_$StatisticsScreenImpl value,
-          $Res Function(_$StatisticsScreenImpl) then) =
-      __$$StatisticsScreenImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StatisticsScreenImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$StatisticsScreenImpl>
-    implements _$$StatisticsScreenImplCopyWith<$Res> {
-  __$$StatisticsScreenImplCopyWithImpl(_$StatisticsScreenImpl _value,
-      $Res Function(_$StatisticsScreenImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StatisticsScreenImpl implements _StatisticsScreen {
-  const _$StatisticsScreenImpl();
-
-  @override
-  String toString() {
-    return 'ProfileState.statisticsScreen()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StatisticsScreenImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
-  }) {
-    return statisticsScreen();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
-  }) {
-    return statisticsScreen?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
-    required TResult orElse(),
-  }) {
-    if (statisticsScreen != null) {
-      return statisticsScreen();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
-  }) {
-    return statisticsScreen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
-  }) {
-    return statisticsScreen?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
-    required TResult orElse(),
-  }) {
-    if (statisticsScreen != null) {
-      return statisticsScreen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StatisticsScreen implements ProfileState {
-  const factory _StatisticsScreen() = _$StatisticsScreenImpl;
-}
-
-/// @nodoc
-abstract class _$$ActivitiesScreenImplCopyWith<$Res> {
-  factory _$$ActivitiesScreenImplCopyWith(_$ActivitiesScreenImpl value,
-          $Res Function(_$ActivitiesScreenImpl) then) =
-      __$$ActivitiesScreenImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ActivitiesScreenImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$ActivitiesScreenImpl>
-    implements _$$ActivitiesScreenImplCopyWith<$Res> {
-  __$$ActivitiesScreenImplCopyWithImpl(_$ActivitiesScreenImpl _value,
-      $Res Function(_$ActivitiesScreenImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ActivitiesScreenImpl implements _ActivitiesScreen {
-  const _$ActivitiesScreenImpl();
-
-  @override
-  String toString() {
-    return 'ProfileState.activitiesScreen()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ActivitiesScreenImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String message) failed,
-    required TResult Function(String userName, String avatarUrl) userGot,
-    required TResult Function() achievementsScreen,
-    required TResult Function() statisticsScreen,
-    required TResult Function() activitiesScreen,
-  }) {
-    return activitiesScreen();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String message)? failed,
-    TResult? Function(String userName, String avatarUrl)? userGot,
-    TResult? Function()? achievementsScreen,
-    TResult? Function()? statisticsScreen,
-    TResult? Function()? activitiesScreen,
-  }) {
-    return activitiesScreen?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String message)? failed,
-    TResult Function(String userName, String avatarUrl)? userGot,
-    TResult Function()? achievementsScreen,
-    TResult Function()? statisticsScreen,
-    TResult Function()? activitiesScreen,
-    required TResult orElse(),
-  }) {
-    if (activitiesScreen != null) {
-      return activitiesScreen();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_UserGot value) userGot,
-    required TResult Function(_AchievementsScreen value) achievementsScreen,
-    required TResult Function(_StatisticsScreen value) statisticsScreen,
-    required TResult Function(_ActivitiesScreen value) activitiesScreen,
-  }) {
-    return activitiesScreen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_UserGot value)? userGot,
-    TResult? Function(_AchievementsScreen value)? achievementsScreen,
-    TResult? Function(_StatisticsScreen value)? statisticsScreen,
-    TResult? Function(_ActivitiesScreen value)? activitiesScreen,
-  }) {
-    return activitiesScreen?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_UserGot value)? userGot,
-    TResult Function(_AchievementsScreen value)? achievementsScreen,
-    TResult Function(_StatisticsScreen value)? statisticsScreen,
-    TResult Function(_ActivitiesScreen value)? activitiesScreen,
-    required TResult orElse(),
-  }) {
-    if (activitiesScreen != null) {
-      return activitiesScreen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ActivitiesScreen implements ProfileState {
-  const factory _ActivitiesScreen() = _$ActivitiesScreenImpl;
 }
 
 /// @nodoc
@@ -933,38 +653,32 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getUserInfo,
-    required TResult Function(int id) setScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUserInfo,
-    TResult? Function(int id)? setScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUserInfo,
-    TResult Function(int id)? setScreen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetUserInfo value) getUserInfo,
-    required TResult Function(_SetScreen value) setScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetUserInfo value)? getUserInfo,
-    TResult? Function(_SetScreen value)? setScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetUserInfo value)? getUserInfo,
-    TResult Function(_SetScreen value)? setScreen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1027,7 +741,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getUserInfo,
-    required TResult Function(int id) setScreen,
   }) {
     return getUserInfo();
   }
@@ -1036,7 +749,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUserInfo,
-    TResult? Function(int id)? setScreen,
   }) {
     return getUserInfo?.call();
   }
@@ -1045,7 +757,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUserInfo,
-    TResult Function(int id)? setScreen,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -1058,7 +769,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetUserInfo value) getUserInfo,
-    required TResult Function(_SetScreen value) setScreen,
   }) {
     return getUserInfo(this);
   }
@@ -1067,7 +777,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetUserInfo value)? getUserInfo,
-    TResult? Function(_SetScreen value)? setScreen,
   }) {
     return getUserInfo?.call(this);
   }
@@ -1076,7 +785,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetUserInfo value)? getUserInfo,
-    TResult Function(_SetScreen value)? setScreen,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -1088,137 +796,4 @@ class _$GetUserInfoImpl implements _GetUserInfo {
 
 abstract class _GetUserInfo implements ProfileEvent {
   const factory _GetUserInfo() = _$GetUserInfoImpl;
-}
-
-/// @nodoc
-abstract class _$$SetScreenImplCopyWith<$Res> {
-  factory _$$SetScreenImplCopyWith(
-          _$SetScreenImpl value, $Res Function(_$SetScreenImpl) then) =
-      __$$SetScreenImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int id});
-}
-
-/// @nodoc
-class __$$SetScreenImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$SetScreenImpl>
-    implements _$$SetScreenImplCopyWith<$Res> {
-  __$$SetScreenImplCopyWithImpl(
-      _$SetScreenImpl _value, $Res Function(_$SetScreenImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$SetScreenImpl(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SetScreenImpl implements _SetScreen {
-  const _$SetScreenImpl(this.id);
-
-  @override
-  final int id;
-
-  @override
-  String toString() {
-    return 'ProfileEvent.setScreen(id: $id)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetScreenImpl &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SetScreenImplCopyWith<_$SetScreenImpl> get copyWith =>
-      __$$SetScreenImplCopyWithImpl<_$SetScreenImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getUserInfo,
-    required TResult Function(int id) setScreen,
-  }) {
-    return setScreen(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserInfo,
-    TResult? Function(int id)? setScreen,
-  }) {
-    return setScreen?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserInfo,
-    TResult Function(int id)? setScreen,
-    required TResult orElse(),
-  }) {
-    if (setScreen != null) {
-      return setScreen(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetUserInfo value) getUserInfo,
-    required TResult Function(_SetScreen value) setScreen,
-  }) {
-    return setScreen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUserInfo value)? getUserInfo,
-    TResult? Function(_SetScreen value)? setScreen,
-  }) {
-    return setScreen?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUserInfo value)? getUserInfo,
-    TResult Function(_SetScreen value)? setScreen,
-    required TResult orElse(),
-  }) {
-    if (setScreen != null) {
-      return setScreen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SetScreen implements ProfileEvent {
-  const factory _SetScreen(final int id) = _$SetScreenImpl;
-
-  int get id;
-  @JsonKey(ignore: true)
-  _$$SetScreenImplCopyWith<_$SetScreenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }

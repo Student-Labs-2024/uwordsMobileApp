@@ -46,4 +46,10 @@ class LearnPaddings {
   static const double headerTitleSubtopicBottom = 20;
   static const double headerSubtopicSearchBottom = 25;
   static const double greenProgressCircle = 11;
+
+  static const double animatedSubtopicIconRight = 25 / 375;
+  static const double animatedSubtopicIconBottom = 8 / 812;
+  static const double animatedSubtopicContentLeft = 25 / 375;
+  static const double animatedSubtopicContentTop = 30 / 812;
+  static const double animatedSubtopicProgressTop = 27 / 812;
 }

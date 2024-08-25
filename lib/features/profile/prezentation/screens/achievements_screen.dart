@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
-import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
+import 'package:uwords/features/global/domain/achievement_category.dart';
 import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/widgets/achievement_section.dart';
 
-class AchievementsScreen extends StatefulWidget {
-  const AchievementsScreen({super.key});
+class AchievementsScreen extends StatelessWidget {
+  const AchievementsScreen({super.key, required this.achievements});
 
-  @override
-  State<AchievementsScreen> createState() => _AchievementsScreenState();
-}
-
-class _AchievementsScreenState extends State<AchievementsScreen> {
+  final List<AchievementCategoryModel> achievements;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const SizedBox(
-        height: ProfilePaddings.subtitleHorizontal,
-      ),
-      ...ProfileDataExample.exampleAchievements
-          .map((e) => AchievementSection(type: e.first, count: e.second)),
+      ...achievements.map((achievement) => AchievementSection(
+          title: achievement.title,
+          achievementsInfo: achievement.achievementsInfoDtoList)),
       SizedBox(
         height: MediaQuery.of(context).size.height * ProfileSizes.endSpacer,
       ),

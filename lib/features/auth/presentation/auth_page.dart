@@ -67,6 +67,8 @@ class _AuthPageState extends State<AuthPage> {
                   case AuthSuccess.authorized:
                     updateHomeWidgetByUserData(context: context);
                     context.go("/home");
+                  case AuthSuccess.educationNotCompleted:
+                    context.go("/onboarding");
                   case AuthSuccess.sendedCode:
                 }
               },

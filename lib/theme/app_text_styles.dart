@@ -116,7 +116,7 @@ class AppTextStyles {
       fontFamily: 'Inter-V',
       fontWeight: FontWeight.w700,
       fontSize: 20,
-      color: AppColors.darkMainColor);
+      color: AppColors.blackColor);
 
   static const carouselActive = TextStyle(
       fontFamily: 'Inter-V',
@@ -200,4 +200,41 @@ class AppTextStyles {
       fontWeight: FontWeight.w600,
       color: AppColors.darkMainColor.withOpacity(0.45),
       decoration: TextDecoration.underline);
+
+  static const profileNavActive = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
+    color: AppColors.blackColor,
+  );
+  static const profileNavNotActive = TextStyle(
+    fontFamily: 'Inter-V',
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    color: AppColors.lightgrayColor,
+  );
+
+  static const subscriptionViewTitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 18,
+      color: AppColors.blackColor);
+  static const subscriptionViewSubtitle = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+      color: AppColors.lightgrayColor2);
+  static const haventStatistics = TextStyle(
+      fontFamily: 'Inter-V',
+      fontWeight: FontWeight.w500,
+      fontSize: 17,
+      color: AppColors.haventStatisticsColor);
+  static const animatedSubtopicCardName = TextStyle(
+      fontSize: 23,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkMainColor);
+  static const animatedSubtopicCardWords = TextStyle(
+      fontSize: 21,
+      fontWeight: FontWeight.w400,
+      color: AppColors.darkMainColor);
 }

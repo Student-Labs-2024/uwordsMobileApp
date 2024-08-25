@@ -256,7 +256,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         case AuthorizationProvider.google:
           await userRepository.authorizateFromGoogle(uid: _uPassword);
       }
-      emit(const AuthState.success(AuthSuccess.authorized));
+      if (await userRepository.isEducationCompleted()) {
+        emit(const AuthState.success(AuthSuccess.authorized));
+      } else {
+        emit(const AuthState.success(AuthSuccess.educationNotCompleted));
+      }
     } on Exception catch (e) {
       _emitter = emit;
       addError(e);
