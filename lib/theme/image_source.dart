@@ -6,7 +6,7 @@ class AppImageSource {
   static const String microphoneIco = 'assets/icons/mic_ico.svg';
   static const String errorIco = 'assets/icons/error_ico.svg';
   static const String learnIco = 'assets/icons/learn_ico.svg';
-  static const String navBubbleIco = 'assets/png/nav_bubble_ico.png';
+  static const String navBubbleIco = 'assets/icons/nav_bubble_ico.png';
   static const String notificationIco = 'assets/icons/notification_ico.svg';
   static const String profileIco = 'assets/icons/profile_ico.svg';
   static const String headerRegister = 'assets/png/header_register.png';
@@ -21,14 +21,14 @@ class AppImageSource {
   static const String subscriptionActive = 'assets/png/subscription_active.png';
   static const String subscriptionInactive =
       'assets/png/subscription_inactive.png';
-  static const String onfireIcon = 'assets/png/onfire_icon.png';
-  static const String precision0Icon = 'assets/png/precision0_icon.png';
-  static const String precision20Icon = 'assets/png/precision20_icon.png';
-  static const String precision50Icon = 'assets/png/precision50_icon.png';
-  static const String precision70Icon = 'assets/png/precision70_icon.png';
-  static const String precision100Icon = 'assets/png/precision100_icon.png';
-  static const String recordTimeIcon = 'assets/png/record_time_icon.png';
-  static const String wordsLearnedIcon = 'assets/png/words_learned_icon.png';
+  static const String onfireIcon = 'assets/icons/onfire_icon.png';
+  static const String precision0Icon = 'assets/icons/precision0_icon.png';
+  static const String precision20Icon = 'assets/icons/precision20_icon.png';
+  static const String precision50Icon = 'assets/icons/precision50_icon.png';
+  static const String precision70Icon = 'assets/icons/precision70_icon.png';
+  static const String precision100Icon = 'assets/icons/precision100_icon.png';
+  static const String recordTimeIcon = 'assets/icons/record_time_icon.png';
+  static const String wordsLearnedIcon = 'assets/icons/words_learned_icon.png';
   static const String achieveActiveIcon = 'assets/png/achieveActive.png';
   static const String achieveInactiveIcon = 'assets/png/achieveInactive.png';
   static const String visibilityOutlined = 'assets/icons/visabillity_icon.svg';
@@ -94,15 +94,15 @@ class AppImageSource {
   static const String endlessEnergy = 'assets/png/endless_energy.png';
   static const String cloak = 'assets/png/clock.png';
   static const String youtube = 'assets/png/youtube.png';
-  static const String grade1 = 'assets/png/grade1_icon.png';
-  static const String grade2 = 'assets/png/grade2_icon.png';
-  static const String grade3 = 'assets/png/grade3_icon.png';
-  static const String grade4 = 'assets/png/grade4_icon.png';
-  static const String grade5 = 'assets/png/grade5_icon.png';
-  static const String grade1Active = 'assets/png/grade1_active_icon.png';
-  static const String grade2Active = 'assets/png/grade2_active_icon.png';
-  static const String grade3Active = 'assets/png/grade3_active_icon.png';
-  static const String grade4Active = 'assets/png/grade4_active_icon.png';
-  static const String grade5Active = 'assets/png/grade5_active_icon.png';
+  static const String grade1 = 'assets/icons/grade1_icon.png';
+  static const String grade2 = 'assets/icons/grade2_icon.png';
+  static const String grade3 = 'assets/icons/grade3_icon.png';
+  static const String grade4 = 'assets/icons/grade4_icon.png';
+  static const String grade5 = 'assets/icons/grade5_icon.png';
+  static const String grade1Active = 'assets/icons/grade1_active_icon.png';
+  static const String grade2Active = 'assets/icons/grade2_active_icon.png';
+  static const String grade3Active = 'assets/icons/grade3_active_icon.png';
+  static const String grade4Active = 'assets/icons/grade4_active_icon.png';
+  static const String grade5Active = 'assets/icons/grade5_active_icon.png';
   static const String gradeBack = 'assets/icons/grade_back.svg';
 }
