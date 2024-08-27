@@ -180,7 +180,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (res.isValue) {
       final VKLoginResult result = res.asValue!.value;
       if (result.isCanceled) {
-        throw CanceledSignIn();
+        throw CanceledSignInException();
       } else {
         final VKAccessToken? accessToken = result.accessToken;
         if (accessToken != null) {
@@ -212,7 +212,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       _uPassword = creds.user?.uid ?? '';
     } on Exception {
-      throw CanceledSignIn();
+      throw CanceledSignInException();
     }
   }
 
@@ -284,7 +284,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     switch (error.runtimeType) {
       case const (SocketException):
         _emitter(const AuthState.failed(AuthError.noInternet));
-      case const (NotRegisteredExceptionBySelfProvider):
+      case const (NotRegisteredExceptionBySelfProviderException):
         _emitter(const AuthState.failed(AuthError.failedAutorization));
         _emitter(const AuthState.signInScreen());
       case const (NotRegisteredException):
@@ -297,7 +297,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _emitter(const AuthState.signInScreen());
       case const (UnknownApiException):
         _emitter(const AuthState.failed(AuthError.unknownError));
-      case const (CanceledSignIn):
+      case const (CanceledSignInException):
         _emitter(const AuthState.failed(AuthError.canceledSignIn));
     }
     super.onError(error, stackTrace);

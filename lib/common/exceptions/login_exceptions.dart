@@ -2,46 +2,48 @@ import 'package:uwords/features/auth/bloc/auth_enum.dart';
 
 class NotAuthorizedException implements Exception {
   String message;
-  NotAuthorizedException({this.message = ""});
+  NotAuthorizedException({this.message = "Not authorized"});
 }
 
 class NotValidDataForLoginException implements Exception {
   String message;
-  NotValidDataForLoginException({this.message = ""});
+  NotValidDataForLoginException({this.message = "Check validation rules"});
 }
 
 class NotRegisteredException implements Exception {
   String message;
   AuthorizationProvider provider;
-  NotRegisteredException({this.message = "", required this.provider});
+  NotRegisteredException(
+      {this.message = "User is not registered", required this.provider});
 }
 
-class OldAccessToken implements Exception {
+class OldAccessTokenException implements Exception {
   String message;
-  OldAccessToken({this.message = ""});
+  OldAccessTokenException({this.message = "Need to use refresh token"});
 }
 
 class AccessIsBannedException implements Exception {
   String message;
-  AccessIsBannedException({this.message = ""});
+  AccessIsBannedException({this.message = "User had been banned"});
 }
 
 class UnknownApiException implements Exception {
   String message;
-  UnknownApiException({this.message = ""});
+  UnknownApiException({this.message = "The user was blocked"});
 }
 
-class CanceledSignIn implements Exception {
+class CanceledSignInException implements Exception {
   String message;
-  CanceledSignIn({this.message = ""});
+  CanceledSignInException({this.message = "Canceled sign in"});
 }
 
-class NotRegisteredExceptionBySelfProvider implements Exception {
+class NotRegisteredExceptionBySelfProviderException implements Exception {
   String message;
-  NotRegisteredExceptionBySelfProvider({this.message = ""});
+  NotRegisteredExceptionBySelfProviderException(
+      {this.message = "User is not registered by email"});
 }
 
-class OldRefreshToken implements Exception {
+class OldRefreshTokenException implements Exception {
   String message;
-  OldRefreshToken({this.message = ""});
+  OldRefreshTokenException({this.message = "Need to sign in again"});
 }

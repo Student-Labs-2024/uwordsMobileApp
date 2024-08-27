@@ -89,7 +89,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
   void addError(Object error, [StackTrace? stackTrace]) {
     switch (error.runtimeType) {
       // TODO implement CanNotCheckPaymentStatus and CanNotGetPaymentLink
-      case const (CanNotLoadTariffs):
+      case const (CanNotLoadTariffsException):
         _emitter(
             const SubscriptionState.falied(SubscriptionCheckStatus.noInternet));
       case const (SocketException):

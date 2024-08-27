@@ -89,7 +89,7 @@ class WordsDataSource implements IWordsDataSource {
   void _isEnergyEnded(DioException exception) {
     switch (exception.response!.statusCode) {
       case 404:
-        throw NoEnergy();
+        throw NoEnergyException();
     }
   }
 

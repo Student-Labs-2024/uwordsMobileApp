@@ -45,7 +45,7 @@ class NetworkUserDataSource implements INetworkUserDataSource {
           case 403:
             throw AccessIsBannedException();
           case 404:
-            throw NotRegisteredExceptionBySelfProvider();
+            throw NotRegisteredExceptionBySelfProviderException();
           default:
             break;
         }

@@ -43,7 +43,7 @@ class UserRepository implements IUserRepository {
           SimpleUserInfo.fromUserAuthDto(userAuthDto: newUserAuthDto);
       return userDto.accessToken;
     } else {
-      throw OldRefreshToken();
+      throw OldRefreshTokenException();
     }
   }
 

@@ -6,6 +6,7 @@ import 'package:uwords/theme/app_text_styles.dart';
 
 class GradeButton extends StatelessWidget {
   const GradeButton({
+    super.key,
     required this.onPressed,
     required this.text,
   });
@@ -20,7 +21,7 @@ class GradeButton extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: AppColors.gradeButtonGradient,
-        borderRadius: const BorderRadius.all(
+        borderRadius: BorderRadius.all(
           Radius.circular(GlobalSizes.borderRadiusMedium),
         ),
       ),

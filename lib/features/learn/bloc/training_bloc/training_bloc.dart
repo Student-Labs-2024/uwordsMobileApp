@@ -277,7 +277,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void onError(Object error, StackTrace stackTrace) async {
     developer.log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessToken):
+      case const (OldAccessTokenException):
         String accessToken = await userRepository.refreshAccessToken();
         List<WordInfo> result = await wordsRepository.getWordsForStart(
             accessToken: accessToken,
@@ -287,7 +287,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));
-      case const (NoEnergy):
+      case const (NoEnergyException):
         _emitter(const TrainingState.failed(message: 'No energy'));
     }
     super.onError(error, stackTrace);

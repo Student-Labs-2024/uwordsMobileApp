@@ -218,7 +218,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   void onError(Object error, StackTrace stackTrace) async {
     log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessToken):
+      case const (OldAccessTokenException):
         userRepository.refreshAccessToken();
         await _getTopicsFromServer(_emitter);
       case const (SocketException):
