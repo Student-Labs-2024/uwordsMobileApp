@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:speech_to_text/speech_to_text.dart';
@@ -157,7 +158,7 @@ class MainApp extends StatelessWidget {
         providers: [
           BlocProvider(
               create: (context) =>
-                  AuthBloc(userRepository: context.read<IUserRepository>())),
+                  AuthBloc(userRepository: context.read<IUserRepository>(), vk: VKLogin())),
           BlocProvider(
               create: (context) => ProfileBloc(
                     userRepository: context.read<IUserRepository>(),
