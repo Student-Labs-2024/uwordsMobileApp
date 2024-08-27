@@ -1,5 +1,5 @@
 class AppImageSource {
-  static const String homeScreenBackground = 'assets/png/opacityBubbles.png';
+  static const String homeScreenBackground = 'assets/images/opacityBubbles.png';
   static const String sendedIco = 'assets/icons/sended_ico.svg';
   static const String sendIco = 'assets/icons/send_ico.svg';
   static const String voiceIco = 'assets/icons/voice_ico.svg';
@@ -9,18 +9,20 @@ class AppImageSource {
   static const String navBubbleIco = 'assets/icons/nav_bubble_ico.png';
   static const String notificationIco = 'assets/icons/notification_ico.svg';
   static const String profileIco = 'assets/icons/profile_ico.svg';
-  static const String headerRegister = 'assets/png/header_register.png';
-  static const String headerAuth = 'assets/png/header_auth.png';
-  static const String bubbleButton = 'assets/png/bubble_button1.png';
+  static const String headerRegister = 'assets/images/header_register.png';
+  static const String headerAuth = 'assets/images/header_auth.png';
+  static const String bubbleButton = 'assets/images/bubble_button1.png';
   static const String googleIcon = 'assets/icons/google.svg';
   static const String vkIcon = 'assets/icons/vk.svg';
-  static const String topCodeBackground = 'assets/png/top_background.png';
-  static const String bottomCodeBackground = 'assets/png/bottom_background.png';
+  static const String topCodeBackground = 'assets/images/top_background.png';
+  static const String bottomCodeBackground =
+      'assets/images/bottom_background.png';
   static const String returnIcon = 'assets/icons/return.svg';
   static const String optionsIcon = 'assets/icons/options_icon.svg';
-  static const String subscriptionActive = 'assets/png/subscription_active.png';
+  static const String subscriptionActive =
+      'assets/images/subscription_active.png';
   static const String subscriptionInactive =
-      'assets/png/subscription_inactive.png';
+      'assets/images/subscription_inactive.png';
   static const String onfireIcon = 'assets/icons/onfire_icon.png';
   static const String precision0Icon = 'assets/icons/precision0_icon.png';
   static const String precision20Icon = 'assets/icons/precision20_icon.png';
@@ -29,71 +31,73 @@ class AppImageSource {
   static const String precision100Icon = 'assets/icons/precision100_icon.png';
   static const String recordTimeIcon = 'assets/icons/record_time_icon.png';
   static const String wordsLearnedIcon = 'assets/icons/words_learned_icon.png';
-  static const String achieveActiveIcon = 'assets/png/achieveActive.png';
-  static const String achieveInactiveIcon = 'assets/png/achieveInactive.png';
+  static const String achieveActiveIcon = 'assets/images/achieveActive.png';
+  static const String achieveInactiveIcon = 'assets/images/achieveInactive.png';
   static const String visibilityOutlined = 'assets/icons/visabillity_icon.svg';
   static const String visibilityOutlinedOff =
       'assets/icons/visabillity_off_icon.svg';
-  static const String topicBackground = 'assets/png/topic_background.png';
-  static const String redAngleButton = 'assets/png/red_angle_bubble.png';
-  static const String blueAngleButton = 'assets/png/blue_angle_bubble.png';
-  static const String greyAngleButton = 'assets/png/grey_angle_bubble.png';
+  static const String topicBackground = 'assets/images/topic_background.png';
+  static const String redAngleButton = 'assets/images/red_angle_bubble.png';
+  static const String blueAngleButton = 'assets/images/blue_angle_bubble.png';
+  static const String greyAngleButton = 'assets/images/grey_angle_bubble.png';
   static const String searchIcon = 'assets/icons/search_icon.svg';
   static const String sortSettingsButton =
       'assets/icons/sort_setting_button.svg';
   static const String sortIcon = 'assets/icons/sort_icon.svg';
   static const String audioGradientIcon =
       'assets/icons/audio_gradient_icon.svg';
-  static const String circleEmpty = 'assets/png/circle_empty.png';
+  static const String circleEmpty = 'assets/images/circle_empty.png';
   static const String circleFirstQuarter =
-      'assets/png/circle_first_quarter.png';
+      'assets/images/circle_first_quarter.png';
   static const String circleSecondQuarter =
-      'assets/png/circle_second_quarter.png';
+      'assets/images/circle_second_quarter.png';
   static const String circleThirdQuarter =
-      'assets/png/circle_third_quarter.png';
-  static const String circleFull = 'assets/png/circle_full.png';
-  static const String redBigAngleButton = 'assets/png/red_big_angle_bubble.png';
+      'assets/images/circle_third_quarter.png';
+  static const String circleFull = 'assets/images/circle_full.png';
+  static const String redBigAngleButton =
+      'assets/images/red_big_angle_bubble.png';
   static const String blueBigAngleButton =
-      'assets/png/blue_big_angle_bubble.png';
+      'assets/images/blue_big_angle_bubble.png';
   static const String greyBigAngleButton =
-      'assets/png/grey_big_angle_bubble.png';
+      'assets/images/grey_big_angle_bubble.png';
   static const String subtopicCardWithSort =
       'assets/icons/subtopic_with_sort.svg';
   static const String subtopicActiveCardWithSort =
       'assets/icons/subtopic_active_with_sort.svg';
   static const String sortActiveIcon = 'assets/icons/sort_active_icon.svg';
-  static const String testScreenBubbles = 'assets/png/bubbles_test_module.png';
+  static const String testScreenBubbles =
+      'assets/images/bubbles_test_module.png';
   static const String testScreenBubblesInputScreen =
-      'assets/png/bubbles_test_module_input.png';
+      'assets/images/bubbles_test_module_input.png';
   static const String testScreenBubblesChooseScreen =
-      'assets/png/bubbles_test_choose.png';
+      'assets/images/bubbles_test_choose.png';
   static const String cancelIcon = 'assets/icons/cancel_icon.svg';
   static const String learningHearts = 'assets/icons/learning_hearts.svg';
   static const String soundIcon = 'assets/icons/sound_icon.svg';
   static const String hpIcon = 'assets/icons/hp_icon.svg';
   static const String lostHpIcon = 'assets/icons/lostHp_icon.svg';
   static const String subtopicHeaderBubbles =
-      'assets/png/subtopic_header_bubbles.png';
+      'assets/images/subtopic_header_bubbles.png';
   static const String failedIcon = 'assets/icons/failed.svg';
   static const String sircleGreen0 = 'assets/icons/sircle_green_0.svg';
   static const String sircleGreen1 = 'assets/icons/sircle_green_1.svg';
   static const String sircleGreen2 = 'assets/icons/sircle_green_2.svg';
   static const String sircleGreen3 = 'assets/icons/sircle_green_3.svg';
   static const String sircleGreen4 = 'assets/icons/sircle_green_4.svg';
-  static const String activeButton = 'assets/png/button_active.png';
-  static const String disabledButton = 'assets/png/button_disabled.png';
-  static const String redButton = 'assets/png/button_red.png';
-  static const String onboarding1 = 'assets/png/telephone1.png';
-  static const String onboarding2 = 'assets/png/telephone2.png';
+  static const String activeButton = 'assets/images/button_active.png';
+  static const String disabledButton = 'assets/images/button_disabled.png';
+  static const String redButton = 'assets/images/button_red.png';
+  static const String onboarding1 = 'assets/images/telephone1.png';
+  static const String onboarding2 = 'assets/images/telephone2.png';
   static const String youtubeIcon = 'assets/icons/youtube.svg';
   static const String telegramIcon = 'assets/icons/telegram.svg';
   static const String discordIcon = 'assets/icons/discord.svg';
   static const String chromeIcon = 'assets/icons/chrome.svg';
   static const String animatedSubtopicIcon =
       'assets/icons/animated_subtopic_image.svg';
-  static const String endlessEnergy = 'assets/png/endless_energy.png';
-  static const String cloak = 'assets/png/clock.png';
-  static const String youtube = 'assets/png/youtube.png';
+  static const String endlessEnergy = 'assets/images/endless_energy.png';
+  static const String cloak = 'assets/images/clock.png';
+  static const String youtube = 'assets/images/youtube.png';
   static const String grade1 = 'assets/icons/grade1_icon.png';
   static const String grade2 = 'assets/icons/grade2_icon.png';
   static const String grade3 = 'assets/icons/grade3_icon.png';
