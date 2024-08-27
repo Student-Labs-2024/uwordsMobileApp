@@ -12,7 +12,7 @@ import 'package:uwords/features/auth/data/data_sources/interface_network_user_da
 import 'package:uwords/features/auth/data/request_bodies/code_request.dart';
 import 'package:uwords/features/auth/data/request_bodies/login_request_body.dart';
 import 'package:uwords/features/auth/data/request_bodies/register_request_body.dart';
-import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/features/auth/data/user_auth_dto.dart';
 import 'package:uwords/features/grade/data/domain/grade_class.dart';
 import 'package:uwords/secrets.dart';
 

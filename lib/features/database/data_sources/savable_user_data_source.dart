@@ -1,5 +1,5 @@
 import 'package:drift/drift.dart';
-import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/features/auth/data/user_auth_dto.dart';
 import 'package:uwords/features/auth/domain/user_auth_mapper.dart';
 import 'package:uwords/features/database/savable_user_exception.dart';
 import 'package:uwords/features/database/uwords_database/uwords_database.dart';

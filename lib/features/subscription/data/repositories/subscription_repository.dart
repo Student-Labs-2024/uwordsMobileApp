@@ -1,6 +1,6 @@
 import 'package:uwords/features/subscription/data/data_sources/network_tariff_data_source.dart';
-import 'package:uwords/features/subscription/domain/dto/form_dto.dart';
-import 'package:uwords/features/subscription/domain/dto/tariff_dto.dart';
+import 'package:uwords/features/subscription/data/dto/form_dto.dart';
+import 'package:uwords/features/subscription/data/dto/tariff_dto.dart';
 import 'package:uwords/features/subscription/domain/mapper/tariff_mapper.dart';
 import 'package:uwords/features/subscription/domain/models/tariff.dart';
 

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:uwords/common/utils/jwt.dart';
 import 'package:uwords/features/subscription/data/subscription_client.dart';
-import 'package:uwords/features/subscription/domain/dto/form_dto.dart';
-import 'package:uwords/features/subscription/domain/dto/tariff_dto.dart';
+import 'package:uwords/features/subscription/data/dto/form_dto.dart';
+import 'package:uwords/features/subscription/data/dto/tariff_dto.dart';
 
 abstract interface class INetworkTariffDataSource {
   Future<List<TariffDto>> fetchTariffList({required String accessToken});

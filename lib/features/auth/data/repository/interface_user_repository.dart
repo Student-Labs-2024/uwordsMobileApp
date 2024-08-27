@@ -1,4 +1,4 @@
-import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/features/auth/data/user_auth_dto.dart';
 
 abstract interface class IUserRepository {
   void localLogOut();

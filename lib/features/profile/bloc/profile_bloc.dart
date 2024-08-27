@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/auth/domain/user_auth_dto.dart';
+import 'package:uwords/features/auth/data/user_auth_dto.dart';
 import 'package:uwords/features/global/domain/achievement_category.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';

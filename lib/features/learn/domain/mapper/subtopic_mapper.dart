@@ -1,4 +1,4 @@
-import 'package:uwords/features/learn/domain/dto/subtopic_dto.dart';
+import 'package:uwords/features/learn/data/dto/subtopic_dto.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/mapper/word_info_mapper.dart';
 

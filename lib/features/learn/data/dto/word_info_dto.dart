@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uwords/features/learn/domain/dto/word_model_dto.dart';
+import 'package:uwords/features/learn/data/dto/word_model_dto.dart';
 
 part 'word_info_dto.freezed.dart';
 part 'word_info_dto.g.dart';
