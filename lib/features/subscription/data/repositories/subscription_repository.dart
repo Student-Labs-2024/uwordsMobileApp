@@ -7,7 +7,8 @@ import 'package:uwords/features/subscription/domain/models/tariff.dart';
 abstract interface class ISubscriptionRepository {
   Future<List<Tariff>> getTariffList({required String accessToken});
   Future<bool> checkPayment({required String accessToken});
-  Future<String> getPaymentLink(Tariff tariff);
+  Future<String> getPaymentLink(
+      {required String accessToken, required Tariff tariff});
 }
 
 class SubscriptionRepository implements ISubscriptionRepository {
@@ -27,10 +28,11 @@ class SubscriptionRepository implements ISubscriptionRepository {
   }
 
   @override
-  Future<String> getPaymentLink(Tariff tariff) async {
+  Future<String> getPaymentLink(
+      {required String accessToken, required Tariff tariff}) async {
     try {
-      formDto =
-          await networkTariffDataSource.fetchPayment(tariffTitle: tariff.name);
+      formDto = await networkTariffDataSource.fetchPayment(
+          accessToken: accessToken, tariffTitle: tariff.name);
       return formDto.link;
     } on Exception {
       rethrow;

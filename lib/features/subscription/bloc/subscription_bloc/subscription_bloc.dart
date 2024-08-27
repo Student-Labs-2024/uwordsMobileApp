@@ -47,8 +47,10 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       _PaySubscriptionEvent event, Emitter<SubscriptionState> emit) async {
     emit(const SubscriptionState.loading());
     try {
-      final String paymentLink =
-          await subscriptionRepository.getPaymentLink(event.tariff);
+      final String accessToken =
+          await userRepository.getCurrentUserAccessToken();
+      final String paymentLink = await subscriptionRepository.getPaymentLink(
+          accessToken: accessToken, tariff: event.tariff);
       emit(SubscriptionState.payingSubscription(paymentLink));
     } on Exception catch (e) {
       _emitter = emit;

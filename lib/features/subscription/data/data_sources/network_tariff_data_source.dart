@@ -8,7 +8,8 @@ abstract interface class INetworkTariffDataSource {
   Future<List<TariffDto>> fetchTariffList({required String accessToken});
   Future<bool> checkPayment(
       {required String accessToken, required String paymentId});
-  Future<FormDto> fetchPayment({required String tariffTitle});
+  Future<FormDto> fetchPayment(
+      {required String accessToken, required String tariffTitle});
 }
 
 class NetworkTariffDataSource implements INetworkTariffDataSource {
@@ -45,9 +46,12 @@ class NetworkTariffDataSource implements INetworkTariffDataSource {
   }
 
   @override
-  Future<FormDto> fetchPayment({required String tariffTitle}) async {
+  Future<FormDto> fetchPayment(
+      {required String accessToken, required String tariffTitle}) async {
     try {
-      final response = await client.payByTariffName(tariffTitle);
+      final response = await client.payByTariffName(
+          joinTokenTypeAndToken(tokenType: tokenType, token: accessToken),
+          tariffTitle);
       FormDto formDto = FormDto.fromJson(infoList: response.data);
       return formDto;
     } on Exception {
