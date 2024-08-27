@@ -66,8 +66,8 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/svg/
-    - assets/png/
+    - assets/icons/
+    - assets/images/
   fonts:
     - family: SNFBSTRD_handwrite
       fonts:
