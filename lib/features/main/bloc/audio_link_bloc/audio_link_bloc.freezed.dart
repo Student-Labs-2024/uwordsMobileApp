@@ -40,23 +40,23 @@ mixin _$AudioLinkState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AudioLinkInitial value) initial,
-    required TResult Function(_AudioLinkFailed value) failed,
-    required TResult Function(_AudioLinkSended value) sended,
+    required TResult Function(_AudioLinkInitialState value) initial,
+    required TResult Function(_AudioLinkFailedState value) failed,
+    required TResult Function(_AudioLinkSendedState value) sended,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AudioLinkInitial value)? initial,
-    TResult? Function(_AudioLinkFailed value)? failed,
-    TResult? Function(_AudioLinkSended value)? sended,
+    TResult? Function(_AudioLinkInitialState value)? initial,
+    TResult? Function(_AudioLinkFailedState value)? failed,
+    TResult? Function(_AudioLinkSendedState value)? sended,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AudioLinkInitial value)? initial,
-    TResult Function(_AudioLinkFailed value)? failed,
-    TResult Function(_AudioLinkSended value)? sended,
+    TResult Function(_AudioLinkInitialState value)? initial,
+    TResult Function(_AudioLinkFailedState value)? failed,
+    TResult Function(_AudioLinkSendedState value)? sended,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,25 +81,26 @@ class _$AudioLinkStateCopyWithImpl<$Res, $Val extends AudioLinkState>
 }
 
 /// @nodoc
-abstract class _$$AudioLinkInitialImplCopyWith<$Res> {
-  factory _$$AudioLinkInitialImplCopyWith(_$AudioLinkInitialImpl value,
-          $Res Function(_$AudioLinkInitialImpl) then) =
-      __$$AudioLinkInitialImplCopyWithImpl<$Res>;
+abstract class _$$AudioLinkInitialStateImplCopyWith<$Res> {
+  factory _$$AudioLinkInitialStateImplCopyWith(
+          _$AudioLinkInitialStateImpl value,
+          $Res Function(_$AudioLinkInitialStateImpl) then) =
+      __$$AudioLinkInitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AudioLinkInitialImplCopyWithImpl<$Res>
-    extends _$AudioLinkStateCopyWithImpl<$Res, _$AudioLinkInitialImpl>
-    implements _$$AudioLinkInitialImplCopyWith<$Res> {
-  __$$AudioLinkInitialImplCopyWithImpl(_$AudioLinkInitialImpl _value,
-      $Res Function(_$AudioLinkInitialImpl) _then)
+class __$$AudioLinkInitialStateImplCopyWithImpl<$Res>
+    extends _$AudioLinkStateCopyWithImpl<$Res, _$AudioLinkInitialStateImpl>
+    implements _$$AudioLinkInitialStateImplCopyWith<$Res> {
+  __$$AudioLinkInitialStateImplCopyWithImpl(_$AudioLinkInitialStateImpl _value,
+      $Res Function(_$AudioLinkInitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AudioLinkInitialImpl implements _AudioLinkInitial {
-  const _$AudioLinkInitialImpl();
+class _$AudioLinkInitialStateImpl implements _AudioLinkInitialState {
+  const _$AudioLinkInitialStateImpl();
 
   @override
   String toString() {
@@ -109,7 +110,8 @@ class _$AudioLinkInitialImpl implements _AudioLinkInitial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AudioLinkInitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AudioLinkInitialStateImpl);
   }
 
   @override
@@ -152,9 +154,9 @@ class _$AudioLinkInitialImpl implements _AudioLinkInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AudioLinkInitial value) initial,
-    required TResult Function(_AudioLinkFailed value) failed,
-    required TResult Function(_AudioLinkSended value) sended,
+    required TResult Function(_AudioLinkInitialState value) initial,
+    required TResult Function(_AudioLinkFailedState value) failed,
+    required TResult Function(_AudioLinkSendedState value) sended,
   }) {
     return initial(this);
   }
@@ -162,9 +164,9 @@ class _$AudioLinkInitialImpl implements _AudioLinkInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AudioLinkInitial value)? initial,
-    TResult? Function(_AudioLinkFailed value)? failed,
-    TResult? Function(_AudioLinkSended value)? sended,
+    TResult? Function(_AudioLinkInitialState value)? initial,
+    TResult? Function(_AudioLinkFailedState value)? failed,
+    TResult? Function(_AudioLinkSendedState value)? sended,
   }) {
     return initial?.call(this);
   }
@@ -172,9 +174,9 @@ class _$AudioLinkInitialImpl implements _AudioLinkInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AudioLinkInitial value)? initial,
-    TResult Function(_AudioLinkFailed value)? failed,
-    TResult Function(_AudioLinkSended value)? sended,
+    TResult Function(_AudioLinkInitialState value)? initial,
+    TResult Function(_AudioLinkFailedState value)? failed,
+    TResult Function(_AudioLinkSendedState value)? sended,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -184,25 +186,25 @@ class _$AudioLinkInitialImpl implements _AudioLinkInitial {
   }
 }
 
-abstract class _AudioLinkInitial implements AudioLinkState {
-  const factory _AudioLinkInitial() = _$AudioLinkInitialImpl;
+abstract class _AudioLinkInitialState implements AudioLinkState {
+  const factory _AudioLinkInitialState() = _$AudioLinkInitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$AudioLinkFailedImplCopyWith<$Res> {
-  factory _$$AudioLinkFailedImplCopyWith(_$AudioLinkFailedImpl value,
-          $Res Function(_$AudioLinkFailedImpl) then) =
-      __$$AudioLinkFailedImplCopyWithImpl<$Res>;
+abstract class _$$AudioLinkFailedStateImplCopyWith<$Res> {
+  factory _$$AudioLinkFailedStateImplCopyWith(_$AudioLinkFailedStateImpl value,
+          $Res Function(_$AudioLinkFailedStateImpl) then) =
+      __$$AudioLinkFailedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$AudioLinkFailedImplCopyWithImpl<$Res>
-    extends _$AudioLinkStateCopyWithImpl<$Res, _$AudioLinkFailedImpl>
-    implements _$$AudioLinkFailedImplCopyWith<$Res> {
-  __$$AudioLinkFailedImplCopyWithImpl(
-      _$AudioLinkFailedImpl _value, $Res Function(_$AudioLinkFailedImpl) _then)
+class __$$AudioLinkFailedStateImplCopyWithImpl<$Res>
+    extends _$AudioLinkStateCopyWithImpl<$Res, _$AudioLinkFailedStateImpl>
+    implements _$$AudioLinkFailedStateImplCopyWith<$Res> {
+  __$$AudioLinkFailedStateImplCopyWithImpl(_$AudioLinkFailedStateImpl _value,
+      $Res Function(_$AudioLinkFailedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -210,7 +212,7 @@ class __$$AudioLinkFailedImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$AudioLinkFailedImpl(
+    return _then(_$AudioLinkFailedStateImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -221,8 +223,8 @@ class __$$AudioLinkFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AudioLinkFailedImpl implements _AudioLinkFailed {
-  const _$AudioLinkFailedImpl(this.message);
+class _$AudioLinkFailedStateImpl implements _AudioLinkFailedState {
+  const _$AudioLinkFailedStateImpl(this.message);
 
   @override
   final String message;
@@ -236,7 +238,7 @@ class _$AudioLinkFailedImpl implements _AudioLinkFailed {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AudioLinkFailedImpl &&
+            other is _$AudioLinkFailedStateImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -246,9 +248,10 @@ class _$AudioLinkFailedImpl implements _AudioLinkFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AudioLinkFailedImplCopyWith<_$AudioLinkFailedImpl> get copyWith =>
-      __$$AudioLinkFailedImplCopyWithImpl<_$AudioLinkFailedImpl>(
-          this, _$identity);
+  _$$AudioLinkFailedStateImplCopyWith<_$AudioLinkFailedStateImpl>
+      get copyWith =>
+          __$$AudioLinkFailedStateImplCopyWithImpl<_$AudioLinkFailedStateImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -287,9 +290,9 @@ class _$AudioLinkFailedImpl implements _AudioLinkFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AudioLinkInitial value) initial,
-    required TResult Function(_AudioLinkFailed value) failed,
-    required TResult Function(_AudioLinkSended value) sended,
+    required TResult Function(_AudioLinkInitialState value) initial,
+    required TResult Function(_AudioLinkFailedState value) failed,
+    required TResult Function(_AudioLinkSendedState value) sended,
   }) {
     return failed(this);
   }
@@ -297,9 +300,9 @@ class _$AudioLinkFailedImpl implements _AudioLinkFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AudioLinkInitial value)? initial,
-    TResult? Function(_AudioLinkFailed value)? failed,
-    TResult? Function(_AudioLinkSended value)? sended,
+    TResult? Function(_AudioLinkInitialState value)? initial,
+    TResult? Function(_AudioLinkFailedState value)? failed,
+    TResult? Function(_AudioLinkSendedState value)? sended,
   }) {
     return failed?.call(this);
   }
@@ -307,9 +310,9 @@ class _$AudioLinkFailedImpl implements _AudioLinkFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AudioLinkInitial value)? initial,
-    TResult Function(_AudioLinkFailed value)? failed,
-    TResult Function(_AudioLinkSended value)? sended,
+    TResult Function(_AudioLinkInitialState value)? initial,
+    TResult Function(_AudioLinkFailedState value)? failed,
+    TResult Function(_AudioLinkSendedState value)? sended,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -319,35 +322,36 @@ class _$AudioLinkFailedImpl implements _AudioLinkFailed {
   }
 }
 
-abstract class _AudioLinkFailed implements AudioLinkState {
-  const factory _AudioLinkFailed(final String message) = _$AudioLinkFailedImpl;
+abstract class _AudioLinkFailedState implements AudioLinkState {
+  const factory _AudioLinkFailedState(final String message) =
+      _$AudioLinkFailedStateImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$AudioLinkFailedImplCopyWith<_$AudioLinkFailedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AudioLinkFailedStateImplCopyWith<_$AudioLinkFailedStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AudioLinkSendedImplCopyWith<$Res> {
-  factory _$$AudioLinkSendedImplCopyWith(_$AudioLinkSendedImpl value,
-          $Res Function(_$AudioLinkSendedImpl) then) =
-      __$$AudioLinkSendedImplCopyWithImpl<$Res>;
+abstract class _$$AudioLinkSendedStateImplCopyWith<$Res> {
+  factory _$$AudioLinkSendedStateImplCopyWith(_$AudioLinkSendedStateImpl value,
+          $Res Function(_$AudioLinkSendedStateImpl) then) =
+      __$$AudioLinkSendedStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AudioLinkSendedImplCopyWithImpl<$Res>
-    extends _$AudioLinkStateCopyWithImpl<$Res, _$AudioLinkSendedImpl>
-    implements _$$AudioLinkSendedImplCopyWith<$Res> {
-  __$$AudioLinkSendedImplCopyWithImpl(
-      _$AudioLinkSendedImpl _value, $Res Function(_$AudioLinkSendedImpl) _then)
+class __$$AudioLinkSendedStateImplCopyWithImpl<$Res>
+    extends _$AudioLinkStateCopyWithImpl<$Res, _$AudioLinkSendedStateImpl>
+    implements _$$AudioLinkSendedStateImplCopyWith<$Res> {
+  __$$AudioLinkSendedStateImplCopyWithImpl(_$AudioLinkSendedStateImpl _value,
+      $Res Function(_$AudioLinkSendedStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AudioLinkSendedImpl implements _AudioLinkSended {
-  const _$AudioLinkSendedImpl();
+class _$AudioLinkSendedStateImpl implements _AudioLinkSendedState {
+  const _$AudioLinkSendedStateImpl();
 
   @override
   String toString() {
@@ -357,7 +361,8 @@ class _$AudioLinkSendedImpl implements _AudioLinkSended {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AudioLinkSendedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AudioLinkSendedStateImpl);
   }
 
   @override
@@ -400,9 +405,9 @@ class _$AudioLinkSendedImpl implements _AudioLinkSended {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AudioLinkInitial value) initial,
-    required TResult Function(_AudioLinkFailed value) failed,
-    required TResult Function(_AudioLinkSended value) sended,
+    required TResult Function(_AudioLinkInitialState value) initial,
+    required TResult Function(_AudioLinkFailedState value) failed,
+    required TResult Function(_AudioLinkSendedState value) sended,
   }) {
     return sended(this);
   }
@@ -410,9 +415,9 @@ class _$AudioLinkSendedImpl implements _AudioLinkSended {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AudioLinkInitial value)? initial,
-    TResult? Function(_AudioLinkFailed value)? failed,
-    TResult? Function(_AudioLinkSended value)? sended,
+    TResult? Function(_AudioLinkInitialState value)? initial,
+    TResult? Function(_AudioLinkFailedState value)? failed,
+    TResult? Function(_AudioLinkSendedState value)? sended,
   }) {
     return sended?.call(this);
   }
@@ -420,9 +425,9 @@ class _$AudioLinkSendedImpl implements _AudioLinkSended {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AudioLinkInitial value)? initial,
-    TResult Function(_AudioLinkFailed value)? failed,
-    TResult Function(_AudioLinkSended value)? sended,
+    TResult Function(_AudioLinkInitialState value)? initial,
+    TResult Function(_AudioLinkFailedState value)? failed,
+    TResult Function(_AudioLinkSendedState value)? sended,
     required TResult orElse(),
   }) {
     if (sended != null) {
@@ -432,8 +437,8 @@ class _$AudioLinkSendedImpl implements _AudioLinkSended {
   }
 }
 
-abstract class _AudioLinkSended implements AudioLinkState {
-  const factory _AudioLinkSended() = _$AudioLinkSendedImpl;
+abstract class _AudioLinkSendedState implements AudioLinkState {
+  const factory _AudioLinkSendedState() = _$AudioLinkSendedStateImpl;
 }
 
 /// @nodoc
@@ -457,17 +462,17 @@ mixin _$AudioLinkEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendLink value) sendLink,
+    required TResult Function(_SendLinkEvent value) sendLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendLink value)? sendLink,
+    TResult? Function(_SendLinkEvent value)? sendLink,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendLink value)? sendLink,
+    TResult Function(_SendLinkEvent value)? sendLink,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -511,22 +516,22 @@ class _$AudioLinkEventCopyWithImpl<$Res, $Val extends AudioLinkEvent>
 }
 
 /// @nodoc
-abstract class _$$SendLinkImplCopyWith<$Res>
+abstract class _$$SendLinkEventImplCopyWith<$Res>
     implements $AudioLinkEventCopyWith<$Res> {
-  factory _$$SendLinkImplCopyWith(
-          _$SendLinkImpl value, $Res Function(_$SendLinkImpl) then) =
-      __$$SendLinkImplCopyWithImpl<$Res>;
+  factory _$$SendLinkEventImplCopyWith(
+          _$SendLinkEventImpl value, $Res Function(_$SendLinkEventImpl) then) =
+      __$$SendLinkEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String link});
 }
 
 /// @nodoc
-class __$$SendLinkImplCopyWithImpl<$Res>
-    extends _$AudioLinkEventCopyWithImpl<$Res, _$SendLinkImpl>
-    implements _$$SendLinkImplCopyWith<$Res> {
-  __$$SendLinkImplCopyWithImpl(
-      _$SendLinkImpl _value, $Res Function(_$SendLinkImpl) _then)
+class __$$SendLinkEventImplCopyWithImpl<$Res>
+    extends _$AudioLinkEventCopyWithImpl<$Res, _$SendLinkEventImpl>
+    implements _$$SendLinkEventImplCopyWith<$Res> {
+  __$$SendLinkEventImplCopyWithImpl(
+      _$SendLinkEventImpl _value, $Res Function(_$SendLinkEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -534,7 +539,7 @@ class __$$SendLinkImplCopyWithImpl<$Res>
   $Res call({
     Object? link = null,
   }) {
-    return _then(_$SendLinkImpl(
+    return _then(_$SendLinkEventImpl(
       null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
@@ -545,8 +550,8 @@ class __$$SendLinkImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SendLinkImpl implements _SendLink {
-  const _$SendLinkImpl(this.link);
+class _$SendLinkEventImpl implements _SendLinkEvent {
+  const _$SendLinkEventImpl(this.link);
 
   @override
   final String link;
@@ -560,7 +565,7 @@ class _$SendLinkImpl implements _SendLink {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SendLinkImpl &&
+            other is _$SendLinkEventImpl &&
             (identical(other.link, link) || other.link == link));
   }
 
@@ -570,8 +575,8 @@ class _$SendLinkImpl implements _SendLink {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SendLinkImplCopyWith<_$SendLinkImpl> get copyWith =>
-      __$$SendLinkImplCopyWithImpl<_$SendLinkImpl>(this, _$identity);
+  _$$SendLinkEventImplCopyWith<_$SendLinkEventImpl> get copyWith =>
+      __$$SendLinkEventImplCopyWithImpl<_$SendLinkEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -604,7 +609,7 @@ class _$SendLinkImpl implements _SendLink {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendLink value) sendLink,
+    required TResult Function(_SendLinkEvent value) sendLink,
   }) {
     return sendLink(this);
   }
@@ -612,7 +617,7 @@ class _$SendLinkImpl implements _SendLink {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendLink value)? sendLink,
+    TResult? Function(_SendLinkEvent value)? sendLink,
   }) {
     return sendLink?.call(this);
   }
@@ -620,7 +625,7 @@ class _$SendLinkImpl implements _SendLink {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendLink value)? sendLink,
+    TResult Function(_SendLinkEvent value)? sendLink,
     required TResult orElse(),
   }) {
     if (sendLink != null) {
@@ -630,13 +635,13 @@ class _$SendLinkImpl implements _SendLink {
   }
 }
 
-abstract class _SendLink implements AudioLinkEvent {
-  const factory _SendLink(final String link) = _$SendLinkImpl;
+abstract class _SendLinkEvent implements AudioLinkEvent {
+  const factory _SendLinkEvent(final String link) = _$SendLinkEventImpl;
 
   @override
   String get link;
   @override
   @JsonKey(ignore: true)
-  _$$SendLinkImplCopyWith<_$SendLinkImpl> get copyWith =>
+  _$$SendLinkEventImplCopyWith<_$SendLinkEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

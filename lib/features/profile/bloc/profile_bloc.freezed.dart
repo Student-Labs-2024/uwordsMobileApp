@@ -61,23 +61,23 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_GotInfo value) gotInfo,
+    required TResult Function(_ProfileInitialState value) initial,
+    required TResult Function(_ProfileFailedState value) failed,
+    required TResult Function(_GotInfoState value) gotInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_GotInfo value)? gotInfo,
+    TResult? Function(_ProfileInitialState value)? initial,
+    TResult? Function(_ProfileFailedState value)? failed,
+    TResult? Function(_GotInfoState value)? gotInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_GotInfo value)? gotInfo,
+    TResult Function(_ProfileInitialState value)? initial,
+    TResult Function(_ProfileFailedState value)? failed,
+    TResult Function(_GotInfoState value)? gotInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -102,25 +102,25 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$ProfileInitialImplCopyWith<$Res> {
-  factory _$$ProfileInitialImplCopyWith(_$ProfileInitialImpl value,
-          $Res Function(_$ProfileInitialImpl) then) =
-      __$$ProfileInitialImplCopyWithImpl<$Res>;
+abstract class _$$ProfileInitialStateImplCopyWith<$Res> {
+  factory _$$ProfileInitialStateImplCopyWith(_$ProfileInitialStateImpl value,
+          $Res Function(_$ProfileInitialStateImpl) then) =
+      __$$ProfileInitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ProfileInitialImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileInitialImpl>
-    implements _$$ProfileInitialImplCopyWith<$Res> {
-  __$$ProfileInitialImplCopyWithImpl(
-      _$ProfileInitialImpl _value, $Res Function(_$ProfileInitialImpl) _then)
+class __$$ProfileInitialStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileInitialStateImpl>
+    implements _$$ProfileInitialStateImplCopyWith<$Res> {
+  __$$ProfileInitialStateImplCopyWithImpl(_$ProfileInitialStateImpl _value,
+      $Res Function(_$ProfileInitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ProfileInitialImpl implements _ProfileInitial {
-  const _$ProfileInitialImpl();
+class _$ProfileInitialStateImpl implements _ProfileInitialState {
+  const _$ProfileInitialStateImpl();
 
   @override
   String toString() {
@@ -130,7 +130,8 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ProfileInitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ProfileInitialStateImpl);
   }
 
   @override
@@ -194,9 +195,9 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_GotInfo value) gotInfo,
+    required TResult Function(_ProfileInitialState value) initial,
+    required TResult Function(_ProfileFailedState value) failed,
+    required TResult Function(_GotInfoState value) gotInfo,
   }) {
     return initial(this);
   }
@@ -204,9 +205,9 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_GotInfo value)? gotInfo,
+    TResult? Function(_ProfileInitialState value)? initial,
+    TResult? Function(_ProfileFailedState value)? failed,
+    TResult? Function(_GotInfoState value)? gotInfo,
   }) {
     return initial?.call(this);
   }
@@ -214,9 +215,9 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_GotInfo value)? gotInfo,
+    TResult Function(_ProfileInitialState value)? initial,
+    TResult Function(_ProfileFailedState value)? failed,
+    TResult Function(_GotInfoState value)? gotInfo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -226,25 +227,25 @@ class _$ProfileInitialImpl implements _ProfileInitial {
   }
 }
 
-abstract class _ProfileInitial implements ProfileState {
-  const factory _ProfileInitial() = _$ProfileInitialImpl;
+abstract class _ProfileInitialState implements ProfileState {
+  const factory _ProfileInitialState() = _$ProfileInitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$ProfileFailedImplCopyWith<$Res> {
-  factory _$$ProfileFailedImplCopyWith(
-          _$ProfileFailedImpl value, $Res Function(_$ProfileFailedImpl) then) =
-      __$$ProfileFailedImplCopyWithImpl<$Res>;
+abstract class _$$ProfileFailedStateImplCopyWith<$Res> {
+  factory _$$ProfileFailedStateImplCopyWith(_$ProfileFailedStateImpl value,
+          $Res Function(_$ProfileFailedStateImpl) then) =
+      __$$ProfileFailedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ProfileFailedImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileFailedImpl>
-    implements _$$ProfileFailedImplCopyWith<$Res> {
-  __$$ProfileFailedImplCopyWithImpl(
-      _$ProfileFailedImpl _value, $Res Function(_$ProfileFailedImpl) _then)
+class __$$ProfileFailedStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileFailedStateImpl>
+    implements _$$ProfileFailedStateImplCopyWith<$Res> {
+  __$$ProfileFailedStateImplCopyWithImpl(_$ProfileFailedStateImpl _value,
+      $Res Function(_$ProfileFailedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -252,7 +253,7 @@ class __$$ProfileFailedImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$ProfileFailedImpl(
+    return _then(_$ProfileFailedStateImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -263,8 +264,8 @@ class __$$ProfileFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProfileFailedImpl implements _ProfileFailed {
-  const _$ProfileFailedImpl(this.message);
+class _$ProfileFailedStateImpl implements _ProfileFailedState {
+  const _$ProfileFailedStateImpl(this.message);
 
   @override
   final String message;
@@ -278,7 +279,7 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProfileFailedImpl &&
+            other is _$ProfileFailedStateImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -288,8 +289,9 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProfileFailedImplCopyWith<_$ProfileFailedImpl> get copyWith =>
-      __$$ProfileFailedImplCopyWithImpl<_$ProfileFailedImpl>(this, _$identity);
+  _$$ProfileFailedStateImplCopyWith<_$ProfileFailedStateImpl> get copyWith =>
+      __$$ProfileFailedStateImplCopyWithImpl<_$ProfileFailedStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -349,9 +351,9 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_GotInfo value) gotInfo,
+    required TResult Function(_ProfileInitialState value) initial,
+    required TResult Function(_ProfileFailedState value) failed,
+    required TResult Function(_GotInfoState value) gotInfo,
   }) {
     return failed(this);
   }
@@ -359,9 +361,9 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_GotInfo value)? gotInfo,
+    TResult? Function(_ProfileInitialState value)? initial,
+    TResult? Function(_ProfileFailedState value)? failed,
+    TResult? Function(_GotInfoState value)? gotInfo,
   }) {
     return failed?.call(this);
   }
@@ -369,9 +371,9 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_GotInfo value)? gotInfo,
+    TResult Function(_ProfileInitialState value)? initial,
+    TResult Function(_ProfileFailedState value)? failed,
+    TResult Function(_GotInfoState value)? gotInfo,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -381,20 +383,21 @@ class _$ProfileFailedImpl implements _ProfileFailed {
   }
 }
 
-abstract class _ProfileFailed implements ProfileState {
-  const factory _ProfileFailed(final String message) = _$ProfileFailedImpl;
+abstract class _ProfileFailedState implements ProfileState {
+  const factory _ProfileFailedState(final String message) =
+      _$ProfileFailedStateImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ProfileFailedImplCopyWith<_$ProfileFailedImpl> get copyWith =>
+  _$$ProfileFailedStateImplCopyWith<_$ProfileFailedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$GotInfoImplCopyWith<$Res> {
-  factory _$$GotInfoImplCopyWith(
-          _$GotInfoImpl value, $Res Function(_$GotInfoImpl) then) =
-      __$$GotInfoImplCopyWithImpl<$Res>;
+abstract class _$$GotInfoStateImplCopyWith<$Res> {
+  factory _$$GotInfoStateImplCopyWith(
+          _$GotInfoStateImpl value, $Res Function(_$GotInfoStateImpl) then) =
+      __$$GotInfoStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String userName,
@@ -406,11 +409,11 @@ abstract class _$$GotInfoImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$GotInfoImplCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$GotInfoImpl>
-    implements _$$GotInfoImplCopyWith<$Res> {
-  __$$GotInfoImplCopyWithImpl(
-      _$GotInfoImpl _value, $Res Function(_$GotInfoImpl) _then)
+class __$$GotInfoStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$GotInfoStateImpl>
+    implements _$$GotInfoStateImplCopyWith<$Res> {
+  __$$GotInfoStateImplCopyWithImpl(
+      _$GotInfoStateImpl _value, $Res Function(_$GotInfoStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -423,7 +426,7 @@ class __$$GotInfoImplCopyWithImpl<$Res>
     Object? achievements = null,
     Object? metrics = null,
   }) {
-    return _then(_$GotInfoImpl(
+    return _then(_$GotInfoStateImpl(
       null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -454,8 +457,8 @@ class __$$GotInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GotInfoImpl implements _GotInfo {
-  const _$GotInfoImpl(
+class _$GotInfoStateImpl implements _GotInfoState {
+  const _$GotInfoStateImpl(
       this.userName,
       this.avatarUrl,
       final List<Subtopic> almostLearned,
@@ -506,7 +509,7 @@ class _$GotInfoImpl implements _GotInfo {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GotInfoImpl &&
+            other is _$GotInfoStateImpl &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.avatarUrl, avatarUrl) ||
@@ -532,8 +535,8 @@ class _$GotInfoImpl implements _GotInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GotInfoImplCopyWith<_$GotInfoImpl> get copyWith =>
-      __$$GotInfoImplCopyWithImpl<_$GotInfoImpl>(this, _$identity);
+  _$$GotInfoStateImplCopyWith<_$GotInfoStateImpl> get copyWith =>
+      __$$GotInfoStateImplCopyWithImpl<_$GotInfoStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -596,9 +599,9 @@ class _$GotInfoImpl implements _GotInfo {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ProfileInitial value) initial,
-    required TResult Function(_ProfileFailed value) failed,
-    required TResult Function(_GotInfo value) gotInfo,
+    required TResult Function(_ProfileInitialState value) initial,
+    required TResult Function(_ProfileFailedState value) failed,
+    required TResult Function(_GotInfoState value) gotInfo,
   }) {
     return gotInfo(this);
   }
@@ -606,9 +609,9 @@ class _$GotInfoImpl implements _GotInfo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ProfileInitial value)? initial,
-    TResult? Function(_ProfileFailed value)? failed,
-    TResult? Function(_GotInfo value)? gotInfo,
+    TResult? Function(_ProfileInitialState value)? initial,
+    TResult? Function(_ProfileFailedState value)? failed,
+    TResult? Function(_GotInfoState value)? gotInfo,
   }) {
     return gotInfo?.call(this);
   }
@@ -616,9 +619,9 @@ class _$GotInfoImpl implements _GotInfo {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ProfileInitial value)? initial,
-    TResult Function(_ProfileFailed value)? failed,
-    TResult Function(_GotInfo value)? gotInfo,
+    TResult Function(_ProfileInitialState value)? initial,
+    TResult Function(_ProfileFailedState value)? failed,
+    TResult Function(_GotInfoState value)? gotInfo,
     required TResult orElse(),
   }) {
     if (gotInfo != null) {
@@ -628,14 +631,14 @@ class _$GotInfoImpl implements _GotInfo {
   }
 }
 
-abstract class _GotInfo implements ProfileState {
-  const factory _GotInfo(
+abstract class _GotInfoState implements ProfileState {
+  const factory _GotInfoState(
       final String userName,
       final String avatarUrl,
       final List<Subtopic> almostLearned,
       final List<Subtopic> learned,
       final List<AchievementCategoryModel> achievements,
-      final Metrics metrics) = _$GotInfoImpl;
+      final Metrics metrics) = _$GotInfoStateImpl;
 
   String get userName;
   String get avatarUrl;
@@ -644,7 +647,7 @@ abstract class _GotInfo implements ProfileState {
   List<AchievementCategoryModel> get achievements;
   Metrics get metrics;
   @JsonKey(ignore: true)
-  _$$GotInfoImplCopyWith<_$GotInfoImpl> get copyWith =>
+  _$$GotInfoStateImplCopyWith<_$GotInfoStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -668,17 +671,17 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetUserInfo value) getUserInfo,
+    required TResult Function(_GetUserInfoEvent value) getUserInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUserInfo value)? getUserInfo,
+    TResult? Function(_GetUserInfoEvent value)? getUserInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUserInfo value)? getUserInfo,
+    TResult Function(_GetUserInfoEvent value)? getUserInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -703,25 +706,25 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
 }
 
 /// @nodoc
-abstract class _$$GetUserInfoImplCopyWith<$Res> {
-  factory _$$GetUserInfoImplCopyWith(
-          _$GetUserInfoImpl value, $Res Function(_$GetUserInfoImpl) then) =
-      __$$GetUserInfoImplCopyWithImpl<$Res>;
+abstract class _$$GetUserInfoEventImplCopyWith<$Res> {
+  factory _$$GetUserInfoEventImplCopyWith(_$GetUserInfoEventImpl value,
+          $Res Function(_$GetUserInfoEventImpl) then) =
+      __$$GetUserInfoEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetUserInfoImplCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$GetUserInfoImpl>
-    implements _$$GetUserInfoImplCopyWith<$Res> {
-  __$$GetUserInfoImplCopyWithImpl(
-      _$GetUserInfoImpl _value, $Res Function(_$GetUserInfoImpl) _then)
+class __$$GetUserInfoEventImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$GetUserInfoEventImpl>
+    implements _$$GetUserInfoEventImplCopyWith<$Res> {
+  __$$GetUserInfoEventImplCopyWithImpl(_$GetUserInfoEventImpl _value,
+      $Res Function(_$GetUserInfoEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetUserInfoImpl implements _GetUserInfo {
-  const _$GetUserInfoImpl();
+class _$GetUserInfoEventImpl implements _GetUserInfoEvent {
+  const _$GetUserInfoEventImpl();
 
   @override
   String toString() {
@@ -731,7 +734,7 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetUserInfoImpl);
+        (other.runtimeType == runtimeType && other is _$GetUserInfoEventImpl);
   }
 
   @override
@@ -768,7 +771,7 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetUserInfo value) getUserInfo,
+    required TResult Function(_GetUserInfoEvent value) getUserInfo,
   }) {
     return getUserInfo(this);
   }
@@ -776,7 +779,7 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetUserInfo value)? getUserInfo,
+    TResult? Function(_GetUserInfoEvent value)? getUserInfo,
   }) {
     return getUserInfo?.call(this);
   }
@@ -784,7 +787,7 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetUserInfo value)? getUserInfo,
+    TResult Function(_GetUserInfoEvent value)? getUserInfo,
     required TResult orElse(),
   }) {
     if (getUserInfo != null) {
@@ -794,6 +797,6 @@ class _$GetUserInfoImpl implements _GetUserInfo {
   }
 }
 
-abstract class _GetUserInfo implements ProfileEvent {
-  const factory _GetUserInfo() = _$GetUserInfoImpl;
+abstract class _GetUserInfoEvent implements ProfileEvent {
+  const factory _GetUserInfoEvent() = _$GetUserInfoEventImpl;
 }

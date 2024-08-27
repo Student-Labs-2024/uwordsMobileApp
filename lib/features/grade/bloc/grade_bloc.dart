@@ -12,20 +12,21 @@ class GradeBloc extends Bloc<GradeEvent, GradeState> {
 
   GradeBloc({required this.userRepository})
       : super(const GradeState.disabled()) {
-    on<_Open>(_handleOpen);
-    on<_Close>(_handleClose);
-    on<_SendGrade>(_handleSend);
+    on<_OpenEvent>(_handleOpen);
+    on<_CloseEvent>(_handleClose);
+    on<_SendGradeEvent>(_handleSend);
   }
 
-  void _handleOpen(_Open event, Emitter<GradeState> emit) {
+  void _handleOpen(_OpenEvent event, Emitter<GradeState> emit) {
     emit(const GradeState.enabled());
   }
 
-  void _handleClose(_Close event, Emitter<GradeState> emit) {
+  void _handleClose(_CloseEvent event, Emitter<GradeState> emit) {
     emit(const GradeState.disabled());
   }
 
-  Future<void> _handleSend(_SendGrade event, Emitter<GradeState> emit) async {
+  Future<void> _handleSend(
+      _SendGradeEvent event, Emitter<GradeState> emit) async {
     String accessToken = await userRepository.getCurrentUserAccessToken();
     await checkTokenExpirationAndUpdateIfNeed(
         accessToken: accessToken, userRepository: userRepository);

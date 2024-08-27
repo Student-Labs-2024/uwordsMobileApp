@@ -49,27 +49,27 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
-    on<_SetTopic>(_getWordsFromTitle);
-    on<_SetSubtopic>(_getWordsFromSubtitle);
-    on<_NextStep>(_eventNextTrainingStep);
-    on<_StartStudy>(_handleStartStudy);
-    on<_CantHear>(_setCantHear);
-    on<_CantSpeak>(_setCantSpeak);
+    on<_SetTopicEvent>(_getWordsFromTitle);
+    on<_SetSubtopicEvent>(_getWordsFromSubtitle);
+    on<_NextStepEvent>(_eventNextTrainingStep);
+    on<_StartStudyEvent>(_handleStartStudy);
+    on<_CantHearEvent>(_setCantHear);
+    on<_CantSpeakEvent>(_setCantSpeak);
   }
 
-  void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
+  void _setCantHear(_CantHearEvent event, Emitter<TrainingState> emit) {
     cantHearLimit = cantHearLimit
         .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantHear = true;
   }
 
-  void _setCantSpeak(_CantSpeak event, Emitter<TrainingState> emit) {
+  void _setCantSpeak(_CantSpeakEvent event, Emitter<TrainingState> emit) {
     cantSpeakLimit = cantSpeakLimit
         .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantSpeak = true;
   }
 
-  void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
+  void _getWordsFromTitle(_SetTopicEvent event, Emitter<TrainingState> emit) {
     words = [];
     wordsInfoProgress = [];
     wordsInfoIDs = [];
@@ -84,7 +84,8 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     _startTraining(emit);
   }
 
-  void _getWordsFromSubtitle(_SetSubtopic event, Emitter<TrainingState> emit) {
+  void _getWordsFromSubtitle(
+      _SetSubtopicEvent event, Emitter<TrainingState> emit) {
     words = [];
     wordsInfoProgress = [];
     wordsInfoIDs = [];
@@ -174,7 +175,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   Future<void> _eventNextTrainingStep(
-      _NextStep event, Emitter<TrainingState> emit) async {
+      _NextStepEvent event, Emitter<TrainingState> emit) async {
     await _nextTrainingStep(emit);
   }
 
@@ -245,7 +246,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   Future<void> _handleStartStudy(
-      _StartStudy event, Emitter<TrainingState> emit) async {
+      _StartStudyEvent event, Emitter<TrainingState> emit) async {
     try {
       words = [];
       wordsInfoProgress = [];

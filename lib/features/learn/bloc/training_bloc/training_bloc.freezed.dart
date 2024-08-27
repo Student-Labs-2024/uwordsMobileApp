@@ -81,38 +81,38 @@ mixin _$TrainingState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,25 +137,25 @@ class _$TrainingStateCopyWithImpl<$Res, $Val extends TrainingState>
 }
 
 /// @nodoc
-abstract class _$$TrainingInitialImplCopyWith<$Res> {
-  factory _$$TrainingInitialImplCopyWith(_$TrainingInitialImpl value,
-          $Res Function(_$TrainingInitialImpl) then) =
-      __$$TrainingInitialImplCopyWithImpl<$Res>;
+abstract class _$$TrainingInitialStateImplCopyWith<$Res> {
+  factory _$$TrainingInitialStateImplCopyWith(_$TrainingInitialStateImpl value,
+          $Res Function(_$TrainingInitialStateImpl) then) =
+      __$$TrainingInitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TrainingInitialImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$TrainingInitialImpl>
-    implements _$$TrainingInitialImplCopyWith<$Res> {
-  __$$TrainingInitialImplCopyWithImpl(
-      _$TrainingInitialImpl _value, $Res Function(_$TrainingInitialImpl) _then)
+class __$$TrainingInitialStateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$TrainingInitialStateImpl>
+    implements _$$TrainingInitialStateImplCopyWith<$Res> {
+  __$$TrainingInitialStateImplCopyWithImpl(_$TrainingInitialStateImpl _value,
+      $Res Function(_$TrainingInitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$TrainingInitialImpl implements _TrainingInitial {
-  const _$TrainingInitialImpl();
+class _$TrainingInitialStateImpl implements _TrainingInitialState {
+  const _$TrainingInitialStateImpl();
 
   @override
   String toString() {
@@ -240,14 +240,14 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return initial(this);
   }
@@ -255,14 +255,14 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return initial?.call(this);
   }
@@ -270,14 +270,14 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -287,30 +287,32 @@ class _$TrainingInitialImpl implements _TrainingInitial {
   }
 }
 
-abstract class _TrainingInitial implements TrainingState {
-  const factory _TrainingInitial() = _$TrainingInitialImpl;
+abstract class _TrainingInitialState implements TrainingState {
+  const factory _TrainingInitialState() = _$TrainingInitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$TrainingIsLoadingImplCopyWith<$Res> {
-  factory _$$TrainingIsLoadingImplCopyWith(_$TrainingIsLoadingImpl value,
-          $Res Function(_$TrainingIsLoadingImpl) then) =
-      __$$TrainingIsLoadingImplCopyWithImpl<$Res>;
+abstract class _$$TrainingIsLoadingStateImplCopyWith<$Res> {
+  factory _$$TrainingIsLoadingStateImplCopyWith(
+          _$TrainingIsLoadingStateImpl value,
+          $Res Function(_$TrainingIsLoadingStateImpl) then) =
+      __$$TrainingIsLoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TrainingIsLoadingImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$TrainingIsLoadingImpl>
-    implements _$$TrainingIsLoadingImplCopyWith<$Res> {
-  __$$TrainingIsLoadingImplCopyWithImpl(_$TrainingIsLoadingImpl _value,
-      $Res Function(_$TrainingIsLoadingImpl) _then)
+class __$$TrainingIsLoadingStateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$TrainingIsLoadingStateImpl>
+    implements _$$TrainingIsLoadingStateImplCopyWith<$Res> {
+  __$$TrainingIsLoadingStateImplCopyWithImpl(
+      _$TrainingIsLoadingStateImpl _value,
+      $Res Function(_$TrainingIsLoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
-  const _$TrainingIsLoadingImpl();
+class _$TrainingIsLoadingStateImpl implements _TrainingIsLoadingState {
+  const _$TrainingIsLoadingStateImpl();
 
   @override
   String toString() {
@@ -395,14 +397,14 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return loading(this);
   }
@@ -410,14 +412,14 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return loading?.call(this);
   }
@@ -425,14 +427,14 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -442,25 +444,25 @@ class _$TrainingIsLoadingImpl implements _TrainingIsLoading {
   }
 }
 
-abstract class _TrainingIsLoading implements TrainingState {
-  const factory _TrainingIsLoading() = _$TrainingIsLoadingImpl;
+abstract class _TrainingIsLoadingState implements TrainingState {
+  const factory _TrainingIsLoadingState() = _$TrainingIsLoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$TrainingFailedImplCopyWith<$Res> {
-  factory _$$TrainingFailedImplCopyWith(_$TrainingFailedImpl value,
-          $Res Function(_$TrainingFailedImpl) then) =
-      __$$TrainingFailedImplCopyWithImpl<$Res>;
+abstract class _$$TrainingFailedStateImplCopyWith<$Res> {
+  factory _$$TrainingFailedStateImplCopyWith(_$TrainingFailedStateImpl value,
+          $Res Function(_$TrainingFailedStateImpl) then) =
+      __$$TrainingFailedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$TrainingFailedImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$TrainingFailedImpl>
-    implements _$$TrainingFailedImplCopyWith<$Res> {
-  __$$TrainingFailedImplCopyWithImpl(
-      _$TrainingFailedImpl _value, $Res Function(_$TrainingFailedImpl) _then)
+class __$$TrainingFailedStateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$TrainingFailedStateImpl>
+    implements _$$TrainingFailedStateImplCopyWith<$Res> {
+  __$$TrainingFailedStateImplCopyWithImpl(_$TrainingFailedStateImpl _value,
+      $Res Function(_$TrainingFailedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -468,7 +470,7 @@ class __$$TrainingFailedImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$TrainingFailedImpl(
+    return _then(_$TrainingFailedStateImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -479,8 +481,8 @@ class __$$TrainingFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TrainingFailedImpl implements _TrainingFailed {
-  const _$TrainingFailedImpl({required this.message});
+class _$TrainingFailedStateImpl implements _TrainingFailedState {
+  const _$TrainingFailedStateImpl({required this.message});
 
   @override
   final String message;
@@ -493,8 +495,8 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TrainingFailedImplCopyWith<_$TrainingFailedImpl> get copyWith =>
-      __$$TrainingFailedImplCopyWithImpl<_$TrainingFailedImpl>(
+  _$$TrainingFailedStateImplCopyWith<_$TrainingFailedStateImpl> get copyWith =>
+      __$$TrainingFailedStateImplCopyWithImpl<_$TrainingFailedStateImpl>(
           this, _$identity);
 
   @override
@@ -575,14 +577,14 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return failed(this);
   }
@@ -590,14 +592,14 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return failed?.call(this);
   }
@@ -605,14 +607,14 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -622,31 +624,31 @@ class _$TrainingFailedImpl implements _TrainingFailed {
   }
 }
 
-abstract class _TrainingFailed implements TrainingState {
-  const factory _TrainingFailed({required final String message}) =
-      _$TrainingFailedImpl;
+abstract class _TrainingFailedState implements TrainingState {
+  const factory _TrainingFailedState({required final String message}) =
+      _$TrainingFailedStateImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$TrainingFailedImplCopyWith<_$TrainingFailedImpl> get copyWith =>
+  _$$TrainingFailedStateImplCopyWith<_$TrainingFailedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Screen1ImplCopyWith<$Res> {
-  factory _$$Screen1ImplCopyWith(
-          _$Screen1Impl value, $Res Function(_$Screen1Impl) then) =
-      __$$Screen1ImplCopyWithImpl<$Res>;
+abstract class _$$Screen1StateImplCopyWith<$Res> {
+  factory _$$Screen1StateImplCopyWith(
+          _$Screen1StateImpl value, $Res Function(_$Screen1StateImpl) then) =
+      __$$Screen1StateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ValueKey<dynamic> valueKey, WordModel word, int progress});
 }
 
 /// @nodoc
-class __$$Screen1ImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$Screen1Impl>
-    implements _$$Screen1ImplCopyWith<$Res> {
-  __$$Screen1ImplCopyWithImpl(
-      _$Screen1Impl _value, $Res Function(_$Screen1Impl) _then)
+class __$$Screen1StateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$Screen1StateImpl>
+    implements _$$Screen1StateImplCopyWith<$Res> {
+  __$$Screen1StateImplCopyWithImpl(
+      _$Screen1StateImpl _value, $Res Function(_$Screen1StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -656,7 +658,7 @@ class __$$Screen1ImplCopyWithImpl<$Res>
     Object? word = null,
     Object? progress = null,
   }) {
-    return _then(_$Screen1Impl(
+    return _then(_$Screen1StateImpl(
       valueKey: null == valueKey
           ? _value.valueKey
           : valueKey // ignore: cast_nullable_to_non_nullable
@@ -675,8 +677,8 @@ class __$$Screen1ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Screen1Impl implements _Screen1 {
-  const _$Screen1Impl(
+class _$Screen1StateImpl implements _Screen1State {
+  const _$Screen1StateImpl(
       {required this.valueKey, required this.word, required this.progress});
 
   @override
@@ -694,8 +696,8 @@ class _$Screen1Impl implements _Screen1 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Screen1ImplCopyWith<_$Screen1Impl> get copyWith =>
-      __$$Screen1ImplCopyWithImpl<_$Screen1Impl>(this, _$identity);
+  _$$Screen1StateImplCopyWith<_$Screen1StateImpl> get copyWith =>
+      __$$Screen1StateImplCopyWithImpl<_$Screen1StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -775,14 +777,14 @@ class _$Screen1Impl implements _Screen1 {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return screen1(this);
   }
@@ -790,14 +792,14 @@ class _$Screen1Impl implements _Screen1 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return screen1?.call(this);
   }
@@ -805,14 +807,14 @@ class _$Screen1Impl implements _Screen1 {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (screen1 != null) {
@@ -822,25 +824,25 @@ class _$Screen1Impl implements _Screen1 {
   }
 }
 
-abstract class _Screen1 implements TrainingState {
-  const factory _Screen1(
+abstract class _Screen1State implements TrainingState {
+  const factory _Screen1State(
       {required final ValueKey<dynamic> valueKey,
       required final WordModel word,
-      required final int progress}) = _$Screen1Impl;
+      required final int progress}) = _$Screen1StateImpl;
 
   ValueKey<dynamic> get valueKey;
   WordModel get word;
   int get progress;
   @JsonKey(ignore: true)
-  _$$Screen1ImplCopyWith<_$Screen1Impl> get copyWith =>
+  _$$Screen1StateImplCopyWith<_$Screen1StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Screen2ImplCopyWith<$Res> {
-  factory _$$Screen2ImplCopyWith(
-          _$Screen2Impl value, $Res Function(_$Screen2Impl) then) =
-      __$$Screen2ImplCopyWithImpl<$Res>;
+abstract class _$$Screen2StateImplCopyWith<$Res> {
+  factory _$$Screen2StateImplCopyWith(
+          _$Screen2StateImpl value, $Res Function(_$Screen2StateImpl) then) =
+      __$$Screen2StateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {ValueKey<dynamic> valueKey,
@@ -850,11 +852,11 @@ abstract class _$$Screen2ImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Screen2ImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$Screen2Impl>
-    implements _$$Screen2ImplCopyWith<$Res> {
-  __$$Screen2ImplCopyWithImpl(
-      _$Screen2Impl _value, $Res Function(_$Screen2Impl) _then)
+class __$$Screen2StateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$Screen2StateImpl>
+    implements _$$Screen2StateImplCopyWith<$Res> {
+  __$$Screen2StateImplCopyWithImpl(
+      _$Screen2StateImpl _value, $Res Function(_$Screen2StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -865,7 +867,7 @@ class __$$Screen2ImplCopyWithImpl<$Res>
     Object? letters = null,
     Object? progress = null,
   }) {
-    return _then(_$Screen2Impl(
+    return _then(_$Screen2StateImpl(
       valueKey: null == valueKey
           ? _value.valueKey
           : valueKey // ignore: cast_nullable_to_non_nullable
@@ -888,8 +890,8 @@ class __$$Screen2ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Screen2Impl implements _Screen2 {
-  const _$Screen2Impl(
+class _$Screen2StateImpl implements _Screen2State {
+  const _$Screen2StateImpl(
       {required this.valueKey,
       required this.word,
       required final List<Pair<String, int>> letters,
@@ -919,8 +921,8 @@ class _$Screen2Impl implements _Screen2 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Screen2ImplCopyWith<_$Screen2Impl> get copyWith =>
-      __$$Screen2ImplCopyWithImpl<_$Screen2Impl>(this, _$identity);
+  _$$Screen2StateImplCopyWith<_$Screen2StateImpl> get copyWith =>
+      __$$Screen2StateImplCopyWithImpl<_$Screen2StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1000,14 +1002,14 @@ class _$Screen2Impl implements _Screen2 {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return screen2(this);
   }
@@ -1015,14 +1017,14 @@ class _$Screen2Impl implements _Screen2 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return screen2?.call(this);
   }
@@ -1030,14 +1032,14 @@ class _$Screen2Impl implements _Screen2 {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (screen2 != null) {
@@ -1047,37 +1049,37 @@ class _$Screen2Impl implements _Screen2 {
   }
 }
 
-abstract class _Screen2 implements TrainingState {
-  const factory _Screen2(
+abstract class _Screen2State implements TrainingState {
+  const factory _Screen2State(
       {required final ValueKey<dynamic> valueKey,
       required final WordModel word,
       required final List<Pair<String, int>> letters,
-      required final int progress}) = _$Screen2Impl;
+      required final int progress}) = _$Screen2StateImpl;
 
   ValueKey<dynamic> get valueKey;
   WordModel get word;
   List<Pair<String, int>> get letters;
   int get progress;
   @JsonKey(ignore: true)
-  _$$Screen2ImplCopyWith<_$Screen2Impl> get copyWith =>
+  _$$Screen2StateImplCopyWith<_$Screen2StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Screen3ImplCopyWith<$Res> {
-  factory _$$Screen3ImplCopyWith(
-          _$Screen3Impl value, $Res Function(_$Screen3Impl) then) =
-      __$$Screen3ImplCopyWithImpl<$Res>;
+abstract class _$$Screen3StateImplCopyWith<$Res> {
+  factory _$$Screen3StateImplCopyWith(
+          _$Screen3StateImpl value, $Res Function(_$Screen3StateImpl) then) =
+      __$$Screen3StateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ValueKey<dynamic> valueKey, WordModel word, int progress});
 }
 
 /// @nodoc
-class __$$Screen3ImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$Screen3Impl>
-    implements _$$Screen3ImplCopyWith<$Res> {
-  __$$Screen3ImplCopyWithImpl(
-      _$Screen3Impl _value, $Res Function(_$Screen3Impl) _then)
+class __$$Screen3StateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$Screen3StateImpl>
+    implements _$$Screen3StateImplCopyWith<$Res> {
+  __$$Screen3StateImplCopyWithImpl(
+      _$Screen3StateImpl _value, $Res Function(_$Screen3StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1087,7 +1089,7 @@ class __$$Screen3ImplCopyWithImpl<$Res>
     Object? word = null,
     Object? progress = null,
   }) {
-    return _then(_$Screen3Impl(
+    return _then(_$Screen3StateImpl(
       valueKey: null == valueKey
           ? _value.valueKey
           : valueKey // ignore: cast_nullable_to_non_nullable
@@ -1106,8 +1108,8 @@ class __$$Screen3ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Screen3Impl implements _Screen3 {
-  const _$Screen3Impl(
+class _$Screen3StateImpl implements _Screen3State {
+  const _$Screen3StateImpl(
       {required this.valueKey, required this.word, required this.progress});
 
   @override
@@ -1125,8 +1127,8 @@ class _$Screen3Impl implements _Screen3 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Screen3ImplCopyWith<_$Screen3Impl> get copyWith =>
-      __$$Screen3ImplCopyWithImpl<_$Screen3Impl>(this, _$identity);
+  _$$Screen3StateImplCopyWith<_$Screen3StateImpl> get copyWith =>
+      __$$Screen3StateImplCopyWithImpl<_$Screen3StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1206,14 +1208,14 @@ class _$Screen3Impl implements _Screen3 {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return screen3(this);
   }
@@ -1221,14 +1223,14 @@ class _$Screen3Impl implements _Screen3 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return screen3?.call(this);
   }
@@ -1236,14 +1238,14 @@ class _$Screen3Impl implements _Screen3 {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (screen3 != null) {
@@ -1253,25 +1255,25 @@ class _$Screen3Impl implements _Screen3 {
   }
 }
 
-abstract class _Screen3 implements TrainingState {
-  const factory _Screen3(
+abstract class _Screen3State implements TrainingState {
+  const factory _Screen3State(
       {required final ValueKey<dynamic> valueKey,
       required final WordModel word,
-      required final int progress}) = _$Screen3Impl;
+      required final int progress}) = _$Screen3StateImpl;
 
   ValueKey<dynamic> get valueKey;
   WordModel get word;
   int get progress;
   @JsonKey(ignore: true)
-  _$$Screen3ImplCopyWith<_$Screen3Impl> get copyWith =>
+  _$$Screen3StateImplCopyWith<_$Screen3StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$Screen4ImplCopyWith<$Res> {
-  factory _$$Screen4ImplCopyWith(
-          _$Screen4Impl value, $Res Function(_$Screen4Impl) then) =
-      __$$Screen4ImplCopyWithImpl<$Res>;
+abstract class _$$Screen4StateImplCopyWith<$Res> {
+  factory _$$Screen4StateImplCopyWith(
+          _$Screen4StateImpl value, $Res Function(_$Screen4StateImpl) then) =
+      __$$Screen4StateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {ValueKey<dynamic> valueKey,
@@ -1282,11 +1284,11 @@ abstract class _$$Screen4ImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$Screen4ImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$Screen4Impl>
-    implements _$$Screen4ImplCopyWith<$Res> {
-  __$$Screen4ImplCopyWithImpl(
-      _$Screen4Impl _value, $Res Function(_$Screen4Impl) _then)
+class __$$Screen4StateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$Screen4StateImpl>
+    implements _$$Screen4StateImplCopyWith<$Res> {
+  __$$Screen4StateImplCopyWithImpl(
+      _$Screen4StateImpl _value, $Res Function(_$Screen4StateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1298,7 +1300,7 @@ class __$$Screen4ImplCopyWithImpl<$Res>
     Object? selectableWords = null,
     Object? progress = null,
   }) {
-    return _then(_$Screen4Impl(
+    return _then(_$Screen4StateImpl(
       valueKey: null == valueKey
           ? _value.valueKey
           : valueKey // ignore: cast_nullable_to_non_nullable
@@ -1325,8 +1327,8 @@ class __$$Screen4ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Screen4Impl implements _Screen4 {
-  const _$Screen4Impl(
+class _$Screen4StateImpl implements _Screen4State {
+  const _$Screen4StateImpl(
       {required this.valueKey,
       required this.cantHear,
       required this.word,
@@ -1359,8 +1361,8 @@ class _$Screen4Impl implements _Screen4 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$Screen4ImplCopyWith<_$Screen4Impl> get copyWith =>
-      __$$Screen4ImplCopyWithImpl<_$Screen4Impl>(this, _$identity);
+  _$$Screen4StateImplCopyWith<_$Screen4StateImpl> get copyWith =>
+      __$$Screen4StateImplCopyWithImpl<_$Screen4StateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1440,14 +1442,14 @@ class _$Screen4Impl implements _Screen4 {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return screen4(this);
   }
@@ -1455,14 +1457,14 @@ class _$Screen4Impl implements _Screen4 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return screen4?.call(this);
   }
@@ -1470,14 +1472,14 @@ class _$Screen4Impl implements _Screen4 {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (screen4 != null) {
@@ -1487,13 +1489,13 @@ class _$Screen4Impl implements _Screen4 {
   }
 }
 
-abstract class _Screen4 implements TrainingState {
-  const factory _Screen4(
+abstract class _Screen4State implements TrainingState {
+  const factory _Screen4State(
       {required final ValueKey<dynamic> valueKey,
       required final bool cantHear,
       required final WordModel word,
       required final List<WordModel> selectableWords,
-      required final int progress}) = _$Screen4Impl;
+      required final int progress}) = _$Screen4StateImpl;
 
   ValueKey<dynamic> get valueKey;
   bool get cantHear;
@@ -1501,15 +1503,15 @@ abstract class _Screen4 implements TrainingState {
   List<WordModel> get selectableWords;
   int get progress;
   @JsonKey(ignore: true)
-  _$$Screen4ImplCopyWith<_$Screen4Impl> get copyWith =>
+  _$$Screen4StateImplCopyWith<_$Screen4StateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FinalScreenImplCopyWith<$Res> {
-  factory _$$FinalScreenImplCopyWith(
-          _$FinalScreenImpl value, $Res Function(_$FinalScreenImpl) then) =
-      __$$FinalScreenImplCopyWithImpl<$Res>;
+abstract class _$$FinalScreenStateImplCopyWith<$Res> {
+  factory _$$FinalScreenStateImplCopyWith(_$FinalScreenStateImpl value,
+          $Res Function(_$FinalScreenStateImpl) then) =
+      __$$FinalScreenStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {ValueKey<dynamic> valueKey,
@@ -1519,11 +1521,11 @@ abstract class _$$FinalScreenImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FinalScreenImplCopyWithImpl<$Res>
-    extends _$TrainingStateCopyWithImpl<$Res, _$FinalScreenImpl>
-    implements _$$FinalScreenImplCopyWith<$Res> {
-  __$$FinalScreenImplCopyWithImpl(
-      _$FinalScreenImpl _value, $Res Function(_$FinalScreenImpl) _then)
+class __$$FinalScreenStateImplCopyWithImpl<$Res>
+    extends _$TrainingStateCopyWithImpl<$Res, _$FinalScreenStateImpl>
+    implements _$$FinalScreenStateImplCopyWith<$Res> {
+  __$$FinalScreenStateImplCopyWithImpl(_$FinalScreenStateImpl _value,
+      $Res Function(_$FinalScreenStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1534,7 +1536,7 @@ class __$$FinalScreenImplCopyWithImpl<$Res>
     Object? newProgress = null,
     Object? progress = null,
   }) {
-    return _then(_$FinalScreenImpl(
+    return _then(_$FinalScreenStateImpl(
       valueKey: null == valueKey
           ? _value.valueKey
           : valueKey // ignore: cast_nullable_to_non_nullable
@@ -1557,8 +1559,8 @@ class __$$FinalScreenImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FinalScreenImpl implements _FinalScreen {
-  const _$FinalScreenImpl(
+class _$FinalScreenStateImpl implements _FinalScreenState {
+  const _$FinalScreenStateImpl(
       {required this.valueKey,
       required final List<WordModel> words,
       required final List<int> newProgress,
@@ -1595,8 +1597,9 @@ class _$FinalScreenImpl implements _FinalScreen {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FinalScreenImplCopyWith<_$FinalScreenImpl> get copyWith =>
-      __$$FinalScreenImplCopyWithImpl<_$FinalScreenImpl>(this, _$identity);
+  _$$FinalScreenStateImplCopyWith<_$FinalScreenStateImpl> get copyWith =>
+      __$$FinalScreenStateImplCopyWithImpl<_$FinalScreenStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1676,14 +1679,14 @@ class _$FinalScreenImpl implements _FinalScreen {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TrainingInitial value) initial,
-    required TResult Function(_TrainingIsLoading value) loading,
-    required TResult Function(_TrainingFailed value) failed,
-    required TResult Function(_Screen1 value) screen1,
-    required TResult Function(_Screen2 value) screen2,
-    required TResult Function(_Screen3 value) screen3,
-    required TResult Function(_Screen4 value) screen4,
-    required TResult Function(_FinalScreen value) finalScreen,
+    required TResult Function(_TrainingInitialState value) initial,
+    required TResult Function(_TrainingIsLoadingState value) loading,
+    required TResult Function(_TrainingFailedState value) failed,
+    required TResult Function(_Screen1State value) screen1,
+    required TResult Function(_Screen2State value) screen2,
+    required TResult Function(_Screen3State value) screen3,
+    required TResult Function(_Screen4State value) screen4,
+    required TResult Function(_FinalScreenState value) finalScreen,
   }) {
     return finalScreen(this);
   }
@@ -1691,14 +1694,14 @@ class _$FinalScreenImpl implements _FinalScreen {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TrainingInitial value)? initial,
-    TResult? Function(_TrainingIsLoading value)? loading,
-    TResult? Function(_TrainingFailed value)? failed,
-    TResult? Function(_Screen1 value)? screen1,
-    TResult? Function(_Screen2 value)? screen2,
-    TResult? Function(_Screen3 value)? screen3,
-    TResult? Function(_Screen4 value)? screen4,
-    TResult? Function(_FinalScreen value)? finalScreen,
+    TResult? Function(_TrainingInitialState value)? initial,
+    TResult? Function(_TrainingIsLoadingState value)? loading,
+    TResult? Function(_TrainingFailedState value)? failed,
+    TResult? Function(_Screen1State value)? screen1,
+    TResult? Function(_Screen2State value)? screen2,
+    TResult? Function(_Screen3State value)? screen3,
+    TResult? Function(_Screen4State value)? screen4,
+    TResult? Function(_FinalScreenState value)? finalScreen,
   }) {
     return finalScreen?.call(this);
   }
@@ -1706,14 +1709,14 @@ class _$FinalScreenImpl implements _FinalScreen {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TrainingInitial value)? initial,
-    TResult Function(_TrainingIsLoading value)? loading,
-    TResult Function(_TrainingFailed value)? failed,
-    TResult Function(_Screen1 value)? screen1,
-    TResult Function(_Screen2 value)? screen2,
-    TResult Function(_Screen3 value)? screen3,
-    TResult Function(_Screen4 value)? screen4,
-    TResult Function(_FinalScreen value)? finalScreen,
+    TResult Function(_TrainingInitialState value)? initial,
+    TResult Function(_TrainingIsLoadingState value)? loading,
+    TResult Function(_TrainingFailedState value)? failed,
+    TResult Function(_Screen1State value)? screen1,
+    TResult Function(_Screen2State value)? screen2,
+    TResult Function(_Screen3State value)? screen3,
+    TResult Function(_Screen4State value)? screen4,
+    TResult Function(_FinalScreenState value)? finalScreen,
     required TResult orElse(),
   }) {
     if (finalScreen != null) {
@@ -1723,19 +1726,19 @@ class _$FinalScreenImpl implements _FinalScreen {
   }
 }
 
-abstract class _FinalScreen implements TrainingState {
-  const factory _FinalScreen(
+abstract class _FinalScreenState implements TrainingState {
+  const factory _FinalScreenState(
       {required final ValueKey<dynamic> valueKey,
       required final List<WordModel> words,
       required final List<int> newProgress,
-      required final int progress}) = _$FinalScreenImpl;
+      required final int progress}) = _$FinalScreenStateImpl;
 
   ValueKey<dynamic> get valueKey;
   List<WordModel> get words;
   List<int> get newProgress;
   int get progress;
   @JsonKey(ignore: true)
-  _$$FinalScreenImplCopyWith<_$FinalScreenImpl> get copyWith =>
+  _$$FinalScreenStateImplCopyWith<_$FinalScreenStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1780,38 +1783,39 @@ mixin _$TrainingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1836,20 +1840,20 @@ class _$TrainingEventCopyWithImpl<$Res, $Val extends TrainingEvent>
 }
 
 /// @nodoc
-abstract class _$$SetTopicImplCopyWith<$Res> {
-  factory _$$SetTopicImplCopyWith(
-          _$SetTopicImpl value, $Res Function(_$SetTopicImpl) then) =
-      __$$SetTopicImplCopyWithImpl<$Res>;
+abstract class _$$SetTopicEventImplCopyWith<$Res> {
+  factory _$$SetTopicEventImplCopyWith(
+          _$SetTopicEventImpl value, $Res Function(_$SetTopicEventImpl) then) =
+      __$$SetTopicEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Topic topic});
 }
 
 /// @nodoc
-class __$$SetTopicImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$SetTopicImpl>
-    implements _$$SetTopicImplCopyWith<$Res> {
-  __$$SetTopicImplCopyWithImpl(
-      _$SetTopicImpl _value, $Res Function(_$SetTopicImpl) _then)
+class __$$SetTopicEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$SetTopicEventImpl>
+    implements _$$SetTopicEventImplCopyWith<$Res> {
+  __$$SetTopicEventImplCopyWithImpl(
+      _$SetTopicEventImpl _value, $Res Function(_$SetTopicEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1857,7 +1861,7 @@ class __$$SetTopicImplCopyWithImpl<$Res>
   $Res call({
     Object? topic = null,
   }) {
-    return _then(_$SetTopicImpl(
+    return _then(_$SetTopicEventImpl(
       null == topic
           ? _value.topic
           : topic // ignore: cast_nullable_to_non_nullable
@@ -1868,8 +1872,8 @@ class __$$SetTopicImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetTopicImpl implements _SetTopic {
-  const _$SetTopicImpl(this.topic);
+class _$SetTopicEventImpl implements _SetTopicEvent {
+  const _$SetTopicEventImpl(this.topic);
 
   @override
   final Topic topic;
@@ -1883,7 +1887,7 @@ class _$SetTopicImpl implements _SetTopic {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SetTopicImpl &&
+            other is _$SetTopicEventImpl &&
             (identical(other.topic, topic) || other.topic == topic));
   }
 
@@ -1893,8 +1897,8 @@ class _$SetTopicImpl implements _SetTopic {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SetTopicImplCopyWith<_$SetTopicImpl> get copyWith =>
-      __$$SetTopicImplCopyWithImpl<_$SetTopicImpl>(this, _$identity);
+  _$$SetTopicEventImplCopyWith<_$SetTopicEventImpl> get copyWith =>
+      __$$SetTopicEventImplCopyWithImpl<_$SetTopicEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1948,14 +1952,15 @@ class _$SetTopicImpl implements _SetTopic {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return setTopic(this);
   }
@@ -1963,14 +1968,14 @@ class _$SetTopicImpl implements _SetTopic {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return setTopic?.call(this);
   }
@@ -1978,14 +1983,14 @@ class _$SetTopicImpl implements _SetTopic {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (setTopic != null) {
@@ -1995,30 +2000,30 @@ class _$SetTopicImpl implements _SetTopic {
   }
 }
 
-abstract class _SetTopic implements TrainingEvent {
-  const factory _SetTopic(final Topic topic) = _$SetTopicImpl;
+abstract class _SetTopicEvent implements TrainingEvent {
+  const factory _SetTopicEvent(final Topic topic) = _$SetTopicEventImpl;
 
   Topic get topic;
   @JsonKey(ignore: true)
-  _$$SetTopicImplCopyWith<_$SetTopicImpl> get copyWith =>
+  _$$SetTopicEventImplCopyWith<_$SetTopicEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetSubtopicImplCopyWith<$Res> {
-  factory _$$SetSubtopicImplCopyWith(
-          _$SetSubtopicImpl value, $Res Function(_$SetSubtopicImpl) then) =
-      __$$SetSubtopicImplCopyWithImpl<$Res>;
+abstract class _$$SetSubtopicEventImplCopyWith<$Res> {
+  factory _$$SetSubtopicEventImplCopyWith(_$SetSubtopicEventImpl value,
+          $Res Function(_$SetSubtopicEventImpl) then) =
+      __$$SetSubtopicEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Subtopic subtopic});
 }
 
 /// @nodoc
-class __$$SetSubtopicImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$SetSubtopicImpl>
-    implements _$$SetSubtopicImplCopyWith<$Res> {
-  __$$SetSubtopicImplCopyWithImpl(
-      _$SetSubtopicImpl _value, $Res Function(_$SetSubtopicImpl) _then)
+class __$$SetSubtopicEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$SetSubtopicEventImpl>
+    implements _$$SetSubtopicEventImplCopyWith<$Res> {
+  __$$SetSubtopicEventImplCopyWithImpl(_$SetSubtopicEventImpl _value,
+      $Res Function(_$SetSubtopicEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2026,7 +2031,7 @@ class __$$SetSubtopicImplCopyWithImpl<$Res>
   $Res call({
     Object? subtopic = null,
   }) {
-    return _then(_$SetSubtopicImpl(
+    return _then(_$SetSubtopicEventImpl(
       null == subtopic
           ? _value.subtopic
           : subtopic // ignore: cast_nullable_to_non_nullable
@@ -2037,8 +2042,8 @@ class __$$SetSubtopicImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SetSubtopicImpl implements _SetSubtopic {
-  const _$SetSubtopicImpl(this.subtopic);
+class _$SetSubtopicEventImpl implements _SetSubtopicEvent {
+  const _$SetSubtopicEventImpl(this.subtopic);
 
   @override
   final Subtopic subtopic;
@@ -2052,7 +2057,7 @@ class _$SetSubtopicImpl implements _SetSubtopic {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SetSubtopicImpl &&
+            other is _$SetSubtopicEventImpl &&
             (identical(other.subtopic, subtopic) ||
                 other.subtopic == subtopic));
   }
@@ -2063,8 +2068,9 @@ class _$SetSubtopicImpl implements _SetSubtopic {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SetSubtopicImplCopyWith<_$SetSubtopicImpl> get copyWith =>
-      __$$SetSubtopicImplCopyWithImpl<_$SetSubtopicImpl>(this, _$identity);
+  _$$SetSubtopicEventImplCopyWith<_$SetSubtopicEventImpl> get copyWith =>
+      __$$SetSubtopicEventImplCopyWithImpl<_$SetSubtopicEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2118,14 +2124,15 @@ class _$SetSubtopicImpl implements _SetSubtopic {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return setSubtopic(this);
   }
@@ -2133,14 +2140,14 @@ class _$SetSubtopicImpl implements _SetSubtopic {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return setSubtopic?.call(this);
   }
@@ -2148,14 +2155,14 @@ class _$SetSubtopicImpl implements _SetSubtopic {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (setSubtopic != null) {
@@ -2165,35 +2172,36 @@ class _$SetSubtopicImpl implements _SetSubtopic {
   }
 }
 
-abstract class _SetSubtopic implements TrainingEvent {
-  const factory _SetSubtopic(final Subtopic subtopic) = _$SetSubtopicImpl;
+abstract class _SetSubtopicEvent implements TrainingEvent {
+  const factory _SetSubtopicEvent(final Subtopic subtopic) =
+      _$SetSubtopicEventImpl;
 
   Subtopic get subtopic;
   @JsonKey(ignore: true)
-  _$$SetSubtopicImplCopyWith<_$SetSubtopicImpl> get copyWith =>
+  _$$SetSubtopicEventImplCopyWith<_$SetSubtopicEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$NextStepImplCopyWith<$Res> {
-  factory _$$NextStepImplCopyWith(
-          _$NextStepImpl value, $Res Function(_$NextStepImpl) then) =
-      __$$NextStepImplCopyWithImpl<$Res>;
+abstract class _$$NextStepEventImplCopyWith<$Res> {
+  factory _$$NextStepEventImplCopyWith(
+          _$NextStepEventImpl value, $Res Function(_$NextStepEventImpl) then) =
+      __$$NextStepEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NextStepImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$NextStepImpl>
-    implements _$$NextStepImplCopyWith<$Res> {
-  __$$NextStepImplCopyWithImpl(
-      _$NextStepImpl _value, $Res Function(_$NextStepImpl) _then)
+class __$$NextStepEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$NextStepEventImpl>
+    implements _$$NextStepEventImplCopyWith<$Res> {
+  __$$NextStepEventImplCopyWithImpl(
+      _$NextStepEventImpl _value, $Res Function(_$NextStepEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$NextStepImpl implements _NextStep {
-  const _$NextStepImpl();
+class _$NextStepEventImpl implements _NextStepEvent {
+  const _$NextStepEventImpl();
 
   @override
   String toString() {
@@ -2203,7 +2211,7 @@ class _$NextStepImpl implements _NextStep {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NextStepImpl);
+        (other.runtimeType == runtimeType && other is _$NextStepEventImpl);
   }
 
   @override
@@ -2261,14 +2269,15 @@ class _$NextStepImpl implements _NextStep {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return nextStep(this);
   }
@@ -2276,14 +2285,14 @@ class _$NextStepImpl implements _NextStep {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return nextStep?.call(this);
   }
@@ -2291,14 +2300,14 @@ class _$NextStepImpl implements _NextStep {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (nextStep != null) {
@@ -2308,30 +2317,32 @@ class _$NextStepImpl implements _NextStep {
   }
 }
 
-abstract class _NextStep implements TrainingEvent {
-  const factory _NextStep() = _$NextStepImpl;
+abstract class _NextStepEvent implements TrainingEvent {
+  const factory _NextStepEvent() = _$NextStepEventImpl;
 }
 
 /// @nodoc
-abstract class _$$GoSuccessfulScreenImplCopyWith<$Res> {
-  factory _$$GoSuccessfulScreenImplCopyWith(_$GoSuccessfulScreenImpl value,
-          $Res Function(_$GoSuccessfulScreenImpl) then) =
-      __$$GoSuccessfulScreenImplCopyWithImpl<$Res>;
+abstract class _$$GoSuccessfulScreenEventImplCopyWith<$Res> {
+  factory _$$GoSuccessfulScreenEventImplCopyWith(
+          _$GoSuccessfulScreenEventImpl value,
+          $Res Function(_$GoSuccessfulScreenEventImpl) then) =
+      __$$GoSuccessfulScreenEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GoSuccessfulScreenImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$GoSuccessfulScreenImpl>
-    implements _$$GoSuccessfulScreenImplCopyWith<$Res> {
-  __$$GoSuccessfulScreenImplCopyWithImpl(_$GoSuccessfulScreenImpl _value,
-      $Res Function(_$GoSuccessfulScreenImpl) _then)
+class __$$GoSuccessfulScreenEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$GoSuccessfulScreenEventImpl>
+    implements _$$GoSuccessfulScreenEventImplCopyWith<$Res> {
+  __$$GoSuccessfulScreenEventImplCopyWithImpl(
+      _$GoSuccessfulScreenEventImpl _value,
+      $Res Function(_$GoSuccessfulScreenEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
-  const _$GoSuccessfulScreenImpl();
+class _$GoSuccessfulScreenEventImpl implements _GoSuccessfulScreenEvent {
+  const _$GoSuccessfulScreenEventImpl();
 
   @override
   String toString() {
@@ -2341,7 +2352,8 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GoSuccessfulScreenImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GoSuccessfulScreenEventImpl);
   }
 
   @override
@@ -2399,14 +2411,15 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return goSuccessfulScreen(this);
   }
@@ -2414,14 +2427,14 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return goSuccessfulScreen?.call(this);
   }
@@ -2429,14 +2442,14 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (goSuccessfulScreen != null) {
@@ -2446,30 +2459,30 @@ class _$GoSuccessfulScreenImpl implements _GoSuccessfulScreen {
   }
 }
 
-abstract class _GoSuccessfulScreen implements TrainingEvent {
-  const factory _GoSuccessfulScreen() = _$GoSuccessfulScreenImpl;
+abstract class _GoSuccessfulScreenEvent implements TrainingEvent {
+  const factory _GoSuccessfulScreenEvent() = _$GoSuccessfulScreenEventImpl;
 }
 
 /// @nodoc
-abstract class _$$CantHearImplCopyWith<$Res> {
-  factory _$$CantHearImplCopyWith(
-          _$CantHearImpl value, $Res Function(_$CantHearImpl) then) =
-      __$$CantHearImplCopyWithImpl<$Res>;
+abstract class _$$CantHearEventImplCopyWith<$Res> {
+  factory _$$CantHearEventImplCopyWith(
+          _$CantHearEventImpl value, $Res Function(_$CantHearEventImpl) then) =
+      __$$CantHearEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CantHearImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$CantHearImpl>
-    implements _$$CantHearImplCopyWith<$Res> {
-  __$$CantHearImplCopyWithImpl(
-      _$CantHearImpl _value, $Res Function(_$CantHearImpl) _then)
+class __$$CantHearEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$CantHearEventImpl>
+    implements _$$CantHearEventImplCopyWith<$Res> {
+  __$$CantHearEventImplCopyWithImpl(
+      _$CantHearEventImpl _value, $Res Function(_$CantHearEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CantHearImpl implements _CantHear {
-  const _$CantHearImpl();
+class _$CantHearEventImpl implements _CantHearEvent {
+  const _$CantHearEventImpl();
 
   @override
   String toString() {
@@ -2479,7 +2492,7 @@ class _$CantHearImpl implements _CantHear {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CantHearImpl);
+        (other.runtimeType == runtimeType && other is _$CantHearEventImpl);
   }
 
   @override
@@ -2537,14 +2550,15 @@ class _$CantHearImpl implements _CantHear {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return cantHear(this);
   }
@@ -2552,14 +2566,14 @@ class _$CantHearImpl implements _CantHear {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return cantHear?.call(this);
   }
@@ -2567,14 +2581,14 @@ class _$CantHearImpl implements _CantHear {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (cantHear != null) {
@@ -2584,30 +2598,30 @@ class _$CantHearImpl implements _CantHear {
   }
 }
 
-abstract class _CantHear implements TrainingEvent {
-  const factory _CantHear() = _$CantHearImpl;
+abstract class _CantHearEvent implements TrainingEvent {
+  const factory _CantHearEvent() = _$CantHearEventImpl;
 }
 
 /// @nodoc
-abstract class _$$CantSpeakImplCopyWith<$Res> {
-  factory _$$CantSpeakImplCopyWith(
-          _$CantSpeakImpl value, $Res Function(_$CantSpeakImpl) then) =
-      __$$CantSpeakImplCopyWithImpl<$Res>;
+abstract class _$$CantSpeakEventImplCopyWith<$Res> {
+  factory _$$CantSpeakEventImplCopyWith(_$CantSpeakEventImpl value,
+          $Res Function(_$CantSpeakEventImpl) then) =
+      __$$CantSpeakEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CantSpeakImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$CantSpeakImpl>
-    implements _$$CantSpeakImplCopyWith<$Res> {
-  __$$CantSpeakImplCopyWithImpl(
-      _$CantSpeakImpl _value, $Res Function(_$CantSpeakImpl) _then)
+class __$$CantSpeakEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$CantSpeakEventImpl>
+    implements _$$CantSpeakEventImplCopyWith<$Res> {
+  __$$CantSpeakEventImplCopyWithImpl(
+      _$CantSpeakEventImpl _value, $Res Function(_$CantSpeakEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CantSpeakImpl implements _CantSpeak {
-  const _$CantSpeakImpl();
+class _$CantSpeakEventImpl implements _CantSpeakEvent {
+  const _$CantSpeakEventImpl();
 
   @override
   String toString() {
@@ -2617,7 +2631,7 @@ class _$CantSpeakImpl implements _CantSpeak {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CantSpeakImpl);
+        (other.runtimeType == runtimeType && other is _$CantSpeakEventImpl);
   }
 
   @override
@@ -2675,14 +2689,15 @@ class _$CantSpeakImpl implements _CantSpeak {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return cantSpeak(this);
   }
@@ -2690,14 +2705,14 @@ class _$CantSpeakImpl implements _CantSpeak {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return cantSpeak?.call(this);
   }
@@ -2705,14 +2720,14 @@ class _$CantSpeakImpl implements _CantSpeak {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (cantSpeak != null) {
@@ -2722,30 +2737,30 @@ class _$CantSpeakImpl implements _CantSpeak {
   }
 }
 
-abstract class _CantSpeak implements TrainingEvent {
-  const factory _CantSpeak() = _$CantSpeakImpl;
+abstract class _CantSpeakEvent implements TrainingEvent {
+  const factory _CantSpeakEvent() = _$CantSpeakEventImpl;
 }
 
 /// @nodoc
-abstract class _$$ZeroHealthImplCopyWith<$Res> {
-  factory _$$ZeroHealthImplCopyWith(
-          _$ZeroHealthImpl value, $Res Function(_$ZeroHealthImpl) then) =
-      __$$ZeroHealthImplCopyWithImpl<$Res>;
+abstract class _$$ZeroHealthEventImplCopyWith<$Res> {
+  factory _$$ZeroHealthEventImplCopyWith(_$ZeroHealthEventImpl value,
+          $Res Function(_$ZeroHealthEventImpl) then) =
+      __$$ZeroHealthEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ZeroHealthImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$ZeroHealthImpl>
-    implements _$$ZeroHealthImplCopyWith<$Res> {
-  __$$ZeroHealthImplCopyWithImpl(
-      _$ZeroHealthImpl _value, $Res Function(_$ZeroHealthImpl) _then)
+class __$$ZeroHealthEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$ZeroHealthEventImpl>
+    implements _$$ZeroHealthEventImplCopyWith<$Res> {
+  __$$ZeroHealthEventImplCopyWithImpl(
+      _$ZeroHealthEventImpl _value, $Res Function(_$ZeroHealthEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ZeroHealthImpl implements _ZeroHealth {
-  const _$ZeroHealthImpl();
+class _$ZeroHealthEventImpl implements _ZeroHealthEvent {
+  const _$ZeroHealthEventImpl();
 
   @override
   String toString() {
@@ -2755,7 +2770,7 @@ class _$ZeroHealthImpl implements _ZeroHealth {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ZeroHealthImpl);
+        (other.runtimeType == runtimeType && other is _$ZeroHealthEventImpl);
   }
 
   @override
@@ -2813,14 +2828,15 @@ class _$ZeroHealthImpl implements _ZeroHealth {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return zeroHealth(this);
   }
@@ -2828,14 +2844,14 @@ class _$ZeroHealthImpl implements _ZeroHealth {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return zeroHealth?.call(this);
   }
@@ -2843,14 +2859,14 @@ class _$ZeroHealthImpl implements _ZeroHealth {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (zeroHealth != null) {
@@ -2860,25 +2876,25 @@ class _$ZeroHealthImpl implements _ZeroHealth {
   }
 }
 
-abstract class _ZeroHealth implements TrainingEvent {
-  const factory _ZeroHealth() = _$ZeroHealthImpl;
+abstract class _ZeroHealthEvent implements TrainingEvent {
+  const factory _ZeroHealthEvent() = _$ZeroHealthEventImpl;
 }
 
 /// @nodoc
-abstract class _$$StartStudyImplCopyWith<$Res> {
-  factory _$$StartStudyImplCopyWith(
-          _$StartStudyImpl value, $Res Function(_$StartStudyImpl) then) =
-      __$$StartStudyImplCopyWithImpl<$Res>;
+abstract class _$$StartStudyEventImplCopyWith<$Res> {
+  factory _$$StartStudyEventImplCopyWith(_$StartStudyEventImpl value,
+          $Res Function(_$StartStudyEventImpl) then) =
+      __$$StartStudyEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Subtopic subtopic});
 }
 
 /// @nodoc
-class __$$StartStudyImplCopyWithImpl<$Res>
-    extends _$TrainingEventCopyWithImpl<$Res, _$StartStudyImpl>
-    implements _$$StartStudyImplCopyWith<$Res> {
-  __$$StartStudyImplCopyWithImpl(
-      _$StartStudyImpl _value, $Res Function(_$StartStudyImpl) _then)
+class __$$StartStudyEventImplCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res, _$StartStudyEventImpl>
+    implements _$$StartStudyEventImplCopyWith<$Res> {
+  __$$StartStudyEventImplCopyWithImpl(
+      _$StartStudyEventImpl _value, $Res Function(_$StartStudyEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2886,7 +2902,7 @@ class __$$StartStudyImplCopyWithImpl<$Res>
   $Res call({
     Object? subtopic = null,
   }) {
-    return _then(_$StartStudyImpl(
+    return _then(_$StartStudyEventImpl(
       null == subtopic
           ? _value.subtopic
           : subtopic // ignore: cast_nullable_to_non_nullable
@@ -2897,8 +2913,8 @@ class __$$StartStudyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartStudyImpl implements _StartStudy {
-  const _$StartStudyImpl(this.subtopic);
+class _$StartStudyEventImpl implements _StartStudyEvent {
+  const _$StartStudyEventImpl(this.subtopic);
 
   @override
   final Subtopic subtopic;
@@ -2912,7 +2928,7 @@ class _$StartStudyImpl implements _StartStudy {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StartStudyImpl &&
+            other is _$StartStudyEventImpl &&
             (identical(other.subtopic, subtopic) ||
                 other.subtopic == subtopic));
   }
@@ -2923,8 +2939,9 @@ class _$StartStudyImpl implements _StartStudy {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StartStudyImplCopyWith<_$StartStudyImpl> get copyWith =>
-      __$$StartStudyImplCopyWithImpl<_$StartStudyImpl>(this, _$identity);
+  _$$StartStudyEventImplCopyWith<_$StartStudyEventImpl> get copyWith =>
+      __$$StartStudyEventImplCopyWithImpl<_$StartStudyEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2978,14 +2995,15 @@ class _$StartStudyImpl implements _StartStudy {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SetTopic value) setTopic,
-    required TResult Function(_SetSubtopic value) setSubtopic,
-    required TResult Function(_NextStep value) nextStep,
-    required TResult Function(_GoSuccessfulScreen value) goSuccessfulScreen,
-    required TResult Function(_CantHear value) cantHear,
-    required TResult Function(_CantSpeak value) cantSpeak,
-    required TResult Function(_ZeroHealth value) zeroHealth,
-    required TResult Function(_StartStudy value) startStudy,
+    required TResult Function(_SetTopicEvent value) setTopic,
+    required TResult Function(_SetSubtopicEvent value) setSubtopic,
+    required TResult Function(_NextStepEvent value) nextStep,
+    required TResult Function(_GoSuccessfulScreenEvent value)
+        goSuccessfulScreen,
+    required TResult Function(_CantHearEvent value) cantHear,
+    required TResult Function(_CantSpeakEvent value) cantSpeak,
+    required TResult Function(_ZeroHealthEvent value) zeroHealth,
+    required TResult Function(_StartStudyEvent value) startStudy,
   }) {
     return startStudy(this);
   }
@@ -2993,14 +3011,14 @@ class _$StartStudyImpl implements _StartStudy {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SetTopic value)? setTopic,
-    TResult? Function(_SetSubtopic value)? setSubtopic,
-    TResult? Function(_NextStep value)? nextStep,
-    TResult? Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult? Function(_CantHear value)? cantHear,
-    TResult? Function(_CantSpeak value)? cantSpeak,
-    TResult? Function(_ZeroHealth value)? zeroHealth,
-    TResult? Function(_StartStudy value)? startStudy,
+    TResult? Function(_SetTopicEvent value)? setTopic,
+    TResult? Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult? Function(_NextStepEvent value)? nextStep,
+    TResult? Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult? Function(_CantHearEvent value)? cantHear,
+    TResult? Function(_CantSpeakEvent value)? cantSpeak,
+    TResult? Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult? Function(_StartStudyEvent value)? startStudy,
   }) {
     return startStudy?.call(this);
   }
@@ -3008,14 +3026,14 @@ class _$StartStudyImpl implements _StartStudy {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SetTopic value)? setTopic,
-    TResult Function(_SetSubtopic value)? setSubtopic,
-    TResult Function(_NextStep value)? nextStep,
-    TResult Function(_GoSuccessfulScreen value)? goSuccessfulScreen,
-    TResult Function(_CantHear value)? cantHear,
-    TResult Function(_CantSpeak value)? cantSpeak,
-    TResult Function(_ZeroHealth value)? zeroHealth,
-    TResult Function(_StartStudy value)? startStudy,
+    TResult Function(_SetTopicEvent value)? setTopic,
+    TResult Function(_SetSubtopicEvent value)? setSubtopic,
+    TResult Function(_NextStepEvent value)? nextStep,
+    TResult Function(_GoSuccessfulScreenEvent value)? goSuccessfulScreen,
+    TResult Function(_CantHearEvent value)? cantHear,
+    TResult Function(_CantSpeakEvent value)? cantSpeak,
+    TResult Function(_ZeroHealthEvent value)? zeroHealth,
+    TResult Function(_StartStudyEvent value)? startStudy,
     required TResult orElse(),
   }) {
     if (startStudy != null) {
@@ -3025,11 +3043,12 @@ class _$StartStudyImpl implements _StartStudy {
   }
 }
 
-abstract class _StartStudy implements TrainingEvent {
-  const factory _StartStudy(final Subtopic subtopic) = _$StartStudyImpl;
+abstract class _StartStudyEvent implements TrainingEvent {
+  const factory _StartStudyEvent(final Subtopic subtopic) =
+      _$StartStudyEventImpl;
 
   Subtopic get subtopic;
   @JsonKey(ignore: true)
-  _$$StartStudyImplCopyWith<_$StartStudyImpl> get copyWith =>
+  _$$StartStudyEventImplCopyWith<_$StartStudyEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

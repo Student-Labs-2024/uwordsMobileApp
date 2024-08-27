@@ -18,13 +18,13 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
 
   RecordBloc({required this.audioRepository, required this.userRepository})
       : super(const RecordState.initial()) {
-    on<_SendError>(_handleSendError);
-    on<_SendPath>(_handleSendPath);
+    on<_SendErrorEvent>(_handleSendError);
+    on<_SendPathEvent>(_handleSendPath);
   }
 
   Future<void> _handleSendError(
-      _SendError event, Emitter<RecordState> emit) async {
-    if (state is! _RecordFailed) {
+      _SendErrorEvent event, Emitter<RecordState> emit) async {
+    if (state is! _RecordFailedState) {
       emit(RecordState.failed(event.message));
       await Future.delayed(const Duration(seconds: 4));
       emit(const RecordState.initial());
@@ -32,7 +32,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
   }
 
   Future<void> _handleSendPath(
-      _SendPath event, Emitter<RecordState> emit) async {
+      _SendPathEvent event, Emitter<RecordState> emit) async {
     String audioPath = event.path;
     if (audioPath.isNotEmpty) {
       try {

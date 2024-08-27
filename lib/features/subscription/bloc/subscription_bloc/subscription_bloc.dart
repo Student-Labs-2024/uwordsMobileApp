@@ -23,14 +23,15 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
 
   SubscriptionBloc(
       {required this.subscriptionRepository, required this.userRepository})
-      : super(const _Initial([])) {
-    on<_DownloadSubscriptionTypes>(_handleDownloadSubscriptionTypes);
-    on<_PaySubscription>(_handlePaySubscription);
-    on<_CheckSubscription>(_handleCheckSubscription);
-    on<_IsSubscriptionActive>(_handleIsSubscriptionActive);
+      : super(const _InitialState([])) {
+    on<_DownloadSubscriptionTypesEvent>(_handleDownloadSubscriptionTypes);
+    on<_PaySubscriptionEvent>(_handlePaySubscription);
+    on<_CheckSubscriptionEvent>(_handleCheckSubscription);
+    on<_IsSubscriptionActiveEvent>(_handleIsSubscriptionActive);
   }
   Future<void> _handleDownloadSubscriptionTypes(
-      _DownloadSubscriptionTypes event, Emitter<SubscriptionState> emit) async {
+      _DownloadSubscriptionTypesEvent event,
+      Emitter<SubscriptionState> emit) async {
     emit(const SubscriptionState.loading());
     try {
       tariffs = await subscriptionRepository.getTariffList(
@@ -43,7 +44,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
   }
 
   Future<void> _handlePaySubscription(
-      _PaySubscription event, Emitter<SubscriptionState> emit) async {
+      _PaySubscriptionEvent event, Emitter<SubscriptionState> emit) async {
     emit(const SubscriptionState.loading());
     try {
       final String paymentLink =
@@ -56,7 +57,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
   }
 
   Future<void> _handleCheckSubscription(
-      _CheckSubscription event, Emitter<SubscriptionState> emit) async {
+      _CheckSubscriptionEvent event, Emitter<SubscriptionState> emit) async {
     emit(const SubscriptionState.loading());
     try {
       final String accessToken =
@@ -79,7 +80,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
   }
 
   Future<void> _handleIsSubscriptionActive(
-      _IsSubscriptionActive event, Emitter<SubscriptionState> emit) async {
+      _IsSubscriptionActiveEvent event, Emitter<SubscriptionState> emit) async {
     String finalDate = userRepository.getSubscriptionExpired();
     bool isActive = userRepository.isSubscriptionActive();
     emit(SubscriptionState.subscriptionStatus(isActive, finalDate));

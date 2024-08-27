@@ -20,11 +20,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   ProfileBloc({required this.userRepository, required this.wordsRepository})
       : super(const ProfileState.initial()) {
-    on<_GetUserInfo>(_handleGetUserInfo);
+    on<_GetUserInfoEvent>(_handleGetUserInfo);
   }
 
   Future<void> _handleGetUserInfo(
-      _GetUserInfo event, Emitter<ProfileState> emit) async {
+      _GetUserInfoEvent event, Emitter<ProfileState> emit) async {
     UserAuthDto currentUserInfo = await userRepository.getCurrentUserInfo();
     String userName = currentUserInfo.username;
     String avatarUrl = currentUserInfo.avatarUrl;

@@ -37,20 +37,20 @@ mixin _$GradeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Enabled value) enabled,
-    required TResult Function(_Disabled value) disabled,
+    required TResult Function(_EnabledState value) enabled,
+    required TResult Function(_DisabledState value) disabled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Enabled value)? enabled,
-    TResult? Function(_Disabled value)? disabled,
+    TResult? Function(_EnabledState value)? enabled,
+    TResult? Function(_DisabledState value)? disabled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult Function(_EnabledState value)? enabled,
+    TResult Function(_DisabledState value)? disabled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,25 +75,25 @@ class _$GradeStateCopyWithImpl<$Res, $Val extends GradeState>
 }
 
 /// @nodoc
-abstract class _$$EnabledImplCopyWith<$Res> {
-  factory _$$EnabledImplCopyWith(
-          _$EnabledImpl value, $Res Function(_$EnabledImpl) then) =
-      __$$EnabledImplCopyWithImpl<$Res>;
+abstract class _$$EnabledStateImplCopyWith<$Res> {
+  factory _$$EnabledStateImplCopyWith(
+          _$EnabledStateImpl value, $Res Function(_$EnabledStateImpl) then) =
+      __$$EnabledStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$EnabledImplCopyWithImpl<$Res>
-    extends _$GradeStateCopyWithImpl<$Res, _$EnabledImpl>
-    implements _$$EnabledImplCopyWith<$Res> {
-  __$$EnabledImplCopyWithImpl(
-      _$EnabledImpl _value, $Res Function(_$EnabledImpl) _then)
+class __$$EnabledStateImplCopyWithImpl<$Res>
+    extends _$GradeStateCopyWithImpl<$Res, _$EnabledStateImpl>
+    implements _$$EnabledStateImplCopyWith<$Res> {
+  __$$EnabledStateImplCopyWithImpl(
+      _$EnabledStateImpl _value, $Res Function(_$EnabledStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$EnabledImpl implements _Enabled {
-  const _$EnabledImpl();
+class _$EnabledStateImpl implements _EnabledState {
+  const _$EnabledStateImpl();
 
   @override
   String toString() {
@@ -103,7 +103,7 @@ class _$EnabledImpl implements _Enabled {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EnabledImpl);
+        (other.runtimeType == runtimeType && other is _$EnabledStateImpl);
   }
 
   @override
@@ -143,8 +143,8 @@ class _$EnabledImpl implements _Enabled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Enabled value) enabled,
-    required TResult Function(_Disabled value) disabled,
+    required TResult Function(_EnabledState value) enabled,
+    required TResult Function(_DisabledState value) disabled,
   }) {
     return enabled(this);
   }
@@ -152,8 +152,8 @@ class _$EnabledImpl implements _Enabled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Enabled value)? enabled,
-    TResult? Function(_Disabled value)? disabled,
+    TResult? Function(_EnabledState value)? enabled,
+    TResult? Function(_DisabledState value)? disabled,
   }) {
     return enabled?.call(this);
   }
@@ -161,8 +161,8 @@ class _$EnabledImpl implements _Enabled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult Function(_EnabledState value)? enabled,
+    TResult Function(_DisabledState value)? disabled,
     required TResult orElse(),
   }) {
     if (enabled != null) {
@@ -172,30 +172,30 @@ class _$EnabledImpl implements _Enabled {
   }
 }
 
-abstract class _Enabled implements GradeState {
-  const factory _Enabled() = _$EnabledImpl;
+abstract class _EnabledState implements GradeState {
+  const factory _EnabledState() = _$EnabledStateImpl;
 }
 
 /// @nodoc
-abstract class _$$DisabledImplCopyWith<$Res> {
-  factory _$$DisabledImplCopyWith(
-          _$DisabledImpl value, $Res Function(_$DisabledImpl) then) =
-      __$$DisabledImplCopyWithImpl<$Res>;
+abstract class _$$DisabledStateImplCopyWith<$Res> {
+  factory _$$DisabledStateImplCopyWith(
+          _$DisabledStateImpl value, $Res Function(_$DisabledStateImpl) then) =
+      __$$DisabledStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DisabledImplCopyWithImpl<$Res>
-    extends _$GradeStateCopyWithImpl<$Res, _$DisabledImpl>
-    implements _$$DisabledImplCopyWith<$Res> {
-  __$$DisabledImplCopyWithImpl(
-      _$DisabledImpl _value, $Res Function(_$DisabledImpl) _then)
+class __$$DisabledStateImplCopyWithImpl<$Res>
+    extends _$GradeStateCopyWithImpl<$Res, _$DisabledStateImpl>
+    implements _$$DisabledStateImplCopyWith<$Res> {
+  __$$DisabledStateImplCopyWithImpl(
+      _$DisabledStateImpl _value, $Res Function(_$DisabledStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$DisabledImpl implements _Disabled {
-  const _$DisabledImpl();
+class _$DisabledStateImpl implements _DisabledState {
+  const _$DisabledStateImpl();
 
   @override
   String toString() {
@@ -205,7 +205,7 @@ class _$DisabledImpl implements _Disabled {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DisabledImpl);
+        (other.runtimeType == runtimeType && other is _$DisabledStateImpl);
   }
 
   @override
@@ -245,8 +245,8 @@ class _$DisabledImpl implements _Disabled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Enabled value) enabled,
-    required TResult Function(_Disabled value) disabled,
+    required TResult Function(_EnabledState value) enabled,
+    required TResult Function(_DisabledState value) disabled,
   }) {
     return disabled(this);
   }
@@ -254,8 +254,8 @@ class _$DisabledImpl implements _Disabled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Enabled value)? enabled,
-    TResult? Function(_Disabled value)? disabled,
+    TResult? Function(_EnabledState value)? enabled,
+    TResult? Function(_DisabledState value)? disabled,
   }) {
     return disabled?.call(this);
   }
@@ -263,8 +263,8 @@ class _$DisabledImpl implements _Disabled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Enabled value)? enabled,
-    TResult Function(_Disabled value)? disabled,
+    TResult Function(_EnabledState value)? enabled,
+    TResult Function(_DisabledState value)? disabled,
     required TResult orElse(),
   }) {
     if (disabled != null) {
@@ -274,8 +274,8 @@ class _$DisabledImpl implements _Disabled {
   }
 }
 
-abstract class _Disabled implements GradeState {
-  const factory _Disabled() = _$DisabledImpl;
+abstract class _DisabledState implements GradeState {
+  const factory _DisabledState() = _$DisabledStateImpl;
 }
 
 /// @nodoc
@@ -304,23 +304,23 @@ mixin _$GradeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Open value) open,
-    required TResult Function(_Close value) close,
-    required TResult Function(_SendGrade value) sendGrade,
+    required TResult Function(_OpenEvent value) open,
+    required TResult Function(_CloseEvent value) close,
+    required TResult Function(_SendGradeEvent value) sendGrade,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Open value)? open,
-    TResult? Function(_Close value)? close,
-    TResult? Function(_SendGrade value)? sendGrade,
+    TResult? Function(_OpenEvent value)? open,
+    TResult? Function(_CloseEvent value)? close,
+    TResult? Function(_SendGradeEvent value)? sendGrade,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Open value)? open,
-    TResult Function(_Close value)? close,
-    TResult Function(_SendGrade value)? sendGrade,
+    TResult Function(_OpenEvent value)? open,
+    TResult Function(_CloseEvent value)? close,
+    TResult Function(_SendGradeEvent value)? sendGrade,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -345,24 +345,25 @@ class _$GradeEventCopyWithImpl<$Res, $Val extends GradeEvent>
 }
 
 /// @nodoc
-abstract class _$$OpenImplCopyWith<$Res> {
-  factory _$$OpenImplCopyWith(
-          _$OpenImpl value, $Res Function(_$OpenImpl) then) =
-      __$$OpenImplCopyWithImpl<$Res>;
+abstract class _$$OpenEventImplCopyWith<$Res> {
+  factory _$$OpenEventImplCopyWith(
+          _$OpenEventImpl value, $Res Function(_$OpenEventImpl) then) =
+      __$$OpenEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$OpenImplCopyWithImpl<$Res>
-    extends _$GradeEventCopyWithImpl<$Res, _$OpenImpl>
-    implements _$$OpenImplCopyWith<$Res> {
-  __$$OpenImplCopyWithImpl(_$OpenImpl _value, $Res Function(_$OpenImpl) _then)
+class __$$OpenEventImplCopyWithImpl<$Res>
+    extends _$GradeEventCopyWithImpl<$Res, _$OpenEventImpl>
+    implements _$$OpenEventImplCopyWith<$Res> {
+  __$$OpenEventImplCopyWithImpl(
+      _$OpenEventImpl _value, $Res Function(_$OpenEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$OpenImpl implements _Open {
-  const _$OpenImpl();
+class _$OpenEventImpl implements _OpenEvent {
+  const _$OpenEventImpl();
 
   @override
   String toString() {
@@ -372,7 +373,7 @@ class _$OpenImpl implements _Open {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OpenImpl);
+        (other.runtimeType == runtimeType && other is _$OpenEventImpl);
   }
 
   @override
@@ -415,9 +416,9 @@ class _$OpenImpl implements _Open {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Open value) open,
-    required TResult Function(_Close value) close,
-    required TResult Function(_SendGrade value) sendGrade,
+    required TResult Function(_OpenEvent value) open,
+    required TResult Function(_CloseEvent value) close,
+    required TResult Function(_SendGradeEvent value) sendGrade,
   }) {
     return open(this);
   }
@@ -425,9 +426,9 @@ class _$OpenImpl implements _Open {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Open value)? open,
-    TResult? Function(_Close value)? close,
-    TResult? Function(_SendGrade value)? sendGrade,
+    TResult? Function(_OpenEvent value)? open,
+    TResult? Function(_CloseEvent value)? close,
+    TResult? Function(_SendGradeEvent value)? sendGrade,
   }) {
     return open?.call(this);
   }
@@ -435,9 +436,9 @@ class _$OpenImpl implements _Open {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Open value)? open,
-    TResult Function(_Close value)? close,
-    TResult Function(_SendGrade value)? sendGrade,
+    TResult Function(_OpenEvent value)? open,
+    TResult Function(_CloseEvent value)? close,
+    TResult Function(_SendGradeEvent value)? sendGrade,
     required TResult orElse(),
   }) {
     if (open != null) {
@@ -447,30 +448,30 @@ class _$OpenImpl implements _Open {
   }
 }
 
-abstract class _Open implements GradeEvent {
-  const factory _Open() = _$OpenImpl;
+abstract class _OpenEvent implements GradeEvent {
+  const factory _OpenEvent() = _$OpenEventImpl;
 }
 
 /// @nodoc
-abstract class _$$CloseImplCopyWith<$Res> {
-  factory _$$CloseImplCopyWith(
-          _$CloseImpl value, $Res Function(_$CloseImpl) then) =
-      __$$CloseImplCopyWithImpl<$Res>;
+abstract class _$$CloseEventImplCopyWith<$Res> {
+  factory _$$CloseEventImplCopyWith(
+          _$CloseEventImpl value, $Res Function(_$CloseEventImpl) then) =
+      __$$CloseEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CloseImplCopyWithImpl<$Res>
-    extends _$GradeEventCopyWithImpl<$Res, _$CloseImpl>
-    implements _$$CloseImplCopyWith<$Res> {
-  __$$CloseImplCopyWithImpl(
-      _$CloseImpl _value, $Res Function(_$CloseImpl) _then)
+class __$$CloseEventImplCopyWithImpl<$Res>
+    extends _$GradeEventCopyWithImpl<$Res, _$CloseEventImpl>
+    implements _$$CloseEventImplCopyWith<$Res> {
+  __$$CloseEventImplCopyWithImpl(
+      _$CloseEventImpl _value, $Res Function(_$CloseEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CloseImpl implements _Close {
-  const _$CloseImpl();
+class _$CloseEventImpl implements _CloseEvent {
+  const _$CloseEventImpl();
 
   @override
   String toString() {
@@ -480,7 +481,7 @@ class _$CloseImpl implements _Close {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CloseImpl);
+        (other.runtimeType == runtimeType && other is _$CloseEventImpl);
   }
 
   @override
@@ -523,9 +524,9 @@ class _$CloseImpl implements _Close {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Open value) open,
-    required TResult Function(_Close value) close,
-    required TResult Function(_SendGrade value) sendGrade,
+    required TResult Function(_OpenEvent value) open,
+    required TResult Function(_CloseEvent value) close,
+    required TResult Function(_SendGradeEvent value) sendGrade,
   }) {
     return close(this);
   }
@@ -533,9 +534,9 @@ class _$CloseImpl implements _Close {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Open value)? open,
-    TResult? Function(_Close value)? close,
-    TResult? Function(_SendGrade value)? sendGrade,
+    TResult? Function(_OpenEvent value)? open,
+    TResult? Function(_CloseEvent value)? close,
+    TResult? Function(_SendGradeEvent value)? sendGrade,
   }) {
     return close?.call(this);
   }
@@ -543,9 +544,9 @@ class _$CloseImpl implements _Close {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Open value)? open,
-    TResult Function(_Close value)? close,
-    TResult Function(_SendGrade value)? sendGrade,
+    TResult Function(_OpenEvent value)? open,
+    TResult Function(_CloseEvent value)? close,
+    TResult Function(_SendGradeEvent value)? sendGrade,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -555,25 +556,25 @@ class _$CloseImpl implements _Close {
   }
 }
 
-abstract class _Close implements GradeEvent {
-  const factory _Close() = _$CloseImpl;
+abstract class _CloseEvent implements GradeEvent {
+  const factory _CloseEvent() = _$CloseEventImpl;
 }
 
 /// @nodoc
-abstract class _$$SendGradeImplCopyWith<$Res> {
-  factory _$$SendGradeImplCopyWith(
-          _$SendGradeImpl value, $Res Function(_$SendGradeImpl) then) =
-      __$$SendGradeImplCopyWithImpl<$Res>;
+abstract class _$$SendGradeEventImplCopyWith<$Res> {
+  factory _$$SendGradeEventImplCopyWith(_$SendGradeEventImpl value,
+          $Res Function(_$SendGradeEventImpl) then) =
+      __$$SendGradeEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int stars, String textGrade});
 }
 
 /// @nodoc
-class __$$SendGradeImplCopyWithImpl<$Res>
-    extends _$GradeEventCopyWithImpl<$Res, _$SendGradeImpl>
-    implements _$$SendGradeImplCopyWith<$Res> {
-  __$$SendGradeImplCopyWithImpl(
-      _$SendGradeImpl _value, $Res Function(_$SendGradeImpl) _then)
+class __$$SendGradeEventImplCopyWithImpl<$Res>
+    extends _$GradeEventCopyWithImpl<$Res, _$SendGradeEventImpl>
+    implements _$$SendGradeEventImplCopyWith<$Res> {
+  __$$SendGradeEventImplCopyWithImpl(
+      _$SendGradeEventImpl _value, $Res Function(_$SendGradeEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -582,7 +583,7 @@ class __$$SendGradeImplCopyWithImpl<$Res>
     Object? stars = null,
     Object? textGrade = null,
   }) {
-    return _then(_$SendGradeImpl(
+    return _then(_$SendGradeEventImpl(
       null == stars
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
@@ -597,8 +598,8 @@ class __$$SendGradeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SendGradeImpl implements _SendGrade {
-  const _$SendGradeImpl(this.stars, this.textGrade);
+class _$SendGradeEventImpl implements _SendGradeEvent {
+  const _$SendGradeEventImpl(this.stars, this.textGrade);
 
   @override
   final int stars;
@@ -614,7 +615,7 @@ class _$SendGradeImpl implements _SendGrade {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SendGradeImpl &&
+            other is _$SendGradeEventImpl &&
             (identical(other.stars, stars) || other.stars == stars) &&
             (identical(other.textGrade, textGrade) ||
                 other.textGrade == textGrade));
@@ -626,8 +627,9 @@ class _$SendGradeImpl implements _SendGrade {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SendGradeImplCopyWith<_$SendGradeImpl> get copyWith =>
-      __$$SendGradeImplCopyWithImpl<_$SendGradeImpl>(this, _$identity);
+  _$$SendGradeEventImplCopyWith<_$SendGradeEventImpl> get copyWith =>
+      __$$SendGradeEventImplCopyWithImpl<_$SendGradeEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -666,9 +668,9 @@ class _$SendGradeImpl implements _SendGrade {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Open value) open,
-    required TResult Function(_Close value) close,
-    required TResult Function(_SendGrade value) sendGrade,
+    required TResult Function(_OpenEvent value) open,
+    required TResult Function(_CloseEvent value) close,
+    required TResult Function(_SendGradeEvent value) sendGrade,
   }) {
     return sendGrade(this);
   }
@@ -676,9 +678,9 @@ class _$SendGradeImpl implements _SendGrade {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Open value)? open,
-    TResult? Function(_Close value)? close,
-    TResult? Function(_SendGrade value)? sendGrade,
+    TResult? Function(_OpenEvent value)? open,
+    TResult? Function(_CloseEvent value)? close,
+    TResult? Function(_SendGradeEvent value)? sendGrade,
   }) {
     return sendGrade?.call(this);
   }
@@ -686,9 +688,9 @@ class _$SendGradeImpl implements _SendGrade {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Open value)? open,
-    TResult Function(_Close value)? close,
-    TResult Function(_SendGrade value)? sendGrade,
+    TResult Function(_OpenEvent value)? open,
+    TResult Function(_CloseEvent value)? close,
+    TResult Function(_SendGradeEvent value)? sendGrade,
     required TResult orElse(),
   }) {
     if (sendGrade != null) {
@@ -698,13 +700,13 @@ class _$SendGradeImpl implements _SendGrade {
   }
 }
 
-abstract class _SendGrade implements GradeEvent {
-  const factory _SendGrade(final int stars, final String textGrade) =
-      _$SendGradeImpl;
+abstract class _SendGradeEvent implements GradeEvent {
+  const factory _SendGradeEvent(final int stars, final String textGrade) =
+      _$SendGradeEventImpl;
 
   int get stars;
   String get textGrade;
   @JsonKey(ignore: true)
-  _$$SendGradeImplCopyWith<_$SendGradeImpl> get copyWith =>
+  _$$SendGradeEventImplCopyWith<_$SendGradeEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

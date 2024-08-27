@@ -40,23 +40,23 @@ mixin _$RecordState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordFailed value) failed,
-    required TResult Function(_RecordSended value) sended,
+    required TResult Function(_RecordInitialSate value) initial,
+    required TResult Function(_RecordFailedState value) failed,
+    required TResult Function(_RecordSendedState value) sended,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordFailed value)? failed,
-    TResult? Function(_RecordSended value)? sended,
+    TResult? Function(_RecordInitialSate value)? initial,
+    TResult? Function(_RecordFailedState value)? failed,
+    TResult? Function(_RecordSendedState value)? sended,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordFailed value)? failed,
-    TResult Function(_RecordSended value)? sended,
+    TResult Function(_RecordInitialSate value)? initial,
+    TResult Function(_RecordFailedState value)? failed,
+    TResult Function(_RecordSendedState value)? sended,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,27 +81,27 @@ class _$RecordStateCopyWithImpl<$Res, $Val extends RecordState>
 }
 
 /// @nodoc
-abstract class _$$RecordInitialImplCopyWith<$Res> {
-  factory _$$RecordInitialImplCopyWith(
-          _$RecordInitialImpl value, $Res Function(_$RecordInitialImpl) then) =
-      __$$RecordInitialImplCopyWithImpl<$Res>;
+abstract class _$$RecordInitialSateImplCopyWith<$Res> {
+  factory _$$RecordInitialSateImplCopyWith(_$RecordInitialSateImpl value,
+          $Res Function(_$RecordInitialSateImpl) then) =
+      __$$RecordInitialSateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RecordInitialImplCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$RecordInitialImpl>
-    implements _$$RecordInitialImplCopyWith<$Res> {
-  __$$RecordInitialImplCopyWithImpl(
-      _$RecordInitialImpl _value, $Res Function(_$RecordInitialImpl) _then)
+class __$$RecordInitialSateImplCopyWithImpl<$Res>
+    extends _$RecordStateCopyWithImpl<$Res, _$RecordInitialSateImpl>
+    implements _$$RecordInitialSateImplCopyWith<$Res> {
+  __$$RecordInitialSateImplCopyWithImpl(_$RecordInitialSateImpl _value,
+      $Res Function(_$RecordInitialSateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RecordInitialImpl
+class _$RecordInitialSateImpl
     with DiagnosticableTreeMixin
-    implements _RecordInitial {
-  const _$RecordInitialImpl();
+    implements _RecordInitialSate {
+  const _$RecordInitialSateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -117,7 +117,7 @@ class _$RecordInitialImpl
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RecordInitialImpl);
+        (other.runtimeType == runtimeType && other is _$RecordInitialSateImpl);
   }
 
   @override
@@ -160,9 +160,9 @@ class _$RecordInitialImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordFailed value) failed,
-    required TResult Function(_RecordSended value) sended,
+    required TResult Function(_RecordInitialSate value) initial,
+    required TResult Function(_RecordFailedState value) failed,
+    required TResult Function(_RecordSendedState value) sended,
   }) {
     return initial(this);
   }
@@ -170,9 +170,9 @@ class _$RecordInitialImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordFailed value)? failed,
-    TResult? Function(_RecordSended value)? sended,
+    TResult? Function(_RecordInitialSate value)? initial,
+    TResult? Function(_RecordFailedState value)? failed,
+    TResult? Function(_RecordSendedState value)? sended,
   }) {
     return initial?.call(this);
   }
@@ -180,9 +180,9 @@ class _$RecordInitialImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordFailed value)? failed,
-    TResult Function(_RecordSended value)? sended,
+    TResult Function(_RecordInitialSate value)? initial,
+    TResult Function(_RecordFailedState value)? failed,
+    TResult Function(_RecordSendedState value)? sended,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -192,25 +192,25 @@ class _$RecordInitialImpl
   }
 }
 
-abstract class _RecordInitial implements RecordState {
-  const factory _RecordInitial() = _$RecordInitialImpl;
+abstract class _RecordInitialSate implements RecordState {
+  const factory _RecordInitialSate() = _$RecordInitialSateImpl;
 }
 
 /// @nodoc
-abstract class _$$RecordFailedImplCopyWith<$Res> {
-  factory _$$RecordFailedImplCopyWith(
-          _$RecordFailedImpl value, $Res Function(_$RecordFailedImpl) then) =
-      __$$RecordFailedImplCopyWithImpl<$Res>;
+abstract class _$$RecordFailedStateImplCopyWith<$Res> {
+  factory _$$RecordFailedStateImplCopyWith(_$RecordFailedStateImpl value,
+          $Res Function(_$RecordFailedStateImpl) then) =
+      __$$RecordFailedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$RecordFailedImplCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$RecordFailedImpl>
-    implements _$$RecordFailedImplCopyWith<$Res> {
-  __$$RecordFailedImplCopyWithImpl(
-      _$RecordFailedImpl _value, $Res Function(_$RecordFailedImpl) _then)
+class __$$RecordFailedStateImplCopyWithImpl<$Res>
+    extends _$RecordStateCopyWithImpl<$Res, _$RecordFailedStateImpl>
+    implements _$$RecordFailedStateImplCopyWith<$Res> {
+  __$$RecordFailedStateImplCopyWithImpl(_$RecordFailedStateImpl _value,
+      $Res Function(_$RecordFailedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -218,7 +218,7 @@ class __$$RecordFailedImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$RecordFailedImpl(
+    return _then(_$RecordFailedStateImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -229,8 +229,10 @@ class __$$RecordFailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
-  const _$RecordFailedImpl(this.message);
+class _$RecordFailedStateImpl
+    with DiagnosticableTreeMixin
+    implements _RecordFailedState {
+  const _$RecordFailedStateImpl(this.message);
 
   @override
   final String message;
@@ -252,7 +254,7 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecordFailedImpl &&
+            other is _$RecordFailedStateImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -262,8 +264,9 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecordFailedImplCopyWith<_$RecordFailedImpl> get copyWith =>
-      __$$RecordFailedImplCopyWithImpl<_$RecordFailedImpl>(this, _$identity);
+  _$$RecordFailedStateImplCopyWith<_$RecordFailedStateImpl> get copyWith =>
+      __$$RecordFailedStateImplCopyWithImpl<_$RecordFailedStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -302,9 +305,9 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordFailed value) failed,
-    required TResult Function(_RecordSended value) sended,
+    required TResult Function(_RecordInitialSate value) initial,
+    required TResult Function(_RecordFailedState value) failed,
+    required TResult Function(_RecordSendedState value) sended,
   }) {
     return failed(this);
   }
@@ -312,9 +315,9 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordFailed value)? failed,
-    TResult? Function(_RecordSended value)? sended,
+    TResult? Function(_RecordInitialSate value)? initial,
+    TResult? Function(_RecordFailedState value)? failed,
+    TResult? Function(_RecordSendedState value)? sended,
   }) {
     return failed?.call(this);
   }
@@ -322,9 +325,9 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordFailed value)? failed,
-    TResult Function(_RecordSended value)? sended,
+    TResult Function(_RecordInitialSate value)? initial,
+    TResult Function(_RecordFailedState value)? failed,
+    TResult Function(_RecordSendedState value)? sended,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -334,35 +337,38 @@ class _$RecordFailedImpl with DiagnosticableTreeMixin implements _RecordFailed {
   }
 }
 
-abstract class _RecordFailed implements RecordState {
-  const factory _RecordFailed(final String message) = _$RecordFailedImpl;
+abstract class _RecordFailedState implements RecordState {
+  const factory _RecordFailedState(final String message) =
+      _$RecordFailedStateImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$RecordFailedImplCopyWith<_$RecordFailedImpl> get copyWith =>
+  _$$RecordFailedStateImplCopyWith<_$RecordFailedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RecordSendedImplCopyWith<$Res> {
-  factory _$$RecordSendedImplCopyWith(
-          _$RecordSendedImpl value, $Res Function(_$RecordSendedImpl) then) =
-      __$$RecordSendedImplCopyWithImpl<$Res>;
+abstract class _$$RecordSendedStateImplCopyWith<$Res> {
+  factory _$$RecordSendedStateImplCopyWith(_$RecordSendedStateImpl value,
+          $Res Function(_$RecordSendedStateImpl) then) =
+      __$$RecordSendedStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RecordSendedImplCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$RecordSendedImpl>
-    implements _$$RecordSendedImplCopyWith<$Res> {
-  __$$RecordSendedImplCopyWithImpl(
-      _$RecordSendedImpl _value, $Res Function(_$RecordSendedImpl) _then)
+class __$$RecordSendedStateImplCopyWithImpl<$Res>
+    extends _$RecordStateCopyWithImpl<$Res, _$RecordSendedStateImpl>
+    implements _$$RecordSendedStateImplCopyWith<$Res> {
+  __$$RecordSendedStateImplCopyWithImpl(_$RecordSendedStateImpl _value,
+      $Res Function(_$RecordSendedStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
-  const _$RecordSendedImpl();
+class _$RecordSendedStateImpl
+    with DiagnosticableTreeMixin
+    implements _RecordSendedState {
+  const _$RecordSendedStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -378,7 +384,7 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RecordSendedImpl);
+        (other.runtimeType == runtimeType && other is _$RecordSendedStateImpl);
   }
 
   @override
@@ -421,9 +427,9 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RecordInitial value) initial,
-    required TResult Function(_RecordFailed value) failed,
-    required TResult Function(_RecordSended value) sended,
+    required TResult Function(_RecordInitialSate value) initial,
+    required TResult Function(_RecordFailedState value) failed,
+    required TResult Function(_RecordSendedState value) sended,
   }) {
     return sended(this);
   }
@@ -431,9 +437,9 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RecordInitial value)? initial,
-    TResult? Function(_RecordFailed value)? failed,
-    TResult? Function(_RecordSended value)? sended,
+    TResult? Function(_RecordInitialSate value)? initial,
+    TResult? Function(_RecordFailedState value)? failed,
+    TResult? Function(_RecordSendedState value)? sended,
   }) {
     return sended?.call(this);
   }
@@ -441,9 +447,9 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RecordInitial value)? initial,
-    TResult Function(_RecordFailed value)? failed,
-    TResult Function(_RecordSended value)? sended,
+    TResult Function(_RecordInitialSate value)? initial,
+    TResult Function(_RecordFailedState value)? failed,
+    TResult Function(_RecordSendedState value)? sended,
     required TResult orElse(),
   }) {
     if (sended != null) {
@@ -453,8 +459,8 @@ class _$RecordSendedImpl with DiagnosticableTreeMixin implements _RecordSended {
   }
 }
 
-abstract class _RecordSended implements RecordState {
-  const factory _RecordSended() = _$RecordSendedImpl;
+abstract class _RecordSendedState implements RecordState {
+  const factory _RecordSendedState() = _$RecordSendedStateImpl;
 }
 
 /// @nodoc
@@ -480,20 +486,20 @@ mixin _$RecordEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendError value) sendError,
-    required TResult Function(_SendPath value) sendPath,
+    required TResult Function(_SendErrorEvent value) sendError,
+    required TResult Function(_SendPathEvent value) sendPath,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendError value)? sendError,
-    TResult? Function(_SendPath value)? sendPath,
+    TResult? Function(_SendErrorEvent value)? sendError,
+    TResult? Function(_SendPathEvent value)? sendPath,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendError value)? sendError,
-    TResult Function(_SendPath value)? sendPath,
+    TResult Function(_SendErrorEvent value)? sendError,
+    TResult Function(_SendPathEvent value)? sendPath,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -518,20 +524,20 @@ class _$RecordEventCopyWithImpl<$Res, $Val extends RecordEvent>
 }
 
 /// @nodoc
-abstract class _$$SendErrorImplCopyWith<$Res> {
-  factory _$$SendErrorImplCopyWith(
-          _$SendErrorImpl value, $Res Function(_$SendErrorImpl) then) =
-      __$$SendErrorImplCopyWithImpl<$Res>;
+abstract class _$$SendErrorEventImplCopyWith<$Res> {
+  factory _$$SendErrorEventImplCopyWith(_$SendErrorEventImpl value,
+          $Res Function(_$SendErrorEventImpl) then) =
+      __$$SendErrorEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$SendErrorImplCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$SendErrorImpl>
-    implements _$$SendErrorImplCopyWith<$Res> {
-  __$$SendErrorImplCopyWithImpl(
-      _$SendErrorImpl _value, $Res Function(_$SendErrorImpl) _then)
+class __$$SendErrorEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$SendErrorEventImpl>
+    implements _$$SendErrorEventImplCopyWith<$Res> {
+  __$$SendErrorEventImplCopyWithImpl(
+      _$SendErrorEventImpl _value, $Res Function(_$SendErrorEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -539,7 +545,7 @@ class __$$SendErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$SendErrorImpl(
+    return _then(_$SendErrorEventImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -550,8 +556,10 @@ class __$$SendErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
-  const _$SendErrorImpl(this.message);
+class _$SendErrorEventImpl
+    with DiagnosticableTreeMixin
+    implements _SendErrorEvent {
+  const _$SendErrorEventImpl(this.message);
 
   @override
   final String message;
@@ -573,7 +581,7 @@ class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SendErrorImpl &&
+            other is _$SendErrorEventImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -583,8 +591,9 @@ class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SendErrorImplCopyWith<_$SendErrorImpl> get copyWith =>
-      __$$SendErrorImplCopyWithImpl<_$SendErrorImpl>(this, _$identity);
+  _$$SendErrorEventImplCopyWith<_$SendErrorEventImpl> get copyWith =>
+      __$$SendErrorEventImplCopyWithImpl<_$SendErrorEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -620,8 +629,8 @@ class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendError value) sendError,
-    required TResult Function(_SendPath value) sendPath,
+    required TResult Function(_SendErrorEvent value) sendError,
+    required TResult Function(_SendPathEvent value) sendPath,
   }) {
     return sendError(this);
   }
@@ -629,8 +638,8 @@ class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendError value)? sendError,
-    TResult? Function(_SendPath value)? sendPath,
+    TResult? Function(_SendErrorEvent value)? sendError,
+    TResult? Function(_SendPathEvent value)? sendPath,
   }) {
     return sendError?.call(this);
   }
@@ -638,8 +647,8 @@ class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendError value)? sendError,
-    TResult Function(_SendPath value)? sendPath,
+    TResult Function(_SendErrorEvent value)? sendError,
+    TResult Function(_SendPathEvent value)? sendPath,
     required TResult orElse(),
   }) {
     if (sendError != null) {
@@ -649,30 +658,30 @@ class _$SendErrorImpl with DiagnosticableTreeMixin implements _SendError {
   }
 }
 
-abstract class _SendError implements RecordEvent {
-  const factory _SendError(final String message) = _$SendErrorImpl;
+abstract class _SendErrorEvent implements RecordEvent {
+  const factory _SendErrorEvent(final String message) = _$SendErrorEventImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$SendErrorImplCopyWith<_$SendErrorImpl> get copyWith =>
+  _$$SendErrorEventImplCopyWith<_$SendErrorEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SendPathImplCopyWith<$Res> {
-  factory _$$SendPathImplCopyWith(
-          _$SendPathImpl value, $Res Function(_$SendPathImpl) then) =
-      __$$SendPathImplCopyWithImpl<$Res>;
+abstract class _$$SendPathEventImplCopyWith<$Res> {
+  factory _$$SendPathEventImplCopyWith(
+          _$SendPathEventImpl value, $Res Function(_$SendPathEventImpl) then) =
+      __$$SendPathEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
 
 /// @nodoc
-class __$$SendPathImplCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$SendPathImpl>
-    implements _$$SendPathImplCopyWith<$Res> {
-  __$$SendPathImplCopyWithImpl(
-      _$SendPathImpl _value, $Res Function(_$SendPathImpl) _then)
+class __$$SendPathEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$SendPathEventImpl>
+    implements _$$SendPathEventImplCopyWith<$Res> {
+  __$$SendPathEventImplCopyWithImpl(
+      _$SendPathEventImpl _value, $Res Function(_$SendPathEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -680,7 +689,7 @@ class __$$SendPathImplCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$SendPathImpl(
+    return _then(_$SendPathEventImpl(
       null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -691,8 +700,10 @@ class __$$SendPathImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
-  const _$SendPathImpl(this.path);
+class _$SendPathEventImpl
+    with DiagnosticableTreeMixin
+    implements _SendPathEvent {
+  const _$SendPathEventImpl(this.path);
 
   @override
   final String path;
@@ -714,7 +725,7 @@ class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SendPathImpl &&
+            other is _$SendPathEventImpl &&
             (identical(other.path, path) || other.path == path));
   }
 
@@ -724,8 +735,8 @@ class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SendPathImplCopyWith<_$SendPathImpl> get copyWith =>
-      __$$SendPathImplCopyWithImpl<_$SendPathImpl>(this, _$identity);
+  _$$SendPathEventImplCopyWith<_$SendPathEventImpl> get copyWith =>
+      __$$SendPathEventImplCopyWithImpl<_$SendPathEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -761,8 +772,8 @@ class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SendError value) sendError,
-    required TResult Function(_SendPath value) sendPath,
+    required TResult Function(_SendErrorEvent value) sendError,
+    required TResult Function(_SendPathEvent value) sendPath,
   }) {
     return sendPath(this);
   }
@@ -770,8 +781,8 @@ class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SendError value)? sendError,
-    TResult? Function(_SendPath value)? sendPath,
+    TResult? Function(_SendErrorEvent value)? sendError,
+    TResult? Function(_SendPathEvent value)? sendPath,
   }) {
     return sendPath?.call(this);
   }
@@ -779,8 +790,8 @@ class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SendError value)? sendError,
-    TResult Function(_SendPath value)? sendPath,
+    TResult Function(_SendErrorEvent value)? sendError,
+    TResult Function(_SendPathEvent value)? sendPath,
     required TResult orElse(),
   }) {
     if (sendPath != null) {
@@ -790,11 +801,11 @@ class _$SendPathImpl with DiagnosticableTreeMixin implements _SendPath {
   }
 }
 
-abstract class _SendPath implements RecordEvent {
-  const factory _SendPath(final String path) = _$SendPathImpl;
+abstract class _SendPathEvent implements RecordEvent {
+  const factory _SendPathEvent(final String path) = _$SendPathEventImpl;
 
   String get path;
   @JsonKey(ignore: true)
-  _$$SendPathImplCopyWith<_$SendPathImpl> get copyWith =>
+  _$$SendPathEventImplCopyWith<_$SendPathEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

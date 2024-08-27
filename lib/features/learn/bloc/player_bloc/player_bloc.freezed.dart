@@ -40,23 +40,23 @@ mixin _$PlayerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerInitial value) initial,
-    required TResult Function(_PlayerPlaying value) playing,
-    required TResult Function(_PlayerFailed value) failed,
+    required TResult Function(_PlayerInitialState value) initial,
+    required TResult Function(_PlayerPlayingState value) playing,
+    required TResult Function(_PlayerFailedState value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerInitial value)? initial,
-    TResult? Function(_PlayerPlaying value)? playing,
-    TResult? Function(_PlayerFailed value)? failed,
+    TResult? Function(_PlayerInitialState value)? initial,
+    TResult? Function(_PlayerPlayingState value)? playing,
+    TResult? Function(_PlayerFailedState value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerInitial value)? initial,
-    TResult Function(_PlayerPlaying value)? playing,
-    TResult Function(_PlayerFailed value)? failed,
+    TResult Function(_PlayerInitialState value)? initial,
+    TResult Function(_PlayerPlayingState value)? playing,
+    TResult Function(_PlayerFailedState value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,25 +81,25 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
 }
 
 /// @nodoc
-abstract class _$$PlayerInitialImplCopyWith<$Res> {
-  factory _$$PlayerInitialImplCopyWith(
-          _$PlayerInitialImpl value, $Res Function(_$PlayerInitialImpl) then) =
-      __$$PlayerInitialImplCopyWithImpl<$Res>;
+abstract class _$$PlayerInitialStateImplCopyWith<$Res> {
+  factory _$$PlayerInitialStateImplCopyWith(_$PlayerInitialStateImpl value,
+          $Res Function(_$PlayerInitialStateImpl) then) =
+      __$$PlayerInitialStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PlayerInitialImplCopyWithImpl<$Res>
-    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerInitialImpl>
-    implements _$$PlayerInitialImplCopyWith<$Res> {
-  __$$PlayerInitialImplCopyWithImpl(
-      _$PlayerInitialImpl _value, $Res Function(_$PlayerInitialImpl) _then)
+class __$$PlayerInitialStateImplCopyWithImpl<$Res>
+    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerInitialStateImpl>
+    implements _$$PlayerInitialStateImplCopyWith<$Res> {
+  __$$PlayerInitialStateImplCopyWithImpl(_$PlayerInitialStateImpl _value,
+      $Res Function(_$PlayerInitialStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PlayerInitialImpl implements _PlayerInitial {
-  const _$PlayerInitialImpl();
+class _$PlayerInitialStateImpl implements _PlayerInitialState {
+  const _$PlayerInitialStateImpl();
 
   @override
   String toString() {
@@ -109,7 +109,7 @@ class _$PlayerInitialImpl implements _PlayerInitial {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PlayerInitialImpl);
+        (other.runtimeType == runtimeType && other is _$PlayerInitialStateImpl);
   }
 
   @override
@@ -152,9 +152,9 @@ class _$PlayerInitialImpl implements _PlayerInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerInitial value) initial,
-    required TResult Function(_PlayerPlaying value) playing,
-    required TResult Function(_PlayerFailed value) failed,
+    required TResult Function(_PlayerInitialState value) initial,
+    required TResult Function(_PlayerPlayingState value) playing,
+    required TResult Function(_PlayerFailedState value) failed,
   }) {
     return initial(this);
   }
@@ -162,9 +162,9 @@ class _$PlayerInitialImpl implements _PlayerInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerInitial value)? initial,
-    TResult? Function(_PlayerPlaying value)? playing,
-    TResult? Function(_PlayerFailed value)? failed,
+    TResult? Function(_PlayerInitialState value)? initial,
+    TResult? Function(_PlayerPlayingState value)? playing,
+    TResult? Function(_PlayerFailedState value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -172,9 +172,9 @@ class _$PlayerInitialImpl implements _PlayerInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerInitial value)? initial,
-    TResult Function(_PlayerPlaying value)? playing,
-    TResult Function(_PlayerFailed value)? failed,
+    TResult Function(_PlayerInitialState value)? initial,
+    TResult Function(_PlayerPlayingState value)? playing,
+    TResult Function(_PlayerFailedState value)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -184,30 +184,30 @@ class _$PlayerInitialImpl implements _PlayerInitial {
   }
 }
 
-abstract class _PlayerInitial implements PlayerState {
-  const factory _PlayerInitial() = _$PlayerInitialImpl;
+abstract class _PlayerInitialState implements PlayerState {
+  const factory _PlayerInitialState() = _$PlayerInitialStateImpl;
 }
 
 /// @nodoc
-abstract class _$$PlayerPlayingImplCopyWith<$Res> {
-  factory _$$PlayerPlayingImplCopyWith(
-          _$PlayerPlayingImpl value, $Res Function(_$PlayerPlayingImpl) then) =
-      __$$PlayerPlayingImplCopyWithImpl<$Res>;
+abstract class _$$PlayerPlayingStateImplCopyWith<$Res> {
+  factory _$$PlayerPlayingStateImplCopyWith(_$PlayerPlayingStateImpl value,
+          $Res Function(_$PlayerPlayingStateImpl) then) =
+      __$$PlayerPlayingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PlayerPlayingImplCopyWithImpl<$Res>
-    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerPlayingImpl>
-    implements _$$PlayerPlayingImplCopyWith<$Res> {
-  __$$PlayerPlayingImplCopyWithImpl(
-      _$PlayerPlayingImpl _value, $Res Function(_$PlayerPlayingImpl) _then)
+class __$$PlayerPlayingStateImplCopyWithImpl<$Res>
+    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerPlayingStateImpl>
+    implements _$$PlayerPlayingStateImplCopyWith<$Res> {
+  __$$PlayerPlayingStateImplCopyWithImpl(_$PlayerPlayingStateImpl _value,
+      $Res Function(_$PlayerPlayingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PlayerPlayingImpl implements _PlayerPlaying {
-  const _$PlayerPlayingImpl();
+class _$PlayerPlayingStateImpl implements _PlayerPlayingState {
+  const _$PlayerPlayingStateImpl();
 
   @override
   String toString() {
@@ -217,7 +217,7 @@ class _$PlayerPlayingImpl implements _PlayerPlaying {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PlayerPlayingImpl);
+        (other.runtimeType == runtimeType && other is _$PlayerPlayingStateImpl);
   }
 
   @override
@@ -260,9 +260,9 @@ class _$PlayerPlayingImpl implements _PlayerPlaying {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerInitial value) initial,
-    required TResult Function(_PlayerPlaying value) playing,
-    required TResult Function(_PlayerFailed value) failed,
+    required TResult Function(_PlayerInitialState value) initial,
+    required TResult Function(_PlayerPlayingState value) playing,
+    required TResult Function(_PlayerFailedState value) failed,
   }) {
     return playing(this);
   }
@@ -270,9 +270,9 @@ class _$PlayerPlayingImpl implements _PlayerPlaying {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerInitial value)? initial,
-    TResult? Function(_PlayerPlaying value)? playing,
-    TResult? Function(_PlayerFailed value)? failed,
+    TResult? Function(_PlayerInitialState value)? initial,
+    TResult? Function(_PlayerPlayingState value)? playing,
+    TResult? Function(_PlayerFailedState value)? failed,
   }) {
     return playing?.call(this);
   }
@@ -280,9 +280,9 @@ class _$PlayerPlayingImpl implements _PlayerPlaying {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerInitial value)? initial,
-    TResult Function(_PlayerPlaying value)? playing,
-    TResult Function(_PlayerFailed value)? failed,
+    TResult Function(_PlayerInitialState value)? initial,
+    TResult Function(_PlayerPlayingState value)? playing,
+    TResult Function(_PlayerFailedState value)? failed,
     required TResult orElse(),
   }) {
     if (playing != null) {
@@ -292,30 +292,30 @@ class _$PlayerPlayingImpl implements _PlayerPlaying {
   }
 }
 
-abstract class _PlayerPlaying implements PlayerState {
-  const factory _PlayerPlaying() = _$PlayerPlayingImpl;
+abstract class _PlayerPlayingState implements PlayerState {
+  const factory _PlayerPlayingState() = _$PlayerPlayingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$PlayerFailedImplCopyWith<$Res> {
-  factory _$$PlayerFailedImplCopyWith(
-          _$PlayerFailedImpl value, $Res Function(_$PlayerFailedImpl) then) =
-      __$$PlayerFailedImplCopyWithImpl<$Res>;
+abstract class _$$PlayerFailedStateImplCopyWith<$Res> {
+  factory _$$PlayerFailedStateImplCopyWith(_$PlayerFailedStateImpl value,
+          $Res Function(_$PlayerFailedStateImpl) then) =
+      __$$PlayerFailedStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$PlayerFailedImplCopyWithImpl<$Res>
-    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerFailedImpl>
-    implements _$$PlayerFailedImplCopyWith<$Res> {
-  __$$PlayerFailedImplCopyWithImpl(
-      _$PlayerFailedImpl _value, $Res Function(_$PlayerFailedImpl) _then)
+class __$$PlayerFailedStateImplCopyWithImpl<$Res>
+    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerFailedStateImpl>
+    implements _$$PlayerFailedStateImplCopyWith<$Res> {
+  __$$PlayerFailedStateImplCopyWithImpl(_$PlayerFailedStateImpl _value,
+      $Res Function(_$PlayerFailedStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$PlayerFailedImpl implements _PlayerFailed {
-  const _$PlayerFailedImpl();
+class _$PlayerFailedStateImpl implements _PlayerFailedState {
+  const _$PlayerFailedStateImpl();
 
   @override
   String toString() {
@@ -325,7 +325,7 @@ class _$PlayerFailedImpl implements _PlayerFailed {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PlayerFailedImpl);
+        (other.runtimeType == runtimeType && other is _$PlayerFailedStateImpl);
   }
 
   @override
@@ -368,9 +368,9 @@ class _$PlayerFailedImpl implements _PlayerFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PlayerInitial value) initial,
-    required TResult Function(_PlayerPlaying value) playing,
-    required TResult Function(_PlayerFailed value) failed,
+    required TResult Function(_PlayerInitialState value) initial,
+    required TResult Function(_PlayerPlayingState value) playing,
+    required TResult Function(_PlayerFailedState value) failed,
   }) {
     return failed(this);
   }
@@ -378,9 +378,9 @@ class _$PlayerFailedImpl implements _PlayerFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayerInitial value)? initial,
-    TResult? Function(_PlayerPlaying value)? playing,
-    TResult? Function(_PlayerFailed value)? failed,
+    TResult? Function(_PlayerInitialState value)? initial,
+    TResult? Function(_PlayerPlayingState value)? playing,
+    TResult? Function(_PlayerFailedState value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -388,9 +388,9 @@ class _$PlayerFailedImpl implements _PlayerFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayerInitial value)? initial,
-    TResult Function(_PlayerPlaying value)? playing,
-    TResult Function(_PlayerFailed value)? failed,
+    TResult Function(_PlayerInitialState value)? initial,
+    TResult Function(_PlayerPlayingState value)? playing,
+    TResult Function(_PlayerFailedState value)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -400,8 +400,8 @@ class _$PlayerFailedImpl implements _PlayerFailed {
   }
 }
 
-abstract class _PlayerFailed implements PlayerState {
-  const factory _PlayerFailed() = _$PlayerFailedImpl;
+abstract class _PlayerFailedState implements PlayerState {
+  const factory _PlayerFailedState() = _$PlayerFailedStateImpl;
 }
 
 /// @nodoc
@@ -425,17 +425,17 @@ mixin _$PlayerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PlayAudio value) playAudio,
+    required TResult Function(_PlayAudioEvent value) playAudio,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayAudio value)? playAudio,
+    TResult? Function(_PlayAudioEvent value)? playAudio,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayAudio value)? playAudio,
+    TResult Function(_PlayAudioEvent value)? playAudio,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -479,22 +479,22 @@ class _$PlayerEventCopyWithImpl<$Res, $Val extends PlayerEvent>
 }
 
 /// @nodoc
-abstract class _$$PlayAudioImplCopyWith<$Res>
+abstract class _$$PlayAudioEventImplCopyWith<$Res>
     implements $PlayerEventCopyWith<$Res> {
-  factory _$$PlayAudioImplCopyWith(
-          _$PlayAudioImpl value, $Res Function(_$PlayAudioImpl) then) =
-      __$$PlayAudioImplCopyWithImpl<$Res>;
+  factory _$$PlayAudioEventImplCopyWith(_$PlayAudioEventImpl value,
+          $Res Function(_$PlayAudioEventImpl) then) =
+      __$$PlayAudioEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String link});
 }
 
 /// @nodoc
-class __$$PlayAudioImplCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$PlayAudioImpl>
-    implements _$$PlayAudioImplCopyWith<$Res> {
-  __$$PlayAudioImplCopyWithImpl(
-      _$PlayAudioImpl _value, $Res Function(_$PlayAudioImpl) _then)
+class __$$PlayAudioEventImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$PlayAudioEventImpl>
+    implements _$$PlayAudioEventImplCopyWith<$Res> {
+  __$$PlayAudioEventImplCopyWithImpl(
+      _$PlayAudioEventImpl _value, $Res Function(_$PlayAudioEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -502,7 +502,7 @@ class __$$PlayAudioImplCopyWithImpl<$Res>
   $Res call({
     Object? link = null,
   }) {
-    return _then(_$PlayAudioImpl(
+    return _then(_$PlayAudioEventImpl(
       null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
@@ -513,8 +513,8 @@ class __$$PlayAudioImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PlayAudioImpl implements _PlayAudio {
-  const _$PlayAudioImpl(this.link);
+class _$PlayAudioEventImpl implements _PlayAudioEvent {
+  const _$PlayAudioEventImpl(this.link);
 
   @override
   final String link;
@@ -528,7 +528,7 @@ class _$PlayAudioImpl implements _PlayAudio {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PlayAudioImpl &&
+            other is _$PlayAudioEventImpl &&
             (identical(other.link, link) || other.link == link));
   }
 
@@ -538,8 +538,9 @@ class _$PlayAudioImpl implements _PlayAudio {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PlayAudioImplCopyWith<_$PlayAudioImpl> get copyWith =>
-      __$$PlayAudioImplCopyWithImpl<_$PlayAudioImpl>(this, _$identity);
+  _$$PlayAudioEventImplCopyWith<_$PlayAudioEventImpl> get copyWith =>
+      __$$PlayAudioEventImplCopyWithImpl<_$PlayAudioEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -572,7 +573,7 @@ class _$PlayAudioImpl implements _PlayAudio {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PlayAudio value) playAudio,
+    required TResult Function(_PlayAudioEvent value) playAudio,
   }) {
     return playAudio(this);
   }
@@ -580,7 +581,7 @@ class _$PlayAudioImpl implements _PlayAudio {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PlayAudio value)? playAudio,
+    TResult? Function(_PlayAudioEvent value)? playAudio,
   }) {
     return playAudio?.call(this);
   }
@@ -588,7 +589,7 @@ class _$PlayAudioImpl implements _PlayAudio {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PlayAudio value)? playAudio,
+    TResult Function(_PlayAudioEvent value)? playAudio,
     required TResult orElse(),
   }) {
     if (playAudio != null) {
@@ -598,13 +599,13 @@ class _$PlayAudioImpl implements _PlayAudio {
   }
 }
 
-abstract class _PlayAudio implements PlayerEvent {
-  const factory _PlayAudio(final String link) = _$PlayAudioImpl;
+abstract class _PlayAudioEvent implements PlayerEvent {
+  const factory _PlayAudioEvent(final String link) = _$PlayAudioEventImpl;
 
   @override
   String get link;
   @override
   @JsonKey(ignore: true)
-  _$$PlayAudioImplCopyWith<_$PlayAudioImpl> get copyWith =>
+  _$$PlayAudioEventImplCopyWith<_$PlayAudioEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
