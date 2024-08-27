@@ -32,7 +32,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   late AuthorizationProvider _provider;
   bool isFirstLoginCompleted = false;
 
-  AuthBloc({required this.userRepository, required this.vk}) : super(const AuthState.initial()) {
+  AuthBloc({required this.userRepository, required this.vk})
+      : super(const AuthState.initial()) {
     on<_RequestCodeEvent>(_handleRequestCode);
     on<_RegisterUserEvent>(_handleRegisterUser);
     on<_SignInWithVKEvent>(_handleSignInWithVK);

@@ -157,8 +157,9 @@ class MainApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) =>
-                  AuthBloc(userRepository: context.read<IUserRepository>(), vk: VKLogin())),
+              create: (context) => AuthBloc(
+                  userRepository: context.read<IUserRepository>(),
+                  vk: VKLogin())),
           BlocProvider(
               create: (context) => ProfileBloc(
                     userRepository: context.read<IUserRepository>(),
