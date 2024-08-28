@@ -262,6 +262,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
           event.subtopic.wordInfoList.map((e) => e.word).toList();
       wordsInfoIDs.addAll(result.map((wordInfo) => wordInfo.id));
       wordsInfoProgress.addAll(result.map((wordInfo) => wordInfo.progress));
+      //TODO Remove take placeholder and replace to no words for learning state
       words.addAll(result.isEmpty
           ? placeholders.take(4)
           : result.map((wordInfo) => wordInfo.word).toList());
