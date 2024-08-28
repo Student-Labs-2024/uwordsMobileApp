@@ -31,7 +31,7 @@ mixin _$TrainingState {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -51,7 +51,7 @@ mixin _$TrainingState {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -71,7 +71,7 @@ mixin _$TrainingState {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -178,7 +178,7 @@ class _$TrainingInitialStateImpl implements _TrainingInitialState {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -201,7 +201,7 @@ class _$TrainingInitialStateImpl implements _TrainingInitialState {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -224,7 +224,7 @@ class _$TrainingInitialStateImpl implements _TrainingInitialState {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -335,7 +335,7 @@ class _$TrainingIsLoadingStateImpl implements _TrainingIsLoadingState {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -358,7 +358,7 @@ class _$TrainingIsLoadingStateImpl implements _TrainingIsLoadingState {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -381,7 +381,7 @@ class _$TrainingIsLoadingStateImpl implements _TrainingIsLoadingState {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -515,7 +515,7 @@ class _$TrainingFailedStateImpl implements _TrainingFailedState {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -538,7 +538,7 @@ class _$TrainingFailedStateImpl implements _TrainingFailedState {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -561,7 +561,7 @@ class _$TrainingFailedStateImpl implements _TrainingFailedState {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -715,7 +715,7 @@ class _$Screen1StateImpl implements _Screen1State {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -738,7 +738,7 @@ class _$Screen1StateImpl implements _Screen1State {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -761,7 +761,7 @@ class _$Screen1StateImpl implements _Screen1State {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -940,7 +940,7 @@ class _$Screen2StateImpl implements _Screen2State {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -963,7 +963,7 @@ class _$Screen2StateImpl implements _Screen2State {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -986,7 +986,7 @@ class _$Screen2StateImpl implements _Screen2State {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -1146,7 +1146,7 @@ class _$Screen3StateImpl implements _Screen3State {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -1169,7 +1169,7 @@ class _$Screen3StateImpl implements _Screen3State {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -1192,7 +1192,7 @@ class _$Screen3StateImpl implements _Screen3State {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -1279,7 +1279,7 @@ abstract class _$$Screen4StateImplCopyWith<$Res> {
       {ValueKey<dynamic> valueKey,
       bool cantHear,
       WordModel word,
-      List<WordModel> selectableWords,
+      List<String> selectableImages,
       int progress});
 }
 
@@ -1297,7 +1297,7 @@ class __$$Screen4StateImplCopyWithImpl<$Res>
     Object? valueKey = null,
     Object? cantHear = null,
     Object? word = null,
-    Object? selectableWords = null,
+    Object? selectableImages = null,
     Object? progress = null,
   }) {
     return _then(_$Screen4StateImpl(
@@ -1313,10 +1313,10 @@ class __$$Screen4StateImplCopyWithImpl<$Res>
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as WordModel,
-      selectableWords: null == selectableWords
-          ? _value._selectableWords
-          : selectableWords // ignore: cast_nullable_to_non_nullable
-              as List<WordModel>,
+      selectableImages: null == selectableImages
+          ? _value._selectableImages
+          : selectableImages // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       progress: null == progress
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
@@ -1332,9 +1332,9 @@ class _$Screen4StateImpl implements _Screen4State {
       {required this.valueKey,
       required this.cantHear,
       required this.word,
-      required final List<WordModel> selectableWords,
+      required final List<String> selectableImages,
       required this.progress})
-      : _selectableWords = selectableWords;
+      : _selectableImages = selectableImages;
 
   @override
   final ValueKey<dynamic> valueKey;
@@ -1342,12 +1342,13 @@ class _$Screen4StateImpl implements _Screen4State {
   final bool cantHear;
   @override
   final WordModel word;
-  final List<WordModel> _selectableWords;
+  final List<String> _selectableImages;
   @override
-  List<WordModel> get selectableWords {
-    if (_selectableWords is EqualUnmodifiableListView) return _selectableWords;
+  List<String> get selectableImages {
+    if (_selectableImages is EqualUnmodifiableListView)
+      return _selectableImages;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_selectableWords);
+    return EqualUnmodifiableListView(_selectableImages);
   }
 
   @override
@@ -1355,7 +1356,7 @@ class _$Screen4StateImpl implements _Screen4State {
 
   @override
   String toString() {
-    return 'TrainingState.screen4(valueKey: $valueKey, cantHear: $cantHear, word: $word, selectableWords: $selectableWords, progress: $progress)';
+    return 'TrainingState.screen4(valueKey: $valueKey, cantHear: $cantHear, word: $word, selectableImages: $selectableImages, progress: $progress)';
   }
 
   @JsonKey(ignore: true)
@@ -1380,13 +1381,13 @@ class _$Screen4StateImpl implements _Screen4State {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
         finalScreen,
   }) {
-    return screen4(valueKey, cantHear, word, selectableWords, progress);
+    return screen4(valueKey, cantHear, word, selectableImages, progress);
   }
 
   @override
@@ -1403,13 +1404,13 @@ class _$Screen4StateImpl implements _Screen4State {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
         finalScreen,
   }) {
-    return screen4?.call(valueKey, cantHear, word, selectableWords, progress);
+    return screen4?.call(valueKey, cantHear, word, selectableImages, progress);
   }
 
   @override
@@ -1426,7 +1427,7 @@ class _$Screen4StateImpl implements _Screen4State {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -1434,7 +1435,7 @@ class _$Screen4StateImpl implements _Screen4State {
     required TResult orElse(),
   }) {
     if (screen4 != null) {
-      return screen4(valueKey, cantHear, word, selectableWords, progress);
+      return screen4(valueKey, cantHear, word, selectableImages, progress);
     }
     return orElse();
   }
@@ -1494,13 +1495,13 @@ abstract class _Screen4State implements TrainingState {
       {required final ValueKey<dynamic> valueKey,
       required final bool cantHear,
       required final WordModel word,
-      required final List<WordModel> selectableWords,
+      required final List<String> selectableImages,
       required final int progress}) = _$Screen4StateImpl;
 
   ValueKey<dynamic> get valueKey;
   bool get cantHear;
   WordModel get word;
-  List<WordModel> get selectableWords;
+  List<String> get selectableImages;
   int get progress;
   @JsonKey(ignore: true)
   _$$Screen4StateImplCopyWith<_$Screen4StateImpl> get copyWith =>
@@ -1617,7 +1618,7 @@ class _$FinalScreenStateImpl implements _FinalScreenState {
             ValueKey<dynamic> valueKey, WordModel word, int progress)
         screen3,
     required TResult Function(ValueKey<dynamic> valueKey, bool cantHear,
-            WordModel word, List<WordModel> selectableWords, int progress)
+            WordModel word, List<String> selectableImages, int progress)
         screen4,
     required TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)
@@ -1640,7 +1641,7 @@ class _$FinalScreenStateImpl implements _FinalScreenState {
     TResult? Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult? Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult? Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?
@@ -1663,7 +1664,7 @@ class _$FinalScreenStateImpl implements _FinalScreenState {
     TResult Function(ValueKey<dynamic> valueKey, WordModel word, int progress)?
         screen3,
     TResult Function(ValueKey<dynamic> valueKey, bool cantHear, WordModel word,
-            List<WordModel> selectableWords, int progress)?
+            List<String> selectableImages, int progress)?
         screen4,
     TResult Function(ValueKey<dynamic> valueKey, List<WordModel> words,
             List<int> newProgress, int progress)?

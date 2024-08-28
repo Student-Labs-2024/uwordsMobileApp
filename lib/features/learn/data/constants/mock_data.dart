@@ -25,6 +25,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031600000),
             frequency: 87,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 0),
       ]),
   Subtopic(
@@ -48,6 +53,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031100000),
             frequency: 87,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 0),
         WordInfo(
             id: 6,
@@ -62,6 +72,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031100000),
             frequency: 87,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 0),
       ]),
   Subtopic(
@@ -85,6 +100,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031200000),
             frequency: 20,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 27),
         WordInfo(
             id: 6,
@@ -99,6 +119,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031300000),
             frequency: 10,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 51),
         WordInfo(
             id: 6,
@@ -113,6 +138,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031400000),
             frequency: 40,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 100),
       ]),
   Subtopic(
@@ -136,6 +166,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031200000),
             frequency: 87,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 0),
         WordInfo(
             id: 6,
@@ -150,6 +185,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031300000),
             frequency: 87,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 0),
       ]),
   Subtopic(
@@ -173,6 +213,11 @@ final Topic mockTopic = Topic(topicTitle: "Mock data", subtopics: [
             userId: 6,
             latestStudy: DateTime.fromMillisecondsSinceEpoch(1641031600000),
             frequency: 87,
+            additionalPictures: [
+              "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+              "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+            ],
             progress: 0),
       ]),
 ]);
@@ -197,6 +242,11 @@ final Subtopic subtopicTest = Subtopic(
           userId: 0,
           latestStudy: null,
           frequency: 0,
+          additionalPictures: [
+            "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+          ],
           progress: 1),
       WordInfo(
           id: 1,
@@ -210,6 +260,11 @@ final Subtopic subtopicTest = Subtopic(
           userId: 1,
           latestStudy: null,
           frequency: 0,
+          additionalPictures: [
+            "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+          ],
           progress: 0),
       WordInfo(
           id: 2,
@@ -223,6 +278,11 @@ final Subtopic subtopicTest = Subtopic(
           userId: 2,
           latestStudy: null,
           frequency: 0,
+          additionalPictures: [
+            "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+          ],
           progress: 2),
       WordInfo(
           id: 3,
@@ -236,6 +296,11 @@ final Subtopic subtopicTest = Subtopic(
           userId: 3,
           latestStudy: null,
           frequency: 0,
+          additionalPictures: [
+            "https://app.big-nose.ru:9100/uwords-picture/cartoon.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/incredible.jpg",
+            "https://app.big-nose.ru:9100/uwords-picture/definite.jpg"
+          ],
           progress: 3),
     ]);
 final mockTopicWithOneSubtopic =

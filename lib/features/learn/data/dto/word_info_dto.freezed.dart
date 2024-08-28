@@ -32,6 +32,8 @@ mixin _$WordInfoDto {
   int get frequency => throw _privateConstructorUsedError;
   @JsonKey(name: "progress", defaultValue: 0)
   int get progress => throw _privateConstructorUsedError;
+  @JsonKey(name: "additional_pictures", defaultValue: [])
+  List<String> get additionalPictures => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +53,9 @@ abstract class $WordInfoDtoCopyWith<$Res> {
       @JsonKey(name: "user_id", defaultValue: 0) int userId,
       @JsonKey(name: "latest_study", defaultValue: null) DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) int frequency,
-      @JsonKey(name: "progress", defaultValue: 0) int progress});
+      @JsonKey(name: "progress", defaultValue: 0) int progress,
+      @JsonKey(name: "additional_pictures", defaultValue: [])
+      List<String> additionalPictures});
 
   $WordModelDtoCopyWith<$Res> get word;
 }
@@ -75,6 +79,7 @@ class _$WordInfoDtoCopyWithImpl<$Res, $Val extends WordInfoDto>
     Object? latestStudy = freezed,
     Object? frequency = null,
     Object? progress = null,
+    Object? additionalPictures = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,6 +106,10 @@ class _$WordInfoDtoCopyWithImpl<$Res, $Val extends WordInfoDto>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
+      additionalPictures: null == additionalPictures
+          ? _value.additionalPictures
+          : additionalPictures // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 
@@ -127,7 +136,9 @@ abstract class _$$WordInfoDtoImplCopyWith<$Res>
       @JsonKey(name: "user_id", defaultValue: 0) int userId,
       @JsonKey(name: "latest_study", defaultValue: null) DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) int frequency,
-      @JsonKey(name: "progress", defaultValue: 0) int progress});
+      @JsonKey(name: "progress", defaultValue: 0) int progress,
+      @JsonKey(name: "additional_pictures", defaultValue: [])
+      List<String> additionalPictures});
 
   @override
   $WordModelDtoCopyWith<$Res> get word;
@@ -150,6 +161,7 @@ class __$$WordInfoDtoImplCopyWithImpl<$Res>
     Object? latestStudy = freezed,
     Object? frequency = null,
     Object? progress = null,
+    Object? additionalPictures = null,
   }) {
     return _then(_$WordInfoDtoImpl(
       id: null == id
@@ -176,6 +188,10 @@ class __$$WordInfoDtoImplCopyWithImpl<$Res>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
+      additionalPictures: null == additionalPictures
+          ? _value._additionalPictures
+          : additionalPictures // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -190,7 +206,10 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
       @JsonKey(name: "latest_study", defaultValue: null)
       required this.latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) required this.frequency,
-      @JsonKey(name: "progress", defaultValue: 0) required this.progress});
+      @JsonKey(name: "progress", defaultValue: 0) required this.progress,
+      @JsonKey(name: "additional_pictures", defaultValue: [])
+      required final List<String> additionalPictures})
+      : _additionalPictures = additionalPictures;
 
   factory _$WordInfoDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$WordInfoDtoImplFromJson(json);
@@ -213,10 +232,19 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
   @override
   @JsonKey(name: "progress", defaultValue: 0)
   final int progress;
+  final List<String> _additionalPictures;
+  @override
+  @JsonKey(name: "additional_pictures", defaultValue: [])
+  List<String> get additionalPictures {
+    if (_additionalPictures is EqualUnmodifiableListView)
+      return _additionalPictures;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_additionalPictures);
+  }
 
   @override
   String toString() {
-    return 'WordInfoDto(id: $id, word: $word, userId: $userId, latestStudy: $latestStudy, frequency: $frequency, progress: $progress)';
+    return 'WordInfoDto(id: $id, word: $word, userId: $userId, latestStudy: $latestStudy, frequency: $frequency, progress: $progress, additionalPictures: $additionalPictures)';
   }
 
   @override
@@ -232,13 +260,22 @@ class _$WordInfoDtoImpl implements _WordInfoDto {
             (identical(other.frequency, frequency) ||
                 other.frequency == frequency) &&
             (identical(other.progress, progress) ||
-                other.progress == progress));
+                other.progress == progress) &&
+            const DeepCollectionEquality()
+                .equals(other._additionalPictures, _additionalPictures));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, word, userId, latestStudy, frequency, progress);
+      runtimeType,
+      id,
+      word,
+      userId,
+      latestStudy,
+      frequency,
+      progress,
+      const DeepCollectionEquality().hash(_additionalPictures));
 
   @JsonKey(ignore: true)
   @override
@@ -262,8 +299,9 @@ abstract class _WordInfoDto implements WordInfoDto {
       @JsonKey(name: "latest_study", defaultValue: null)
       required final DateTime? latestStudy,
       @JsonKey(name: "frequency", defaultValue: 0) required final int frequency,
-      @JsonKey(name: "progress", defaultValue: 0)
-      required final int progress}) = _$WordInfoDtoImpl;
+      @JsonKey(name: "progress", defaultValue: 0) required final int progress,
+      @JsonKey(name: "additional_pictures", defaultValue: [])
+      required final List<String> additionalPictures}) = _$WordInfoDtoImpl;
 
   factory _WordInfoDto.fromJson(Map<String, dynamic> json) =
       _$WordInfoDtoImpl.fromJson;
@@ -286,6 +324,9 @@ abstract class _WordInfoDto implements WordInfoDto {
   @override
   @JsonKey(name: "progress", defaultValue: 0)
   int get progress;
+  @override
+  @JsonKey(name: "additional_pictures", defaultValue: [])
+  List<String> get additionalPictures;
   @override
   @JsonKey(ignore: true)
   _$$WordInfoDtoImplCopyWith<_$WordInfoDtoImpl> get copyWith =>

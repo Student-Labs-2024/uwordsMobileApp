@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -154,7 +156,14 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
       body: BlocConsumer<TrainingBloc, TrainingState>(
         listener: (context, state) {
           state.maybeWhen(
-              initial: () {}, loading: () {}, failed: (e) {}, orElse: () {});
+              initial: () {},
+              loading: () {},
+              failed: (e) {
+                // TODO add a screen with the message that the words have been learned today
+                log(OtherLearnConstants.allLearned);
+                quit();
+              },
+              orElse: () {});
         },
         builder: (context, state) {
           return Stack(children: [
@@ -188,11 +197,11 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
                 hp: hp,
               ),
               screen4:
-                  (valueKey, isCantHear, word, selectableWords, progress) =>
+                  (valueKey, isCantHear, word, selectableImages, progress) =>
                       LearnWordPage4(
                 key: valueKey,
                 word: word,
-                selectableWords: selectableWords,
+                selectableImages: selectableImages,
                 goNextScreen: getBottomSheet,
                 quit: quit,
                 progress: progress,
