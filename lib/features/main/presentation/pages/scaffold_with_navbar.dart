@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:uwords/features/auth/bloc/auth_bloc.dart';
-import 'package:uwords/features/global/data/constants/global_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 import 'package:uwords/features/grade/bloc/grade_bloc.dart';
-import 'package:uwords/features/main/data/constants/box_shadows.dart';
-import 'package:uwords/features/main/data/constants/scaffold_with_navbar_paddings.dart';
-import 'package:uwords/features/main/data/constants/scaffold_with_navbar_sizes.dart';
+import 'package:uwords/features/main/presentation/constants/box_shadows.dart';
+import 'package:uwords/features/main/presentation/constants/scaffold_with_navbar_paddings.dart';
+import 'package:uwords/features/main/presentation/constants/scaffold_with_navbar_sizes.dart';
 import 'package:uwords/theme/image_source.dart';
 import '../../../../theme/app_colors.dart';
 

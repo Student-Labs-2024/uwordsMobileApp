@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
-import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
-import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_paddings.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/widgets/activities_tile.dart';
 
 class ActivitiesScreen extends StatefulWidget {

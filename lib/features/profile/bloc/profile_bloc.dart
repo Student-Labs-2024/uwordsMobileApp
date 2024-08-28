@@ -8,7 +8,7 @@ import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
-import 'package:uwords/features/profile/data/constants/other_profile_constants.dart';
+import 'package:uwords/features/profile/prezentation/constants/other_profile_constants.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_state.dart';

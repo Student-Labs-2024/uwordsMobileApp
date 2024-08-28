@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:uwords/features/global/data/constants/global_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 
 class GradientCircularProgressIndicator extends StatelessWidget {
   final double radius;

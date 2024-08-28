@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/global/domain/achievement.dart';
-import 'package:uwords/features/global/widgets/custom_progress_bar.dart';
-import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
-import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/custom_progress_bar.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_shadows.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;

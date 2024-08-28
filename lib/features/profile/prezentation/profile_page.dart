@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:uwords/features/global/data/constants/global_sizes.dart';
-import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
-import 'package:uwords/features/profile/data/constants/other_profile_constants.dart';
-import 'package:uwords/features/profile/data/constants/profile_paddings.dart';
-import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
+import 'package:uwords/features/profile/prezentation/constants/other_profile_constants.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_paddings.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/screens/achievements_screen.dart';
 import 'package:uwords/features/profile/prezentation/screens/statistics_screen.dart';
 import 'package:uwords/features/profile/prezentation/widgets/nav_button.dart';
