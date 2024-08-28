@@ -151,7 +151,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               },
                             ),
                           )
-                        : const SizedBox(),
+                        : null,
                   ),
                   onChanged: (value) {
                     _updateErrorState();
