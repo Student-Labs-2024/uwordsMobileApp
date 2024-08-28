@@ -66,28 +66,34 @@ class _AnimatedSubtopicState extends State<AnimatedSubtopic> {
     await Future.delayed(const Duration(
         seconds:
             OtherLearnConstants.animatedSubtopicProgressMediumSecondsPart));
-    setState(() {
-      animatedSubtopicIconProgress =
-          OtherLearnConstants.animatedSubtopicProgressMedium;
-      animatedSubtopicProgress =
-          OtherLearnConstants.animatedSubtopicProgressMax;
-    });
+    if (mounted) {
+      setState(() {
+        animatedSubtopicIconProgress =
+            OtherLearnConstants.animatedSubtopicProgressMedium;
+        animatedSubtopicProgress =
+            OtherLearnConstants.animatedSubtopicProgressMax;
+      });
+    }
     await Future.delayed(const Duration(
         seconds: OtherLearnConstants.animatedSubtopicProgressSmallSecondsPart));
-    setState(() {
-      animatedSubtopicIconProgress =
-          OtherLearnConstants.animatedSubtopicProgressMax;
-    });
+    if (mounted) {
+      setState(() {
+        animatedSubtopicIconProgress =
+            OtherLearnConstants.animatedSubtopicProgressMax;
+      });
+    }
     await Future.delayed(const Duration(
         seconds: OtherLearnConstants.animatedSubtopicProgressSmallSecondsPart));
-    setState(() {
-      duration = Duration.zero;
-      backGradient = AppColors.progressBarRedGradientBack;
-      progressGradient = AppColors.progressBarRedGradient;
-      progressWidth = 0;
-      animatedSubtopicProgress = 0;
-      animatedSubtopicIconProgress = 0;
-    });
+    if (mounted) {
+      setState(() {
+        duration = Duration.zero;
+        backGradient = AppColors.progressBarRedGradientBack;
+        progressGradient = AppColors.progressBarRedGradient;
+        progressWidth = 0;
+        animatedSubtopicProgress = 0;
+        animatedSubtopicIconProgress = 0;
+      });
+    }
   }
 
   @override
