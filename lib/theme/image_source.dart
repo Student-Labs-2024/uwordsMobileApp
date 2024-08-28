@@ -109,4 +109,5 @@ class AppImageSource {
   static const String grade4Active = 'assets/icons/grade4_active_icon.png';
   static const String grade5Active = 'assets/icons/grade5_active_icon.png';
   static const String gradeBack = 'assets/icons/grade_back.svg';
+  static const String emptyProfile = 'assets/images/empty_profile.png';
 }

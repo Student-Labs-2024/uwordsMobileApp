@@ -11,9 +11,11 @@ import 'package:uwords/features/profile/prezentation/screens/achievements_screen
 import 'package:uwords/features/profile/prezentation/screens/statistics_screen.dart';
 import 'package:uwords/features/profile/prezentation/widgets/nav_button.dart';
 import 'package:uwords/features/profile/prezentation/widgets/options_button.dart';
+import 'package:uwords/features/subscription/bloc/subscription_bloc/subscription_bloc.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/image_source.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -71,27 +73,56 @@ class _ProfilePageState extends State<ProfilePage> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        GlobalSizes.borderRadiusCircle),
-                                    border: const GradientBoxBorder(
-                                      gradient: AppColors.purpleGradient,
-                                      width: ProfileSizes.avatarBorder,
-                                    ),
-                                  ),
-                                  child: CustomImageNetworkView(
-                                      imageSource: avatarUrl == ''
-                                          ? OtherProfileConstants
-                                              .haventAvatarUrl
-                                          : avatarUrl,
-                                      width: MediaQuery.of(context).size.width *
-                                          ProfileSizes.avatarSize,
-                                      height:
-                                          MediaQuery.of(context).size.width *
-                                              ProfileSizes.avatarSize,
-                                      clipRadius:
-                                          GlobalSizes.borderRadiusCircle),
+                                BlocBuilder<SubscriptionBloc,
+                                    SubscriptionState>(
+                                  builder: (context, state) {
+                                    return state.maybeWhen(
+                                      orElse: () => const SizedBox(),
+                                      subscriptionStatus: (isActive, date) =>
+                                          DecoratedBox(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                              GlobalSizes.borderRadiusCircle),
+                                          border: isActive
+                                              ? const GradientBoxBorder(
+                                                  gradient:
+                                                      AppColors.purpleGradient,
+                                                  width:
+                                                      ProfileSizes.avatarBorder,
+                                                )
+                                              : null,
+                                        ),
+                                        child: avatarUrl == ''
+                                            ? ClipRRect(
+                                                borderRadius: BorderRadius
+                                                    .circular(GlobalSizes
+                                                        .borderRadiusCircle),
+                                                child: Image.asset(
+                                                  AppImageSource.emptyProfile,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      ProfileSizes.avatarSize,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      ProfileSizes.avatarSize,
+                                                ))
+                                            : CustomImageNetworkView(
+                                                imageSource: avatarUrl,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    ProfileSizes.avatarSize,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    ProfileSizes.avatarSize,
+                                                clipRadius: GlobalSizes
+                                                    .borderRadiusCircle),
+                                      ),
+                                    );
+                                  },
                                 ),
                                 const SizedBox(
                                     height: ProfileSizes.headerSpacer),
