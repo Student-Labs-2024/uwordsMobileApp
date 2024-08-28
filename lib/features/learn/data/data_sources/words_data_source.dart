@@ -6,8 +6,8 @@ import 'package:uwords/common/utils/exception_check.dart';
 import 'package:uwords/common/utils/jwt.dart';
 import 'package:uwords/features/learn/data/data_sources/interface_words_data_source.dart';
 import 'package:uwords/features/learn/data/learn_client.dart';
-import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
-import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
+import 'package:uwords/features/learn/data/dto/topic_dto.dart';
+import 'package:uwords/features/learn/data/dto/word_info_dto.dart';
 
 class WordsDataSource implements IWordsDataSource {
   static Dio dio = Dio();
@@ -89,7 +89,7 @@ class WordsDataSource implements IWordsDataSource {
   void _isEnergyEnded(DioException exception) {
     switch (exception.response!.statusCode) {
       case 404:
-        throw NoEnergy();
+        throw NoEnergyException();
     }
   }
 

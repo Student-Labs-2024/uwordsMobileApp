@@ -1,3 +1,5 @@
+import 'package:email_validator/email_validator.dart';
+
 bool isCorrectPassword({required String password}) {
   bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
   bool hasLowercase = password.contains(RegExp(r'[a-z]'));
@@ -13,10 +15,7 @@ bool isCorrectPassword({required String password}) {
 }
 
 bool isCorrectEmail({required String email}) {
-  return RegExp(
-              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-          .hasMatch(email) &&
-      !email.contains(RegExp(r'[а-яА-Я]'));
+  return EmailValidator.validate(email);
 }
 
 bool isValidYoutubeUrl({required String url}) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uwords/features/global/data/constants/global_sizes.dart';
-import 'package:uwords/features/main/data/constants/box_shadows.dart';
-import 'package:uwords/features/main/data/constants/home_page_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
+import 'package:uwords/features/main/presentation/constants/box_shadows.dart';
+import 'package:uwords/features/main/presentation/constants/home_page_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

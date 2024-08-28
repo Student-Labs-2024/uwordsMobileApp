@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart';
-import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
+import 'package:uwords/features/auth/presentation/constants/auth_designed_constants.dart';
+import 'package:uwords/features/auth/presentation/constants/auth_paddings.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 

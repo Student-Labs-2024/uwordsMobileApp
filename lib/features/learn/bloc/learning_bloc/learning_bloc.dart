@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
@@ -29,19 +29,19 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   LearningBloc({required this.wordsRepository, required this.userRepository})
       : super(const LearningState.initial(topics: [])) {
-    on<_GetTopics>(_handleGetTopics);
-    on<_ChooseTopic>(_handleChooseTopic);
-    on<_ReturnToAllTopics>(_handleReturnToAllTopics);
-    on<_UpdateSubtopicSort>(_handleUpdateSubtopicSort);
-    on<_ReverseSubtopicSort>(_handleReverseSubtopicSort);
-    on<_GetWordsByTopic>(_handleGetWordsByTopic);
-    on<_GetWordsBySubtopic>(_handleGetWordsBySubtopic);
-    on<_SortWords>(_handleSortWords);
-    on<_DeleteWord>(_handleDeleteWord);
+    on<_GetTopicsEvent>(_handleGetTopics);
+    on<_ChooseTopicEvent>(_handleChooseTopic);
+    on<_ReturnToAllTopicsEvent>(_handleReturnToAllTopics);
+    on<_UpdateSubtopicSortEvent>(_handleUpdateSubtopicSort);
+    on<_ReverseSubtopicSortEvent>(_handleReverseSubtopicSort);
+    on<_GetWordsByTopicEvent>(_handleGetWordsByTopic);
+    on<_GetWordsBySubtopicEvent>(_handleGetWordsBySubtopic);
+    on<_SortWordsEvent>(_handleSortWords);
+    on<_DeleteWordEvent>(_handleDeleteWord);
   }
 
   Future<void> _handleGetTopics(
-      _GetTopics event, Emitter<LearningState> emit) async {
+      _GetTopicsEvent event, Emitter<LearningState> emit) async {
     inProgressTopicName = event.inProgressTopicName;
     await _getTopicsFromServer(emit);
   }
@@ -61,7 +61,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   }
 
   Future<void> _handleDeleteWord(
-      _DeleteWord event, Emitter<LearningState> emit) async {
+      _DeleteWordEvent event, Emitter<LearningState> emit) async {
     Subtopic saveSubtopic = event.subtopic;
     try {
       List<Topic> saveTopics = [];
@@ -121,18 +121,19 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     emit(LearningState.openSubtopic(subtopic: saveSubtopic));
   }
 
-  void _handleChooseTopic(_ChooseTopic event, Emitter<LearningState> emit) {
+  void _handleChooseTopic(
+      _ChooseTopicEvent event, Emitter<LearningState> emit) {
     currentTopic = event.topic;
     emit(LearningState.openMore(topic: currentTopic));
   }
 
   void _handleReturnToAllTopics(
-      _ReturnToAllTopics event, Emitter<LearningState> emit) {
+      _ReturnToAllTopicsEvent event, Emitter<LearningState> emit) {
     emit(LearningState.initial(topics: topics));
   }
 
   void _handleUpdateSubtopicSort(
-      _UpdateSubtopicSort event, Emitter<LearningState> emit) {
+      _UpdateSubtopicSortEvent event, Emitter<LearningState> emit) {
     currentTopic.subtopics.sort(event.comparator);
     currentComparator = event.comparator;
     emit(const LearningState.changedSort());
@@ -140,7 +141,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   }
 
   void _handleReverseSubtopicSort(
-      _ReverseSubtopicSort event, Emitter<LearningState> emit) {
+      _ReverseSubtopicSortEvent event, Emitter<LearningState> emit) {
     currentTopic.subtopics.replaceRange(0, currentTopic.subtopics.length,
         currentTopic.subtopics.reversed.toList());
     emit(const LearningState.changedSort());
@@ -165,7 +166,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   }
 
   Future<void> _handleGetWordsByTopic(
-      _GetWordsByTopic event, Emitter<LearningState> emit) async {
+      _GetWordsByTopicEvent event, Emitter<LearningState> emit) async {
     try {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
@@ -183,7 +184,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   }
 
   Future<void> _handleGetWordsBySubtopic(
-      _GetWordsBySubtopic event, Emitter<LearningState> emit) async {
+      _GetWordsBySubtopicEvent event, Emitter<LearningState> emit) async {
     try {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
@@ -210,7 +211,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     }
   }
 
-  void _handleSortWords(_SortWords event, Emitter<LearningState> emit) {
+  void _handleSortWords(_SortWordsEvent event, Emitter<LearningState> emit) {
     event.subtopic.wordInfoList.sort(event.comparator);
   }
 
@@ -218,7 +219,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   void onError(Object error, StackTrace stackTrace) async {
     log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessToken):
+      case const (OldAccessTokenException):
         userRepository.refreshAccessToken();
         await _getTopicsFromServer(_emitter);
       case const (SocketException):

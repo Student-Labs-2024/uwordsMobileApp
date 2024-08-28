@@ -8,7 +8,7 @@ import 'package:uwords/common/exceptions/login_exceptions.dart';
 import 'package:uwords/common/exceptions/training_exceptions.dart';
 import 'package:uwords/common/utils/tokens.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
-import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/data/repositores/interface_words_repository.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
@@ -49,27 +49,27 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   TrainingBloc({required this.wordsRepository, required this.userRepository})
       : super(const TrainingState.initial()) {
-    on<_SetTopic>(_getWordsFromTitle);
-    on<_SetSubtopic>(_getWordsFromSubtitle);
-    on<_NextStep>(_eventNextTrainingStep);
-    on<_StartStudy>(_handleStartStudy);
-    on<_CantHear>(_setCantHear);
-    on<_CantSpeak>(_setCantSpeak);
+    on<_SetTopicEvent>(_getWordsFromTitle);
+    on<_SetSubtopicEvent>(_getWordsFromSubtitle);
+    on<_NextStepEvent>(_eventNextTrainingStep);
+    on<_StartStudyEvent>(_handleStartStudy);
+    on<_CantHearEvent>(_setCantHear);
+    on<_CantSpeakEvent>(_setCantSpeak);
   }
 
-  void _setCantHear(_CantHear event, Emitter<TrainingState> emit) {
+  void _setCantHear(_CantHearEvent event, Emitter<TrainingState> emit) {
     cantHearLimit = cantHearLimit
         .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantHear = true;
   }
 
-  void _setCantSpeak(_CantSpeak event, Emitter<TrainingState> emit) {
+  void _setCantSpeak(_CantSpeakEvent event, Emitter<TrainingState> emit) {
     cantSpeakLimit = cantSpeakLimit
         .add(const Duration(minutes: OtherLearnConstants.cantMinutes));
     isCantSpeak = true;
   }
 
-  void _getWordsFromTitle(_SetTopic event, Emitter<TrainingState> emit) {
+  void _getWordsFromTitle(_SetTopicEvent event, Emitter<TrainingState> emit) {
     words = [];
     wordsInfoProgress = [];
     wordsInfoIDs = [];
@@ -84,7 +84,8 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     _startTraining(emit);
   }
 
-  void _getWordsFromSubtitle(_SetSubtopic event, Emitter<TrainingState> emit) {
+  void _getWordsFromSubtitle(
+      _SetSubtopicEvent event, Emitter<TrainingState> emit) {
     words = [];
     wordsInfoProgress = [];
     wordsInfoIDs = [];
@@ -174,7 +175,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   Future<void> _eventNextTrainingStep(
-      _NextStep event, Emitter<TrainingState> emit) async {
+      _NextStepEvent event, Emitter<TrainingState> emit) async {
     await _nextTrainingStep(emit);
   }
 
@@ -182,6 +183,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     currentWordScreenIndex++;
 
     if (currentWordScreenIndex == wordScreen.length) {
+      _calculateProgress();
       emit(TrainingState.finalScreen(
           words: words,
           newProgress: wordsInfoProgress,
@@ -244,7 +246,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   }
 
   Future<void> _handleStartStudy(
-      _StartStudy event, Emitter<TrainingState> emit) async {
+      _StartStudyEvent event, Emitter<TrainingState> emit) async {
     try {
       words = [];
       wordsInfoProgress = [];
@@ -260,6 +262,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
           event.subtopic.wordInfoList.map((e) => e.word).toList();
       wordsInfoIDs.addAll(result.map((wordInfo) => wordInfo.id));
       wordsInfoProgress.addAll(result.map((wordInfo) => wordInfo.progress));
+      //TODO Remove take placeholder and replace to no words for learning state
       words.addAll(result.isEmpty
           ? placeholders.take(4)
           : result.map((wordInfo) => wordInfo.word).toList());
@@ -276,7 +279,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void onError(Object error, StackTrace stackTrace) async {
     developer.log(error.toString());
     switch (error.runtimeType) {
-      case const (OldAccessToken):
+      case const (OldAccessTokenException):
         String accessToken = await userRepository.refreshAccessToken();
         List<WordInfo> result = await wordsRepository.getWordsForStart(
             accessToken: accessToken,
@@ -286,7 +289,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));
-      case const (NoEnergy):
+      case const (NoEnergyException):
         _emitter(const TrainingState.failed(message: 'No energy'));
     }
     super.onError(error, stackTrace);

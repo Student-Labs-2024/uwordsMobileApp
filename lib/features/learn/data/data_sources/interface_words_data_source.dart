@@ -1,5 +1,5 @@
-import 'package:uwords/features/learn/domain/dto/topic_dto.dart';
-import 'package:uwords/features/learn/domain/dto/word_info_dto.dart';
+import 'package:uwords/features/learn/data/dto/topic_dto.dart';
+import 'package:uwords/features/learn/data/dto/word_info_dto.dart';
 
 abstract class IWordsDataSource {
   Future<void> sendLearnedWords(

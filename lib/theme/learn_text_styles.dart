@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:uwords/theme/app_fonts.dart';
 
 class LearnTextStyles {
   static const wordTileTitle = TextStyle(
@@ -63,25 +64,25 @@ class LearnTextStyles {
     fontSize: 17,
     color: AppColors.darkMainColor,
     fontWeight: FontWeight.w500,
-    fontFamily: 'Inter-V',
+    fontFamily: AppFonts.inter,
   );
   static const alternativesTile = TextStyle(
     fontSize: 17,
     color: AppColors.blackColor,
     fontWeight: FontWeight.w500,
-    fontFamily: 'Inter-V',
+    fontFamily: AppFonts.inter,
   );
   static const otherText = TextStyle(
     fontSize: 12,
     color: AppColors.imperialOpacity45,
     fontWeight: FontWeight.w500,
-    fontFamily: 'Inter-V',
+    fontFamily: AppFonts.inter,
   );
   static const linkText = TextStyle(
     fontSize: 12,
     color: AppColors.imperialOpacity45,
     fontWeight: FontWeight.w500,
     decoration: TextDecoration.underline,
-    fontFamily: 'Inter-V',
+    fontFamily: AppFonts.inter,
   );
 }

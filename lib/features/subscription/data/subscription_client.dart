@@ -10,6 +10,7 @@ abstract class SubscriptionClient {
 
   @GET("payment/form")
   Future<HttpResponse<List<String>>> payByTariffName(
+      @Header("Authorization") String accessToken,
       @Query('sub_type') String subType,
       {@Header('Content-Type') String contentType = 'application/json'});
 

@@ -1,4 +1,4 @@
-class NoEnergy implements Exception {
+class NoEnergyException implements Exception {
   String message;
-  NoEnergy({this.message = ""});
+  NoEnergyException({this.message = "Energy has left"});
 }

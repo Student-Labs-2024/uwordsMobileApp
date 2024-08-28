@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_login_vk/flutter_login_vk.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
@@ -43,7 +44,7 @@ void main() {
         when(() => mockUserRepository.requestCode(email: correctEmailAddress))
             .thenAnswer((_) async {});
       },
-      build: () => AuthBloc(userRepository: mockUserRepository),
+      build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) => bloc.add(AuthEvent.requestCode(
           birthDate: birthDate,
           emailAddress: correctEmailAddress,
@@ -62,7 +63,7 @@ void main() {
         when(() => mockUserRepository.requestCode(email: correctEmailAddress))
             .thenThrow(Exception());
       },
-      build: () => AuthBloc(userRepository: mockUserRepository),
+      build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) => bloc.add(AuthEvent.requestCode(
           birthDate: birthDate,
           emailAddress: correctEmailAddress,
@@ -97,7 +98,7 @@ void main() {
         when(() => mockUserRepository.isEducationCompleted())
             .thenAnswer((_) => Future<bool>.value(true));
       },
-      build: () => AuthBloc(userRepository: mockUserRepository),
+      build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) {
         bloc.add(AuthEvent.requestCode(
             birthDate: birthDate,
@@ -124,7 +125,7 @@ void main() {
           refreshAccessToken: correctRefreshToken,
         );
       },
-      build: () => AuthBloc(userRepository: mockUserRepository),
+      build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) {
         bloc.add(const AuthEvent.autoLogin());
       },
@@ -146,7 +147,7 @@ void main() {
           refreshAccessToken: correctRefreshToken,
         );
       },
-      build: () => AuthBloc(userRepository: mockUserRepository),
+      build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) {
         bloc.add(const AuthEvent.autoLogin());
       },

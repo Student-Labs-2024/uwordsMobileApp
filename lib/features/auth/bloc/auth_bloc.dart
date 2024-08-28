@@ -19,7 +19,7 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IUserRepository userRepository;
-  final VKLogin vk = VKLogin();
+  final VKLogin vk;
   final FirebaseAuth auth = FirebaseAuth.instance;
   String _uEmail = '';
   String _uName = '';
@@ -32,19 +32,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   late AuthorizationProvider _provider;
   bool isFirstLoginCompleted = false;
 
-  AuthBloc({required this.userRepository}) : super(const AuthState.initial()) {
-    on<_RequestCode>(_handleRequestCode);
-    on<_RegisterUser>(_handleRegisterUser);
-    on<_SignInWithVK>(_handleSignInWithVK);
-    on<_SignInWithGoogle>(_handleSignInWithGoogle);
-    on<_SignInWithMailPassword>(_handleSignInWithMailPassword);
-    on<_LogOut>(_handleLogOut);
-    on<_ChangeDataForRegister>(_handleChangeDataForRegister);
-    on<_AutoLogin>(_handleAutoLogin);
+  AuthBloc({required this.userRepository, required this.vk})
+      : super(const AuthState.initial()) {
+    on<_RequestCodeEvent>(_handleRequestCode);
+    on<_RegisterUserEvent>(_handleRegisterUser);
+    on<_SignInWithVKEvent>(_handleSignInWithVK);
+    on<_SignInWithGoogleEvent>(_handleSignInWithGoogle);
+    on<_SignInWithMailPasswordEvent>(_handleSignInWithMailPassword);
+    on<_LogOutEvent>(_handleLogOut);
+    on<_ChangeDataForRegisterEvent>(_handleChangeDataForRegister);
+    on<_AutoLoginEvent>(_handleAutoLogin);
   }
 
   Future<void> _handleRequestCode(
-      _RequestCode event, Emitter<AuthState> emit) async {
+      _RequestCodeEvent event, Emitter<AuthState> emit) async {
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       _uEmail = event.emailAddress;
@@ -66,7 +67,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _handleRegisterUser(
-      _RegisterUser event, Emitter<AuthState> emit) async {
+      _RegisterUserEvent event, Emitter<AuthState> emit) async {
     _uCode = event.code;
     try {
       bool isRightCode =
@@ -95,7 +96,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _handleSignInWithVK(
-      _SignInWithVK event, Emitter<AuthState> emit) async {
+      _SignInWithVKEvent event, Emitter<AuthState> emit) async {
     auth.signOut();
     userRepository.localLogOut();
     _provider = AuthorizationProvider.vk;
@@ -109,7 +110,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _handleSignInWithGoogle(
-      _SignInWithGoogle event, Emitter<AuthState> emit) async {
+      _SignInWithGoogleEvent event, Emitter<AuthState> emit) async {
     await vk.initSdk();
     if (await vk.isLoggedIn) {
       vk.logOut();
@@ -126,7 +127,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _handleSignInWithMailPassword(
-      _SignInWithMailPassword event, Emitter<AuthState> emit) async {
+      _SignInWithMailPasswordEvent event, Emitter<AuthState> emit) async {
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       auth.signOut();
@@ -143,18 +144,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _handleLogOut(_LogOut event, Emitter<AuthState> emit) async {
+  Future<void> _handleLogOut(
+      _LogOutEvent event, Emitter<AuthState> emit) async {
     userRepository.localLogOut();
     emit(const AuthState.initial());
   }
 
   Future<void> _handleChangeDataForRegister(
-      _ChangeDataForRegister event, Emitter<AuthState> emit) async {
+      _ChangeDataForRegisterEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.initial());
   }
 
   Future<void> _handleAutoLogin(
-      _AutoLogin event, Emitter<AuthState> emit) async {
+      _AutoLoginEvent event, Emitter<AuthState> emit) async {
     if (isFirstLoginCompleted == false) {
       isFirstLoginCompleted = true;
       emit(const AuthState.waitingAnswer());
@@ -180,7 +182,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (res.isValue) {
       final VKLoginResult result = res.asValue!.value;
       if (result.isCanceled) {
-        throw CanceledSignIn();
+        throw CanceledSignInException();
       } else {
         final VKAccessToken? accessToken = result.accessToken;
         if (accessToken != null) {
@@ -212,7 +214,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       _uPassword = creds.user?.uid ?? '';
     } on Exception {
-      throw CanceledSignIn();
+      throw CanceledSignInException();
     }
   }
 
@@ -284,7 +286,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     switch (error.runtimeType) {
       case const (SocketException):
         _emitter(const AuthState.failed(AuthError.noInternet));
-      case const (NotRegisteredExceptionBySelfProvider):
+      case const (NotRegisteredExceptionBySelfProviderException):
         _emitter(const AuthState.failed(AuthError.failedAutorization));
         _emitter(const AuthState.signInScreen());
       case const (NotRegisteredException):
@@ -297,7 +299,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _emitter(const AuthState.signInScreen());
       case const (UnknownApiException):
         _emitter(const AuthState.failed(AuthError.unknownError));
-      case const (CanceledSignIn):
+      case const (CanceledSignInException):
         _emitter(const AuthState.failed(AuthError.canceledSignIn));
     }
     super.onError(error, stackTrace);

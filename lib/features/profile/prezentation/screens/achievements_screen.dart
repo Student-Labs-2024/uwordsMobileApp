@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/global/domain/achievement_category.dart';
-import 'package:uwords/features/profile/data/constants/profile_sizes.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_sizes.dart';
 import 'package:uwords/features/profile/prezentation/widgets/achievement_section.dart';
 
 class AchievementsScreen extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:uwords/features/global/data/constants/global_sizes.dart';
-import 'package:uwords/features/global/widgets/custom_image_network_view.dart';
-import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
-import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
-import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/custom_image_network_view.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 
 class ImageCard extends StatelessWidget {

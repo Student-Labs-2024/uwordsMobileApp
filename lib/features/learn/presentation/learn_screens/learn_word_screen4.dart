@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uwords/features/global/widgets/bubble_button.dart';
+import 'package:uwords/features/global/presentation/widgets/bubble_button.dart';
 import 'package:uwords/features/learn/bloc/player_bloc/player_bloc.dart';
-import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
-import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/presentation/widgets/image_card.dart';
 import 'package:uwords/features/learn/domain/models/word_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/learn_progress_bar.dart';

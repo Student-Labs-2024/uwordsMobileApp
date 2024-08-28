@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uwords/features/auth/data/constants/auth_designed_constants.dart';
-import 'package:uwords/features/auth/data/constants/auth_paddings.dart';
+import 'package:uwords/features/auth/presentation/constants/auth_designed_constants.dart';
+import 'package:uwords/features/auth/presentation/constants/auth_paddings.dart';
 import 'package:uwords/features/auth/presentation/widgets/custom_pincode.dart';
-import 'package:uwords/features/global/widgets/bubble_button.dart';
+import 'package:uwords/features/global/presentation/widgets/bubble_button.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
 import 'package:uwords/features/learn/bloc/training_bloc/training_bloc.dart';
-import 'package:uwords/features/learn/data/constants/other_learn_constants.dart';
+import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/final_learn_screen.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen1.dart';
 import 'package:uwords/features/learn/presentation/learn_screens/learn_word_screen2.dart';

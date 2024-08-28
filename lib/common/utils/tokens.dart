@@ -8,7 +8,7 @@ Future<void> checkTokenExpirationAndUpdateIfNeed(
   if (isTokenExpired(token: accessToken)) {
     try {
       accessToken = await userRepository.refreshAccessToken();
-    } on OldRefreshToken {
+    } on OldRefreshTokenException {
       rethrow;
     }
   }

@@ -6,21 +6,21 @@ class AuthEvent with _$AuthEvent {
       {required DateTime birthDate,
       String? nickname,
       required String emailAddress,
-      required String password}) = _RequestCode;
+      required String password}) = _RequestCodeEvent;
   const factory AuthEvent.registerUser({
     required String code,
-  }) = _RegisterUser;
+  }) = _RegisterUserEvent;
 
-  const factory AuthEvent.signInWithVK() = _SignInWithVK;
-  const factory AuthEvent.signInWithGoogle() = _SignInWithGoogle;
+  const factory AuthEvent.signInWithVK() = _SignInWithVKEvent;
+  const factory AuthEvent.signInWithGoogle() = _SignInWithGoogleEvent;
 
   const factory AuthEvent.signInWithMailPassword(
       {required String emailAddress,
-      required String password}) = _SignInWithMailPassword;
+      required String password}) = _SignInWithMailPasswordEvent;
 
-  const factory AuthEvent.logOut() = _LogOut;
+  const factory AuthEvent.logOut() = _LogOutEvent;
 
-  const factory AuthEvent.changeDataForRegister() = _ChangeDataForRegister;
+  const factory AuthEvent.changeDataForRegister() = _ChangeDataForRegisterEvent;
 
-  const factory AuthEvent.autoLogin() = _AutoLogin;
+  const factory AuthEvent.autoLogin() = _AutoLoginEvent;
 }

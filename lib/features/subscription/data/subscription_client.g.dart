@@ -22,12 +22,16 @@ class _SubscriptionClient implements SubscriptionClient {
 
   @override
   Future<HttpResponse<List<String>>> payByTariffName(
+    String accessToken,
     String subType, {
     String contentType = 'application/json',
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'sub_type': subType};
-    final _headers = <String, dynamic>{r'Content-Type': contentType};
+    final _headers = <String, dynamic>{
+      r'Authorization': accessToken,
+      r'Content-Type': contentType,
+    };
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<List<dynamic>>(

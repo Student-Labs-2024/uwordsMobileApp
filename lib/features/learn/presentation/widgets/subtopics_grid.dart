@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
-import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/topic_model.dart';
 import 'package:uwords/features/learn/presentation/widgets/subtopic_card.dart';

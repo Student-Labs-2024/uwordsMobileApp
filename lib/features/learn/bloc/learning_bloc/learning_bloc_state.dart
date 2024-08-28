@@ -4,22 +4,22 @@ part of 'learning_bloc.dart';
 abstract class LearningState with _$LearningState {
   const factory LearningState.initial({
     required List<Topic> topics,
-  }) = _LearningInitial;
+  }) = _LearningInitialState;
 
   const factory LearningState.gotWordsForStudy({
     required List<Topic> topics,
-  }) = _LearningGotWordsForStudy;
+  }) = _LearningGotWordsForStudyState;
 
   const factory LearningState.openMore({
     required Topic topic,
-  }) = _LearningOpenMore;
+  }) = _LearningOpenMoreState;
 
   const factory LearningState.changedSort() = _ChangedSort;
 
   const factory LearningState.failed({
     required List<Topic> topics,
-  }) = _LearningFailed;
+  }) = _LearningFailedState;
 
   const factory LearningState.openSubtopic({required Subtopic subtopic}) =
-      _OpenSubtopic;
+      _OpenSubtopicState;
 }

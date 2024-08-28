@@ -43,29 +43,30 @@ mixin _$SubscriptionEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadSubscriptionTypes value)
+    required TResult Function(_DownloadSubscriptionTypesEvent value)
         downloadSubcriptionsTypes,
-    required TResult Function(_PaySubscription value) paySubscription,
-    required TResult Function(_CheckSubscription value) checkSubscription,
-    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
+    required TResult Function(_PaySubscriptionEvent value) paySubscription,
+    required TResult Function(_CheckSubscriptionEvent value) checkSubscription,
+    required TResult Function(_IsSubscriptionActiveEvent value)
+        isSubscriptionActive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DownloadSubscriptionTypes value)?
+    TResult? Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult? Function(_PaySubscription value)? paySubscription,
-    TResult? Function(_CheckSubscription value)? checkSubscription,
-    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult? Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult? Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadSubscriptionTypes value)?
+    TResult Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult Function(_PaySubscription value)? paySubscription,
-    TResult Function(_CheckSubscription value)? checkSubscription,
-    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,28 +91,29 @@ class _$SubscriptionEventCopyWithImpl<$Res, $Val extends SubscriptionEvent>
 }
 
 /// @nodoc
-abstract class _$$DownloadSubscriptionTypesImplCopyWith<$Res> {
-  factory _$$DownloadSubscriptionTypesImplCopyWith(
-          _$DownloadSubscriptionTypesImpl value,
-          $Res Function(_$DownloadSubscriptionTypesImpl) then) =
-      __$$DownloadSubscriptionTypesImplCopyWithImpl<$Res>;
+abstract class _$$DownloadSubscriptionTypesEventImplCopyWith<$Res> {
+  factory _$$DownloadSubscriptionTypesEventImplCopyWith(
+          _$DownloadSubscriptionTypesEventImpl value,
+          $Res Function(_$DownloadSubscriptionTypesEventImpl) then) =
+      __$$DownloadSubscriptionTypesEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DownloadSubscriptionTypesImplCopyWithImpl<$Res>
+class __$$DownloadSubscriptionTypesEventImplCopyWithImpl<$Res>
     extends _$SubscriptionEventCopyWithImpl<$Res,
-        _$DownloadSubscriptionTypesImpl>
-    implements _$$DownloadSubscriptionTypesImplCopyWith<$Res> {
-  __$$DownloadSubscriptionTypesImplCopyWithImpl(
-      _$DownloadSubscriptionTypesImpl _value,
-      $Res Function(_$DownloadSubscriptionTypesImpl) _then)
+        _$DownloadSubscriptionTypesEventImpl>
+    implements _$$DownloadSubscriptionTypesEventImplCopyWith<$Res> {
+  __$$DownloadSubscriptionTypesEventImplCopyWithImpl(
+      _$DownloadSubscriptionTypesEventImpl _value,
+      $Res Function(_$DownloadSubscriptionTypesEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
-  const _$DownloadSubscriptionTypesImpl();
+class _$DownloadSubscriptionTypesEventImpl
+    implements _DownloadSubscriptionTypesEvent {
+  const _$DownloadSubscriptionTypesEventImpl();
 
   @override
   String toString() {
@@ -122,7 +124,7 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DownloadSubscriptionTypesImpl);
+            other is _$DownloadSubscriptionTypesEventImpl);
   }
 
   @override
@@ -168,11 +170,12 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadSubscriptionTypes value)
+    required TResult Function(_DownloadSubscriptionTypesEvent value)
         downloadSubcriptionsTypes,
-    required TResult Function(_PaySubscription value) paySubscription,
-    required TResult Function(_CheckSubscription value) checkSubscription,
-    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
+    required TResult Function(_PaySubscriptionEvent value) paySubscription,
+    required TResult Function(_CheckSubscriptionEvent value) checkSubscription,
+    required TResult Function(_IsSubscriptionActiveEvent value)
+        isSubscriptionActive,
   }) {
     return downloadSubcriptionsTypes(this);
   }
@@ -180,11 +183,11 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DownloadSubscriptionTypes value)?
+    TResult? Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult? Function(_PaySubscription value)? paySubscription,
-    TResult? Function(_CheckSubscription value)? checkSubscription,
-    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult? Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult? Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
   }) {
     return downloadSubcriptionsTypes?.call(this);
   }
@@ -192,11 +195,11 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadSubscriptionTypes value)?
+    TResult Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult Function(_PaySubscription value)? paySubscription,
-    TResult Function(_CheckSubscription value)? checkSubscription,
-    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (downloadSubcriptionsTypes != null) {
@@ -206,25 +209,26 @@ class _$DownloadSubscriptionTypesImpl implements _DownloadSubscriptionTypes {
   }
 }
 
-abstract class _DownloadSubscriptionTypes implements SubscriptionEvent {
-  const factory _DownloadSubscriptionTypes() = _$DownloadSubscriptionTypesImpl;
+abstract class _DownloadSubscriptionTypesEvent implements SubscriptionEvent {
+  const factory _DownloadSubscriptionTypesEvent() =
+      _$DownloadSubscriptionTypesEventImpl;
 }
 
 /// @nodoc
-abstract class _$$PaySubscriptionImplCopyWith<$Res> {
-  factory _$$PaySubscriptionImplCopyWith(_$PaySubscriptionImpl value,
-          $Res Function(_$PaySubscriptionImpl) then) =
-      __$$PaySubscriptionImplCopyWithImpl<$Res>;
+abstract class _$$PaySubscriptionEventImplCopyWith<$Res> {
+  factory _$$PaySubscriptionEventImplCopyWith(_$PaySubscriptionEventImpl value,
+          $Res Function(_$PaySubscriptionEventImpl) then) =
+      __$$PaySubscriptionEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Tariff tariff});
 }
 
 /// @nodoc
-class __$$PaySubscriptionImplCopyWithImpl<$Res>
-    extends _$SubscriptionEventCopyWithImpl<$Res, _$PaySubscriptionImpl>
-    implements _$$PaySubscriptionImplCopyWith<$Res> {
-  __$$PaySubscriptionImplCopyWithImpl(
-      _$PaySubscriptionImpl _value, $Res Function(_$PaySubscriptionImpl) _then)
+class __$$PaySubscriptionEventImplCopyWithImpl<$Res>
+    extends _$SubscriptionEventCopyWithImpl<$Res, _$PaySubscriptionEventImpl>
+    implements _$$PaySubscriptionEventImplCopyWith<$Res> {
+  __$$PaySubscriptionEventImplCopyWithImpl(_$PaySubscriptionEventImpl _value,
+      $Res Function(_$PaySubscriptionEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -232,7 +236,7 @@ class __$$PaySubscriptionImplCopyWithImpl<$Res>
   $Res call({
     Object? tariff = null,
   }) {
-    return _then(_$PaySubscriptionImpl(
+    return _then(_$PaySubscriptionEventImpl(
       null == tariff
           ? _value.tariff
           : tariff // ignore: cast_nullable_to_non_nullable
@@ -243,8 +247,8 @@ class __$$PaySubscriptionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PaySubscriptionImpl implements _PaySubscription {
-  const _$PaySubscriptionImpl(this.tariff);
+class _$PaySubscriptionEventImpl implements _PaySubscriptionEvent {
+  const _$PaySubscriptionEventImpl(this.tariff);
 
   @override
   final Tariff tariff;
@@ -258,7 +262,7 @@ class _$PaySubscriptionImpl implements _PaySubscription {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaySubscriptionImpl &&
+            other is _$PaySubscriptionEventImpl &&
             (identical(other.tariff, tariff) || other.tariff == tariff));
   }
 
@@ -268,9 +272,10 @@ class _$PaySubscriptionImpl implements _PaySubscription {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaySubscriptionImplCopyWith<_$PaySubscriptionImpl> get copyWith =>
-      __$$PaySubscriptionImplCopyWithImpl<_$PaySubscriptionImpl>(
-          this, _$identity);
+  _$$PaySubscriptionEventImplCopyWith<_$PaySubscriptionEventImpl>
+      get copyWith =>
+          __$$PaySubscriptionEventImplCopyWithImpl<_$PaySubscriptionEventImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -312,11 +317,12 @@ class _$PaySubscriptionImpl implements _PaySubscription {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadSubscriptionTypes value)
+    required TResult Function(_DownloadSubscriptionTypesEvent value)
         downloadSubcriptionsTypes,
-    required TResult Function(_PaySubscription value) paySubscription,
-    required TResult Function(_CheckSubscription value) checkSubscription,
-    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
+    required TResult Function(_PaySubscriptionEvent value) paySubscription,
+    required TResult Function(_CheckSubscriptionEvent value) checkSubscription,
+    required TResult Function(_IsSubscriptionActiveEvent value)
+        isSubscriptionActive,
   }) {
     return paySubscription(this);
   }
@@ -324,11 +330,11 @@ class _$PaySubscriptionImpl implements _PaySubscription {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DownloadSubscriptionTypes value)?
+    TResult? Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult? Function(_PaySubscription value)? paySubscription,
-    TResult? Function(_CheckSubscription value)? checkSubscription,
-    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult? Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult? Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
   }) {
     return paySubscription?.call(this);
   }
@@ -336,11 +342,11 @@ class _$PaySubscriptionImpl implements _PaySubscription {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadSubscriptionTypes value)?
+    TResult Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult Function(_PaySubscription value)? paySubscription,
-    TResult Function(_CheckSubscription value)? checkSubscription,
-    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (paySubscription != null) {
@@ -350,35 +356,38 @@ class _$PaySubscriptionImpl implements _PaySubscription {
   }
 }
 
-abstract class _PaySubscription implements SubscriptionEvent {
-  const factory _PaySubscription(final Tariff tariff) = _$PaySubscriptionImpl;
+abstract class _PaySubscriptionEvent implements SubscriptionEvent {
+  const factory _PaySubscriptionEvent(final Tariff tariff) =
+      _$PaySubscriptionEventImpl;
 
   Tariff get tariff;
   @JsonKey(ignore: true)
-  _$$PaySubscriptionImplCopyWith<_$PaySubscriptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PaySubscriptionEventImplCopyWith<_$PaySubscriptionEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CheckSubscriptionImplCopyWith<$Res> {
-  factory _$$CheckSubscriptionImplCopyWith(_$CheckSubscriptionImpl value,
-          $Res Function(_$CheckSubscriptionImpl) then) =
-      __$$CheckSubscriptionImplCopyWithImpl<$Res>;
+abstract class _$$CheckSubscriptionEventImplCopyWith<$Res> {
+  factory _$$CheckSubscriptionEventImplCopyWith(
+          _$CheckSubscriptionEventImpl value,
+          $Res Function(_$CheckSubscriptionEventImpl) then) =
+      __$$CheckSubscriptionEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CheckSubscriptionImplCopyWithImpl<$Res>
-    extends _$SubscriptionEventCopyWithImpl<$Res, _$CheckSubscriptionImpl>
-    implements _$$CheckSubscriptionImplCopyWith<$Res> {
-  __$$CheckSubscriptionImplCopyWithImpl(_$CheckSubscriptionImpl _value,
-      $Res Function(_$CheckSubscriptionImpl) _then)
+class __$$CheckSubscriptionEventImplCopyWithImpl<$Res>
+    extends _$SubscriptionEventCopyWithImpl<$Res, _$CheckSubscriptionEventImpl>
+    implements _$$CheckSubscriptionEventImplCopyWith<$Res> {
+  __$$CheckSubscriptionEventImplCopyWithImpl(
+      _$CheckSubscriptionEventImpl _value,
+      $Res Function(_$CheckSubscriptionEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$CheckSubscriptionImpl implements _CheckSubscription {
-  const _$CheckSubscriptionImpl();
+class _$CheckSubscriptionEventImpl implements _CheckSubscriptionEvent {
+  const _$CheckSubscriptionEventImpl();
 
   @override
   String toString() {
@@ -388,7 +397,8 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CheckSubscriptionImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$CheckSubscriptionEventImpl);
   }
 
   @override
@@ -434,11 +444,12 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadSubscriptionTypes value)
+    required TResult Function(_DownloadSubscriptionTypesEvent value)
         downloadSubcriptionsTypes,
-    required TResult Function(_PaySubscription value) paySubscription,
-    required TResult Function(_CheckSubscription value) checkSubscription,
-    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
+    required TResult Function(_PaySubscriptionEvent value) paySubscription,
+    required TResult Function(_CheckSubscriptionEvent value) checkSubscription,
+    required TResult Function(_IsSubscriptionActiveEvent value)
+        isSubscriptionActive,
   }) {
     return checkSubscription(this);
   }
@@ -446,11 +457,11 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DownloadSubscriptionTypes value)?
+    TResult? Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult? Function(_PaySubscription value)? paySubscription,
-    TResult? Function(_CheckSubscription value)? checkSubscription,
-    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult? Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult? Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
   }) {
     return checkSubscription?.call(this);
   }
@@ -458,11 +469,11 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadSubscriptionTypes value)?
+    TResult Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult Function(_PaySubscription value)? paySubscription,
-    TResult Function(_CheckSubscription value)? checkSubscription,
-    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (checkSubscription != null) {
@@ -472,30 +483,33 @@ class _$CheckSubscriptionImpl implements _CheckSubscription {
   }
 }
 
-abstract class _CheckSubscription implements SubscriptionEvent {
-  const factory _CheckSubscription() = _$CheckSubscriptionImpl;
+abstract class _CheckSubscriptionEvent implements SubscriptionEvent {
+  const factory _CheckSubscriptionEvent() = _$CheckSubscriptionEventImpl;
 }
 
 /// @nodoc
-abstract class _$$IsSubscriptionActiveImplCopyWith<$Res> {
-  factory _$$IsSubscriptionActiveImplCopyWith(_$IsSubscriptionActiveImpl value,
-          $Res Function(_$IsSubscriptionActiveImpl) then) =
-      __$$IsSubscriptionActiveImplCopyWithImpl<$Res>;
+abstract class _$$IsSubscriptionActiveEventImplCopyWith<$Res> {
+  factory _$$IsSubscriptionActiveEventImplCopyWith(
+          _$IsSubscriptionActiveEventImpl value,
+          $Res Function(_$IsSubscriptionActiveEventImpl) then) =
+      __$$IsSubscriptionActiveEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$IsSubscriptionActiveImplCopyWithImpl<$Res>
-    extends _$SubscriptionEventCopyWithImpl<$Res, _$IsSubscriptionActiveImpl>
-    implements _$$IsSubscriptionActiveImplCopyWith<$Res> {
-  __$$IsSubscriptionActiveImplCopyWithImpl(_$IsSubscriptionActiveImpl _value,
-      $Res Function(_$IsSubscriptionActiveImpl) _then)
+class __$$IsSubscriptionActiveEventImplCopyWithImpl<$Res>
+    extends _$SubscriptionEventCopyWithImpl<$Res,
+        _$IsSubscriptionActiveEventImpl>
+    implements _$$IsSubscriptionActiveEventImplCopyWith<$Res> {
+  __$$IsSubscriptionActiveEventImplCopyWithImpl(
+      _$IsSubscriptionActiveEventImpl _value,
+      $Res Function(_$IsSubscriptionActiveEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
-  const _$IsSubscriptionActiveImpl();
+class _$IsSubscriptionActiveEventImpl implements _IsSubscriptionActiveEvent {
+  const _$IsSubscriptionActiveEventImpl();
 
   @override
   String toString() {
@@ -506,7 +520,7 @@ class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$IsSubscriptionActiveImpl);
+            other is _$IsSubscriptionActiveEventImpl);
   }
 
   @override
@@ -552,11 +566,12 @@ class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DownloadSubscriptionTypes value)
+    required TResult Function(_DownloadSubscriptionTypesEvent value)
         downloadSubcriptionsTypes,
-    required TResult Function(_PaySubscription value) paySubscription,
-    required TResult Function(_CheckSubscription value) checkSubscription,
-    required TResult Function(_IsSubscriptionActive value) isSubscriptionActive,
+    required TResult Function(_PaySubscriptionEvent value) paySubscription,
+    required TResult Function(_CheckSubscriptionEvent value) checkSubscription,
+    required TResult Function(_IsSubscriptionActiveEvent value)
+        isSubscriptionActive,
   }) {
     return isSubscriptionActive(this);
   }
@@ -564,11 +579,11 @@ class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DownloadSubscriptionTypes value)?
+    TResult? Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult? Function(_PaySubscription value)? paySubscription,
-    TResult? Function(_CheckSubscription value)? checkSubscription,
-    TResult? Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult? Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult? Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult? Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
   }) {
     return isSubscriptionActive?.call(this);
   }
@@ -576,11 +591,11 @@ class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DownloadSubscriptionTypes value)?
+    TResult Function(_DownloadSubscriptionTypesEvent value)?
         downloadSubcriptionsTypes,
-    TResult Function(_PaySubscription value)? paySubscription,
-    TResult Function(_CheckSubscription value)? checkSubscription,
-    TResult Function(_IsSubscriptionActive value)? isSubscriptionActive,
+    TResult Function(_PaySubscriptionEvent value)? paySubscription,
+    TResult Function(_CheckSubscriptionEvent value)? checkSubscription,
+    TResult Function(_IsSubscriptionActiveEvent value)? isSubscriptionActive,
     required TResult orElse(),
   }) {
     if (isSubscriptionActive != null) {
@@ -590,8 +605,8 @@ class _$IsSubscriptionActiveImpl implements _IsSubscriptionActive {
   }
 }
 
-abstract class _IsSubscriptionActive implements SubscriptionEvent {
-  const factory _IsSubscriptionActive() = _$IsSubscriptionActiveImpl;
+abstract class _IsSubscriptionActiveEvent implements SubscriptionEvent {
+  const factory _IsSubscriptionActiveEvent() = _$IsSubscriptionActiveEventImpl;
 }
 
 /// @nodoc
@@ -635,38 +650,41 @@ mixin _$SubscriptionState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -691,20 +709,20 @@ class _$SubscriptionStateCopyWithImpl<$Res, $Val extends SubscriptionState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$InitialStateImplCopyWith<$Res> {
+  factory _$$InitialStateImplCopyWith(
+          _$InitialStateImpl value, $Res Function(_$InitialStateImpl) then) =
+      __$$InitialStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Tariff> tariffs});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$InitialStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$InitialStateImpl>
+    implements _$$InitialStateImplCopyWith<$Res> {
+  __$$InitialStateImplCopyWithImpl(
+      _$InitialStateImpl _value, $Res Function(_$InitialStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -712,7 +730,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? tariffs = null,
   }) {
-    return _then(_$InitialImpl(
+    return _then(_$InitialStateImpl(
       null == tariffs
           ? _value._tariffs
           : tariffs // ignore: cast_nullable_to_non_nullable
@@ -723,8 +741,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl(final List<Tariff> tariffs) : _tariffs = tariffs;
+class _$InitialStateImpl implements _InitialState {
+  const _$InitialStateImpl(final List<Tariff> tariffs) : _tariffs = tariffs;
 
   final List<Tariff> _tariffs;
   @override
@@ -743,7 +761,7 @@ class _$InitialImpl implements _Initial {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _$InitialStateImpl &&
             const DeepCollectionEquality().equals(other._tariffs, _tariffs));
   }
 
@@ -754,8 +772,8 @@ class _$InitialImpl implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
+      __$$InitialStateImplCopyWithImpl<_$InitialStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -809,14 +827,17 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return initial(this);
   }
@@ -824,14 +845,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return initial?.call(this);
   }
@@ -839,14 +860,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -856,35 +877,35 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SubscriptionState {
-  const factory _Initial(final List<Tariff> tariffs) = _$InitialImpl;
+abstract class _InitialState implements SubscriptionState {
+  const factory _InitialState(final List<Tariff> tariffs) = _$InitialStateImpl;
 
   List<Tariff> get tariffs;
   @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+  _$$InitialStateImplCopyWith<_$InitialStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingStateImpl implements _LoadingState {
+  const _$LoadingStateImpl();
 
   @override
   String toString() {
@@ -894,7 +915,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
   }
 
   @override
@@ -952,14 +973,17 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return loading(this);
   }
@@ -967,14 +991,14 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return loading?.call(this);
   }
@@ -982,14 +1006,14 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -999,30 +1023,31 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements SubscriptionState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class _LoadingState implements SubscriptionState {
+  const factory _LoadingState() = _$LoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SubscriptionPaidImplCopyWith<$Res> {
-  factory _$$SubscriptionPaidImplCopyWith(_$SubscriptionPaidImpl value,
-          $Res Function(_$SubscriptionPaidImpl) then) =
-      __$$SubscriptionPaidImplCopyWithImpl<$Res>;
+abstract class _$$SubscriptionPaidStateImplCopyWith<$Res> {
+  factory _$$SubscriptionPaidStateImplCopyWith(
+          _$SubscriptionPaidStateImpl value,
+          $Res Function(_$SubscriptionPaidStateImpl) then) =
+      __$$SubscriptionPaidStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SubscriptionPaidImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$SubscriptionPaidImpl>
-    implements _$$SubscriptionPaidImplCopyWith<$Res> {
-  __$$SubscriptionPaidImplCopyWithImpl(_$SubscriptionPaidImpl _value,
-      $Res Function(_$SubscriptionPaidImpl) _then)
+class __$$SubscriptionPaidStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$SubscriptionPaidStateImpl>
+    implements _$$SubscriptionPaidStateImplCopyWith<$Res> {
+  __$$SubscriptionPaidStateImplCopyWithImpl(_$SubscriptionPaidStateImpl _value,
+      $Res Function(_$SubscriptionPaidStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SubscriptionPaidImpl implements _SubscriptionPaid {
-  const _$SubscriptionPaidImpl();
+class _$SubscriptionPaidStateImpl implements _SubscriptionPaidState {
+  const _$SubscriptionPaidStateImpl();
 
   @override
   String toString() {
@@ -1032,7 +1057,8 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SubscriptionPaidImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SubscriptionPaidStateImpl);
   }
 
   @override
@@ -1090,14 +1116,17 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return subscriptionPaid(this);
   }
@@ -1105,14 +1134,14 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return subscriptionPaid?.call(this);
   }
@@ -1120,14 +1149,14 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionPaid != null) {
@@ -1137,30 +1166,33 @@ class _$SubscriptionPaidImpl implements _SubscriptionPaid {
   }
 }
 
-abstract class _SubscriptionPaid implements SubscriptionState {
-  const factory _SubscriptionPaid() = _$SubscriptionPaidImpl;
+abstract class _SubscriptionPaidState implements SubscriptionState {
+  const factory _SubscriptionPaidState() = _$SubscriptionPaidStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SubscriptionNotPaidImplCopyWith<$Res> {
-  factory _$$SubscriptionNotPaidImplCopyWith(_$SubscriptionNotPaidImpl value,
-          $Res Function(_$SubscriptionNotPaidImpl) then) =
-      __$$SubscriptionNotPaidImplCopyWithImpl<$Res>;
+abstract class _$$SubscriptionNotPaidStateImplCopyWith<$Res> {
+  factory _$$SubscriptionNotPaidStateImplCopyWith(
+          _$SubscriptionNotPaidStateImpl value,
+          $Res Function(_$SubscriptionNotPaidStateImpl) then) =
+      __$$SubscriptionNotPaidStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SubscriptionNotPaidImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$SubscriptionNotPaidImpl>
-    implements _$$SubscriptionNotPaidImplCopyWith<$Res> {
-  __$$SubscriptionNotPaidImplCopyWithImpl(_$SubscriptionNotPaidImpl _value,
-      $Res Function(_$SubscriptionNotPaidImpl) _then)
+class __$$SubscriptionNotPaidStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res,
+        _$SubscriptionNotPaidStateImpl>
+    implements _$$SubscriptionNotPaidStateImplCopyWith<$Res> {
+  __$$SubscriptionNotPaidStateImplCopyWithImpl(
+      _$SubscriptionNotPaidStateImpl _value,
+      $Res Function(_$SubscriptionNotPaidStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
-  const _$SubscriptionNotPaidImpl();
+class _$SubscriptionNotPaidStateImpl implements _SubscriptionNotPaidState {
+  const _$SubscriptionNotPaidStateImpl();
 
   @override
   String toString() {
@@ -1171,7 +1203,7 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SubscriptionNotPaidImpl);
+            other is _$SubscriptionNotPaidStateImpl);
   }
 
   @override
@@ -1229,14 +1261,17 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return subscriptionNotPaid(this);
   }
@@ -1244,14 +1279,14 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return subscriptionNotPaid?.call(this);
   }
@@ -1259,14 +1294,14 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionNotPaid != null) {
@@ -1276,25 +1311,27 @@ class _$SubscriptionNotPaidImpl implements _SubscriptionNotPaid {
   }
 }
 
-abstract class _SubscriptionNotPaid implements SubscriptionState {
-  const factory _SubscriptionNotPaid() = _$SubscriptionNotPaidImpl;
+abstract class _SubscriptionNotPaidState implements SubscriptionState {
+  const factory _SubscriptionNotPaidState() = _$SubscriptionNotPaidStateImpl;
 }
 
 /// @nodoc
-abstract class _$$PayingSubscriptionImplCopyWith<$Res> {
-  factory _$$PayingSubscriptionImplCopyWith(_$PayingSubscriptionImpl value,
-          $Res Function(_$PayingSubscriptionImpl) then) =
-      __$$PayingSubscriptionImplCopyWithImpl<$Res>;
+abstract class _$$PayingSubscriptionStateImplCopyWith<$Res> {
+  factory _$$PayingSubscriptionStateImplCopyWith(
+          _$PayingSubscriptionStateImpl value,
+          $Res Function(_$PayingSubscriptionStateImpl) then) =
+      __$$PayingSubscriptionStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String paymentLink});
 }
 
 /// @nodoc
-class __$$PayingSubscriptionImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$PayingSubscriptionImpl>
-    implements _$$PayingSubscriptionImplCopyWith<$Res> {
-  __$$PayingSubscriptionImplCopyWithImpl(_$PayingSubscriptionImpl _value,
-      $Res Function(_$PayingSubscriptionImpl) _then)
+class __$$PayingSubscriptionStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$PayingSubscriptionStateImpl>
+    implements _$$PayingSubscriptionStateImplCopyWith<$Res> {
+  __$$PayingSubscriptionStateImplCopyWithImpl(
+      _$PayingSubscriptionStateImpl _value,
+      $Res Function(_$PayingSubscriptionStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1302,7 +1339,7 @@ class __$$PayingSubscriptionImplCopyWithImpl<$Res>
   $Res call({
     Object? paymentLink = null,
   }) {
-    return _then(_$PayingSubscriptionImpl(
+    return _then(_$PayingSubscriptionStateImpl(
       null == paymentLink
           ? _value.paymentLink
           : paymentLink // ignore: cast_nullable_to_non_nullable
@@ -1313,8 +1350,8 @@ class __$$PayingSubscriptionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PayingSubscriptionImpl implements _PayingSubscription {
-  const _$PayingSubscriptionImpl(this.paymentLink);
+class _$PayingSubscriptionStateImpl implements _PayingSubscriptionState {
+  const _$PayingSubscriptionStateImpl(this.paymentLink);
 
   @override
   final String paymentLink;
@@ -1328,7 +1365,7 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PayingSubscriptionImpl &&
+            other is _$PayingSubscriptionStateImpl &&
             (identical(other.paymentLink, paymentLink) ||
                 other.paymentLink == paymentLink));
   }
@@ -1339,9 +1376,9 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PayingSubscriptionImplCopyWith<_$PayingSubscriptionImpl> get copyWith =>
-      __$$PayingSubscriptionImplCopyWithImpl<_$PayingSubscriptionImpl>(
-          this, _$identity);
+  _$$PayingSubscriptionStateImplCopyWith<_$PayingSubscriptionStateImpl>
+      get copyWith => __$$PayingSubscriptionStateImplCopyWithImpl<
+          _$PayingSubscriptionStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1395,14 +1432,17 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return payingSubscription(this);
   }
@@ -1410,14 +1450,14 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return payingSubscription?.call(this);
   }
@@ -1425,14 +1465,14 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (payingSubscription != null) {
@@ -1442,31 +1482,31 @@ class _$PayingSubscriptionImpl implements _PayingSubscription {
   }
 }
 
-abstract class _PayingSubscription implements SubscriptionState {
-  const factory _PayingSubscription(final String paymentLink) =
-      _$PayingSubscriptionImpl;
+abstract class _PayingSubscriptionState implements SubscriptionState {
+  const factory _PayingSubscriptionState(final String paymentLink) =
+      _$PayingSubscriptionStateImpl;
 
   String get paymentLink;
   @JsonKey(ignore: true)
-  _$$PayingSubscriptionImplCopyWith<_$PayingSubscriptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PayingSubscriptionStateImplCopyWith<_$PayingSubscriptionStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailedImplCopyWith<$Res> {
-  factory _$$FailedImplCopyWith(
-          _$FailedImpl value, $Res Function(_$FailedImpl) then) =
-      __$$FailedImplCopyWithImpl<$Res>;
+abstract class _$$FailedStateImplCopyWith<$Res> {
+  factory _$$FailedStateImplCopyWith(
+          _$FailedStateImpl value, $Res Function(_$FailedStateImpl) then) =
+      __$$FailedStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SubscriptionCheckStatus failed});
 }
 
 /// @nodoc
-class __$$FailedImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$FailedImpl>
-    implements _$$FailedImplCopyWith<$Res> {
-  __$$FailedImplCopyWithImpl(
-      _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
+class __$$FailedStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$FailedStateImpl>
+    implements _$$FailedStateImplCopyWith<$Res> {
+  __$$FailedStateImplCopyWithImpl(
+      _$FailedStateImpl _value, $Res Function(_$FailedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1474,7 +1514,7 @@ class __$$FailedImplCopyWithImpl<$Res>
   $Res call({
     Object? failed = null,
   }) {
-    return _then(_$FailedImpl(
+    return _then(_$FailedStateImpl(
       null == failed
           ? _value.failed
           : failed // ignore: cast_nullable_to_non_nullable
@@ -1485,8 +1525,8 @@ class __$$FailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailedImpl implements _Failed {
-  const _$FailedImpl(this.failed);
+class _$FailedStateImpl implements _FailedState {
+  const _$FailedStateImpl(this.failed);
 
   @override
   final SubscriptionCheckStatus failed;
@@ -1500,7 +1540,7 @@ class _$FailedImpl implements _Failed {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailedImpl &&
+            other is _$FailedStateImpl &&
             (identical(other.failed, failed) || other.failed == failed));
   }
 
@@ -1510,8 +1550,8 @@ class _$FailedImpl implements _Failed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
-      __$$FailedImplCopyWithImpl<_$FailedImpl>(this, _$identity);
+  _$$FailedStateImplCopyWith<_$FailedStateImpl> get copyWith =>
+      __$$FailedStateImplCopyWithImpl<_$FailedStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1565,14 +1605,17 @@ class _$FailedImpl implements _Failed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return falied(this);
   }
@@ -1580,14 +1623,14 @@ class _$FailedImpl implements _Failed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return falied?.call(this);
   }
@@ -1595,14 +1638,14 @@ class _$FailedImpl implements _Failed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (falied != null) {
@@ -1612,30 +1655,31 @@ class _$FailedImpl implements _Failed {
   }
 }
 
-abstract class _Failed implements SubscriptionState {
-  const factory _Failed(final SubscriptionCheckStatus failed) = _$FailedImpl;
+abstract class _FailedState implements SubscriptionState {
+  const factory _FailedState(final SubscriptionCheckStatus failed) =
+      _$FailedStateImpl;
 
   SubscriptionCheckStatus get failed;
   @JsonKey(ignore: true)
-  _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
+  _$$FailedStateImplCopyWith<_$FailedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$SuccessStateImplCopyWith<$Res> {
+  factory _$$SuccessStateImplCopyWith(
+          _$SuccessStateImpl value, $Res Function(_$SuccessStateImpl) then) =
+      __$$SuccessStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SubscriptionCheckStatus success});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$SuccessStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$SuccessStateImpl>
+    implements _$$SuccessStateImplCopyWith<$Res> {
+  __$$SuccessStateImplCopyWithImpl(
+      _$SuccessStateImpl _value, $Res Function(_$SuccessStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1643,7 +1687,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? success = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$SuccessStateImpl(
       null == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
@@ -1654,8 +1698,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.success);
+class _$SuccessStateImpl implements _SuccessState {
+  const _$SuccessStateImpl(this.success);
 
   @override
   final SubscriptionCheckStatus success;
@@ -1669,7 +1713,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$SuccessStateImpl &&
             (identical(other.success, success) || other.success == success));
   }
 
@@ -1679,8 +1723,8 @@ class _$SuccessImpl implements _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
+      __$$SuccessStateImplCopyWithImpl<_$SuccessStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1734,14 +1778,17 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return success(this);
   }
@@ -1749,14 +1796,14 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return success?.call(this);
   }
@@ -1764,14 +1811,14 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1781,30 +1828,33 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements SubscriptionState {
-  const factory _Success(final SubscriptionCheckStatus success) = _$SuccessImpl;
+abstract class _SuccessState implements SubscriptionState {
+  const factory _SuccessState(final SubscriptionCheckStatus success) =
+      _$SuccessStateImpl;
 
   SubscriptionCheckStatus get success;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SubscriptionStatusImplCopyWith<$Res> {
-  factory _$$SubscriptionStatusImplCopyWith(_$SubscriptionStatusImpl value,
-          $Res Function(_$SubscriptionStatusImpl) then) =
-      __$$SubscriptionStatusImplCopyWithImpl<$Res>;
+abstract class _$$SubscriptionStatusStateImplCopyWith<$Res> {
+  factory _$$SubscriptionStatusStateImplCopyWith(
+          _$SubscriptionStatusStateImpl value,
+          $Res Function(_$SubscriptionStatusStateImpl) then) =
+      __$$SubscriptionStatusStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isActive, String date});
 }
 
 /// @nodoc
-class __$$SubscriptionStatusImplCopyWithImpl<$Res>
-    extends _$SubscriptionStateCopyWithImpl<$Res, _$SubscriptionStatusImpl>
-    implements _$$SubscriptionStatusImplCopyWith<$Res> {
-  __$$SubscriptionStatusImplCopyWithImpl(_$SubscriptionStatusImpl _value,
-      $Res Function(_$SubscriptionStatusImpl) _then)
+class __$$SubscriptionStatusStateImplCopyWithImpl<$Res>
+    extends _$SubscriptionStateCopyWithImpl<$Res, _$SubscriptionStatusStateImpl>
+    implements _$$SubscriptionStatusStateImplCopyWith<$Res> {
+  __$$SubscriptionStatusStateImplCopyWithImpl(
+      _$SubscriptionStatusStateImpl _value,
+      $Res Function(_$SubscriptionStatusStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1813,7 +1863,7 @@ class __$$SubscriptionStatusImplCopyWithImpl<$Res>
     Object? isActive = null,
     Object? date = null,
   }) {
-    return _then(_$SubscriptionStatusImpl(
+    return _then(_$SubscriptionStatusStateImpl(
       null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -1828,8 +1878,8 @@ class __$$SubscriptionStatusImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SubscriptionStatusImpl implements _SubscriptionStatus {
-  const _$SubscriptionStatusImpl(this.isActive, this.date);
+class _$SubscriptionStatusStateImpl implements _SubscriptionStatusState {
+  const _$SubscriptionStatusStateImpl(this.isActive, this.date);
 
   @override
   final bool isActive;
@@ -1845,7 +1895,7 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SubscriptionStatusImpl &&
+            other is _$SubscriptionStatusStateImpl &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.date, date) || other.date == date));
@@ -1857,9 +1907,9 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SubscriptionStatusImplCopyWith<_$SubscriptionStatusImpl> get copyWith =>
-      __$$SubscriptionStatusImplCopyWithImpl<_$SubscriptionStatusImpl>(
-          this, _$identity);
+  _$$SubscriptionStatusStateImplCopyWith<_$SubscriptionStatusStateImpl>
+      get copyWith => __$$SubscriptionStatusStateImplCopyWithImpl<
+          _$SubscriptionStatusStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1913,14 +1963,17 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_SubscriptionPaid value) subscriptionPaid,
-    required TResult Function(_SubscriptionNotPaid value) subscriptionNotPaid,
-    required TResult Function(_PayingSubscription value) payingSubscription,
-    required TResult Function(_Failed value) falied,
-    required TResult Function(_Success value) success,
-    required TResult Function(_SubscriptionStatus value) subscriptionStatus,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_SubscriptionPaidState value) subscriptionPaid,
+    required TResult Function(_SubscriptionNotPaidState value)
+        subscriptionNotPaid,
+    required TResult Function(_PayingSubscriptionState value)
+        payingSubscription,
+    required TResult Function(_FailedState value) falied,
+    required TResult Function(_SuccessState value) success,
+    required TResult Function(_SubscriptionStatusState value)
+        subscriptionStatus,
   }) {
     return subscriptionStatus(this);
   }
@@ -1928,14 +1981,14 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult? Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult? Function(_PayingSubscription value)? payingSubscription,
-    TResult? Function(_Failed value)? falied,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult? Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult? Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult? Function(_FailedState value)? falied,
+    TResult? Function(_SuccessState value)? success,
+    TResult? Function(_SubscriptionStatusState value)? subscriptionStatus,
   }) {
     return subscriptionStatus?.call(this);
   }
@@ -1943,14 +1996,14 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_SubscriptionPaid value)? subscriptionPaid,
-    TResult Function(_SubscriptionNotPaid value)? subscriptionNotPaid,
-    TResult Function(_PayingSubscription value)? payingSubscription,
-    TResult Function(_Failed value)? falied,
-    TResult Function(_Success value)? success,
-    TResult Function(_SubscriptionStatus value)? subscriptionStatus,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_SubscriptionPaidState value)? subscriptionPaid,
+    TResult Function(_SubscriptionNotPaidState value)? subscriptionNotPaid,
+    TResult Function(_PayingSubscriptionState value)? payingSubscription,
+    TResult Function(_FailedState value)? falied,
+    TResult Function(_SuccessState value)? success,
+    TResult Function(_SubscriptionStatusState value)? subscriptionStatus,
     required TResult orElse(),
   }) {
     if (subscriptionStatus != null) {
@@ -1960,13 +2013,13 @@ class _$SubscriptionStatusImpl implements _SubscriptionStatus {
   }
 }
 
-abstract class _SubscriptionStatus implements SubscriptionState {
-  const factory _SubscriptionStatus(final bool isActive, final String date) =
-      _$SubscriptionStatusImpl;
+abstract class _SubscriptionStatusState implements SubscriptionState {
+  const factory _SubscriptionStatusState(
+      final bool isActive, final String date) = _$SubscriptionStatusStateImpl;
 
   bool get isActive;
   String get date;
   @JsonKey(ignore: true)
-  _$$SubscriptionStatusImplCopyWith<_$SubscriptionStatusImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SubscriptionStatusStateImplCopyWith<_$SubscriptionStatusStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

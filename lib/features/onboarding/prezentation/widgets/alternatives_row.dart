@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
-import 'package:uwords/features/profile/data/constants/profile_shadows.dart';
+import 'package:uwords/features/profile/prezentation/constants/profile_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/learn_text_styles.dart';
 

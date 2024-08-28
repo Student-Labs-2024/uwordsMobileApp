@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uwords/features/learn/bloc/learning_bloc/learning_bloc.dart';
-import 'package:uwords/features/learn/data/constants/learn_paddings.dart';
-import 'package:uwords/features/learn/data/constants/learn_sizes.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/learn/presentation/widgets/animated_subtopic.dart';

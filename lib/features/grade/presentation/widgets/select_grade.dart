@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
-import 'package:uwords/features/grade/data/constants/grade_sizes.dart';
-import 'package:uwords/features/grade/data/constants/other_grade_constants.dart';
+import 'package:uwords/features/grade/presentation/constants/grade_sizes.dart';
+import 'package:uwords/features/grade/presentation/constants/other_grade_constants.dart';
 import 'package:uwords/theme/image_source.dart';
 
 class SelectGrade extends StatefulWidget {

@@ -11,11 +11,11 @@ part 'player_bloc_event.dart';
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   final player = AudioPlayer();
   PlayerBloc() : super(const PlayerState.initial()) {
-    on<_PlayAudio>(_handlePlayAudio);
+    on<_PlayAudioEvent>(_handlePlayAudio);
   }
 
   Future<void> _handlePlayAudio(
-      _PlayAudio event, Emitter<PlayerState> emit) async {
+      _PlayAudioEvent event, Emitter<PlayerState> emit) async {
     try {
       await player.setUrl(event.link);
       emit(const PlayerState.playing());

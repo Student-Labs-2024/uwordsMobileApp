@@ -3,10 +3,10 @@ part of 'subscription_bloc.dart';
 @freezed
 class SubscriptionEvent with _$SubscriptionEvent {
   const factory SubscriptionEvent.downloadSubcriptionsTypes() =
-      _DownloadSubscriptionTypes;
+      _DownloadSubscriptionTypesEvent;
   const factory SubscriptionEvent.paySubscription(Tariff tariff) =
-      _PaySubscription;
-  const factory SubscriptionEvent.checkSubscription() = _CheckSubscription;
+      _PaySubscriptionEvent;
+  const factory SubscriptionEvent.checkSubscription() = _CheckSubscriptionEvent;
   const factory SubscriptionEvent.isSubscriptionActive() =
-      _IsSubscriptionActive;
+      _IsSubscriptionActiveEvent;
 }

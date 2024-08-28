@@ -17,11 +17,11 @@ class AudioLinkBloc extends Bloc<AudioLinkEvent, AudioLinkState> {
 
   AudioLinkBloc({required this.audioRepository, required this.userRepository})
       : super(const AudioLinkState.initial()) {
-    on<_SendLink>(_handleSendLink);
+    on<_SendLinkEvent>(_handleSendLink);
   }
 
   Future<void> _handleSendLink(
-      _SendLink event, Emitter<AudioLinkState> emit) async {
+      _SendLinkEvent event, Emitter<AudioLinkState> emit) async {
     try {
       if (isValidYoutubeUrl(url: event.link)) {
         String accessToken = await userRepository.getCurrentUserAccessToken();

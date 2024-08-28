@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/auth/presentation/widgets/mail_and_password_fileds.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uwords/features/global/widgets/custom_textfield.dart';
+import 'package:uwords/features/global/presentation/widgets/custom_textfield.dart';
 
 class RegistrationFields extends StatelessWidget {
   final TextEditingController mailController;
