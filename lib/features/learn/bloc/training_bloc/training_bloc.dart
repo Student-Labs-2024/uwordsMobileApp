@@ -183,7 +183,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     currentWordScreenIndex++;
 
     if (currentWordScreenIndex == wordScreen.length) {
-      _calculateProgress();
+      progress = OtherLearnConstants.maxProgress;
       emit(TrainingState.finalScreen(
           words: words,
           newProgress: wordsInfoProgress,
