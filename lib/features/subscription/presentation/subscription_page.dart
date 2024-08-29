@@ -31,6 +31,18 @@ class _SubscriptionPageState extends State<SubscriptionPage>
   }
 
   @override
+  void deactivate() {
+    final String currentRoute =
+        GoRouter.of(context).routeInformationProvider.value.uri.toString();
+    if (currentRoute == '/profile') {
+      context
+          .read<SubscriptionBloc>()
+          .add(const SubscriptionEvent.isSubscriptionActive());
+    }
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
@@ -136,7 +148,9 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                                     tariffs: tariffs);
                               });
                         },
-                        onTapSecondButton: () => context.go("/profile"),
+                        onTapSecondButton: () {
+                          context.pop();
+                        },
                       )
                     ],
                   ),

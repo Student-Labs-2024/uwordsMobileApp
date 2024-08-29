@@ -48,8 +48,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     }
   }
 
-  bool haveSubscription = false;
-
   @override
   void initState() {
     context
@@ -74,7 +72,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 haveSubscription: status,
                 updateDate: date,
                 onPressed: () {
-                  context.go("/subscription");
+                  context.push("/subscription");
                 },
               ),
               loading: () => Container(

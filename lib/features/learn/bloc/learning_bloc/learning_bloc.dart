@@ -26,6 +26,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   late Comparator<Subtopic> currentComparator;
   late Emitter<LearningState> _emitter;
   late String inProgressTopicName;
+  bool isFromCurrentTopic = false;
 
   LearningBloc({required this.wordsRepository, required this.userRepository})
       : super(const LearningState.initial(topics: [])) {
@@ -34,7 +35,6 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     on<_ReturnToAllTopicsEvent>(_handleReturnToAllTopics);
     on<_UpdateSubtopicSortEvent>(_handleUpdateSubtopicSort);
     on<_ReverseSubtopicSortEvent>(_handleReverseSubtopicSort);
-    on<_GetWordsByTopicEvent>(_handleGetWordsByTopic);
     on<_GetWordsBySubtopicEvent>(_handleGetWordsBySubtopic);
     on<_SortWordsEvent>(_handleSortWords);
     on<_DeleteWordEvent>(_handleDeleteWord);
@@ -124,12 +124,18 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   void _handleChooseTopic(
       _ChooseTopicEvent event, Emitter<LearningState> emit) {
     currentTopic = event.topic;
+    isFromCurrentTopic = true;
     emit(LearningState.openMore(topic: currentTopic));
   }
 
   void _handleReturnToAllTopics(
       _ReturnToAllTopicsEvent event, Emitter<LearningState> emit) {
-    emit(LearningState.initial(topics: topics));
+    if (isFromCurrentTopic) {
+      emit(LearningState.openMore(topic: currentTopic));
+    } else {
+      isFromCurrentTopic = false;
+      emit(LearningState.initial(topics: topics));
+    }
   }
 
   void _handleUpdateSubtopicSort(
@@ -149,6 +155,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
   }
 
   Future<void> _getTopicsFromServer(Emitter<LearningState> emit) async {
+    isFromCurrentTopic = false;
     try {
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
@@ -161,24 +168,6 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       emit(LearningState.initial(topics: topics));
     } on Exception catch (e) {
       _emitter = emit;
-      addError(e);
-    }
-  }
-
-  Future<void> _handleGetWordsByTopic(
-      _GetWordsByTopicEvent event, Emitter<LearningState> emit) async {
-    try {
-      String accessToken = await userRepository.getCurrentUserAccessToken();
-      await checkTokenExpirationAndUpdateIfNeed(
-          accessToken: accessToken, userRepository: userRepository);
-      List<Subtopic> subtopics = topics
-          .firstWhere((element) => event.topic.topicTitle == element.topicTitle)
-          .subtopics;
-
-      for (Subtopic element in subtopics) {
-        await _getWordsByTopicAndSubtopic(accessToken, element);
-      }
-    } on Exception catch (e) {
       addError(e);
     }
   }
