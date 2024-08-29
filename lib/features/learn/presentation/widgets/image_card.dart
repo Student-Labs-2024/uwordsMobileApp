@@ -37,8 +37,8 @@ class ImageCard extends StatelessWidget {
                       width: LearnSizes.wordInputBorder,
                     )
                   : null,
-              borderRadius:
-                  BorderRadius.circular(GlobalSizes.borderRadiusLarge)),
+              borderRadius: BorderRadius.circular(
+                  GlobalSizes.borderRadiusLarge + LearnSizes.wordInputBorder)),
           child: CustomImageNetworkView(
             imageSource: wordImage,
             darken: state == OtherLearnConstants.stateActive,
