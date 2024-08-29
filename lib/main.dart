@@ -76,7 +76,6 @@ void main() async {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]).then((value) => runApp(MainApp()));
-    runApp(MainApp());
   }, (error, stack) async {
     log(error.toString(), name: 'App Error', stackTrace: stack);
   });
@@ -105,8 +104,9 @@ final GoRouter _goRouter = GoRouter(
           builder: (context, state) => const HomePage(),
         ),
         GoRoute(
-            path: '/subscription',
-            builder: (context, state) => const SubscriptionPage()),
+          path: '/subscription',
+          builder: (context, state) => const SubscriptionPage(),
+        ),
         GoRoute(
             path: '/learn',
             builder: (context, state) => const CoreLearnPage(),

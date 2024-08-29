@@ -27,6 +27,8 @@ class SubtopicPage extends StatefulWidget {
 
 class _SubtopicPageState extends State<SubtopicPage> {
   late ScrollController _scrollController;
+  bool isFromCurrentTopic = false;
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +39,12 @@ class _SubtopicPageState extends State<SubtopicPage> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    context.read<LearningBloc>().add(const LearningEvent.returnToAllTopics());
+    super.deactivate();
   }
 
   bool isSortActive = false;
@@ -82,10 +90,7 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      context.read<LearningBloc>().add(
-                                          const LearningEvent
-                                              .returnToAllTopics());
-                                      context.go('/learn');
+                                      context.pop();
                                     },
                                     child: SvgPicture.asset(
                                       AppImageSource.returnIcon,
@@ -165,7 +170,6 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                                         wordLatestStudyComparator));
                                                 Navigator.pop(context);
                                                 changeSortActive(true);
-                                                setState(() {});
                                               },
                                               child: Text(
                                                 AppLocalizations.of(context)

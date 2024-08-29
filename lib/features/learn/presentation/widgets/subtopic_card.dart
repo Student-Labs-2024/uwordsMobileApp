@@ -40,7 +40,7 @@ class SubtopicCard extends StatelessWidget {
             context
                 .read<LearningBloc>()
                 .add(LearningEvent.getWordsBySubtopic(subtopic));
-            context.go("/learn/subtopic");
+            context.push("/learn/subtopic");
           },
           child: Stack(
             children: [
