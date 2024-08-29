@@ -17,7 +17,6 @@ import 'package:uwords/features/learn/presentation/widgets/custom_bottom_sheet.d
 
 class LearnCoreScreen extends StatefulWidget {
   const LearnCoreScreen({super.key});
-
   @override
   State<LearnCoreScreen> createState() => LearnCoreScreenState();
 }
