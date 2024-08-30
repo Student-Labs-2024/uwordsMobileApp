@@ -96,7 +96,7 @@ void main() {
             emailAddress: correctEmailAddress,
             password: correctPassword)).thenAnswer((_) async {});
         when(() => mockUserRepository.isEducationCompleted())
-            .thenAnswer((_) => Future<bool>.value(true));
+            .thenReturn(true);
       },
       build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) {

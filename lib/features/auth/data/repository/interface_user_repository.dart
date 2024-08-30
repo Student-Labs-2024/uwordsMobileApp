@@ -36,7 +36,7 @@ abstract interface class IUserRepository {
   bool isSubscriptionActive();
   int getCurrentUserDaysStreak();
   Future<UserAuthDto> getCurrentUserInfo();
-  Future<bool> isEducationCompleted();
+  bool isEducationCompleted();
   String getSubscriptionExpired();
   Future<void> sendGrade(String accessToken, int grade, String gradeMessage);
   Future<void> onboardingCompleted();
