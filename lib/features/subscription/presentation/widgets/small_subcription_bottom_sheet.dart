@@ -19,7 +19,7 @@ class SmallSubcriptionBottomSheet extends StatelessWidget {
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height *
-              SubscriptionConsts.widthMultiply02,
+              SubscriptionConsts.widthMultiply018,
           child: DecoratedBox(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(

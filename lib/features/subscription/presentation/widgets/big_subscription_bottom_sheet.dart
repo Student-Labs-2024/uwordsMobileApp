@@ -60,13 +60,16 @@ class _BigSubscriptionBottomSheetState
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.only(
-                          bottom: SubscriptionConsts.smallBottomPadding),
+                          bottom: SubscriptionConsts.smallBottomPadding,
+                          right: SubscriptionConsts.biggerThanSmallestPadding,
+                          left: SubscriptionConsts.biggerThanSmallestPadding),
                       child: TariffCard(
                         name: widget.tariffs[index].name,
                         priceStr: widget.tariffs[index].priceStr,
                         freePeriodStr: widget.tariffs[index].freePeriodStr,
                         comment: widget.tariffs[index].comment,
                         discount: widget.tariffs[index].discount,
+                        previousPriceStr: widget.tariffs[index].oldPriceStr,
                         isSelected: selectedIndex == index,
                         onTap: (int index) {
                           setState(() {
@@ -85,7 +88,7 @@ class _BigSubscriptionBottomSheetState
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height *
-                SubscriptionConsts.widthMultiply02,
+                SubscriptionConsts.widthMultiply018,
             child: DecoratedBox(
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(

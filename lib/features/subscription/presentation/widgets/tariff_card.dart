@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/features/subscription/subscription_styles.dart';
 import 'package:uwords/theme/app_colors.dart';
+import 'package:uwords/theme/app_text_styles.dart';
 
 class TariffCard extends StatelessWidget {
   final String name;
@@ -9,6 +10,7 @@ class TariffCard extends StatelessWidget {
   final String? freePeriodStr;
   final String comment;
   final int? discount;
+  final String? previousPriceStr;
   final bool isSelected;
   final Function(int index) onTap;
   final int index;
@@ -20,6 +22,7 @@ class TariffCard extends StatelessWidget {
     required this.freePeriodStr,
     required this.comment,
     required this.discount,
+    required this.previousPriceStr,
     required this.isSelected,
     required this.onTap,
     required this.index,
@@ -52,30 +55,50 @@ class TariffCard extends StatelessWidget {
                         const SizedBox(
                             height:
                                 SubscriptionConsts.biggerThanSmallestPadding),
-                        Text(priceStr, style: SubscriptionsStyles.price),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(priceStr, style: SubscriptionsStyles.price),
+                            const SizedBox(width: SubscriptionConsts.biggerThanSmallestPadding),
+                            if (previousPriceStr != null)
+                              Text(
+                                previousPriceStr!,
+                                style: AppTextStyles.oldPrice,
+                              )
+                            else
+                              const SizedBox(),
+                          ],
+                        ),
                         const SizedBox(
                             height: SubscriptionConsts.smallestPadding),
                         if (freePeriodStr != null)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: SubscriptionConsts.smallBottomPadding,
-                              vertical: SubscriptionConsts.smallestPadding,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: AppColors.backgroundOnboardingGradient,
-                              borderRadius: BorderRadius.circular(
-                                  SubscriptionConsts.normalBorderRadius),
-                            ),
-                            child: Text(
-                              freePeriodStr!,
-                              //TODO change style
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.blueColor,
+                          Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: SubscriptionConsts.smallestPadding,
                               ),
-                            ),
-                          ),
+                              child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    gradient: AppColors
+                                        .backgroundOnboardingGradientWithOpacity015,
+                                    borderRadius: BorderRadius.circular(
+                                        SubscriptionConsts
+                                            .smallestBorderRadius),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(SubscriptionConsts.smallestPadding),
+                                    child: ShaderMask(
+                                      blendMode: BlendMode.srcIn,
+                                      shaderCallback: (bounds) => AppColors
+                                          .backgroundOnboardingGradient
+                                          .createShader(
+                                        Rect.zero,
+                                      ),
+                                      child: Text(
+                                        freePeriodStr!,
+                                        style: AppTextStyles.freeTimeText
+                                      ),
+                                    ),
+                                  ))),
                         const SizedBox(
                             height: SubscriptionConsts.smallestPadding),
                         Text(comment, style: SubscriptionsStyles.comment),
@@ -96,12 +119,19 @@ class TariffCard extends StatelessWidget {
                         width: SubscriptionConsts.biggestPadding,
                         height: SubscriptionConsts.biggestPadding,
                         child: Center(
-                          child: Icon(
-                            isSelected ? Icons.check_circle : Icons.circle,
-                            color: isSelected
-                                ? AppColors.blueColor
-                                : AppColors.darkGreyColor,
-                            size: SubscriptionConsts.normalSpace,
+                          child: DecoratedBox(
+                            decoration: ShapeDecoration(
+                                shape: const CircleBorder(),
+                                color: isSelected
+                                    ? AppColors.whiteColor
+                                    : AppColors.greyIconColor),
+                            child: Icon(
+                              isSelected ? Icons.check_circle : Icons.circle,
+                              color: isSelected
+                                  ? AppColors.blueColor
+                                  : AppColors.whiteColor,
+                              size: SubscriptionConsts.normalSpace,
+                            ),
                           ),
                         ),
                       ),

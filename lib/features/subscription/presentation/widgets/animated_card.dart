@@ -87,7 +87,7 @@ class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
       builder: (context, child) {
         return AnimatedOpacity(
           duration: const Duration(
-              milliseconds: SubscriptionsDuration.oneInMilliseconds),
+              milliseconds: SubscriptionsDuration.firstStageDurationInMilliseconds),
           curve: Curves.easeIn,
           opacity: _textOpacityAnimation.value,
           child: SizedBox(
@@ -108,7 +108,7 @@ class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
                     AnimatedPositioned(
                       duration: const Duration(
                           milliseconds:
-                              SubscriptionsDuration.pointEighttInMilliseconds),
+                              SubscriptionsDuration.firstStageDurationInMilliseconds),
                       curve: Curves.easeInOut,
                       left: _iconOffsetAnimation.value.dx *
                               MediaQuery.of(context).size.width *
@@ -130,7 +130,7 @@ class _AnimatedCardWidgetState extends State<AnimatedCardWidget>
                     AnimatedOpacity(
                       duration: const Duration(
                           milliseconds:
-                              SubscriptionsDuration.twoSecondsInMilliseconds),
+                              SubscriptionsDuration.secondStageDuratioInMilliseconds),
                       curve: Curves.easeIn,
                       opacity: _textOpacityAnimation.value,
                       child: Align(

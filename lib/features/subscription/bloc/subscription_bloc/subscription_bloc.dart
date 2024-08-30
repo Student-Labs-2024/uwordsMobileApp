@@ -91,6 +91,8 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
   @override
   void addError(Object error, [StackTrace? stackTrace]) {
     switch (error.runtimeType) {
+      case const (CanNotCheckPaymentStatusException):
+        _emitter(SubscriptionState.initial(tariffs));
       // TODO implement CanNotCheckPaymentStatus and CanNotGetPaymentLink
       case const (CanNotLoadTariffsException):
         _emitter(

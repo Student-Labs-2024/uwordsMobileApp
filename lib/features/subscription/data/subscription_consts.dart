@@ -9,7 +9,7 @@ class SubscriptionConsts {
   static const double widthMultiply09 = 0.9;
   static const double widthMultiply08 = 0.8;
   static const double widthMultiply07 = 0.7;
-  static const double widthMultiply02 = 0.2;
+  static const double widthMultiply018 = 0.18;
   static const double borderRadius = 15;
   static const double animatedCardHeight = 109;
   static const double bigEmptySpace = 28;
@@ -29,22 +29,22 @@ class SubscriptionConsts {
   static const double biggerThanSmallestPadding = 8;
   static const Offset offest = Offset(0, 3);
   static const double normalBorderRadius = 20;
+  static const double smallestBorderRadius = 5;
 }
 
 class SubscriptionShadow {
   static const BoxShadow shadow = BoxShadow(
-    color: AppColors.darkGreyColor,
-    spreadRadius: 2,
-    blurRadius: 5,
-    offset: SubscriptionConsts.offest,
-  );
+      color: AppColors.blueShadowColor,
+      offset: Offset(4, 4),
+      blurRadius: 4,
+      blurStyle: BlurStyle.normal);
 }
 
 class SubscriptionsDuration {
-  static const int pointEighttInMilliseconds = 800;
-  static const int oneInMilliseconds = 1000;
+  static const int firstStageDurationInMilliseconds = 800;
+  static const int secondStageDuratioInMilliseconds = 1300;
+  static const int thhirdStageDurationInMilliseconds = 1800;
   static const int twoSecondsInMilliseconds = 2000;
-  static const int threeSecondsInMilliseconds = 3000;
 }
 
 class SubscriptionAnimationNumbers {
