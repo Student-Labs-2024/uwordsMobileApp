@@ -30,6 +30,7 @@ class UserAuth extends Table {
   BoolColumn get isEducationCompleted => boolean()();
   TextColumn get provider => text()();
   BoolColumn get isCurrent => boolean()();
+  BoolColumn get isFeedbackComplete => boolean()();
   @override
   Set<Column> get primaryKey => {id};
 }

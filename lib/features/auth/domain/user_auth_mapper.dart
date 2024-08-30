@@ -6,22 +6,24 @@ import 'package:uwords/features/global/domain/metrics.dart';
 
 extension UserAuthMapper on UserAuthDto {
   UserAuthModel toModel() => UserAuthModel(
-      id: id,
-      email: email,
-      username: username,
-      firstname: firstname,
-      lastname: lastname,
-      avatarUrl: avatarUrl,
-      phoneNumber: phoneNumber,
-      birthDate: birthDate,
-      allowedAudioSeconds: allowedAudioSeconds,
-      allowedVideoSeconds: allowedVideoSeconds,
-      energy: energy,
-      metrics: metricsDto.toModel(),
-      accessToken: accessToken,
-      refreshToken: refreshToken,
-      isEducationCompleted: isEducationCompleted,
-      provider: provider);
+        id: id,
+        email: email,
+        username: username,
+        firstname: firstname,
+        lastname: lastname,
+        avatarUrl: avatarUrl,
+        phoneNumber: phoneNumber,
+        birthDate: birthDate,
+        allowedAudioSeconds: allowedAudioSeconds,
+        allowedVideoSeconds: allowedVideoSeconds,
+        energy: energy,
+        metrics: metricsDto.toModel(),
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        isEducationCompleted: isEducationCompleted,
+        provider: provider,
+        isFeedbackComplete: isFeedbackComplete,
+      );
   UserAuthCompanion toDB() => UserAuthCompanion(
         id: Value(id),
         email: Value(email),
@@ -42,5 +44,6 @@ extension UserAuthMapper on UserAuthDto {
         isEducationCompleted: Value(isEducationCompleted),
         provider: Value(provider),
         isCurrent: const Value(true),
+        isFeedbackComplete: Value(isFeedbackComplete),
       );
 }

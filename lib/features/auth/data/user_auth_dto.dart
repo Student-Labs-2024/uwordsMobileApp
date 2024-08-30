@@ -24,29 +24,30 @@ class UserAuthDto {
   final bool isEducationCompleted;
   final String provider;
   final List<AchievementCategoryDto> achievementsCategories;
+  final bool isFeedbackComplete;
 
-  UserAuthDto({
-    required this.id,
-    required this.email,
-    required this.username,
-    required this.firstname,
-    required this.lastname,
-    required this.avatarUrl,
-    required this.phoneNumber,
-    required this.birthDate,
-    required this.metricsDto,
-    required this.subscriptionType,
-    required this.subscriptionAcquisition,
-    required this.subscriptionExpired,
-    required this.allowedAudioSeconds,
-    required this.allowedVideoSeconds,
-    required this.energy,
-    required this.achievementsCategories,
-    required this.accessToken,
-    required this.refreshToken,
-    required this.isEducationCompleted,
-    required this.provider,
-  });
+  UserAuthDto(
+      {required this.id,
+      required this.email,
+      required this.username,
+      required this.firstname,
+      required this.lastname,
+      required this.avatarUrl,
+      required this.phoneNumber,
+      required this.birthDate,
+      required this.metricsDto,
+      required this.subscriptionType,
+      required this.subscriptionAcquisition,
+      required this.subscriptionExpired,
+      required this.allowedAudioSeconds,
+      required this.allowedVideoSeconds,
+      required this.energy,
+      required this.achievementsCategories,
+      required this.accessToken,
+      required this.refreshToken,
+      required this.isEducationCompleted,
+      required this.provider,
+      required this.isFeedbackComplete});
 
   factory UserAuthDto.fromDB(User user, Metric metric,
       Map<AchievementCategory, List<Achievement>> categoryMap) {
@@ -70,7 +71,8 @@ class UserAuthDto {
         accessToken: user.accessToken,
         refreshToken: user.refreshToken,
         isEducationCompleted: user.isEducationCompleted,
-        provider: user.provider);
+        provider: user.provider,
+        isFeedbackComplete: user.isFeedbackComplete);
   }
 
   factory UserAuthDto.fromJsonAndOtherFields(
@@ -107,7 +109,8 @@ class UserAuthDto {
         accessToken: accessMap['access_token'] ?? '',
         refreshToken: accessMap['refresh_token'] ?? '',
         isEducationCompleted: userMap['is_onboarding_complete'] ?? false,
-        provider: provider.name);
+        provider: provider.name,
+        isFeedbackComplete: userMap['is_feedback_complete'] ?? false);
   }
 
   void changeAccessToken({required String newAccessToken}) {
@@ -142,6 +145,7 @@ class UserAuthDto {
               .toList() ??
           [],
       isEducationCompleted: userMap['is_onboarding_complete'] ?? false,
+      isFeedbackComplete: userMap['is_feedback_complete'] ?? false,
     );
   }
 
@@ -167,6 +171,7 @@ class UserAuthDto {
     bool? isEducationCompleted,
     String? provider,
     List<AchievementCategoryDto>? achievementsCategories,
+    bool? isFeedbackComplete,
   }) {
     return UserAuthDto(
       id: id ?? this.id,
@@ -190,6 +195,7 @@ class UserAuthDto {
       provider: provider ?? this.provider,
       achievementsCategories:
           achievementsCategories ?? this.achievementsCategories,
+      isFeedbackComplete: isFeedbackComplete ?? this.isFeedbackComplete,
     );
   }
 }
