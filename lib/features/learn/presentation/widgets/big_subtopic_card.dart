@@ -37,7 +37,8 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32.0),
+        padding: const EdgeInsets.symmetric(
+            horizontal: LearnPaddings.paddingForBigCard),
         child: SizedBox(
           width: widget.width,
           height: widget.height,
@@ -137,8 +138,8 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                     widget.onSort();
                   },
                   child: SizedBox(
-                    height: 45,
-                    width: 45,
+                    height: LearnSizes.classicSortIconWidth,
+                    width: LearnSizes.classicSortIconWidth,
                     child: ClipPath(
                       clipper: SortClipper(),
                       clipBehavior: Clip.hardEdge,

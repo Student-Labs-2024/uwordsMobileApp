@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 
 class SortClipper extends CustomClipper<Path> {
   @override
@@ -6,7 +7,7 @@ class SortClipper extends CustomClipper<Path> {
     double radius = 10;
 
     Path path = Path()
-      ..addRRect(RRect.fromLTRBR(0, 0, 45, 45, Radius.circular(radius)));
+      ..addRRect(RRect.fromLTRBR(0, 0, LearnSizes.classicSortIconWidth, LearnSizes.classicSortIconWidth, Radius.circular(radius)));
     return path;
   }
 
