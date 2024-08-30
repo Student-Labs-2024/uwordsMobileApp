@@ -325,6 +325,8 @@ class _HomePageState extends State<HomePage> {
                                 });
                           },
                         ),
+                        const SizedBox(),
+                        const SizedBox()
                       ],
                     ),
                     BlocBuilder<GradeBloc, GradeState>(
