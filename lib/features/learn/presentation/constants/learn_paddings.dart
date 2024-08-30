@@ -57,4 +57,5 @@ class LearnPaddings {
   static const double letterButtonMarginTop = 10;
   static const double letterButtonPaddingHorizontal = 12;
   static const double letterButtonPaddingVertical = 6;
+  static const double additionalFinalScreenHorizontal = 10 / 375;
 }
