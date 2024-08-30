@@ -127,12 +127,6 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                               progress: widget.progress,
                               onPressed: widget.quit),
                         ),
-                        /*Expanded(child: ListView(
-                              children: [
-                  
-                              ],
-                            ),
-                            ),*/
                         Text(AppLocalizations.of(context).makeWord,
                             style: LearnTextStyles.wordScreenDescription),
                         SizedBox(
