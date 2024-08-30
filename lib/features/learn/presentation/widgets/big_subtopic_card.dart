@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/words_localization.dart';
 import 'package:uwords/features/global/presentation/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/theme/app_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/theme/app_text_styles.dart';
 import 'package:uwords/theme/image_source.dart';
 
@@ -61,7 +61,7 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                 ),
                 const SizedBox(height: LearnPaddings.smallestEmptySpace),
                 Text(
-                  '${widget.subtopic.wordCount} ${AppLocalizations.of(context).learnedWordsCard}',
+                  '${widget.subtopic.wordCount} ${pluralizeWords(widget.subtopic.wordCount)}',
                   style: AppTextStyles.pinCodeText,
                 ),
                 const SizedBox(height: LearnPaddings.svgIconLeftPadding),

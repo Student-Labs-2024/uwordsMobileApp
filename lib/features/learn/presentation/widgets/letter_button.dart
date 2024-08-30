@@ -110,6 +110,9 @@ class LetterButtonState extends State<LetterButton> {
               ],
             ),
           )
-        : const SizedBox();
+        : const SizedBox(
+            width: LearnSizes.letterButtonWrapperWidth,
+            height: LearnSizes.letterButtonWrapperHeight,
+          );
   }
 }

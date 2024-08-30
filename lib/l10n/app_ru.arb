@@ -62,7 +62,6 @@
   "sortByLastLearningDate": "По дате изучения",
   "cancel": "Отменить",
   "daysOnFireCard": "В ударе",
-  "learnedWordsCard": "Слов",
   "hours": "{count}ч",
   "@hours": {
     "placeholders": {
