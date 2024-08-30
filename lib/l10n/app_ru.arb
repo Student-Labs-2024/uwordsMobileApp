@@ -62,10 +62,14 @@
   "sortByLastLearningDate": "По дате изучения",
   "cancel": "Отменить",
   "daysOnFireCard": "В ударе",
-  "hours": "{count}ч",
+  "hours": "{typeTime, plural, =1{{count}ч} other{{count}м}}",
   "@hours": {
     "placeholders": {
       "count": {
+        "type": "num",
+        "format": "compact"
+      },
+      "typeTime": {
         "type": "num",
         "format": "compact"
       }
