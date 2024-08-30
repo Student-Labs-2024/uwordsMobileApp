@@ -6,6 +6,7 @@ class WordInfo {
   final int userId;
   final int frequency;
   final int progress;
+  final List<String> additionalPictures;
   final DateTime? latestStudy;
 
   WordInfo({
@@ -15,6 +16,7 @@ class WordInfo {
     required this.latestStudy,
     required this.frequency,
     required this.progress,
+    required this.additionalPictures,
   });
 }
 

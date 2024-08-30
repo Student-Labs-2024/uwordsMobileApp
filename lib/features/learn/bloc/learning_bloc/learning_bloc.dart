@@ -71,7 +71,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
           accessToken: accessToken, userRepository: userRepository);
 
       await wordsRepository.deleteWord(
-          accessToken: accessToken, id: event.wordInfo.word.id);
+          accessToken: accessToken, id: event.wordInfo.id);
       //TODO Think about optimization
       for (Topic topic in saveTopics) {
         if (topic.topicTitle != event.subtopic.topicTitle) continue;

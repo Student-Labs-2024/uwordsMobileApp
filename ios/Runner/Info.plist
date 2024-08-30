@@ -43,9 +43,9 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Some message to describe why you need this permission</string>
+	<string>Allow app to get text input from your speech</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>Some message to describe why you need this permission</string>
+    <string>Your voice input needed for the speech to text functionality</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

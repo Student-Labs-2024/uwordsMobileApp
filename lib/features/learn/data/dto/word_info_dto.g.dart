@@ -16,6 +16,10 @@ _$WordInfoDtoImpl _$$WordInfoDtoImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['latest_study'] as String),
       frequency: (json['frequency'] as num?)?.toInt() ?? 0,
       progress: (json['progress'] as num?)?.toInt() ?? 0,
+      additionalPictures: (json['additional_pictures'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$$WordInfoDtoImplToJson(_$WordInfoDtoImpl instance) =>
@@ -26,4 +30,5 @@ Map<String, dynamic> _$$WordInfoDtoImplToJson(_$WordInfoDtoImpl instance) =>
       'latest_study': instance.latestStudy?.toIso8601String(),
       'frequency': instance.frequency,
       'progress': instance.progress,
+      'additional_pictures': instance.additionalPictures,
     };

@@ -18,7 +18,7 @@ class LearnWordPage4 extends StatefulWidget {
   const LearnWordPage4(
       {super.key,
       required this.word,
-      required this.selectableWords,
+      required this.selectableImages,
       required this.goNextScreen,
       required this.quit,
       required this.progress,
@@ -26,7 +26,7 @@ class LearnWordPage4 extends StatefulWidget {
       required this.isCantHear});
 
   final WordModel word;
-  final List<WordModel> selectableWords;
+  final List<String> selectableImages;
   final void Function(String) goNextScreen;
   final VoidCallback quit;
   final int progress;
@@ -54,7 +54,7 @@ class LearnWordPage4State extends State<LearnWordPage4> {
 
   void onPressBottomButton() {
     if (currentChoose == '') return;
-    if (currentChoose == widget.word.enValue) {
+    if (currentChoose == widget.word.pictureLink) {
       setState(() {
         isAnswerCorrect = true;
         chosedState = OtherLearnConstants.stateSuccess;
@@ -68,12 +68,12 @@ class LearnWordPage4State extends State<LearnWordPage4> {
     }
   }
 
-  void makeChoice(WordModel word) {
+  void makeChoice(String wordImage) {
     setState(() {
       if (buttonState == OtherLearnConstants.stateZero) {
         buttonState = OtherLearnConstants.stateActive;
       }
-      currentChoose = word.enValue;
+      currentChoose = wordImage;
     });
   }
 
@@ -130,20 +130,20 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ImageCard(
-                          word: widget.selectableWords[0],
-                          onPressed: makeChoice,
-                          state:
-                              currentChoose == widget.selectableWords[0].enValue
-                                  ? chosedState
-                                  : OtherLearnConstants.stateZero,
+                          wordImage: widget.selectableImages[0],
+                          onPressed: () =>
+                              makeChoice(widget.selectableImages[0]),
+                          state: currentChoose == widget.selectableImages[0]
+                              ? chosedState
+                              : OtherLearnConstants.stateZero,
                         ),
                         ImageCard(
-                          word: widget.selectableWords[1],
-                          onPressed: makeChoice,
-                          state:
-                              currentChoose == widget.selectableWords[1].enValue
-                                  ? chosedState
-                                  : OtherLearnConstants.stateZero,
+                          wordImage: widget.selectableImages[1],
+                          onPressed: () =>
+                              makeChoice(widget.selectableImages[1]),
+                          state: currentChoose == widget.selectableImages[1]
+                              ? chosedState
+                              : OtherLearnConstants.stateZero,
                         ),
                       ],
                     ),
@@ -151,20 +151,20 @@ class LearnWordPage4State extends State<LearnWordPage4> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ImageCard(
-                          word: widget.selectableWords[2],
-                          onPressed: makeChoice,
-                          state:
-                              currentChoose == widget.selectableWords[2].enValue
-                                  ? chosedState
-                                  : OtherLearnConstants.stateZero,
+                          wordImage: widget.selectableImages[2],
+                          onPressed: () =>
+                              makeChoice(widget.selectableImages[2]),
+                          state: currentChoose == widget.selectableImages[2]
+                              ? chosedState
+                              : OtherLearnConstants.stateZero,
                         ),
                         ImageCard(
-                          word: widget.selectableWords[3],
-                          onPressed: makeChoice,
-                          state:
-                              currentChoose == widget.selectableWords[3].enValue
-                                  ? chosedState
-                                  : OtherLearnConstants.stateZero,
+                          wordImage: widget.selectableImages[3],
+                          onPressed: () =>
+                              makeChoice(widget.selectableImages[3]),
+                          state: currentChoose == widget.selectableImages[3]
+                              ? chosedState
+                              : OtherLearnConstants.stateZero,
                         ),
                       ],
                     ),

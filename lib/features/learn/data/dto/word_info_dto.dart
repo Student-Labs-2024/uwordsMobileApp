@@ -17,6 +17,8 @@ class WordInfoDto with _$WordInfoDto {
     required DateTime? latestStudy,
     @JsonKey(name: "frequency", defaultValue: 0) required int frequency,
     @JsonKey(name: "progress", defaultValue: 0) required int progress,
+    @JsonKey(name: "additional_pictures", defaultValue: [])
+    required List<String> additionalPictures,
   }) = _WordInfoDto;
 
   factory WordInfoDto.fromJson(Map<String, Object?> json) =>

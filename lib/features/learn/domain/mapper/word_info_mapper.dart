@@ -10,6 +10,7 @@ extension WordInfoMapper on WordInfoDto {
         latestStudy: latestStudy,
         frequency: frequency,
         progress: progress,
+        additionalPictures: additionalPictures,
       );
 }
 

@@ -27,7 +27,7 @@ abstract class TrainingState with _$TrainingState {
     required ValueKey valueKey,
     required bool cantHear,
     required WordModel word,
-    required List<WordModel> selectableWords,
+    required List<String> selectableImages,
     required int progress,
   }) = _Screen4State;
   const factory TrainingState.finalScreen({

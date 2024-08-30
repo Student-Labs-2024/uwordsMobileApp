@@ -31,14 +31,18 @@ class ProgressImageCardState extends State<ProgressImageCard> {
   void startAnimation() async {
     await Future.delayed(
         const Duration(milliseconds: OtherLearnConstants.progressMilisec1));
-    setState(() {
-      stage = OtherLearnConstants.circleImageStage1;
-    });
+    if (mounted) {
+      setState(() {
+        stage = OtherLearnConstants.circleImageStage1;
+      });
+    }
     await Future.delayed(
         const Duration(milliseconds: OtherLearnConstants.progressMilisec2));
-    setState(() {
-      stage = OtherLearnConstants.circleImageStage2;
-    });
+    if (mounted) {
+      setState(() {
+        stage = OtherLearnConstants.circleImageStage2;
+      });
+    }
   }
 
   String getImage() {

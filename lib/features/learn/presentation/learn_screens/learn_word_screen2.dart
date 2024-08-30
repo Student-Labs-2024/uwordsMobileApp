@@ -108,64 +108,77 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                   width: MediaQuery.of(context).size.width,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width *
-                        LearnPaddings.wordScreenHorizontal),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: LearnPaddings.learnProgressTop,
-                          bottom: LearnPaddings.learnProgressBottom),
-                      child: LearnProgressBar(
-                          hp: widget.hp,
-                          progress: widget.progress,
-                          onPressed: widget.quit),
+              ListView(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width *
+                            LearnPaddings.wordScreenHorizontal),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: LearnPaddings.learnProgressTop,
+                              bottom: LearnPaddings.learnProgressBottom),
+                          child: LearnProgressBar(
+                              hp: widget.hp,
+                              progress: widget.progress,
+                              onPressed: widget.quit),
+                        ),
+                        Text(AppLocalizations.of(context).makeWord,
+                            style: LearnTextStyles.wordScreenDescription),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height *
+                                LearnPaddings.learnDescriptionBottom),
+                        CustomImageNetworkView(
+                            imageSource: widget.word.pictureLink,
+                            width: MediaQuery.of(context).size.width *
+                                LearnSizes.imageWidth,
+                            height: MediaQuery.of(context).size.height *
+                                LearnSizes.imageHeight,
+                            clipRadius: GlobalSizes.borderRadiusVeryLarge),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height *
+                                  LearnPaddings.learnWordInputTop,
+                              bottom: MediaQuery.of(context).size.height *
+                                  LearnPaddings.learnWordInputBottom),
+                          child: WordInput(
+                            text: answer,
+                            state: inputState,
+                          ),
+                        ),
+                        Wrap(
+                          children: getLetters(),
+                        ),
+                        SizedBox(
+                          height: LearnPaddings.learnBottom +
+                              GlobalSizes.bubbleButtonHeight +
+                              MediaQuery.of(context).size.height *
+                                  LearnPaddings.learnWordInputBottom,
+                        )
+                      ],
                     ),
-                    Text(AppLocalizations.of(context).makeWord,
-                        style: LearnTextStyles.wordScreenDescription),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height *
-                            LearnPaddings.learnDescriptionBottom),
-                    CustomImageNetworkView(
-                        imageSource: widget.word.pictureLink,
-                        width: MediaQuery.of(context).size.width *
-                            LearnSizes.imageWidth,
-                        height: MediaQuery.of(context).size.height *
-                            LearnSizes.imageHeight,
-                        clipRadius: GlobalSizes.borderRadiusVeryLarge),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height *
-                              LearnPaddings.learnWordInputTop,
-                          bottom: MediaQuery.of(context).size.height *
-                              LearnPaddings.learnWordInputBottom),
-                      child: WordInput(
-                        text: answer,
-                        state: inputState,
-                      ),
-                    ),
-                    Wrap(
-                      runSpacing: LearnPaddings.wrapSpacing,
-                      children: getLetters(),
-                    ),
-                    const Spacer(),
-                    BubbleButton(null,
-                        state: inputState,
-                        maximumWidth: MediaQuery.of(context).size.height,
-                        text: isAnswerCorrect
-                            ? AppLocalizations.of(context).next
-                            : AppLocalizations.of(context).check,
-                        onPressed: onPressBottomButton,
-                        textStyle: LearnTextStyles.bubbleButton),
-                    const SizedBox(
-                      height: LearnPaddings.learnBottom,
-                    )
-                  ],
-                ),
+                  ),
+                ],
+              ),
+              Positioned(
+                bottom: LearnPaddings.learnBottom,
+                left: MediaQuery.of(context).size.width *
+                    LearnPaddings.wordScreenHorizontal,
+                child: BubbleButton(null,
+                    state: inputState,
+                    maximumWidth: MediaQuery.of(context).size.width -
+                        2 *
+                            MediaQuery.of(context).size.width *
+                            LearnPaddings.wordScreenHorizontal,
+                    text: isAnswerCorrect
+                        ? AppLocalizations.of(context).next
+                        : AppLocalizations.of(context).check,
+                    onPressed: onPressBottomButton,
+                    textStyle: LearnTextStyles.bubbleButton),
               ),
             ],
           ),
