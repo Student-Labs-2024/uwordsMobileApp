@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color mainColor = Color.fromRGBO(83, 45, 106, 0.6);
   static const Color darkMainColor = Color.fromRGBO(83, 45, 106, 1);
+  static const Color veryDarkMainColor = Color.fromRGBO(72, 5, 113, 1);
   static const Color mainColorOpacity = Color.fromRGBO(83, 45, 106, 0.7);
   static const Color darkMainColorOpacity = Color.fromRGBO(83, 45, 106, 0.9);
   static const Color errorColor = Color.fromRGBO(227, 0, 0, 0.65);

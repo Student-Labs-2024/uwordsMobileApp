@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 import 'package:uwords/features/global/presentation/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/grade/bloc/grade_bloc.dart';
@@ -154,7 +156,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                                 OptionsButton(
-                                  onPressed: () => {},
+                                  onPressed: () {
+                                    context
+                                        .read<AuthBloc>()
+                                        .add(const AuthEvent.logOut());
+                                    context.go("/");
+                                  },
                                 ),
                               ],
                             ),
