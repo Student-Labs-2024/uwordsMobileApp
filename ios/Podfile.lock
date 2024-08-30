@@ -85,6 +85,8 @@ PODS:
     - Flutter
   - just_audio (0.0.1):
     - Flutter
+  - livespeechtotext (0.0.1):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -131,6 +133,7 @@ DEPENDENCIES:
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
   - home_widget (from `.symlinks/plugins/home_widget/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - livespeechtotext (from `.symlinks/plugins/livespeechtotext/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -176,6 +179,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/home_widget/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
+  livespeechtotext:
+    :path: ".symlinks/plugins/livespeechtotext/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
@@ -210,6 +215,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   home_widget: 0434835a4c9a75704264feff6be17ea40e0f0d57
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  livespeechtotext: 554d747665baa83e841438e88cf8ad7d2fafd8bc
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
@@ -222,6 +228,6 @@ SPEC CHECKSUMS:
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
   VK-ios-sdk: 21091f214d271a74b3a3313ec62d1c4da98ce00f
 
-PODFILE CHECKSUM: 92dc87c31b6fcddca8ac5bad4d65415c649f809b
+PODFILE CHECKSUM: b74bf1a146893d30cf3fffeeca6acf15facf6d49
 
 COCOAPODS: 1.15.2
