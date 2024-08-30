@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/global/domain/achievement.dart';
 import 'package:uwords/features/global/presentation/widgets/custom_progress_bar.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_shadows.dart';
@@ -34,7 +35,7 @@ class AchievementCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.network(
+          SvgPicture.network(
             achievement.achievementModel.pictureLink,
             width: MediaQuery.of(context).size.width *
                 ProfileSizes.sachievementCardIconWidth,

@@ -197,10 +197,12 @@ class AppTextStyles {
       fontWeight: FontWeight.w600,
       color: AppColors.darkMainColor);
   static var learnCant = TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w600,
-      color: AppColors.darkMainColor.withOpacity(0.45),
-      decoration: TextDecoration.underline);
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkMainColor.withOpacity(0.45),
+    decoration: TextDecoration.underline,
+    decorationColor: AppColors.darkMainColor.withOpacity(0.45),
+  );
 
   static const profileNavActive = TextStyle(
     fontFamily: AppFonts.inter,
@@ -263,4 +265,17 @@ class AppTextStyles {
       fontWeight: FontWeight.w600,
       fontSize: 20,
       color: AppColors.imperial);
+  static const oldPrice = TextStyle(
+    fontFamily: AppFonts.inter,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkGreyColor,
+    fontSize: 13,
+    decoration: TextDecoration.lineThrough,
+    decorationColor: AppColors.darkGreyColor,
+  );
+  static const freeTimeText = TextStyle(
+    fontFamily: AppFonts.inter,
+    fontSize: 13,
+    fontWeight: FontWeight.w700,
+  );
 }

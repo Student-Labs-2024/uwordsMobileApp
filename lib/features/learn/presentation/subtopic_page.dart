@@ -49,10 +49,13 @@ class _SubtopicPageState extends State<SubtopicPage> {
 
   bool isSortActive = false;
   void changeSortActive(bool state) {
-    if (state == isSortActive) return;
-    setState(() {
-      isSortActive = !isSortActive;
-    });
+    if (state == isSortActive) {
+      setState(() {});
+    } else {
+      setState(() {
+        isSortActive = !isSortActive;
+      });
+    }
   }
 
   void deleteWord(WordInfo wordInfo, Subtopic subtopic) {
@@ -133,10 +136,9 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                                 context.read<LearningBloc>().add(
                                                     LearningEvent.sortWords(
                                                         subtopic,
-                                                        wordFrequencyComparator));
+                                                        wordProgressComparator));
                                                 Navigator.pop(context);
                                                 changeSortActive(true);
-                                                setState(() {});
                                               },
                                               child: Text(
                                                 AppLocalizations.of(context)
@@ -150,10 +152,9 @@ class _SubtopicPageState extends State<SubtopicPage> {
                                                 context.read<LearningBloc>().add(
                                                     LearningEvent.sortWords(
                                                         subtopic,
-                                                        wordProgressComparator));
+                                                        wordReverseProgressComparator));
                                                 Navigator.pop(context);
                                                 changeSortActive(true);
-                                                setState(() {});
                                               },
                                               child: Text(
                                                 AppLocalizations.of(context)

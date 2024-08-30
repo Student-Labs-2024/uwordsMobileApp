@@ -202,6 +202,7 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
 
   void _handleSortWords(_SortWordsEvent event, Emitter<LearningState> emit) {
     event.subtopic.wordInfoList.sort(event.comparator);
+    emit(LearningState.openSubtopic(subtopic: event.subtopic));
   }
 
   @override

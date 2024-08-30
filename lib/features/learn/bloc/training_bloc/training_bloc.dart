@@ -176,7 +176,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     currentWordScreenIndex++;
 
     if (currentWordScreenIndex == wordScreen.length) {
-      _calculateProgress();
+      progress = OtherLearnConstants.maxProgress;
       List<WordModel> wordModels = [];
       List<int> newProgress = [];
       List<int> wordsID = [];

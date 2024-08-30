@@ -76,8 +76,12 @@ class _SubscriptionPageState extends State<SubscriptionPage>
             child: BlocConsumer<SubscriptionBloc, SubscriptionState>(
                 listener: (context, subscriptionState) {
               subscriptionState.whenOrNull(
-                  payingSubscription: (paymentLink) =>
-                      _openPaymentLink(link: paymentLink));
+                payingSubscription: (paymentLink) =>
+                    _openPaymentLink(link: paymentLink),
+                subscriptionPaid: () {
+                  context.go('/profile');
+                },
+              );
             }, builder: (BuildContext context, SubscriptionState state) {
               return SafeArea(
                   child: Center(
@@ -107,8 +111,8 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                               offesetAnimationPositioned:
                                   SubscriptionConsts.widthMultiply09,
                               animationDuration: const Duration(
-                                  milliseconds:
-                                      SubscriptionsDuration.oneInMilliseconds),
+                                  milliseconds: SubscriptionsDuration
+                                      .firstStageDurationInMilliseconds),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(
@@ -121,7 +125,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                                     SubscriptionConsts.widthMultiply13,
                                 animationDuration: const Duration(
                                     milliseconds: SubscriptionsDuration
-                                        .twoSecondsInMilliseconds),
+                                        .secondStageDuratioInMilliseconds),
                               ),
                             ),
                             AnimatedCardWidget(
@@ -132,7 +136,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                                   SubscriptionConsts.widthMultiply13,
                               animationDuration: const Duration(
                                   milliseconds: SubscriptionsDuration
-                                      .threeSecondsInMilliseconds),
+                                      .thhirdStageDurationInMilliseconds),
                             ),
                             const Spacer(),
                           ],

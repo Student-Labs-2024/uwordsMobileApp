@@ -23,6 +23,9 @@ class WordInfo {
 Comparator<WordInfo> wordFrequencyComparator =
     (a, b) => a.frequency.compareTo(b.frequency);
 
+Comparator<WordInfo> wordReverseProgressComparator =
+    (a, b) => b.progress.compareTo(a.progress);
+
 Comparator<WordInfo> wordProgressComparator =
     (a, b) => a.progress.compareTo(b.progress);
 

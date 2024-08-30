@@ -1,3 +1,4 @@
+import 'package:uwords/common/exceptions/subscription_exceptions.dart';
 import 'package:uwords/features/subscription/data/data_sources/network_tariff_data_source.dart';
 import 'package:uwords/features/subscription/data/dto/form_dto.dart';
 import 'package:uwords/features/subscription/data/dto/tariff_dto.dart';
@@ -14,14 +15,18 @@ abstract interface class ISubscriptionRepository {
 class SubscriptionRepository implements ISubscriptionRepository {
   final INetworkTariffDataSource networkTariffDataSource;
 
-  late FormDto formDto;
+  FormDto formDto = FormDto(link: '', paymentId: '');
   SubscriptionRepository({required this.networkTariffDataSource});
 
   @override
   Future<bool> checkPayment({required String accessToken}) async {
     try {
-      return await networkTariffDataSource.checkPayment(
-          accessToken: accessToken, paymentId: formDto.paymentId);
+      if (formDto.link.isEmpty) {
+        throw CanNotCheckPaymentStatusException();
+      } else {
+        return await networkTariffDataSource.checkPayment(
+            accessToken: accessToken, paymentId: formDto.paymentId);
+      }
     } on Exception {
       rethrow;
     }

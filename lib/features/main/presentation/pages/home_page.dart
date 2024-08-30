@@ -325,17 +325,6 @@ class _HomePageState extends State<HomePage> {
                                 });
                           },
                         ),
-                        const SizedBox(),
-                        StreamBuilder(
-                          stream: errorStreamController.stream,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Text(snapshot.data.toString());
-                            } else {
-                              return const SizedBox();
-                            }
-                          },
-                        ),
                       ],
                     ),
                     BlocBuilder<GradeBloc, GradeState>(
