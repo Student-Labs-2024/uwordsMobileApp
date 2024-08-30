@@ -121,7 +121,7 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
                         borderRadius: BorderRadius.circular(
                             GlobalSizes.borderRadiusMedium),
                         border: Border.all(
-                          color: AppColors.lightgrayColor,
+                          color: AppColors.lightgrayColor3,
                         ),
                       ),
                       child: TextField(
@@ -131,6 +131,7 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
                         expands: false,
                         textAlignVertical: TextAlignVertical.top,
                         decoration: InputDecoration(
+                          hintStyle: AppTextStyles.gradeInput,
                           border: InputBorder.none,
                           hintText: AppLocalizations.of(context).writeGrade,
                           contentPadding:
@@ -138,9 +139,13 @@ class _GradeBottomSheetState extends State<GradeBottomSheet>
                         ),
                       ),
                     ),
-                    GradeButton(
-                      onPressed: sendGrade,
-                      text: AppLocalizations.of(context).sendGrade,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: GradePaddings.horizontal),
+                      child: GradeButton(
+                        onPressed: sendGrade,
+                        text: AppLocalizations.of(context).sendGrade,
+                      ),
                     ),
                     const SizedBox(
                       height: GradePaddings.buttonBottom,

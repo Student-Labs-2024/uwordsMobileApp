@@ -208,8 +208,8 @@
   "chooseSubscriptionType": "Выберите варианты подписки\nUWORDS BURST",
   "payButton": "Оформить подписку",
   "wordRemoved" : "Слово было удалено",
-  "howGrade" : "Как вы оцениваете приложение?",
-  "writeGrade" : "Напишите отзыв",
+  "howGrade" : "Как вы оцениваете приложение uwords?",
+  "writeGrade" : "Напишите отзыв...",
   "sendGrade" : "Отправить отзыв",
   "notNow" : "Не сейчас"
 }
