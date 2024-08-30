@@ -701,6 +701,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  livespeechtotext:
+    dependency: "direct main"
+    description:
+      name: livespeechtotext
+      sha256: "5d8da7dd96ac754edc1c6f120560ce25db032363b212464576eb66a26e3d7d5b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.9"
   logger:
     dependency: transitive
     description:

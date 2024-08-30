@@ -52,6 +52,7 @@ dependencies:
   home_widget: ^0.6.0
   smooth_page_indicator: ^1.2.0+3
   email_validator: ^3.0.0
+  livespeechtotext: ^1.0.9
 
 dev_dependencies:
   flutter_test:

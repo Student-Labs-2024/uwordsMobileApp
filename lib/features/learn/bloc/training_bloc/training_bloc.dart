@@ -25,9 +25,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   final IUserRepository userRepository;
   final random = Random();
 
-  List<WordModel> words = [];
-  List<int> wordsInfoIDs = [];
-  List<int> wordsInfoProgress = [];
+  List<WordInfo> words = [];
 
   List<Pair<int, int>> wordScreen = [];
   int currentWordScreenIndex = -1;
@@ -71,14 +69,10 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
   void _getWordsFromTitle(_SetTopicEvent event, Emitter<TrainingState> emit) {
     words = [];
-    wordsInfoProgress = [];
-    wordsInfoIDs = [];
     Topic topic = event.topic;
     for (var subtopic in topic.subtopics) {
       for (var wordInfo in subtopic.wordInfoList) {
-        words.add(wordInfo.word);
-        wordsInfoProgress.add(wordInfo.progress);
-        wordsInfoIDs.add(wordInfo.id);
+        words.add(wordInfo);
       }
     }
     _startTraining(emit);
@@ -87,13 +81,9 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
   void _getWordsFromSubtitle(
       _SetSubtopicEvent event, Emitter<TrainingState> emit) {
     words = [];
-    wordsInfoProgress = [];
-    wordsInfoIDs = [];
     Subtopic subtopic = event.subtopic;
     for (var wordInfo in subtopic.wordInfoList) {
-      words.add(wordInfo.word);
-      wordsInfoProgress.add(wordInfo.progress);
-      wordsInfoIDs.add(wordInfo.id);
+      words.add(wordInfo);
     }
     _startTraining(emit);
   }
@@ -141,16 +131,19 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
     keys = tempKeys;
   }
 
-  List<WordModel> getSelectableWords() {
-    List<WordModel> selectableWords = [];
-    selectableWords.addAll(words);
-    selectableWords.shuffle();
-    return selectableWords;
+  List<String> getSelectableImages() {
+    List<String> selectableImages = [];
+    selectableImages.addAll(
+        words[wordScreen[currentWordScreenIndex].first].additionalPictures);
+    selectableImages
+        .add(words[wordScreen[currentWordScreenIndex].first].word.pictureLink);
+    selectableImages.shuffle();
+    return selectableImages;
   }
 
   List<Pair<String, int>> getLetters() {
     List<String> letters =
-        words[wordScreen[currentWordScreenIndex].first].enValue.split('');
+        words[wordScreen[currentWordScreenIndex].first].word.enValue.split('');
     Map<String, int> letterCounts = {};
 
     for (String letter in letters) {
@@ -184,14 +177,20 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
 
     if (currentWordScreenIndex == wordScreen.length) {
       _calculateProgress();
+      List<WordModel> wordModels = [];
+      List<int> newProgress = [];
+      List<int> wordsID = [];
+      wordModels.addAll(words.map((wordInfo) => wordInfo.word));
+      newProgress.addAll(words.map((wordInfo) => wordInfo.progress));
+      wordsID.addAll(words.map((wordInfo) => wordInfo.id));
       emit(TrainingState.finalScreen(
-          words: words,
-          newProgress: wordsInfoProgress,
+          words: wordModels,
+          newProgress: newProgress,
           valueKey: keys.last,
           progress: progress));
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await wordsRepository.sendLearnedWords(
-          accessToken: accessToken, wordsId: wordsInfoIDs);
+          accessToken: accessToken, wordsId: wordsID);
       return;
     }
     switch (wordScreen[currentWordScreenIndex].second) {
@@ -200,14 +199,14 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         emit(TrainingState.screen1(
             valueKey: keys[currentWordScreenIndex],
             progress: progress,
-            word: words[wordScreen[currentWordScreenIndex].first]));
+            word: words[wordScreen[currentWordScreenIndex].first].word));
         break;
       case 2:
         _calculateProgress();
         emit(TrainingState.screen2(
             valueKey: keys[currentWordScreenIndex],
             progress: progress,
-            word: words[wordScreen[currentWordScreenIndex].first],
+            word: words[wordScreen[currentWordScreenIndex].first].word,
             letters: getLetters()));
         break;
       case 3:
@@ -226,7 +225,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
         emit(TrainingState.screen3(
             valueKey: keys[currentWordScreenIndex],
             progress: progress,
-            word: words[wordScreen[currentWordScreenIndex].first]));
+            word: words[wordScreen[currentWordScreenIndex].first].word));
         break;
       case 4:
         if (isCantHear) {
@@ -239,8 +238,8 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             valueKey: keys[currentWordScreenIndex],
             cantHear: isCantHear,
             progress: progress,
-            word: words[wordScreen[currentWordScreenIndex].first],
-            selectableWords: getSelectableWords()));
+            word: words[wordScreen[currentWordScreenIndex].first].word,
+            selectableImages: getSelectableImages()));
         break;
     }
   }
@@ -249,8 +248,6 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       _StartStudyEvent event, Emitter<TrainingState> emit) async {
     try {
       words = [];
-      wordsInfoProgress = [];
-      wordsInfoIDs = [];
       String accessToken = await userRepository.getCurrentUserAccessToken();
       checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
@@ -258,14 +255,12 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
           accessToken: accessToken,
           topicTitle: event.subtopic.topicTitle,
           subtopicTitle: event.subtopic.subtopicTitle);
-      List<WordModel> placeholders =
-          event.subtopic.wordInfoList.map((e) => e.word).toList();
-      wordsInfoIDs.addAll(result.map((wordInfo) => wordInfo.id));
-      wordsInfoProgress.addAll(result.map((wordInfo) => wordInfo.progress));
-      //TODO Remove take placeholder and replace to no words for learning state
-      words.addAll(result.isEmpty
-          ? placeholders.take(4)
-          : result.map((wordInfo) => wordInfo.word).toList());
+      if (result.isEmpty) {
+        emit(const TrainingState.failed(
+            message: OtherLearnConstants.allLearned));
+        return;
+      }
+      words.addAll(result.map((wordInfo) => wordInfo).toList());
       _startTraining(emit);
     } on Exception catch (e) {
       _emitter = emit;
@@ -285,7 +280,7 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
             accessToken: accessToken,
             topicTitle: _topicTitle,
             subtopicTitle: _subtopicTitle);
-        words.addAll(result.map((wordInfo) => wordInfo.word).toList());
+        words.addAll(result.map((wordInfo) => wordInfo).toList());
         _startTraining(_emitter);
       case const (SocketException):
         _emitter(const TrainingState.failed(message: 'No Internet'));

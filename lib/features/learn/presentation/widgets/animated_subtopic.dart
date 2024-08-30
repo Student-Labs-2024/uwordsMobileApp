@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/words_localization.dart';
 import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_shadows.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:uwords/theme/app_text_styles.dart';
@@ -66,28 +66,34 @@ class _AnimatedSubtopicState extends State<AnimatedSubtopic> {
     await Future.delayed(const Duration(
         seconds:
             OtherLearnConstants.animatedSubtopicProgressMediumSecondsPart));
-    setState(() {
-      animatedSubtopicIconProgress =
-          OtherLearnConstants.animatedSubtopicProgressMedium;
-      animatedSubtopicProgress =
-          OtherLearnConstants.animatedSubtopicProgressMax;
-    });
+    if (mounted) {
+      setState(() {
+        animatedSubtopicIconProgress =
+            OtherLearnConstants.animatedSubtopicProgressMedium;
+        animatedSubtopicProgress =
+            OtherLearnConstants.animatedSubtopicProgressMax;
+      });
+    }
     await Future.delayed(const Duration(
         seconds: OtherLearnConstants.animatedSubtopicProgressSmallSecondsPart));
-    setState(() {
-      animatedSubtopicIconProgress =
-          OtherLearnConstants.animatedSubtopicProgressMax;
-    });
+    if (mounted) {
+      setState(() {
+        animatedSubtopicIconProgress =
+            OtherLearnConstants.animatedSubtopicProgressMax;
+      });
+    }
     await Future.delayed(const Duration(
         seconds: OtherLearnConstants.animatedSubtopicProgressSmallSecondsPart));
-    setState(() {
-      duration = Duration.zero;
-      backGradient = AppColors.progressBarRedGradientBack;
-      progressGradient = AppColors.progressBarRedGradient;
-      progressWidth = 0;
-      animatedSubtopicProgress = 0;
-      animatedSubtopicIconProgress = 0;
-    });
+    if (mounted) {
+      setState(() {
+        duration = Duration.zero;
+        backGradient = AppColors.progressBarRedGradientBack;
+        progressGradient = AppColors.progressBarRedGradient;
+        progressWidth = 0;
+        animatedSubtopicProgress = 0;
+        animatedSubtopicIconProgress = 0;
+      });
+    }
   }
 
   @override
@@ -123,7 +129,7 @@ class _AnimatedSubtopicState extends State<AnimatedSubtopic> {
                         style: AppTextStyles.animatedSubtopicCardName),
                     const SizedBox(height: LearnPaddings.smallestEmptySpace),
                     Text(
-                      '${OtherLearnConstants.animatedSubtopicWordsCount} ${AppLocalizations.of(context).learnedWordsCard}',
+                      '${OtherLearnConstants.animatedSubtopicWordsCount} ${pluralizeWords(OtherLearnConstants.animatedSubtopicWordsCount)}',
                       style: AppTextStyles.animatedSubtopicCardWords,
                     ),
                     SizedBox(

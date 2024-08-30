@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
+import 'package:uwords/features/global/presentation/widgets/constants/words_localization.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/profile/prezentation/constants/other_profile_constants.dart';
 import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
@@ -112,7 +113,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               StatisticCard(
                 image: AppImageSource.wordsLearnedIcon,
                 title: '${widget.metrics.alltimeLearnedAmount}',
-                subtitle: AppLocalizations.of(context).learnedWordsCard,
+                subtitle: pluralizeWords(widget.metrics.alltimeLearnedAmount),
                 onPressed: () => {},
               ),
             ],
