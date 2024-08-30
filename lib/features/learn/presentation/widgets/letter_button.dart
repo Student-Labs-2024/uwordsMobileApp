@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
+import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart';
 import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
@@ -52,18 +53,20 @@ class LetterButtonState extends State<LetterButton> {
 
   @override
   Widget build(BuildContext context) {
-    return currentAmount > 0
-        ? SizedBox(
-            width: LearnSizes.letterButtonWrapperWidth,
-            height: LearnSizes.letterButtonWrapperHeight,
-            child: Stack(
-              children: [
-                Positioned(
-                  bottom: 0,
-                  left: 0,
+    return Opacity(
+      opacity: currentAmount > 0 ? 1 : 0,
+      child: IntrinsicWidth(
+        child: IntrinsicHeight(
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: GestureDetector(
+                  onTap: pressLetterButton,
                   child: Container(
-                    height: LearnSizes.letterButtonHeight,
-                    width: LearnSizes.letterButtonWidth,
+                    margin: const EdgeInsets.only(
+                        right: LearnPaddings.letterButtonMarginRight,
+                        top: LearnPaddings.letterButtonMarginTop),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
@@ -71,16 +74,11 @@ class LetterButtonState extends State<LetterButton> {
                           BorderRadius.circular(GlobalSizes.borderRadiusSmall),
                       gradient: currentGradient,
                     ),
-                    child: TextButton(
-                      onPressed: pressLetterButton,
-                      style: ButtonStyle(
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                GlobalSizes.borderRadiusSmall),
-                          ),
-                        ),
-                      ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal:
+                              LearnPaddings.letterButtonPaddingHorizontal,
+                          vertical: LearnPaddings.letterButtonPaddingVertical),
                       child: Text(
                         widget.letterInfo.first,
                         style: LearnTextStyles.wordScreenTextInput,
@@ -88,31 +86,31 @@ class LetterButtonState extends State<LetterButton> {
                     ),
                   ),
                 ),
-                (currentAmount > 0 && widget.letterInfo.second > 1)
-                    ? Positioned(
-                        right: 0,
-                        top: 0,
-                        child: Container(
-                          width: LearnSizes.letterButtonAmountWidth,
-                          height: LearnSizes.letterButtonAmountHeight,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            color: AppColors.darkMainColor,
-                          ),
-                          child: Text(
-                            currentAmount.toString(),
-                            style: const TextStyle(color: AppColors.whiteColor),
-                          ),
+              ),
+              //),
+              (currentAmount > 0 && widget.letterInfo.second > 1)
+                  ? Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        width: LearnSizes.letterButtonAmountWidth,
+                        height: LearnSizes.letterButtonAmountHeight,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              GlobalSizes.borderRadiusCircle),
+                          color: AppColors.darkMainColor,
                         ),
-                      )
-                    : const SizedBox(),
-              ],
-            ),
-          )
-        : const SizedBox(
-            width: LearnSizes.letterButtonWrapperWidth,
-            height: LearnSizes.letterButtonWrapperHeight,
-          );
+                        child: Text(
+                          currentAmount.toString(),
+                          style: const TextStyle(color: AppColors.whiteColor),
+                        ),
+                      ),
+                    )
+                  : const SizedBox(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -157,7 +157,6 @@ class LearnWordPage2State extends State<LearnWordPage2> {
                           ),
                         ),
                         Wrap(
-                          runSpacing: LearnPaddings.wrapSpacing,
                           children: getLetters(),
                         ),
                         SizedBox(

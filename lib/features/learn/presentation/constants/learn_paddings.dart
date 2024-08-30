@@ -52,4 +52,9 @@ class LearnPaddings {
   static const double animatedSubtopicContentLeft = 25 / 375;
   static const double animatedSubtopicContentTop = 30 / 812;
   static const double animatedSubtopicProgressTop = 27 / 812;
+
+  static const double letterButtonMarginRight = 12;
+  static const double letterButtonMarginTop = 10;
+  static const double letterButtonPaddingHorizontal = 12;
+  static const double letterButtonPaddingVertical = 6;
 }
