@@ -59,7 +59,9 @@ class TariffCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(priceStr, style: SubscriptionsStyles.price),
-                            const SizedBox(width: SubscriptionConsts.biggerThanSmallestPadding),
+                            const SizedBox(
+                                width: SubscriptionConsts
+                                    .biggerThanSmallestPadding),
                             if (previousPriceStr != null)
                               Text(
                                 previousPriceStr!,
@@ -85,7 +87,8 @@ class TariffCard extends StatelessWidget {
                                             .smallestBorderRadius),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(SubscriptionConsts.smallestPadding),
+                                    padding: const EdgeInsets.all(
+                                        SubscriptionConsts.smallestPadding),
                                     child: ShaderMask(
                                       blendMode: BlendMode.srcIn,
                                       shaderCallback: (bounds) => AppColors
@@ -93,10 +96,8 @@ class TariffCard extends StatelessWidget {
                                           .createShader(
                                         Rect.zero,
                                       ),
-                                      child: Text(
-                                        freePeriodStr!,
-                                        style: AppTextStyles.freeTimeText
-                                      ),
+                                      child: Text(freePeriodStr!,
+                                          style: AppTextStyles.freeTimeText),
                                     ),
                                   ))),
                         const SizedBox(

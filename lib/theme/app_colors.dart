@@ -48,13 +48,11 @@ class AppColors {
     colors: [AppColors.blueColor, AppColors.violetColor, AppColors.blueColor],
     stops: [0, 0.5, 1],
   );
-  static const LinearGradient backgroundOnboardingGradientWithOpacity015 = LinearGradient(
-      colors: [
-        Color.fromRGBO(150, 124, 253, 0.15),
-        Color.fromRGBO(49, 119, 255, 0.15)
-      ],
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight);
+  static const LinearGradient backgroundOnboardingGradientWithOpacity015 =
+      LinearGradient(colors: [
+    Color.fromRGBO(150, 124, 253, 0.15),
+    Color.fromRGBO(49, 119, 255, 0.15)
+  ], begin: Alignment.centerLeft, end: Alignment.centerRight);
 
   static const Color white05Color = Color.fromRGBO(255, 255, 255, 0.5);
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);

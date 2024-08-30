@@ -21,12 +21,11 @@ class SubscriptionRepository implements ISubscriptionRepository {
   @override
   Future<bool> checkPayment({required String accessToken}) async {
     try {
-      if (formDto.link.isEmpty){
+      if (formDto.link.isEmpty) {
         throw CanNotCheckPaymentStatusException();
-      }
-      else{
+      } else {
         return await networkTariffDataSource.checkPayment(
-          accessToken: accessToken, paymentId: formDto.paymentId);
+            accessToken: accessToken, paymentId: formDto.paymentId);
       }
     } on Exception {
       rethrow;
