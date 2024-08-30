@@ -50,8 +50,10 @@ void main() {
           emailAddress: correctEmailAddress,
           password: correctPassword,
           nickname: correctUsername)),
-      expect: () =>
-          const <AuthState>[AuthState.success(AuthSuccess.sendedCode)],
+      expect: () => const <AuthState>[
+        AuthState.waitingAnswer(),
+        AuthState.success(AuthSuccess.sendedCode)
+      ],
       tearDown: () {
         reset(mockUserRepository);
       },
@@ -70,6 +72,7 @@ void main() {
           password: correctPassword,
           nickname: correctUsername)),
       expect: () => const <AuthState>[
+        AuthState.waitingAnswer(),
         AuthState.failed(AuthError.failedSendCode),
         AuthState.initial()
       ],
@@ -95,8 +98,7 @@ void main() {
         when(() => mockUserRepository.authorizate(
             emailAddress: correctEmailAddress,
             password: correctPassword)).thenAnswer((_) async {});
-        when(() => mockUserRepository.isEducationCompleted())
-            .thenReturn(true);
+        when(() => mockUserRepository.isEducationCompleted()).thenReturn(true);
       },
       build: () => AuthBloc(userRepository: mockUserRepository, vk: VKLogin()),
       act: (bloc) {
@@ -108,7 +110,9 @@ void main() {
         bloc.add(const AuthEvent.registerUser(code: correctCode));
       },
       expect: () => const <AuthState>[
+        AuthState.waitingAnswer(),
         AuthState.success(AuthSuccess.sendedCode),
+        AuthState.waitingAnswer(),
         AuthState.success(AuthSuccess.authorized),
       ],
       tearDown: () {
