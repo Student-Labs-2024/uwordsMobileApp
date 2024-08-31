@@ -83,15 +83,15 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                 },
               );
             }, builder: (BuildContext context, SubscriptionState state) {
-              return SafeArea(
-                  child: Center(
+              return Center(
                 child: state.maybeWhen(
                   orElse: () => const SizedBox(),
                   initial: (tariffs) => Stack(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: SubscriptionConsts.normalSpace),
+                            horizontal: SubscriptionConsts.normalSpace,
+                            vertical: SubscriptionConsts.normalSpace),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -197,7 +197,7 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                     return const CircularProgressIndicator();
                   },
                 ),
-              ));
+              );
             })));
   }
 }
