@@ -30,6 +30,7 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
     context.read<TrainingBloc>().add(const TrainingEvent.nextStep());
   }
 
+  //TODO think to remove it
   void quit() {
     context.read<LearningBloc>().add(LearningEvent.getTopics(
         AppLocalizations.of(context).inProgressTopicName));
@@ -156,7 +157,9 @@ class LearnCoreScreenState extends State<LearnCoreScreen> {
         listener: (context, state) {
           state.maybeWhen(
               initial: () {},
-              loading: () {},
+              loading: () {
+                showBottomSheet = true;
+              },
               failed: (e) {
                 // TODO add a screen with the message that the words have been learned today
                 log(OtherLearnConstants.allLearned);

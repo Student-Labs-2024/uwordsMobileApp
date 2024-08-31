@@ -77,34 +77,38 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           BlocBuilder<SubscriptionBloc, SubscriptionState>(
               builder: (BuildContext context, SubscriptionState state) {
             return state.maybeWhen(
-              subscriptionStatus: (status, date) => SubscriptionView(
-                haveSubscription: status,
-                updateDate: date,
-                onPressed: () {
-                  context.push("/subscription");
-                },
-              ),
-              loading: () => Container(
-                decoration: fis.BoxDecoration(
-                    color: AppColors.whiteColor,
-                    borderRadius:
-                        BorderRadius.circular(GlobalSizes.borderRadiusMedium),
-                    boxShadow: ProfileShadows.statisticCard),
-                child: const Center(
-                    child: CircularProgressIndicator(
-                  color: AppColors.darkMainColor,
-                )),
-              ),
-              orElse: () => Container(
-                decoration: fis.BoxDecoration(
-                    color: AppColors.whiteColor,
-                    borderRadius:
-                        BorderRadius.circular(GlobalSizes.borderRadiusMedium),
-                    boxShadow: ProfileShadows.statisticCard),
-                child: Center(
-                    child: Text(AppLocalizations.of(context).unknowError)),
-              ),
-            );
+                subscriptionStatus: (status, date) => SubscriptionView(
+                      haveSubscription: status,
+                      updateDate: date,
+                      onPressed: () {
+                        context.push("/subscription");
+                      },
+                    ),
+                loading: () => Container(
+                      decoration: fis.BoxDecoration(
+                          color: AppColors.whiteColor,
+                          borderRadius: BorderRadius.circular(
+                              GlobalSizes.borderRadiusMedium),
+                          boxShadow: ProfileShadows.statisticCard),
+                      child: const Center(
+                          child: CircularProgressIndicator(
+                        color: AppColors.darkMainColor,
+                      )),
+                    ),
+                orElse: () => Container(
+                      decoration: fis.BoxDecoration(
+                          color: AppColors.whiteColor,
+                          borderRadius: BorderRadius.circular(
+                              GlobalSizes.borderRadiusMedium),
+                          boxShadow: ProfileShadows.statisticCard),
+                      child: SubscriptionView(
+                        haveSubscription: false,
+                        updateDate: '',
+                        onPressed: () {
+                          context.push("/subscription");
+                        },
+                      ),
+                    ));
           }),
           const SizedBox(
             height: ProfilePaddings.subscriptionBottom,

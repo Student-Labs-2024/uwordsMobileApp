@@ -258,8 +258,11 @@ class TrainingBloc extends Bloc<TrainingEvent, TrainingState> {
       if (result.isEmpty) {
         emit(const TrainingState.failed(
             message: OtherLearnConstants.allLearned));
+        await Future.delayed(const Duration(seconds: 3));
+        emit(const TrainingState.initial());
         return;
       }
+      emit(const TrainingState.loading());
       words.addAll(result.map((wordInfo) => wordInfo).toList());
       _startTraining(emit);
     } on Exception catch (e) {

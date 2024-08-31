@@ -11,6 +11,7 @@ import 'package:uwords/features/learn/presentation/constants/learn_paddings.dart
 import 'package:uwords/features/learn/presentation/constants/learn_sizes.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/learn/domain/models/word_info.dart';
+import 'package:uwords/features/learn/presentation/constants/other_learn_constants.dart';
 import 'package:uwords/features/learn/presentation/widgets/big_subtopic_card.dart';
 import 'package:uwords/features/learn/presentation/widgets/word_row.dart';
 import 'package:uwords/theme/app_colors.dart';
@@ -223,15 +224,36 @@ class _SubtopicPageState extends State<SubtopicPage> {
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: LearnPaddings.learnPagePadding),
-                              child: BubbleButton(null,
-                                  maximumWidth: MediaQuery.of(context)
-                                      .size
-                                      .width, onPressed: () {
-                                context
-                                    .read<TrainingBloc>()
-                                    .add(TrainingEvent.startStudy(subtopic));
-                                context.go('/learnCore');
-                              }, text: AppLocalizations.of(context).train),
+                              // TODO think to add events and state for case when empty list words
+                              child: BlocConsumer<TrainingBloc, TrainingState>(
+                                listener: (context, state) {
+                                  state.maybeWhen(
+                                    orElse: () {},
+                                    loading: () => context.go("/learnCore"),
+                                  );
+                                },
+                                builder: (context, state) {
+                                  return state.maybeMap(
+                                    orElse: () => BubbleButton(null,
+                                        state: OtherLearnConstants.stateActive,
+                                        maximumWidth: MediaQuery.of(context)
+                                            .size
+                                            .width, onPressed: () {
+                                      context.read<TrainingBloc>().add(
+                                          TrainingEvent.startStudy(subtopic));
+                                    },
+                                        text:
+                                            AppLocalizations.of(context).train),
+                                    failed: (value) => BubbleButton(null,
+                                        state: OtherLearnConstants.stateZero,
+                                        maximumWidth:
+                                            MediaQuery.of(context).size.width,
+                                        onPressed: () {},
+                                        text: AppLocalizations.of(context)
+                                            .emptyList),
+                                  );
+                                },
+                              ),
                             ),
                             const SizedBox(
                               height: LearnPaddings.learnPageBottom / 2,
