@@ -76,7 +76,10 @@ class _AuthPageState extends State<AuthPage> {
                 showModalBottomSheet(
                     context: context,
                     builder: (context) {
-                      return Text(error.name);
+                      return SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: Center(child: Text(error.name)));
                     });
               },
             );
