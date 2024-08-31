@@ -7,7 +7,6 @@ import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/words_localization.dart';
 import 'package:uwords/features/learn/domain/models/subtopic_model.dart';
 import 'package:uwords/features/profile/prezentation/constants/other_profile_constants.dart';
-import 'package:uwords/features/profile/data/constants/profile_data_example.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_paddings.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_shadows.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_sizes.dart';
@@ -115,7 +114,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.onfireIcon,
-                title: '${widget.metrics.days}',
+                title:
+                    '${widget.metrics.days} ${pluralizeDays(widget.metrics.days)}',
                 subtitle: AppLocalizations.of(context).daysOnFireCard,
                 onPressed: () => {},
               ),
@@ -135,16 +135,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.recordTimeIcon,
-                title: AppLocalizations.of(context).hours(time, timeType),
+                title:
+                    AppLocalizations.of(context).hours(time.toInt(), timeType),
                 subtitle: AppLocalizations.of(context).recordTimeCard,
                 onPressed: () => {},
               ),
-              StatisticCard(
-                image: getPrecisionIcon(83),
-                title: '${ProfileDataExample.exampleMetrics[3]}%',
-                subtitle: AppLocalizations.of(context).precisionCard,
-                onPressed: () => {},
-              ),
+              const SizedBox()
             ],
           ),
           if (widget.almostLearned.isNotEmpty)

@@ -32,13 +32,9 @@ class _SubscriptionPageState extends State<SubscriptionPage>
 
   @override
   void deactivate() {
-    final String currentRoute =
-        GoRouter.of(context).routeInformationProvider.value.uri.toString();
-    if (currentRoute == '/profile') {
-      context
-          .read<SubscriptionBloc>()
-          .add(const SubscriptionEvent.isSubscriptionActive());
-    }
+    context
+        .read<SubscriptionBloc>()
+        .add(const SubscriptionEvent.isSubscriptionActive());
     super.deactivate();
   }
 
@@ -162,39 +158,43 @@ class _SubscriptionPageState extends State<SubscriptionPage>
                     return Text(isActive.toString());
                   },
                   subscriptionPaid: () {
-                    return Column(
-                      children: [
-                        const Icon(
-                          Icons.done,
-                          size: SubscriptionConsts.iconSize,
-                        ),
-                        Text(AppLocalizations.of(context)
-                            .successfulPaymentOfTariff)
-                      ],
+                    return Center(
+                      child: Column(
+                        children: [
+                          const Icon(
+                            Icons.done,
+                            size: SubscriptionConsts.iconSize,
+                          ),
+                          Text(AppLocalizations.of(context)
+                              .successfulPaymentOfTariff)
+                        ],
+                      ),
                     );
                   },
                   subscriptionNotPaid: () {
-                    return Column(
-                      children: [
-                        const Icon(
-                          Icons.close,
-                          size: SubscriptionConsts.iconSize,
-                        ),
-                        Text(AppLocalizations.of(context).failedPaymentOfTariff)
-                      ],
+                    return Center(
+                      child: Column(
+                        children: [
+                          const Icon(
+                            Icons.close,
+                            size: SubscriptionConsts.iconSize,
+                          ),
+                          Text(AppLocalizations.of(context)
+                              .failedPaymentOfTariff)
+                        ],
+                      ),
                     );
                   },
                   payingSubscription: (paymentLink) {
-                    return Column(
-                      children: [
-                        const CircularProgressIndicator(),
-                        Text(
-                            "${AppLocalizations.of(context).payByLink} $paymentLink")
-                      ],
-                    );
+                    return const Center(
+                        child: CircularProgressIndicator(
+                      color: AppColors.darkMainColor,
+                    ));
                   },
                   loading: () {
-                    return const CircularProgressIndicator();
+                    return const CircularProgressIndicator(
+                      color: AppColors.darkMainColor,
+                    );
                   },
                 ),
               );

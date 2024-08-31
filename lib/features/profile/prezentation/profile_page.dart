@@ -97,10 +97,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                           subscriptionStatus:
                                               (isActive, date) => DecoratedBox(
                                             decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      GlobalSizes
-                                                          .borderRadiusCircle),
+                                              borderRadius: BorderRadius
+                                                  .circular(GlobalSizes
+                                                          .borderRadiusCircle +
+                                                      5),
                                               border: isActive
                                                   ? const GradientBoxBorder(
                                                       gradient: AppColors
