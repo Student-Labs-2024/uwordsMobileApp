@@ -53,7 +53,7 @@ class _BigSubtopicCardState extends State<BigSubtopicCard> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: LearnPaddings.normalEdgeInsets * 2,
+                              left: LearnPaddings.normalEdgeInsets * 1.6,
                               top: LearnPaddings.normalEdgeInsets * 2),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,6 +7,7 @@ import 'package:uwords/features/global/presentation/widgets/constants/global_siz
 import 'package:uwords/features/global/presentation/widgets/custom_image_network_view.dart';
 import 'package:uwords/features/grade/bloc/grade_bloc.dart';
 import 'package:uwords/features/grade/presentation/widgets/grade_bottom_sheet.dart';
+import 'package:uwords/features/home_widget/home_widget_functions.dart';
 import 'package:uwords/features/profile/bloc/profile_bloc.dart';
 import 'package:uwords/features/profile/prezentation/constants/other_profile_constants.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_paddings.dart';
@@ -33,10 +34,15 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     context.read<ProfileBloc>().add(const ProfileEvent.getUserInfo());
-
     context.read<GradeBloc>().add(
           const GradeEvent.open(),
         );
+  }
+
+  @override
+  void didChangeDependencies() {
+    updateHomeWidgetByUserData(context: context);
+    super.didChangeDependencies();
   }
 
   String currentScreen = OtherProfileConstants.staticticsScreen;
