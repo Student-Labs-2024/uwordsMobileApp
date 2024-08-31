@@ -35,6 +35,20 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
     }
   }
 
+  void pushAtIndex(int index, BuildContext context) async {
+    setState(() {
+      _selectedIndex = index;
+    });
+    switch (index) {
+      case 0:
+        context.go("/learn");
+      case 1:
+        context.go("/home");
+      case 2:
+        context.go("/profile");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var currentRoute =
@@ -123,19 +137,5 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
         ),
       ]),
     );
-  }
-
-  void pushAtIndex(int index, BuildContext context) async {
-    setState(() {
-      _selectedIndex = index;
-    });
-    switch (index) {
-      case 0:
-        context.go("/learn");
-      case 1:
-        context.go("/home");
-      case 2:
-        context.go("/profile");
-    }
   }
 }

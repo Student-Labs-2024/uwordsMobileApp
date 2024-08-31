@@ -25,6 +25,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   Future<void> _handleGetUserInfo(
       _GetUserInfoEvent event, Emitter<ProfileState> emit) async {
+    await userRepository.updateInfoAboutUser();
     UserAuthDto currentUserInfo = await userRepository.getCurrentUserInfo();
     String userName = currentUserInfo.username;
     String avatarUrl = currentUserInfo.avatarUrl;

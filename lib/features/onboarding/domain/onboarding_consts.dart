@@ -7,12 +7,14 @@ class OnboardingConsts {
   static const double dotSpacing = 14;
   static const int animationDuration = 600;
   static const double bottom = 80;
-  static const int countOfScreens = 4;
-  static const int beforeLastScreen = 3;
+  static const int countOfScreens = 3;
+  static const int beforeLastScreen = 2;
   static const double aroundSpace = 15;
   static const double alternativesSpacingBetween = 17;
   static const double horizontalEdges = 24;
   static const double alternativesHeight = 60;
+  static const double buttonPaddingHotizontal = 30.0;
+  static const double buttonPaddingVertical = 10.0;
 
   static const double onboardingMulti1 = 0.7;
   static const double onboardingBottomMulti1 = 0.4;

@@ -89,6 +89,7 @@ class ConfirmPage extends StatelessWidget {
                       Text(
                         "${AppLocalizations.of(context).useCodeToEnter}$email",
                         style: AppTextStyles.authSendedCodeText,
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(
                         height: AuthDesignedPaddings.smallEmptySpace,

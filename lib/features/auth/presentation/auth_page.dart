@@ -190,12 +190,15 @@ class _AuthPageState extends State<AuthPage> {
                 );
               },
               waitingAnswer: () {
-                return Center(
-                  child: Column(
-                    children: [
-                      const CircularProgressIndicator(),
-                      Text(AppLocalizations.of(context).checkingLoginData),
-                    ],
+                return const DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: AppColors.backgroundGradient,
+                  ),
+                  child: SafeArea(
+                    child: Center(
+                        child: CircularProgressIndicator(
+                      color: AppColors.darkMainColor,
+                    )),
                   ),
                 );
               },
