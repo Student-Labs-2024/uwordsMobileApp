@@ -37,6 +37,6 @@ Comparator<WordInfo> wordLatestStudyComparator = (a, b) {
   } else if (b.latestStudy == null) {
     return -1;
   } else {
-    return a.latestStudy!.compareTo(b.latestStudy!);
+    return b.latestStudy!.compareTo(a.latestStudy!);
   }
 };

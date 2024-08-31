@@ -46,6 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleRequestCode(
       _RequestCodeEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       _uEmail = event.emailAddress;
@@ -68,6 +69,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleRegisterUser(
       _RegisterUserEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
     _uCode = event.code;
     try {
       bool isRightCode =
@@ -97,6 +99,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithVK(
       _SignInWithVKEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
     auth.signOut();
     userRepository.localLogOut();
     _provider = AuthorizationProvider.vk;
@@ -111,6 +114,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithGoogle(
       _SignInWithGoogleEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
     await vk.initSdk();
     if (await vk.isLoggedIn) {
       vk.logOut();
@@ -128,6 +132,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _handleSignInWithMailPassword(
       _SignInWithMailPasswordEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.waitingAnswer());
     if (_checkEmailAndPassword(
         emit: emit, email: event.emailAddress, password: event.password)) {
       auth.signOut();

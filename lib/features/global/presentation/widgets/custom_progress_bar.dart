@@ -31,7 +31,7 @@ class CustomProgressBar extends StatelessWidget {
   }
 
   double getVisiblePercent() {
-    if (percent < 0) {
+    if (percent < 5) {
       return 0;
     } else if (percent > 100) {
       return 1;

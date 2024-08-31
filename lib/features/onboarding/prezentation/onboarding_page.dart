@@ -5,11 +5,12 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:uwords/features/auth/data/repository/interface_user_repository.dart';
 import 'package:uwords/features/onboarding/domain/onboarding_consts.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/first_onboarding_page.dart';
-import 'package:uwords/features/onboarding/prezentation/screens/fourth_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/second_onboarding_page.dart';
 import 'package:uwords/features/onboarding/prezentation/screens/third_onboarding_page.dart';
+import 'package:uwords/features/subscription/data/subscription_consts.dart';
 import 'package:uwords/theme/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uwords/theme/learn_text_styles.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -53,7 +54,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
             FirstOnboardingPage(),
             SecondOnboardingPage(),
             ThirdOnboardingPage(),
-            FourthOnboardingPage()
           ],
         ),
         bottomSheet: isNotLastPage
@@ -88,14 +88,32 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: OnboardingConsts.bottom,
-                  child: InkWell(
-                    child: Center(
-                        child:
-                            Text(AppLocalizations.of(context).startQuestion)),
-                    onTap: () {
-                      updateDataWithServer();
-                      context.go("/home");
-                    },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: OnboardingConsts.buttonPaddingHotizontal,
+                        vertical: OnboardingConsts.buttonPaddingVertical),
+                    child: SizedBox(
+                      height: SubscriptionConsts.buttonHeight,
+                      width: MediaQuery.of(context).size.width *
+                          SubscriptionConsts.widthMultiply08,
+                      child: InkWell(
+                          onTap: () {
+                            updateDataWithServer();
+                            context.go("/home");
+                          },
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    SubscriptionConsts.borderRadius),
+                                gradient: AppColors.blueIconGradient),
+                            child: Center(
+                              child: Text(
+                                AppLocalizations.of(context).startQuestion,
+                                style: LearnTextStyles.paySubscriptionButton,
+                              ),
+                            ),
+                          )),
+                    ),
                   ),
                 )));
   }
