@@ -191,16 +191,16 @@ class _AuthPageState extends State<AuthPage> {
               },
               waitingAnswer: () {
                 return const DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: AppColors.backgroundGradient,
-                ),
-                child: SafeArea(
-                  child: Center(
-                      child: CircularProgressIndicator(
-                    color: AppColors.darkMainColor,
-                  )),
-                ),
-              );
+                  decoration: BoxDecoration(
+                    gradient: AppColors.backgroundGradient,
+                  ),
+                  child: SafeArea(
+                    child: Center(
+                        child: CircularProgressIndicator(
+                      color: AppColors.darkMainColor,
+                    )),
+                  ),
+                );
               },
             );
           },

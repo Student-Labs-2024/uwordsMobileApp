@@ -7,7 +7,8 @@ class SortClipper extends CustomClipper<Path> {
     double radius = 10;
 
     Path path = Path()
-      ..addRRect(RRect.fromLTRBR(0, 0, LearnSizes.classicSortIconWidth, LearnSizes.classicSortIconWidth, Radius.circular(radius)));
+      ..addRRect(RRect.fromLTRBR(0, 0, LearnSizes.classicSortIconWidth,
+          LearnSizes.classicSortIconWidth, Radius.circular(radius)));
     return path;
   }
 
