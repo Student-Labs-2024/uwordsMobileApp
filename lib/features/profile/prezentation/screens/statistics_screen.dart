@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uwords/features/global/data/models/pair_model.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 import 'package:uwords/features/global/domain/metrics.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/words_localization.dart';
@@ -54,8 +55,16 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     context
         .read<SubscriptionBloc>()
         .add(const SubscriptionEvent.isSubscriptionActive());
+    Pair<double, int> timeData = OtherProfileConstants.getTimeAndTypeTime(
+        widget.metrics.alltimeSpeechSeconds +
+            widget.metrics.alltimeVideoSeconds);
+    time = timeData.first;
+    timeType = timeData.second;
     super.initState();
   }
+
+  double time = 0;
+  int timeType = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -126,11 +135,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             children: [
               StatisticCard(
                 image: AppImageSource.recordTimeIcon,
-                title: AppLocalizations.of(context).hours(
-                  (widget.metrics.alltimeSpeechSeconds +
-                          widget.metrics.alltimeVideoSeconds) /
-                      OtherProfileConstants.secondsInHour,
-                ),
+                title: AppLocalizations.of(context).hours(time, timeType),
                 subtitle: AppLocalizations.of(context).recordTimeCard,
                 onPressed: () => {},
               ),

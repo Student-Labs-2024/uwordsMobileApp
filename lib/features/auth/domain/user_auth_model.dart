@@ -17,6 +17,7 @@ class UserAuthModel {
   final String refreshToken;
   final bool isEducationCompleted;
   final String provider;
+  final bool isFeedbackComplete;
 
   UserAuthModel(
       {required this.id,
@@ -34,5 +35,6 @@ class UserAuthModel {
       required this.accessToken,
       required this.refreshToken,
       required this.isEducationCompleted,
-      required this.provider});
+      required this.provider,
+      required this.isFeedbackComplete});
 }

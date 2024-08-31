@@ -1,5 +1,5 @@
 class GradeSizes {
-  static const double bottomSheetHeight = 478 / 812;
+  static const double bottomSheetHeight = 502 / 812;
   static const double inputHeight = 119 / 812;
   static const double smallImageSize = 32 / 315;
   static const double bigImageSize = 52 / 315;

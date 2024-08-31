@@ -21,6 +21,7 @@ class SimpleUserInfo {
   String accessToken;
   final List<AchievementCategoryDto> achievements;
   bool isEducationCompleted;
+  bool isFeedbackComplete;
 
   SimpleUserInfo(
       {required this.id,
@@ -40,7 +41,8 @@ class SimpleUserInfo {
       required this.accessToken,
       required this.energy,
       required this.achievements,
-      required this.isEducationCompleted});
+      required this.isEducationCompleted,
+      required this.isFeedbackComplete});
   factory SimpleUserInfo.fromUserAuthDto({required UserAuthDto userAuthDto}) {
     return SimpleUserInfo(
         id: userAuthDto.id,
@@ -60,7 +62,8 @@ class SimpleUserInfo {
         accessToken: userAuthDto.accessToken,
         energy: userAuthDto.energy,
         achievements: userAuthDto.achievementsCategories,
-        isEducationCompleted: userAuthDto.isEducationCompleted);
+        isEducationCompleted: userAuthDto.isEducationCompleted,
+        isFeedbackComplete: userAuthDto.isFeedbackComplete);
   }
   void changeAccessToken({required String newAccessToken}) {
     accessToken = newAccessToken;
@@ -88,5 +91,9 @@ class SimpleUserInfo {
 
   void changeBirthDate({required DateTime newBirthDate}) {
     birthDate = newBirthDate;
+  }
+
+  void changeIsFeedbackComplete({required bool newState}) {
+    isFeedbackComplete = newState;
   }
 }

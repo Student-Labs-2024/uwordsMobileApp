@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart' as fis;
-import 'package:uwords/features/auth/bloc/auth_bloc.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 import 'package:uwords/features/grade/bloc/grade_bloc.dart';
 import 'package:uwords/features/main/presentation/constants/box_shadows.dart';
@@ -42,17 +41,10 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
     });
     switch (index) {
       case 0:
-        context.go("/home");
-      case 1:
         context.go("/learn");
+      case 1:
+        context.go("/home");
       case 2:
-        context.push(
-          "/subscription",
-        );
-      case 3:
-        context.read<AuthBloc>().add(const AuthEvent.logOut());
-        context.go("/");
-      case 4:
         context.go("/profile");
     }
   }
@@ -102,51 +94,40 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
                     boxShadow: MainBoxShadows.main,
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                         onPressed: () => pushAtIndex(0, context),
                         icon: SvgPicture.asset(
-                          AppImageSource.voiceIco,
-                          color: _selectedIndex == 0
-                              ? AppColors.darkMainColor
-                              : AppColors.mainColor,
-                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () => pushAtIndex(1, context),
-                        icon: SvgPicture.asset(
                           AppImageSource.learnIco,
-                          color: _selectedIndex == 1
-                              ? AppColors.darkMainColor
+                          color: _selectedIndex == 0
+                              ? AppColors.veryDarkMainColor
                               : AppColors.mainColor,
                           height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),
                       ),
-                      IconButton(
-                          onPressed: () => pushAtIndex(2, context),
-                          icon: Image.asset(
-                            AppImageSource.navBubbleIco,
-                            height:
-                                ScaffoldWithNavbarSizes.navBarCentralIconHeight,
-                          )),
-                      IconButton(
-                        onPressed: () => pushAtIndex(3, context),
-                        icon: SvgPicture.asset(
-                          AppImageSource.notificationIco,
-                          color: _selectedIndex == 3
-                              ? AppColors.darkMainColor
-                              : AppColors.mainColor,
-                          height: ScaffoldWithNavbarSizes.navBarIconHeight,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width *
+                                ScaffoldWithNavbarPaddings
+                                    .navBarCenterHorizontal),
+                        child: Opacity(
+                          opacity: _selectedIndex == 1 ? 1 : 0.7,
+                          child: IconButton(
+                              onPressed: () => pushAtIndex(1, context),
+                              icon: Image.asset(
+                                AppImageSource.navVoiceIcon,
+                                height: ScaffoldWithNavbarSizes
+                                    .navBarCentralIconHeight,
+                              )),
                         ),
                       ),
                       IconButton(
-                        onPressed: () => pushAtIndex(4, context),
+                        onPressed: () => pushAtIndex(2, context),
                         icon: SvgPicture.asset(
                           AppImageSource.profileIco,
-                          color: _selectedIndex == 4
-                              ? AppColors.darkMainColor
+                          color: _selectedIndex == 2
+                              ? AppColors.veryDarkMainColor
                               : AppColors.mainColor,
                           height: ScaffoldWithNavbarSizes.navBarIconHeight,
                         ),

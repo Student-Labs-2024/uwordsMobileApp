@@ -86,4 +86,5 @@ class OtherLearnConstants {
   static const int countRepeats = 4;
 
   static const String allLearned = "Всё уже изучено";
+  static const String inProgressTopic = 'In Progress';
 }

@@ -6,7 +6,6 @@ class AppImageSource {
   static const String microphoneIco = 'assets/icons/mic_ico.svg';
   static const String errorIco = 'assets/icons/error_ico.svg';
   static const String learnIco = 'assets/icons/learn_ico.svg';
-  static const String navBubbleIco = 'assets/icons/nav_bubble_ico.png';
   static const String notificationIco = 'assets/icons/notification_ico.svg';
   static const String profileIco = 'assets/icons/profile_ico.svg';
   static const String headerRegister = 'assets/images/header_register.png';
@@ -110,4 +109,5 @@ class AppImageSource {
   static const String grade5Active = 'assets/icons/grade5_active_icon.png';
   static const String gradeBack = 'assets/icons/grade_back.svg';
   static const String emptyProfile = 'assets/images/empty_profile.png';
+  static const String navVoiceIcon = 'assets/icons/nav_voice_icon.png';
 }

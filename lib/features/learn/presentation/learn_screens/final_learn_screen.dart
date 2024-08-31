@@ -99,37 +99,48 @@ class FinalLearnScreenState extends State<FinalLearnScreen> {
                               LearnSizes.imageHeight,
                           clipRadius: GlobalSizes.borderRadiusVeryLarge)
                     else ...[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (widget.words.isNotEmpty)
-                            ProgressImageCard(
-                              word: widget.words[0],
-                              currentProgress: widget.newProgress[0],
-                            ),
-                          if (widget.words.length > 1)
-                            ProgressImageCard(
-                              word: widget.words[1],
-                              currentProgress: widget.newProgress[1],
-                            ),
-                        ],
-                      ),
-                      if (widget.words.length > 2)
-                        Row(
-                          mainAxisAlignment: widget.words.length > 3
-                              ? MainAxisAlignment.center
-                              : MainAxisAlignment.start,
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width *
+                                LearnPaddings.additionalFinalScreenHorizontal),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ProgressImageCard(
-                              word: widget.words[2],
-                              currentProgress: widget.newProgress[2],
-                            ),
-                            if (widget.words.length > 3)
+                            if (widget.words.isNotEmpty)
                               ProgressImageCard(
-                                word: widget.words[3],
-                                currentProgress: widget.newProgress[3],
+                                word: widget.words[0],
+                                currentProgress: widget.newProgress[0],
+                              ),
+                            if (widget.words.length > 1)
+                              ProgressImageCard(
+                                word: widget.words[1],
+                                currentProgress: widget.newProgress[1],
                               ),
                           ],
+                        ),
+                      ),
+                      if (widget.words.length > 2)
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: MediaQuery.of(context).size.width *
+                                  LearnPaddings
+                                      .additionalFinalScreenHorizontal),
+                          child: Row(
+                            mainAxisAlignment: widget.words.length > 3
+                                ? MainAxisAlignment.spaceBetween
+                                : MainAxisAlignment.start,
+                            children: [
+                              ProgressImageCard(
+                                word: widget.words[2],
+                                currentProgress: widget.newProgress[2],
+                              ),
+                              if (widget.words.length > 3)
+                                ProgressImageCard(
+                                  word: widget.words[3],
+                                  currentProgress: widget.newProgress[3],
+                                ),
+                            ],
+                          ),
                         ),
                     ],
                     const Spacer(),

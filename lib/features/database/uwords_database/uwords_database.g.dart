@@ -125,6 +125,15 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('CHECK ("is_current" IN (0, 1))'));
+  static const VerificationMeta _isFeedbackCompleteMeta =
+      const VerificationMeta('isFeedbackComplete');
+  @override
+  late final GeneratedColumn<bool> isFeedbackComplete = GeneratedColumn<bool>(
+      'is_feedback_complete', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("is_feedback_complete" IN (0, 1))'));
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -145,7 +154,8 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
         refreshToken,
         isEducationCompleted,
         provider,
-        isCurrent
+        isCurrent,
+        isFeedbackComplete
       ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -280,6 +290,14 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
     } else if (isInserting) {
       context.missing(_isCurrentMeta);
     }
+    if (data.containsKey('is_feedback_complete')) {
+      context.handle(
+          _isFeedbackCompleteMeta,
+          isFeedbackComplete.isAcceptableOrUnknown(
+              data['is_feedback_complete']!, _isFeedbackCompleteMeta));
+    } else if (isInserting) {
+      context.missing(_isFeedbackCompleteMeta);
+    }
     return context;
   }
 
@@ -329,6 +347,8 @@ class $UserAuthTable extends UserAuth with TableInfo<$UserAuthTable, User> {
           .read(DriftSqlType.string, data['${effectivePrefix}provider'])!,
       isCurrent: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}is_current'])!,
+      isFeedbackComplete: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool, data['${effectivePrefix}is_feedback_complete'])!,
     );
   }
 
@@ -358,6 +378,7 @@ class User extends DataClass implements Insertable<User> {
   final bool isEducationCompleted;
   final String provider;
   final bool isCurrent;
+  final bool isFeedbackComplete;
   const User(
       {required this.id,
       required this.email,
@@ -377,7 +398,8 @@ class User extends DataClass implements Insertable<User> {
       required this.refreshToken,
       required this.isEducationCompleted,
       required this.provider,
-      required this.isCurrent});
+      required this.isCurrent,
+      required this.isFeedbackComplete});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -407,6 +429,7 @@ class User extends DataClass implements Insertable<User> {
     map['is_education_completed'] = Variable<bool>(isEducationCompleted);
     map['provider'] = Variable<String>(provider);
     map['is_current'] = Variable<bool>(isCurrent);
+    map['is_feedback_complete'] = Variable<bool>(isFeedbackComplete);
     return map;
   }
 
@@ -437,6 +460,7 @@ class User extends DataClass implements Insertable<User> {
       isEducationCompleted: Value(isEducationCompleted),
       provider: Value(provider),
       isCurrent: Value(isCurrent),
+      isFeedbackComplete: Value(isFeedbackComplete),
     );
   }
 
@@ -468,6 +492,7 @@ class User extends DataClass implements Insertable<User> {
           serializer.fromJson<bool>(json['isEducationCompleted']),
       provider: serializer.fromJson<String>(json['provider']),
       isCurrent: serializer.fromJson<bool>(json['isCurrent']),
+      isFeedbackComplete: serializer.fromJson<bool>(json['isFeedbackComplete']),
     );
   }
   @override
@@ -494,6 +519,7 @@ class User extends DataClass implements Insertable<User> {
       'isEducationCompleted': serializer.toJson<bool>(isEducationCompleted),
       'provider': serializer.toJson<String>(provider),
       'isCurrent': serializer.toJson<bool>(isCurrent),
+      'isFeedbackComplete': serializer.toJson<bool>(isFeedbackComplete),
     };
   }
 
@@ -516,7 +542,8 @@ class User extends DataClass implements Insertable<User> {
           String? refreshToken,
           bool? isEducationCompleted,
           String? provider,
-          bool? isCurrent}) =>
+          bool? isCurrent,
+          bool? isFeedbackComplete}) =>
       User(
         id: id ?? this.id,
         email: email ?? this.email,
@@ -543,6 +570,7 @@ class User extends DataClass implements Insertable<User> {
         isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
         provider: provider ?? this.provider,
         isCurrent: isCurrent ?? this.isCurrent,
+        isFeedbackComplete: isFeedbackComplete ?? this.isFeedbackComplete,
       );
   @override
   String toString() {
@@ -565,7 +593,8 @@ class User extends DataClass implements Insertable<User> {
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
           ..write('provider: $provider, ')
-          ..write('isCurrent: $isCurrent')
+          ..write('isCurrent: $isCurrent, ')
+          ..write('isFeedbackComplete: $isFeedbackComplete')
           ..write(')'))
         .toString();
   }
@@ -590,7 +619,8 @@ class User extends DataClass implements Insertable<User> {
       refreshToken,
       isEducationCompleted,
       provider,
-      isCurrent);
+      isCurrent,
+      isFeedbackComplete);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -613,7 +643,8 @@ class User extends DataClass implements Insertable<User> {
           other.refreshToken == this.refreshToken &&
           other.isEducationCompleted == this.isEducationCompleted &&
           other.provider == this.provider &&
-          other.isCurrent == this.isCurrent);
+          other.isCurrent == this.isCurrent &&
+          other.isFeedbackComplete == this.isFeedbackComplete);
 }
 
 class UserAuthCompanion extends UpdateCompanion<User> {
@@ -636,6 +667,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
   final Value<bool> isEducationCompleted;
   final Value<String> provider;
   final Value<bool> isCurrent;
+  final Value<bool> isFeedbackComplete;
   const UserAuthCompanion({
     this.id = const Value.absent(),
     this.email = const Value.absent(),
@@ -656,6 +688,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     this.isEducationCompleted = const Value.absent(),
     this.provider = const Value.absent(),
     this.isCurrent = const Value.absent(),
+    this.isFeedbackComplete = const Value.absent(),
   });
   UserAuthCompanion.insert({
     this.id = const Value.absent(),
@@ -677,6 +710,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     required bool isEducationCompleted,
     required String provider,
     required bool isCurrent,
+    required bool isFeedbackComplete,
   })  : email = Value(email),
         username = Value(username),
         firstname = Value(firstname),
@@ -691,7 +725,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
         refreshToken = Value(refreshToken),
         isEducationCompleted = Value(isEducationCompleted),
         provider = Value(provider),
-        isCurrent = Value(isCurrent);
+        isCurrent = Value(isCurrent),
+        isFeedbackComplete = Value(isFeedbackComplete);
   static Insertable<User> custom({
     Expression<int>? id,
     Expression<String>? email,
@@ -712,6 +747,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     Expression<bool>? isEducationCompleted,
     Expression<String>? provider,
     Expression<bool>? isCurrent,
+    Expression<bool>? isFeedbackComplete,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -738,6 +774,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
         'is_education_completed': isEducationCompleted,
       if (provider != null) 'provider': provider,
       if (isCurrent != null) 'is_current': isCurrent,
+      if (isFeedbackComplete != null)
+        'is_feedback_complete': isFeedbackComplete,
     });
   }
 
@@ -760,7 +798,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       Value<String>? refreshToken,
       Value<bool>? isEducationCompleted,
       Value<String>? provider,
-      Value<bool>? isCurrent}) {
+      Value<bool>? isCurrent,
+      Value<bool>? isFeedbackComplete}) {
     return UserAuthCompanion(
       id: id ?? this.id,
       email: email ?? this.email,
@@ -782,6 +821,7 @@ class UserAuthCompanion extends UpdateCompanion<User> {
       isEducationCompleted: isEducationCompleted ?? this.isEducationCompleted,
       provider: provider ?? this.provider,
       isCurrent: isCurrent ?? this.isCurrent,
+      isFeedbackComplete: isFeedbackComplete ?? this.isFeedbackComplete,
     );
   }
 
@@ -848,6 +888,9 @@ class UserAuthCompanion extends UpdateCompanion<User> {
     if (isCurrent.present) {
       map['is_current'] = Variable<bool>(isCurrent.value);
     }
+    if (isFeedbackComplete.present) {
+      map['is_feedback_complete'] = Variable<bool>(isFeedbackComplete.value);
+    }
     return map;
   }
 
@@ -872,7 +915,8 @@ class UserAuthCompanion extends UpdateCompanion<User> {
           ..write('refreshToken: $refreshToken, ')
           ..write('isEducationCompleted: $isEducationCompleted, ')
           ..write('provider: $provider, ')
-          ..write('isCurrent: $isCurrent')
+          ..write('isCurrent: $isCurrent, ')
+          ..write('isFeedbackComplete: $isFeedbackComplete')
           ..write(')'))
         .toString();
   }
@@ -2121,6 +2165,7 @@ typedef $$UserAuthTableInsertCompanionBuilder = UserAuthCompanion Function({
   required bool isEducationCompleted,
   required String provider,
   required bool isCurrent,
+  required bool isFeedbackComplete,
 });
 typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<int> id,
@@ -2142,6 +2187,7 @@ typedef $$UserAuthTableUpdateCompanionBuilder = UserAuthCompanion Function({
   Value<bool> isEducationCompleted,
   Value<String> provider,
   Value<bool> isCurrent,
+  Value<bool> isFeedbackComplete,
 });
 
 class $$UserAuthTableTableManager extends RootTableManager<
@@ -2183,6 +2229,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             Value<bool> isEducationCompleted = const Value.absent(),
             Value<String> provider = const Value.absent(),
             Value<bool> isCurrent = const Value.absent(),
+            Value<bool> isFeedbackComplete = const Value.absent(),
           }) =>
               UserAuthCompanion(
             id: id,
@@ -2204,6 +2251,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             isEducationCompleted: isEducationCompleted,
             provider: provider,
             isCurrent: isCurrent,
+            isFeedbackComplete: isFeedbackComplete,
           ),
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
@@ -2225,6 +2273,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             required bool isEducationCompleted,
             required String provider,
             required bool isCurrent,
+            required bool isFeedbackComplete,
           }) =>
               UserAuthCompanion.insert(
             id: id,
@@ -2246,6 +2295,7 @@ class $$UserAuthTableTableManager extends RootTableManager<
             isEducationCompleted: isEducationCompleted,
             provider: provider,
             isCurrent: isCurrent,
+            isFeedbackComplete: isFeedbackComplete,
           ),
         ));
 }
@@ -2358,6 +2408,11 @@ class $$UserAuthTableFilterComposer
 
   ColumnFilters<bool> get isCurrent => $state.composableBuilder(
       column: $state.table.isCurrent,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isFeedbackComplete => $state.composableBuilder(
+      column: $state.table.isFeedbackComplete,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -2484,6 +2539,11 @@ class $$UserAuthTableOrderingComposer
 
   ColumnOrderings<bool> get isCurrent => $state.composableBuilder(
       column: $state.table.isCurrent,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isFeedbackComplete => $state.composableBuilder(
+      column: $state.table.isFeedbackComplete,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }

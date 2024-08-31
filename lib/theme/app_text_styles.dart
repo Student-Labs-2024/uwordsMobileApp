@@ -278,4 +278,9 @@ class AppTextStyles {
     fontSize: 13,
     fontWeight: FontWeight.w700,
   );
+  static const gradeInput = TextStyle(
+      fontFamily: AppFonts.inter,
+      fontWeight: FontWeight.w400,
+      fontSize: 13,
+      color: AppColors.darkGreyColor);
 }

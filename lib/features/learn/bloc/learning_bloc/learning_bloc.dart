@@ -46,14 +46,15 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
     await _getTopicsFromServer(emit);
   }
 
-  int getSubtopicProgress(Subtopic subtopic) {
-    if (subtopic.wordInfoList.isEmpty) {
+  int getSubtopicProgress(Subtopic subtopic, WordInfo deletedWordInfo) {
+    if (subtopic.wordInfoList.length == 1) {
       return 0;
     }
     int maxProgress =
-        subtopic.wordInfoList.length * OtherLearnConstants.countRepeats;
+        (subtopic.wordInfoList.length - 1) * OtherLearnConstants.countRepeats;
     int currentProgress = 0;
     for (WordInfo wordInfo in subtopic.wordInfoList) {
+      if (wordInfo == deletedWordInfo) continue;
       currentProgress += wordInfo.progress;
     }
     int result = ((currentProgress / maxProgress) * 100).toInt();
@@ -64,57 +65,37 @@ class LearningBloc extends Bloc<LearningEvent, LearningState> {
       _DeleteWordEvent event, Emitter<LearningState> emit) async {
     Subtopic saveSubtopic = event.subtopic;
     try {
-      List<Topic> saveTopics = [];
-      saveTopics.addAll(topics);
       String accessToken = await userRepository.getCurrentUserAccessToken();
       await checkTokenExpirationAndUpdateIfNeed(
           accessToken: accessToken, userRepository: userRepository);
 
       await wordsRepository.deleteWord(
           accessToken: accessToken, id: event.wordInfo.id);
-      //TODO Think about optimization
-      for (Topic topic in saveTopics) {
-        if (topic.topicTitle != event.subtopic.topicTitle) continue;
-        for (int i = 0; i < topic.subtopics.length; i++) {
-          if (topic.subtopics[i].subtopicTitle !=
-              event.subtopic.subtopicTitle) {
-            continue;
-          }
-          topic.subtopics[i].wordInfoList
-              .removeWhere((item) => item == event.wordInfo);
-          saveSubtopic = Subtopic(
-              subtopicTitle: topic.subtopics[i].subtopicTitle,
-              topicTitle: topic.subtopics[i].topicTitle,
-              wordCount: topic.subtopics[i].wordInfoList.length,
-              progress: getSubtopicProgress(topic.subtopics[i]),
-              pictureLink: topic.subtopics[i].pictureLink,
-              wordInfoList: topic.subtopics[i].wordInfoList);
-          if (topic.subtopics[i].wordInfoList.isNotEmpty) {
-            topic.subtopics.removeAt(i);
-            topic.subtopics.insert(i, saveSubtopic);
-          }
-        }
-      }
-      if (saveSubtopic.wordInfoList.isEmpty) {
-        List<int> unusedTopicsIndex = [];
-        for (int i = 0; i < saveTopics.length; i++) {
-          if (saveTopics[i].topicTitle == saveSubtopic.topicTitle) {
-            saveTopics[i].subtopics.removeWhere(
-                (el) => el.subtopicTitle == saveSubtopic.subtopicTitle);
-            if (saveTopics[i].subtopics.isEmpty) {
-              unusedTopicsIndex.add(i);
-            }
-          }
-        }
-        int offset = 0;
-        if (unusedTopicsIndex.isNotEmpty) {
-          for (int unusedTopicIndex in unusedTopicsIndex) {
-            saveTopics.removeAt(unusedTopicIndex - offset);
-            offset++;
+
+      List<WordInfo> tempWords = [];
+      tempWords.addAll(event.subtopic.wordInfoList);
+      tempWords.remove(event.wordInfo);
+
+      saveSubtopic = Subtopic(
+          subtopicTitle: event.subtopic.subtopicTitle,
+          topicTitle: event.subtopic.topicTitle,
+          wordCount: event.subtopic.wordInfoList.length - 1,
+          progress: getSubtopicProgress(event.subtopic, event.wordInfo),
+          pictureLink: event.subtopic.pictureLink,
+          wordInfoList: tempWords);
+
+      for (Topic topic in topics) {
+        if ((topic.topicTitle == OtherLearnConstants.inProgressTopic) ||
+            (topic.topicTitle == event.subtopic.topicTitle)) {
+          topic.subtopics.removeWhere((el) =>
+              (el.subtopicTitle == event.subtopic.subtopicTitle) &&
+              (el.topicTitle == event.subtopic.topicTitle));
+          if (saveSubtopic.wordInfoList.isNotEmpty) {
+            topic.subtopics.add(saveSubtopic);
           }
         }
       }
-      topics = saveTopics;
+      topics.removeWhere((el) => el.subtopics.isEmpty);
     } on Exception catch (e) {
       addError(e);
     }
