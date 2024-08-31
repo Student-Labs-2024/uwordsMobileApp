@@ -52,7 +52,11 @@ void main() {
         await Future.delayed(const Duration(milliseconds: 1));
         addNextStep(bloc, mockSubtopics.first.wordInfoList.length * 4);
       },
-      expect: () => [const TrainingState.loading(),...trainingStates, isA<TrainingState>()],
+      expect: () => [
+        const TrainingState.loading(),
+        ...trainingStates,
+        isA<TrainingState>()
+      ],
     );
   });
 }
