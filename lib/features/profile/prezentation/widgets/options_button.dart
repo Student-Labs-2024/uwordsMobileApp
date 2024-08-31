@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uwords/features/global/presentation/widgets/constants/global_sizes.dart';
 import 'package:uwords/features/profile/prezentation/constants/profile_sizes.dart';
 import 'package:uwords/theme/app_colors.dart';
-import 'package:uwords/theme/image_source.dart';
 
 class OptionsButton extends StatelessWidget {
   const OptionsButton({super.key, required this.onPressed});
@@ -25,8 +23,9 @@ class OptionsButton extends StatelessWidget {
         constraints:
             const BoxConstraints(maxHeight: ProfileSizes.optionsButtonSize),
         onPressed: onPressed,
-        icon: SvgPicture.asset(
-          AppImageSource.optionsIcon,
+        icon: const Icon(
+          Icons.exit_to_app_outlined,
+          color: AppColors.imperial,
         ),
         iconSize: ProfileSizes.optionsButtonIconSize,
         style: ButtonStyle(

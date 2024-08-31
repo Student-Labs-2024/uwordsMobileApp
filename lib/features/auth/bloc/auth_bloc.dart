@@ -263,7 +263,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         case AuthorizationProvider.google:
           await userRepository.authorizateFromGoogle(uid: _uPassword);
       }
-      if (await userRepository.isEducationCompleted()) {
+      if (userRepository.isEducationCompleted()) {
         emit(const AuthState.success(AuthSuccess.authorized));
       } else {
         emit(const AuthState.success(AuthSuccess.educationNotCompleted));

@@ -1,7 +1,7 @@
 class ProfileSizes {
   static const double avatarSize = 90 / 375;
   static const double optionsButtonSize = 40;
-  static const double optionsButtonIconSize = 24;
+  static const double optionsButtonIconSize = 20;
   static const double optionsBordedSize = 2;
 
   static const double statisticCardWidth = 156 / 375;
