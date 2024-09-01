@@ -53,6 +53,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   email_validator: ^3.0.0
   livespeechtotext: ^1.0.9
+  audio_session: ^0.1.21
 
 dev_dependencies:
   flutter_test:
